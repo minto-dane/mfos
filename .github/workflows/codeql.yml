@@ -15,7 +15,6 @@ jobs:
   analyze:
     name: CodeQL analysis
     runs-on: ubuntu-latest
-    continue-on-error: ${{ github.event.repository.private }}
     permissions:
       actions: read
       contents: read
@@ -31,10 +30,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Record private repository CodeQL limitation
+        if: ${{ github.event.repository.private && vars.MFOS_ENABLE_PRIVATE_CODEQL != 'true' }}
+        run: |
+          echo "CodeQL upload is skipped for this private repository because code scanning is not enabled."
+          echo "Set repository variable MFOS_ENABLE_PRIVATE_CODEQL=true after GitHub Advanced Security/code scanning is available."
+
       - name: Initialize CodeQL
+        if: ${{ !github.event.repository.private || vars.MFOS_ENABLE_PRIVATE_CODEQL == 'true' }}
         uses: github/codeql-action/init@v3
         with:
           languages: ${{ matrix.language }}
 
       - name: Perform CodeQL Analysis
+        if: ${{ !github.event.repository.private || vars.MFOS_ENABLE_PRIVATE_CODEQL == 'true' }}
         uses: github/codeql-action/analyze@v3
