@@ -10,7 +10,8 @@ Phase 0.6 added machine-checkable design enforcement around this canon:
 - JSON Schemas under ../../schemas/.
 - Local validators under ../../scripts/.
 - Traceability matrices under ../../evidence/traceability/.
-- Audit reports under ../../reports/.
+- Report index under ../../reports/index.yml and categorized reports under
+  ../../reports/.
 - Pack contracts under ../../packs/pack-index.yml.
 - Assurance claim tree under assurance/claim-tree.yml.
 ```

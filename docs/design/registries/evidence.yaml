@@ -7009,7 +7009,7 @@ entries:
   conformance_claim_ids: []
   release_ids: []
   artifact:
-    path: evidence/traceability/phase-0-8-requirement-to-evidence.yml#EV-MFOS-AUTH-0101
+    path: evidence/traceability/archive/phase-0-8/requirement-to-evidence.yml#EV-MFOS-AUTH-0101
     media_type: application/yaml
     sha384: null
     size_bytes: null
@@ -7046,7 +7046,7 @@ entries:
   conformance_claim_ids: []
   release_ids: []
   artifact:
-    path: evidence/traceability/phase-0-8-requirement-to-evidence.yml#EV-MFOS-AUTH-0102
+    path: evidence/traceability/archive/phase-0-8/requirement-to-evidence.yml#EV-MFOS-AUTH-0102
     media_type: application/yaml
     sha384: null
     size_bytes: null
@@ -7082,7 +7082,7 @@ entries:
   conformance_claim_ids: []
   release_ids: []
   artifact:
-    path: evidence/traceability/phase-0-8-requirement-to-evidence.yml#EV-MFOS-AUTH-0103
+    path: evidence/traceability/archive/phase-0-8/requirement-to-evidence.yml#EV-MFOS-AUTH-0103
     media_type: application/yaml
     sha384: null
     size_bytes: null
@@ -7119,7 +7119,7 @@ entries:
   conformance_claim_ids: []
   release_ids: []
   artifact:
-    path: evidence/traceability/phase-0-8-requirement-to-evidence.yml#EV-MFOS-AUTH-0104
+    path: evidence/traceability/archive/phase-0-8/requirement-to-evidence.yml#EV-MFOS-AUTH-0104
     media_type: application/yaml
     sha384: null
     size_bytes: null
@@ -7156,7 +7156,7 @@ entries:
   conformance_claim_ids: []
   release_ids: []
   artifact:
-    path: evidence/traceability/phase-0-8-requirement-to-evidence.yml#EV-MFOS-AUTH-0105
+    path: evidence/traceability/archive/phase-0-8/requirement-to-evidence.yml#EV-MFOS-AUTH-0105
     media_type: application/yaml
     sha384: null
     size_bytes: null
@@ -7193,7 +7193,7 @@ entries:
   conformance_claim_ids: []
   release_ids: []
   artifact:
-    path: evidence/traceability/phase-0-8-requirement-to-evidence.yml#EV-MFOS-AUDIT-0101
+    path: evidence/traceability/archive/phase-0-8/requirement-to-evidence.yml#EV-MFOS-AUDIT-0101
     media_type: application/yaml
     sha384: null
     size_bytes: null
@@ -7230,7 +7230,7 @@ entries:
   conformance_claim_ids: []
   release_ids: []
   artifact:
-    path: evidence/traceability/phase-0-8-requirement-to-evidence.yml#EV-MFOS-AUDIT-0102
+    path: evidence/traceability/archive/phase-0-8/requirement-to-evidence.yml#EV-MFOS-AUDIT-0102
     media_type: application/yaml
     sha384: null
     size_bytes: null
@@ -7266,7 +7266,7 @@ entries:
   conformance_claim_ids: []
   release_ids: []
   artifact:
-    path: evidence/traceability/phase-0-8-requirement-to-evidence.yml#EV-MFOS-AUDIT-0103
+    path: evidence/traceability/archive/phase-0-8/requirement-to-evidence.yml#EV-MFOS-AUDIT-0103
     media_type: application/yaml
     sha384: null
     size_bytes: null
@@ -7302,7 +7302,7 @@ entries:
   conformance_claim_ids: []
   release_ids: []
   artifact:
-    path: evidence/traceability/phase-0-8-requirement-to-evidence.yml#EV-MFOS-AUDIT-0104
+    path: evidence/traceability/archive/phase-0-8/requirement-to-evidence.yml#EV-MFOS-AUDIT-0104
     media_type: application/yaml
     sha384: null
     size_bytes: null
@@ -7339,7 +7339,7 @@ entries:
   conformance_claim_ids: []
   release_ids: []
   artifact:
-    path: evidence/traceability/phase-0-8-requirement-to-evidence.yml#EV-MFOS-AUDIT-0105
+    path: evidence/traceability/archive/phase-0-8/requirement-to-evidence.yml#EV-MFOS-AUDIT-0105
     media_type: application/yaml
     sha384: null
     size_bytes: null
@@ -7375,7 +7375,7 @@ entries:
   conformance_claim_ids: []
   release_ids: []
   artifact:
-    path: evidence/traceability/phase-0-8-requirement-to-evidence.yml#EV-MFOS-CATALOG-0101
+    path: evidence/traceability/archive/phase-0-8/requirement-to-evidence.yml#EV-MFOS-CATALOG-0101
     media_type: application/yaml
     sha384: null
     size_bytes: null
@@ -7411,7 +7411,7 @@ entries:
   conformance_claim_ids: []
   release_ids: []
   artifact:
-    path: evidence/traceability/phase-0-8-requirement-to-evidence.yml#EV-MFOS-CATALOG-0102
+    path: evidence/traceability/archive/phase-0-8/requirement-to-evidence.yml#EV-MFOS-CATALOG-0102
     media_type: application/yaml
     sha384: null
     size_bytes: null
@@ -7448,7 +7448,7 @@ entries:
   conformance_claim_ids: []
   release_ids: []
   artifact:
-    path: evidence/traceability/phase-0-8-requirement-to-evidence.yml#EV-MFOS-DATASET-0101
+    path: evidence/traceability/archive/phase-0-8/requirement-to-evidence.yml#EV-MFOS-DATASET-0101
     media_type: application/yaml
     sha384: null
     size_bytes: null
@@ -7485,7 +7485,7 @@ entries:
   conformance_claim_ids: []
   release_ids: []
   artifact:
-    path: evidence/traceability/phase-0-8-requirement-to-evidence.yml#EV-MFOS-DATASET-0102
+    path: evidence/traceability/archive/phase-0-8/requirement-to-evidence.yml#EV-MFOS-DATASET-0102
     media_type: application/yaml
     sha384: null
     size_bytes: null
@@ -7522,7 +7522,7 @@ entries:
   conformance_claim_ids: []
   release_ids: []
   artifact:
-    path: evidence/traceability/phase-0-8-requirement-to-evidence.yml#EV-MFOS-DATASET-0103
+    path: evidence/traceability/archive/phase-0-8/requirement-to-evidence.yml#EV-MFOS-DATASET-0103
     media_type: application/yaml
     sha384: null
     size_bytes: null
@@ -7559,7 +7559,7 @@ entries:
   conformance_claim_ids: []
   release_ids: []
   artifact:
-    path: evidence/traceability/phase-0-8-requirement-to-evidence.yml#EV-MFOS-JOB-0101
+    path: evidence/traceability/archive/phase-0-8/requirement-to-evidence.yml#EV-MFOS-JOB-0101
     media_type: application/yaml
     sha384: null
     size_bytes: null
@@ -7597,7 +7597,7 @@ entries:
   conformance_claim_ids: []
   release_ids: []
   artifact:
-    path: evidence/traceability/phase-0-8-requirement-to-evidence.yml#EV-MFOS-JOB-0102
+    path: evidence/traceability/archive/phase-0-8/requirement-to-evidence.yml#EV-MFOS-JOB-0102
     media_type: application/yaml
     sha384: null
     size_bytes: null
@@ -7634,7 +7634,7 @@ entries:
   conformance_claim_ids: []
   release_ids: []
   artifact:
-    path: evidence/traceability/phase-0-8-requirement-to-evidence.yml#EV-MFOS-JOB-0103
+    path: evidence/traceability/archive/phase-0-8/requirement-to-evidence.yml#EV-MFOS-JOB-0103
     media_type: application/yaml
     sha384: null
     size_bytes: null
@@ -7671,7 +7671,7 @@ entries:
   conformance_claim_ids: []
   release_ids: []
   artifact:
-    path: evidence/traceability/phase-0-8-requirement-to-evidence.yml#EV-MFOS-SPOOL-0101
+    path: evidence/traceability/archive/phase-0-8/requirement-to-evidence.yml#EV-MFOS-SPOOL-0101
     media_type: application/yaml
     sha384: null
     size_bytes: null
@@ -7708,7 +7708,7 @@ entries:
   conformance_claim_ids: []
   release_ids: []
   artifact:
-    path: evidence/traceability/phase-0-8-requirement-to-evidence.yml#EV-MFOS-SPOOL-0102
+    path: evidence/traceability/archive/phase-0-8/requirement-to-evidence.yml#EV-MFOS-SPOOL-0102
     media_type: application/yaml
     sha384: null
     size_bytes: null
@@ -7746,7 +7746,7 @@ entries:
   conformance_claim_ids: []
   release_ids: []
   artifact:
-    path: evidence/traceability/phase-0-8-requirement-to-evidence.yml#EV-MFOS-OPER-0101
+    path: evidence/traceability/archive/phase-0-8/requirement-to-evidence.yml#EV-MFOS-OPER-0101
     media_type: application/yaml
     sha384: null
     size_bytes: null
@@ -7782,7 +7782,7 @@ entries:
   conformance_claim_ids: []
   release_ids: []
   artifact:
-    path: evidence/traceability/phase-0-8-requirement-to-evidence.yml#EV-MFOS-OPER-0102
+    path: evidence/traceability/archive/phase-0-8/requirement-to-evidence.yml#EV-MFOS-OPER-0102
     media_type: application/yaml
     sha384: null
     size_bytes: null
@@ -7819,7 +7819,7 @@ entries:
   conformance_claim_ids: []
   release_ids: []
   artifact:
-    path: evidence/traceability/phase-0-8-requirement-to-evidence.yml#EV-MFOS-OPER-0103
+    path: evidence/traceability/archive/phase-0-8/requirement-to-evidence.yml#EV-MFOS-OPER-0103
     media_type: application/yaml
     sha384: null
     size_bytes: null
@@ -7856,7 +7856,7 @@ entries:
   conformance_claim_ids: []
   release_ids: []
   artifact:
-    path: evidence/traceability/phase-0-8-requirement-to-evidence.yml#EV-MFOS-OPER-0104
+    path: evidence/traceability/archive/phase-0-8/requirement-to-evidence.yml#EV-MFOS-OPER-0104
     media_type: application/yaml
     sha384: null
     size_bytes: null

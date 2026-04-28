@@ -1,0 +1,45 @@
+golden_id: GOLDEN-MFOS-AUTH-STALE-POLICY-0920
+golden_version: 1
+fixture_ref: tests/fixtures/auth/stale-policy-0920.yml
+normalized_input:
+  fixture_id: FIXTURE-MFOS-AUTH-STALE-POLICY-0920
+  operation: STALE-POLICY
+  deterministic_seed: SEED-MFOS-PHASE09-0001
+expected_normalized_output:
+  outcome: EXPECTED_FAIL_CLOSED
+  final_state: FAILED
+expected_decisions: &id001
+- decision_id: DECISION-MFOS-PHASE09-0001
+  result: DENY
+  policy_version: 1
+  obligations:
+  - AUDIT_SECURITY_DECISION
+expected_audit_sequence: &id003
+- record_type: SECURITY_DECISION
+  decision: DENY
+  reason_code: MFOS_ERR_POLICY_VERSION_MISMATCH
+  before_return: true
+expected_state_transitions: &id002
+- object: PHASE09_OBJECT
+  from: INITIAL
+  action: EVALUATE
+  to: FAILED
+  reason: MFOS_ERR_POLICY_VERSION_MISMATCH
+expected_final_state: FAILED
+expected_failure_mode: MFOS_ERR_POLICY_VERSION_MISMATCH
+deterministic: true
+oracle:
+  oracle_id: ORACLE-MFOS-AUTH-STALE-POLICY-0920
+  oracle_version: 1
+  fixture_ref: tests/fixtures/auth/stale-policy-0920.yml
+  expected_decisions: *id001
+  expected_state_transitions: *id002
+  expected_audit_records: *id003
+  expected_failure:
+    error_code: MFOS_ERR_POLICY_VERSION_MISMATCH
+    fail_closed: true
+  expected_final_state: FAILED
+  evidence_required:
+  - EV-MFOS-AUTH-STALE-POLICY-0920
+  status: draft
+status: draft

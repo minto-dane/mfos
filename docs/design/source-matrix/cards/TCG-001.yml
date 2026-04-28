@@ -56,7 +56,7 @@ mfos_mapping:
 mfos_divergence:
 - MFOS uses these mechanisms as boot and attestation evidence, not as a substitute for securityd policy or auditd records.
 prohibited_inference:
-- Measured boot alone proves MFOS runtime integrity.
+- Forbidden claim: Measured boot alone proves MFOS runtime integrity.
 - Do not claim z/OS compatibility.
 legal_controls:
   public_safe: true

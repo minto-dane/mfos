@@ -56,7 +56,7 @@ mfos_mapping:
 mfos_divergence:
 - MFOS maps SLSA into profile-specific provenance and production readiness gates.
 prohibited_inference:
-- Unsigned local builds are production High-Assurance artifacts.
+- Forbidden claim: Unsigned local builds are production High-Assurance artifacts.
 - Do not claim z/OS compatibility.
 legal_controls:
   public_safe: true

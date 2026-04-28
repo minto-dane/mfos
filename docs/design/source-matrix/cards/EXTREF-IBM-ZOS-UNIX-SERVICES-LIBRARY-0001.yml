@@ -57,8 +57,8 @@ mfos_mapping:
 mfos_divergence:
 - MFOS does not make UNIX services the primary operating model.
 prohibited_inference:
-- MFOS implements z/OS UNIX.
-- z/OS UNIX-compatible.
+- Forbidden claim: MFOS implements z/OS UNIX.
+- Forbidden claim: z/OS UNIX-compatible.
 - Do not claim z/OS compatibility.
 - Do not treat IBM product behavior as MFOS compatibility.
 legal_controls:

@@ -1,0 +1,22 @@
+schema_version: 1
+decision_id: MFOS-SOURCES-DIRECTORY-DECISION-0001
+status: current
+decision: keep_docs_design_source_matrix_canonical
+sources_directory_should_be_canonical_now: false
+canonical_source_card_path: docs/design/source-matrix/cards
+canonical_source_index: docs/design/source-matrix/source-matrix.yml
+sources_directory_role: populated_public_safe_workbench
+reasoning:
+  - sources/ is intentionally a future structured source-grounding workbench.
+  - sources/ is populated with public-safe cards, concept cards, indexes, mapping notes, retrieval metadata, and a manual parity report, but is not canonical source authority.
+  - docs/design/source-matrix/cards contains the populated 37-card ledger.
+  - validators and traceability currently target docs/design/source-matrix paths.
+  - moving cards now would create medium-to-high migration risk.
+  - populated sources/ improves review depth but does not upgrade semantic freeze without ADR migration and source-card review closure.
+required_before_promotion:
+  - ADR approving canonical path migration.
+  - automated parity validator replacing the manual sources/source-matrix-parity.yml review aid.
+  - validator path migration.
+  - requirements and traceability regeneration.
+  - pack and docs path updates.
+  - artifact hygiene validation after migration.

@@ -1,0 +1,59 @@
+index_kind: source_domain_index
+schema_version: 1
+status: populated_workbench_public_safe
+authority_status: preparatory_until_adr_migration
+path: sources/internal/fbvbs
+canonical_current: docs/design/source-matrix
+source_cards:
+- path: sources/internal/fbvbs/source-cards/fbvbs-001.md
+  source_id: FBVBS-001
+  status: workbench_draft
+- path: sources/internal/fbvbs/source-cards/000-provenance-and-scope.md
+  source_id: INT-FBVBS-PROVENANCE-SCOPE-0001
+  status: workbench_draft
+- path: sources/internal/fbvbs/source-cards/010-assurance-discipline.md
+  source_id: INT-FBVBS-ASSURANCE-DISCIPLINE-0001
+  status: workbench_draft
+- path: sources/internal/fbvbs/source-cards/020-partition-state-machine-discipline.md
+  source_id: INT-FBVBS-PARTITION-STATE-MACHINE-0001
+  status: workbench_draft
+- path: sources/internal/fbvbs/source-cards/030-update-manifest-discipline.md
+  source_id: INT-FBVBS-UPDATE-MANIFEST-DISCIPLINE-0001
+  status: workbench_draft
+- path: sources/internal/fbvbs/source-cards/040-proof-evidence-structure.md
+  source_id: INT-FBVBS-PROOF-EVIDENCE-STRUCTURE-0001
+  status: workbench_draft
+- path: sources/internal/fbvbs/source-cards/050-adopt-adapt-reject-transfer-rules.md
+  source_id: INT-FBVBS-TRANSFER-RULES-0001
+  status: workbench_draft
+concept_cards:
+- path: sources/internal/fbvbs/concept-cards/assurance-gate-topology.md
+  status: workbench_draft
+- path: sources/internal/fbvbs/concept-cards/manifest-freshness-and-compatibility.md
+  status: workbench_draft
+- path: sources/internal/fbvbs/concept-cards/proof-evidence-spine.md
+  status: workbench_draft
+- path: sources/internal/fbvbs/concept-cards/state-machine-precondition-discipline.md
+  status: workbench_draft
+notes:
+- path: sources/internal/fbvbs/notes/gaps-and-open-questions.md
+  status: workbench_note
+- path: sources/internal/fbvbs/notes/mfos-transfer-map.md
+  status: workbench_note
+public_safe_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+migration_rule: Do not promote this directory to canonical source authority without
+  an accepted ADR and regenerated validators/traceability.

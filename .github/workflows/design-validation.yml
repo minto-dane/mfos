@@ -27,5 +27,5 @@ jobs:
       - name: Install validator dependencies
         run: python -m pip install --upgrade pip pyyaml
 
-      - name: Run release-mode design validation
+      - name: Run draft check-mode design validation
         run: ./scripts/validate-all.sh --check

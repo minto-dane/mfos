@@ -1,0 +1,39 @@
+schema_version: 1
+artifact_index_kind: mfos_source_grounding_audit_package
+status: current
+current:
+  source_card_grounding_audit:
+    path: reports/current/source-grounding/source-card-grounding-audit.md
+    machine_readable_path: reports/current/source-grounding/source-card-grounding-audit.yml
+    status: current
+  spec_section_grounding_audit:
+    path: reports/current/source-grounding/spec-section-grounding-audit.md
+    machine_readable_path: reports/current/source-grounding/spec-section-grounding-audit.yml
+    status: current
+  requirement_grounding_audit:
+    path: reports/current/source-grounding/requirement-grounding-audit.md
+    machine_readable_path: reports/current/source-grounding/requirement-grounding-audit.yml
+    status: current
+  conditional_refreeze_plan:
+    path: reports/current/source-grounding/conditional-refreeze-plan.md
+    machine_readable_path: reports/current/source-grounding/conditional-refreeze-plan.yml
+    status: current
+  sources_directory_decision:
+    path: reports/current/source-grounding/sources-directory-decision.md
+    machine_readable_path: reports/current/source-grounding/sources-directory-decision.yml
+    status: current
+  red_team_review:
+    path: reports/current/source-grounding/source-grounding-red-team-review.md
+    status: current
+  open_issues:
+    path: reports/current/source-grounding/source-grounding-open-issues.md
+    status: current
+external_phase_reports:
+  phase_1_pack_readiness_recheck:
+    path: reports/phases/phase-1/pack-readiness-recheck.md
+    machine_readable_path: reports/phases/phase-1/pack-readiness-recheck.yml
+    status: current
+policy:
+  package_index_is_authoritative: true
+  source_cards_remain_canonical_under: docs/design/source-matrix/cards
+  production_implementation_allowed: false

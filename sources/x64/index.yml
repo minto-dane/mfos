@@ -1,0 +1,32 @@
+index_kind: source_grounding_index
+schema_version: 1
+status: draft
+scope: x64
+retrieved_at: "2026-04-28"
+policy:
+  primary_sources_only: true
+  linux_docs_informative_only: true
+  hardware_features_are_enforcement_aids: true
+  no_external_compatibility_claims: true
+source_cards:
+  - path: sources/x64/intel/source-cards/X64-INTEL-001.yml
+    source_id: X64-INTEL-001
+    role: x64_intel_architecture_grounding
+  - path: sources/x64/amd/source-cards/X64-AMD-001.yml
+    source_id: X64-AMD-001
+    role: x64_amd_architecture_grounding
+  - path: sources/x64/linux-informative/source-cards/X64-LINUX-CET-001.yml
+    source_id: X64-LINUX-CET-001
+    role: informative_linux_cet_behavior
+  - path: sources/x64/linux-informative/source-cards/X64-LINUX-PKU-001.yml
+    source_id: X64-LINUX-PKU-001
+    role: informative_linux_pku_behavior
+concept_cards:
+  - path: sources/x64/intel/concept-cards/x64-enforcement-aids.yml
+    concept_id: X64-CONCEPT-ENFORCEMENT-AIDS-001
+  - path: sources/x64/amd/concept-cards/amd64-enforcement-aids.yml
+    concept_id: X64-CONCEPT-AMD64-ENFORCEMENT-AIDS-001
+gaps:
+  - Exact section-level pins are not yet complete.
+  - CPU feature fallback policy remains profile-specific design work.
+  - Informative Linux behavior must not become normative policy semantics.

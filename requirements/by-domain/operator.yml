@@ -41,7 +41,7 @@ entries:
   audit_obligations:
   - OPERATOR_COMMAND_DENY
   failure_modes:
-  - MFOS_ERR_UNAUTHORIZED
+  - MFOS_ERR_POLICY_DENIED
   evidence_required:
   - EV-MFOS-OPER-0101
   mfos_non_compatibility:
@@ -158,7 +158,7 @@ entries:
   audit_obligations:
   - OPERATOR_AUTOMATION_DENY
   failure_modes:
-  - MFOS_ERR_UNAUTHORIZED
+  - MFOS_ERR_POLICY_DENIED
   evidence_required:
   - EV-MFOS-OPER-0104
   mfos_non_compatibility:

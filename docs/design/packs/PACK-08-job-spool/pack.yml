@@ -31,7 +31,7 @@ outputs:
 - schemas/mfos/spool-entry.schema.yml
 - formal/tla/job-lifecycle/state-machine.yml
 - formal/tla/spool-access/state-machine.yml
-- tests/catalog/phase-0-8-job-spool-tests.yml
+- tests/catalog/job-spool.yml
 - requirements/by-domain/job.yml
 - requirements/by-domain/spool.yml
 source_refs:
@@ -62,7 +62,7 @@ failure_modes:
 - MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
 - MFOS_ERR_POLICY_DENIED
 - MFOS_ERR_SPEC_GAP
-- MFOS_ERR_UNAUTHORIZED
+- MFOS_ERR_UNAUTHENTICATED
 - MFOS_ERR_UNSUPPORTED
 audit_obligations:
 - JOB_SUBMIT_DENY

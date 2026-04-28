@@ -1,0 +1,90 @@
+schema_version: 1
+report_id: REPORT-MFOS-ARTIFACT-HYGIENE-AUDIT-0001
+artifact_type: hygiene_audit
+status: current
+origin_phase: phase-0-9
+current_since: phase-0-9
+
+scope:
+  - reports/
+  - tests/catalog/
+  - tests/fixtures/
+  - tests/golden/
+  - evidence/traceability/
+  - docs/design/STATUS.md
+  - docs/design/packs/
+  - scripts/
+  - .github/workflows/
+
+findings:
+  phase_specific_catalogs_in_root:
+    severity: major
+    status: fixed
+    moved_to: tests/catalog/archive/phase-0-8/
+  phase_0_9_catalogs_with_noncanonical_names:
+    severity: minor
+    status: fixed
+    renamed_to_stable_names: true
+  phase_specific_traceability_in_root:
+    severity: major
+    status: fixed
+    moved_to:
+      - evidence/traceability/archive/phase-0-8/
+      - evidence/traceability/generated/phase-0-9/
+  missing_artifact_indexes:
+    severity: major
+    status: fixed
+    added:
+      - tests/catalog/index.yml
+      - tests/fixtures/index.yml
+      - tests/golden/index.yml
+      - evidence/traceability/index.yml
+  missing_artifact_readmes:
+    severity: minor
+    status: fixed
+    added:
+      - tests/catalog/README.md
+      - tests/fixtures/README.md
+      - tests/golden/README.md
+      - evidence/traceability/README.md
+  flat_scripts_root:
+    severity: major
+    status: fixed
+    organized_into:
+      - scripts/validators/
+      - scripts/checks/
+      - scripts/generators/
+      - scripts/phases/
+      - scripts/lib/
+      - scripts/bootstrap/
+  phase_specific_fuzz_plans_in_current_root:
+    severity: major
+    status: fixed
+    moved_to:
+      - fuzz/targets/fuzz-target-plan.yml
+      - fuzz/targets/archive/phase-0-8/fuzz-target-plan.yml
+  phase_specific_task_plans_in_current_root:
+    severity: major
+    status: fixed
+    moved_to:
+      - tasks/archive/phase-0-7/system-integrity-deep-spec.yml
+      - docs/design/tasks/archive/phase-0-7/system-integrity-deep-spec.md
+  phase_or_pr_reports_in_current_reports:
+    severity: minor
+    status: fixed
+    moved_to:
+      - reports/phases/phase-0-9/pr-5-review-report.md
+      - reports/phases/phase-0-9/pr-5-post-gap-validation.md
+      - reports/phases/phase-1/readiness-report.md
+      - reports/phases/phase-1/open-issues.md
+
+validation:
+  commands:
+    - ./scripts/validate-artifact-hygiene.sh
+    - ./scripts/validate-all.sh --check
+    - ./scripts/validate-naming-safety.sh release
+    - python3 -m py_compile $(find scripts -name '*.py' -print)
+    - git diff --check
+  semantic_content_changed: false
+  production_implementation_started: false
+  phase_1_readiness_affected: false

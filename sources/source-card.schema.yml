@@ -1,6 +1,7 @@
 schema_kind: source_card_shape
-schema_version: 2
+schema_version: 3
 canonical_current: docs/design/source-matrix/source-card-schema.md
+authority_status: preparatory_until_adr_migration
 json_schema: schemas/source-card.schema.json
 required_fields:
   - source_id
@@ -20,9 +21,33 @@ required_fields:
   - source_refs
   - requirement_refs
   - review_status
+public_safe_required_fields:
+  - authority_status
+  - citation_scope
+  - retrieval_metadata
+  - cache_disposition
+  - legal_controls
+  - prohibited_inference
+retrieval_metadata_fields:
+  - retrieved_at
+  - retrieved_by
+  - public_url
+  - landing_page_url
+  - source_version
+  - section_scope
+  - local_cache_manifest
+cache_disposition_values:
+  - no_local_cache
+  - local_manifest_only
+  - temporary_ignored_cache
+  - purged_after_review
 allowed_source_types:
   - external_reference
   - internal_transfer
+allowed_authority_statuses:
+  - canonical_in_docs_design_source_matrix
+  - preparatory_until_adr_migration
+  - migrated_canonical_after_adr
 removed_public_fields:
   - canonical_concepts
   - normative_source
@@ -32,3 +57,21 @@ removed_public_fields:
   - record_layouts
   - command_syntax
   - macro_signatures
+prohibited_committed_content:
+  - external_pdf
+  - html_mirror
+  - epub
+  - screenshot
+  - copied_table
+  - copied_diagram
+  - copied_record_layout
+  - copied_command_reference
+  - copied_macro_signature
+  - detailed_source_substitute_summary
+legal_controls_required_flags:
+  - trademark_reference_only
+  - no_affiliation_claim
+  - no_compatibility_claim
+  - no_conformance_claim
+  - no_certification_claim
+  - no_source_substitution

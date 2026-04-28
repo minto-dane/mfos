@@ -26,7 +26,7 @@ inputs:
 outputs:
 - schemas/mfos/operator-command.schema.yml
 - formal/tla/operator-command/state-machine.yml
-- tests/catalog/phase-0-8-operator-console-tests.yml
+- tests/catalog/operator-console.yml
 - requirements/by-domain/operator.yml
 source_refs:
 - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
@@ -50,9 +50,10 @@ object_model_refs:
 state_machine_refs:
 - formal/tla/operator-command/state-machine.yml
 failure_modes:
+- MFOS_ERR_UNAUTHENTICATED
 - MFOS_ERR_OPERATOR_CONFIRMATION_REQUIRED
+- MFOS_ERR_POLICY_DENIED
 - MFOS_ERR_SPEC_GAP
-- MFOS_ERR_UNAUTHORIZED
 - MFOS_ERR_UNSUPPORTED
 audit_obligations:
 - OPERATOR_COMMAND_DENY

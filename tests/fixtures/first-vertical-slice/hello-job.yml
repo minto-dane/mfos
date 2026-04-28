@@ -1,0 +1,34 @@
+fixture_id: FIXTURE-MFOS-FVS-HELLO-JOB-9001
+fixture_version: 1
+description: first vertical slice HELLO job success
+target_specs:
+- docs/design/specs/30-first-vertical-slice-contract.md
+target_requirements:
+- MFOS-REQ-AUTH-0004
+- MFOS-REQ-AUDIT-0104
+- MFOS-REQ-DATASET-0102
+- MFOS-REQ-JOB-0102
+- MFOS-REQ-SPOOL-0101
+- MFOS-REQ-OPER-0101
+preconditions:
+- All subjects, policy versions, object generations, and dependency states are symbolic
+  and deterministic.
+initial_state:
+  clock: T0
+  security_epoch: 1
+  policy_version: 1
+  objects:
+  - object_ref: OBJ-MFOS-PHASE09-0001
+    generation: 1
+inputs:
+- input_id: INPUT-MFOS-PHASE09-0001
+  operation: HELLO-JOB
+  deterministic_seed: SEED-MFOS-PHASE09-0001
+expected_oracle: tests/golden/first-vertical-slice/hello-job.yml
+expected_evidence:
+- EV-MFOS-FVS-HELLO-JOB-9001
+not_allowed:
+- production_claim
+- external_compatibility_claim
+- host_os_semantics_dependency
+status: draft

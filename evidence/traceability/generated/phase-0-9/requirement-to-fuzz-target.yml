@@ -1,0 +1,36 @@
+traceability_kind: phase_0_9_requirement_to_fuzz_target
+entries:
+- requirement_id: MFOS-REQ-AUDIT-0101
+  fuzz_targets:
+  - FUZZ-MFOS-AUDIT-RECORD-0001
+- requirement_id: MFOS-REQ-AUDIT-0102
+  fuzz_targets:
+  - FUZZ-MFOS-SEMANTIC-FIXTURE-0001
+- requirement_id: MFOS-REQ-AUTH-0101
+  fuzz_targets:
+  - FUZZ-MFOS-AUTH-POLICY-0001
+  - FUZZ-MFOS-SEMANTIC-FIXTURE-0001
+- requirement_id: MFOS-REQ-CATALOG-0101
+  fuzz_targets:
+  - FUZZ-MFOS-DATASET-DSN-0001
+- requirement_id: MFOS-REQ-DATASET-0101
+  fuzz_targets:
+  - FUZZ-MFOS-DATASET-DSN-0001
+- requirement_id: MFOS-REQ-DATASET-0102
+  fuzz_targets:
+  - FUZZ-MFOS-DATASET-HANDLE-0001
+  - FUZZ-MFOS-SEMANTIC-FIXTURE-0001
+- requirement_id: MFOS-REQ-JOB-0101
+  fuzz_targets:
+  - FUZZ-MFOS-JOB-CONTROL-STREAM-0001
+- requirement_id: MFOS-REQ-JOB-0102
+  fuzz_targets:
+  - FUZZ-MFOS-JOB-FIXTURE-0001
+  - FUZZ-MFOS-SEMANTIC-FIXTURE-0001
+- requirement_id: MFOS-REQ-OPER-0101
+  fuzz_targets:
+  - FUZZ-MFOS-OPER-COMMAND-0001
+  - FUZZ-MFOS-SEMANTIC-FIXTURE-0001
+- requirement_id: MFOS-REQ-SPOOL-0101
+  fuzz_targets:
+  - FUZZ-MFOS-SPOOL-FIXTURE-0001

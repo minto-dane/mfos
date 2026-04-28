@@ -1,0 +1,114 @@
+schema_version: 1
+audit_id: MFOS-AUDIT-SOURCE-GROUNDING-REQUIREMENTS-0001
+status: current
+audit_date: "2026-04-27"
+scope:
+  canonical_requirement_registry: docs/design/registries/requirements.yaml
+  canonical_registry_entries: 130
+  split_requirement_files:
+    - requirements/by-domain/auth.yml
+    - requirements/by-domain/audit.yml
+    - requirements/by-domain/catalog.yml
+    - requirements/by-domain/dataset.yml
+    - requirements/by-domain/job.yml
+    - requirements/by-domain/spool.yml
+    - requirements/by-domain/operator.yml
+  requirements_audited: 24
+summary:
+  canonical_registry_validates: true
+  detailed_pack_split_requirements_audited: 24
+  requirements_with_source_refs: 24
+  requirements_with_profile_applicability: 24
+  requirements_with_negative_tests: 24
+  requirements_with_audit_obligations: 24
+  requirements_with_failure_modes: 24
+  requirements_with_evidence_required: 24
+  exact_current_catalog_test_linkage: false
+  current_claim_trace_coverage: false
+  release_grade_evidence: false
+  registry_schema_drift_risk: true
+  distribution:
+    SG5_NEGATIVE_TEST_LINKED_DRAFT: 24
+    SG6_REVIEWED: 0
+    SG7_FROZEN: 0
+entries_by_domain:
+  auth:
+    count: 5
+    requirement_ids:
+      - MFOS-REQ-AUTH-0101
+      - MFOS-REQ-AUTH-0102
+      - MFOS-REQ-AUTH-0103
+      - MFOS-REQ-AUTH-0104
+      - MFOS-REQ-AUTH-0105
+    grounding_level: SG5_NEGATIVE_TEST_LINKED_DRAFT
+    ready_for_phase_1_loader: true
+    ready_for_phase_1_semantic_evaluator: false
+    reason: Planned 010x tests exist on requirements, but current executable-spec catalogs use 09xx fixture/golden cases.
+  audit:
+    count: 5
+    requirement_ids:
+      - MFOS-REQ-AUDIT-0101
+      - MFOS-REQ-AUDIT-0102
+      - MFOS-REQ-AUDIT-0103
+      - MFOS-REQ-AUDIT-0104
+      - MFOS-REQ-AUDIT-0105
+    grounding_level: SG5_NEGATIVE_TEST_LINKED_DRAFT
+    ready_for_phase_1_loader: true
+    ready_for_phase_1_semantic_evaluator: false
+    reason: Evidence records remain draft and unverified.
+  catalog:
+    count: 2
+    requirement_ids:
+      - MFOS-REQ-CATALOG-0101
+      - MFOS-REQ-CATALOG-0102
+    grounding_level: SG5_NEGATIVE_TEST_LINKED_DRAFT
+    ready_for_phase_1_loader: true
+    ready_for_phase_1_semantic_evaluator: false
+    reason: Exact test/evidence linkage is indirect through catalogs and draft traceability.
+  dataset:
+    count: 3
+    requirement_ids:
+      - MFOS-REQ-DATASET-0101
+      - MFOS-REQ-DATASET-0102
+      - MFOS-REQ-DATASET-0103
+    grounding_level: SG5_NEGATIVE_TEST_LINKED_DRAFT
+    ready_for_phase_1_loader: true
+    ready_for_phase_1_semantic_evaluator: false
+    reason: Fixture/golden vectors lack direct source_refs.
+  job:
+    count: 3
+    requirement_ids:
+      - MFOS-REQ-JOB-0101
+      - MFOS-REQ-JOB-0102
+      - MFOS-REQ-JOB-0103
+    grounding_level: SG4_SPEC_MAPPED
+    ready_for_phase_1_loader: true
+    ready_for_phase_1_semantic_evaluator: false
+    reason: Job-control syntax and DD naming require source/legal/naming review before semantic evaluator work.
+  spool:
+    count: 2
+    requirement_ids:
+      - MFOS-REQ-SPOOL-0101
+      - MFOS-REQ-SPOOL-0102
+    grounding_level: SG5_NEGATIVE_TEST_LINKED_DRAFT
+    ready_for_phase_1_loader: true
+    ready_for_phase_1_semantic_evaluator: false
+    reason: Current artifacts load, but golden/oracle source refs are indirect.
+  operator:
+    count: 4
+    requirement_ids:
+      - MFOS-REQ-OPER-0101
+      - MFOS-REQ-OPER-0102
+      - MFOS-REQ-OPER-0103
+      - MFOS-REQ-OPER-0104
+    grounding_level: SG5_NEGATIVE_TEST_LINKED_DRAFT
+    ready_for_phase_1_loader: true
+    ready_for_phase_1_semantic_evaluator: false
+    reason: Current artifacts load, but evidence remains draft and unverified.
+blockers:
+  - exact requirement-declared 010x test IDs are not exact current catalog entry IDs.
+  - current fixtures lack direct source_refs.
+  - current golden/oracle vectors lack direct source_refs and target_requirements.
+  - release evidence is draft and unverified.
+  - claim-to-requirement trace does not cover the 24 split requirements.
+  - docs/design/registries/requirements.yaml and requirements/by-domain use different audit/failure field shapes; validators accept them, but the schema documentation should be aligned.

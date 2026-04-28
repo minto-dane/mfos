@@ -1,0 +1,11 @@
+corpus_id: MFOS-CORPUS-AUDIT-RECORD-0001
+target_name: audit-record-decoder
+phase: '0.9'
+implementation_allowed: false
+seed_categories:
+- minimal_valid_record
+- missing_correlation_id
+- tampered_hash_chain
+- duplicate_record_id
+- redaction_boundary
+status: draft

@@ -1,0 +1,36 @@
+index_kind: source_namespace_index
+schema_version: 1
+status: populated_workbench_public_safe
+authority_status: preparatory_until_adr_migration
+canonical_current: docs/design/source-matrix
+namespace: ibm
+domains:
+- path: sources/ibm/dfsms
+  index: sources/ibm/dfsms/index.yml
+- path: sources/ibm/jes
+  index: sources/ibm/jes/index.yml
+- path: sources/ibm/lpar-dpm
+  index: sources/ibm/lpar-dpm/index.yml
+- path: sources/ibm/racf
+  index: sources/ibm/racf/index.yml
+- path: sources/ibm/sdsf
+  index: sources/ibm/sdsf/index.yml
+- path: sources/ibm/smf
+  index: sources/ibm/smf/index.yml
+- path: sources/ibm/smpe
+  index: sources/ibm/smpe/index.yml
+- path: sources/ibm/system-integrity
+  index: sources/ibm/system-integrity/index.yml
+- path: sources/ibm/tso-ispf
+  index: sources/ibm/tso-ispf/index.yml
+- path: sources/ibm/unix
+  index: sources/ibm/unix/index.yml
+- path: sources/ibm/wlm
+  index: sources/ibm/wlm/index.yml
+- path: sources/ibm/z-architecture
+  index: sources/ibm/z-architecture/index.yml
+- path: sources/ibm/zos-mvs
+  index: sources/ibm/zos-mvs/index.yml
+- path: sources/ibm/zosmf
+  index: sources/ibm/zosmf/index.yml
+public_safe_policy: sources/copyright-policy.md

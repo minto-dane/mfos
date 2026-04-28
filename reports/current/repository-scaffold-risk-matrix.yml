@@ -1,0 +1,121 @@
+schema_version: 1
+report_id: REPORT-MFOS-REPOSITORY-SCAFFOLD-RISK-MATRIX-0001
+status: current
+risks:
+- risk_id: SCAF-RISK-0001
+  severity: major
+  title: Implementation subtree has many empty future directories
+  affected_paths:
+  - implementation/guard/attestation
+  - implementation/guard/call-abi
+  - implementation/guard/roots/amf-registry
+  - implementation/guard/roots/audit-root
+  - implementation/guard/roots/executable-mapping
+  - implementation/guard/roots/page-table-policy
+  - implementation/guard/roots/security-root
+  - implementation/guard/roots/svc-table
+  - implementation/guard/roots/update-policy
+  - implementation/guard/tests
+  - implementation/interfaces/command-processor
+  - implementation/interfaces/linux-gateway
+  - implementation/interfaces/management-api/openapi
+  - implementation/interfaces/operator-console
+  - implementation/interfaces/panel-ui
+  - implementation/interfaces/posix-subsystem
+  - implementation/nucleus/address-space
+  - implementation/nucleus/arch/x86_64/amd
+  - implementation/nucleus/arch/x86_64/intel
+  - implementation/nucleus/audit-hooks
+  - implementation/nucleus/boot
+  - implementation/nucleus/faults
+  - implementation/nucleus/handles
+  - implementation/nucleus/ipc
+  - implementation/nucleus/memory
+  - implementation/nucleus/pcall
+  - implementation/nucleus/scheduler
+  - implementation/nucleus/services
+  - implementation/nucleus/svc
+  - implementation/nucleus/tests
+  - implementation/prototypes/hosted-semantic/first-vertical-slice
+  - implementation/prototypes/hosted-semantic/services/amfd
+  - implementation/prototypes/hosted-semantic/services/auditd
+  - implementation/prototypes/hosted-semantic/services/catalogd
+  - implementation/prototypes/hosted-semantic/services/datasetd
+  - implementation/prototypes/hosted-semantic/services/jobd
+  - implementation/prototypes/hosted-semantic/services/operatord
+  - implementation/prototypes/hosted-semantic/services/securityd
+  - implementation/prototypes/hosted-semantic/services/spoold
+  - implementation/prototypes/hosted-semantic/services/uvsd
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  status: open
+  phase_1_blocker: false
+- risk_id: SCAF-RISK-0002
+  severity: major
+  title: sources/ detailed source-grounding tree is planned but largely empty
+  affected_paths:
+  - sources/ibm/dfsms/concept-cards
+  - sources/ibm/dfsms/notes
+  - sources/ibm/dfsms/source-cards
+  - sources/ibm/jes/concept-cards
+  - sources/ibm/jes/notes
+  - sources/ibm/jes/source-cards
+  - sources/ibm/lpar-dpm/concept-cards
+  - sources/ibm/lpar-dpm/notes
+  - sources/ibm/lpar-dpm/source-cards
+  - sources/ibm/racf/concept-cards
+  - sources/ibm/racf/notes
+  - sources/ibm/racf/source-cards
+  - sources/ibm/sdsf/concept-cards
+  - sources/ibm/sdsf/notes
+  - sources/ibm/sdsf/source-cards
+  - sources/ibm/smf/concept-cards
+  - sources/ibm/smf/notes
+  - sources/ibm/smf/source-cards
+  - sources/ibm/smpe/concept-cards
+  - sources/ibm/smpe/notes
+  - sources/ibm/smpe/source-cards
+  - sources/ibm/system-integrity/concept-cards
+  - sources/ibm/system-integrity/notes
+  - sources/ibm/system-integrity/source-cards
+  - sources/ibm/tso-ispf/concept-cards
+  - sources/ibm/tso-ispf/notes
+  - sources/ibm/tso-ispf/source-cards
+  - sources/ibm/unix/concept-cards
+  - sources/ibm/unix/notes
+  - sources/ibm/unix/source-cards
+  - sources/ibm/wlm/concept-cards
+  - sources/ibm/wlm/notes
+  - sources/ibm/wlm/source-cards
+  - sources/ibm/z-architecture/concept-cards
+  - sources/ibm/z-architecture/notes
+  - sources/ibm/z-architecture/source-cards
+  - sources/ibm/zos-mvs/concept-cards
+  - sources/ibm/zos-mvs/notes
+  - sources/ibm/zos-mvs/source-cards
+  - sources/ibm/zosmf/concept-cards
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  status: open
+  phase_1_blocker: false
+- risk_id: SCAF-RISK-0003
+  severity: minor
+  title: ci/linters duplicates script-based validation as empty placeholders
+  affected_paths:
+  - ci/linters/audit-obligation-lint
+  - ci/linters/fuzz-target-registration
+  - ci/linters/japanese-canonical-conflict-lint
+  - ci/linters/must-may-lint
+  - ci/linters/no-compatibility-claim
+  - ci/linters/no-fake-success
+  - ci/linters/prohibited-wording-lint
+  - ci/linters/requirement-schema-lint
+  - ci/linters/source-card-schema-lint
+  - ci/linters/source-gap-detector
+  - ci/linters/source-matrix-lint
+  - ci/linters/spec-id-lint
+  - ci/linters/unsafe-inventory
+  recommended_action: merge_with_existing_directory
+  priority: P3 hygiene
+  status: open
+  phase_1_blocker: false

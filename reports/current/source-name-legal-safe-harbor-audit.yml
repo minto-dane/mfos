@@ -1,0 +1,60 @@
+schema_version: 1
+artifact_id: REPORT-MFOS-SOURCE-NAME-LEGAL-SAFE-HARBOR-2026-04-28
+artifact_type: legal_risk_engineering_audit
+status: current
+generated_by: manual_engineering_review
+scope:
+  - sources/
+  - docs/design/source-matrix/cards/
+  - README.md
+  - NOTICE.md
+  - docs/design/legal-risk-policy.md
+external_policy_reference:
+  - title: IBM Copyright and Trademark Information
+    url: https://www.ibm.com/legal/copyright-trademark
+checks:
+  - command: ./scripts/validate-naming-safety.sh release
+    result: pass
+  - command: python3 scripts/checks/naming-safety/check-source-card-public-safe.py --mode release
+    result: pass
+  - command: python3 scripts/checks/naming-safety/check-sources-workbench-public-safe.py --mode release
+    result: pass
+  - command: python3 scripts/checks/naming-safety/check-mf-owned-names.py --mode release
+    result: pass
+  - command: python3 scripts/checks/naming-safety/check-no-compatibility-claims.py --mode release
+    result: pass
+  - command: python3 scripts/checks/naming-safety/check-no-copied-external-docs.py --mode release
+    result: pass
+  - command: git ls-files sources/_cache
+    result: pass
+    observation: only README.md and DO_NOT_COMMIT.md are tracked in _cache
+  - command: find sources/_cache -maxdepth 3 -type f -print
+    result: pass
+    observation: local ignored cache payloads purged; only README.md and DO_NOT_COMMIT.md remain
+findings:
+  critical: []
+  major:
+    - id: MAJOR-PUBLIC-LEGAL-REVIEW-REQUIRED
+      summary: Public repository visibility remains blocked until IP/trademark counsel review.
+      affected_paths:
+        - docs/design/legal-risk-policy.md
+        - reports/naming-safety/naming-safety-open-issues.md
+      disposition: block_public_release
+  minor:
+    - id: MINOR-SOURCE-PATH-EXTERNAL-NAMES
+      summary: sources/ibm paths intentionally use external names for source-reference organization.
+      disposition: allowed_context
+    - id: MINOR-LOCAL-CACHE-POLICY
+      summary: sources/_cache is reserved for ignored local retrieval payloads; release automation must package tracked files only.
+      disposition: cache_payloads_purged_verify_before_visibility_change
+corrections_applied:
+  - normalized workbench card_id values from legacy SRC-CARD-IBM-* forms to SRC-CARD-EXTREF-* forms
+  - prefixed dangerous prohibited-inference examples with "Forbidden claim:"
+  - purged local ignored source cache payloads
+  - replaced local cache manifest file references with not_committed policy text
+decision:
+  source_name_safe_harbor_private_review_passed: true
+  source_name_safe_harbor_public_release_passed: false
+  public_release_allowed: false
+  requires_ip_attorney_review_before_public_release: true
+  repository_visibility_change_allowed_now: false

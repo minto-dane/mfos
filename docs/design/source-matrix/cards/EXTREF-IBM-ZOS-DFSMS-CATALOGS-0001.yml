@@ -60,7 +60,7 @@ mfos_mapping:
 mfos_divergence:
 - MFOS catalog entries include owner, attributes, location, security profile, generation, immutable/system flags, and integrity tag.
 prohibited_inference:
-- catalogd is DFSMS-compatible.
+- Forbidden claim: catalogd is DFSMS-compatible.
 - Do not claim z/OS compatibility.
 - Do not treat IBM product behavior as MFOS compatibility.
 legal_controls:

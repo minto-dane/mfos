@@ -13,20 +13,30 @@ if [[ "${2:-}" == "--check" ]]; then
   GENERATE_TRACEABILITY=0
 fi
 
-python3 scripts/validate-source-cards.py
-python3 scripts/validate-requirements.py
-python3 scripts/check-prohibited-terms.py
-python3 scripts/check-no-fake-success.py
-python3 scripts/validate-spec-front-matter.py --mode "$MODE"
-python3 scripts/validate-packs.py --mode "$MODE"
-python3 scripts/check-source-grounding.py --mode "$MODE"
-python3 scripts/check-audit-obligations.py --mode "$MODE"
-python3 scripts/check-spec-gap-misuse.py --mode "$MODE"
-python3 scripts/validate-claims.py --mode "$MODE"
-python3 scripts/check-registry-links.py --mode "$MODE"
-python3 scripts/check-phase-0-8-traceability.py --mode "$MODE"
-python3 scripts/check-evidence-status.py --mode "$MODE"
+python3 scripts/validators/validate-source-cards.py
+python3 scripts/validators/validate-requirements.py
+python3 scripts/checks/check-prohibited-terms.py
+python3 scripts/checks/check-no-fake-success.py
+python3 scripts/validators/validate-spec-front-matter.py --mode "$MODE"
+python3 scripts/validators/validate-packs.py --mode "$MODE"
+python3 scripts/checks/check-source-grounding.py --mode "$MODE"
+python3 scripts/checks/check-audit-obligations.py --mode "$MODE"
+python3 scripts/checks/check-spec-gap-misuse.py --mode "$MODE"
+python3 scripts/validators/validate-claims.py --mode "$MODE"
+if [[ "$GENERATE_TRACEABILITY" == "1" ]]; then
+  python3 scripts/checks/check-registry-links.py --mode "$MODE"
+else
+  MFOS_VALIDATE_NO_WRITE=1 python3 scripts/checks/check-registry-links.py --mode "$MODE"
+fi
+python3 scripts/phases/phase-0-8/check-traceability.py --mode "$MODE"
+if [[ "$GENERATE_TRACEABILITY" == "1" ]]; then
+  ./scripts/phases/phase-0-9/validate.sh
+else
+  ./scripts/phases/phase-0-9/validate.sh --check
+fi
+./scripts/validate-artifact-hygiene.sh "$MODE"
+python3 scripts/checks/check-evidence-status.py --mode "$MODE"
 ./scripts/validate-naming-safety.sh "$MODE"
 if [[ "$GENERATE_TRACEABILITY" == "1" ]]; then
-  python3 scripts/generate-traceability.py
+  python3 scripts/generators/generate-traceability.py
 fi

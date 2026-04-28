@@ -1,0 +1,3185 @@
+schema_version: 1
+report_id: REPORT-MFOS-EMPTY-DIRECTORY-INVENTORY-0001
+status: current
+empty_directory_count: 239
+empty_directories:
+- path: ai/prompt-library
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P3 hygiene
+  reason: Empty directory role is not explicit at leaf level.
+  followup_task: Add a minimal role note if this leaf becomes an AI work target.
+- path: ai/task-packets/generated
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P3 hygiene
+  reason: Empty directory role is not explicit at leaf level.
+  followup_task: Add a minimal role note if this leaf becomes an AI work target.
+- path: build/hardware-lab
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: build/images
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: build/profiles
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: build/qemu
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: build/reproducible/diff-reports
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: build/toolchains
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: ci/linters/audit-obligation-lint
+  current_role_guess: validation
+  recommended_role: validation
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: merge_with_existing_directory
+  priority: P3 hygiene
+  reason: Validation implementation currently lives in scripts/, leaving ci/linters
+    as empty duplicate placeholders.
+  followup_task: Either add a CI linter index that points to scripts/ or remove empty
+    duplicates in a later hygiene PR.
+- path: ci/linters/fuzz-target-registration
+  current_role_guess: validation
+  recommended_role: validation
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: merge_with_existing_directory
+  priority: P3 hygiene
+  reason: Validation implementation currently lives in scripts/, leaving ci/linters
+    as empty duplicate placeholders.
+  followup_task: Either add a CI linter index that points to scripts/ or remove empty
+    duplicates in a later hygiene PR.
+- path: ci/linters/japanese-canonical-conflict-lint
+  current_role_guess: validation
+  recommended_role: validation
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: merge_with_existing_directory
+  priority: P3 hygiene
+  reason: Validation implementation currently lives in scripts/, leaving ci/linters
+    as empty duplicate placeholders.
+  followup_task: Either add a CI linter index that points to scripts/ or remove empty
+    duplicates in a later hygiene PR.
+- path: ci/linters/must-may-lint
+  current_role_guess: validation
+  recommended_role: validation
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: merge_with_existing_directory
+  priority: P3 hygiene
+  reason: Validation implementation currently lives in scripts/, leaving ci/linters
+    as empty duplicate placeholders.
+  followup_task: Either add a CI linter index that points to scripts/ or remove empty
+    duplicates in a later hygiene PR.
+- path: ci/linters/no-compatibility-claim
+  current_role_guess: validation
+  recommended_role: validation
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: merge_with_existing_directory
+  priority: P3 hygiene
+  reason: Validation implementation currently lives in scripts/, leaving ci/linters
+    as empty duplicate placeholders.
+  followup_task: Either add a CI linter index that points to scripts/ or remove empty
+    duplicates in a later hygiene PR.
+- path: ci/linters/no-fake-success
+  current_role_guess: validation
+  recommended_role: validation
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: merge_with_existing_directory
+  priority: P3 hygiene
+  reason: Validation implementation currently lives in scripts/, leaving ci/linters
+    as empty duplicate placeholders.
+  followup_task: Either add a CI linter index that points to scripts/ or remove empty
+    duplicates in a later hygiene PR.
+- path: ci/linters/prohibited-wording-lint
+  current_role_guess: validation
+  recommended_role: validation
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: merge_with_existing_directory
+  priority: P3 hygiene
+  reason: Validation implementation currently lives in scripts/, leaving ci/linters
+    as empty duplicate placeholders.
+  followup_task: Either add a CI linter index that points to scripts/ or remove empty
+    duplicates in a later hygiene PR.
+- path: ci/linters/requirement-schema-lint
+  current_role_guess: validation
+  recommended_role: validation
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: merge_with_existing_directory
+  priority: P3 hygiene
+  reason: Validation implementation currently lives in scripts/, leaving ci/linters
+    as empty duplicate placeholders.
+  followup_task: Either add a CI linter index that points to scripts/ or remove empty
+    duplicates in a later hygiene PR.
+- path: ci/linters/source-card-schema-lint
+  current_role_guess: validation
+  recommended_role: validation
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: merge_with_existing_directory
+  priority: P3 hygiene
+  reason: Validation implementation currently lives in scripts/, leaving ci/linters
+    as empty duplicate placeholders.
+  followup_task: Either add a CI linter index that points to scripts/ or remove empty
+    duplicates in a later hygiene PR.
+- path: ci/linters/source-gap-detector
+  current_role_guess: validation
+  recommended_role: validation
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: merge_with_existing_directory
+  priority: P3 hygiene
+  reason: Validation implementation currently lives in scripts/, leaving ci/linters
+    as empty duplicate placeholders.
+  followup_task: Either add a CI linter index that points to scripts/ or remove empty
+    duplicates in a later hygiene PR.
+- path: ci/linters/source-matrix-lint
+  current_role_guess: validation
+  recommended_role: validation
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: merge_with_existing_directory
+  priority: P3 hygiene
+  reason: Validation implementation currently lives in scripts/, leaving ci/linters
+    as empty duplicate placeholders.
+  followup_task: Either add a CI linter index that points to scripts/ or remove empty
+    duplicates in a later hygiene PR.
+- path: ci/linters/spec-id-lint
+  current_role_guess: validation
+  recommended_role: validation
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: merge_with_existing_directory
+  priority: P3 hygiene
+  reason: Validation implementation currently lives in scripts/, leaving ci/linters
+    as empty duplicate placeholders.
+  followup_task: Either add a CI linter index that points to scripts/ or remove empty
+    duplicates in a later hygiene PR.
+- path: ci/linters/unsafe-inventory
+  current_role_guess: validation
+  recommended_role: validation
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: merge_with_existing_directory
+  priority: P3 hygiene
+  reason: Validation implementation currently lives in scripts/, leaving ci/linters
+    as empty duplicate placeholders.
+  followup_task: Either add a CI linter index that points to scripts/ or remove empty
+    duplicates in a later hygiene PR.
+- path: ci/scripts
+  current_role_guess: validation
+  recommended_role: validation
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: merge_with_existing_directory
+  priority: P3 hygiene
+  reason: Validation implementation currently lives in scripts/, leaving ci/linters
+    as empty duplicate placeholders.
+  followup_task: Either add a CI linter index that points to scripts/ or remove empty
+    duplicates in a later hygiene PR.
+- path: claims/baseline
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: claims/enterprise-pxm
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: claims/enterprise-standalone
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: claims/high-assurance
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: evidence/attestations
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P3 hygiene
+  reason: Empty directory role is not explicit at leaf level.
+  followup_task: Add a minimal role note if this leaf becomes an AI work target.
+- path: evidence/audits
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P3 hygiene
+  reason: Empty directory role is not explicit at leaf level.
+  followup_task: Add a minimal role note if this leaf becomes an AI work target.
+- path: evidence/coverage
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P3 hygiene
+  reason: Empty directory role is not explicit at leaf level.
+  followup_task: Add a minimal role note if this leaf becomes an AI work target.
+- path: evidence/production-readiness
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P3 hygiene
+  reason: Empty directory role is not explicit at leaf level.
+  followup_task: Add a minimal role note if this leaf becomes an AI work target.
+- path: evidence/reviews
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P3 hygiene
+  reason: Empty directory role is not explicit at leaf level.
+  followup_task: Add a minimal role note if this leaf becomes an AI work target.
+- path: evidence/test-results
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P3 hygiene
+  reason: Empty directory role is not explicit at leaf level.
+  followup_task: Add a minimal role note if this leaf becomes an AI work target.
+- path: examples/activation-profiles
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: examples/audit
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: examples/datasets
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: examples/jobs
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: examples/policies
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: formal/alloy
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: formal/coq
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: formal/isabelle
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: formal/tla/amf-load
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: formal/tla/device-teardown
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: formal/tla/guard-root-transition
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: formal/tla/pxm-lifecycle
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: formal/tla/update-security
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: fuzz/dictionaries
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: fuzz/targets/activation-profile-parser
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: fuzz/targets/amf-manifest-parser
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: fuzz/targets/audit-record-decoder
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: fuzz/targets/dsn-parser
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: fuzz/targets/guard-call-decoder
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: fuzz/targets/jcl-lite-parser
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: fuzz/targets/operator-command-parser
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: fuzz/targets/policy-parser
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: fuzz/targets/svc-pcall-decoder
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: fuzz/targets/update-manifest-parser
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: implementation/guard/attestation
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/guard/call-abi
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/guard/roots/amf-registry
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/guard/roots/audit-root
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/guard/roots/executable-mapping
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/guard/roots/page-table-policy
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/guard/roots/security-root
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/guard/roots/svc-table
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/guard/roots/update-policy
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/guard/tests
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/interfaces/command-processor
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/interfaces/linux-gateway
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/interfaces/management-api/openapi
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/interfaces/operator-console
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/interfaces/panel-ui
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/interfaces/posix-subsystem
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/nucleus/address-space
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/nucleus/arch/x86_64/amd
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/nucleus/arch/x86_64/intel
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/nucleus/audit-hooks
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/nucleus/boot
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/nucleus/faults
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/nucleus/handles
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/nucleus/ipc
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/nucleus/memory
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/nucleus/pcall
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/nucleus/scheduler
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/nucleus/services
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/nucleus/svc
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/nucleus/tests
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/prototypes/hosted-semantic/first-vertical-slice
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/prototypes/hosted-semantic/services/amfd
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/prototypes/hosted-semantic/services/auditd
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/prototypes/hosted-semantic/services/catalogd
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/prototypes/hosted-semantic/services/datasetd
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/prototypes/hosted-semantic/services/jobd
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/prototypes/hosted-semantic/services/operatord
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/prototypes/hosted-semantic/services/securityd
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/prototypes/hosted-semantic/services/spoold
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/prototypes/hosted-semantic/services/uvsd
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/prototypes/hosted-semantic/services/workpolicyd
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/pxm/core/activation-profile
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/pxm/core/audit
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/pxm/core/cpu
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/pxm/core/devices
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/pxm/core/interrupts
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/pxm/core/iommu
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/pxm/core/lifecycle
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/pxm/core/memory
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/pxm/implicit-backend
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/pxm/tests
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/runtime/abi/guard-call
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/runtime/abi/pcall
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/runtime/abi/pxm-call
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/runtime/abi/svc
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/runtime/common
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/runtime/generated
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/services/amfd
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/services/apid
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/services/auditd
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/services/catalogd
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/services/commandd
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/services/common
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/services/datasetd
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/services/jobd
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/services/operatord
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/services/paneld
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/services/securityd
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/services/spoold
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/services/uvsd
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/services/workpolicyd
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/sidecars/linux-desktop-partition
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/sidecars/recovery-partition
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/sidecars/service-partition
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/tools/auditdump
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/tools/catalogck
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/tools/claimck
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/tools/jobsubmit
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/tools/manifestck
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/tools/mfctl
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/tools/packgen
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/tools/policyc
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/tools/reqck
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/tools/sourcecard
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: implementation/tools/tracegen
+  current_role_guess: implementation_future
+  recommended_role: implementation_future
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: medium
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P1 before Phase 1
+  reason: Empty implementation scaffold can look implementation-ready to later AI
+    agents.
+  followup_task: Create component-level scaffold metadata or index before assigning
+    implementation work.
+- path: prompts/canonical
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P3 hygiene
+  reason: Empty directory role is not explicit at leaf level.
+  followup_task: Add a minimal role note if this leaf becomes an AI work target.
+- path: prompts/ja
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P3 hygiene
+  reason: Empty directory role is not explicit at leaf level.
+  followup_task: Add a minimal role note if this leaf becomes an AI work target.
+- path: schemas/common
+  current_role_guess: canonical_registry
+  recommended_role: canonical_registry
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P3 hygiene
+  reason: Empty directory role is not explicit at leaf level.
+  followup_task: Add a minimal role note if this leaf becomes an AI work target.
+- path: schemas/validation/examples
+  current_role_guess: validation
+  recommended_role: validation
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P3 hygiene
+  reason: Empty directory role is not explicit at leaf level.
+  followup_task: Add a minimal role note if this leaf becomes an AI work target.
+- path: schemas/validation/invalid-examples
+  current_role_guess: validation
+  recommended_role: validation
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P3 hygiene
+  reason: Empty directory role is not explicit at leaf level.
+  followup_task: Add a minimal role note if this leaf becomes an AI work target.
+- path: sources/ibm/dfsms/concept-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/dfsms/notes
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/dfsms/source-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/jes/concept-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/jes/notes
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/jes/source-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/lpar-dpm/concept-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/lpar-dpm/notes
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/lpar-dpm/source-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/racf/concept-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/racf/notes
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/racf/source-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/sdsf/concept-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/sdsf/notes
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/sdsf/source-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/smf/concept-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/smf/notes
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/smf/source-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/smpe/concept-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/smpe/notes
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/smpe/source-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/system-integrity/concept-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/system-integrity/notes
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/system-integrity/source-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/tso-ispf/concept-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/tso-ispf/notes
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/tso-ispf/source-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/unix/concept-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/unix/notes
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/unix/source-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/wlm/concept-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/wlm/notes
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/wlm/source-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/z-architecture/concept-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/z-architecture/notes
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/z-architecture/source-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/zos-mvs/concept-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/zos-mvs/notes
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/zos-mvs/source-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/zosmf/concept-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/zosmf/notes
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/ibm/zosmf/source-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: medium
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/internal/fbvbs/notes
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/internal/fbvbs/source-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/security-assurance/microsoft/source-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/security-assurance/nist/source-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/security-assurance/sel4/source-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/security-assurance/slsa/source-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/security-assurance/tpm-tcg/source-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/security-assurance/tuf/concept-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/security-assurance/tuf/source-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/x64/amd/concept-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/x64/amd/source-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/x64/intel/concept-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/x64/intel/source-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/x64/linux-informative/notes
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: sources/x64/linux-informative/source-cards
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: medium
+    legal_or_publication_risk: low
+  recommended_action: create_source_card_task
+  priority: P2 before production implementation
+  reason: Source/concept-card scaffold is intentionally empty but should not be treated
+    as completed source grounding.
+  followup_task: Define source/concept-card population tasks or mark these as planned
+    in a sources index.
+- path: supply-chain/dependencies
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: supply-chain/provenance
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: supply-chain/releases
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: supply-chain/sbom
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: supply-chain/signing
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: tasks/backlog
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: add_readme_only
+  priority: P3 hygiene
+  reason: Empty directory role is not explicit at leaf level.
+  followup_task: Add a minimal role note if this leaf becomes an AI work target.
+- path: tests/conformance/baseline
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: tests/conformance/enterprise-pxm
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: tests/conformance/enterprise-standalone
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: tests/conformance/high-assurance
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: tests/crash-recovery/audit-log
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: tests/crash-recovery/catalog-transaction
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: tests/crash-recovery/update-staging
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: tests/fault-injection/auditd-unavailable
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: tests/fault-injection/guard-unavailable
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: tests/fault-injection/securityd-unavailable
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: tests/integration/first-vertical-slice
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: tests/integration/hosted-semantic-prototype
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: tests/negative/amf-revoked-signer
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: tests/negative/audit-write-failure
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: tests/negative/guard-root-mismatch
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: tests/negative/malformed-dsn
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: tests/negative/malformed-jcl
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: tests/negative/malformed-operator-command
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: tests/negative/policy-version-mismatch
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: tests/negative/pxm-device-teardown
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: tests/negative/stale-handle
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: tests/negative/unauthorized-dataset-open
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: tests/negative/unsupported-command-success
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: tests/negative/update-freeze
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: tests/negative/update-mix-and-match
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: tests/negative/update-rollback
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: tests/supply-chain/provenance
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: tests/supply-chain/reproducible-build
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: tests/supply-chain/sbom
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.
+- path: tests/unit
+  current_role_guess: planned
+  recommended_role: planned
+  maturity: M0_EMPTY
+  risk:
+    misleading_progress: low
+    ai_confusion: low
+    legal_or_publication_risk: low
+  recommended_action: keep_as_planned_empty
+  priority: P3 hygiene
+  reason: Future-phase scaffold; empty state is acceptable if indexed as planned.
+  followup_task: Add index/README only if the directory will be assigned to AI agents.

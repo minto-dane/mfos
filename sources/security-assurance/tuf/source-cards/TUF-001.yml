@@ -1,0 +1,94 @@
+schema_version: 1
+status: draft
+card_id: SRC-CARD-TUF-001
+source_id: TUF-001
+source_kind: bibliographic_reference
+source_type: external_reference
+semantic_role: design_background
+vendor: The Update Framework
+vendor_mark_used: true
+product_family: The Update Framework
+document_title: The Update Framework Specification
+document_url:
+- https://theupdateframework.github.io/specification/latest/
+- https://theupdateframework.io/docs/metadata/
+retrieved_at: '2026-04-28'
+version_or_release: TUF specification latest resolved to v1.0.34; last modified 2026-01-22;
+  metadata overview unversioned
+publication_number: null
+section_scope: update metadata roles, client workflow, rollback/freeze/mix-and-match
+  defenses
+pin_quality: latest_version_verified_secondary_unversioned_needs_review
+reference_purpose:
+- source discovery
+- concept mapping
+- non-compatibility boundary definition
+- independent MFOS design traceability
+review_topics:
+- root metadata
+- targets metadata
+- snapshot metadata
+- timestamp metadata
+- rollback defense
+- freeze defense
+- mix-and-match defense
+mfos_mapping:
+  mfos_components:
+  - uvsd metadata roles
+  - rollback/freeze/mix-and-match detection
+  mfos_specs: []
+  mfos_requirements:
+  - MFOS-REQ-UPDATE-0001
+  - MFOS-REQ-UPDATE-0003
+  - MFOS-REQ-UPDATE-0005
+  - MFOS-REQ-UPDATE-0006
+  - MFOS-REQ-UPDATE-0007
+  mapping_notes:
+  - Ground update metadata role separation and client-side attack detection concepts.
+  - Keep MFOS metadata names, component types, activation profile constraints, audit,
+    and recovery workflow MFOS-owned.
+mfos_divergence:
+- MFOS uvsd uses a TUF-like model with MFOS component types, security epochs, activation
+  profile constraints, audit, and recovery rollback workflow.
+- MFOS must not claim TUF conformance unless a conformance analysis is performed separately.
+prohibited_inference:
+- A signature alone is sufficient update security.
+- MFOS is TUF-compatible or TUF-conformant.
+- Do not treat this card as a substitute for the TUF specification.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+  no_affiliation_claim: true
+  no_compatibility_claim: true
+  no_conformance_claim: true
+  no_certification_claim: true
+  no_source_substitution: true
+source_refs:
+- source_id: TUF-001
+  source_type: external_reference
+  role: card_subject
+requirement_refs:
+- MFOS-REQ-UPDATE-0001
+- MFOS-REQ-UPDATE-0003
+- MFOS-REQ-UPDATE-0005
+- MFOS-REQ-UPDATE-0006
+- MFOS-REQ-UPDATE-0007
+review_status: draft
+gaps:
+- Pin or remove the unversioned metadata overview URL after detailed review.
+- Define initial uvsd metadata schema and key rotation policy.
+authority_status: preparatory_until_adr_migration
+citation_scope: metadata_only_public_reference
+cache_disposition: no_local_cache

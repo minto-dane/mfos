@@ -1,0 +1,101 @@
+index_kind: source_grounding_index
+schema_version: 1
+status: populated_workbench_public_safe
+authority_status: preparatory_until_adr_migration
+canonical_current:
+  authority: docs_design_source_matrix
+  source_card_index: docs/design/source-matrix/source-matrix.yml
+  source_card_directory: docs/design/source-matrix/cards
+  source_card_schema_note: docs/design/source-matrix/source-card-schema.md
+  rule: docs/design/source-matrix remains canonical until an accepted ADR migrates
+    authority to sources/.
+workbench:
+  root: sources
+  purpose:
+  - Prepare public-safe source and concept card structure.
+  - Hold populated workbench cards, concept cards, and mapping notes without becoming
+    canonical authority.
+  - Index retrieval and cache policy.
+  - Define migration gates before any authority transfer.
+  top_level_policy_files:
+  - sources/README.md
+  - sources/registry.yml
+  - sources/citation-policy.md
+  - sources/copyright-policy.md
+  - sources/source-card.schema.yml
+  - sources/concept-card.schema.yml
+  - sources/retrieval-log.yml
+  - sources/source-grounding-index.yml
+  - sources/source-matrix-parity.yml
+  - sources/migration-plan.md
+  cache_policy_files:
+  - sources/_cache/README.md
+  - sources/_cache/DO_NOT_COMMIT.md
+namespaces_planned:
+  ibm:
+    status: populated_workbench_public_safe
+    public_safe_rule: metadata_and_paraphrase_only
+    canonical_before_migration: docs/design/source-matrix/cards/EXTREF-IBM-*.yml
+  internal:
+    status: populated_workbench_public_safe
+    public_safe_rule: source-card_metadata_only
+  security_assurance:
+    status: populated_workbench_public_safe
+    public_safe_rule: metadata_and_paraphrase_only
+  x64:
+    status: populated_workbench_public_safe
+    public_safe_rule: metadata_and_paraphrase_only
+authority_rules:
+- Source cards under sources/ do not supersede docs/design/source-matrix/cards before
+  ADR migration.
+- Concept cards under sources/ must cite canonical Source Matrix IDs while docs/design/source-matrix
+  remains canonical.
+- Retrieval-log entries are audit metadata, not source authority.
+- Cache manifests are local aids, not source authority.
+- Normative MFOS requirements must live in the requirements system and cite requirement
+  IDs.
+public_safe_rules:
+  allowed:
+  - bibliographic metadata
+  - public URLs
+  - retrieval dates
+  - checksums for local review copies
+  - short paraphrased MFOS relevance notes
+  - overlap and divergence notes
+  - prohibited-inference notes
+  - legal-control flags
+  prohibited:
+  - committed external PDFs
+  - committed source mirrors
+  - committed screenshots
+  - long quotations
+  - copied tables
+  - copied diagrams
+  - copied command syntax
+  - copied macro signatures
+  - copied message catalogs
+  - copied record layouts
+  - external-source substitute documentation
+migration_gates:
+- accepted_adr_names_sources_as_canonical
+- source_id_inventory_matches_current_source_matrix
+- schema_mapping_review_complete
+- citation_policy_review_complete
+- copyright_policy_review_complete
+- legal_control_flags_present
+- no_external_documents_committed
+- traceability_links_regenerated
+- docs_design_source_matrix_freeze_or_redirect_plan_approved
+known_gaps:
+- No ADR has migrated canonical authority from docs/design/source-matrix to sources/.
+- sources/ now contains populated workbench cards, concept cards, and notes, but these
+  do not supersede canonical docs/design/source-matrix records.
+- Some workbench cards are bundle or Markdown-front-matter cards and need normalization
+  before canonical migration.
+- sources/source-matrix-parity.yml now records a candidate for each current canonical
+  Source Matrix card, but this is a workbench parity report, not an authority transfer.
+populated_namespaces:
+  ibm: sources/ibm/index.yml
+  internal: sources/internal/index.yml
+  security_assurance: sources/security-assurance/index.yml
+  x64: sources/x64/index.yml

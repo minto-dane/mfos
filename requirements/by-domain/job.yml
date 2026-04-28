@@ -37,7 +37,7 @@ entries:
   audit_obligations:
   - JOB_SUBMIT_DENY
   failure_modes:
-  - MFOS_ERR_UNAUTHORIZED
+  - MFOS_ERR_UNAUTHENTICATED
   evidence_required:
   - EV-MFOS-JOB-0101
   mfos_non_compatibility:
@@ -117,7 +117,7 @@ entries:
   audit_obligations:
   - JOB_AUTHZ_BYPASS_DENY
   failure_modes:
-  - MFOS_ERR_UNAUTHORIZED
+  - MFOS_ERR_POLICY_DENIED
   evidence_required:
   - EV-MFOS-JOB-0103
   mfos_non_compatibility:

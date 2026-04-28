@@ -1,0 +1,51 @@
+schema_version: 1
+artifact_index_kind: mfos_traceability_inventory
+status: current
+
+current:
+  source_to_requirement:
+    path: evidence/traceability/current/source-to-requirement.yml
+    status: current
+    generated_by: scripts/generators/generate-traceability.py
+  requirement_to_spec:
+    path: evidence/traceability/current/requirement-to-spec.yml
+    status: current
+    generated_by: scripts/generators/generate-traceability.py
+  requirement_to_test:
+    path: evidence/traceability/current/requirement-to-test.yml
+    status: current
+    generated_by: scripts/generators/generate-traceability.py
+  requirement_to_evidence:
+    path: evidence/traceability/current/requirement-to-evidence.yml
+    status: current
+    generated_by: scripts/generators/generate-traceability.py
+  claim_to_requirement:
+    path: evidence/traceability/current/claim-to-requirement.yml
+    status: current
+    generated_by: scripts/generators/generate-traceability.py
+  pack_to_artifacts:
+    path: evidence/traceability/current/pack-to-artifacts.yml
+    status: current
+    generated_by: scripts/generators/generate-traceability.py
+  gap_report:
+    path: evidence/traceability/current/gap-report.yml
+    status: current
+    generated_by: scripts/generators/generate-traceability.py
+
+generated:
+  phase_0_9:
+    path: evidence/traceability/generated/phase-0-9/
+    status: generated
+    origin_phase: phase-0-9
+    generated_by: scripts/phases/phase-0-9/generate-traceability.py
+
+archive:
+  phase_0_8:
+    path: evidence/traceability/archive/phase-0-8/
+    status: historical
+    origin_phase: phase-0-8
+
+policy:
+  phase_specific_filenames_allowed_in_root: false
+  root_current_only: false
+  generated_outputs_grouped_by_context: true

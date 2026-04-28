@@ -1,0 +1,84 @@
+schema_version: 1
+status: draft
+card_id: SRC-CARD-MS-VBS-001
+source_id: MS-VBS-001
+source_kind: bibliographic_reference
+source_type: external_reference
+semantic_role: design_background
+vendor: Microsoft
+vendor_mark_used: true
+product_family: Microsoft Learn
+document_title: Memory integrity and virtualization-based security
+document_url:
+- https://learn.microsoft.com/en-us/windows-hardware/drivers/bringup/device-guard-and-credential-guard
+retrieved_at: '2026-04-28'
+version_or_release: Microsoft Learn article last updated 2025-11-07
+publication_number: null
+section_scope: memory integrity, virtualization-based security, isolated code integrity
+pin_quality: primary_article_verified_last_updated_pinned
+reference_purpose:
+- source discovery
+- concept mapping
+- non-compatibility boundary definition
+- independent MFOS design traceability
+review_topics:
+- virtualization-based security
+- memory integrity
+- code integrity isolation
+- executable page policy
+mfos_mapping:
+  mfos_components:
+  - PXM Guard executable mapping policy
+  - High-Assurance root protection
+  mfos_specs: []
+  mfos_requirements:
+  - MFOS-REQ-GUARD-0001
+  - MFOS-REQ-GUARD-0002
+  - MFOS-REQ-GUARD-0005
+  mapping_notes:
+  - Use this as design background for isolating selected integrity decisions in a
+    higher-privilege environment.
+  - Keep Guard profile gating and executable mapping rules MFOS-owned.
+mfos_divergence:
+- PXM Guard is High-Assurance-only and protects selected MFOS root objects; it is
+  not Windows VBS compatibility.
+- MFOS does not import Windows policy semantics or deployment requirements.
+prohibited_inference:
+- MFOS implements Windows VBS.
+- Guard is required for Baseline.
+- Microsoft VBS behavior defines MFOS policy.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+  no_affiliation_claim: true
+  no_compatibility_claim: true
+  no_conformance_claim: true
+  no_certification_claim: true
+  no_source_substitution: true
+source_refs:
+- source_id: MS-VBS-001
+  source_type: external_reference
+  role: card_subject
+requirement_refs:
+- MFOS-REQ-GUARD-0001
+- MFOS-REQ-GUARD-0002
+- MFOS-REQ-GUARD-0005
+review_status: draft
+gaps:
+- Define Guard executable mapping policy and RX/WX invariants in MFOS-owned specs.
+- Add tests that block Baseline dependency on Guard-only mechanisms.
+authority_status: preparatory_until_adr_migration
+citation_scope: metadata_only_public_reference
+cache_disposition: no_local_cache

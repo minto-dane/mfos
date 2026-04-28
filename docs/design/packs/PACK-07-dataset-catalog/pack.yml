@@ -30,7 +30,7 @@ outputs:
 - schemas/mfos/object-generation-binding.schema.yml
 - formal/tla/dataset-open/state-machine.yml
 - formal/tla/catalog-transaction/state-machine.yml
-- tests/catalog/phase-0-8-dataset-catalog-tests.yml
+- tests/catalog/dataset-catalog.yml
 - requirements/by-domain/catalog.yml
 - requirements/by-domain/dataset.yml
 source_refs:
@@ -81,7 +81,7 @@ negative_tests:
 - NEG-MFOS-DATASET-POSIX-CONFUSION-0102
 - NEG-MFOS-DATASET-DELETE-BEFORE-RETENTION-0103
 fuzz_targets:
-- FUZZ-MFOS-DSN-0001
+- FUZZ-MFOS-DATASET-DSN-0001
 - FUZZ-MFOS-DATASET-HANDLE-0001
 spec_gaps:
 - Executable specs and implementation are deferred to Phase 0.9 or later.

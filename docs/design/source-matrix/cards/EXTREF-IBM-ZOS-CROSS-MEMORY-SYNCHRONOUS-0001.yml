@@ -57,7 +57,7 @@ mfos_mapping:
 mfos_divergence:
 - MFOS PCALL uses typed endpoints, bounded requests, scheduler-derived identity, and sealed buffers; it is not PC instruction compatibility.
 prohibited_inference:
-- PCALL implements z/OS PC instruction compatibility.
+- Forbidden claim: PCALL implements z/OS PC instruction compatibility.
 - Do not claim z/OS compatibility.
 - Do not treat IBM product behavior as MFOS compatibility.
 legal_controls:

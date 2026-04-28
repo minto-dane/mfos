@@ -1,0 +1,11 @@
+corpus_id: MFOS-CORPUS-DSN-0001
+target_name: dsn-parser
+phase: '0.9'
+implementation_allowed: false
+seed_categories:
+- valid_mfos_dataset_name
+- malformed_qualifier
+- overlong_name
+- unsupported_external_name_shape
+- spec_gap_name_shape
+status: draft

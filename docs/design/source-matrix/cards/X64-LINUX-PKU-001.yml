@@ -56,8 +56,8 @@ mfos_mapping:
 mfos_divergence:
 - MFOS may use PKU for compartments but must not use it as the primary system-integrity root or instruction-fetch protection.
 prohibited_inference:
-- PKU provides storage-key compatibility.
-- PKU protects instruction fetch.
+- Forbidden claim: PKU provides storage-key compatibility.
+- Forbidden claim: PKU protects instruction fetch.
 - Do not claim z/OS compatibility.
 legal_controls:
   public_safe: true
