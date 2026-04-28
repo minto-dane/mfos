@@ -1,0 +1,49 @@
+concept_id: ASSURANCE-CONCEPT-TUF-METADATA-ROLES-001
+status: draft
+source_ids:
+  - TUF-001
+source_terms:
+  - root metadata
+  - targets metadata
+  - snapshot metadata
+  - timestamp metadata
+  - rollback defense
+  - freeze defense
+  - mix-and-match defense
+summary: >
+  TUF-style role separation is useful grounding for MFOS update metadata, but
+  MFOS must define its own uvsd schema, activation profiles, audit events, and
+  recovery workflow before making update-security claims.
+mfos_terms:
+  - uvsd metadata roles
+  - security epoch
+  - activation profile
+  - rollback workflow
+  - update audit event
+mfos_mapping:
+  semantic_overlap:
+    - separated trust roles can reduce single-key compromise impact
+    - snapshot-like state can help detect inconsistent update views
+    - timestamp-like freshness can help detect stale metadata
+  enforcement_boundary:
+    - MFOS schema names and fields must be MFOS-owned
+    - update acceptance must include profile, epoch, audit, and recovery checks
+    - signature verification alone is insufficient
+mfos_divergence:
+  - MFOS uses TUF-like concepts without claiming TUF conformance.
+  - MFOS update security must include enterprise audit and recovery semantics.
+requirements:
+  - MFOS-REQ-UPDATE-0001
+  - MFOS-REQ-UPDATE-0003
+  - MFOS-REQ-UPDATE-0005
+  - MFOS-REQ-UPDATE-0006
+  - MFOS-REQ-UPDATE-0007
+negative_tests:
+  - TEST-UVS-ROLLBACK-DETECTED-001
+  - TEST-UVS-FREEZE-DETECTED-001
+  - TEST-UVS-MIX-AND-MATCH-DETECTED-001
+  - TEST-UVS-SIGNATURE-ONLY-DENY-001
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_external_compatibility_claims: true

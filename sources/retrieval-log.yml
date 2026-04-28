@@ -1,0 +1,135 @@
+log_kind: source_retrieval_log
+schema_version: 1
+status: public_safe_workbench
+authority_status: preparatory_until_adr_migration
+canonical_current:
+  source_matrix_index: docs/design/source-matrix/source-matrix.yml
+  source_matrix_cards: docs/design/source-matrix/cards
+policy:
+  purpose:
+    - Track source retrieval activity without committing external source
+      documents.
+    - Preserve enough metadata to reproduce source discovery and review.
+    - Keep docs/design/source-matrix canonical until ADR migration.
+  committed_content_allowed:
+    - source_id
+    - public_url
+    - landing_page_url
+    - document_title
+    - vendor_or_publisher
+    - product_or_publication
+    - version_or_section_scope
+    - retrieved_at
+    - retrieved_by
+    - cache_manifest_path
+    - checksum
+    - review_disposition
+    - purge_status
+    - notes_public_safe
+  committed_content_prohibited:
+    - external_pdf
+    - html_mirror
+    - epub
+    - screenshot
+    - copied_excerpt
+    - copied_table
+    - copied_diagram
+    - copied_record_layout
+    - copied_command_syntax
+    - copied_macro_signature
+    - copied_message_catalog
+    - detailed_source_substitute_summary
+  cache_rules:
+    cache_directory: sources/_cache
+    cache_git_status: ignored
+    manifests_only_in_git: false
+    local_cache_may_include_temporary_downloads: true
+    local_cache_must_not_be_authority: true
+    purge_when_review_complete: true
+  ibm_public_sources:
+    - Use public IBM URLs or landing pages as citation authority.
+    - Record document identity, retrieval date, version or section scope, and
+      review disposition.
+    - Do not commit IBM PDFs, HTML mirrors, screenshots, copied examples,
+      copied tables, copied diagrams, command syntax, macro signatures, message
+      catalogs, or record layouts.
+    - Do not imply MFOS compatibility, certification, conformance, affiliation,
+      support, or source substitution.
+entries:
+- source_id: EXTREF-IBM-ZOS-CROSS-MEMORY-CONTROL-0001
+  document_title: Controlling cross-memory communication
+  vendor_or_publisher: IBM
+  public_url: https://www.ibm.com/docs/en/zos-basic-skills?topic=integrity-controlling-cross-memory-communication
+  retrieved_at: "2026-04-27"
+  retrieved_by: MFOS source-grounding audit
+  cache_manifest_path: sources/_cache/retrieval-manifest.local.yml
+  cache_disposition: no_local_cache
+  review_disposition: metadata_only_workbench_card_created
+  purge_status: not_applicable_no_committed_cache
+  notes_public_safe: Release-unpinned public topic; use canonical docs/design source card before semantic implementation.
+- source_id: EXTREF-IBM-ZOS-DFSMS-LIBRARY-0001
+  document_title: z/OS DFSMS library
+  vendor_or_publisher: IBM
+  public_url: https://www.ibm.com/docs/en/zos/3.2.0?topic=zos-dfsms
+  retrieved_at: "2026-04-27"
+  retrieved_by: MFOS source-grounding audit
+  cache_manifest_path: sources/_cache/retrieval-manifest.local.yml
+  cache_disposition: no_local_cache
+  review_disposition: metadata_only_workbench_card_created
+  purge_status: not_applicable_no_committed_cache
+  notes_public_safe: Library-index reference; do not infer record layouts, utilities, or command syntax.
+- source_id: EXTREF-IBM-ZOS-JES2-LIBRARY-0001
+  document_title: z/OS JES2 library
+  vendor_or_publisher: IBM
+  public_url: https://www.ibm.com/docs/en/zos/3.2.0?topic=zos-jes2
+  retrieved_at: "2026-04-27"
+  retrieved_by: MFOS source-grounding audit
+  cache_manifest_path: sources/_cache/retrieval-manifest.local.yml
+  cache_disposition: no_local_cache
+  review_disposition: metadata_only_workbench_card_created
+  purge_status: not_applicable_no_committed_cache
+  notes_public_safe: Library-index reference; do not import command syntax, messages, macros, or spool details.
+- source_id: EXTREF-IBM-ZOS-SMPE-SECINT-HOLDDATA-0001
+  document_title: SECINT HOLDDATA is now available with SMP/E RECEIVE ORDER
+  vendor_or_publisher: IBM
+  public_url: https://www.ibm.com/support/pages/secint-holddata-now-available-smpe-receive-order
+  retrieved_at: "2026-04-27"
+  retrieved_by: MFOS source-grounding audit
+  cache_manifest_path: sources/_cache/retrieval-manifest.local.yml
+  cache_disposition: no_local_cache
+  review_disposition: metadata_only_workbench_card_created
+  purge_status: not_applicable_no_committed_cache
+  notes_public_safe: Support-page reference for advisory metadata boundary; MFOS update semantics remain independent.
+- source_id: EXTREF-IBM-ZOS-STORAGE-PROTECTION-0001
+  document_title: What is storage protection?
+  vendor_or_publisher: IBM
+  public_url: https://www.ibm.com/docs/en/zos-basic-skills?topic=storage-what-is-protection
+  retrieved_at: "2026-04-27"
+  retrieved_by: MFOS source-grounding audit
+  cache_manifest_path: sources/_cache/retrieval-manifest.local.yml
+  cache_disposition: no_local_cache
+  review_disposition: metadata_only_workbench_card_created
+  purge_status: not_applicable_no_committed_cache
+  notes_public_safe: Release-unpinned overview topic; do not infer x64 storage-key compatibility.
+- source_id: EXTREF-IBM-ZOS-UNIX-SERVICES-LIBRARY-0001
+  document_title: z/OS UNIX System Services library
+  vendor_or_publisher: IBM
+  public_url: https://www.ibm.com/docs/en/zos/latest?topic=zos-unix-system-services
+  retrieved_at: "2026-04-27"
+  retrieved_by: MFOS source-grounding audit
+  cache_manifest_path: sources/_cache/retrieval-manifest.local.yml
+  cache_disposition: no_local_cache
+  review_disposition: metadata_only_workbench_card_created
+  purge_status: not_applicable_no_committed_cache
+  notes_public_safe: Library-index reference for optional subsystem boundary; UNIX is not MFOS primary model.
+- source_id: FBVBS-001
+  document_title: FBVBS assurance discipline source
+  vendor_or_publisher: MFOS internal
+  public_url: https://github.com/minto-dane/fbvbs
+  retrieved_at: "2026-04-28"
+  retrieved_by: MFOS source-grounding audit
+  cache_manifest_path: sources/_cache/retrieval-manifest.local.yml
+  cache_disposition: temporary_ignored_cache
+  review_disposition: metadata_only_workbench_card_created
+  purge_status: ignored_local_cache_must_not_be_committed
+  notes_public_safe: Internal transfer source for assurance discipline only; does not define external-system semantics.

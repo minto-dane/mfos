@@ -1,0 +1,81 @@
+schema_version: 1
+status: draft
+card_id: SRC-CARD-X64-LINUX-CET-001
+source_id: X64-LINUX-CET-001
+source_kind: bibliographic_reference
+source_type: external_reference
+semantic_role: informative_background
+vendor: Linux kernel documentation
+vendor_mark_used: true
+product_family: Linux kernel documentation
+document_title: Linux x86 CET shadow stack documentation
+document_url:
+- https://docs.kernel.org/arch/x86/shstk.html
+retrieved_at: '2026-04-28'
+version_or_release: Linux kernel documentation site 7.1.0-rc1
+publication_number: null
+section_scope: x86 CET shadow stack documentation
+pin_quality: official_documentation_site_version_pinned
+reference_purpose:
+- source discovery
+- concept mapping
+- non-compatibility boundary definition
+- independent MFOS design traceability
+review_topics:
+- CET
+- shadow stack
+- indirect branch tracking
+- control-flow hardening
+mfos_mapping:
+  mfos_components:
+  - CET enablement policy
+  - control-flow hardening tests
+  mfos_specs: []
+  mfos_requirements:
+  - MFOS-REQ-QUALITY-0004
+  - MFOS-REQ-SYSINT-0001
+  mapping_notes:
+  - Use Linux documentation only as informative behavior context for CET exposure
+    and limitations.
+  - Treat CET as a control-flow hardening aid, not an authorization or audit root.
+mfos_divergence:
+- MFOS CET policy is owned by MFOS profiles and tests, not by Linux enablement behavior.
+- CET does not replace authorization, audit, storage domains, or Guard root protection.
+prohibited_inference:
+- CET enforces MFOS authorization.
+- Linux CET support defines MFOS normative behavior.
+- Do not treat this card as a substitute for Linux kernel documentation.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+  no_affiliation_claim: true
+  no_compatibility_claim: true
+  no_conformance_claim: true
+  no_certification_claim: true
+  no_source_substitution: true
+source_refs:
+- source_id: X64-LINUX-CET-001
+  source_type: external_reference
+  role: card_subject
+requirement_refs:
+- MFOS-REQ-QUALITY-0004
+- MFOS-REQ-SYSINT-0001
+review_status: draft
+gaps:
+- Define CET enablement and fallback policy per MFOS profile.
+- Add tests that block authorization claims based only on CET availability.
+authority_status: preparatory_until_adr_migration
+citation_scope: metadata_only_public_reference
+cache_disposition: no_local_cache

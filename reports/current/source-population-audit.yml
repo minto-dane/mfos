@@ -1,0 +1,25 @@
+schema_version: 1
+report_id: MFOS-SOURCES-POPULATION-REPORT-0001
+status: current
+authority_status: populated_workbench_not_canonical
+canonical_current: docs/design/source-matrix
+generated_at: '2026-04-28'
+counts:
+  source_files_excluding_cache: 154
+  source_cards: 49
+  concept_cards: 21
+  notes: 18
+namespaces:
+  ibm: sources/ibm/index.yml
+  internal: sources/internal/index.yml
+  security_assurance: sources/security-assurance/index.yml
+  x64: sources/x64/index.yml
+cache_policy: metadata-only local cache manifests may exist under ignored sources/_cache;
+  external PDFs/HTML/snapshots are not committed.
+semantic_freeze_effect: No upgrade to full semantic freeze; sources population improves
+  workbench depth but canonical source cards remain draft until targeted review closes.
+remaining_blockers:
+- ADR-backed canonical migration not complete.
+- Automated parity validator between docs/design/source-matrix and sources/ not complete; workbench parity report exists at sources/source-matrix-parity.yml.
+- PACK-08 job-control syntax external-risk remains open.
+- Source cards still need review_status promotion only after human/legal/source review.

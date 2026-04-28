@@ -1,0 +1,83 @@
+schema_version: 1
+status: draft
+card_id: SRC-CARD-NIST-193-001
+source_id: NIST-193-001
+source_kind: bibliographic_reference
+source_type: external_reference
+semantic_role: design_background
+vendor: NIST
+vendor_mark_used: true
+product_family: NIST Special Publications
+document_title: 'NIST SP 800-193: Platform Firmware Resiliency Guidelines'
+document_url:
+- https://csrc.nist.gov/pubs/sp/800/193/final
+- https://doi.org/10.6028/NIST.SP.800-193
+retrieved_at: '2026-04-28'
+version_or_release: NIST SP 800-193 final; published May 2018
+publication_number: SP 800-193
+section_scope: platform firmware resiliency, protection, detection, recovery
+pin_quality: publication_identifier_and_doi_pinned
+reference_purpose:
+- source discovery
+- concept mapping
+- non-compatibility boundary definition
+- independent MFOS design traceability
+review_topics:
+- firmware resiliency
+- protection
+- detection
+- recovery
+mfos_mapping:
+  mfos_components:
+  - firmware resilience assumptions
+  - recovery partition workflow
+  mfos_specs: []
+  mfos_requirements:
+  - MFOS-REQ-UPDATE-0012
+  - MFOS-REQ-QUALITY-0010
+  mapping_notes:
+  - Use protection, detection, and recovery as resilience review categories.
+  - Keep firmware trust assumptions explicit in MFOS boot and recovery evidence.
+mfos_divergence:
+- MFOS uses this as a resilience model for firmware, boot, update, and recovery planning,
+  not as a firmware implementation.
+- MFOS cannot assume control over all platform firmware without platform-specific
+  evidence.
+prohibited_inference:
+- MFOS controls all platform firmware.
+- Referencing NIST creates certification or conformance.
+- Do not treat this card as a substitute for the NIST publication.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+  no_affiliation_claim: true
+  no_compatibility_claim: true
+  no_conformance_claim: true
+  no_certification_claim: true
+  no_source_substitution: true
+source_refs:
+- source_id: NIST-193-001
+  source_type: external_reference
+  role: card_subject
+requirement_refs:
+- MFOS-REQ-UPDATE-0012
+- MFOS-REQ-QUALITY-0010
+review_status: draft
+gaps:
+- Define firmware compromise assumptions and recovery partition workflow.
+- Define platform-specific evidence required before claiming firmware resilience.
+authority_status: preparatory_until_adr_migration
+citation_scope: metadata_only_public_reference
+cache_disposition: no_local_cache

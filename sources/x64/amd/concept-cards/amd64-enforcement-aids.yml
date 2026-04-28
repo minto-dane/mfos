@@ -1,0 +1,41 @@
+concept_id: X64-CONCEPT-AMD64-ENFORCEMENT-AIDS-001
+status: draft
+source_ids:
+  - X64-AMD-001
+source_terms:
+  - paging
+  - SVM
+  - NPT
+  - interrupt handling
+  - system programming
+summary: >
+  AMD64 features can support MFOS isolation and backend enforcement, but MFOS
+  policy, profile gating, and assurance claims must be defined and tested in
+  MFOS-owned artifacts.
+mfos_terms:
+  - nucleus AMD64 backend
+  - PXM AMD backend
+  - hardware feature matrix
+mfos_mapping:
+  semantic_overlap:
+    - paging and nested paging can support memory isolation evidence
+    - virtualization controls can support partition isolation evidence
+  enforcement_boundary:
+    - SVM and NPT are implementation aids, not policy definitions
+    - absent features require explicit fallback or profile denial
+    - enterprise authorization and audit remain MFOS-defined
+mfos_divergence:
+  - MFOS does not claim AMD64 feature presence proves partition isolation.
+  - MFOS profile policy must define AMD-specific backend acceptance criteria.
+requirements:
+  - MFOS-REQ-NUCLEUS-0007
+  - MFOS-REQ-NUCLEUS-0008
+  - MFOS-REQ-PARTITION-0005
+  - MFOS-REQ-PARTITION-0007
+negative_tests:
+  - TEST-NUC-NX-REQUIRED-AMD-001
+  - TEST-PXM-NPT-POLICY-DENY-001
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_external_compatibility_claims: true

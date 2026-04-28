@@ -1,0 +1,89 @@
+schema_version: 1
+status: draft
+card_id: SRC-CARD-X64-AMD-001
+source_id: X64-AMD-001
+source_kind: bibliographic_reference
+source_type: external_reference
+semantic_role: design_background
+vendor: AMD
+vendor_mark_used: true
+product_family: AMD64 architecture
+document_title: 'AMD64 Architecture Programmer''s Manual Volume 2: System Programming'
+document_url:
+- https://docs.amd.com/v/u/en-US/24593_3.44_APM_Vol2
+retrieved_at: '2026-04-28'
+version_or_release: Document ID 24593; revision 3.44; release date 2026-03-06
+publication_number: '24593'
+section_scope: AMD64 system programming, paging, interrupts, SVM, NPT, and platform
+  controls
+pin_quality: official_document_page_revision_pinned
+reference_purpose:
+- source discovery
+- concept mapping
+- non-compatibility boundary definition
+- independent MFOS design traceability
+review_topics:
+- AMD64 protection
+- paging
+- interrupt handling
+- SVM
+- NPT
+- system programming
+mfos_mapping:
+  mfos_components:
+  - nucleus AMD64 backend
+  - PXM AMD backend
+  - hardware feature matrix
+  mfos_specs: []
+  mfos_requirements:
+  - MFOS-REQ-NUCLEUS-0007
+  - MFOS-REQ-NUCLEUS-0008
+  - MFOS-REQ-PARTITION-0005
+  - MFOS-REQ-PARTITION-0007
+  mapping_notes:
+  - Use AMD64 mechanisms as implementation enforcement aids for MFOS-owned abstractions.
+  - Keep SVM and NPT mappings subordinate to MFOS partition and Guard policy.
+mfos_divergence:
+- AMD64 mechanisms are enforcement aids and must be tied to MFOS abstractions and
+  profile requirements.
+- MFOS does not derive authorization policy directly from AMD64 feature bits.
+prohibited_inference:
+- AMD64 features provide compatibility with any external operating system.
+- SVM or NPT alone proves MFOS partition isolation.
+- Do not treat this card as a substitute for the AMD manual.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+  no_affiliation_claim: true
+  no_compatibility_claim: true
+  no_conformance_claim: true
+  no_certification_claim: true
+  no_source_substitution: true
+source_refs:
+- source_id: X64-AMD-001
+  source_type: external_reference
+  role: card_subject
+requirement_refs:
+- MFOS-REQ-NUCLEUS-0007
+- MFOS-REQ-NUCLEUS-0008
+- MFOS-REQ-PARTITION-0005
+- MFOS-REQ-PARTITION-0007
+review_status: draft
+gaps:
+- Add section-level pins for SVM, NPT, paging, interrupt, and control-register topics.
+- Define AMD-specific PXM backend constraints and fallback behavior.
+authority_status: preparatory_until_adr_migration
+citation_scope: metadata_only_public_reference
+cache_disposition: no_local_cache

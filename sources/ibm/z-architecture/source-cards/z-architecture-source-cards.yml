@@ -1,0 +1,149 @@
+schema_version: 1
+status: draft
+maturity: source_grounding_worker_draft
+retrieved_at: '2026-04-28'
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  attribution_required: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+  no_message_tables_copied: true
+source_cards:
+- card_id: SRC-CARD-IBM-ZARCH-PRINCIPLES-0001
+  source_id: EXTREF-IBM-Z-ARCHITECTURE-PRINCIPLES-0001
+  canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-Z-ARCHITECTURE-PRINCIPLES-0001.yml
+  vendor: IBM
+  product_family: IBM Z
+  document_title: z/Architecture Principles of Operation, SA22-7832-14
+  current_official_urls:
+  - https://www.ibm.com/support/pages/zvm/library/other.html
+  version_or_scope: IBM Support listing; publication SA22-7832-14 listed as current
+    related PDF
+  pin_quality: publication_identifier_pinned_from_official_listing_pdf_not_downloaded
+  review_topics:
+  - PSW terminology
+  - storage-key terminology
+  - SVC terminology
+  - PC terminology
+  - non-emulation boundary
+  mfos_mapping:
+    components:
+    - glossary mapping
+    - non-emulation statement
+    - terminology divergence
+    requirements:
+    - MFOS-REQ-SOURCE-0002
+    - MFOS-REQ-SOURCE-0004
+    notes:
+    - Grounds term-by-term review only; IBM PDF content is not stored or mirrored
+      here.
+    - Supports linting against false architecture-compatibility claims.
+  divergence:
+  - MFOS is x64-native and does not implement z/Architecture.
+  - IBM architectural terminology may be referenced only with explicit divergence.
+  prohibited_inference:
+  - MFOS is a z/Architecture emulator.
+  - MFOS implements z/Architecture instructions, PSW, storage-key, SVC, or PC behavior.
+  - IBM PDF text or tables may be copied into MFOS artifacts.
+  requirements:
+  - Maintain a glossary that maps IBM terms to MFOS-native concepts or marks them
+    as unsupported.
+  - Require compatibility-claim linting for architecture terms.
+  negative_tests:
+  - TEST-ZARCH-COMPAT-CLAIM-LINT-001
+  - TEST-STORAGE-KEY-COMPAT-CLAIM-LINT-001
+  status: draft
+- card_id: SRC-CARD-IBM-ZARCH-LPAR-0001
+  source_id: EXTREF-IBM-Z-LPAR-INTRODUCTION-0001
+  canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-Z-LPAR-INTRODUCTION-0001.yml
+  vendor: IBM
+  product_family: IBM Z
+  document_title: Introduction to Logical Partitions
+  current_official_urls:
+  - https://www.ibm.com/support/pages/introduction-logical-partitions
+  version_or_scope: IBM Support page; release not pinned in URL
+  pin_quality: official_support_page_verified_unversioned_needs_review
+  review_topics:
+  - logical partition
+  - logical machine image
+  - processor assignment
+  - storage assignment
+  - activation profile
+  mfos_mapping:
+    components:
+    - PXM partition lifecycle
+    - ActivationProfile
+    - implicit single-partition backend
+    requirements:
+    - MFOS-REQ-PARTITION-0001
+    - MFOS-REQ-PARTITION-0002
+    - MFOS-REQ-PARTITION-0003
+    - MFOS-REQ-PARTITION-0004
+    notes:
+    - Grounds partitions as isolated machine-image style resource assignments.
+    - Supports MFOS partition state and lifecycle modeling.
+  divergence:
+  - PXM is x64-native and partition-aware; it does not implement PR/SM.
+  - PXM must not attach enterprise policy semantics to hardware partition state.
+  prohibited_inference:
+  - PXM implements PR/SM.
+  - PXM is LPAR-compatible.
+  - IBM partition configuration syntax may be copied.
+  requirements:
+  - Define PXM partition states, activation profiles, storage zeroing, and teardown
+    behavior.
+  negative_tests:
+  - TEST-PXM-INVALID-STATE-TRANSITION-001
+  - TEST-PXM-MEMORY-REUSE-NO-ZERO-DENY-001
+  status: draft
+- card_id: SRC-CARD-IBM-ZARCH-DPM-0001
+  source_id: EXTREF-IBM-Z-DPM-0001
+  canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-Z-DPM-0001.yml
+  vendor: IBM
+  product_family: IBM Z
+  document_title: Dynamic Partition Manager
+  current_official_urls:
+  - https://www.ibm.com/docs/en/systems-hardware/zsystems/2964-N63?topic=cm-dynamic-partition-manager-dpm
+  version_or_scope: IBM Documentation machine-scoped topic for systems hardware
+  pin_quality: official_topic_verified_machine_scope_needs_review
+  review_topics:
+  - partition object
+  - adapter object
+  - network object
+  - storage object
+  - central management plane
+  mfos_mapping:
+    components:
+    - PXM management plane objects
+    - device assignment records
+    - partition audit
+    requirements:
+    - MFOS-REQ-PARTITION-0005
+    - MFOS-REQ-PARTITION-0006
+    - MFOS-REQ-PARTITION-0008
+    notes:
+    - Grounds object-oriented management of partition, adapter, network, storage,
+      and capacity-related resources.
+    - Supports audit requirements for changes to partition resource assignment.
+  divergence:
+  - MFOS PXM management is not HMC, SE, or DPM compatibility.
+  - MFOS does not reproduce IBM object schemas or API payloads.
+  prohibited_inference:
+  - PXM implements DPM.
+  - MFOS exposes IBM DPM API compatibility.
+  - IBM management object schemas may be copied.
+  requirements:
+  - Define MFOS-native partition, device, network, storage, and capacity records.
+  - Every management-plane mutation must produce an audit event.
+  negative_tests:
+  - TEST-PXM-DEVICE-TEARDOWN-INCOMPLETE-DENY-001
+  - TEST-PXM-PARTITION-AUDIT-REQUIRED-001
+  status: draft
