@@ -1,0 +1,137 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "https://mfos.local/schemas/expected-failure.schema.yml"
+title: "MFOS Expected Failure Schema"
+description: "Design-only schema for executable-spec failure expectations. This schema does not implement failure handling."
+type: object
+additionalProperties: false
+x-mfos:
+  phase: "0.9"
+  design_only: true
+  implementation_allowed: false
+  owning_spec: "MFOS-SPEC-34-ORACLE-DEFINITION-FORMAT"
+  requirement_refs:
+    - MFOS-REQ-EXECSPEC-0305
+    - MFOS-REQ-EXECSPEC-0306
+    - MFOS-REQ-EXECSPEC-0308
+  source_refs:
+    - EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
+    - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+    - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+required:
+  - artifact_kind
+  - schema_version
+  - expected_failure_id
+  - status
+  - requirement_ids
+  - source_refs
+  - failure_class
+  - error_code
+  - caller_visible_result
+  - fail_closed
+  - side_effect_absence
+properties:
+  artifact_kind:
+    const: expected_failure
+  schema_version:
+    const: 1
+  expected_failure_id:
+    $ref: "#/$defs/expected_failure_id"
+  status:
+    $ref: "#/$defs/artifact_status"
+  requirement_ids:
+    type: array
+    minItems: 1
+    uniqueItems: true
+    items:
+      $ref: "#/$defs/requirement_id"
+  source_refs:
+    type: array
+    minItems: 1
+    uniqueItems: true
+    items:
+      $ref: "#/$defs/extref_id"
+  failure_class:
+    enum:
+      - policy_denied
+      - unauthorized
+      - unsupported
+      - spec_gap
+      - invalid_input
+      - dependency_unavailable
+      - stale_state
+      - internal_corruption
+      - audit_required_but_unavailable
+  error_code:
+    type: string
+    pattern: "^MFOS_ERR_[A-Z0-9_]{1,96}$"
+  caller_visible_result:
+    enum:
+      - typed_error
+      - blocked
+      - unsupported
+      - spec_gap
+  fail_closed:
+    const: true
+  audit_required:
+    type: boolean
+  audit_before_result:
+    type: boolean
+  side_effect_absence:
+    type: array
+    minItems: 1
+    uniqueItems: true
+    items:
+      type: string
+      minLength: 1
+      maxLength: 160
+  rejected_results:
+    type: array
+    minItems: 1
+    uniqueItems: true
+    items:
+      enum:
+        - success
+        - partial_success
+        - silent_fallback
+        - fake_success
+        - untyped_error
+  expected_audit_ref:
+    oneOf:
+      - $ref: "#/$defs/expected_audit_id"
+      - type: "null"
+  notes:
+    type: string
+    maxLength: 1000
+$defs:
+  forbidden_mfos_owned_token:
+    pattern: "(IBM|ZOS|Z-OS|Z_OS|MVS|RACF|JES|JES2|DFSMS|SMF|APF|PRSM|PR-SM|LPAR|ZARCHITECTURE|Z-ARCHITECTURE|ZARCH|ZVM|Z-VM|SDSF|ISPF|TSOE|TSO-E|TSO|ZOSMF|ZOS-MF)"
+  artifact_status:
+    enum:
+      - draft
+      - ready_for_review
+      - reviewed
+      - frozen
+      - deprecated
+      - superseded
+  extref_id:
+    type: string
+    pattern: "^EXTREF-[A-Z0-9-]+-[0-9]{4}$"
+  requirement_id:
+    allOf:
+      - type: string
+        pattern: "^MFOS-REQ-[A-Z0-9]+-[0-9]{4}$"
+      - not:
+          $ref: "#/$defs/forbidden_mfos_owned_token"
+  expected_failure_id:
+    allOf:
+      - type: string
+        pattern: "^EXP-MFOS-FAIL-[A-Z0-9-]*[0-9]{4}$"
+      - not:
+          $ref: "#/$defs/forbidden_mfos_owned_token"
+  expected_audit_id:
+    allOf:
+      - type: string
+        pattern: "^EXP-MFOS-AUDIT-[A-Z0-9-]*[0-9]{4}$"
+      - not:
+          $ref: "#/$defs/forbidden_mfos_owned_token"
+

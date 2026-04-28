@@ -1,0 +1,187 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "https://mfos.local/schemas/expected-audit.schema.yml"
+title: "MFOS Expected Audit Schema"
+description: "Design-only schema for executable-spec audit expectations. This schema does not validate live audit streams."
+type: object
+additionalProperties: false
+x-mfos:
+  phase: "0.9"
+  design_only: true
+  implementation_allowed: false
+  owning_spec: "MFOS-SPEC-34-ORACLE-DEFINITION-FORMAT"
+  requirement_refs:
+    - MFOS-REQ-EXECSPEC-0303
+    - MFOS-REQ-EXECSPEC-0306
+    - MFOS-REQ-EXECSPEC-0307
+  source_refs:
+    - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+    - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+required:
+  - artifact_kind
+  - schema_version
+  - expected_audit_id
+  - status
+  - requirement_ids
+  - source_refs
+  - ordering
+  - records
+  - rejected_evidence
+properties:
+  artifact_kind:
+    const: expected_audit
+  schema_version:
+    const: 1
+  expected_audit_id:
+    $ref: "#/$defs/expected_audit_id"
+  status:
+    $ref: "#/$defs/artifact_status"
+  requirement_ids:
+    type: array
+    minItems: 1
+    uniqueItems: true
+    items:
+      $ref: "#/$defs/requirement_id"
+  source_refs:
+    type: array
+    minItems: 1
+    uniqueItems: true
+    items:
+      $ref: "#/$defs/extref_id"
+  ordering:
+    type: object
+    additionalProperties: false
+    required:
+      - mode
+      - caller_visible_result
+    properties:
+      mode:
+        enum:
+          - before_result
+          - after_result
+          - in_sequence
+          - unordered_presence
+      caller_visible_result:
+        enum:
+          - before_audit
+          - after_audit
+          - not_applicable
+      happens_before:
+        type: array
+        items:
+          type: object
+          additionalProperties: false
+          required:
+            - before_record_ref
+            - after_record_ref
+          properties:
+            before_record_ref:
+              $ref: "#/$defs/local_ref"
+            after_record_ref:
+              $ref: "#/$defs/local_ref"
+  records:
+    type: array
+    minItems: 1
+    items:
+      $ref: "#/$defs/expected_audit_record"
+  rejected_evidence:
+    type: array
+    minItems: 1
+    uniqueItems: true
+    items:
+      enum:
+        - diagnostic_log_line
+        - debug_log_line
+        - console_output
+        - spool_output
+        - screenshot
+        - unverified_remote_ack
+        - checksum_without_audit_chain
+  gap_policy:
+    enum:
+      - missing_record_fails
+      - missing_record_blocks
+  notes:
+    type: string
+    maxLength: 1000
+$defs:
+  forbidden_mfos_owned_token:
+    pattern: "(IBM|ZOS|Z-OS|Z_OS|MVS|RACF|JES|JES2|DFSMS|SMF|APF|PRSM|PR-SM|LPAR|ZARCHITECTURE|Z-ARCHITECTURE|ZARCH|ZVM|Z-VM|SDSF|ISPF|TSOE|TSO-E|TSO|ZOSMF|ZOS-MF)"
+  artifact_status:
+    enum:
+      - draft
+      - ready_for_review
+      - reviewed
+      - frozen
+      - deprecated
+      - superseded
+  extref_id:
+    type: string
+    pattern: "^EXTREF-[A-Z0-9-]+-[0-9]{4}$"
+  requirement_id:
+    allOf:
+      - type: string
+        pattern: "^MFOS-REQ-[A-Z0-9]+-[0-9]{4}$"
+      - not:
+          $ref: "#/$defs/forbidden_mfos_owned_token"
+  expected_audit_id:
+    allOf:
+      - type: string
+        pattern: "^EXP-MFOS-AUDIT-[A-Z0-9-]*[0-9]{4}$"
+      - not:
+          $ref: "#/$defs/forbidden_mfos_owned_token"
+  local_ref:
+    allOf:
+      - type: string
+        pattern: "^REF-[A-Z0-9][A-Z0-9-]*$"
+      - not:
+          $ref: "#/$defs/forbidden_mfos_owned_token"
+  expected_audit_record:
+    type: object
+    additionalProperties: false
+    required:
+      - record_ref
+      - event_class
+      - decision
+      - correlation_ref
+      - required_fields
+    properties:
+      record_ref:
+        $ref: "#/$defs/local_ref"
+      event_class:
+        type: string
+        pattern: "^[A-Z][A-Z0-9_]{1,96}$"
+      decision:
+        enum:
+          - ALLOW
+          - DENY
+          - REQUIRE_ACTION
+          - UNSUPPORTED
+          - SPEC_GAP
+          - ERROR
+          - NONE
+      correlation_ref:
+        $ref: "#/$defs/local_ref"
+      subject_ref:
+        $ref: "#/$defs/local_ref"
+      object_ref:
+        $ref: "#/$defs/local_ref"
+      operation:
+        type: string
+        pattern: "^MFOS_OP_[A-Z0-9_]{1,96}$"
+      reason_code:
+        type: string
+        pattern: "^MFOS_[A-Z0-9_]{1,96}$"
+      required_fields:
+        type: array
+        minItems: 1
+        uniqueItems: true
+        items:
+          type: string
+          pattern: "^[a-z][a-z0-9_]{0,63}$"
+      forbidden_fields:
+        type: array
+        uniqueItems: true
+        items:
+          type: string
+          pattern: "^[a-z][a-z0-9_]{0,63}$"
+

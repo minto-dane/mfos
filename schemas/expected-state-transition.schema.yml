@@ -1,0 +1,186 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "https://mfos.local/schemas/expected-state-transition.schema.yml"
+title: "MFOS Expected State Transition Schema"
+description: "Design-only schema for executable-spec state transition expectations. This schema does not implement state evaluation."
+type: object
+additionalProperties: false
+x-mfos:
+  phase: "0.9"
+  design_only: true
+  implementation_allowed: false
+  owning_spec: "MFOS-SPEC-34-ORACLE-DEFINITION-FORMAT"
+  requirement_refs:
+    - MFOS-REQ-EXECSPEC-0304
+    - MFOS-REQ-EXECSPEC-0306
+    - MFOS-REQ-EXECSPEC-0308
+  source_refs:
+    - EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
+    - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+required:
+  - artifact_kind
+  - schema_version
+  - expected_state_transition_id
+  - status
+  - requirement_ids
+  - source_refs
+  - state_scope
+  - before
+  - action
+  - after
+  - invariants
+  - forbidden_transitions
+properties:
+  artifact_kind:
+    const: expected_state_transition
+  schema_version:
+    const: 1
+  expected_state_transition_id:
+    $ref: "#/$defs/expected_state_transition_id"
+  status:
+    $ref: "#/$defs/artifact_status"
+  requirement_ids:
+    type: array
+    minItems: 1
+    uniqueItems: true
+    items:
+      $ref: "#/$defs/requirement_id"
+  source_refs:
+    type: array
+    minItems: 1
+    uniqueItems: true
+    items:
+      $ref: "#/$defs/extref_id"
+  state_scope:
+    enum:
+      - subject
+      - object
+      - policy
+      - audit_stream
+      - workflow
+      - dependency
+      - conformance_claim
+  before:
+    $ref: "#/$defs/state_selector"
+  action:
+    type: object
+    additionalProperties: false
+    required:
+      - input_ref
+      - operation
+    properties:
+      input_ref:
+        $ref: "#/$defs/local_ref"
+      operation:
+        type: string
+        pattern: "^MFOS_OP_[A-Z0-9_]{1,96}$"
+  after:
+    $ref: "#/$defs/state_selector"
+  invariants:
+    type: array
+    items:
+      $ref: "#/$defs/invariant"
+  forbidden_transitions:
+    type: array
+    items:
+      type: object
+      additionalProperties: false
+      required:
+        - from
+        - to
+        - reason
+      properties:
+        from:
+          $ref: "#/$defs/state_name"
+        to:
+          $ref: "#/$defs/state_name"
+        reason:
+          type: string
+          minLength: 1
+          maxLength: 240
+  side_effect_absence:
+    type: array
+    uniqueItems: true
+    items:
+      type: string
+      minLength: 1
+      maxLength: 160
+  notes:
+    type: string
+    maxLength: 1000
+$defs:
+  forbidden_mfos_owned_token:
+    pattern: "(IBM|ZOS|Z-OS|Z_OS|MVS|RACF|JES|JES2|DFSMS|SMF|APF|PRSM|PR-SM|LPAR|ZARCHITECTURE|Z-ARCHITECTURE|ZARCH|ZVM|Z-VM|SDSF|ISPF|TSOE|TSO-E|TSO|ZOSMF|ZOS-MF)"
+  artifact_status:
+    enum:
+      - draft
+      - ready_for_review
+      - reviewed
+      - frozen
+      - deprecated
+      - superseded
+  extref_id:
+    type: string
+    pattern: "^EXTREF-[A-Z0-9-]+-[0-9]{4}$"
+  requirement_id:
+    allOf:
+      - type: string
+        pattern: "^MFOS-REQ-[A-Z0-9]+-[0-9]{4}$"
+      - not:
+          $ref: "#/$defs/forbidden_mfos_owned_token"
+  expected_state_transition_id:
+    allOf:
+      - type: string
+        pattern: "^EXP-MFOS-STATE-[A-Z0-9-]*[0-9]{4}$"
+      - not:
+          $ref: "#/$defs/forbidden_mfos_owned_token"
+  local_ref:
+    allOf:
+      - type: string
+        pattern: "^REF-[A-Z0-9][A-Z0-9-]*$"
+      - not:
+          $ref: "#/$defs/forbidden_mfos_owned_token"
+  state_name:
+    allOf:
+      - type: string
+        pattern: "^[A-Z][A-Z0-9_]{0,63}$"
+      - not:
+          $ref: "#/$defs/forbidden_mfos_owned_token"
+  state_selector:
+    type: object
+    additionalProperties: false
+    required:
+      - ref
+      - state
+      - generation
+    properties:
+      ref:
+        $ref: "#/$defs/local_ref"
+      state:
+        $ref: "#/$defs/state_name"
+      generation:
+        type: integer
+        minimum: 0
+      digest:
+        type: string
+        pattern: "^sha384:[0-9a-f]{96}$"
+  invariant:
+    type: object
+    additionalProperties: false
+    required:
+      - invariant_id
+      - description
+      - must_hold
+    properties:
+      invariant_id:
+        allOf:
+          - type: string
+            pattern: "^INV-MFOS-[A-Z0-9]+-[A-Z0-9-]*[0-9]{4}$"
+          - not:
+              $ref: "#/$defs/forbidden_mfos_owned_token"
+      description:
+        type: string
+        minLength: 1
+        maxLength: 240
+      must_hold:
+        const: true
+
