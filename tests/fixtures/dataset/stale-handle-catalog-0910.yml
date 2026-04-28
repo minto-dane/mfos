@@ -1,0 +1,32 @@
+fixture_id: FIXTURE-MFOS-DATASET-STALE-HANDLE-CATALOG-0910
+fixture_version: 1
+description: stale handle after catalog generation change
+target_specs:
+- docs/design/specs/08-dataset-catalog.md
+target_requirements:
+- MFOS-REQ-DATASET-0101
+- MFOS-REQ-DATASET-0102
+- MFOS-REQ-CATALOG-0002
+- MFOS-REQ-CATALOG-0101
+preconditions:
+- All subjects, policy versions, object generations, and dependency states are symbolic
+  and deterministic.
+initial_state:
+  clock: T0
+  security_epoch: 1
+  policy_version: 1
+  objects:
+  - object_ref: OBJ-MFOS-PHASE09-0001
+    generation: 1
+inputs:
+- input_id: INPUT-MFOS-PHASE09-0001
+  operation: STALE-HANDLE-CATALOG
+  deterministic_seed: SEED-MFOS-PHASE09-0001
+expected_oracle: tests/golden/dataset/stale-handle-catalog-0910.yml
+expected_evidence:
+- EV-MFOS-DATASET-STALE-HANDLE-CATALOG-0910
+not_allowed:
+- production_claim
+- external_compatibility_claim
+- host_os_semantics_dependency
+status: draft

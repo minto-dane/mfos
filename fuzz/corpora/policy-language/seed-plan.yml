@@ -1,0 +1,11 @@
+corpus_id: MFOS-CORPUS-POLICY-0001
+target_name: policy-language-parser
+phase: '0.9'
+implementation_allowed: false
+seed_categories:
+- valid_policy_rule
+- wildcard_overbroad_rule
+- stale_delegation
+- missing_dual_control
+- malformed_policy
+status: draft

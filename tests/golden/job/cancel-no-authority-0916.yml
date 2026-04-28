@@ -1,0 +1,45 @@
+golden_id: GOLDEN-MFOS-JOB-CANCEL-NO-AUTHORITY-0916
+golden_version: 1
+fixture_ref: tests/fixtures/job/cancel-no-authority-0916.yml
+normalized_input:
+  fixture_id: FIXTURE-MFOS-JOB-CANCEL-NO-AUTHORITY-0916
+  operation: CANCEL-NO-AUTHORITY
+  deterministic_seed: SEED-MFOS-PHASE09-0001
+expected_normalized_output:
+  outcome: EXPECTED_FAIL_CLOSED
+  final_state: FAILED
+expected_decisions: &id001
+- decision_id: DECISION-MFOS-PHASE09-0001
+  result: DENY
+  policy_version: 1
+  obligations:
+  - AUDIT_SECURITY_DECISION
+expected_audit_sequence: &id003
+- record_type: SECURITY_DECISION
+  decision: DENY
+  reason_code: MFOS_ERR_POLICY_DENIED
+  before_return: true
+expected_state_transitions: &id002
+- object: PHASE09_OBJECT
+  from: INITIAL
+  action: EVALUATE
+  to: FAILED
+  reason: MFOS_ERR_POLICY_DENIED
+expected_final_state: FAILED
+expected_failure_mode: MFOS_ERR_POLICY_DENIED
+deterministic: true
+oracle:
+  oracle_id: ORACLE-MFOS-JOB-CANCEL-NO-AUTHORITY-0916
+  oracle_version: 1
+  fixture_ref: tests/fixtures/job/cancel-no-authority-0916.yml
+  expected_decisions: *id001
+  expected_state_transitions: *id002
+  expected_audit_records: *id003
+  expected_failure:
+    error_code: MFOS_ERR_POLICY_DENIED
+    fail_closed: true
+  expected_final_state: FAILED
+  evidence_required:
+  - EV-MFOS-JOB-CANCEL-NO-AUTHORITY-0916
+  status: draft
+status: draft

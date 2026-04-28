@@ -1,0 +1,745 @@
+catalog_id: MFOS-TEST-CATALOG-JOB_SPOOL_TESTS
+schema_version: 1
+phase: '0.9'
+status: draft
+implementation_allowed: false
+runner_implementation_allowed: false
+entries:
+- test_id: TEST-MFOS-JOB-HELLO-JOB-0901
+  test_name: valid HELLO job
+  test_type: conformance
+  phase_to_implement: Phase 1
+  target_pack: PACK-08
+  target_specs: &id001
+  - docs/design/specs/09-job-spool.md
+  target_requirements: &id002
+  - MFOS-REQ-JOB-0101
+  - MFOS-REQ-JOB-0102
+  - MFOS-REQ-SPOOL-0101
+  source_refs: &id003
+  - EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
+  - EXTREF-IBM-ZOS-JES-JOB-FLOW-0001
+  - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: HELLO-JOB
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: ALLOW
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: COMPLETE
+      reason: EXPECTED
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: ALLOW
+      reason_code: OK
+      before_return: false
+    failure_mode: null
+    final_state: COMPLETE
+  oracle_ref: tests/golden/job/hello-job-0901.yml
+  fixture_ref: tests/fixtures/job/hello-job-0901.yml
+  golden_ref: tests/golden/job/hello-job-0901.yml
+  negative: false
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-JOB-HELLO-JOB-0901
+  status: draft
+- test_id: NEG-MFOS-JOB-MALFORMED-CONTROL-0902
+  test_name: malformed job-control stream
+  test_type: parser
+  phase_to_implement: Phase 1
+  target_pack: PACK-08
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: MALFORMED-CONTROL
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: DENY
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: FAILED
+      reason: MFOS_ERR_INVALID_JOB_CONTROL
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: DENY
+      reason_code: MFOS_ERR_INVALID_JOB_CONTROL
+      before_return: true
+    failure_mode: MFOS_ERR_INVALID_JOB_CONTROL
+    final_state: FAILED
+  oracle_ref: tests/golden/job/malformed-control-0902.yml
+  fixture_ref: tests/fixtures/job/malformed-control-0902.yml
+  golden_ref: tests/golden/job/malformed-control-0902.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-JOB-MALFORMED-CONTROL-0902
+  status: draft
+- test_id: NEG-MFOS-JOB-SUBMIT-NO-PRINCIPAL-0903
+  test_name: job submit without established principal
+  test_type: negative
+  phase_to_implement: Phase 1
+  target_pack: PACK-08
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: SUBMIT-NO-PRINCIPAL
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: DENY
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: FAILED
+      reason: MFOS_ERR_UNAUTHENTICATED
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: DENY
+      reason_code: MFOS_ERR_UNAUTHENTICATED
+      before_return: true
+    failure_mode: MFOS_ERR_UNAUTHENTICATED
+    final_state: FAILED
+  oracle_ref: tests/golden/job/submit-no-principal-0903.yml
+  fixture_ref: tests/fixtures/job/submit-no-principal-0903.yml
+  golden_ref: tests/golden/job/submit-no-principal-0903.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-JOB-SUBMIT-NO-PRINCIPAL-0903
+  status: draft
+- test_id: TEST-MFOS-JOB-PRINCIPAL-BEFORE-OPEN-0904
+  test_name: effective principal before dataset open
+  test_type: conformance
+  phase_to_implement: Phase 1
+  target_pack: PACK-08
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: PRINCIPAL-BEFORE-OPEN
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: ALLOW
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: COMPLETE
+      reason: EXPECTED
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: ALLOW
+      reason_code: OK
+      before_return: false
+    failure_mode: null
+    final_state: COMPLETE
+  oracle_ref: tests/golden/job/principal-before-open-0904.yml
+  fixture_ref: tests/fixtures/job/principal-before-open-0904.yml
+  golden_ref: tests/golden/job/principal-before-open-0904.yml
+  negative: false
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-JOB-PRINCIPAL-BEFORE-OPEN-0904
+  status: draft
+- test_id: TEST-MFOS-JOB-DD-CATALOG-RESOLUTION-0905
+  test_name: DD resolution through catalogd
+  test_type: conformance
+  phase_to_implement: Phase 1
+  target_pack: PACK-08
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: DD-CATALOG-RESOLUTION
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: ALLOW
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: COMPLETE
+      reason: EXPECTED
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: ALLOW
+      reason_code: OK
+      before_return: false
+    failure_mode: null
+    final_state: COMPLETE
+  oracle_ref: tests/golden/job/dd-catalog-resolution-0905.yml
+  fixture_ref: tests/fixtures/job/dd-catalog-resolution-0905.yml
+  golden_ref: tests/golden/job/dd-catalog-resolution-0905.yml
+  negative: false
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-JOB-DD-CATALOG-RESOLUTION-0905
+  status: draft
+- test_id: TEST-MFOS-JOB-DD-AUTHORIZATION-0906
+  test_name: DD resolution through securityd
+  test_type: conformance
+  phase_to_implement: Phase 1
+  target_pack: PACK-08
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: DD-AUTHORIZATION
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: ALLOW
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: COMPLETE
+      reason: EXPECTED
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: ALLOW
+      reason_code: OK
+      before_return: false
+    failure_mode: null
+    final_state: COMPLETE
+  oracle_ref: tests/golden/job/dd-authorization-0906.yml
+  fixture_ref: tests/fixtures/job/dd-authorization-0906.yml
+  golden_ref: tests/golden/job/dd-authorization-0906.yml
+  negative: false
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-JOB-DD-AUTHORIZATION-0906
+  status: draft
+- test_id: NEG-MFOS-JOB-DD-BYPASS-DENIED-0907
+  test_name: DD bypass denied
+  test_type: negative
+  phase_to_implement: Phase 1
+  target_pack: PACK-08
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: DD-BYPASS-DENIED
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: DENY
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: FAILED
+      reason: MFOS_ERR_POLICY_DENIED
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: DENY
+      reason_code: MFOS_ERR_POLICY_DENIED
+      before_return: true
+    failure_mode: MFOS_ERR_POLICY_DENIED
+    final_state: FAILED
+  oracle_ref: tests/golden/job/dd-bypass-denied-0907.yml
+  fixture_ref: tests/fixtures/job/dd-bypass-denied-0907.yml
+  golden_ref: tests/golden/job/dd-bypass-denied-0907.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-JOB-DD-BYPASS-DENIED-0907
+  status: draft
+- test_id: NEG-MFOS-JOB-UNAUTHORIZED-DATASET-0908
+  test_name: unauthorized dataset in job step
+  test_type: negative
+  phase_to_implement: Phase 1
+  target_pack: PACK-08
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: UNAUTHORIZED-DATASET
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: DENY
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: FAILED
+      reason: MFOS_ERR_POLICY_DENIED
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: DENY
+      reason_code: MFOS_ERR_POLICY_DENIED
+      before_return: true
+    failure_mode: MFOS_ERR_POLICY_DENIED
+    final_state: FAILED
+  oracle_ref: tests/golden/job/unauthorized-dataset-0908.yml
+  fixture_ref: tests/fixtures/job/unauthorized-dataset-0908.yml
+  golden_ref: tests/golden/job/unauthorized-dataset-0908.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-JOB-UNAUTHORIZED-DATASET-0908
+  status: draft
+- test_id: TEST-MFOS-JOB-STEP-FAILURE-RC-0909
+  test_name: step failure records return code
+  test_type: conformance
+  phase_to_implement: Phase 1
+  target_pack: PACK-08
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: STEP-FAILURE-RC
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: ALLOW
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: COMPLETE
+      reason: EXPECTED
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: ALLOW
+      reason_code: OK
+      before_return: false
+    failure_mode: null
+    final_state: COMPLETE
+  oracle_ref: tests/golden/job/step-failure-rc-0909.yml
+  fixture_ref: tests/fixtures/job/step-failure-rc-0909.yml
+  golden_ref: tests/golden/job/step-failure-rc-0909.yml
+  negative: false
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-JOB-STEP-FAILURE-RC-0909
+  status: draft
+- test_id: NEG-MFOS-JOB-INVALID-LIFECYCLE-0910
+  test_name: job lifecycle invalid transition
+  test_type: invalid_transition
+  phase_to_implement: Phase 1
+  target_pack: PACK-08
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: INVALID-LIFECYCLE
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: DENY
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: FAILED
+      reason: MFOS_ERR_INVALID_STATE_TRANSITION
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: DENY
+      reason_code: MFOS_ERR_INVALID_STATE_TRANSITION
+      before_return: true
+    failure_mode: MFOS_ERR_INVALID_STATE_TRANSITION
+    final_state: FAILED
+  oracle_ref: tests/golden/job/invalid-lifecycle-0910.yml
+  fixture_ref: tests/fixtures/job/invalid-lifecycle-0910.yml
+  golden_ref: tests/golden/job/invalid-lifecycle-0910.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-JOB-INVALID-LIFECYCLE-0910
+  status: draft
+- test_id: TEST-MFOS-JOB-SPOOL-CREATE-0911
+  test_name: spool entry creation for output stream
+  test_type: conformance
+  phase_to_implement: Phase 1
+  target_pack: PACK-08
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: SPOOL-CREATE
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: ALLOW
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: COMPLETE
+      reason: EXPECTED
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: ALLOW
+      reason_code: OK
+      before_return: false
+    failure_mode: null
+    final_state: COMPLETE
+  oracle_ref: tests/golden/job/spool-create-0911.yml
+  fixture_ref: tests/fixtures/job/spool-create-0911.yml
+  golden_ref: tests/golden/job/spool-create-0911.yml
+  negative: false
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-JOB-SPOOL-CREATE-0911
+  status: draft
+- test_id: TEST-MFOS-JOB-SPOOL-BROWSE-OWNER-0912
+  test_name: spool browse by owner
+  test_type: conformance
+  phase_to_implement: Phase 1
+  target_pack: PACK-08
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: SPOOL-BROWSE-OWNER
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: ALLOW
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: COMPLETE
+      reason: EXPECTED
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: ALLOW
+      reason_code: OK
+      before_return: false
+    failure_mode: null
+    final_state: COMPLETE
+  oracle_ref: tests/golden/job/spool-browse-owner-0912.yml
+  fixture_ref: tests/fixtures/job/spool-browse-owner-0912.yml
+  golden_ref: tests/golden/job/spool-browse-owner-0912.yml
+  negative: false
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-JOB-SPOOL-BROWSE-OWNER-0912
+  status: draft
+- test_id: NEG-MFOS-JOB-SPOOL-BROWSE-NONOWNER-0913
+  test_name: spool browse by non-owner denied
+  test_type: negative
+  phase_to_implement: Phase 1
+  target_pack: PACK-08
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: SPOOL-BROWSE-NONOWNER
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: DENY
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: FAILED
+      reason: MFOS_ERR_POLICY_DENIED
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: DENY
+      reason_code: MFOS_ERR_POLICY_DENIED
+      before_return: true
+    failure_mode: MFOS_ERR_POLICY_DENIED
+    final_state: FAILED
+  oracle_ref: tests/golden/job/spool-browse-nonowner-0913.yml
+  fixture_ref: tests/fixtures/job/spool-browse-nonowner-0913.yml
+  golden_ref: tests/golden/job/spool-browse-nonowner-0913.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-JOB-SPOOL-BROWSE-NONOWNER-0913
+  status: draft
+- test_id: NEG-MFOS-JOB-SPOOL-PURGE-DENIED-0914
+  test_name: spool purge without authority denied
+  test_type: negative
+  phase_to_implement: Phase 1
+  target_pack: PACK-08
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: SPOOL-PURGE-DENIED
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: DENY
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: FAILED
+      reason: MFOS_ERR_POLICY_DENIED
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: DENY
+      reason_code: MFOS_ERR_POLICY_DENIED
+      before_return: true
+    failure_mode: MFOS_ERR_POLICY_DENIED
+    final_state: FAILED
+  oracle_ref: tests/golden/job/spool-purge-denied-0914.yml
+  fixture_ref: tests/fixtures/job/spool-purge-denied-0914.yml
+  golden_ref: tests/golden/job/spool-purge-denied-0914.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-JOB-SPOOL-PURGE-DENIED-0914
+  status: draft
+- test_id: NEG-MFOS-JOB-SPOOL-EXPORT-NO-AUDIT-0915
+  test_name: spool export without audit denied
+  test_type: negative
+  phase_to_implement: Phase 1
+  target_pack: PACK-08
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: SPOOL-EXPORT-NO-AUDIT
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: DENY
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: FAILED
+      reason: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: DENY
+      reason_code: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+      before_return: true
+    failure_mode: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+    final_state: FAILED
+  oracle_ref: tests/golden/job/spool-export-no-audit-0915.yml
+  fixture_ref: tests/fixtures/job/spool-export-no-audit-0915.yml
+  golden_ref: tests/golden/job/spool-export-no-audit-0915.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-JOB-SPOOL-EXPORT-NO-AUDIT-0915
+  status: draft
+- test_id: NEG-MFOS-JOB-CANCEL-NO-AUTHORITY-0916
+  test_name: job cancellation without operator authority denied
+  test_type: negative
+  phase_to_implement: Phase 1
+  target_pack: PACK-08
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: CANCEL-NO-AUTHORITY
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: DENY
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: FAILED
+      reason: MFOS_ERR_POLICY_DENIED
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: DENY
+      reason_code: MFOS_ERR_POLICY_DENIED
+      before_return: true
+    failure_mode: MFOS_ERR_POLICY_DENIED
+    final_state: FAILED
+  oracle_ref: tests/golden/job/cancel-no-authority-0916.yml
+  fixture_ref: tests/fixtures/job/cancel-no-authority-0916.yml
+  golden_ref: tests/golden/job/cancel-no-authority-0916.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-JOB-CANCEL-NO-AUTHORITY-0916
+  status: draft
+- test_id: NEG-MFOS-JOB-STEP-NO-AUDIT-CORRELATION-0917
+  test_name: step completion without audit correlation denied
+  test_type: negative
+  phase_to_implement: Phase 1
+  target_pack: PACK-08
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: STEP-NO-AUDIT-CORRELATION
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: DENY
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: FAILED
+      reason: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: DENY
+      reason_code: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+      before_return: true
+    failure_mode: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+    final_state: FAILED
+  oracle_ref: tests/golden/job/step-no-audit-correlation-0917.yml
+  fixture_ref: tests/fixtures/job/step-no-audit-correlation-0917.yml
+  golden_ref: tests/golden/job/step-no-audit-correlation-0917.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-JOB-STEP-NO-AUDIT-CORRELATION-0917
+  status: draft

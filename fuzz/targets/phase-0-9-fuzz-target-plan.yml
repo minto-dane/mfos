@@ -1,0 +1,130 @@
+plan_id: MFOS-FUZZ-PLAN-PHASE09-0001
+phase: '0.9'
+status: draft
+implementation_allowed: false
+runner_implementation_allowed: false
+semantic_execution_allowed: false
+non_compatibility_statement: External references are design background only; corpora are MFOS-defined and do not reproduce external syntax or record layouts.
+targets:
+- target_id: FUZZ-MFOS-DATASET-DSN-0001
+  target_name: dsn-parser
+  target_requirements:
+  - MFOS-REQ-DATASET-0101
+  - MFOS-REQ-CATALOG-0101
+  corpus_path: fuzz/corpora/dsn/seed-plan.yml
+  corpus_categories:
+  - valid_mfos_dataset_name
+  - malformed_qualifier
+  - overlong_name
+  - unsupported_external_name_shape
+  - spec_gap_name_shape
+  phase_to_implement: Phase 1
+  implementation_allowed: false
+- target_id: FUZZ-MFOS-JOB-CONTROL-STREAM-0001
+  target_name: job-control-stream-parser
+  target_requirements:
+  - MFOS-REQ-JOB-0101
+  corpus_path: fuzz/corpora/job-control-stream/seed-plan.yml
+  corpus_categories:
+  - valid_hello_job
+  - malformed_statement
+  - missing_effective_principal
+  - unsupported_control_feature
+  - spec_gap_control_feature
+  phase_to_implement: Phase 1
+  implementation_allowed: false
+- target_id: FUZZ-MFOS-OPER-COMMAND-0001
+  target_name: operator-command-parser
+  target_requirements:
+  - MFOS-REQ-OPER-0101
+  corpus_path: fuzz/corpora/operator-command/seed-plan.yml
+  corpus_categories:
+  - valid_display_command
+  - valid_define_user_command
+  - malformed_command
+  - destructive_without_confirmation
+  - automation_bypass_attempt
+  phase_to_implement: Phase 1
+  implementation_allowed: false
+- target_id: FUZZ-MFOS-AUTH-POLICY-0001
+  target_name: policy-language-parser
+  target_requirements:
+  - MFOS-REQ-AUTH-0101
+  corpus_path: fuzz/corpora/policy-language/seed-plan.yml
+  corpus_categories:
+  - valid_policy_rule
+  - wildcard_overbroad_rule
+  - stale_delegation
+  - missing_dual_control
+  - malformed_policy
+  phase_to_implement: Phase 1
+  implementation_allowed: false
+- target_id: FUZZ-MFOS-AUDIT-RECORD-0001
+  target_name: audit-record-decoder
+  target_requirements:
+  - MFOS-REQ-AUDIT-0101
+  corpus_path: fuzz/corpora/audit-record/seed-plan.yml
+  corpus_categories:
+  - minimal_valid_record
+  - missing_correlation_id
+  - tampered_hash_chain
+  - duplicate_record_id
+  - redaction_boundary
+  phase_to_implement: Phase 1
+  implementation_allowed: false
+- target_id: FUZZ-MFOS-DATASET-HANDLE-0001
+  target_name: dataset-handle-decoder
+  target_requirements:
+  - MFOS-REQ-DATASET-0102
+  corpus_path: fuzz/corpora/dataset-handle/seed-plan.yml
+  corpus_categories:
+  - valid_bound_handle
+  - stale_policy_version
+  - stale_catalog_generation
+  - missing_decision_id
+  - forged_subject
+  phase_to_implement: Phase 1
+  implementation_allowed: false
+- target_id: FUZZ-MFOS-JOB-FIXTURE-0001
+  target_name: job-fixture-parser
+  target_requirements:
+  - MFOS-REQ-JOB-0102
+  corpus_path: fuzz/corpora/job-fixture/seed-plan.yml
+  corpus_categories:
+  - valid_job_fixture
+  - invalid_lifecycle_transition
+  - missing_audit_correlation
+  - unauthorized_dataset_reference
+  - nondeterministic_identity
+  phase_to_implement: Phase 1
+  implementation_allowed: false
+- target_id: FUZZ-MFOS-SPOOL-FIXTURE-0001
+  target_name: spool-fixture-parser
+  target_requirements:
+  - MFOS-REQ-SPOOL-0101
+  corpus_path: fuzz/corpora/spool-fixture/seed-plan.yml
+  corpus_categories:
+  - valid_spool_fixture
+  - nonowner_browse
+  - export_without_audit
+  - purge_without_authority
+  - spool_as_audit_evidence
+  phase_to_implement: Phase 1
+  implementation_allowed: false
+- target_id: FUZZ-MFOS-SEMANTIC-FIXTURE-0001
+  target_name: semantic-fixture-parser
+  target_requirements:
+  - MFOS-REQ-AUTH-0101
+  - MFOS-REQ-AUDIT-0102
+  - MFOS-REQ-DATASET-0102
+  - MFOS-REQ-JOB-0102
+  - MFOS-REQ-OPER-0101
+  corpus_path: fuzz/corpora/semantic-fixture/seed-plan.yml
+  corpus_categories:
+  - hello_job_success
+  - denied_dataset_open
+  - missing_oracle
+  - spec_gap_expected
+  - unsupported_expected
+  phase_to_implement: Phase 1
+  implementation_allowed: false

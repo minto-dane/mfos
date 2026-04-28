@@ -1,0 +1,45 @@
+golden_id: GOLDEN-MFOS-AUDIT-NON-MONOTONIC-SEQUENCE-0912
+golden_version: 1
+fixture_ref: tests/fixtures/audit/non-monotonic-sequence-0912.yml
+normalized_input:
+  fixture_id: FIXTURE-MFOS-AUDIT-NON-MONOTONIC-SEQUENCE-0912
+  operation: NON-MONOTONIC-SEQUENCE
+  deterministic_seed: SEED-MFOS-PHASE09-0001
+expected_normalized_output:
+  outcome: EXPECTED_FAIL_CLOSED
+  final_state: FAILED
+expected_decisions: &id001
+- decision_id: DECISION-MFOS-PHASE09-0001
+  result: DENY
+  policy_version: 1
+  obligations:
+  - AUDIT_SECURITY_DECISION
+expected_audit_sequence: &id003
+- record_type: SECURITY_DECISION
+  decision: DENY
+  reason_code: MFOS_ERR_AUDIT_SEQUENCE_INVALID
+  before_return: true
+expected_state_transitions: &id002
+- object: PHASE09_OBJECT
+  from: INITIAL
+  action: EVALUATE
+  to: FAILED
+  reason: MFOS_ERR_AUDIT_SEQUENCE_INVALID
+expected_final_state: FAILED
+expected_failure_mode: MFOS_ERR_AUDIT_SEQUENCE_INVALID
+deterministic: true
+oracle:
+  oracle_id: ORACLE-MFOS-AUDIT-NON-MONOTONIC-SEQUENCE-0912
+  oracle_version: 1
+  fixture_ref: tests/fixtures/audit/non-monotonic-sequence-0912.yml
+  expected_decisions: *id001
+  expected_state_transitions: *id002
+  expected_audit_records: *id003
+  expected_failure:
+    error_code: MFOS_ERR_AUDIT_SEQUENCE_INVALID
+    fail_closed: true
+  expected_final_state: FAILED
+  evidence_required:
+  - EV-MFOS-AUDIT-NON-MONOTONIC-SEQUENCE-0912
+  status: draft
+status: draft

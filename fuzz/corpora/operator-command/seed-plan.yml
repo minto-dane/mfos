@@ -1,0 +1,11 @@
+corpus_id: MFOS-CORPUS-OPER-COMMAND-0001
+target_name: operator-command-parser
+phase: '0.9'
+implementation_allowed: false
+seed_categories:
+- valid_display_command
+- valid_define_user_command
+- malformed_command
+- destructive_without_confirmation
+- automation_bypass_attempt
+status: draft

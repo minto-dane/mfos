@@ -1,0 +1,45 @@
+golden_id: GOLDEN-MFOS-DATASET-VALID-DSN-0901
+golden_version: 1
+fixture_ref: tests/fixtures/dataset/valid-dsn-0901.yml
+normalized_input:
+  fixture_id: FIXTURE-MFOS-DATASET-VALID-DSN-0901
+  operation: VALID-DSN
+  deterministic_seed: SEED-MFOS-PHASE09-0001
+expected_normalized_output:
+  outcome: EXPECTED_ALLOW
+  final_state: COMPLETE
+expected_decisions: &id001
+- decision_id: DECISION-MFOS-PHASE09-0001
+  result: ALLOW
+  policy_version: 1
+  obligations:
+  - AUDIT_SECURITY_DECISION
+expected_audit_sequence: &id003
+- record_type: SECURITY_DECISION
+  decision: ALLOW
+  reason_code: OK
+  before_return: false
+expected_state_transitions: &id002
+- object: PHASE09_OBJECT
+  from: INITIAL
+  action: EVALUATE
+  to: COMPLETE
+  reason: EXPECTED
+expected_final_state: COMPLETE
+expected_failure_mode: null
+deterministic: true
+oracle:
+  oracle_id: ORACLE-MFOS-DATASET-VALID-DSN-0901
+  oracle_version: 1
+  fixture_ref: tests/fixtures/dataset/valid-dsn-0901.yml
+  expected_decisions: *id001
+  expected_state_transitions: *id002
+  expected_audit_records: *id003
+  expected_failure:
+    error_code: null
+    fail_closed: false
+  expected_final_state: COMPLETE
+  evidence_required:
+  - EV-MFOS-DATASET-VALID-DSN-0901
+  status: draft
+status: draft
