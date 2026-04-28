@@ -6,13 +6,13 @@ Scope: status and bridge synchronization after registry expansion.
 
 ## Files Synchronized
 
-- `docs/design/tasks/phase-0-7-system-integrity-deep-spec.md`
+- `docs/design/tasks/archive/phase-0-7/system-integrity-deep-spec.md`
 - `docs/design/STATUS.md`
 - `reports/phases/phase-0-7/phase-0-7-system-integrity-progress.md`
 - `reports/phases/phase-0-7/status-sync-audit.md`
 
 The machine-readable task source is
-`tasks/phase-0-7-system-integrity-deep-spec.yml`.
+`tasks/archive/phase-0-7/system-integrity-deep-spec.yml`.
 
 ## Task Status
 
@@ -52,8 +52,8 @@ release_evidence_warnings: 20
 
 ```bash
 ./scripts/validate-all.sh
-python3 -m py_compile scripts/*.py
-python3 scripts/check-evidence-status.py --mode release
+python3 -m py_compile $(find scripts -name '*.py' -print)
+python3 scripts/checks/check-evidence-status.py --mode release
 ```
 
 Additional YAML and Markdown sanity checks were run after editing the status

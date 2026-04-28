@@ -1,9 +1,22 @@
 # Phase 1 Open Issues
 
-Status: nonblocking for Phase 1 Portable Semantic Core + Conformance Harness.
+Status: blocking for Phase 1 semantic evaluator and Portable Semantic Core
+behavior implementation.
 
-These issues do not authorize production implementation and do not block the
-Phase 1 semantic-core/conformance-harness start after PR #5 review.
+These issues do not block loader-only artifact validation and traceability
+repair. They do block semantic-core behavior, semantic evaluator, and semantic
+runner implementation.
+
+## Blocking Before Semantic Evaluator
+
+- Current fixtures lack direct `source_refs`.
+- Current golden/oracle vectors lack direct `source_refs` and
+  `target_requirements`.
+- Planned `010x` requirement test IDs and current `09xx` executable-spec
+  catalog IDs are not reconciled.
+- PACK-08 job/spool uses external-looking job-control stream syntax and
+  JCL/DD-style MFOS-owned identifiers that need refactor or explicit
+  re-bounding.
 
 ## Minor
 
@@ -20,6 +33,9 @@ Phase 1 semantic-core/conformance-harness start after PR #5 review.
 
 ## Still Blocked
 
+- Portable Semantic Core behavior implementation.
+- Semantic evaluator implementation.
+- Semantic runner command implementation.
 - Production implementation.
 - Hosted daemon implementation.
 - Hardware enforcement claims.

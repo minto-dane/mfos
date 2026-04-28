@@ -38,7 +38,7 @@ explicit through `MFOS_ERR_UNSUPPORTED`, `MFOS_ERR_SPEC_GAP`, and non-empty
 Command:
 
 ```sh
-python3 scripts/validate-packs.py
+python3 scripts/validators/validate-packs.py
 ```
 
 Result:

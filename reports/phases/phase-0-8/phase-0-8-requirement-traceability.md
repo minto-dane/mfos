@@ -60,7 +60,7 @@ Post-review corrections:
 
 - PACK-05 through PACK-09 `010x` design test aliases are now materialized as
   domain-catalog `test_id` entries.
-- `scripts/check-phase-0-8-traceability.py` now fails unresolved Phase 0.8
+- `scripts/phases/phase-0-8/check-traceability.py` now fails unresolved Phase 0.8
   requirement-to-test links.
 - The first vertical slice contract front matter now includes
   `MFOS-REQ-AUDIT-0104`.

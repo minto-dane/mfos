@@ -30,8 +30,8 @@ Primary additions and updates:
 - `docs/design/ja/translation-units.yaml`
 - `docs/design/ja/sync-status.yaml`
 - `packs/pack-index.yml`
-- `tasks/phase-0-7-system-integrity-deep-spec.yml`
-- `docs/design/tasks/phase-0-7-system-integrity-deep-spec.md`
+- `tasks/archive/phase-0-7/system-integrity-deep-spec.yml`
+- `docs/design/tasks/archive/phase-0-7/system-integrity-deep-spec.md`
 - `ai/contracts/ai-implementation-contract.md`
 - `evidence/traceability/*.yml`
 - `reports/*.md`
@@ -41,19 +41,19 @@ No production nucleus, service, PXM, Guard, or runtime logic was started.
 ## Validation Commands Run
 
 ```bash
-python3 scripts/validate-source-cards.py
-python3 scripts/validate-requirements.py
-python3 scripts/validate-claims.py
-python3 scripts/validate-spec-front-matter.py
-python3 scripts/validate-packs.py
-python3 scripts/check-prohibited-terms.py
-python3 scripts/check-no-fake-success.py
-python3 scripts/check-source-grounding.py
-python3 scripts/check-audit-obligations.py
-python3 scripts/check-spec-gap-misuse.py
-python3 scripts/generate-traceability.py
+python3 scripts/validators/validate-source-cards.py
+python3 scripts/validators/validate-requirements.py
+python3 scripts/validators/validate-claims.py
+python3 scripts/validators/validate-spec-front-matter.py
+python3 scripts/validators/validate-packs.py
+python3 scripts/checks/check-prohibited-terms.py
+python3 scripts/checks/check-no-fake-success.py
+python3 scripts/checks/check-source-grounding.py
+python3 scripts/checks/check-audit-obligations.py
+python3 scripts/checks/check-spec-gap-misuse.py
+python3 scripts/generators/generate-traceability.py
 ./scripts/validate-all.sh
-python3 -m py_compile scripts/*.py
+python3 -m py_compile $(find scripts -name '*.py' -print)
 ```
 
 ## Validation Results

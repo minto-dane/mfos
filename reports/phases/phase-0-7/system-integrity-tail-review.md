@@ -55,9 +55,9 @@ Strengthened Spec Gaps:
 Commands run:
 
 ```bash
-python3 scripts/check-spec-gap-misuse.py
-python3 scripts/validate-spec-front-matter.py
-python3 scripts/check-source-grounding.py
+python3 scripts/checks/check-spec-gap-misuse.py
+python3 scripts/validators/validate-spec-front-matter.py
+python3 scripts/checks/check-source-grounding.py
 python3 - <<'PY'
 import re, yaml
 from pathlib import Path

@@ -20,7 +20,7 @@ All renamed directories were empty scaffolds at the time of the move.
 
 ## References Updated
 
-- `scripts/bootstrap-tree.sh`
+- `scripts/bootstrap/bootstrap-tree.sh`
 - `reports/naming-safety/naming-safety-red-team-review.md`
 - `reports/naming-safety/naming-safety-red-team-review.yml`
 - `reports/naming-safety/mfos-owned-name-audit.md`
@@ -58,16 +58,16 @@ Commands run:
 
 ```sh
 rg -n "implementation/interfaces/(tso-like|ispf-like|zosmf-like-api)|implementation/services/(tsoed|ispfd)" . -S -g '!reports/naming-safety/naming-path-fix-report.md'
-rg -n "\b(tso-like|ispf-like|zosmf-like-api|tsoed|ispfd)\b" implementation reports scripts/bootstrap-tree.sh -S -g '!reports/naming-safety/naming-path-fix-report.md'
-python3 scripts/check-mf-owned-names.py
+rg -n "\b(tso-like|ispf-like|zosmf-like-api|tsoed|ispfd)\b" implementation reports scripts/bootstrap/bootstrap-tree.sh -S -g '!reports/naming-safety/naming-path-fix-report.md'
+python3 scripts/checks/naming-safety/check-mf-owned-names.py
 ```
 
 Results:
 
 - No old implementation path references remain outside this report.
 - No old path-name tokens remain under `implementation`, `reports`, or
-  `scripts/bootstrap-tree.sh`, excluding this report's change log.
-- `python3 scripts/check-mf-owned-names.py` reports
+  `scripts/bootstrap/bootstrap-tree.sh`, excluding this report's change log.
+- `python3 scripts/checks/naming-safety/check-mf-owned-names.py` reports
   `MFOS-owned name check OK: 0 warnings`.
 
 ## Remaining Risks

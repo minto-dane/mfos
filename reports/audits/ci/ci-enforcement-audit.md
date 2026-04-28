@@ -19,7 +19,7 @@ validation in CI.
 ## Files Changed
 
 - `.github/workflows/design-validation.yml`
-- `scripts/check-evidence-status.py`
+- `scripts/checks/check-evidence-status.py`
 - `scripts/validate-all.sh`
 - `docs/design/assurance/claim-tree.yml`
 - `docs/design/registries/evidence.yaml`
@@ -35,7 +35,7 @@ validation in CI.
 
 ## Enforcement Added
 
-`scripts/check-evidence-status.py` checks:
+`scripts/checks/check-evidence-status.py` checks:
 
 - Evidence status is one of `draft`, `collected`, `verified`, `archived`,
   `rejected`, `expired`, or `superseded`.
@@ -84,8 +84,8 @@ artifacts, digests, and verification records exist.
 
 ```bash
 ./scripts/validate-all.sh
-python3 scripts/check-evidence-status.py --mode release
-python3 -m py_compile scripts/*.py
+python3 scripts/checks/check-evidence-status.py --mode release
+python3 -m py_compile $(find scripts -name '*.py' -print)
 ```
 
 ## Validation Results

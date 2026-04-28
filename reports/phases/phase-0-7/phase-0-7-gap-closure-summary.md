@@ -70,10 +70,10 @@ production claims.
 ```bash
 ./scripts/validate-all.sh
 ./scripts/validate-all.sh --check
-python3 scripts/check-registry-links.py --mode release
-python3 scripts/check-source-grounding.py --mode release
-python3 scripts/check-evidence-status.py --mode release
-python3 -m py_compile scripts/*.py
+python3 scripts/checks/check-registry-links.py --mode release
+python3 scripts/checks/check-source-grounding.py --mode release
+python3 scripts/checks/check-evidence-status.py --mode release
+python3 -m py_compile $(find scripts -name '*.py' -print)
 ```
 
 ## Gate

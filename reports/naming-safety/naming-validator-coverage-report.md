@@ -10,13 +10,13 @@ edited.
 
 ## Coverage Added
 
-- `scripts/check-mf-owned-names.py` now scans directories as well as text-file
+- `scripts/checks/naming-safety/check-mf-owned-names.py` now scans directories as well as text-file
   paths, so empty owned directories can no longer hide external-product tokens.
-- `scripts/check-extref-namespace.py` now scans `reports/`. Legacy `IBM-*`
+- `scripts/checks/naming-safety/check-extref-namespace.py` now scans `reports/`. Legacy `IBM-*`
   source IDs remain allowed in Source Cards, the source index
   `legacy_source_ids` context and `reports/naming-safety/` migration artifacts
   only.
-- `scripts/check-source-card-public-safe.py` now scans public Source Card
+- `scripts/checks/naming-safety/check-source-card-public-safe.py` now scans public Source Card
   guidance outside card YAML for stale public-unsafe examples, including
   prohibited removed fields, `source_type: normative`, and guidance that says
   Source Cards store summaries.
@@ -35,7 +35,7 @@ Initial command run:
 ./scripts/validate-naming-safety.sh release
 ```
 
-Result: failed closed at `scripts/check-extref-namespace.py` with 117 errors
+Result: failed closed at `scripts/checks/naming-safety/check-extref-namespace.py` with 117 errors
 and 0 warnings. The failure was expected after adding release-bound report
 coverage: non-naming historical reports still contained legacy `IBM-*` IDs
 outside the allowed naming migration context.
@@ -57,12 +57,12 @@ Checks run individually after the aggregate script stopped:
 
 | Check | Result |
 | --- | --- |
-| `python3 scripts/check-source-card-public-safe.py --mode release` | Passed, 0 warnings |
-| `python3 scripts/check-requirement-namespace.py --mode release` | Passed, 0 warnings |
-| `python3 scripts/check-mf-owned-names.py --mode release` | Passed, 0 warnings |
-| `python3 scripts/check-no-compatibility-claims.py --mode release` | Passed, 0 warnings |
-| `python3 scripts/check-no-copied-external-docs.py --mode release` | Passed, 0 warnings |
-| `python3 -m py_compile scripts/check-mf-owned-names.py scripts/check-extref-namespace.py scripts/check-source-card-public-safe.py` | Passed |
+| `python3 scripts/checks/naming-safety/check-source-card-public-safe.py --mode release` | Passed, 0 warnings |
+| `python3 scripts/checks/naming-safety/check-requirement-namespace.py --mode release` | Passed, 0 warnings |
+| `python3 scripts/checks/naming-safety/check-mf-owned-names.py --mode release` | Passed, 0 warnings |
+| `python3 scripts/checks/naming-safety/check-no-compatibility-claims.py --mode release` | Passed, 0 warnings |
+| `python3 scripts/checks/naming-safety/check-no-copied-external-docs.py --mode release` | Passed, 0 warnings |
+| `python3 -m py_compile scripts/checks/naming-safety/check-mf-owned-names.py scripts/checks/naming-safety/check-extref-namespace.py scripts/checks/naming-safety/check-source-card-public-safe.py` | Passed |
 
 ## Follow-Up Remediation
 

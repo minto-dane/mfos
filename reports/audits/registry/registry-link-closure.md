@@ -15,7 +15,7 @@ This report records draft placeholder registration for previously missing cross-
 ## Validation
 
 ```text
-python3 scripts/check-registry-links.py --mode release
+python3 scripts/checks/check-registry-links.py --mode release
 Registry link validation OK: 0 warnings
 
 ./scripts/validate-all.sh

@@ -19,11 +19,11 @@ or service implementation was started.
 - Added MFOS object schemas under `schemas/mfos/`.
 - Added state-machine YAML under `formal/tla/`.
 - Added Phase 0.8 test catalogs under `tests/catalog/`.
-- Added fuzz target plan: `fuzz/targets/phase-0-8-fuzz-target-plan.yml`.
+- Added fuzz target plan: `fuzz/targets/archive/phase-0-8/fuzz-target-plan.yml`.
 - Added Phase 0.8 traceability matrices under `evidence/traceability/`.
 - Added pack contracts under `docs/design/packs/PACK-05-*` through
   `PACK-09-*` and mirrored them in `packs/pack-index.yml`.
-- Added `scripts/check-phase-0-8-traceability.py` and wired it into
+- Added `scripts/phases/phase-0-8/check-traceability.py` and wired it into
   `scripts/validate-all.sh`.
 - Remediated red-team Critical/Major findings covering concrete `010x` planned
   semantic test coverage, implementation-gate wording, emergency duration/result alignment,

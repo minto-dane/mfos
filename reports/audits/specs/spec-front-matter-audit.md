@@ -77,5 +77,5 @@ Required fields were populated as follows:
 - `japanese_mirror` remains `missing` across the audited files until mirror paths and synchronization state are explicitly defined.
 - Empty reference arrays mean no safe token was found in the local spec body during this pass, not that no future references are required.
 - After Red Team review, front matter `source_refs` were normalized so every Source Matrix ID found in a split-spec body is also present in that file's front matter.
-- `scripts/validate-spec-front-matter.py` now rejects body/front-matter Source Matrix drift and Markdown table width mismatches.
-- `python3 scripts/validate-spec-front-matter.py --mode draft` currently passes with 35 checked specs and 0 warnings.
+- `scripts/validators/validate-spec-front-matter.py` now rejects body/front-matter Source Matrix drift and Markdown table width mismatches.
+- `python3 scripts/validators/validate-spec-front-matter.py --mode draft` currently passes with 35 checked specs and 0 warnings.

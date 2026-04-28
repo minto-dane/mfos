@@ -32,7 +32,7 @@ Owned paths:
 Command:
 
 ```bash
-python3 scripts/check-spec-gap-misuse.py
+python3 scripts/checks/check-spec-gap-misuse.py
 ```
 
 Expected result:

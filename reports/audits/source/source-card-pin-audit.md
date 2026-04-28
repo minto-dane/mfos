@@ -81,7 +81,7 @@ expose a publication identifier. Those fields are intentionally `null`.
 Command:
 
 ```bash
-python3 scripts/validate-source-cards.py
+python3 scripts/validators/validate-source-cards.py
 ```
 
 Result:

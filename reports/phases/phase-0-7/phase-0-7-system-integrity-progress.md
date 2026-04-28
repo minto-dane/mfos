@@ -28,7 +28,7 @@ The main correction was to make the system-integrity boundary more explicit: Bas
 - `docs/design/registries/README.md`
 - `docs/design/assurance/claim-tree.yml`
 - `docs/design/STATUS.md`
-- `tasks/phase-0-7-system-integrity-deep-spec.yml`
+- `tasks/archive/phase-0-7/system-integrity-deep-spec.yml`
 - `reports/audits/traceability/traceability-audit.md`
 - `reports/phases/phase-0-7/phase-0-7-system-integrity-progress.md`
 
@@ -93,8 +93,8 @@ All new evidence entries are draft placeholders for future artifacts. They are n
 
 ```bash
 ./scripts/validate-all.sh
-python3 -m py_compile scripts/*.py
-python3 scripts/check-evidence-status.py --mode release
+python3 -m py_compile $(find scripts -name '*.py' -print)
+python3 scripts/checks/check-evidence-status.py --mode release
 python3 - <<'PY'
 import json, pathlib, yaml
 for p in pathlib.Path('.').rglob('*'):

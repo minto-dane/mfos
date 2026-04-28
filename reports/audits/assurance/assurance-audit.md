@@ -18,11 +18,11 @@ Pass after assurance-only updates.
 Validation commands:
 
 ```text
-scripts/validate-claims.py
-python3 scripts/validate-claims.py
+scripts/validators/validate-claims.py
+python3 scripts/validators/validate-claims.py
 ```
 
-Direct execution of `scripts/validate-claims.py` returned `Permission denied` because the script is not executable in this checkout. Running the same script with `python3` completed successfully:
+Direct execution of `scripts/validators/validate-claims.py` returned `Permission denied` because the script is not executable in this checkout. Running the same script with `python3` completed successfully:
 
 ```text
 Claim validation OK: 5 claims checked: 4 warnings

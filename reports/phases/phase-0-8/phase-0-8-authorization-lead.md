@@ -61,11 +61,11 @@ authorized by this report.
 
 ## Validation Performed
 
-- `python3 scripts/validate-spec-front-matter.py --mode draft`
-- `python3 scripts/check-source-grounding.py --mode draft`
-- `python3 scripts/check-extref-namespace.py --mode draft`
-- `python3 scripts/check-mf-owned-names.py --mode draft`
-- `python3 scripts/check-requirement-namespace.py --mode draft`
+- `python3 scripts/validators/validate-spec-front-matter.py --mode draft`
+- `python3 scripts/checks/check-source-grounding.py --mode draft`
+- `python3 scripts/checks/naming-safety/check-extref-namespace.py --mode draft`
+- `python3 scripts/checks/naming-safety/check-mf-owned-names.py --mode draft`
+- `python3 scripts/checks/naming-safety/check-requirement-namespace.py --mode draft`
 - YAML parse check for the two schemas and phase test catalog.
 - `./scripts/validate-all.sh --check`
 

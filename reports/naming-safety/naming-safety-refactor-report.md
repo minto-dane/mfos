@@ -61,7 +61,7 @@ The prohibited implementation scaffold names were also renamed:
 - `docs/design/specs/*.md`
 - `evidence/traceability/*.yml`
 - non-naming reports under `reports/`
-- implementation scaffold references in `scripts/bootstrap-tree.sh`
+- implementation scaffold references in `scripts/bootstrap/bootstrap-tree.sh`
 
 ## 6. Source IDs Migrated
 
@@ -76,7 +76,7 @@ contains:
 
 ## 7. Requirement IDs Checked
 
-`scripts/check-requirement-namespace.py` validates requirement, test, evidence,
+`scripts/checks/naming-safety/check-requirement-namespace.py` validates requirement, test, evidence,
 claim, and requirement `source_refs` namespaces.
 
 ## 8. Remaining External Names And Allowed Contexts

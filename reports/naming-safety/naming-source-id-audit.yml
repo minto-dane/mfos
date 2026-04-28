@@ -299,19 +299,19 @@ files_needing_updates:
     - docs/design/registries/tests.yaml
     - packs/pack-index.yml
   scripts:
-    - path: scripts/mfos_lint.py
+    - path: scripts/lib/mfos_lint.py
       reason: "SOURCE_ID_RE and known-source helpers need EXTREF and alias support."
-    - path: scripts/validate-source-cards.py
+    - path: scripts/validators/validate-source-cards.py
       reason: "Card source_id/card_id/path validation must allow legacy_source_ids and renamed card files."
-    - path: scripts/validate-requirements.py
+    - path: scripts/validators/validate-requirements.py
       reason: "Requirement source_refs must resolve aliases as well as canonical IDs."
-    - path: scripts/validate-spec-front-matter.py
+    - path: scripts/validators/validate-spec-front-matter.py
       reason: "Body/front matter source comparisons need canonical normalization."
-    - path: scripts/check-source-grounding.py
+    - path: scripts/checks/check-source-grounding.py
       reason: "Verify after mfos_lint regex and alias helper changes."
-    - path: scripts/generate-traceability.py
+    - path: scripts/generators/generate-traceability.py
       reason: "Generated traceability should emit canonical EXTREF IDs."
-    - path: scripts/validate-packs.py
+    - path: scripts/validators/validate-packs.py
       reason: "Pack source_refs are currently shape-checked only; add source-ref resolution or document external validation."
   adjacent_blockers_outside_requested_audit_set:
     - docs/design/source-matrix/source-card-schema.md
