@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mfos.local/schemas/spec-front-matter.schema.json",
+  "title": "MFOS Spec Front Matter",
+  "type": "object",
+  "required": [
+    "spec_id",
+    "title",
+    "canonical_language",
+    "japanese_mirror",
+    "status",
+    "owner",
+    "last_reviewed",
+    "source_refs",
+    "requirement_refs",
+    "claim_refs",
+    "test_refs",
+    "evidence_refs",
+    "implementation_allowed",
+    "downstream_packs",
+    "spec_gap_policy"
+  ],
+  "properties": {
+    "spec_id": {"type": "string", "pattern": "^MFOS-SPEC-([0-9][0-9]-[A-Z0-9-]+|INDEX)$"},
+    "title": {"type": "string"},
+    "canonical_language": {"type": "string"},
+    "japanese_mirror": {"type": "string"},
+    "status": {"type": "string"},
+    "owner": {"type": "string"},
+    "last_reviewed": {"type": "string"},
+    "source_refs": {"type": "array", "items": {"type": "string"}},
+    "requirement_refs": {"type": "array", "items": {"type": "string"}},
+    "claim_refs": {"type": "array", "items": {"type": "string"}},
+    "test_refs": {"type": "array", "items": {"type": "string"}},
+    "evidence_refs": {"type": "array", "items": {"type": "string"}},
+    "implementation_allowed": {"type": "boolean"},
+    "downstream_packs": {"type": "array", "items": {"type": "string"}},
+    "spec_gap_policy": {"type": "string"}
+  },
+  "additionalProperties": true
+}

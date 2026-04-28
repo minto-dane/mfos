@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mfos.local/schemas/source-card.schema.json",
+  "title": "MFOS Public-Safe Source Card",
+  "type": "object",
+  "required": [
+    "source_id",
+    "source_kind",
+    "source_type",
+    "semantic_role",
+    "vendor",
+    "document_title",
+    "document_url",
+    "retrieved_at",
+    "reference_purpose",
+    "review_topics",
+    "mfos_mapping",
+    "mfos_divergence",
+    "prohibited_inference",
+    "legal_controls",
+    "source_refs",
+    "requirement_refs",
+    "review_status"
+  ],
+  "properties": {
+    "schema_version": { "type": ["integer", "string"] },
+    "card_id": { "type": "string", "pattern": "^SRC-CARD-[A-Z0-9-]+$" },
+    "source_id": {
+      "type": "string",
+      "pattern": "^(EXTREF-[A-Z0-9-]+-[0-9]{4}|(?:X64|MS|TCG|NIST|SEL4|SLSA|TUF|FBVBS)(?:-[A-Z0-9]+)*-[0-9]{3})$"
+    },
+    "legacy_source_ids": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[A-Z0-9]+(?:-[A-Z0-9]+)*-[0-9]{3}$" }
+    },
+    "source_kind": {
+      "type": "string",
+      "enum": ["bibliographic_reference", "internal_transfer_reference"]
+    },
+    "source_type": {
+      "type": "string",
+      "enum": ["external_reference", "internal_transfer"]
+    },
+    "semantic_role": { "type": "string", "minLength": 1 },
+    "vendor": { "type": "string", "minLength": 1 },
+    "vendor_mark_used": { "type": "boolean" },
+    "product_family": { "type": ["string", "null"] },
+    "document_title": { "type": "string", "minLength": 1 },
+    "document_url": {
+      "oneOf": [
+        { "type": "string", "minLength": 1 },
+        { "type": "array", "items": { "type": "string", "minLength": 1 }, "minItems": 1 }
+      ]
+    },
+    "retrieved_at": { "type": "string", "minLength": 1 },
+    "reference_purpose": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "review_topics": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "mfos_mapping": {
+      "type": "object",
+      "required": ["mfos_components", "mfos_specs", "mfos_requirements"],
+      "properties": {
+        "mfos_components": { "type": "array", "items": { "type": "string" } },
+        "mfos_specs": { "type": "array", "items": { "type": "string" } },
+        "mfos_requirements": { "type": "array", "items": { "type": "string" } },
+        "mapping_notes": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "mfos_divergence": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "prohibited_inference": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "legal_controls": {
+      "type": "object",
+      "required": [
+        "public_safe",
+        "no_copied_text",
+        "no_long_quotes",
+        "no_tables_copied",
+        "no_diagrams_copied",
+        "no_record_layouts_copied",
+        "no_command_syntax_copied",
+        "no_macro_signatures_copied",
+        "no_message_tables_copied",
+        "attribution_required",
+        "trademark_reference_only",
+        "external_affiliation_claimed",
+        "compatibility_claimed",
+        "substitute_for_source"
+      ],
+      "properties": {
+        "public_safe": { "const": true },
+        "no_copied_text": { "const": true },
+        "no_long_quotes": { "const": true },
+        "no_tables_copied": { "const": true },
+        "no_diagrams_copied": { "const": true },
+        "no_record_layouts_copied": { "const": true },
+        "no_command_syntax_copied": { "const": true },
+        "no_macro_signatures_copied": { "const": true },
+        "no_message_tables_copied": { "const": true },
+        "attribution_required": { "const": true },
+        "trademark_reference_only": { "type": "boolean" },
+        "external_affiliation_claimed": { "const": false },
+        "compatibility_claimed": { "const": false },
+        "substitute_for_source": { "const": false }
+      },
+      "additionalProperties": false
+    },
+    "source_refs": {
+      "type": "array",
+      "items": { "type": "object" },
+      "minItems": 1
+    },
+    "requirement_refs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "review_status": { "type": "string" },
+    "status": { "type": "string" },
+    "gaps": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "not": {
+    "anyOf": [
+      { "required": ["canonical_concepts"] },
+      { "required": ["normative_source"] },
+      { "required": ["detailed_summary"] },
+      { "required": ["source_summary"] },
+      { "required": ["copied_excerpt"] },
+      { "required": ["record_layouts"] },
+      { "required": ["command_syntax"] },
+      { "required": ["macro_signatures"] }
+    ]
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,74 @@
+schema_kind: mfos_object_schema
+schema_version: 1
+status: draft
+phase: Phase 0.8 Core Semantics Freeze
+canonical_language: en
+implementation_allowed: false
+source_refs:
+- EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+- EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+- EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+required_fields:
+- binding_id
+- object_type
+- dsn
+- canonical_dsn
+- catalog_entry_id
+- dataset_id
+- catalog_entry_generation
+- dataset_generation
+- security_policy_generation
+- policy_version
+- observed_at_utc
+- integrity_tag
+optional_generation_fields:
+- spool_generation
+- amf_registry_generation
+- guard_root_generation
+field_rules:
+  binding_id:
+    type: uuid
+  object_type:
+    enum:
+    - DATASET
+    - CATALOG
+    - SPOOL
+    - AMF_MODULE
+    - GUARD_ROOT
+  dsn:
+    type: string
+    pattern: ^[A-Z][A-Z0-9_-]{0,7}(\.[A-Z][A-Z0-9_-]{0,7})*$
+  canonical_dsn:
+    type: string
+    pattern: ^[A-Z][A-Z0-9_-]{0,7}(\.[A-Z][A-Z0-9_-]{0,7})*$
+  catalog_entry_generation:
+    type: uint64
+    source: committed catalogd state
+  dataset_generation:
+    type: uint64
+    source: committed datasetd state
+  security_policy_generation:
+    type: uint64
+    source: committed securityd policy state
+  policy_version:
+    type: uint64
+  integrity_tag:
+    algorithm: SHA384
+    value_pattern: ^[A-Fa-f0-9]{96}$
+prohibited_fields:
+- caller_supplied_generation
+- posix_path
+- inode
+- raw_volume_path
+semantic_rules:
+- Dataset handles require catalog_entry_generation and dataset_generation.
+- Generation values come from committed object state, not caller input.
+- Mismatch with committed state rejects handle use.
+- Missing generation on a generation-aware protected object fails closed.
+non_compatibility: MFOS object schemas are independently authored and do not reproduce
+  external product layouts.
+additional_rules:
+- MFOS_ERR_SPEC_GAP for undefined fields or semantics.
+- MFOS_ERR_UNSUPPORTED for specified but unimplemented behavior.
+- MFOS_ERR_STALE_HANDLE for generation mismatch.
+- MFOS_ERR_POLICY_VERSION_MISMATCH for stale policy context.

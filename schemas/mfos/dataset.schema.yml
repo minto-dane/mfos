@@ -1,0 +1,94 @@
+schema_kind: mfos_object_schema
+schema_version: 1
+status: draft
+phase: Phase 0.8 Core Semantics Freeze
+canonical_language: en
+implementation_allowed: false
+source_refs:
+- EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+- EXTREF-IBM-ZOS-DFSMS-LIBRARY-0001
+- EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+dsn_grammar:
+  pattern: ^[A-Z][A-Z0-9_-]{0,7}(\.[A-Z][A-Z0-9_-]{0,7})*$
+  max_dsn_length: 255
+  max_qualifier_length: 8
+required_fields:
+- dataset_id
+- dsn
+- canonical_dsn
+- owner
+- dataset_type
+- catalog_entry_id
+- catalog_entry_generation
+- security_profile_id
+- retention_policy_id
+- encryption_policy
+- integrity_tag
+- integrity_policy_id
+- generation
+field_rules:
+  dataset_id:
+    type: uuid
+  dsn:
+    type: string
+    must_match: dsn_grammar.pattern
+  canonical_dsn:
+    type: string
+    must_match: dsn_grammar.pattern
+  dataset_type:
+    enum:
+    - SEQ
+    - PDS_LITE
+    - INPUT_STREAM
+    - OUTPUT_STREAM
+    - LOG
+    - CAT
+    - POLICY
+    - MODULE
+  catalog_entry_id:
+    type: uuid
+    rule: Persistent datasets require a committed CatalogEntry.
+  catalog_entry_generation:
+    type: uint64
+    rule: Must match committed CatalogEntry generation at open time.
+  encryption_policy:
+    mode:
+    - UNENCRYPTED
+    - KEY_SERVICE_PLACEHOLDER
+    status:
+    - PLACEHOLDER_ONLY
+    - CONFIGURED
+    rule: Required encryption with PLACEHOLDER_ONLY status fails closed; no silent fallback.
+  integrity_tag:
+    algorithm: SHA384
+    value_pattern: ^[A-Fa-f0-9]{96}$
+  generation:
+    type: uint64
+    rule: Increments on committed dataset metadata or content mutations that invalidate handles.
+  status:
+    enum:
+    - ACTIVE
+    - MIGRATED
+    - LOCKED
+    - DELETING
+    - DELETED
+    - CORRUPT
+prohibited_fields:
+- posix_path
+- host_path
+- inode
+- mount_point
+- raw_volume_path
+semantic_rules:
+- Dataset is a managed MFOS resource, not a POSIX file wrapper.
+- Raw volume references do not substitute for catalog resolution.
+- Dataset open requires committed CatalogEntry, securityd authorization, audit obligation handling, integrity verification, and ObjectGenerationBinding.
+- Retention policy controls delete and purge.
+non_compatibility: MFOS object schemas are independently authored and do not reproduce
+  external product layouts.
+additional_rules:
+- MFOS_ERR_SPEC_GAP for undefined fields or semantics.
+- MFOS_ERR_UNSUPPORTED for specified but unimplemented behavior.
+- MFOS_ERR_STALE_HANDLE for generation mismatch.
+- MFOS_ERR_RETENTION_DENIED when retention blocks delete or purge.
+- MFOS_ERR_ENCRYPTION_POLICY_UNAVAILABLE or MFOS_ERR_SPEC_GAP when configured encryption is required but only placeholder semantics exist.

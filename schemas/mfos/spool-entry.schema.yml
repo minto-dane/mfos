@@ -1,0 +1,143 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "https://mfos.local/schemas/mfos/spool-entry.schema.yml"
+title: "MFOS Phase 0.8 SpoolEntry"
+description: "Design schema for a Phase 0.8 MFOS SpoolEntry object. This is not production code."
+type: object
+additionalProperties: false
+x_mfos_spec_id: "MFOS-SPEC-09-JOB-SPOOL"
+x_mfos_source_refs:
+  - "EXTREF-IBM-ZOS-JES-INTRODUCTION-0001"
+  - "EXTREF-IBM-ZOS-JES-JOB-FLOW-0001"
+  - "EXTREF-IBM-ZOS-SECURITY-SERVER-0001"
+  - "EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001"
+  - "EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001"
+  - "EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001"
+x_mfos_evidence_boundary:
+  spool_entry_is_audit_evidence: false
+  audit_correlation_id_meaning: "Linkage to required AuditRecord evidence only; the SpoolEntry is not authorization or audit evidence by itself."
+  required_audit_spec: "MFOS-SPEC-07-AUDIT"
+required:
+  - schema_version
+  - spool_id
+  - entry_type
+  - job_id
+  - owner_principal
+  - effective_principal
+  - output_class
+  - security_profile
+  - retention_policy
+  - status
+  - size_bytes
+  - record_count
+  - sequence
+  - created_at_utc
+  - audit_correlation_id
+properties:
+  schema_version:
+    const: 1
+  spool_id:
+    type: string
+    pattern: '^SPL-[A-Z0-9][A-Z0-9_-]{7,63}$'
+  entry_type:
+    enum:
+      - INPUT_STREAM
+      - OUTPUT_STREAM
+  job_id:
+    type: string
+    pattern: '^JOB-[A-Z0-9][A-Z0-9_-]{7,63}$'
+  step_id:
+    type:
+      - string
+      - "null"
+    pattern: '^STEP-[A-Z0-9][A-Z0-9_-]{7,63}$'
+    default: null
+  dd_name:
+    type:
+      - string
+      - "null"
+    pattern: '^[A-Z][A-Z0-9_-]{0,7}$'
+    default: null
+  owner_principal:
+    $ref: "#/$defs/principal_ref"
+  effective_principal:
+    $ref: "#/$defs/principal_ref"
+  output_class:
+    type: string
+    pattern: '^[A-Z0-9]$'
+  security_profile:
+    type: string
+    pattern: '^SEC-[A-Z0-9][A-Z0-9_-]{1,63}$'
+  retention_policy:
+    type: string
+    pattern: '^RET-[A-Z0-9][A-Z0-9_-]{1,63}$'
+  status:
+    $ref: "#/$defs/spool_status"
+  size_bytes:
+    type: integer
+    minimum: 0
+  record_count:
+    type: integer
+    minimum: 0
+  sequence:
+    type: integer
+    minimum: 0
+  content_digest:
+    anyOf:
+      - $ref: "#/$defs/digest"
+      - type: "null"
+    default: null
+  created_at_utc:
+    $ref: "#/$defs/timestamp"
+  closed_at_utc:
+    anyOf:
+      - $ref: "#/$defs/timestamp"
+      - type: "null"
+    default: null
+  purge_after_utc:
+    anyOf:
+      - $ref: "#/$defs/timestamp"
+      - type: "null"
+    default: null
+  purged_at_utc:
+    anyOf:
+      - $ref: "#/$defs/timestamp"
+      - type: "null"
+    default: null
+  stale_ref_generation:
+    type:
+      - integer
+      - "null"
+    minimum: 0
+    default: null
+  audit_correlation_id:
+    $ref: "#/$defs/uuid"
+    description: "Correlation key for audit lookup. It does not make this SpoolEntry an audit record or evidence substitute."
+$defs:
+  principal_ref:
+    type: string
+    pattern: '^PRN-[A-Z0-9][A-Z0-9_-]{1,63}$'
+  uuid:
+    type: string
+    pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
+  timestamp:
+    type: string
+    format: date-time
+  digest:
+    type: string
+    pattern: '^sha(256|384|512):[0-9a-f]+$'
+  spool_status:
+    enum:
+      - CREATE_REQUESTED
+      - AUTHORIZING_CREATE
+      - OPEN
+      - WRITING
+      - CLOSED
+      - HELD
+      - BROWSE_ACTIVE
+      - EXPORTING
+      - PURGE_PENDING
+      - PURGED
+      - FAILED
+      - SPEC_GAP
+      - UNSUPPORTED
+      - AUDIT_REQUIRED_BUT_UNAVAILABLE

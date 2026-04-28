@@ -1,0 +1,185 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "https://mfos.local/schemas/mfos/dd.schema.yml"
+title: "MFOS Phase 0.8 DDStatement"
+description: "Design schema for a Phase 0.8 MFOS DDStatement object. This is not production code."
+type: object
+additionalProperties: false
+x_mfos_spec_id: "MFOS-SPEC-09-JOB-SPOOL"
+x_mfos_source_refs:
+  - "EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001"
+  - "EXTREF-IBM-ZOS-JES-INTRODUCTION-0001"
+  - "EXTREF-IBM-ZOS-SECURITY-SERVER-0001"
+  - "EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001"
+required:
+  - schema_version
+  - dd_id
+  - name
+  - kind
+  - operation
+  - resolved
+properties:
+  schema_version:
+    const: 1
+  dd_id:
+    type: string
+    pattern: '^DD-[A-Z0-9][A-Z0-9_-]{7,63}$'
+  name:
+    type: string
+    pattern: '^[A-Z][A-Z0-9_-]{0,7}$'
+  kind:
+    enum:
+      - DATASET
+      - INPUT_STREAM_INLINE
+      - INPUT_STREAM_SPOOL
+      - OUTPUT_STREAM
+  operation:
+    enum:
+      - READ
+      - WRITE
+      - UPDATE
+      - CREATE
+      - APPEND
+  disposition:
+    type:
+      - string
+      - "null"
+    enum:
+      - SHR
+      - OLD
+      - NEW
+      - MOD
+      - TEMP
+      - null
+    default: null
+  dsn:
+    type:
+      - string
+      - "null"
+    pattern: '^[A-Z][A-Z0-9_-]{0,7}(\.[A-Z][A-Z0-9_-]{0,7})*$'
+    default: null
+  output_class:
+    type:
+      - string
+      - "null"
+    pattern: '^([A-Z0-9]|\*)$'
+    default: null
+  inline_digest:
+    anyOf:
+      - $ref: "#/$defs/digest"
+      - type: "null"
+    default: null
+  source_location:
+    type: object
+    additionalProperties: false
+    required:
+      - line
+      - column
+    properties:
+      line:
+        type: integer
+        minimum: 1
+      column:
+        type: integer
+        minimum: 1
+  resolved:
+    type: object
+    additionalProperties: false
+    required:
+      - catalog_entry_ref
+      - dataset_handle_ref
+      - spool_entry_ref
+      - security_decision_id
+      - audit_obligation_id
+    properties:
+      catalog_entry_ref:
+        type:
+          - string
+          - "null"
+        maxLength: 128
+      dataset_handle_ref:
+        type:
+          - string
+          - "null"
+        maxLength: 128
+      spool_entry_ref:
+        type:
+          - string
+          - "null"
+        pattern: '^SPL-[A-Z0-9][A-Z0-9_-]{7,63}$'
+      security_decision_id:
+        type:
+          - string
+          - "null"
+        maxLength: 128
+      audit_obligation_id:
+        type:
+          - string
+          - "null"
+        maxLength: 128
+$defs:
+  digest:
+    type: string
+    pattern: '^sha(256|384|512):[0-9a-f]+$'
+allOf:
+  - if:
+      properties:
+        kind:
+          const: DATASET
+    then:
+      required:
+        - dsn
+        - disposition
+      properties:
+        dsn:
+          type: string
+        disposition:
+          enum:
+            - SHR
+            - OLD
+            - NEW
+            - MOD
+            - TEMP
+        output_class:
+          type: "null"
+        inline_digest:
+          type: "null"
+  - if:
+      properties:
+        kind:
+          const: OUTPUT_STREAM
+    then:
+      required:
+        - output_class
+      properties:
+        output_class:
+          type: string
+        dsn:
+          type: "null"
+        inline_digest:
+          type: "null"
+  - if:
+      properties:
+        kind:
+          const: INPUT_STREAM_INLINE
+    then:
+      required:
+        - inline_digest
+      properties:
+        inline_digest:
+          $ref: "#/$defs/digest"
+        dsn:
+          type: "null"
+        output_class:
+          type: "null"
+  - if:
+      properties:
+        kind:
+          const: INPUT_STREAM_SPOOL
+    then:
+      required:
+        - inline_digest
+      properties:
+        dsn:
+          type: "null"
+        output_class:
+          type: "null"

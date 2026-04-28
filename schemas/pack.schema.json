@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mfos.local/schemas/pack.schema.json",
+  "title": "MFOS AI Work Pack",
+  "type": "object",
+  "required": [
+    "pack_id",
+    "title",
+    "purpose",
+    "scope",
+    "non_objectives",
+    "depends_on",
+    "inputs",
+    "outputs",
+    "source_refs",
+    "requirements",
+    "object_model_refs",
+    "state_machine_refs",
+    "failure_modes",
+    "audit_obligations",
+    "positive_tests",
+    "negative_tests",
+    "fuzz_targets",
+    "spec_gaps",
+    "implementation_allowed",
+    "prompt"
+  ],
+  "properties": {
+    "pack_id": {"type": "string", "pattern": "^PACK-[0-9][0-9]$"},
+    "title": {"type": "string"},
+    "purpose": {"type": "string"},
+    "scope": {"type": "array", "items": {"type": "string"}},
+    "non_objectives": {"type": "array", "items": {"type": "string"}},
+    "depends_on": {"type": "array", "items": {"type": "string", "pattern": "^PACK-[0-9][0-9]$"}},
+    "inputs": {"type": "array", "items": {"type": "string"}},
+    "outputs": {"type": "array", "items": {"type": "string"}},
+    "source_refs": {"type": "array", "items": {"type": "string"}},
+    "requirements": {"type": "array", "items": {"type": "string"}},
+    "object_model_refs": {"type": "array", "items": {"type": "string"}},
+    "state_machine_refs": {"type": "array", "items": {"type": "string"}},
+    "failure_modes": {
+      "type": "array",
+      "items": {"type": "string"},
+      "contains": {"const": "MFOS_ERR_UNSUPPORTED"}
+    },
+    "audit_obligations": {"type": "array", "items": {"type": "string"}},
+    "positive_tests": {"type": "array", "items": {"type": "string"}},
+    "negative_tests": {"type": "array", "items": {"type": "string"}},
+    "fuzz_targets": {"type": "array", "items": {"type": "string"}},
+    "spec_gaps": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "implementation_allowed": {
+      "type": "object",
+      "required": [
+        "hosted_semantic_prototype",
+        "production",
+        "hardware_enforcement_claim",
+        "system_integrity_claim"
+      ],
+      "properties": {
+        "hosted_semantic_prototype": {"type": "boolean"},
+        "production": {"const": false},
+        "hardware_enforcement_claim": {"const": false},
+        "system_integrity_claim": {"enum": ["none", "semantic_only"]}
+      },
+      "additionalProperties": false
+    },
+    "prompt": {"type": "string"}
+  },
+  "additionalProperties": true
+}

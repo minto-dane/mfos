@@ -1,0 +1,288 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mfos.local/schemas/requirement.schema.json",
+  "title": "MFOS machine-readable requirements catalog",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "registry_kind",
+    "schema_version",
+    "registry_id",
+    "catalog_version",
+    "status",
+    "schema_ref",
+    "source_matrix_ref",
+    "non_compatibility_statement",
+    "language_policy",
+    "profile_model",
+    "source_type_values",
+    "status_values",
+    "entries",
+    "spec_gaps"
+  ],
+  "properties": {
+    "registry_kind": { "const": "requirements" },
+    "schema_version": { "type": "integer", "minimum": 1 },
+    "registry_id": { "type": "string", "pattern": "^MFOS-REG-[A-Z0-9-]+$" },
+    "catalog_version": { "type": "string", "pattern": "^v[0-9]+\\.[0-9]+$" },
+    "status": { "$ref": "#/$defs/status" },
+    "schema_ref": { "$ref": "#/$defs/pathRef" },
+    "source_matrix_ref": {
+      "type": "object",
+      "required": ["path", "schema_version"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "schema_version": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "non_compatibility_statement": {
+      "type": "string",
+      "allOf": [
+        { "pattern": "z/OS-inspired" },
+        { "pattern": "does not claim z/OS compatibility" },
+        { "pattern": "IBM product compatibility" }
+      ]
+    },
+    "language_policy": { "type": "object" },
+    "profile_model": {
+      "type": "object",
+      "required": ["profiles", "applicability_values"],
+      "properties": {
+        "profiles": {
+          "type": "object",
+          "required": [
+            "baseline",
+            "enterprise_standalone",
+            "enterprise_pxm",
+            "high_assurance"
+          ],
+          "properties": {
+            "baseline": { "$ref": "#/$defs/profileDescription" },
+            "enterprise_standalone": { "$ref": "#/$defs/profileDescription" },
+            "enterprise_pxm": { "$ref": "#/$defs/profileDescription" },
+            "high_assurance": { "$ref": "#/$defs/profileDescription" }
+          }
+        },
+        "applicability_values": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/applicability" }
+        }
+      }
+    },
+    "source_type_values": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/sourceType" }
+    },
+    "status_values": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/status" }
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/requirementEntry" },
+      "contains": {
+        "type": "object",
+        "required": ["requirement_id", "normative_text"],
+        "properties": {
+          "requirement_id": { "const": "MFOS-REQ-CATALOG-0002" },
+          "normative_text": { "type": "string", "pattern": "\\bMUST\\b" }
+        }
+      }
+    },
+    "spec_gaps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["gap_id", "summary"],
+        "properties": {
+          "gap_id": { "type": "string", "pattern": "^REQ-GAP-[0-9]{4}$" },
+          "summary": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "pathRef": {
+      "type": "object",
+      "required": ["path"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "reviewed", "approved", "superseded"]
+    },
+    "sourceType": {
+      "type": "string",
+      "enum": ["normative", "informative", "internal_transfer", "external_reference"]
+    },
+    "applicability": {
+      "type": "string",
+      "enum": [
+        "required",
+        "conditional",
+        "optional",
+        "not_applicable",
+        "prohibited",
+        "deferred"
+      ]
+    },
+    "profileDescription": {
+      "type": "object",
+      "required": ["description"],
+      "properties": {
+        "description": { "type": "string", "minLength": 1 }
+      }
+    },
+    "sourceRef": {
+      "type": "object",
+      "required": ["source_id", "source_type", "role"],
+      "properties": {
+        "source_id": {
+          "type": "string",
+          "pattern": "^(EXTREF-[A-Z0-9-]+-[0-9]{4}|(?:X64|MS|TCG|NIST|SEL4|SLSA|TUF|FBVBS)(?:-[A-Z0-9]+)*-[0-9]{3})$"
+        },
+        "source_type": { "$ref": "#/$defs/sourceType" },
+        "role": { "type": "string", "minLength": 1 }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "required": ["primary", "tests"],
+      "properties": {
+        "primary": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "tests": {
+          "type": "object",
+          "required": ["positive", "negative"],
+          "properties": {
+            "positive": {
+              "type": "array",
+              "items": { "type": "string", "pattern": "^(TEST|NEG)-MFOS-[A-Z0-9-]+$" }
+            },
+            "negative": {
+              "type": "array",
+              "items": { "type": "string", "pattern": "^(TEST|NEG)-MFOS-[A-Z0-9-]+$" }
+            }
+          }
+        }
+      }
+    },
+    "auditObligation": {
+      "type": "object",
+      "required": [
+        "obligation",
+        "record_type",
+        "before_return",
+        "redaction_policy",
+        "notes"
+      ],
+      "properties": {
+        "obligation": { "type": "string", "enum": ["required", "conditional", "none"] },
+        "record_type": { "type": "string", "pattern": "^[A-Z0-9_]+$" },
+        "before_return": { "type": "boolean" },
+        "redaction_policy": { "type": "string", "pattern": "^[A-Z0-9_]+$" },
+        "notes": { "type": "string", "minLength": 1 }
+      }
+    },
+    "failureMode": {
+      "type": "object",
+      "required": ["error", "fail_closed", "conditions"],
+      "properties": {
+        "error": { "type": "string", "pattern": "^[A-Z0-9_]+$" },
+        "fail_closed": { "type": "boolean" },
+        "conditions": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "alternative_errors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["error", "condition"],
+            "properties": {
+              "error": { "type": "string", "pattern": "^[A-Z0-9_]+$" },
+              "condition": { "type": "string", "minLength": 1 }
+            }
+          }
+        }
+      }
+    },
+    "evidenceRequired": {
+      "type": "object",
+      "required": ["evidence_type", "evidence_id"],
+      "properties": {
+        "evidence_type": { "type": "string", "minLength": 1 },
+        "evidence_id": { "type": "string", "pattern": "^EV-MFOS-[A-Z0-9-]+$" }
+      }
+    },
+    "requirementEntry": {
+      "type": "object",
+      "required": [
+        "requirement_id",
+        "title",
+        "normative_text",
+        "source_refs",
+        "profile_applicability",
+        "target_components",
+        "verification",
+        "audit_obligation",
+        "failure_mode",
+        "evidence_required",
+        "status"
+      ],
+      "properties": {
+        "requirement_id": { "type": "string", "pattern": "^MFOS-REQ-[A-Z0-9]+-[0-9]{4}$" },
+        "title": { "type": "string", "minLength": 1 },
+        "normative_text": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\b(MUST|MUST NOT|SHOULD|MAY)\\b|fail closed"
+        },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/sourceRef" }
+        },
+        "profile_applicability": {
+          "type": "object",
+          "required": [
+            "baseline",
+            "enterprise_standalone",
+            "enterprise_pxm",
+            "high_assurance"
+          ],
+          "properties": {
+            "baseline": { "$ref": "#/$defs/applicability" },
+            "enterprise_standalone": { "$ref": "#/$defs/applicability" },
+            "enterprise_pxm": { "$ref": "#/$defs/applicability" },
+            "high_assurance": { "$ref": "#/$defs/applicability" }
+          }
+        },
+        "target_components": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "verification": { "$ref": "#/$defs/verification" },
+        "audit_obligation": { "$ref": "#/$defs/auditObligation" },
+        "failure_mode": { "$ref": "#/$defs/failureMode" },
+        "evidence_required": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/evidenceRequired" }
+        },
+        "status": { "$ref": "#/$defs/status" }
+      }
+    }
+  }
+}

@@ -1,0 +1,109 @@
+schema_kind: mfos_object_schema
+schema_version: 1
+status: draft
+phase: Phase 0.8 Core Semantics Freeze
+canonical_language: en
+implementation_allowed: false
+source_refs:
+- EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+- EXTREF-IBM-ZOS-DFSMS-LIBRARY-0001
+- EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+- EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+- EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+dsn_grammar:
+  pattern: ^[A-Z][A-Z0-9_-]{0,7}(\.[A-Z][A-Z0-9_-]{0,7})*$
+  max_dsn_length: 255
+  max_qualifier_length: 8
+  invalid:
+  - empty qualifier
+  - leading dot
+  - trailing dot
+  - repeated dot
+  - lowercase at catalogd boundary
+  - slash
+  - backslash
+  - colon
+  - NUL byte
+  - POSIX path segment
+required_fields:
+- catalog_entry_id
+- dsn
+- canonical_dsn
+- owner
+- entry_state
+- dataset_id
+- location
+- security_profile_id
+- retention_policy_id
+- encryption_policy
+- generation
+- integrity_tag
+- immutable
+- system_dataset
+- created_at_utc
+- updated_at_utc
+- committed_at_utc
+field_rules:
+  catalog_entry_id:
+    type: uuid
+    notes: Stable logical catalog entry identity. Implementations may expose entry_id as a serialization alias only if the schema is revised.
+  dsn:
+    type: string
+    must_match: dsn_grammar.pattern
+  canonical_dsn:
+    type: string
+    must_match: dsn_grammar.pattern
+    rule: catalogd compares and resolves by canonical_dsn only.
+  entry_state:
+    enum:
+    - PREPARED
+    - COMMITTED
+    - DELETING
+    - DELETED
+    - CORRUPT
+  location:
+    required_fields:
+    - volume_refs
+    - extent_refs
+    prohibited_fields:
+    - posix_path
+    - host_path
+    - inode
+    - mount_point
+    - raw_volume_path
+  encryption_policy:
+    mode:
+    - UNENCRYPTED
+    - KEY_SERVICE_PLACEHOLDER
+    status:
+    - PLACEHOLDER_ONLY
+    - CONFIGURED
+    rule: Required encryption with PLACEHOLDER_ONLY status fails closed; no unencrypted downgrade.
+  generation:
+    type: uint64
+    rule: Increases only on committed metadata updates.
+  integrity_tag:
+    algorithm: SHA384
+    value_pattern: ^[A-Fa-f0-9]{96}$
+    covers: Canonical catalog metadata excluding the integrity_tag field.
+  immutable:
+    type: boolean
+  system_dataset:
+    type: boolean
+    rule: system_dataset true requires immutable true at commit and after commit.
+resolution_rules:
+- catalogd resolves only entry_state COMMITTED.
+- catalogd MUST NOT resolve PREPARED, rolled-back, partially journaled, orphaned, DELETING, DELETED, CORRUPT, or integrity-failed entries.
+- MFOS-REQ-CATALOG-0002 is a MUST and remains committed-entry-only.
+invalid_transitions:
+- PREPARED to externally resolvable without COMMITTED.
+- COMMITTED with missing or mismatched integrity_tag.
+- COMMITTED system_dataset true with immutable false.
+- Ordinary update or delete of committed system_dataset true.
+non_compatibility: MFOS object schemas are independently authored and do not reproduce
+  external product layouts.
+additional_rules:
+- MFOS_ERR_SPEC_GAP for undefined fields or semantics.
+- MFOS_ERR_UNSUPPORTED for specified but unimplemented behavior.
+- MFOS_ERR_CATALOG_NOT_FOUND for non-committed entries when fail-closed corruption handling is not required.
+- MFOS_ERR_INTERNAL_CORRUPTION for integrity mismatch or unsafe recovery state.

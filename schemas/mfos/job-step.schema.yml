@@ -1,0 +1,156 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "https://mfos.local/schemas/mfos/job-step.schema.yml"
+title: "MFOS Phase 0.8 JobStep"
+description: "Design schema for a Phase 0.8 MFOS JobStep object. This is not production code."
+type: object
+additionalProperties: false
+x_mfos_spec_id: "MFOS-SPEC-09-JOB-SPOOL"
+x_mfos_source_refs:
+  - "EXTREF-IBM-ZOS-JES-INTRODUCTION-0001"
+  - "EXTREF-IBM-ZOS-JES-JOB-FLOW-0001"
+  - "EXTREF-IBM-ZOS-SECURITY-SERVER-0001"
+  - "EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001"
+required:
+  - schema_version
+  - step_id
+  - step_name
+  - ordinal
+  - program
+  - dd
+  - status
+properties:
+  schema_version:
+    const: 1
+  step_id:
+    type: string
+    pattern: '^STEP-[A-Z0-9][A-Z0-9_-]{7,63}$'
+  step_name:
+    type: string
+    pattern: '^[A-Z][A-Z0-9_-]{0,7}$'
+  ordinal:
+    type: integer
+    minimum: 1
+  program:
+    $ref: "#/$defs/program_identity"
+  dd:
+    type: array
+    items:
+      $ref: "dd.schema.yml"
+  status:
+    $ref: "#/$defs/step_status"
+  return_code:
+    anyOf:
+      - $ref: "#/$defs/return_code"
+      - type: "null"
+    default: null
+  failure_state:
+    anyOf:
+      - $ref: "#/$defs/step_failure_state"
+      - type: "null"
+    default: null
+  failure_reason_code:
+    type:
+      - string
+      - "null"
+    pattern: '^[A-Z][A-Z0-9_]{0,63}$'
+    default: null
+  started_at_utc:
+    anyOf:
+      - $ref: "#/$defs/timestamp"
+      - type: "null"
+    default: null
+  completed_at_utc:
+    anyOf:
+      - $ref: "#/$defs/timestamp"
+      - type: "null"
+    default: null
+$defs:
+  timestamp:
+    type: string
+    format: date-time
+  return_code:
+    type: integer
+    minimum: 0
+    maximum: 4095
+  program_identity:
+    type: object
+    additionalProperties: false
+    required:
+      - program_name
+      - program_source
+      - authority_class
+    properties:
+      program_name:
+        type: string
+        pattern: '^[A-Z][A-Z0-9_-]{0,7}(\.[A-Z][A-Z0-9_-]{0,7})*$'
+      program_ref:
+        type:
+          - string
+          - "null"
+        maxLength: 128
+        default: null
+      program_source:
+        enum:
+          - CATALOG_MODULE
+          - BUILTIN_TEST_PROGRAM
+          - SPEC_GAP
+      authority_class:
+        enum:
+          - NORMAL
+          - AUTHORIZED
+          - SPEC_GAP
+      measurement_ref:
+        type:
+          - string
+          - "null"
+        maxLength: 128
+        default: null
+      policy_version:
+        type:
+          - integer
+          - "null"
+        minimum: 0
+        default: null
+      authorization_decision_id:
+        type:
+          - string
+          - "null"
+        maxLength: 128
+        default: null
+  step_status:
+    enum:
+      - PENDING
+      - RESOLVING_DD
+      - AUTHORIZING_PROGRAM
+      - OPENING_RESOURCES
+      - READY
+      - EXECUTING
+      - CAPTURING_OUTPUT_STREAM
+      - CLOSING_RESOURCES
+      - COMPLETE
+      - FAILED
+      - ABENDED
+      - CANCELING
+      - CANCELED
+      - SPEC_GAP
+      - UNSUPPORTED
+      - AUDIT_REQUIRED_BUT_UNAVAILABLE
+  step_failure_state:
+    enum:
+      - JOB_CONTROL_STREAM_ERROR
+      - SECURITY_DENIED
+      - DATASET_RESOLVE_FAILED
+      - DATASET_OPEN_DENIED
+      - PROGRAM_RESOLVE_FAILED
+      - PROGRAM_EXECUTE_DENIED
+      - PROGRAM_LOAD_DENIED
+      - INPUT_STREAM_PREPARE_FAILED
+      - OUTPUT_STREAM_CREATE_DENIED
+      - OUTPUT_STREAM_CAPTURE_FAILED
+      - RESOURCE_CLOSE_FAILED
+      - ABENDED
+      - CANCELED
+      - AUDIT_REQUIRED_BUT_UNAVAILABLE
+      - UNSUPPORTED
+      - SPEC_GAP
+      - INTERNAL_CORRUPTION

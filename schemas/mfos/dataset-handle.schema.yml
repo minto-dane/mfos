@@ -1,0 +1,92 @@
+schema_kind: mfos_object_schema
+schema_version: 1
+status: draft
+phase: Phase 0.8 Core Semantics Freeze
+canonical_language: en
+implementation_allowed: false
+source_refs:
+- EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+- EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+- EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+- EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+dsn_grammar:
+  pattern: ^[A-Z][A-Z0-9_-]{0,7}(\.[A-Z][A-Z0-9_-]{0,7})*$
+  max_dsn_length: 255
+  max_qualifier_length: 8
+required_fields:
+- handle_id
+- dataset_id
+- dsn
+- canonical_dsn
+- subject
+- operation
+- decision_id
+- policy_version
+- policy_binding_id
+- catalog_entry_generation
+- dataset_generation
+- object_generation_binding_id
+- audit_obligation_id
+- correlation_id
+- issued_at_utc
+- expires_at_utc
+- state
+field_rules:
+  handle_id:
+    type: uuid
+  dataset_id:
+    type: uuid
+  dsn:
+    type: string
+    must_match: dsn_grammar.pattern
+  canonical_dsn:
+    type: string
+    must_match: dsn_grammar.pattern
+  subject:
+    type: SubjectRef
+  operation:
+    enum:
+    - READ
+    - WRITE
+    - UPDATE
+    - CREATE
+    - DELETE
+    - CONTROL
+  decision_id:
+    rule: Must reference an ALLOW or ALLOW_WITH_AUDIT securityd decision; DENY never creates a handle.
+  policy_version:
+    type: uint64
+  catalog_entry_generation:
+    type: uint64
+  dataset_generation:
+    type: uint64
+  object_generation_binding_id:
+    rule: Must reference ObjectGenerationBinding captured from committed catalog and dataset state.
+  state:
+    enum:
+    - ACTIVE
+    - CLOSING
+    - REVOKED
+    - CLOSED
+prohibited_fields:
+- posix_fd
+- posix_path
+- host_path
+- inode
+- raw_volume_path
+- caller_supplied_decision
+semantic_rules:
+- Handle issuance requires committed catalog resolution.
+- Handle issuance requires securityd ALLOW or ALLOW_WITH_AUDIT.
+- Handle issuance requires required audit obligation establishment.
+- Handle issuance requires integrity tag verification.
+- Handle issuance requires ObjectGenerationBinding.
+- Stale, wrong-subject, wrong-operation, expired, or generation-mismatched handles fail closed.
+non_compatibility: MFOS object schemas are independently authored and do not reproduce
+  external product layouts.
+additional_rules:
+- MFOS_ERR_SPEC_GAP for undefined fields or semantics.
+- MFOS_ERR_UNSUPPORTED for specified but unimplemented behavior.
+- MFOS_ERR_POLICY_DENIED for denied authorization.
+- MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE when required audit cannot be met.
+- MFOS_ERR_STALE_HANDLE for binding mismatch or expiry.

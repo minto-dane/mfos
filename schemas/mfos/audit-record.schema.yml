@@ -1,0 +1,454 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "https://mfos.local/schemas/mfos/audit-record.schema.yml"
+title: "MFOS AuditRecord Phase 0.8 Design Schema"
+description: "Design-level schema for auditd evidence records. This schema does not implement storage, transport, or production encoders."
+type: object
+additionalProperties: false
+x-mfos:
+  phase: "0.8"
+  design_only: true
+  source_refs:
+    - EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
+    - EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001
+    - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+    - EXTREF-IBM-ZOS-DFSMS-LIBRARY-0001
+    - EXTREF-IBM-Z-DPM-0001
+    - EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
+    - EXTREF-IBM-ZOS-JES-JOB-FLOW-0001
+    - EXTREF-IBM-ZOS-JES2-LIBRARY-0001
+    - EXTREF-IBM-Z-LPAR-INTRODUCTION-0001
+    - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+    - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+    - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+    - EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+    - EXTREF-IBM-ZOS-SMPE-SECINT-HOLDDATA-0001
+    - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+required:
+  - magic
+  - evidence_kind
+  - schema_version
+  - record_id
+  - stream_id
+  - record_seq
+  - timestamp_utc
+  - partition_id
+  - component_id
+  - profile
+  - record_type
+  - event_class
+  - correlation_id
+  - subject
+  - object
+  - operation
+  - decision
+  - reason_code
+  - authority_used
+  - obligations
+  - payload_schema
+  - payload
+  - redaction_policy
+  - previous_hash
+  - payload_hash
+  - canonical_record_hash
+  - record_hash
+properties:
+  magic:
+    const: MFAR
+  evidence_kind:
+    const: AUDIT_RECORD
+    description: "Only an auditd-accepted AuditRecord is audit evidence; logs, console lines, and spool entries are not evidence."
+  schema_version:
+    type: integer
+    minimum: 1
+    maximum: 65535
+  record_id:
+    type: string
+    pattern: "^AUDREC-[A-Z0-9][A-Z0-9-]*$"
+  stream_id:
+    type: string
+    pattern: "^AUDSTR-[A-Z0-9][A-Z0-9-]*$"
+  record_seq:
+    type: integer
+    minimum: 0
+  timestamp_utc:
+    type: string
+    format: date-time
+  partition_id:
+    type: string
+    pattern: "^(GLOBAL|PART-[A-Z0-9][A-Z0-9-]*)$"
+  component_id:
+    type: string
+    pattern: "^[a-z][a-z0-9_-]*$"
+  profile:
+    enum:
+      - BASELINE
+      - ENTERPRISE_STANDALONE
+      - ENTERPRISE_PXM
+      - HIGH_ASSURANCE
+      - DEV
+  record_type:
+    $ref: "#/$defs/AuditRecordType"
+  event_class:
+    $ref: "#/$defs/AuditClass"
+  correlation_id:
+    $ref: "#/$defs/CorrelationId"
+  parent_correlation_id:
+    oneOf:
+      - $ref: "#/$defs/CorrelationId"
+      - type: "null"
+  request_id:
+    type: string
+    minLength: 1
+    maxLength: 128
+  decision_id:
+    type: string
+    minLength: 1
+    maxLength: 128
+  subject:
+    $ref: "#/$defs/AuditSubject"
+  object:
+    $ref: "#/$defs/AuditObject"
+  operation:
+    type: string
+    pattern: "^[A-Z][A-Z0-9_]*$"
+  decision:
+    enum:
+      - ALLOW
+      - DENY
+      - ALLOW_WITH_AUDIT
+      - REQUIRE_MFA
+      - REQUIRE_DUAL_CONTROL
+      - REQUIRE_BREAK_GLASS
+      - REQUIRE_GUARD_APPROVAL
+      - REQUIRE_OPERATOR_CONFIRMATION
+      - UNSUPPORTED
+      - SPEC_GAP
+      - NONE
+  reason_code:
+    $ref: "#/$defs/AuditReasonCode"
+  policy_version:
+    type: integer
+    minimum: 0
+  authority_used:
+    type: array
+    items:
+      type: string
+      pattern: "^[A-Z][A-Z0-9_:-]*$"
+    uniqueItems: true
+  obligations:
+    type: array
+    items:
+      $ref: "#/$defs/AuditObligationRef"
+  activation_profile_hash:
+    $ref: "#/$defs/Digest"
+  measurement_context:
+    $ref: "#/$defs/Digest"
+  guard_root:
+    $ref: "#/$defs/GuardRoot"
+  payload_schema:
+    type: string
+    pattern: "^[A-Za-z0-9_.:-]+$"
+  payload:
+    type: object
+    additionalProperties: true
+    maxProperties: 128
+  redaction_policy:
+    type: string
+    pattern: "^(REDACT_[A-Z0-9_]+|POLICY-[A-Z0-9][A-Z0-9-]*)$"
+  previous_hash:
+    $ref: "#/$defs/Digest"
+  payload_hash:
+    $ref: "#/$defs/Digest"
+  canonical_record_hash:
+    $ref: "#/$defs/Digest"
+  record_hash:
+    $ref: "#/$defs/Digest"
+    description: "Computed by auditd over previous_hash and canonical_record_hash; caller-supplied hashes are not authoritative."
+  signature:
+    type: string
+    minLength: 1
+    maxLength: 4096
+allOf:
+  - if:
+      properties:
+        record_type:
+          const: GUARD_ROOT_TRANSITION
+    then:
+      required:
+        - guard_root
+      properties:
+        guard_root:
+          type: object
+          required:
+            - root_type
+            - root_version
+            - root_digest
+            - guard_measurement
+  - if:
+      properties:
+        record_type:
+          enum:
+            - SECURITY_DECISION
+            - SECURITY_DENY
+            - DATASET_ACCESS
+            - DATASET_DENY
+            - CATALOG_UPDATE
+            - SPOOL_EVENT
+            - OPERATOR_COMMAND
+            - POLICY_CHANGE
+            - BREAK_GLASS
+            - AMF_LOAD
+            - UPDATE_EVENT
+            - PARTITION_OPERATION
+            - DEVICE_ASSIGNMENT
+            - GUARD_ROOT_TRANSITION
+            - AUDIT_QUERY
+            - AUDIT_EXPORT
+            - AUDIT_ADMIN
+    then:
+      required:
+        - policy_version
+$defs:
+  CorrelationId:
+    type: string
+    pattern: "^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+  Digest:
+    type: string
+    pattern: "^sha384:[0-9a-f]{96}$"
+  AuditRecordType:
+    enum:
+      - STREAM_CREATE
+      - STREAM_ROLLOVER
+      - SECURITY_DECISION
+      - SECURITY_DENY
+      - DATASET_ACCESS
+      - DATASET_DENY
+      - CATALOG_UPDATE
+      - JOB_EVENT
+      - SPOOL_EVENT
+      - OPERATOR_COMMAND
+      - POLICY_CHANGE
+      - BREAK_GLASS
+      - AMF_LOAD
+      - UPDATE_EVENT
+      - PARTITION_OPERATION
+      - DEVICE_ASSIGNMENT
+      - GUARD_ROOT_TRANSITION
+      - AUDIT_QUERY
+      - AUDIT_EXPORT
+      - AUDIT_ADMIN
+      - AUDIT_TAMPER
+      - RECOVERY
+  AuditClass:
+    enum:
+      - SECURITY_DECISION
+      - SECURITY_DENY
+      - POLICY_CHANGE
+      - DATASET_ACCESS
+      - DATASET_DENY
+      - CATALOG_UPDATE
+      - JOB_SUBMIT
+      - JOB_EXECUTE
+      - JOB_COMPLETE
+      - SPOOL_ACCESS
+      - SPOOL_PURGE
+      - OPERATOR_COMMAND
+      - AMF_LOAD
+      - UPDATE_SECURITY_CRITICAL
+      - PARTITION_OPERATION
+      - DEVICE_ASSIGNMENT
+      - GUARD_ROOT_TRANSITION
+      - BREAK_GLASS
+      - AUTHENTICATION
+      - AUDIT_ADMIN
+      - AUDIT_TAMPER
+      - RECOVERY
+  AuditReasonCode:
+    enum:
+      - AUD_RC_POLICY_ALLOW
+      - AUD_RC_POLICY_DENY
+      - AUD_RC_POLICY_MISSING
+      - AUD_RC_POLICY_STALE
+      - AUD_RC_POLICY_MALFORMED
+      - AUD_RC_SUBJECT_UNKNOWN
+      - AUD_RC_OBJECT_UNKNOWN
+      - AUD_RC_OPERATION_INVALID
+      - AUD_RC_OPERATION_UNSUPPORTED
+      - AUD_RC_SPEC_GAP
+      - AUD_RC_AUTHORITY_USED
+      - AUD_RC_OBLIGATION_UNSATISFIED
+      - AUD_RC_AUDIT_APPEND_REQUIRED
+      - AUD_RC_AUDIT_APPEND_FAILED
+      - AUD_RC_AUDIT_SCHEMA_INVALID
+      - AUD_RC_AUDIT_CHAIN_MISMATCH
+      - AUD_RC_AUDIT_STORE_FULL
+      - AUD_RC_AUDIT_EXPORT_QUEUED
+      - AUD_RC_AUDIT_EXPORT_FAILED
+      - AUD_RC_AUDIT_QUERY_UNAUTHORIZED
+      - AUD_RC_REDACTION_POLICY_MISSING
+      - AUD_RC_RETENTION_DENIED
+      - AUD_RC_GUARD_ROOT_REQUIRED
+      - AUD_RC_GUARD_ROOT_FAILED
+      - AUD_RC_RECOVERY_MODE
+      - AUD_RC_BREAK_GLASS_OPEN
+      - AUD_RC_BREAK_GLASS_EXPIRED
+      - AUD_RC_UPDATE_SECURITY_EVENT
+      - AUD_RC_PARTITION_POLICY_DENIED
+      - AUD_RC_DEVICE_TEARDOWN_INCOMPLETE
+  AuditObligationRef:
+    type: object
+    additionalProperties: false
+    required:
+      - obligation_id
+      - kind
+      - required_before_return
+      - required_before_effect
+      - satisfied
+      - failure_policy
+    properties:
+      obligation_id:
+        type: string
+        pattern: "^AUD-[A-Z0-9-]+-[0-9]{4}$"
+      kind:
+        enum:
+          - AUDIT
+          - MFA
+          - DUAL_CONTROL
+          - BREAK_GLASS
+          - GUARD_APPROVAL
+          - OPERATOR_CONFIRMATION
+          - RATE_LIMIT
+          - NOTIFY
+          - REMOTE_EXPORT
+          - LOCKDOWN
+      required_before_return:
+        type: boolean
+      required_before_effect:
+        type: boolean
+      satisfied:
+        type: boolean
+      failure_policy:
+        enum:
+          - FAIL_CLOSED
+          - DEGRADED_READ_ONLY
+          - RECOVERY_MODE
+  AuditSubject:
+    type: object
+    additionalProperties: false
+    required:
+      - subject_id
+      - subject_type
+      - groups
+      - roles
+      - auth_strength
+      - emergency_active
+    properties:
+      subject_id:
+        type: string
+        minLength: 1
+        maxLength: 256
+      subject_type:
+        enum:
+          - HUMAN
+          - SERVICE
+          - JOB
+          - PROGRAM
+          - OPERATOR
+          - PARTITION
+          - SYSTEM
+          - UNKNOWN
+      principal_id:
+        type: string
+      effective_principal_id:
+        type: string
+      groups:
+        type: array
+        items:
+          type: string
+      roles:
+        type: array
+        items:
+          type: string
+      job_id:
+        type: string
+      program_id:
+        type: string
+      module_id:
+        type: string
+      service_id:
+        type: string
+      operator_session_id:
+        type: string
+      partition_id:
+        type: string
+        pattern: "^(GLOBAL|PART-[A-Z0-9][A-Z0-9-]*)$"
+      auth_strength:
+        enum:
+          - NONE
+          - PASSWORD
+          - MFA
+          - CERTIFICATE
+          - HARDWARE_BACKED
+          - RECOVERY
+          - UNKNOWN
+      emergency_active:
+        type: boolean
+  AuditObject:
+    type: object
+    additionalProperties: false
+    required:
+      - resource_type
+      - object_id
+    properties:
+      resource_type:
+        enum:
+          - DATASET
+          - CATALOG
+          - SPOOL
+          - JOB
+          - PROGRAM
+          - AMF_MODULE
+          - OPERATOR_COMMAND
+          - PARTITION
+          - DEVICE
+          - AUDIT_STREAM
+          - UPDATE_ARTIFACT
+          - GUARD_ROOT
+          - SECURITY_POLICY
+          - WORKLOAD_POLICY
+          - SYSTEM
+          - UNKNOWN
+      object_id:
+        type: string
+        minLength: 1
+        maxLength: 512
+      object_name:
+        type: string
+        maxLength: 512
+      owner_principal_id:
+        type: string
+      security_profile_id:
+        type: string
+      generation:
+        type: integer
+        minimum: 0
+      catalog_generation:
+        type: integer
+        minimum: 0
+      partition_id:
+        type: string
+        pattern: "^(GLOBAL|PART-[A-Z0-9][A-Z0-9-]*)$"
+  GuardRoot:
+    type: object
+    additionalProperties: false
+    properties:
+      root_type:
+        type: string
+        pattern: "^[A-Z][A-Z0-9_]*$"
+      root_version:
+        type: integer
+        minimum: 0
+      root_digest:
+        $ref: "#/$defs/Digest"
+      guard_measurement:
+        $ref: "#/$defs/Digest"

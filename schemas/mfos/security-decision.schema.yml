@@ -1,0 +1,438 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "https://mfos.local/schemas/mfos/security-decision.schema.yml"
+title: "MFOS SecurityDecision Design Schema"
+description: "Phase 0.8 design contract for authorization decisions. This schema does not authorize production implementation."
+type: object
+additionalProperties: false
+required:
+  - schema_metadata
+  - implementation_allowed
+  - schema_version
+  - decision_id
+  - request_id
+  - correlation_id
+  - subject
+  - object
+  - operation
+  - context
+  - result
+  - reason_code
+  - policy_id
+  - policy_version
+  - policy_epoch
+  - matched_binding_refs
+  - obligations
+  - handle_constraints
+  - cacheability
+  - issued_at_utc
+properties:
+  schema_metadata:
+    type: object
+    additionalProperties: false
+    required:
+      - schema_id
+      - status
+      - owning_spec
+      - source_matrix_ids
+    properties:
+      schema_id:
+        const: "MFOS-SCHEMA-AUTH-SECURITY-DECISION-0001"
+      status:
+        const: "design_freeze"
+      owning_spec:
+        const: "MFOS-SPEC-06-AUTHORIZATION"
+      source_matrix_ids:
+        type: array
+        minItems: 1
+        uniqueItems: true
+        items:
+          $ref: "#/$defs/extref_id"
+  implementation_allowed:
+    const: false
+  schema_version:
+    const: 1
+  decision_id:
+    pattern: "^MFOS-AUTH-DECISION-[A-Z0-9][A-Z0-9-]{0,127}$"
+    type: string
+  request_id:
+    pattern: "^MFOS-AUTH-REQUEST-[A-Z0-9][A-Z0-9-]{0,127}$"
+    type: string
+  correlation_id:
+    pattern: "^MFOS-CORRELATION-[A-Z0-9][A-Z0-9-]{0,127}$"
+    type: string
+  subject:
+    $ref: "#/$defs/subject"
+  object:
+    $ref: "#/$defs/object_ref"
+  operation:
+    $ref: "#/$defs/operation"
+  context:
+    $ref: "#/$defs/decision_context"
+  result:
+    enum:
+      - MFOS_AUTH_ALLOW
+      - MFOS_AUTH_ALLOW_WITH_OBLIGATIONS
+      - MFOS_AUTH_DENY
+      - MFOS_AUTH_REQUIRE_MFA
+      - MFOS_AUTH_REQUIRE_DUAL_CONTROL
+      - MFOS_AUTH_REQUIRE_BREAK_GLASS
+      - MFOS_AUTH_REQUIRE_OPERATOR_CONFIRMATION
+      - MFOS_AUTH_REQUIRE_GUARD_APPROVAL
+      - MFOS_AUTH_UNSUPPORTED
+      - MFOS_AUTH_SPEC_GAP
+      - MFOS_AUTH_ERROR
+  reason_code:
+    pattern: "^MFOS_AUTH_REASON_[A-Z0-9_]{1,96}$"
+    type: string
+  policy_id:
+    pattern: "^MFOS-AUTH-POLICY-[A-Z0-9][A-Z0-9-]{0,127}$"
+    type: string
+  policy_version:
+    minimum: 1
+    type: integer
+  policy_epoch:
+    minimum: 1
+    type: integer
+  matched_binding_refs:
+    type: array
+    uniqueItems: true
+    items:
+      pattern: "^MFOS-AUTH-BINDING-[A-Z0-9][A-Z0-9-]{0,127}$"
+      type: string
+  obligations:
+    type: array
+    items:
+      $ref: "#/$defs/authorization_obligation"
+  handle_constraints:
+    $ref: "#/$defs/handle_constraints"
+  cacheability:
+    $ref: "#/$defs/cacheability"
+  issued_at_utc:
+    type: string
+  expires_at_utc:
+    type: string
+  evidence_refs:
+    type: array
+    uniqueItems: true
+    items:
+      pattern: "^EV-MFOS-AUTH-[A-Z0-9-]*[0-9]{4}$"
+      type: string
+$defs:
+  extref_id:
+    pattern: "^EXTREF-[A-Z0-9-]+-[0-9]{4}$"
+    type: string
+  mfos_id:
+    pattern: "^MFOS-[A-Z0-9][A-Z0-9-]{0,127}$"
+    type: string
+  operation:
+    enum:
+      - MFOS_OP_READ
+      - MFOS_OP_WRITE
+      - MFOS_OP_APPEND
+      - MFOS_OP_CREATE
+      - MFOS_OP_UPDATE
+      - MFOS_OP_DELETE
+      - MFOS_OP_PURGE
+      - MFOS_OP_EXECUTE
+      - MFOS_OP_SUBMIT
+      - MFOS_OP_CANCEL
+      - MFOS_OP_BROWSE
+      - MFOS_OP_EXPORT
+      - MFOS_OP_HOLD
+      - MFOS_OP_RELEASE
+      - MFOS_OP_LOAD
+      - MFOS_OP_ACTIVATE
+      - MFOS_OP_DEACTIVATE
+      - MFOS_OP_ASSIGN
+      - MFOS_OP_QUERY
+      - MFOS_OP_ADMINISTER
+      - MFOS_OP_ATTEST
+      - MFOS_OP_DELEGATE
+      - MFOS_OP_ROLLBACK
+  subject:
+    type: object
+    additionalProperties: false
+    required:
+      - subject_id
+      - subject_type
+      - groups
+      - roles
+      - authority_classes
+      - authentication_context
+      - emergency_context
+    properties:
+      subject_id:
+        $ref: "#/$defs/mfos_id"
+      subject_type:
+        enum:
+          - MFOS_SUBJECT_HUMAN
+          - MFOS_SUBJECT_SERVICE
+          - MFOS_SUBJECT_JOB
+          - MFOS_SUBJECT_PROGRAM
+          - MFOS_SUBJECT_OPERATOR
+          - MFOS_SUBJECT_PARTITION
+          - MFOS_SUBJECT_SYSTEM
+      principal_ref:
+        $ref: "#/$defs/mfos_id"
+      effective_principal_ref:
+        $ref: "#/$defs/mfos_id"
+      groups:
+        type: array
+        uniqueItems: true
+        items:
+          $ref: "#/$defs/mfos_id"
+      roles:
+        type: array
+        uniqueItems: true
+        items:
+          $ref: "#/$defs/mfos_id"
+      authority_classes:
+        type: array
+        uniqueItems: true
+        items:
+          $ref: "#/$defs/mfos_id"
+      labels:
+        type: array
+        uniqueItems: true
+        items:
+          pattern: "^MFOS_LABEL_[A-Z0-9_]{1,96}$"
+          type: string
+      job_ref:
+        $ref: "#/$defs/mfos_id"
+      program_identity_ref:
+        $ref: "#/$defs/mfos_id"
+      service_ref:
+        $ref: "#/$defs/mfos_id"
+      operator_session_ref:
+        $ref: "#/$defs/mfos_id"
+      partition_ref:
+        $ref: "#/$defs/mfos_id"
+      authentication_context:
+        type: object
+        additionalProperties: false
+        required:
+          - auth_strength
+        properties:
+          auth_strength:
+            enum:
+              - MFOS_AUTH_NONE
+              - MFOS_AUTH_PASSWORD
+              - MFOS_AUTH_MFA
+              - MFOS_AUTH_CERTIFICATE
+              - MFOS_AUTH_HARDWARE_BACKED
+              - MFOS_AUTH_RECOVERY
+          authenticated_at_utc:
+            type: string
+          expires_at_utc:
+            type: string
+      emergency_context:
+        type: object
+        additionalProperties: false
+        required:
+          - active
+        properties:
+          active:
+            type: boolean
+          reason_ref:
+            $ref: "#/$defs/mfos_id"
+          expires_at_utc:
+            type: string
+          incident_ref:
+            $ref: "#/$defs/mfos_id"
+  object_ref:
+    type: object
+    additionalProperties: false
+    required:
+      - resource_class
+      - object_id
+    properties:
+      resource_class:
+        enum:
+          - MFOS_RESOURCE_DATASET
+          - MFOS_RESOURCE_CATALOG
+          - MFOS_RESOURCE_SPOOL
+          - MFOS_RESOURCE_JOB
+          - MFOS_RESOURCE_PROGRAM
+          - MFOS_RESOURCE_AMF_MODULE
+          - MFOS_RESOURCE_OPERATOR_COMMAND
+          - MFOS_RESOURCE_PARTITION
+          - MFOS_RESOURCE_DEVICE
+          - MFOS_RESOURCE_AUDIT_STREAM
+          - MFOS_RESOURCE_UPDATE_ARTIFACT
+          - MFOS_RESOURCE_GUARD_ROOT
+          - MFOS_RESOURCE_SECURITY_POLICY
+          - MFOS_RESOURCE_WORKLOAD_POLICY
+          - MFOS_RESOURCE_AUTHORIZATION_EVIDENCE
+          - MFOS_RESOURCE_SYSTEM
+          - MFOS_RESOURCE_SERVICE
+      object_id:
+        $ref: "#/$defs/mfos_id"
+      object_name:
+        maxLength: 256
+        type: string
+      owner_principal_ref:
+        $ref: "#/$defs/mfos_id"
+      security_profile_ref:
+        $ref: "#/$defs/mfos_id"
+      object_generation:
+        minimum: 0
+        type: integer
+      catalog_generation:
+        minimum: 0
+        type: integer
+      partition_ref:
+        $ref: "#/$defs/mfos_id"
+      guard_root_ref:
+        $ref: "#/$defs/mfos_id"
+      source_matrix_refs:
+        type: array
+        uniqueItems: true
+        items:
+          $ref: "#/$defs/extref_id"
+  decision_context:
+    type: object
+    additionalProperties: false
+    required:
+      - timestamp_utc
+      - partition_ref
+    properties:
+      timestamp_utc:
+        type: string
+      partition_ref:
+        $ref: "#/$defs/mfos_id"
+      requested_policy_version:
+        minimum: 1
+        type: integer
+      active_policy_version_seen_by_caller:
+        minimum: 1
+        type: integer
+      activation_profile_hash:
+        pattern: "^MFOS-DIGEST-[A-Z0-9][A-Z0-9-]{0,127}$"
+        type: string
+      job_context:
+        $ref: "#/$defs/context_ref_map"
+      operator_context:
+        $ref: "#/$defs/context_ref_map"
+      program_context:
+        $ref: "#/$defs/context_ref_map"
+      dataset_context:
+        $ref: "#/$defs/context_ref_map"
+      update_context:
+        $ref: "#/$defs/context_ref_map"
+      guard_context:
+        $ref: "#/$defs/context_ref_map"
+      emergency_context:
+        $ref: "#/$defs/context_ref_map"
+      delegation_context:
+        $ref: "#/$defs/context_ref_map"
+  context_ref_map:
+    type: object
+    additionalProperties:
+      anyOf:
+        - type: string
+        - type: integer
+        - type: boolean
+        - type: array
+          items:
+            type: string
+  authorization_obligation:
+    type: object
+    additionalProperties: false
+    required:
+      - obligation_id
+      - kind
+      - required_before_return
+      - required_before_effect
+      - failure_policy
+    properties:
+      obligation_id:
+        pattern: "^MFOS-AUTH-OBLIGATION-[A-Z0-9][A-Z0-9-]{0,127}$"
+        type: string
+      kind:
+        enum:
+          - MFOS_OBL_AUDIT
+          - MFOS_OBL_MFA
+          - MFOS_OBL_DUAL_CONTROL
+          - MFOS_OBL_EMERGENCY_REASON
+          - MFOS_OBL_EMERGENCY_EXPIRY
+          - MFOS_OBL_OPERATOR_CONFIRMATION
+          - MFOS_OBL_GUARD_APPROVAL
+          - MFOS_OBL_RATE_LIMIT
+          - MFOS_OBL_NOTIFY
+          - MFOS_OBL_REMOTE_EXPORT
+          - MFOS_OBL_LOCKDOWN
+          - MFOS_OBL_POLICY_LINT
+          - MFOS_OBL_INCIDENT_REVIEW
+      required_before_return:
+        type: boolean
+      required_before_effect:
+        type: boolean
+      failure_policy:
+        enum:
+          - MFOS_OBL_FAIL_CLOSED
+          - MFOS_OBL_DEGRADED_READ_ONLY
+          - MFOS_OBL_RECOVERY_MODE
+      payload_ref:
+        $ref: "#/$defs/mfos_id"
+      audit_class:
+        enum:
+          - MFOS_AUDIT_SECURITY_DECISION
+          - MFOS_AUDIT_SECURITY_DENY
+          - MFOS_AUDIT_POLICY_CHANGE
+          - MFOS_AUDIT_DATASET_ACCESS
+          - MFOS_AUDIT_SPOOL_ACCESS
+          - MFOS_AUDIT_OPERATOR_COMMAND
+          - MFOS_AUDIT_AMF_LOAD
+          - MFOS_AUDIT_PARTITION_OPERATION
+          - MFOS_AUDIT_BREAK_GLASS
+          - MFOS_AUDIT_POLICY_LINT
+  handle_constraints:
+    type: object
+    additionalProperties: false
+    required:
+      - bind_subject
+      - bind_operation
+      - bind_policy_version
+      - bind_object_generation
+      - bind_partition
+    properties:
+      max_lifetime_ms:
+        minimum: 0
+        type: integer
+      bind_subject:
+        type: boolean
+      bind_operation:
+        type: boolean
+      bind_policy_version:
+        type: boolean
+      bind_policy_epoch:
+        type: boolean
+      bind_object_generation:
+        type: boolean
+      bind_partition:
+        type: boolean
+      bind_context_digest:
+        type: boolean
+  cacheability:
+    type: object
+    additionalProperties: false
+    required:
+      - cache_allowed
+      - max_age_ms
+      - invalidated_by_policy_update
+      - invalidated_by_delegation_revocation
+      - invalidated_by_emergency_expiry
+    properties:
+      cache_allowed:
+        type: boolean
+      max_age_ms:
+        minimum: 0
+        type: integer
+      invalidated_by_policy_update:
+        type: boolean
+      invalidated_by_delegation_revocation:
+        type: boolean
+      invalidated_by_binding_retirement:
+        type: boolean
+      invalidated_by_emergency_expiry:
+        type: boolean

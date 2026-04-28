@@ -1,0 +1,289 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# MFOS source-grounded project scaffold.
+# This script is intentionally idempotent and does not move existing docs.
+
+dirs=(
+  adr
+  governance
+
+  sources/ibm/zos-mvs/source-cards
+  sources/ibm/zos-mvs/concept-cards
+  sources/ibm/zos-mvs/notes
+  sources/ibm/system-integrity/source-cards
+  sources/ibm/system-integrity/concept-cards
+  sources/ibm/system-integrity/notes
+  sources/ibm/z-architecture/source-cards
+  sources/ibm/z-architecture/concept-cards
+  sources/ibm/z-architecture/notes
+  sources/ibm/racf/source-cards
+  sources/ibm/racf/concept-cards
+  sources/ibm/racf/notes
+  sources/ibm/dfsms/source-cards
+  sources/ibm/dfsms/concept-cards
+  sources/ibm/dfsms/notes
+  sources/ibm/jes/source-cards
+  sources/ibm/jes/concept-cards
+  sources/ibm/jes/notes
+  sources/ibm/smf/source-cards
+  sources/ibm/smf/concept-cards
+  sources/ibm/smf/notes
+  sources/ibm/wlm/source-cards
+  sources/ibm/wlm/concept-cards
+  sources/ibm/wlm/notes
+  sources/ibm/unix/source-cards
+  sources/ibm/unix/concept-cards
+  sources/ibm/unix/notes
+  sources/ibm/tso-ispf/source-cards
+  sources/ibm/tso-ispf/concept-cards
+  sources/ibm/tso-ispf/notes
+  sources/ibm/lpar-dpm/source-cards
+  sources/ibm/lpar-dpm/concept-cards
+  sources/ibm/lpar-dpm/notes
+  sources/ibm/smpe/source-cards
+  sources/ibm/smpe/concept-cards
+  sources/ibm/smpe/notes
+  sources/ibm/zosmf/source-cards
+  sources/ibm/zosmf/concept-cards
+  sources/ibm/zosmf/notes
+  sources/ibm/sdsf/source-cards
+  sources/ibm/sdsf/concept-cards
+  sources/ibm/sdsf/notes
+  sources/x64/intel/source-cards
+  sources/x64/intel/concept-cards
+  sources/x64/amd/source-cards
+  sources/x64/amd/concept-cards
+  sources/x64/linux-informative/source-cards
+  sources/x64/linux-informative/notes
+  sources/security-assurance/nist/source-cards
+  sources/security-assurance/tuf/source-cards
+  sources/security-assurance/tuf/concept-cards
+  sources/security-assurance/slsa/source-cards
+  sources/security-assurance/tpm-tcg/source-cards
+  sources/security-assurance/sel4/source-cards
+  sources/security-assurance/microsoft/source-cards
+  sources/internal/fbvbs/source-cards
+  sources/internal/fbvbs/notes
+  sources/_cache
+
+  source-matrix
+  specs
+  requirements/by-domain
+  requirements/generated
+  schemas/common
+  schemas/mfos
+  schemas/validation/examples
+  schemas/validation/invalid-examples
+  claims/baseline
+  claims/enterprise-standalone
+  claims/enterprise-pxm
+  claims/high-assurance
+  prompts/canonical
+  prompts/ja
+  packs
+  tasks/backlog
+
+  formal/tla/authorization
+  formal/tla/dataset-open
+  formal/tla/audit-append
+  formal/tla/catalog-transaction
+  formal/tla/job-lifecycle
+  formal/tla/spool-access
+  formal/tla/operator-command
+  formal/tla/amf-load
+  formal/tla/update-security
+  formal/tla/pxm-lifecycle
+  formal/tla/device-teardown
+  formal/tla/guard-root-transition
+  formal/alloy
+  formal/coq
+  formal/isabelle
+
+  evidence/traceability
+  evidence/reviews
+  evidence/test-results
+  evidence/audits
+  evidence/attestations
+  evidence/coverage
+  evidence/production-readiness
+
+  tests/unit
+  tests/integration/first-vertical-slice
+  tests/integration/hosted-semantic-prototype
+  tests/negative/unauthorized-dataset-open
+  tests/negative/stale-handle
+  tests/negative/policy-version-mismatch
+  tests/negative/audit-write-failure
+  tests/negative/malformed-jcl
+  tests/negative/malformed-dsn
+  tests/negative/malformed-operator-command
+  tests/negative/amf-revoked-signer
+  tests/negative/update-rollback
+  tests/negative/update-freeze
+  tests/negative/update-mix-and-match
+  tests/negative/pxm-device-teardown
+  tests/negative/guard-root-mismatch
+  tests/negative/unsupported-command-success
+  tests/conformance/baseline
+  tests/conformance/enterprise-standalone
+  tests/conformance/enterprise-pxm
+  tests/conformance/high-assurance
+  tests/crash-recovery/catalog-transaction
+  tests/crash-recovery/audit-log
+  tests/crash-recovery/update-staging
+  tests/fault-injection/auditd-unavailable
+  tests/fault-injection/securityd-unavailable
+  tests/fault-injection/guard-unavailable
+  tests/supply-chain/sbom
+  tests/supply-chain/provenance
+  tests/supply-chain/reproducible-build
+
+  fuzz/corpora
+  fuzz/targets/dsn-parser
+  fuzz/targets/jcl-lite-parser
+  fuzz/targets/operator-command-parser
+  fuzz/targets/policy-parser
+  fuzz/targets/audit-record-decoder
+  fuzz/targets/update-manifest-parser
+  fuzz/targets/amf-manifest-parser
+  fuzz/targets/activation-profile-parser
+  fuzz/targets/svc-pcall-decoder
+  fuzz/targets/guard-call-decoder
+  fuzz/dictionaries
+
+  ci/linters/spec-id-lint
+  ci/linters/source-matrix-lint
+  ci/linters/requirement-schema-lint
+  ci/linters/source-card-schema-lint
+  ci/linters/audit-obligation-lint
+  ci/linters/no-fake-success
+  ci/linters/no-compatibility-claim
+  ci/linters/prohibited-wording-lint
+  ci/linters/must-may-lint
+  ci/linters/japanese-canonical-conflict-lint
+  ci/linters/unsafe-inventory
+  ci/linters/fuzz-target-registration
+  ci/linters/source-gap-detector
+  ci/scripts
+
+  build/toolchains
+  build/profiles
+  build/reproducible/diff-reports
+  build/images
+  build/qemu
+  build/hardware-lab
+  supply-chain/sbom
+  supply-chain/provenance
+  supply-chain/signing
+  supply-chain/dependencies
+  supply-chain/releases
+
+  implementation/tools/mfctl
+  implementation/tools/jobsubmit
+  implementation/tools/auditdump
+  implementation/tools/catalogck
+  implementation/tools/policyc
+  implementation/tools/manifestck
+  implementation/tools/sourcecard
+  implementation/tools/reqck
+  implementation/tools/claimck
+  implementation/tools/tracegen
+  implementation/tools/packgen
+
+  implementation/prototypes/hosted-semantic/services/securityd
+  implementation/prototypes/hosted-semantic/services/auditd
+  implementation/prototypes/hosted-semantic/services/catalogd
+  implementation/prototypes/hosted-semantic/services/datasetd
+  implementation/prototypes/hosted-semantic/services/jobd
+  implementation/prototypes/hosted-semantic/services/spoold
+  implementation/prototypes/hosted-semantic/services/operatord
+  implementation/prototypes/hosted-semantic/services/workpolicyd
+  implementation/prototypes/hosted-semantic/services/amfd
+  implementation/prototypes/hosted-semantic/services/uvsd
+  implementation/prototypes/hosted-semantic/first-vertical-slice
+
+  implementation/runtime/common
+  implementation/runtime/abi/svc
+  implementation/runtime/abi/pcall
+  implementation/runtime/abi/pxm-call
+  implementation/runtime/abi/guard-call
+  implementation/runtime/generated
+
+  implementation/nucleus/boot
+  implementation/nucleus/arch/x86_64/intel
+  implementation/nucleus/arch/x86_64/amd
+  implementation/nucleus/memory
+  implementation/nucleus/scheduler
+  implementation/nucleus/address-space
+  implementation/nucleus/handles
+  implementation/nucleus/svc
+  implementation/nucleus/pcall
+  implementation/nucleus/ipc
+  implementation/nucleus/services
+  implementation/nucleus/faults
+  implementation/nucleus/audit-hooks
+  implementation/nucleus/tests
+
+  implementation/services/common
+  implementation/services/securityd
+  implementation/services/auditd
+  implementation/services/catalogd
+  implementation/services/datasetd
+  implementation/services/jobd
+  implementation/services/spoold
+  implementation/services/operatord
+  implementation/services/workpolicyd
+  implementation/services/amfd
+  implementation/services/uvsd
+  implementation/services/commandd
+  implementation/services/paneld
+  implementation/services/apid
+
+  implementation/pxm/core/lifecycle
+  implementation/pxm/core/activation-profile
+  implementation/pxm/core/memory
+  implementation/pxm/core/cpu
+  implementation/pxm/core/iommu
+  implementation/pxm/core/interrupts
+  implementation/pxm/core/devices
+  implementation/pxm/core/audit
+  implementation/pxm/implicit-backend
+  implementation/pxm/tests
+
+  implementation/guard/roots/security-root
+  implementation/guard/roots/audit-root
+  implementation/guard/roots/amf-registry
+  implementation/guard/roots/svc-table
+  implementation/guard/roots/executable-mapping
+  implementation/guard/roots/page-table-policy
+  implementation/guard/roots/update-policy
+  implementation/guard/call-abi
+  implementation/guard/attestation
+  implementation/guard/tests
+
+  implementation/sidecars/linux-desktop-partition
+  implementation/sidecars/service-partition
+  implementation/sidecars/recovery-partition
+  implementation/interfaces/operator-console
+  implementation/interfaces/command-processor
+  implementation/interfaces/panel-ui
+  implementation/interfaces/management-api/openapi
+  implementation/interfaces/posix-subsystem
+  implementation/interfaces/linux-gateway
+  examples/jobs
+  examples/policies
+  examples/datasets
+  examples/audit
+  examples/activation-profiles
+  reference-cache
+
+  ai/contracts
+  ai/task-packets/generated
+  ai/prompt-library
+  ai/outputs
+)
+
+for d in "${dirs[@]}"; do
+  mkdir -p "$d"
+done

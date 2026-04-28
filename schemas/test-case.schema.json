@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mfos.local/schemas/test-case.schema.json",
+  "title": "MFOS Test Case",
+  "type": "object",
+  "required": ["test_id", "test_type", "requirement_ids", "expected_result", "status"],
+  "properties": {
+    "test_id": {"type": "string", "pattern": "^(TEST|NEG)-MFOS-[A-Z0-9-]+$"},
+    "test_type": {"enum": ["unit", "integration", "negative", "fuzz", "conformance", "crash_recovery", "fault_injection", "supply_chain"]},
+    "requirement_ids": {"type": "array", "items": {"type": "string", "pattern": "^MFOS-REQ-[A-Z0-9]+-[0-9]{4}$"}},
+    "expected_result": {"type": "string"},
+    "status": {"type": "string"}
+  },
+  "additionalProperties": true
+}

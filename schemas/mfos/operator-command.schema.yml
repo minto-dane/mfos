@@ -1,0 +1,488 @@
+"$schema": "https://json-schema.org/draft/2020-12/schema"
+"$id": "https://mfos.local/schemas/mfos/operator-command.schema.yml"
+title: "MFOS OperatorCommand"
+description: "Phase 0.8 design schema for typed operator console commands. This is not production code."
+type: object
+"$ref": "#/$defs/OperatorCommand"
+x_mfos_phase: "0.8"
+x_implementation_allowed: false
+x_source_refs:
+  - "EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001"
+  - "EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001"
+  - "EXTREF-IBM-ZOS-SECURITY-SERVER-0001"
+  - "EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001"
+  - "EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001"
+  - "EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001"
+  - "EXTREF-IBM-ZOS-JES-INTRODUCTION-0001"
+  - "EXTREF-IBM-ZOS-JES2-LIBRARY-0001"
+  - "EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001"
+  - "EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001"
+
+"$defs":
+  Uuid:
+    type: string
+    pattern: "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
+
+  Timestamp:
+    type: string
+    format: date-time
+
+  DigestSha384:
+    type: string
+    pattern: "^sha384:[0-9a-fA-F]{96}$"
+
+  PrincipalRef:
+    type: object
+    required: [principal_id]
+    additionalProperties: false
+    properties:
+      principal_id:
+        type: string
+        pattern: "^[A-Z][A-Z0-9._@-]{0,127}$"
+      display_name:
+        type: string
+        minLength: 1
+        maxLength: 256
+
+  AuditRecordRef:
+    type: object
+    required: [record_id]
+    additionalProperties: false
+    properties:
+      record_id:
+        "$ref": "#/$defs/Uuid"
+      stream_id:
+        type: string
+        minLength: 1
+        maxLength: 128
+      record_hash:
+        "$ref": "#/$defs/DigestSha384"
+
+  SpoolEntryRef:
+    type: object
+    required: [spool_id]
+    additionalProperties: false
+    properties:
+      spool_id:
+        type: string
+        minLength: 1
+        maxLength: 128
+      generation:
+        type: integer
+        minimum: 0
+
+  ObjectRef:
+    type: object
+    required: [resource_type, object_id]
+    additionalProperties: false
+    properties:
+      resource_type:
+        enum:
+          - DATASET
+          - CATALOG
+          - SPOOL
+          - JOB
+          - PROGRAM
+          - AMF_MODULE
+          - OPERATOR_COMMAND
+          - PARTITION
+          - DEVICE
+          - AUDIT_STREAM
+          - UPDATE_ARTIFACT
+          - GUARD_ROOT
+          - SECURITY_POLICY
+          - WORKLOAD_POLICY
+          - SERVICE
+          - SYSTEM
+      object_id:
+        type: string
+        minLength: 1
+        maxLength: 512
+      object_name:
+        type: string
+        minLength: 1
+        maxLength: 512
+      owner_principal_id:
+        type: string
+        pattern: "^[A-Z][A-Z0-9._@-]{0,127}$"
+      generation:
+        type: integer
+        minimum: 0
+      catalog_generation:
+        type: integer
+        minimum: 0
+      partition_id:
+        type: integer
+        minimum: 0
+      source_refs:
+        type: array
+        items:
+          enum:
+            - "EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001"
+            - "EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001"
+            - "EXTREF-IBM-ZOS-SECURITY-SERVER-0001"
+            - "EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001"
+            - "EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001"
+            - "EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001"
+            - "EXTREF-IBM-ZOS-JES-INTRODUCTION-0001"
+            - "EXTREF-IBM-ZOS-JES2-LIBRARY-0001"
+            - "EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001"
+            - "EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001"
+        uniqueItems: true
+
+  TargetResolution:
+    type: object
+    required: [resolution_status, generation_bound]
+    additionalProperties: false
+    properties:
+      resolution_status:
+        enum: [RESOLVED, AMBIGUOUS, NOT_FOUND, STALE, SPEC_GAP]
+      target_digest:
+        "$ref": "#/$defs/DigestSha384"
+      generation_bound:
+        type: boolean
+
+  ConfirmationState:
+    type: object
+    required: [status]
+    additionalProperties: false
+    properties:
+      status:
+        enum: [NOT_REQUIRED, PENDING, SATISFIED, EXPIRED, CANCELED]
+      token_ref:
+        type: string
+        minLength: 1
+        maxLength: 256
+      expires_at_utc:
+        "$ref": "#/$defs/Timestamp"
+
+  DualControlState:
+    type: object
+    required: [status]
+    additionalProperties: false
+    properties:
+      status:
+        enum: [NOT_REQUIRED, PENDING, APPROVED, DENIED, EXPIRED, REVOKED]
+      approval_id:
+        "$ref": "#/$defs/Uuid"
+      expires_at_utc:
+        "$ref": "#/$defs/Timestamp"
+
+  EmergencyContext:
+    type: object
+    required: [active]
+    additionalProperties: false
+    properties:
+      active:
+        type: boolean
+      emergency_id:
+        "$ref": "#/$defs/Uuid"
+      reason:
+        type: string
+        minLength: 1
+        maxLength: 1024
+      expires_at_utc:
+        "$ref": "#/$defs/Timestamp"
+
+  AutomationContext:
+    type: object
+    additionalProperties: false
+    properties:
+      hook_id:
+        type: string
+        minLength: 1
+        maxLength: 128
+      schedule_id:
+        type: string
+        minLength: 1
+        maxLength: 128
+      idempotency_key:
+        type: string
+        minLength: 1
+        maxLength: 256
+
+  CommandAuditRefs:
+    type: object
+    additionalProperties: false
+    properties:
+      pre_effect_audit_ref:
+        "$ref": "#/$defs/AuditRecordRef"
+      result_audit_ref:
+        "$ref": "#/$defs/AuditRecordRef"
+
+  CommandArgValue:
+    oneOf:
+      - type: string
+        maxLength: 262144
+      - type: integer
+      - type: boolean
+      - type: array
+        maxItems: 256
+        items:
+          type: string
+          maxLength: 4096
+      - type: object
+        additionalProperties:
+          oneOf:
+            - type: string
+              maxLength: 4096
+            - type: integer
+            - type: boolean
+
+  OperatorCommand:
+    type: object
+    additionalProperties: false
+    required:
+      - schema_version
+      - command_id
+      - subject_ref
+      - caller_type
+      - raw_text_hash
+      - raw_text_capture_policy
+      - parsed_name
+      - command_class
+      - command_version
+      - command_args
+      - target_refs
+      - target_resolution
+      - authority_class
+      - risk_class
+      - destructive
+      - requires_confirmation
+      - requires_dual_control
+      - requires_mfa
+      - confirmation
+      - dual_control
+      - emergency_context
+      - policy_version
+      - audit
+      - state
+    properties:
+      schema_version:
+        const: 1
+      command_id:
+        "$ref": "#/$defs/Uuid"
+      session_id:
+        "$ref": "#/$defs/Uuid"
+      subject_ref:
+        "$ref": "#/$defs/PrincipalRef"
+      caller_type:
+        enum: [HUMAN, AUTOMATION, RECOVERY]
+      raw_text_hash:
+        "$ref": "#/$defs/DigestSha384"
+      raw_text_capture_policy:
+        enum: [HASH_ONLY, ALLOW_FULL_CAPTURE]
+      parsed_name:
+        enum:
+          - DISPLAY_SYSTEM
+          - DISPLAY_SERVICES
+          - DISPLAY_JOB
+          - DISPLAY_SPOOL
+          - DISPLAY_DATASET
+          - DISPLAY_WLM
+          - DEFINE_USER
+          - DEFINE_DATASET
+          - SUBMIT_INLINE
+          - CANCEL_JOB
+          - PURGE_SPOOL
+          - BROWSE_SPOOL
+          - SET_WORKLOAD_POLICY
+          - ENTER_EMERGENCY
+          - EXIT_EMERGENCY
+          - CONFIRM_COMMAND
+          - CANCEL_COMMAND
+          - APPROVE_COMMAND
+          - REJECT_COMMAND
+      command_class:
+        enum:
+          - DISPLAY
+          - DEFINE
+          - ALTER
+          - SUBMIT
+          - CANCEL
+          - PURGE
+          - BROWSE
+          - SET_POLICY
+          - EMERGENCY
+          - CONFIRMATION
+          - DUAL_CONTROL
+          - AUTOMATION
+          - DIAGNOSTIC
+      command_version:
+        type: integer
+        minimum: 1
+        maximum: 65535
+      command_args:
+        type: object
+        additionalProperties:
+          "$ref": "#/$defs/CommandArgValue"
+      target_refs:
+        type: array
+        maxItems: 16
+        items:
+          "$ref": "#/$defs/ObjectRef"
+      target_resolution:
+        "$ref": "#/$defs/TargetResolution"
+      authority_class:
+        enum:
+          - OPER_DISPLAY
+          - OPER_DATASET_DEFINE
+          - OPER_SECURITY_ADMIN
+          - OPER_JOB_SUBMIT
+          - OPER_JOB_CONTROL
+          - OPER_SPOOL_BROWSE
+          - OPER_SPOOL_PURGE
+          - OPER_WLM_ADMIN
+          - OPER_EMERGENCY
+          - OPER_CONFIRM
+          - OPER_DUAL_CONTROL_APPROVE
+          - OPER_AUTOMATION_SUBMIT
+          - OPER_DIAGNOSTIC
+      risk_class:
+        enum: [LOW, MODERATE, HIGH, CRITICAL]
+      destructive:
+        type: boolean
+      requires_confirmation:
+        type: boolean
+      requires_dual_control:
+        type: boolean
+      requires_mfa:
+        type: boolean
+      confirmation:
+        "$ref": "#/$defs/ConfirmationState"
+      dual_control:
+        "$ref": "#/$defs/DualControlState"
+      emergency_context:
+        "$ref": "#/$defs/EmergencyContext"
+      automation_context:
+        "$ref": "#/$defs/AutomationContext"
+      policy_version:
+        type: integer
+        minimum: 0
+      decision_ref:
+        type: string
+        minLength: 1
+        maxLength: 256
+      audit:
+        "$ref": "#/$defs/CommandAuditRefs"
+      state:
+        enum:
+          - RECEIVED
+          - PARSE_FAILED
+          - PARSED
+          - TARGET_RESOLVED
+          - AUTHZ_REQUESTED
+          - AUTHZ_DENIED
+          - OBLIGATION_PENDING
+          - CONFIRMATION_PENDING
+          - DUAL_CONTROL_PENDING
+          - AUDIT_PENDING
+          - EXECUTING
+          - COMPLETE
+          - DENIED
+          - FAILED_CLOSED
+          - UNSUPPORTED
+          - SPEC_GAP
+          - CANCELED
+          - EXPIRED
+
+  ConsoleDisplayFrame:
+    type: object
+    additionalProperties: false
+    required: [frame_id, command_id, timestamp_utc, severity, status, reason_code, summary, redaction_policy, next_action]
+    properties:
+      frame_id:
+        "$ref": "#/$defs/Uuid"
+      command_id:
+        "$ref": "#/$defs/Uuid"
+      timestamp_utc:
+        "$ref": "#/$defs/Timestamp"
+      severity:
+        enum: [INFO, WARN, ERROR, SECURITY]
+      status:
+        enum: [OK, DENIED, FAILED_CLOSED, UNSUPPORTED, SPEC_GAP, CANCELED, EXPIRED]
+      reason_code:
+        type: string
+        minLength: 1
+        maxLength: 128
+      summary:
+        type: string
+        minLength: 1
+        maxLength: 2048
+      rows:
+        type: array
+        maxItems: 1024
+        items:
+          type: object
+          additionalProperties:
+            type: string
+            maxLength: 4096
+      redaction_policy:
+        type: string
+        minLength: 1
+        maxLength: 128
+      next_action:
+        enum: [NONE, CONFIRM, WAIT_FOR_APPROVAL, REAUTHENTICATE, RETRY_AFTER_REAUTHORIZE, OPEN_SPEC_GAP]
+      audit_record_ref:
+        "$ref": "#/$defs/AuditRecordRef"
+
+  CommandResult:
+    type: object
+    additionalProperties: false
+    required: [command_id, status, reason_code, display_frame, audit_record_ref]
+    properties:
+      command_id:
+        "$ref": "#/$defs/Uuid"
+      status:
+        enum: [OK, DENIED, FAILED_CLOSED, UNSUPPORTED, SPEC_GAP, CANCELED, EXPIRED]
+      reason_code:
+        type: string
+        minLength: 1
+        maxLength: 128
+      output_ref:
+        "$ref": "#/$defs/SpoolEntryRef"
+      display_frame:
+        "$ref": "#/$defs/ConsoleDisplayFrame"
+      audit_record_ref:
+        "$ref": "#/$defs/AuditRecordRef"
+
+  DualControlApproval:
+    type: object
+    additionalProperties: false
+    required:
+      - approval_id
+      - command_id
+      - requester
+      - approver
+      - requested_at_utc
+      - expires_at_utc
+      - approval_reason
+      - target_digest
+      - policy_version
+      - status
+    properties:
+      approval_id:
+        "$ref": "#/$defs/Uuid"
+      command_id:
+        "$ref": "#/$defs/Uuid"
+      requester:
+        "$ref": "#/$defs/PrincipalRef"
+      approver:
+        "$ref": "#/$defs/PrincipalRef"
+      requested_at_utc:
+        "$ref": "#/$defs/Timestamp"
+      approved_at_utc:
+        "$ref": "#/$defs/Timestamp"
+      expires_at_utc:
+        "$ref": "#/$defs/Timestamp"
+      approval_reason:
+        type: string
+        minLength: 1
+        maxLength: 1024
+      target_digest:
+        "$ref": "#/$defs/DigestSha384"
+      policy_version:
+        type: integer
+        minimum: 0
+      status:
+        enum: [PENDING, APPROVED, DENIED, EXPIRED, REVOKED]
