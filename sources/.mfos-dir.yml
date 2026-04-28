@@ -1,0 +1,31 @@
+directory_id: MFOS-DIR-SOURCES-WORKBENCH
+path: sources
+role: bridge
+maturity: M4_POPULATED
+status: bridge
+canonical: false
+description: Public-safe source-grounding workbench. It does not override the canonical Source Matrix.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+phase_allowed_from: phase-0
+depends_on:
+  - docs/design/source-matrix
+allowed_contents:
+  - public-safe source cards
+  - concept cards
+  - retrieval logs
+  - migration plans
+forbidden_contents:
+  - copied external documents
+  - PDFs
+  - long quotes
+  - compatibility claims
+required_before_agent_assignment:
+  - public-safe legal controls
+  - source parity entry
+  - migration status
+review_status: draft

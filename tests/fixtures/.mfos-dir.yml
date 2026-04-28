@@ -1,0 +1,28 @@
+directory_id: MFOS-DIR-TEST-FIXTURES
+path: tests/fixtures
+role: test_current
+maturity: M5_VALIDATED
+status: current
+canonical: true
+description: Deterministic Phase 0.9 fixtures for future loader-only validation and later semantic checks.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+phase_allowed_from: phase-0
+depends_on:
+  - docs/design/specs/32-conformance-fixture-format.md
+allowed_contents:
+  - deterministic fixture YAML
+  - fixture index
+forbidden_contents:
+  - host OS semantics
+  - wall-clock timestamps
+  - copied external command syntax
+required_before_agent_assignment:
+  - fixture schema
+  - oracle ref
+  - target requirements
+review_status: draft

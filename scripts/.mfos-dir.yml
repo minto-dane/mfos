@@ -1,0 +1,30 @@
+directory_id: MFOS-DIR-SCRIPTS
+path: scripts
+role: validation
+maturity: M5_VALIDATED
+status: current
+canonical: true
+description: Local validation, lint, and deterministic generation scripts.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+phase_allowed_from: phase-0
+depends_on:
+  - docs/design/specs/28-machine-readable-registries.md
+allowed_contents:
+  - validators
+  - lint checks
+  - deterministic generators
+  - bootstrap helpers
+forbidden_contents:
+  - MFOS service implementation
+  - semantic runner implementation
+  - fake pass stubs
+required_before_agent_assignment:
+  - script index entry
+  - validation command
+  - no-write check mode where applicable
+review_status: draft

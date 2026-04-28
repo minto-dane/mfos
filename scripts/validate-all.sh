@@ -35,6 +35,7 @@ else
   ./scripts/phases/phase-0-9/validate.sh --check
 fi
 ./scripts/validate-artifact-hygiene.sh "$MODE"
+./scripts/validate-component-scaffold.sh "$MODE"
 python3 scripts/checks/check-evidence-status.py --mode "$MODE"
 ./scripts/validate-naming-safety.sh "$MODE"
 if [[ "$GENERATE_TRACEABILITY" == "1" ]]; then

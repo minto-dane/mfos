@@ -1,0 +1,28 @@
+directory_id: MFOS-DIR-EVIDENCE-TRACEABILITY
+path: evidence/traceability
+role: generated
+maturity: M5_VALIDATED
+status: current
+canonical: true
+description: Current, generated, and archived traceability matrices.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+phase_allowed_from: phase-0
+depends_on:
+  - docs/design/registries
+  - scripts/generators/generate-traceability.py
+allowed_contents:
+  - traceability indexes
+  - generated matrices
+  - archived phase matrices
+forbidden_contents:
+  - unverifiable evidence claims
+  - production proof claims
+required_before_agent_assignment:
+  - index entry
+  - generator or source registry
+review_status: draft

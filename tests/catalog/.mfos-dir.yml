@@ -1,0 +1,27 @@
+directory_id: MFOS-DIR-TEST-CATALOG
+path: tests/catalog
+role: test_current
+maturity: M5_VALIDATED
+status: current
+canonical: true
+description: Current conformance, negative, and failure-mode test catalogs. Tests are planned, not implemented.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+phase_allowed_from: phase-0
+depends_on:
+  - docs/design/specs/31-executable-spec-test-harness.md
+allowed_contents:
+  - test catalog YAML
+  - catalog index
+forbidden_contents:
+  - executable test harness code
+  - phase-specific root filenames
+required_before_agent_assignment:
+  - target requirements
+  - fixture refs
+  - oracle refs
+review_status: draft

@@ -3,6 +3,11 @@ artifact_index_kind: mfos_test_catalog_inventory
 status: current
 
 current:
+  metadata:
+    path: tests/catalog/.mfos-dir.yml
+    artifact_type: scaffold_metadata
+    status: current
+    origin_phase: phase-0-10
   authorization:
     path: tests/catalog/authorization.yml
     artifact_type: test_catalog
