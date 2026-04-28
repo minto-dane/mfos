@@ -59,7 +59,7 @@ mfos_mapping:
 mfos_divergence:
 - MFOS must not expose arbitrary cross-address-space pointer access in early phases.
 prohibited_inference:
-- MFOS PCALL trusts foreign address-space pointers.
+- Forbidden claim: MFOS PCALL trusts foreign address-space pointers.
 - Do not claim z/OS compatibility.
 - Do not treat IBM product behavior as MFOS compatibility.
 legal_controls:

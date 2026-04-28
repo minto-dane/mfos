@@ -54,7 +54,7 @@ mfos_mapping:
 mfos_divergence:
 - CET does not replace authorization, audit, storage domains, or Guard root protection.
 prohibited_inference:
-- CET enforces MFOS authorization.
+- Forbidden claim: CET enforces MFOS authorization.
 - Do not claim z/OS compatibility.
 legal_controls:
   public_safe: true

@@ -41,7 +41,6 @@ Use cautious language:
 
 Avoid saying:
 
-- "MFOS implements SDSF panels."
-- "MFOS action availability equals SDSF authorization."
-- "MFOS owns JES output state displayed through SDSF."
-
+- "Forbidden claim: MFOS implements SDSF panels."
+- "Forbidden claim: MFOS action availability equals SDSF authorization."
+- "Forbidden claim: MFOS owns JES output state displayed through SDSF."

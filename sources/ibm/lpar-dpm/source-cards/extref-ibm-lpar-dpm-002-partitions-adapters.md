@@ -59,7 +59,7 @@ review_status: draft
 
 # EXTREF-IBM-Z-DPM-PARTITIONS-ADAPTERS-0001 - DPM Partitions And Adapters
 
-Sources: IBM Documentation  
+Sources: IBM Documentation
 URLs:
 
 - https://www.ibm.com/docs/en/help-ibm-hmc-z17?topic=dpm-partitions-systems
@@ -86,4 +86,3 @@ Partition startability, resource attachment, and adapter availability are extern
 - Adapter feature tables.
 - API object schemas.
 - Configuration examples.
-

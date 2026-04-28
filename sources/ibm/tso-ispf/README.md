@@ -14,4 +14,3 @@ This directory contains public-safe MFOS grounding notes for IBM TSO/E and ISPF.
 - Use IBM-owned public documentation as the external reference.
 - Do not store command syntax, panel definitions, dialog service formats, examples, messages, or exit interfaces.
 - Keep MFOS interactive-session semantics independent from TSO/E and ISPF implementation details.
-

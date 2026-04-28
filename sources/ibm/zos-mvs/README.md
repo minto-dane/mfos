@@ -9,4 +9,3 @@ only and do not claim JES, DFSMS, WLM, JCL, or z/OS compatibility.
 - `source-cards/zos-mvs-source-cards.yml` - verified IBM source pointers and MFOS mappings.
 - `concept-cards/zos-mvs-concepts.yml` - MFOS job, spool, catalog, and WLM concepts.
 - `notes/public-safe-grounding-notes.md` - review notes, gaps, and negative tests.
-

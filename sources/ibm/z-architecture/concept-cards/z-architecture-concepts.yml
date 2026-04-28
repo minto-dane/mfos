@@ -55,4 +55,3 @@ concept_cards:
       - TEST-PXM-INVALID-STATE-TRANSITION-001
       - TEST-PXM-PARTITION-AUDIT-REQUIRED-001
     status: draft
-

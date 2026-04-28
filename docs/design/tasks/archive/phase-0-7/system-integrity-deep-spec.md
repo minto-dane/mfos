@@ -1,7 +1,7 @@
 # Phase 0.7 System Integrity Deep Spec
 
-Status: In Progress  
-Created: 2026-04-27  
+Status: In Progress
+Created: 2026-04-27
 Primary machine-readable plan: `tasks/archive/phase-0-7/system-integrity-deep-spec.yml`
 
 Phase 0.7 deepens `docs/design/specs/03-system-integrity.md` after the Phase

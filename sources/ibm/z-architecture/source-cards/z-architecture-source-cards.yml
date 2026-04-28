@@ -17,7 +17,7 @@ legal_controls:
   substitute_for_source: false
   no_message_tables_copied: true
 source_cards:
-- card_id: SRC-CARD-IBM-ZARCH-PRINCIPLES-0001
+- card_id: SRC-CARD-EXTREF-IBM-Z-ARCHITECTURE-PRINCIPLES-0001
   source_id: EXTREF-IBM-Z-ARCHITECTURE-PRINCIPLES-0001
   canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-Z-ARCHITECTURE-PRINCIPLES-0001.yml
   vendor: IBM
@@ -50,9 +50,9 @@ source_cards:
   - MFOS is x64-native and does not implement z/Architecture.
   - IBM architectural terminology may be referenced only with explicit divergence.
   prohibited_inference:
-  - MFOS is a z/Architecture emulator.
-  - MFOS implements z/Architecture instructions, PSW, storage-key, SVC, or PC behavior.
-  - IBM PDF text or tables may be copied into MFOS artifacts.
+  - Forbidden claim: MFOS is a z/Architecture emulator.
+  - Forbidden claim: MFOS implements z/Architecture instructions, PSW, storage-key, SVC, or PC behavior.
+  - Forbidden claim: IBM PDF text or tables may be copied into MFOS artifacts.
   requirements:
   - Maintain a glossary that maps IBM terms to MFOS-native concepts or marks them
     as unsupported.
@@ -61,7 +61,7 @@ source_cards:
   - TEST-ZARCH-COMPAT-CLAIM-LINT-001
   - TEST-STORAGE-KEY-COMPAT-CLAIM-LINT-001
   status: draft
-- card_id: SRC-CARD-IBM-ZARCH-LPAR-0001
+- card_id: SRC-CARD-EXTREF-IBM-Z-LPAR-INTRODUCTION-0001
   source_id: EXTREF-IBM-Z-LPAR-INTRODUCTION-0001
   canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-Z-LPAR-INTRODUCTION-0001.yml
   vendor: IBM
@@ -94,9 +94,9 @@ source_cards:
   - PXM is x64-native and partition-aware; it does not implement PR/SM.
   - PXM must not attach enterprise policy semantics to hardware partition state.
   prohibited_inference:
-  - PXM implements PR/SM.
-  - PXM is LPAR-compatible.
-  - IBM partition configuration syntax may be copied.
+  - Forbidden claim: PXM implements PR/SM.
+  - Forbidden claim: PXM is LPAR-compatible.
+  - Forbidden claim: IBM partition configuration syntax may be copied.
   requirements:
   - Define PXM partition states, activation profiles, storage zeroing, and teardown
     behavior.
@@ -104,7 +104,7 @@ source_cards:
   - TEST-PXM-INVALID-STATE-TRANSITION-001
   - TEST-PXM-MEMORY-REUSE-NO-ZERO-DENY-001
   status: draft
-- card_id: SRC-CARD-IBM-ZARCH-DPM-0001
+- card_id: SRC-CARD-EXTREF-IBM-Z-DPM-0001
   source_id: EXTREF-IBM-Z-DPM-0001
   canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-Z-DPM-0001.yml
   vendor: IBM
@@ -137,9 +137,9 @@ source_cards:
   - MFOS PXM management is not HMC, SE, or DPM compatibility.
   - MFOS does not reproduce IBM object schemas or API payloads.
   prohibited_inference:
-  - PXM implements DPM.
-  - MFOS exposes IBM DPM API compatibility.
-  - IBM management object schemas may be copied.
+  - Forbidden claim: PXM implements DPM.
+  - Forbidden claim: MFOS exposes IBM DPM API compatibility.
+  - Forbidden claim: IBM management object schemas may be copied.
   requirements:
   - Define MFOS-native partition, device, network, storage, and capacity records.
   - Every management-plane mutation must produce an audit event.

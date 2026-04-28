@@ -1,7 +1,7 @@
 # MFOS Phase 0.6 Red Team Review
 
-Date: 2026-04-27  
-Workspace: `/home/nia/mfos`  
+Date: 2026-04-27
+Workspace: `/home/nia/mfos`
 Mode: design/artifact review only. No implementation code was started or edited.
 
 ## Scope
@@ -56,7 +56,7 @@ However, several Phase 0.6 artifacts still create review risk:
 
 ### RT-001: Guard Profile Table Is Structurally Ambiguous
 
-Severity: **High**  
+Severity: **High**
 Category: Guard/PXM scope creep, fake claim risk
 
 `docs/design/specs/17-guard.md` declares four profile columns at line 122, but
@@ -80,7 +80,7 @@ Required before implementation:
 
 ### RT-002: Front Matter Source Refs Are Weaker Than Body Source Lists
 
-Severity: **High**  
+Severity: **High**
 Category: source weakening, source traceability
 
 Several specs list source IDs in their Source Matrix section that are missing
@@ -110,7 +110,7 @@ Required before implementation:
 
 ### RT-003: Negative Test Registry Coverage Is Not Yet Adequate
 
-Severity: **High**  
+Severity: **High**
 Category: missing negative tests, audit bypass, fake success
 
 `docs/design/registries/tests.yaml` explicitly says entries are draft metadata
@@ -139,7 +139,7 @@ Required before implementation:
 
 ### RT-004: Evidence Registry Is Placeholder-Only
 
-Severity: **Medium**  
+Severity: **Medium**
 Category: fake success, premature implementation
 
 `docs/design/registries/evidence.yaml` states that records are draft
@@ -162,7 +162,7 @@ Required before claim broadening:
 
 ### RT-005: Source Card Metadata Gaps Remain a Source-Weakening Risk
 
-Severity: **Medium**  
+Severity: **Medium**
 Category: source weakening, IBM implication control
 
 `reports/audits/source/source-card-audit.md` records pass-with-warnings status and says all
@@ -187,7 +187,7 @@ Required before stronger source-grounded claims:
 
 ### RT-006: Scaffold Breadth Can Still Imply Implementation Status
 
-Severity: **Medium**  
+Severity: **Medium**
 Category: premature implementation, fake success
 
 `docs/design/STATUS.md` reports 171 files and 346 directories after scaffold

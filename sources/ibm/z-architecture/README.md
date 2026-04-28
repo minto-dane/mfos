@@ -10,4 +10,3 @@ compatibility.
 - `source-cards/z-architecture-source-cards.yml` - verified IBM source pointers and MFOS mappings.
 - `concept-cards/z-architecture-concepts.yml` - MFOS concepts grounded by those pointers.
 - `notes/public-safe-grounding-notes.md` - review notes, gaps, and negative tests.
-

@@ -54,7 +54,7 @@ mfos_mapping:
 mfos_divergence:
 - MFOS is not claiming seL4-level verification; it uses this as a discipline reference for assumptions and scope.
 prohibited_inference:
-- MFOS is formally verified because it references seL4.
+- Forbidden claim: MFOS is formally verified because it references seL4.
 - Do not claim z/OS compatibility.
 legal_controls:
   public_safe: true

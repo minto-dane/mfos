@@ -1,7 +1,7 @@
 # MFOS Traceability Audit
 
-Status: Draft  
-Generated: 2026-04-27  
+Status: Draft
+Generated: 2026-04-27
 Scope: Phase 0.6 baseline plus current Phase 0.7 system-integrity registry expansion; no production implementation code inspected or changed.
 
 ## Inputs

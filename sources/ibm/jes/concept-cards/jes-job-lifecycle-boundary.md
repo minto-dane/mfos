@@ -43,7 +43,6 @@ Use cautious language:
 
 Avoid saying:
 
-- "MFOS job state matches JES state."
-- "MFOS validates JCL or JECL compatibility."
-- "MFOS implements JES spool semantics."
-
+- "Forbidden claim: MFOS job state matches JES state."
+- "Forbidden claim: MFOS validates JCL or JECL compatibility."
+- "Forbidden claim: MFOS implements JES spool semantics."

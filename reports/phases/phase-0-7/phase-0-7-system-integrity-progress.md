@@ -1,8 +1,8 @@
 # Phase 0.7 System Integrity Progress Report
 
-Status: Draft, In Progress  
-Date: 2026-04-27  
-Scope: System-integrity specification and machine-readable registry expansion only.  
+Status: Draft, In Progress
+Date: 2026-04-27
+Scope: System-integrity specification and machine-readable registry expansion only.
 Production implementation: not started.
 
 ## Executive Summary

@@ -1,7 +1,7 @@
 # MFOS Phase 0.6 Final Summary
 
-Date: 2026-04-27  
-Workspace: `/home/nia/mfos`  
+Date: 2026-04-27
+Workspace: `/home/nia/mfos`
 Mode: design canonicalization and enforcement only
 
 ## Executive Summary

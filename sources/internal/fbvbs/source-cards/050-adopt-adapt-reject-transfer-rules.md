@@ -17,7 +17,7 @@ retrieval_metadata:
   landing_page_url: https://github.com/minto-dane/fbvbs
   source_version: 30e6fb54c76eaec83d03f79e1fd96c030cca504b
   section_scope: document governance, traceability, workstream closure
-  local_cache_manifest: temporary clone at /tmp/fbvbs-upstream, not committed
+  local_cache_manifest: not_committed; see sources/_cache/README.md
 cache_disposition: temporary_ignored_cache
 reference_purpose:
   - internal transfer rubric

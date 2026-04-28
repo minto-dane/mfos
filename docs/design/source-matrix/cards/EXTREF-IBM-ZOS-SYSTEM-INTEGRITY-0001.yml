@@ -67,8 +67,8 @@ mfos_divergence:
 - MFOS maps this into principals, programs, jobs, services, protected resources, securityd, and auditd.
 - Protection after authorized module or nucleus compromise is not a Baseline claim; it belongs to High-Assurance Guard where specified.
 prohibited_inference:
-- MFOS is z/OS-compatible.
-- MFOS provides z/OS system integrity compatibility.
+- Forbidden claim: MFOS is z/OS-compatible.
+- Forbidden claim: MFOS provides z/OS system integrity compatibility.
 - Do not claim z/OS compatibility.
 - Do not treat IBM product behavior as MFOS compatibility.
 legal_controls:

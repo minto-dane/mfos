@@ -23,4 +23,3 @@
 - Add source cards for DPM storage groups and storage configuration.
 - Add source cards for DPM monitoring and event concepts.
 - Add a cross-domain note for DPM, WLM, and z/OS system topology relationships.
-

@@ -92,4 +92,3 @@ concept_cards:
     negative_tests:
       - TEST-WLM-UNAUTHORIZED-POLICY-UPDATE-001
     status: draft
-

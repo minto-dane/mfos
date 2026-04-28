@@ -62,8 +62,8 @@ review_status: draft
 
 # EXTREF-IBM-ZOS-JES-FUNCTIONS-0001 - JES2 Functions
 
-Source: IBM Documentation  
-URL: https://www.ibm.com/docs/en/zos/3.2.0?topic=functions-jes2-capabilities  
+Source: IBM Documentation
+URL: https://www.ibm.com/docs/en/zos/3.2.0?topic=functions-jes2-capabilities
 Accessed: 2026-04-28
 
 ## Public-Safe Summary
@@ -81,4 +81,3 @@ IBM describes JES2 as the z/OS job-entry subsystem component that manages job in
 - JES2 command syntax.
 - Spool structure details.
 - Exit behavior or installation customization specifics.
-

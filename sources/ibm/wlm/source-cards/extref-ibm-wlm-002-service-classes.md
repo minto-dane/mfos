@@ -60,7 +60,7 @@ review_status: draft
 
 # EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001 - Service Classes And Reporting
 
-Sources: IBM Documentation  
+Sources: IBM Documentation
 URLs:
 
 - https://www.ibm.com/docs/en/zos/3.2.0?topic=tabs-service-classes
@@ -87,4 +87,3 @@ Report grouping can affect the meaning of performance data. MFOS should distingu
 - Panel field definitions.
 - Report formats.
 - Service definition syntax.
-

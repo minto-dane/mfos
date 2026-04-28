@@ -1,6 +1,6 @@
 # Naming-Safety Open Issues
 
-Status: draft  
+Status: draft
 Date: 2026-04-27
 
 ## Human / Legal Review Required

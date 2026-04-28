@@ -1,7 +1,7 @@
 # MFOS Naming-Safety Red Team Review
 
-Date: 2026-04-27  
-Workspace: `/home/nia/mfos`  
+Date: 2026-04-27
+Workspace: `/home/nia/mfos`
 Mode: read-only design review; no design files were edited. Report artifacts were written under `reports/`.
 
 ## Executive Judgment

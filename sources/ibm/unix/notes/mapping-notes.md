@@ -23,4 +23,3 @@
 - Add source cards for shell customization and RACF OMVS segment behavior.
 - Add source cards for fork and spawn concepts without signatures.
 - Add cross-domain notes for z/OSMF file REST services and z/OS UNIX files.
-

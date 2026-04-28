@@ -209,4 +209,3 @@ $defs:
         pattern: "^(SPEC-GAP|[A-Z0-9]+-GAP)-[A-Z0-9-]*[0-9]{4}$"
       - not:
           $ref: "#/$defs/forbidden_mfos_owned_token"
-

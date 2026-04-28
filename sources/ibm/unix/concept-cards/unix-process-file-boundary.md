@@ -41,7 +41,6 @@ Use cautious language:
 
 Avoid saying:
 
-- "MFOS POSIX behavior matches z/OS UNIX."
-- "MFOS can infer mount state from a path string."
-- "MFOS implements z/OS UNIX callable services."
-
+- "Forbidden claim: MFOS POSIX behavior matches z/OS UNIX."
+- "Forbidden claim: MFOS can infer mount state from a path string."
+- "Forbidden claim: MFOS implements z/OS UNIX callable services."

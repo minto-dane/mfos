@@ -20,4 +20,3 @@ The Source Card layer is adequate for structural traceability, but not for an
 unqualified source-grounded semantic freeze. The freeze must remain
 conditional until targeted source review marks cards reviewed and card-local
 spec/test links are added.
-

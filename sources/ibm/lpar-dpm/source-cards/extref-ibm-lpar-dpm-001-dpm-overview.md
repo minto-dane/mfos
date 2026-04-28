@@ -58,8 +58,8 @@ review_status: draft
 
 # EXTREF-IBM-Z-DPM-OVERVIEW-0001 - Dynamic Partition Manager Overview
 
-Source: IBM Documentation  
-URL: https://www.ibm.com/docs/en/systems-hardware/zsystems/3932-A02?topic=management-dynamic-partition-manager-dpm  
+Source: IBM Documentation
+URL: https://www.ibm.com/docs/en/systems-hardware/zsystems/3932-A02?topic=management-dynamic-partition-manager-dpm
 Accessed: 2026-04-28
 
 ## Public-Safe Summary
@@ -77,4 +77,3 @@ IBM describes Dynamic Partition Manager as an HMC-centered management model for 
 - Request or response payloads.
 - Operation lists beyond high-level object categories.
 - Role or authorization procedures.
-

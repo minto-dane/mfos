@@ -63,8 +63,8 @@ mfos_divergence:
 - MFOS AMF is signed, measured, revocable, ABI-limited, audited, and optionally Guard-approved.
 - AMF is not administrator privilege and is not APF compatibility.
 prohibited_inference:
-- AMF is APF-compatible.
-- AMF grants root or administrator privilege.
+- Forbidden claim: AMF is APF-compatible.
+- Forbidden claim: AMF grants root or administrator privilege.
 - Do not claim z/OS compatibility.
 - Do not treat IBM product behavior as MFOS compatibility.
 legal_controls:

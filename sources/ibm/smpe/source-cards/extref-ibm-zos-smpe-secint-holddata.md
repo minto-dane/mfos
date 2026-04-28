@@ -19,7 +19,7 @@ retrieval_metadata:
   public_url: https://www.ibm.com/support/pages/secint-holddata-now-available-smpe-receive-order
   source_version: IBM Support page; release not pinned in URL
   section_scope: security advisory metadata and receive-order update topic
-  local_cache_manifest: sources/_cache/retrieval-manifest.local.yml
+  local_cache_manifest: not_committed; see sources/_cache/README.md
 cache_disposition: no_local_cache
 reference_purpose:
   - source discovery

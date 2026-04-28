@@ -2,8 +2,9 @@
 
 Status: passed.
 
-Validation was rerun after closing the policy-denial error mapping gap and
-normalizing first-vertical-slice artifact paths.
+Validation was rerun after closing the policy-denial error mapping gap,
+normalizing first-vertical-slice artifact paths, and fixing PR-diff whitespace
+issues detected during self-review.
 
 ## Commands
 
@@ -12,6 +13,7 @@ normalizing first-vertical-slice artifact paths.
 ./scripts/validate-naming-safety.sh release
 python3 -m py_compile $(find scripts -name '*.py' -print)
 git diff --check
+git diff --check phase/0.9-executable-specs
 ```
 
 ## Results
@@ -45,6 +47,7 @@ Compatibility-claim check OK: 0 warnings
 External-doc copy guard OK: 0 warnings
 python3 -m py_compile $(find scripts -name '*.py' -print): passed
 git diff --check: passed
+git diff --check phase/0.9-executable-specs: passed
 ```
 
 ## Judgment

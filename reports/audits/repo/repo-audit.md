@@ -1,7 +1,7 @@
 # MFOS Phase 0.6 Repository Audit
 
-Audit date: 2026-04-27  
-Workspace: `/home/nia/mfos`  
+Audit date: 2026-04-27
+Workspace: `/home/nia/mfos`
 Git status: unavailable; this workspace is not a Git repository.
 
 ## Scope

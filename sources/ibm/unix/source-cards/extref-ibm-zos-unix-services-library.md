@@ -19,7 +19,7 @@ retrieval_metadata:
   public_url: https://www.ibm.com/docs/en/zos/latest?topic=zos-unix-system-services
   source_version: z/OS documentation library page; exact release must be confirmed during review
   section_scope: optional UNIX-like subsystem bibliography
-  local_cache_manifest: sources/_cache/retrieval-manifest.local.yml
+  local_cache_manifest: not_committed; see sources/_cache/README.md
 cache_disposition: no_local_cache
 reference_purpose:
   - source discovery

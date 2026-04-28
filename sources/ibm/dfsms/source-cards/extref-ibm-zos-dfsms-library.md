@@ -19,7 +19,7 @@ retrieval_metadata:
   public_url: https://www.ibm.com/docs/en/zos/3.2.0?topic=zos-dfsms
   source_version: z/OS 3.2.0 library page
   section_scope: dataset and storage management library index
-  local_cache_manifest: sources/_cache/retrieval-manifest.local.yml
+  local_cache_manifest: not_committed; see sources/_cache/README.md
 cache_disposition: no_local_cache
 reference_purpose:
   - source discovery

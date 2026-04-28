@@ -59,8 +59,8 @@ review_status: draft
 
 # EXTREF-IBM-ZOS-SMPE-ZONES-0001 - SMP/E Zones
 
-Source: IBM Documentation  
-URL: https://www.ibm.com/docs/en/zos/3.2.0?topic=processing-target-zone-distribution-zone  
+Source: IBM Documentation
+URL: https://www.ibm.com/docs/en/zos/3.2.0?topic=processing-target-zone-distribution-zone
 Accessed: 2026-04-28
 
 ## Public-Safe Summary
@@ -82,4 +82,3 @@ MFOS should not infer installed software compatibility from a zone name alone. R
 - Entry layouts.
 - LIST output formats.
 - Processing examples.
-

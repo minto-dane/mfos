@@ -60,7 +60,7 @@ review_status: draft
 
 # EXTREF-IBM-ZOS-MANAGEMENT-FACILITY-REST-SERVICES-0001 - z/OSMF REST Services
 
-Sources: IBM Documentation  
+Sources: IBM Documentation
 URLs:
 
 - https://www.ibm.com/docs/en/zos/3.2.0?topic=guide-using-zosmf-rest-services
@@ -88,4 +88,3 @@ z/OSMF operations depend on configured services, authenticated identities, SAF a
 - Header names and examples.
 - JSON schemas.
 - Sample requests or responses.
-

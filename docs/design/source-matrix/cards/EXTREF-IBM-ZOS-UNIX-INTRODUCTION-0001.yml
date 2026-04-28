@@ -55,8 +55,8 @@ mfos_mapping:
 mfos_divergence:
 - MFOS POSIX is optional, restricted, profile-limited, and unable to bypass securityd, auditd, or dataset/catalog semantics.
 prohibited_inference:
-- MFOS is UNIX-first.
-- POSIX root bypasses MFOS policy.
+- Forbidden claim: MFOS is UNIX-first.
+- Forbidden claim: POSIX root bypasses MFOS policy.
 - Do not claim z/OS compatibility.
 - Do not treat IBM product behavior as MFOS compatibility.
 legal_controls:

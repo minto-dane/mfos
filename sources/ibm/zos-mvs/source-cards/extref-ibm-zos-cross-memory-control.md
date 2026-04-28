@@ -19,7 +19,7 @@ retrieval_metadata:
   public_url: https://www.ibm.com/docs/en/zos-basic-skills?topic=integrity-controlling-cross-memory-communication
   source_version: z/OS Basic Skills documentation path; release not pinned in URL
   section_scope: cross-memory communication control topic
-  local_cache_manifest: sources/_cache/retrieval-manifest.local.yml
+  local_cache_manifest: not_committed; see sources/_cache/README.md
 cache_disposition: no_local_cache
 reference_purpose:
   - source discovery

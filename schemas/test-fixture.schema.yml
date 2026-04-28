@@ -398,4 +398,3 @@ $defs:
       expected_error_code:
         type: string
         pattern: "^MFOS_ERR_[A-Z0-9_]{1,96}$"
-

@@ -62,8 +62,8 @@ mfos_mapping:
 mfos_divergence:
 - MFOS datasetd is a managed resource service, not a DFSMS implementation and not a POSIX file wrapper.
 prohibited_inference:
-- MFOS datasets are POSIX files.
-- DFSMS-compatible.
+- Forbidden claim: MFOS datasets are POSIX files.
+- Forbidden claim: DFSMS-compatible.
 - Do not claim z/OS compatibility.
 - Do not treat IBM product behavior as MFOS compatibility.
 legal_controls:

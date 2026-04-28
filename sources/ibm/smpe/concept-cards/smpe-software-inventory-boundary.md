@@ -40,7 +40,6 @@ Use cautious language:
 
 Avoid saying:
 
-- "MFOS validates SMP/E requisites."
-- "MFOS reproduces SMP/E inventory."
-- "MFOS can derive service status from product names alone."
-
+- "Forbidden claim: MFOS validates SMP/E requisites."
+- "Forbidden claim: MFOS reproduces SMP/E inventory."
+- "Forbidden claim: MFOS can derive service status from product names alone."

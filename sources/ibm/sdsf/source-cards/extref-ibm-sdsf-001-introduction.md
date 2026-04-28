@@ -60,8 +60,8 @@ review_status: draft
 
 # EXTREF-IBM-ZOS-SDSF-INTRODUCTION-0001 - SDSF Introduction
 
-Source: IBM Documentation  
-URL: https://www.ibm.com/docs/en/zos/3.2.0?topic=guide-introduction-sdsf  
+Source: IBM Documentation
+URL: https://www.ibm.com/docs/en/zos/3.2.0?topic=guide-introduction-sdsf
 Accessed: 2026-04-28
 
 ## Public-Safe Summary
@@ -79,4 +79,3 @@ IBM documents SDSF as a facility for monitoring, managing, and controlling z/OS 
 - Panel column lists.
 - Action character details.
 - Message text.
-

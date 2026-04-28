@@ -62,7 +62,7 @@ mfos_mapping:
 mfos_divergence:
 - MFOS adds decision obligations including audit, MFA, dual control, break-glass, Guard approval, operator confirmation, UNSUPPORTED, and SPEC_GAP.
 prohibited_inference:
-- MFOS resource profiles are RACF profiles.
+- Forbidden claim: MFOS resource profiles are RACF profiles.
 - Do not claim z/OS compatibility.
 - Do not treat IBM product behavior as MFOS compatibility.
 legal_controls:

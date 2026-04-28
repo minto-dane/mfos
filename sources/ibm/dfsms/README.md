@@ -14,4 +14,3 @@ This directory contains public-safe MFOS grounding notes for IBM DFSMS.
 - Use IBM-owned public documentation as the external reference.
 - Keep MFOS semantics independent from IBM syntax, exits, messages, layouts, and macros.
 - Treat compatibility-sensitive DFSMS behavior as an external boundary, not as an MFOS promise.
-

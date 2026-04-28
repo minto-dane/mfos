@@ -61,8 +61,8 @@ review_status: draft
 
 # EXTREF-IBM-ZOS-TSO-E-INTRODUCTION-0001 - TSO/E General Functions
 
-Source: IBM Documentation  
-URL: https://www.ibm.com/docs/en/zos/3.2.0?topic=guide-general-tsoe-functions  
+Source: IBM Documentation
+URL: https://www.ibm.com/docs/en/zos/3.2.0?topic=guide-general-tsoe-functions
 Accessed: 2026-04-28
 
 ## Public-Safe Summary
@@ -80,4 +80,3 @@ IBM documents TSO/E as a z/OS base element that allows interactive work with the
 - Exit interfaces.
 - LOGON procedure examples.
 - Messages or prompts.
-

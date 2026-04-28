@@ -60,8 +60,8 @@ review_status: draft
 
 # EXTREF-IBM-ZOS-DFSMS-STORAGE-MANAGEMENT-0001 - SMS Policy Model
 
-Source: IBM Documentation  
-URL: https://www.ibm.com/docs/en/zos/3.2.0?topic=dfsms-storage-management-subsystem-sms  
+Source: IBM Documentation
+URL: https://www.ibm.com/docs/en/zos/3.2.0?topic=dfsms-storage-management-subsystem-sms
 Accessed: 2026-04-28
 
 ## Public-Safe Summary
@@ -79,4 +79,3 @@ IBM describes SMS as a DFSMS facility for centralized external-storage managemen
 - ACS routine source, pseudo-code, or generated object details.
 - SAF profile names beyond broad security-boundary discussion.
 - Data-set allocation syntax or examples.
-

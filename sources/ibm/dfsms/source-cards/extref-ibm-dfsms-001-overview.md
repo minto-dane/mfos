@@ -60,8 +60,8 @@ review_status: draft
 
 # EXTREF-IBM-ZOS-DFSMS-OVERVIEW-0001 - DFSMS Family Overview
 
-Source: IBM Documentation  
-URL: https://www.ibm.com/docs/en/zos/3.2.0?topic=zos-dfsms  
+Source: IBM Documentation
+URL: https://www.ibm.com/docs/en/zos/3.2.0?topic=zos-dfsms
 Accessed: 2026-04-28
 
 ## Public-Safe Summary
@@ -79,4 +79,3 @@ IBM documents DFSMS as a z/OS storage-management family that includes DFSMSdfp a
 - Utility option lists.
 - Control-block, record-layout, or macro details.
 - Message identifiers or message text.
-

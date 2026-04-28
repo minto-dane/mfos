@@ -23,4 +23,3 @@
 - Add source cards for TSO/E and ISPF command-entry boundaries without syntax.
 - Add source cards for ISPF dialog concepts without panel or service formats.
 - Add cross-domain notes for TSO/E access to UNIX System Services.
-
