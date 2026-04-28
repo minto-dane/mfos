@@ -1,0 +1,89 @@
+schema_version: 1
+status: draft
+gaps:
+- Define the initial StorageDomain enumeration and enforcement matrix.
+version_or_scope: storage-domains; converted from docs/design/source-matrix/source-matrix.yaml. Exact section/version pins remain gaps unless listed below.
+version_or_release: z/OS Basic Skills documentation path; release not pinned in URL
+publication_number: null
+section_scope: 'storage-domains; URL topic(s): storage-what-is-protection'
+pin_quality: official_topic_verified_release_unpinned_needs_review
+review_notes:
+- Pin metadata added from existing local title/URL metadata only; no external document body text copied.
+- Publication number is not present in the local card title or URL; leave null until source review confirms it.
+- Human/source review should confirm exact source version, section anchor, and any publication identifier before production use.
+- 'Targeted review 2026-04-27: IBM Documentation page verified at the existing URL with title "What is storage protection?" under the z/OS Basic Skills documentation path.'
+- Remains needs_review because the Basic Skills URL is not release-pinned and exposes no publication/order number in the reviewed page metadata.
+required_negative_tests:
+- TEST-NUC-WX-MAPPING-DENY-001
+- TEST-STG-CROSS-DOMAIN-WRITE-DENY-001
+verification_refs:
+- model-review
+- page-protection-test
+- architecture-review
+card_id: SRC-CARD-EXTREF-IBM-ZOS-STORAGE-PROTECTION-0001
+source_id: EXTREF-IBM-ZOS-STORAGE-PROTECTION-0001
+legacy_source_ids:
+- IBM-STG-001
+source_kind: bibliographic_reference
+source_type: external_reference
+semantic_role: design_background
+vendor: IBM
+vendor_mark_used: true
+product_family: IBM z/OS
+document_title: What is storage protection?
+document_url:
+- https://www.ibm.com/docs/en/zos-basic-skills?topic=storage-what-is-protection
+retrieved_at: '2026-04-27'
+reference_purpose:
+- source discovery
+- concept mapping
+- non-compatibility boundary definition
+- independent MFOS design traceability
+review_topics:
+- storage protection
+- protection key comparison
+- fetch protection concept
+- protected storage domain
+mfos_mapping:
+  mfos_components:
+  - StorageDomain
+  - typed handles
+  - page-table protection policy
+  mfos_specs: []
+  mfos_requirements: &id001
+  - MFOS-REQ-SOURCE-0002
+  - MFOS-REQ-SYSINT-0004
+  - MFOS-REQ-NUCLEUS-0007
+  - MFOS-REQ-NUCLEUS-0008
+  mapping_notes:
+  - Grounds separating execution authority from access to protected storage domains.
+  - Supports defining protected regions with explicit read, write, and fetch-like access rules.
+mfos_divergence:
+- MFOS does not reproduce z/Architecture storage keys on x64.
+- MFOS maps the concept into ExecutionState, StorageDomain, typed handles, page-table protections, and optional hardware helpers.
+prohibited_inference:
+- MFOS implements z/OS storage keys.
+- x64 pkeys provide z/OS storage-key compatibility.
+- Do not claim z/OS compatibility.
+- Do not treat IBM product behavior as MFOS compatibility.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+source_refs:
+- source_id: EXTREF-IBM-ZOS-STORAGE-PROTECTION-0001
+  source_type: external_reference
+  role: card_subject
+requirement_refs: *id001
+review_status: draft

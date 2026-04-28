@@ -1,0 +1,83 @@
+schema_version: 1
+status: draft
+gaps:
+- Create machine-checked traceability index connecting source IDs, requirements, tests, code, and evidence.
+version_or_scope: assurance-discipline; converted from docs/design/source-matrix/source-matrix.yaml. Exact section/version pins remain gaps unless listed below.
+version_or_release: internal transfer source; external release not applicable
+publication_number: null
+section_scope: 'assurance-discipline; URL topic(s): internal:fbvbs-uploaded-spec'
+pin_quality: internal_source_unversioned_needs_review
+review_notes:
+- Pin metadata added from existing local title/URL metadata only; no external document body text copied.
+- Publication number is not present in the local card title or URL; leave null until source review confirms it.
+- Human/source review should confirm exact source version, section anchor, and any publication identifier before production use.
+- 'Targeted review 2026-04-27: card points to an internal source identifier only; no independently verifiable URL or local versioned source artifact was available in this review scope.'
+- Remains needs_review until the internal FBVBS source version, custody, and section scope are recorded.
+required_negative_tests:
+- TEST-CI-NO-FAKE-SUCCESS-001
+- TEST-TRACEABILITY-MISSING-SOURCE-ID-001
+verification_refs:
+- traceability-audit
+- no-fake-success-ci
+- evidence-review
+card_id: SRC-CARD-FBVBS-001
+source_id: FBVBS-001
+source_kind: internal_transfer_reference
+source_type: internal_transfer
+semantic_role: assurance_discipline_transfer
+vendor: MFOS internal
+vendor_mark_used: false
+product_family: MFOS internal
+document_title: FBVBS uploaded specification
+document_url:
+- internal:fbvbs-uploaded-spec
+retrieved_at: '2026-04-27'
+reference_purpose:
+- internal assurance discipline transfer
+- requirement traceability
+review_topics:
+- requirement ID discipline
+- traceability
+- state-machine evidence
+- no-fake-success discipline
+- production proof obligations
+mfos_mapping:
+  mfos_components:
+  - AI implementation contract
+  - traceability index
+  - evidence discipline
+  mfos_specs: []
+  mfos_requirements: &id001
+  - MFOS-REQ-QUALITY-0001
+  - MFOS-REQ-QUALITY-0002
+  - MFOS-REQ-QUALITY-0007
+  - MFOS-REQ-AI-0001
+  - MFOS-REQ-AI-0005
+  mapping_notes:
+  - Transfers requirement ID discipline, conformance profiles, state machines, command-page constraints, update manifests, evidence, and production proof obligations.
+mfos_divergence:
+- FBVBS cannot invent IBM semantics. It only transfers assurance structure and verification discipline into MFOS.
+prohibited_inference:
+- FBVBS defines z/OS semantics for MFOS.
+- Do not claim z/OS compatibility.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: false
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+source_refs:
+- source_id: FBVBS-001
+  source_type: internal_transfer
+  role: card_subject
+requirement_refs: *id001
+review_status: draft

@@ -1,0 +1,89 @@
+schema_version: 1
+status: draft
+gaps:
+- Pin Intel SDM revision and define supported CPU feature matrix.
+version_or_scope: intel-x64-system-programming; converted from docs/design/source-matrix/source-matrix.yaml. Exact section/version pins remain gaps unless listed below.
+version_or_release: Intel SDM landing page; manual revision not pinned in local metadata
+publication_number: null
+section_scope: 'intel-x64-system-programming; URL path scope: content/www/us/en/developer/articles/technical/intel-sdm.html'
+pin_quality: official_landing_page_verified_manual_version_pinned
+review_notes:
+- Pin metadata added from existing local title/URL metadata only; no external document body text copied.
+- Publication number is not present in the local card title or URL; leave null until source review confirms it.
+- Human/source review should confirm exact source version, section anchor, and any publication identifier before production use.
+- 'Targeted review 2026-04-27: Intel landing page verified at the existing URL; reviewed metadata shows content ID 767375, updated 2026-04-06, and SDM downloadable PDFs at version 091.'
+- Publication/order number remains null because the reviewed landing page did not expose a manual publication number field.
+required_negative_tests:
+- TEST-NUC-NX-REQUIRED-001
+- TEST-NUC-WX-MAPPING-DENY-001
+- TEST-PXM-EPT-POLICY-DENY-001
+verification_refs:
+- platform-feature-test
+- page-table-test
+- iommu-test
+card_id: SRC-CARD-X64-INTEL-001
+source_id: X64-INTEL-001
+source_kind: bibliographic_reference
+source_type: external_reference
+semantic_role: design_background
+vendor: Intel
+vendor_mark_used: true
+product_family: Intel
+document_title: Intel 64 and IA-32 Architectures Software Developer Manuals
+document_url:
+- https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html
+retrieved_at: '2026-04-27'
+reference_purpose:
+- source discovery
+- concept mapping
+- non-compatibility boundary definition
+- independent MFOS design traceability
+review_topics:
+- x64 protection
+- paging
+- interrupt handling
+- VMX
+- EPT
+- MSR
+- CET
+- PKU
+- PKS
+mfos_mapping:
+  mfos_components:
+  - nucleus x64 backend
+  - PXM Intel backend
+  - hardware feature matrix
+  mfos_specs: []
+  mfos_requirements: &id001
+  - MFOS-REQ-NUCLEUS-0007
+  - MFOS-REQ-NUCLEUS-0008
+  - MFOS-REQ-PARTITION-0005
+  - MFOS-REQ-PARTITION-0007
+  mapping_notes:
+  - Grounds Intel x64 protection, memory management, interrupts, VMX, EPT, MSRs, CET, PKU, and PKS where applicable.
+mfos_divergence:
+- Hardware mechanisms are enforcement aids; they do not define MFOS enterprise authorization semantics.
+prohibited_inference:
+- Intel features provide z/OS semantic compatibility.
+- Do not claim z/OS compatibility.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+source_refs:
+- source_id: X64-INTEL-001
+  source_type: external_reference
+  role: card_subject
+requirement_refs: *id001
+review_status: draft

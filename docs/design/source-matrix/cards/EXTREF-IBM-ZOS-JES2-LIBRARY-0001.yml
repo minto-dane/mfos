@@ -1,0 +1,83 @@
+schema_version: 1
+status: draft
+gaps:
+- Select a minimal MFOS operator command subset without implying JES2 compatibility.
+version_or_scope: jes2-detail; converted from docs/design/source-matrix/source-matrix.yaml. Exact section/version pins remain gaps unless listed below.
+version_or_release: z/OS 3.2.0
+publication_number: null
+section_scope: 'jes2-detail; URL topic(s): zos-jes2'
+pin_quality: release_and_topic_pinned_from_url
+review_notes:
+- Pin metadata added from existing local title/URL metadata only; no external document body text copied.
+- Publication number is not present in the local card title or URL; leave null until source review confirms it.
+- Pin is stronger than the prior scope-only card, but semantic extraction still requires normal source review.
+required_negative_tests:
+- TEST-JES2-COMPAT-WORDING-LINT-001
+- TEST-OPER-UNDEFINED-COMMAND-SPEC-GAP-001
+verification_refs:
+- parser-test
+- fuzz-campaign
+- operator-command-review
+card_id: SRC-CARD-EXTREF-IBM-ZOS-JES2-LIBRARY-0001
+source_id: EXTREF-IBM-ZOS-JES2-LIBRARY-0001
+legacy_source_ids:
+- IBM-JES2-001
+source_kind: bibliographic_reference
+source_type: external_reference
+semantic_role: design_background
+vendor: IBM
+vendor_mark_used: true
+product_family: IBM z/OS
+document_title: z/OS JES2 library
+document_url:
+- https://www.ibm.com/docs/en/zos/3.2.0?topic=zos-jes2
+retrieved_at: '2026-04-27'
+reference_purpose:
+- source discovery
+- concept mapping
+- non-compatibility boundary definition
+- independent MFOS design traceability
+review_topics:
+- JES2 commands
+- initialization and tuning
+- messages
+- job/spool operations reference
+mfos_mapping:
+  mfos_components:
+  - operator command review
+  - job/spool detail review
+  mfos_specs: []
+  mfos_requirements: &id001
+  - MFOS-REQ-JOB-0002
+  - MFOS-REQ-OPER-0002
+  - MFOS-REQ-OPER-0003
+  mapping_notes:
+  - Grounds future review of commands, initialization, tuning, macros, messages, and data areas relevant to job and spool operations.
+mfos_divergence:
+- MFOS may borrow operational concepts but must not claim JES2 command compatibility.
+prohibited_inference:
+- MFOS supports JES2 commands.
+- JES2-compatible.
+- Do not claim z/OS compatibility.
+- Do not treat IBM product behavior as MFOS compatibility.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+source_refs:
+- source_id: EXTREF-IBM-ZOS-JES2-LIBRARY-0001
+  source_type: external_reference
+  role: card_subject
+requirement_refs: *id001
+review_status: draft

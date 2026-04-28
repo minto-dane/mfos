@@ -1,0 +1,15 @@
+registry_kind: source_grounding_registry
+schema_version: 1
+status: bridge
+canonical_current:
+  source_card_index: docs/design/source-matrix/source-matrix.yml
+  source_card_directory: docs/design/source-matrix/cards
+  source_card_schema_note: docs/design/source-matrix/source-card-schema.md
+future_home:
+  source_cards: sources/**/source-cards
+  concept_cards: sources/**/concept-cards
+rules:
+  - IBM source documents must be represented as metadata, not copied wholesale.
+  - Concept cards must cite source IDs.
+  - MFOS mappings must document overlap, divergence, prohibited inference, and tests.
+

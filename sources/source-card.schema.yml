@@ -1,0 +1,34 @@
+schema_kind: source_card_shape
+schema_version: 2
+canonical_current: docs/design/source-matrix/source-card-schema.md
+json_schema: schemas/source-card.schema.json
+required_fields:
+  - source_id
+  - source_kind
+  - source_type
+  - semantic_role
+  - vendor
+  - document_title
+  - document_url
+  - retrieved_at
+  - reference_purpose
+  - review_topics
+  - mfos_mapping
+  - mfos_divergence
+  - prohibited_inference
+  - legal_controls
+  - source_refs
+  - requirement_refs
+  - review_status
+allowed_source_types:
+  - external_reference
+  - internal_transfer
+removed_public_fields:
+  - canonical_concepts
+  - normative_source
+  - detailed_summary
+  - source_summary
+  - copied_excerpt
+  - record_layouts
+  - command_syntax
+  - macro_signatures

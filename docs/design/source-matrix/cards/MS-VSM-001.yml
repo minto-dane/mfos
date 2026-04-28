@@ -1,0 +1,83 @@
+schema_version: 1
+status: draft
+gaps:
+- Define Guard unavailable boot policy per profile.
+version_or_scope: guard-vtl-inspiration; converted from docs/design/source-matrix/source-matrix.yaml. Exact section/version pins remain gaps unless listed below.
+version_or_release: Microsoft Learn current article; release not pinned in local metadata
+publication_number: null
+section_scope: 'guard-vtl-inspiration; URL path scope: en-us/virtualization/hyper-v-on-windows/tlfs/vsm'
+pin_quality: primary_article_verified_last_updated_pinned
+review_notes:
+- Pin metadata added from existing local title/URL metadata only; no external document body text copied.
+- Publication number is not present in the local card title or URL; leave null until source review confirms it.
+- Human/source review should confirm exact source version, section anchor, and any publication identifier before production use.
+- 'Targeted review 2026-04-27: Microsoft Learn article verified at the existing URL with title "Virtual Secure Mode" and last updated date 2025-12-16.'
+- Publication number remains null because Microsoft Learn articles do not expose a manual publication number in reviewed metadata.
+required_negative_tests:
+- TEST-GRD-DATASET-POLICY-INTERPRETATION-LINT-001
+- TEST-GRD-UNAVAILABLE-HA-BOOT-DENY-001
+verification_refs:
+- guard-root-test
+- boot-policy-test
+- architecture-review
+card_id: SRC-CARD-MS-VSM-001
+source_id: MS-VSM-001
+source_kind: bibliographic_reference
+source_type: external_reference
+semantic_role: design_background
+vendor: Microsoft
+vendor_mark_used: true
+product_family: Microsoft
+document_title: Virtual Secure Mode
+document_url:
+- https://learn.microsoft.com/en-us/virtualization/hyper-v-on-windows/tlfs/vsm
+retrieved_at: '2026-04-27'
+reference_purpose:
+- source discovery
+- concept mapping
+- non-compatibility boundary definition
+- independent MFOS design traceability
+review_topics:
+- Virtual Secure Mode
+- VTL concept
+- higher-privilege memory control
+- isolated root objects
+mfos_mapping:
+  mfos_components:
+  - PXM Guard isolation model
+  - Guard unavailable boot policy
+  mfos_specs: []
+  mfos_requirements: &id001
+  - MFOS-REQ-GUARD-0002
+  - MFOS-REQ-GUARD-0003
+  - MFOS-REQ-GUARD-0004
+  - MFOS-REQ-GUARD-0008
+  mapping_notes:
+  - Grounds the concept of a higher-privilege layer controlling memory access and isolating selected regions from an OS kernel or drivers.
+mfos_divergence:
+- MFOS Guard uses the concept only for selected root objects and does not implement Windows VTL semantics.
+prohibited_inference:
+- MFOS implements VTLs.
+- PXM Guard is VSM-compatible.
+- Do not claim z/OS compatibility.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+source_refs:
+- source_id: MS-VSM-001
+  source_type: external_reference
+  role: card_subject
+requirement_refs: *id001
+review_status: draft

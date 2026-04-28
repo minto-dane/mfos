@@ -1,0 +1,39 @@
+# External source caches and downloaded references
+/reference-cache/*
+!/reference-cache/README.md
+!/reference-cache/.gitignore
+/sources/_cache/*
+!/sources/_cache/README.md
+!/sources/_cache/DO_NOT_COMMIT.md
+*.pdf
+*.html
+*.htm
+*.epub
+
+# Build artifacts
+/target/
+/dist/
+/tmp/
+/build/images/*
+/build/reproducible/diff-reports/*
+*.o
+*.a
+*.so
+*.dylib
+*.exe
+
+# Large/generated evidence
+/evidence/test-results/**/*.log
+/evidence/attestations/**/*.bin
+/evidence/builds/*
+!/evidence/**/README.md
+
+# Generated docs and matrices
+/specs-generated/rendered/
+/requirements/generated/*
+!/requirements/generated/README.md
+
+# Raw AI outputs
+/ai/outputs/*
+!/ai/outputs/DO_NOT_TRUST_WITHOUT_REVIEW.md
+

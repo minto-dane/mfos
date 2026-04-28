@@ -1,0 +1,315 @@
+schema_version: 1
+document_id: MFOS-SOURCE-MATRIX-CARD-INDEX-0001
+status: draft
+generated_from: docs/design/source-matrix/source-matrix.yaml
+source_card_schema: docs/design/source-matrix/source-card-schema.md
+card_directory: docs/design/source-matrix/cards
+retrieved_at: '2026-04-27'
+compatibility_statement: MFOS is independently specified, does not claim compatibility with external products, and must not reproduce external record layouts, command syntax, macro interfaces, documentation, or other protected source material.
+global_rules:
+  canonical_ledger: Source cards under docs/design/source-matrix/cards/*.yml are the machine-readable source-card ledger for v0.5.
+  legacy_input: docs/design/source-matrix/source-matrix.yaml is retained as conversion history; v0.5 downstream references should use source-matrix.yml and cards/*.yml.
+  source_types:
+  - external_reference
+  - internal_transfer
+  prohibited_claims:
+  - z/OS compatibility
+  - JES compatibility
+  - RACF compatibility
+  - DFSMS compatibility
+  - APF compatibility
+  - PR/SM compatibility
+  - Windows VBS compatibility
+  ledger_rules:
+  - Every z/OS-inspired MFOS concept must cite at least one Source Matrix ID.
+  - Every IBM-derived term used as an MFOS term must document semantic overlap and MFOS divergence.
+  - Specified but unimplemented behavior must fail closed as UNSUPPORTED.
+  - Unspecified behavior must be marked SPEC_GAP and must not be implemented as success.
+  - PXM must not interpret MFOS job, dataset, catalog, spool, security, or workload policy semantics.
+  - Guard must stay limited to selected High-Assurance root objects.
+  card_required_fields:
+  - source_id
+  - source_kind
+  - source_type
+  - semantic_role
+  - vendor
+  - document_title
+  - document_url
+  - retrieved_at
+  - review_topics
+  - mfos_mapping
+  - mfos_divergence
+  - prohibited_inference
+  - legal_controls
+  - source_refs
+  - requirement_refs
+  - review_status
+cards:
+- source_id: EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  source_type: external_reference
+  vendor: IBM
+  title: z/OS and system integrity
+  card_path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001.yml
+  status: draft
+  legacy_source_ids:
+  - IBM-SI-001
+- source_id: EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
+  source_type: external_reference
+  vendor: IBM
+  title: z/OS Authorized Code Scanner introduction and overview
+  card_path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001.yml
+  status: draft
+  legacy_source_ids:
+  - IBM-ZACS-001
+- source_id: EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001
+  source_type: external_reference
+  vendor: IBM
+  title: Authorized programs
+  card_path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001.yml
+  status: draft
+  legacy_source_ids:
+  - IBM-APF-001
+- source_id: EXTREF-IBM-ZOS-STORAGE-PROTECTION-0001
+  source_type: external_reference
+  vendor: IBM
+  title: What is storage protection?
+  card_path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-STORAGE-PROTECTION-0001.yml
+  status: draft
+  legacy_source_ids:
+  - IBM-STG-001
+- source_id: EXTREF-IBM-ZOS-STORAGE-PROTECTION-SUMMARY-0001
+  source_type: external_reference
+  vendor: IBM
+  title: Storage protection summary
+  card_path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-STORAGE-PROTECTION-SUMMARY-0001.yml
+  status: draft
+  legacy_source_ids:
+  - IBM-STG-002
+- source_id: EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  source_type: external_reference
+  vendor: IBM
+  title: z/OS Security Server RACF library
+  card_path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-SECURITY-SERVER-0001.yml
+  status: draft
+  legacy_source_ids:
+  - IBM-RACF-001
+- source_id: EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  source_type: external_reference
+  vendor: IBM
+  title: Authorizing users to access protected resources
+  card_path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001.yml
+  status: draft
+  legacy_source_ids:
+  - IBM-RACF-002
+- source_id: EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
+  source_type: external_reference
+  vendor: IBM
+  title: What is JES?
+  card_path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-JES-INTRODUCTION-0001.yml
+  status: draft
+  legacy_source_ids:
+  - IBM-JES-001
+- source_id: EXTREF-IBM-ZOS-JES-JOB-FLOW-0001
+  source_type: external_reference
+  vendor: IBM
+  title: Job flow through the system
+  card_path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-JES-JOB-FLOW-0001.yml
+  status: draft
+  legacy_source_ids:
+  - IBM-JES-002
+- source_id: EXTREF-IBM-ZOS-JES2-LIBRARY-0001
+  source_type: external_reference
+  vendor: IBM
+  title: z/OS JES2 library
+  card_path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-JES2-LIBRARY-0001.yml
+  status: draft
+  legacy_source_ids:
+  - IBM-JES2-001
+- source_id: EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  source_type: external_reference
+  vendor: IBM
+  title: DFSMSdfp Catalogs
+  card_path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001.yml
+  status: draft
+  legacy_source_ids:
+  - IBM-DFSMS-001
+- source_id: EXTREF-IBM-ZOS-DFSMS-LIBRARY-0001
+  source_type: external_reference
+  vendor: IBM
+  title: z/OS DFSMS library
+  card_path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-DFSMS-LIBRARY-0001.yml
+  status: draft
+  legacy_source_ids:
+  - IBM-DFSMS-002
+- source_id: EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+  source_type: external_reference
+  vendor: IBM
+  title: Introduction to SMF
+  card_path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001.yml
+  status: draft
+  legacy_source_ids:
+  - IBM-SMF-001
+- source_id: EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+  source_type: external_reference
+  vendor: IBM
+  title: 'Record type 80: RACF processing record'
+  card_path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001.yml
+  status: draft
+  legacy_source_ids:
+  - IBM-SMF-002
+- source_id: EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001
+  source_type: external_reference
+  vendor: IBM
+  title: Defining service classes and performance goals
+  card_path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001.yml
+  status: draft
+  legacy_source_ids:
+  - IBM-WPOL-001
+- source_id: EXTREF-IBM-ZOS-UNIX-INTRODUCTION-0001
+  source_type: external_reference
+  vendor: IBM
+  title: Introduction to z/OS UNIX
+  card_path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-UNIX-INTRODUCTION-0001.yml
+  status: draft
+  legacy_source_ids:
+  - IBM-UNIX-001
+- source_id: EXTREF-IBM-ZOS-UNIX-SERVICES-LIBRARY-0001
+  source_type: external_reference
+  vendor: IBM
+  title: z/OS UNIX System Services library
+  card_path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-UNIX-SERVICES-LIBRARY-0001.yml
+  status: draft
+  legacy_source_ids:
+  - IBM-UNIX-002
+- source_id: EXTREF-IBM-ZOS-CROSS-MEMORY-SYNCHRONOUS-0001
+  source_type: external_reference
+  vendor: IBM
+  title: Synchronous cross memory communication
+  card_path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-CROSS-MEMORY-SYNCHRONOUS-0001.yml
+  status: draft
+  legacy_source_ids:
+  - IBM-XMEM-001
+- source_id: EXTREF-IBM-ZOS-CROSS-MEMORY-CONTROL-0001
+  source_type: external_reference
+  vendor: IBM
+  title: Controlling cross-memory communication
+  card_path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-CROSS-MEMORY-CONTROL-0001.yml
+  status: draft
+  legacy_source_ids:
+  - IBM-XMEM-002
+- source_id: EXTREF-IBM-Z-LPAR-INTRODUCTION-0001
+  source_type: external_reference
+  vendor: IBM
+  title: Introduction to Logical Partitions
+  card_path: docs/design/source-matrix/cards/EXTREF-IBM-Z-LPAR-INTRODUCTION-0001.yml
+  status: draft
+  legacy_source_ids:
+  - IBM-LPAR-001
+- source_id: EXTREF-IBM-Z-DPM-0001
+  source_type: external_reference
+  vendor: IBM
+  title: Dynamic Partition Manager
+  card_path: docs/design/source-matrix/cards/EXTREF-IBM-Z-DPM-0001.yml
+  status: draft
+  legacy_source_ids:
+  - IBM-DPM-001
+- source_id: EXTREF-IBM-Z-ARCHITECTURE-PRINCIPLES-0001
+  source_type: external_reference
+  vendor: IBM
+  title: z/Architecture Principles of Operation, SA22-7832-14
+  card_path: docs/design/source-matrix/cards/EXTREF-IBM-Z-ARCHITECTURE-PRINCIPLES-0001.yml
+  status: draft
+  legacy_source_ids:
+  - IBM-ZARCH-001
+- source_id: EXTREF-IBM-ZOS-SMPE-SECINT-HOLDDATA-0001
+  source_type: external_reference
+  vendor: IBM
+  title: SECINT HOLDDATA is now available with SMP/E RECEIVE ORDER
+  card_path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-SMPE-SECINT-HOLDDATA-0001.yml
+  status: draft
+  legacy_source_ids:
+  - IBM-SMPE-001
+- source_id: X64-INTEL-001
+  source_type: external_reference
+  vendor: Intel
+  title: Intel 64 and IA-32 Architectures Software Developer Manuals
+  card_path: docs/design/source-matrix/cards/X64-INTEL-001.yml
+  status: draft
+- source_id: X64-AMD-001
+  source_type: external_reference
+  vendor: AMD
+  title: 'AMD64 Architecture Programmer''s Manual Volume 2: System Programming'
+  card_path: docs/design/source-matrix/cards/X64-AMD-001.yml
+  status: draft
+- source_id: X64-LINUX-PKU-001
+  source_type: external_reference
+  vendor: Linux kernel documentation
+  title: Linux kernel memory protection keys documentation
+  card_path: docs/design/source-matrix/cards/X64-LINUX-PKU-001.yml
+  status: draft
+- source_id: X64-LINUX-CET-001
+  source_type: external_reference
+  vendor: Linux kernel documentation
+  title: Linux x86 CET shadow stack documentation
+  card_path: docs/design/source-matrix/cards/X64-LINUX-CET-001.yml
+  status: draft
+- source_id: MS-VBS-001
+  source_type: external_reference
+  vendor: Microsoft
+  title: Memory Integrity and Virtualization-Based Security
+  card_path: docs/design/source-matrix/cards/MS-VBS-001.yml
+  status: draft
+- source_id: MS-VSM-001
+  source_type: external_reference
+  vendor: Microsoft
+  title: Virtual Secure Mode
+  card_path: docs/design/source-matrix/cards/MS-VSM-001.yml
+  status: draft
+- source_id: TCG-001
+  source_type: external_reference
+  vendor: Trusted Computing Group
+  title: TCG PC Client Platform Firmware Profile Specification
+  card_path: docs/design/source-matrix/cards/TCG-001.yml
+  status: draft
+- source_id: NIST-160-001
+  source_type: external_reference
+  vendor: NIST
+  title: NIST SP 800-160 Vol. 1 Rev. 1
+  card_path: docs/design/source-matrix/cards/NIST-160-001.yml
+  status: draft
+- source_id: NIST-218-001
+  source_type: external_reference
+  vendor: NIST
+  title: NIST SP 800-218 Secure Software Development Framework
+  card_path: docs/design/source-matrix/cards/NIST-218-001.yml
+  status: draft
+- source_id: NIST-193-001
+  source_type: external_reference
+  vendor: NIST
+  title: NIST SP 800-193 Platform Firmware Resiliency Guidelines
+  card_path: docs/design/source-matrix/cards/NIST-193-001.yml
+  status: draft
+- source_id: SEL4-001
+  source_type: external_reference
+  vendor: seL4 project
+  title: seL4 verification material
+  card_path: docs/design/source-matrix/cards/SEL4-001.yml
+  status: draft
+- source_id: SLSA-001
+  source_type: external_reference
+  vendor: SLSA
+  title: SLSA specification
+  card_path: docs/design/source-matrix/cards/SLSA-001.yml
+  status: draft
+- source_id: TUF-001
+  source_type: external_reference
+  vendor: The Update Framework
+  title: The Update Framework Specification and metadata roles
+  card_path: docs/design/source-matrix/cards/TUF-001.yml
+  status: draft
+- source_id: FBVBS-001
+  source_type: internal_transfer
+  vendor: MFOS internal
+  title: FBVBS uploaded specification
+  card_path: docs/design/source-matrix/cards/FBVBS-001.yml
+  status: draft

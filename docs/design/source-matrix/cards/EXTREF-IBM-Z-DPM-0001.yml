@@ -1,0 +1,86 @@
+schema_version: 1
+status: draft
+gaps:
+- Define PXM object model for partition, device, network, storage, and capacity records.
+version_or_scope: pxm-management-plane; converted from docs/design/source-matrix/source-matrix.yaml. Exact section/version pins remain gaps unless listed below.
+version_or_release: not pinned from local metadata
+publication_number: null
+section_scope: 'pxm-management-plane; URL topic(s): cm-dynamic-partition-manager-dpm'
+pin_quality: official_topic_verified_machine_scope_needs_review
+review_notes:
+- Pin metadata added from existing local title/URL metadata only; no external document body text copied.
+- Publication number is not present in the local card title or URL; leave null until source review confirms it.
+- Human/source review should confirm exact source version, section anchor, and any publication identifier before production use.
+- 'Targeted review 2026-04-27: IBM Documentation page verified at the existing URL; page title is "Dynamic Partition Manager (DPM)" and the URL path is scoped to systems-hardware/zsystems/2964-N63.'
+- Remains needs_review because the card is not pinned to a named DPM guide version, document order number, or stable section anchor beyond the topic URL.
+required_negative_tests:
+- TEST-PXM-DEVICE-TEARDOWN-INCOMPLETE-DENY-001
+- TEST-PXM-PARTITION-AUDIT-REQUIRED-001
+verification_refs:
+- device-test
+- device-teardown-negative-test
+- partition-audit-test
+card_id: SRC-CARD-EXTREF-IBM-Z-DPM-0001
+source_id: EXTREF-IBM-Z-DPM-0001
+legacy_source_ids:
+- IBM-DPM-001
+source_kind: bibliographic_reference
+source_type: external_reference
+semantic_role: design_background
+vendor: IBM
+vendor_mark_used: true
+product_family: IBM Z
+document_title: Dynamic Partition Manager
+document_url:
+- https://www.ibm.com/docs/en/systems-hardware/zsystems/2964-N63?topic=cm-dynamic-partition-manager-dpm
+retrieved_at: '2026-04-27'
+reference_purpose:
+- source discovery
+- concept mapping
+- non-compatibility boundary definition
+- independent MFOS design traceability
+review_topics:
+- partition object
+- adapter object
+- network object
+- storage object
+- central management plane
+mfos_mapping:
+  mfos_components:
+  - PXM management plane objects
+  - device assignment records
+  - partition audit
+  mfos_specs: []
+  mfos_requirements: &id001
+  - MFOS-REQ-PARTITION-0005
+  - MFOS-REQ-PARTITION-0006
+  - MFOS-REQ-PARTITION-0008
+  mapping_notes:
+  - Grounds object-oriented management of partition, adapter, network, storage, and capacity-related resources from a central management plane.
+mfos_divergence:
+- MFOS PXM management is not HMC/DPM compatibility and does not manage business-level MFOS resources.
+prohibited_inference:
+- PXM implements DPM.
+- Do not claim z/OS compatibility.
+- Do not treat IBM product behavior as MFOS compatibility.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+source_refs:
+- source_id: EXTREF-IBM-Z-DPM-0001
+  source_type: external_reference
+  role: card_subject
+requirement_refs: *id001
+review_status: draft

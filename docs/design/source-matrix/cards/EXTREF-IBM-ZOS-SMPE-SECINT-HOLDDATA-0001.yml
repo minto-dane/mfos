@@ -1,0 +1,85 @@
+schema_version: 1
+status: draft
+gaps:
+- Define how MFOS advisory metadata maps to update manifests and policy bundles.
+version_or_scope: update-security-advisory-model; converted from docs/design/source-matrix/source-matrix.yaml. Exact section/version pins remain gaps unless listed below.
+version_or_release: IBM Support page; release not pinned in URL
+publication_number: null
+section_scope: 'update-security-advisory-model; URL path scope: support/pages/secint-holddata-now-available-smpe-receive-order'
+pin_quality: official_support_page_verified_event_date_pinned
+review_notes:
+- Pin metadata added from existing local title/URL metadata only; no external document body text copied.
+- Publication number is not present in the local card title or URL; leave null until source review confirms it.
+- Human/source review should confirm exact source version, section anchor, and any publication identifier before production use.
+- 'Targeted review 2026-04-27: IBM Support page verified at the existing URL; reviewed page states the SECINT RECEIVE ORDER enhancement date as 16 October 2025.'
+- Publication/order number remains null because this is a support page, not a numbered manual.
+required_negative_tests:
+- TEST-UVS-SECURITY-EPOCH-DOWNGRADE-001
+- TEST-UVS-ADVISORY-METADATA-MISSING-001
+verification_refs:
+- update-review
+- security-epoch-test
+- supply-chain-audit
+card_id: SRC-CARD-EXTREF-IBM-ZOS-SMPE-SECINT-HOLDDATA-0001
+source_id: EXTREF-IBM-ZOS-SMPE-SECINT-HOLDDATA-0001
+legacy_source_ids:
+- IBM-SMPE-001
+source_kind: bibliographic_reference
+source_type: external_reference
+semantic_role: design_background
+vendor: IBM
+vendor_mark_used: true
+product_family: IBM z/OS
+document_title: SECINT HOLDDATA is now available with SMP/E RECEIVE ORDER
+document_url:
+- https://www.ibm.com/support/pages/secint-holddata-now-available-smpe-receive-order
+retrieved_at: '2026-04-27'
+reference_purpose:
+- source discovery
+- concept mapping
+- non-compatibility boundary definition
+- independent MFOS design traceability
+review_topics:
+- security advisory metadata
+- HOLDDATA
+- receive order
+- update advisory workflow
+mfos_mapping:
+  mfos_components:
+  - uvsd advisory metadata
+  - security_epoch
+  - update policy bundle
+  mfos_specs: []
+  mfos_requirements: &id001
+  - MFOS-REQ-UPDATE-0004
+  - MFOS-REQ-UPDATE-0008
+  - MFOS-REQ-QUALITY-0006
+  mapping_notes:
+  - Informs separating security-relevant update advisory metadata from raw update transport.
+mfos_divergence:
+- MFOS does not implement SMP/E. uvsd uses TUF-like metadata, security epochs, and signed provenance.
+prohibited_inference:
+- MFOS implements SMP/E.
+- Do not claim z/OS compatibility.
+- Do not treat IBM product behavior as MFOS compatibility.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+source_refs:
+- source_id: EXTREF-IBM-ZOS-SMPE-SECINT-HOLDDATA-0001
+  source_type: external_reference
+  role: card_subject
+requirement_refs: *id001
+review_status: draft

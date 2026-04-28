@@ -1,0 +1,90 @@
+schema_version: 1
+status: draft
+gaps:
+- Define initial AMF authority classes and ABI constraints.
+version_or_scope: authorized-module-model; converted from docs/design/source-matrix/source-matrix.yaml. Exact section/version pins remain gaps unless listed below.
+version_or_release: z/OS 3.2.0
+publication_number: null
+section_scope: 'authorized-module-model; URL topic(s): system-authorized-programs'
+pin_quality: release_and_topic_pinned_from_url
+review_notes:
+- Pin metadata added from existing local title/URL metadata only; no external document body text copied.
+- Publication number is not present in the local card title or URL; leave null until source review confirms it.
+- Pin is stronger than the prior scope-only card, but semantic extraction still requires normal source review.
+required_negative_tests:
+- TEST-AMF-ADMIN-CONFUSION-001
+- TEST-AMF-UNSIGNED-LOAD-001
+- TEST-AMF-AUDIT-DISABLE-DENY-001
+verification_refs:
+- amf-manifest-test
+- signature-test
+- revocation-test
+- architecture-review
+card_id: SRC-CARD-EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001
+source_id: EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001
+legacy_source_ids:
+- IBM-APF-001
+source_kind: bibliographic_reference
+source_type: external_reference
+semantic_role: design_background
+vendor: IBM
+vendor_mark_used: true
+product_family: IBM z/OS
+document_title: Authorized programs
+document_url:
+- https://www.ibm.com/docs/en/zos/3.2.0?topic=system-authorized-programs
+retrieved_at: '2026-04-27'
+reference_purpose:
+- source discovery
+- concept mapping
+- non-compatibility boundary definition
+- independent MFOS design traceability
+review_topics:
+- authorized program
+- authorized state
+- restricted service entry
+- OS extension authorization
+mfos_mapping:
+  mfos_components:
+  - AMF
+  - AuthorityClass
+  - authorized module lifecycle
+  mfos_specs: []
+  mfos_requirements: &id001
+  - MFOS-REQ-SYSINT-0004
+  - MFOS-REQ-AMF-0001
+  - MFOS-REQ-AMF-0003
+  - MFOS-REQ-AMF-0004
+  - MFOS-REQ-AMF-0007
+  mapping_notes:
+  - Grounds distinguishing special OS extension authority from ordinary user authority.
+  - Supports an explicit authorized module boundary for sensitive service paths.
+mfos_divergence:
+- MFOS AMF is signed, measured, revocable, ABI-limited, audited, and optionally Guard-approved.
+- AMF is not administrator privilege and is not APF compatibility.
+prohibited_inference:
+- AMF is APF-compatible.
+- AMF grants root or administrator privilege.
+- Do not claim z/OS compatibility.
+- Do not treat IBM product behavior as MFOS compatibility.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+source_refs:
+- source_id: EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001
+  source_type: external_reference
+  role: card_subject
+requirement_refs: *id001
+review_status: draft

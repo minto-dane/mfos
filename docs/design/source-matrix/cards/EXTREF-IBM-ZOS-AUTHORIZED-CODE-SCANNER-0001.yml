@@ -1,0 +1,91 @@
+schema_version: 1
+status: draft
+gaps:
+- Define initial authorized-boundary checklist for MFOS SVC, PCALL, and AMF.
+version_or_scope: authorized-boundary-testing; converted from docs/design/source-matrix/source-matrix.yaml. Exact section/version pins remain gaps unless listed below.
+version_or_release: z/OS 3.2.0
+publication_number: null
+section_scope: 'authorized-boundary-testing; URL topic(s): zacsg-introduction, guide-overview'
+pin_quality: release_and_topic_pinned_from_url
+review_notes:
+- Pin metadata added from existing local title/URL metadata only; no external document body text copied.
+- Publication number is not present in the local card title or URL; leave null until source review confirms it.
+- Pin is stronger than the prior scope-only card, but semantic extraction still requires normal source review.
+required_negative_tests:
+- TEST-SVC-UNTRUSTED-PARAM-001
+- TEST-PCALL-PRIVILEGE-CONFUSION-001
+- TEST-AMF-UNTRUSTED-ABI-001
+verification_refs:
+- authorized-boundary-negative-tests
+- fuzz-campaign
+- code-review
+card_id: SRC-CARD-EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
+source_id: EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
+legacy_source_ids:
+- IBM-ZACS-001
+source_kind: bibliographic_reference
+source_type: external_reference
+semantic_role: design_background
+vendor: IBM
+vendor_mark_used: true
+product_family: IBM z/OS
+document_title: z/OS Authorized Code Scanner introduction and overview
+document_url:
+- https://www.ibm.com/docs/en/zos/3.2.0?topic=zacsg-introduction
+- https://www.ibm.com/docs/en/zos/3.2.0?topic=guide-overview
+retrieved_at: '2026-04-27'
+reference_purpose:
+- source discovery
+- concept mapping
+- non-compatibility boundary definition
+- independent MFOS design traceability
+review_topics:
+- authorized boundary scanning
+- SVC entry review
+- PC routine review
+- untrusted parameter handling
+- privilege-confusion testing
+mfos_mapping:
+  mfos_components:
+  - SVC negative testing
+  - PCALL negative testing
+  - AMF boundary testing
+  - copy-in/copy-out review
+  mfos_specs: []
+  mfos_requirements: &id001
+  - MFOS-REQ-SYSINT-0009
+  - MFOS-REQ-AMF-0008
+  - MFOS-REQ-QUALITY-0002
+  - MFOS-REQ-QUALITY-0005
+  mapping_notes:
+  - Grounds scanning and testing of authorized entry points for unintended authority transfer.
+  - Supports negative tests for SVC, PCALL, AMF, privileged paths, setuid-like confusion, and untrusted parameter handling.
+mfos_divergence:
+- MFOS uses zACS-like review discipline, not the IBM scanner implementation.
+- MFOS applies the discipline to x64-native service ABIs, typed handles, and copy-in/copy-out.
+prohibited_inference:
+- MFOS implements z/OS Authorized Code Scanner.
+- zACS compatibility.
+- Do not claim z/OS compatibility.
+- Do not treat IBM product behavior as MFOS compatibility.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+source_refs:
+- source_id: EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
+  source_type: external_reference
+  role: card_subject
+requirement_refs: *id001
+review_status: draft

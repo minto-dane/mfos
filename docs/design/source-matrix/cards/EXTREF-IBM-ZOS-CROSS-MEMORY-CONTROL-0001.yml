@@ -1,0 +1,85 @@
+schema_version: 1
+status: draft
+gaps:
+- Define cross-service buffer ownership and lifetime rules.
+version_or_scope: cross-memory-security; converted from docs/design/source-matrix/source-matrix.yaml. Exact section/version pins remain gaps unless listed below.
+version_or_release: z/OS Basic Skills documentation path; release not pinned in URL
+publication_number: null
+section_scope: 'cross-memory-security; URL topic(s): integrity-controlling-cross-memory-communication'
+pin_quality: official_topic_verified_release_unpinned_needs_review
+review_notes:
+- Pin metadata added from existing local title/URL metadata only; no external document body text copied.
+- Publication number is not present in the local card title or URL; leave null until source review confirms it.
+- Human/source review should confirm exact source version, section anchor, and any publication identifier before production use.
+- 'Targeted review 2026-04-27: IBM Documentation page verified at the existing URL with title "Controlling cross-memory communication" under the z/OS Basic Skills documentation path.'
+- Remains needs_review because the Basic Skills URL is not release-pinned and exposes no publication/order number in the reviewed page metadata.
+required_negative_tests:
+- TEST-SVC-USER-POINTER-DIRECT-DEREF-DENY-001
+- TEST-PCALL-BUFFER-LIFETIME-ABUSE-001
+verification_refs:
+- pointer-negative-test
+- copy-in-copy-out-test
+- code-review
+card_id: SRC-CARD-EXTREF-IBM-ZOS-CROSS-MEMORY-CONTROL-0001
+source_id: EXTREF-IBM-ZOS-CROSS-MEMORY-CONTROL-0001
+legacy_source_ids:
+- IBM-XMEM-002
+source_kind: bibliographic_reference
+source_type: external_reference
+semantic_role: design_background
+vendor: IBM
+vendor_mark_used: true
+product_family: IBM z/OS
+document_title: Controlling cross-memory communication
+document_url:
+- https://www.ibm.com/docs/en/zos-basic-skills?topic=integrity-controlling-cross-memory-communication
+retrieved_at: '2026-04-27'
+reference_purpose:
+- source discovery
+- concept mapping
+- non-compatibility boundary definition
+- independent MFOS design traceability
+review_topics:
+- cross-memory authority
+- address-space isolation
+- common area risk
+- security controls
+mfos_mapping:
+  mfos_components:
+  - cross-service buffer control
+  - pointer rejection
+  - copy-in/copy-out discipline
+  mfos_specs: []
+  mfos_requirements: &id001
+  - MFOS-REQ-SYSINT-0007
+  - MFOS-REQ-SYSINT-0008
+  - MFOS-REQ-SYSINT-0009
+  mapping_notes:
+  - Grounds the need for security controls around cross-memory communication and privileged cross-address-space activity.
+mfos_divergence:
+- MFOS must not expose arbitrary cross-address-space pointer access in early phases.
+prohibited_inference:
+- MFOS PCALL trusts foreign address-space pointers.
+- Do not claim z/OS compatibility.
+- Do not treat IBM product behavior as MFOS compatibility.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+source_refs:
+- source_id: EXTREF-IBM-ZOS-CROSS-MEMORY-CONTROL-0001
+  source_type: external_reference
+  role: card_subject
+requirement_refs: *id001
+review_status: draft

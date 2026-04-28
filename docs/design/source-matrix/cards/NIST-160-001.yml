@@ -1,0 +1,77 @@
+schema_version: 1
+status: draft
+gaps:
+- Define assurance-case template and lifecycle review cadence.
+version_or_scope: secure-systems-engineering; converted from docs/design/source-matrix/source-matrix.yaml. Exact section/version pins remain gaps unless listed below.
+version_or_release: NIST SP 800-160 Vol. 1 Rev. 1
+publication_number: SP 800-160 Vol. 1 Rev. 1
+section_scope: 'secure-systems-engineering; URL path scope: pubs/sp/800/160/v1/r1/final'
+pin_quality: publication_identifier_pinned_from_title
+review_notes:
+- Pin metadata added from existing local title/URL metadata only; no external document body text copied.
+- Pin is stronger than the prior scope-only card, but semantic extraction still requires normal source review.
+required_negative_tests:
+- TEST-PROD-CLAIM-WITHOUT-EVIDENCE-DENY-001
+- TEST-ASSURANCE-MISSING-ASSUMPTION-LINT-001
+verification_refs:
+- assurance-case-review
+- production-readiness-gate
+card_id: SRC-CARD-NIST-160-001
+source_id: NIST-160-001
+source_kind: bibliographic_reference
+source_type: external_reference
+semantic_role: design_background
+vendor: NIST
+vendor_mark_used: true
+product_family: NIST
+document_title: NIST SP 800-160 Vol. 1 Rev. 1
+document_url:
+- https://csrc.nist.gov/pubs/sp/800/160/v1/r1/final
+retrieved_at: '2026-04-27'
+reference_purpose:
+- source discovery
+- concept mapping
+- non-compatibility boundary definition
+- independent MFOS design traceability
+review_topics:
+- secure systems engineering
+- trustworthiness
+- lifecycle assurance
+- security engineering process
+mfos_mapping:
+  mfos_components:
+  - assurance case
+  - production readiness gate
+  - lifecycle reviews
+  mfos_specs: []
+  mfos_requirements: &id001
+  - MFOS-REQ-QUALITY-0001
+  - MFOS-REQ-QUALITY-0010
+  mapping_notes:
+  - Grounds lifecycle-level engineering of trustworthy secure systems.
+mfos_divergence:
+- MFOS maps this into staged profiles, requirements traceability, evidence, review, and production readiness gates.
+prohibited_inference:
+- A design document alone establishes high assurance.
+- Do not claim z/OS compatibility.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+source_refs:
+- source_id: NIST-160-001
+  source_type: external_reference
+  role: card_subject
+requirement_refs: *id001
+review_status: draft

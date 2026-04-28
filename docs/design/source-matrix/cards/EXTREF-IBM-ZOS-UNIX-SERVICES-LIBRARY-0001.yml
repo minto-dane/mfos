@@ -1,0 +1,84 @@
+schema_version: 1
+status: draft
+gaps:
+- Define optional subsystem conformance profile.
+version_or_scope: unix-subsystem-detail; converted from docs/design/source-matrix/source-matrix.yaml. Exact section/version pins remain gaps unless listed below.
+version_or_release: z/OS latest documentation path; floating release pin
+publication_number: null
+section_scope: 'unix-subsystem-detail; URL topic(s): zos-unix-system-services'
+pin_quality: official_library_redirect_verified_release_pinned
+review_notes:
+- Pin metadata added from existing local title/URL metadata only; no external document body text copied.
+- Publication number is not present in the local card title or URL; leave null until source review confirms it.
+- Human/source review should confirm exact source version, section anchor, and any publication identifier before production use.
+- 'Targeted review 2026-04-27: IBM Documentation latest URL redirected to z/OS 3.2.0 and the reviewed library page lists z/OS UNIX System Services publications with order numbers and last-updated dates.'
+- Publication/order number remains null at card level because this card maps the library index rather than a single manual.
+required_negative_tests:
+- TEST-POSIX-COMPAT-CLAIM-LINT-001
+- TEST-POSIX-UNSUPPORTED-API-FAIL-CLOSED-001
+verification_refs:
+- documentation-review
+- source-matrix-lint
+card_id: SRC-CARD-EXTREF-IBM-ZOS-UNIX-SERVICES-LIBRARY-0001
+source_id: EXTREF-IBM-ZOS-UNIX-SERVICES-LIBRARY-0001
+legacy_source_ids:
+- IBM-UNIX-002
+source_kind: bibliographic_reference
+source_type: external_reference
+semantic_role: design_background
+vendor: IBM
+vendor_mark_used: true
+product_family: IBM z/OS
+document_title: z/OS UNIX System Services library
+document_url:
+- https://www.ibm.com/docs/en/zos/latest?topic=zos-unix-system-services
+retrieved_at: '2026-04-27'
+reference_purpose:
+- source discovery
+- concept mapping
+- non-compatibility boundary definition
+- independent MFOS design traceability
+review_topics:
+- UNIX commands
+- file-system interface
+- callable services
+- user guide
+- planning guide
+mfos_mapping:
+  mfos_components:
+  - optional POSIX command/API review
+  - non-primary UNIX subsystem scope
+  mfos_specs: []
+  mfos_requirements: &id001
+  - MFOS-REQ-SOURCE-0001
+  - MFOS-REQ-SOURCE-0003
+  mapping_notes:
+  - Grounds future optional-subsystem review for commands, file-system interfaces, planning, callable services, and user guidance.
+mfos_divergence:
+- MFOS does not make UNIX services the primary operating model.
+prohibited_inference:
+- MFOS implements z/OS UNIX.
+- z/OS UNIX-compatible.
+- Do not claim z/OS compatibility.
+- Do not treat IBM product behavior as MFOS compatibility.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+source_refs:
+- source_id: EXTREF-IBM-ZOS-UNIX-SERVICES-LIBRARY-0001
+  source_type: external_reference
+  role: card_subject
+requirement_refs: *id001
+review_status: draft

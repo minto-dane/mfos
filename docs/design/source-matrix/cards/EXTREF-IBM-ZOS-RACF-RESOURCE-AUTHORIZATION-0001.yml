@@ -1,0 +1,88 @@
+schema_version: 1
+status: draft
+gaps:
+- Define access authority taxonomy for DATASET, SPOOL, JOB, PROGRAM, OPERATOR_COMMAND, PARTITION, and UPDATE_ARTIFACT.
+version_or_scope: resource-profiles; converted from docs/design/source-matrix/source-matrix.yaml. Exact section/version pins remain gaps unless listed below.
+version_or_release: z/OS 3.1.0
+publication_number: null
+section_scope: 'resource-profiles; URL topic(s): racf-authorizing-users-access-protected-resources'
+pin_quality: release_and_topic_pinned_from_url
+review_notes:
+- Pin metadata added from existing local title/URL metadata only; no external document body text copied.
+- Publication number is not present in the local card title or URL; leave null until source review confirms it.
+- Pin is stronger than the prior scope-only card, but semantic extraction still requires normal source review.
+required_negative_tests:
+- TEST-DATA-DENY-001
+- TEST-DATA-STALE-HANDLE-001
+- TEST-OPER-COMMAND-DENY-001
+verification_refs:
+- security-negative-test
+- stale-handle-test
+- command-negative-test
+card_id: SRC-CARD-EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+source_id: EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+legacy_source_ids:
+- IBM-RACF-002
+source_kind: bibliographic_reference
+source_type: external_reference
+semantic_role: design_background
+vendor: IBM
+vendor_mark_used: true
+product_family: IBM z/OS
+document_title: Authorizing users to access protected resources
+document_url:
+- https://www.ibm.com/docs/en/zos/3.1.0?topic=racf-authorizing-users-access-protected-resources
+retrieved_at: '2026-04-27'
+reference_purpose:
+- source discovery
+- concept mapping
+- non-compatibility boundary definition
+- independent MFOS design traceability
+review_topics:
+- principal
+- group
+- protected resource
+- resource profile
+- access list
+- default access
+mfos_mapping:
+  mfos_components:
+  - SecurityProfile
+  - SecurityDecision
+  - resource access control
+  mfos_specs: []
+  mfos_requirements: &id001
+  - MFOS-REQ-AUTH-0002
+  - MFOS-REQ-AUTH-0004
+  - MFOS-REQ-AUTH-0005
+  - MFOS-REQ-AUTH-0006
+  - MFOS-REQ-AUTH-0009
+  mapping_notes:
+  - Grounds principals, groups, protected resources, resource profiles, access lists, default access, and access authorities.
+mfos_divergence:
+- MFOS adds decision obligations including audit, MFA, dual control, break-glass, Guard approval, operator confirmation, UNSUPPORTED, and SPEC_GAP.
+prohibited_inference:
+- MFOS resource profiles are RACF profiles.
+- Do not claim z/OS compatibility.
+- Do not treat IBM product behavior as MFOS compatibility.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+source_refs:
+- source_id: EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  source_type: external_reference
+  role: card_subject
+requirement_refs: *id001
+review_status: draft

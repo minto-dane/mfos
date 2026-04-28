@@ -1,0 +1,86 @@
+schema_version: 1
+status: draft
+gaps:
+- Define catalog entry schema and transaction journal format.
+version_or_scope: catalog-model; converted from docs/design/source-matrix/source-matrix.yaml. Exact section/version pins remain gaps unless listed below.
+version_or_release: z/OS 3.1.0
+publication_number: null
+section_scope: 'catalog-model; URL topic(s): dfsmsdfp-catalogs'
+pin_quality: release_and_topic_pinned_from_url
+review_notes:
+- Pin metadata added from existing local title/URL metadata only; no external document body text copied.
+- Publication number is not present in the local card title or URL; leave null until source review confirms it.
+- Pin is stronger than the prior scope-only card, but semantic extraction still requires normal source review.
+required_negative_tests:
+- TEST-CAT-RESOLVE-UNCOMMITTED-001
+- TEST-CAT-RESOLVE-ROLLED-BACK-001
+- TEST-CAT-INTEGRITY-TAG-MISMATCH-001
+verification_refs:
+- schema-test
+- transaction-test
+- stale-handle-test
+card_id: SRC-CARD-EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+source_id: EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+legacy_source_ids:
+- IBM-DFSMS-001
+source_kind: bibliographic_reference
+source_type: external_reference
+semantic_role: design_background
+vendor: IBM
+vendor_mark_used: true
+product_family: IBM z/OS
+document_title: DFSMSdfp Catalogs
+document_url:
+- https://www.ibm.com/docs/en/zos/3.1.0?topic=dfsmsdfp-catalogs
+retrieved_at: '2026-04-27'
+reference_purpose:
+- source discovery
+- concept mapping
+- non-compatibility boundary definition
+- independent MFOS design traceability
+review_topics:
+- catalog
+- dataset attributes
+- dataset location
+- master catalog
+- user catalog
+mfos_mapping:
+  mfos_components:
+  - catalogd
+  - CatalogEntry
+  - DSN resolution
+  mfos_specs: []
+  mfos_requirements: &id001
+  - MFOS-REQ-CATALOG-0002
+  - MFOS-REQ-CATALOG-0003
+  - MFOS-REQ-CATALOG-0004
+  - MFOS-REQ-DATASET-0001
+  mapping_notes:
+  - Grounds catalogs as records of dataset attributes and locations, allowing users to resolve datasets without knowing raw placement.
+mfos_divergence:
+- MFOS catalog entries include owner, attributes, location, security profile, generation, immutable/system flags, and integrity tag.
+prohibited_inference:
+- catalogd is DFSMS-compatible.
+- Do not claim z/OS compatibility.
+- Do not treat IBM product behavior as MFOS compatibility.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+source_refs:
+- source_id: EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  source_type: external_reference
+  role: card_subject
+requirement_refs: *id001
+review_status: draft
