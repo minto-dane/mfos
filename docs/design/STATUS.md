@@ -2,9 +2,10 @@
 
 Status date: 2026-04-28
 Workspace: `/home/nia/mfos`
-Git status: working branch `phase/0.9-executable-spec-freeze-artifacts` tracks
-`origin/phase/0.9-executable-spec-freeze-artifacts`; remote repository remains
-private pending public legal/IP review.
+Git status: working branch `dev` tracks `origin/dev`; repository visibility is
+being changed to public by owner instruction. This visibility change does not
+remove the formal public release gate: public-release claims remain blocked
+pending IP/trademark attorney review.
 
 ## Current Phase
 
