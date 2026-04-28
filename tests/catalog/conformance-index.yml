@@ -907,9 +907,9 @@ entries:
       before_return: false
     failure_mode: null
     final_state: COMPLETE
-  oracle_ref: tests/golden/fvs/hello-job-9001.yml
-  fixture_ref: tests/fixtures/fvs/hello-job-9001.yml
-  golden_ref: tests/golden/fvs/hello-job-9001.yml
+  oracle_ref: tests/golden/first-vertical-slice/hello-job.yml
+  fixture_ref: tests/fixtures/first-vertical-slice/hello-job.yml
+  golden_ref: tests/golden/first-vertical-slice/hello-job.yml
   negative: false
   security_sensitive: true
   audit_obligation_required: true

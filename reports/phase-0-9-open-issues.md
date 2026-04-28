@@ -6,5 +6,9 @@ Minor deferred items:
 
 - Implement the runner only in Phase 1 after review.
 - Implement concrete fuzz seed files only in Phase 1.
-- Resolve the first vertical slice user-facing policy-denial error mapping in
-  Phase 1 without weakening fail-closed behavior.
+
+Closed during PR #5 review:
+
+- The first vertical slice user-facing policy-denial mapping is resolved as
+  `MFOS_ERR_POLICY_DENIED` with audit `reason_code:
+  DATASET_READ_NOT_PERMITTED`.

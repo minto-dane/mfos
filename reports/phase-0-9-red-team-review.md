@@ -23,8 +23,9 @@ None open.
   implementation. This is intentional and is recorded as a Phase 1 readiness
   item.
 - Concrete byte-level fuzz seed files are deferred to Phase 1.
-- First vertical slice policy-denial display error wording remains a SPEC_GAP
-  until Phase 1 chooses a single user-facing error mapping.
+- First vertical slice policy-denial display error wording was resolved during
+  PR #5 review as `MFOS_ERR_POLICY_DENIED` with audit `reason_code:
+  DATASET_READ_NOT_PERMITTED`.
 
 ## Checks Performed
 

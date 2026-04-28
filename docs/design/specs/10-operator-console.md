@@ -621,8 +621,8 @@ Ordering rules:
 | `RECEIVED` to `EXECUTING` | `MFOS_ERR_SPEC_GAP`; no side effect. |
 | `PARSE_FAILED` to any non-terminal state | `MFOS_ERR_INVALID_PARAMETER`; no side effect. |
 | `PARSED` to `EXECUTING` before target resolution | `MFOS_ERR_SPEC_GAP`; no side effect. |
-| `TARGET_RESOLVED` to `EXECUTING` before allow decision | `MFOS_ERR_UNAUTHORIZED`; audit when possible. |
-| `AUTHZ_DENIED` to `EXECUTING` | `MFOS_ERR_UNAUTHORIZED`; audit violation. |
+| `TARGET_RESOLVED` to `EXECUTING` before allow decision | `MFOS_ERR_INVALID_STATE`; audit when possible. |
+| `AUTHZ_DENIED` to `EXECUTING` | `MFOS_ERR_POLICY_DENIED`; audit violation. |
 | `CONFIRMATION_PENDING` to `EXECUTING` without valid confirmation token | `MFOS_ERR_CONFIRMATION_REQUIRED`; no side effect. |
 | `DUAL_CONTROL_PENDING` to `EXECUTING` without valid distinct approver | `MFOS_ERR_DUAL_CONTROL_REQUIRED`; no side effect. |
 | `AUDIT_PENDING` to `EXECUTING` when pre-effect audit failed | `MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE`; no side effect. |
@@ -810,8 +810,8 @@ Rules:
 | --- | --- | --- |
 | `MFOS_ERR_UNAUTHENTICATED` | No valid operator session or automation principal. | Reject command; audit session failure when possible. |
 | `MFOS_ERR_INVALID_PARAMETER` | Parse or target resolution failed. | No execution; display parameter failure. |
-| `MFOS_ERR_UNAUTHORIZED` | Command authority denied. | Do not execute; audit before display when required. |
-| `MFOS_ERR_POLICY_DENIED` | securityd denies action. | Do not execute; audit denial. |
+| `MFOS_ERR_UNAUTHORIZED` | Legacy umbrella wording only; not the primary policy-denial result for Phase 1 artifacts. | Treat as deprecated alias or error-model cleanup target; do not execute. |
+| `MFOS_ERR_POLICY_DENIED` | `securityd` denies command authority or target action for a valid subject. | Do not execute; audit denial. |
 | `MFOS_ERR_POLICY_VERSION_MISMATCH` | Pending token or command used stale policy. | Reauthorize or cancel; no side effect. |
 | `MFOS_ERR_CONFIRMATION_REQUIRED` | Human confirmation obligation unsatisfied. | Hold pending command or deny on expiry. |
 | `MFOS_ERR_DUAL_CONTROL_REQUIRED` | Distinct approver obligation unsatisfied. | Hold pending command or deny on expiry. |

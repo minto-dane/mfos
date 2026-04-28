@@ -119,6 +119,16 @@ Runner failures are distinct from MFOS expected failures.
 | Expected MFOS typed failure observed | Determined by oracle |
 | Unexpected success on negative case | `FAIL` |
 
+Phase 1 runner implementations MUST preserve expected MFOS typed failures
+exactly as declared by the oracle. For authorization-oriented fixtures, the
+minimum error taxonomy is:
+
+- `MFOS_ERR_UNAUTHENTICATED`: no valid subject/principal/session exists.
+- `MFOS_ERR_POLICY_DENIED`: a valid subject exists and policy denies the
+  operation.
+- `MFOS_ERR_UNAUTHORIZED`: deprecated umbrella wording only; do not use it as
+  the primary policy-denial output for Phase 1 executable-spec artifacts.
+
 ## 8. Deterministic Replay
 
 A future runner MUST make replay possible by recording:

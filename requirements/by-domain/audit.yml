@@ -191,7 +191,7 @@ entries:
   audit_obligations:
   - AUDIT_QUERY
   failure_modes:
-  - MFOS_ERR_UNAUTHORIZED
+  - MFOS_ERR_POLICY_DENIED
   evidence_required:
   - EV-MFOS-AUDIT-0105
   mfos_non_compatibility:

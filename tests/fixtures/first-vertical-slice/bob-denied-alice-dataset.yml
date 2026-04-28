@@ -24,7 +24,7 @@ inputs:
 - input_id: INPUT-MFOS-PHASE09-0001
   operation: BOB-DENIED
   deterministic_seed: SEED-MFOS-PHASE09-0001
-expected_oracle: tests/golden/fvs/bob-denied-9002.yml
+expected_oracle: tests/golden/first-vertical-slice/bob-denied-alice-dataset.yml
 expected_evidence:
 - EV-MFOS-FVS-BOB-DENIED-9002
 not_allowed:

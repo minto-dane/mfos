@@ -182,7 +182,7 @@ $defs:
   fixture_id:
     allOf:
       - type: string
-        pattern: "^FIX-MFOS-[A-Z0-9]+-[A-Z0-9-]*[0-9]{4}$"
+        pattern: "^FIXTURE-MFOS-[A-Z0-9]+-[A-Z0-9-]*[0-9]{4}$"
       - not:
           $ref: "#/$defs/forbidden_mfos_owned_token"
   local_ref:
