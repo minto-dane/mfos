@@ -17,6 +17,10 @@ Status: no Critical or Major gaps remain for the Phase 0.9 artifact freeze.
   `fuzz/targets/phase-0-9-fuzz-target-plan.yml`.
 - Missing traceability matrices: closed by
   `scripts/generate-phase-0-9-traceability.py`.
+- `SPEC-GAP-FVS-POLICY-DENIAL-MAPPING-0001`: closed by PR #5 review
+  closure. The BOB denied first-vertical-slice path now uses
+  `MFOS_ERR_POLICY_DENIED` with audit `reason_code:
+  DATASET_READ_NOT_PERMITTED`.
 
 ## Accepted Minor Gaps
 
@@ -25,10 +29,6 @@ Status: no Critical or Major gaps remain for the Phase 0.9 artifact freeze.
 - `EXECSPEC-GAP-0001`: runner implementation is intentionally absent.
 - `EXECSPEC-GAP-0002`: semantic evaluator implementation is intentionally
   absent.
-- `SPEC-GAP-FVS-POLICY-DENIAL-MAPPING-0001`: final user-facing denial error
-  wording for the BOB denied path remains a design decision for Phase 1. The
-  executable-spec artifact expects fail-closed `MFOS_ERR_SPEC_GAP` rather than
-  silently selecting a policy-denial error code.
 
 ## Traceability Gap File
 

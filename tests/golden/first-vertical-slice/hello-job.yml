@@ -1,6 +1,6 @@
 golden_id: GOLDEN-MFOS-FVS-HELLO-JOB-9001
 golden_version: 1
-fixture_ref: tests/fixtures/fvs/hello-job-9001.yml
+fixture_ref: tests/fixtures/first-vertical-slice/hello-job.yml
 normalized_input:
   fixture_id: FIXTURE-MFOS-FVS-HELLO-JOB-9001
   operation: HELLO-JOB
@@ -31,7 +31,7 @@ deterministic: true
 oracle:
   oracle_id: ORACLE-MFOS-FVS-HELLO-JOB-9001
   oracle_version: 1
-  fixture_ref: tests/fixtures/fvs/hello-job-9001.yml
+  fixture_ref: tests/fixtures/first-vertical-slice/hello-job.yml
   expected_decisions: *id001
   expected_state_transitions: *id002
   expected_audit_records: *id003

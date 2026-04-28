@@ -839,6 +839,20 @@ MFOS-INV-AUTH-0010:
 
 ## 28. Failure Modes
 
+### 28.1 Authorization Error Taxonomy
+
+Phase 1 executable-spec artifacts use this minimum authorization error taxonomy:
+
+- `MFOS_ERR_UNAUTHENTICATED`: no valid subject, principal, session, or
+  authenticated identity exists.
+- `MFOS_ERR_POLICY_DENIED`: a valid subject exists, but `securityd` returns a
+  `DENY` decision for the requested object, operation, context, and policy
+  version.
+- `MFOS_ERR_UNAUTHORIZED`: legacy umbrella wording only. New Phase 1
+  executable-spec artifacts MUST NOT use it as the primary policy-denial error.
+  Existing pre-Phase 0.9 references are treated as deprecated aliases or
+  cleanup targets unless a later error-model spec assigns a narrower meaning.
+
 | Failure | Required result |
 | --- | --- |
 | Invalid request schema | `MFOS_ERR_INVALID_PARAMETER`; no side effect. |

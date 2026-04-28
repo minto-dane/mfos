@@ -41,7 +41,7 @@ entries:
   audit_obligations:
   - AUTHZ_DECISION
   failure_modes:
-  - MFOS_ERR_UNAUTHORIZED
+  - MFOS_ERR_POLICY_DENIED
   evidence_required:
   - EV-MFOS-AUTH-0101
   mfos_non_compatibility:
@@ -83,7 +83,7 @@ entries:
   audit_obligations:
   - AUTHZ_HANDLE_BINDING_DENY
   failure_modes:
-  - MFOS_ERR_UNAUTHORIZED
+  - MFOS_ERR_POLICY_DENIED
   evidence_required:
   - EV-MFOS-AUTH-0102
   mfos_non_compatibility:
@@ -162,7 +162,7 @@ entries:
   audit_obligations:
   - AUTHZ_BREAK_GLASS
   failure_modes:
-  - MFOS_ERR_UNAUTHORIZED
+  - MFOS_ERR_POLICY_DENIED
   evidence_required:
   - EV-MFOS-AUTH-0104
   mfos_non_compatibility:

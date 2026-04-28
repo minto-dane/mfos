@@ -92,7 +92,7 @@ Each schema is design-only. Schema validation confirms artifact shape, not seman
 | --- | --- |
 | Requirement ID | `^MFOS-REQ-[A-Z0-9]+-[0-9]{4}$` |
 | Test ID | `^(TEST|NEG)-MFOS-[A-Z0-9]+-[A-Z0-9-]*[0-9]{4}$` |
-| Fixture ID | `^FIX-MFOS-[A-Z0-9]+-[A-Z0-9-]*[0-9]{4}$` |
+| Fixture ID | `^FIXTURE-MFOS-[A-Z0-9]+-[A-Z0-9-]*[0-9]{4}$` |
 | Oracle ID | `^ORACLE-MFOS-[A-Z0-9]+-[A-Z0-9-]*[0-9]{4}$` |
 | Expected audit ID | `^EXP-MFOS-AUDIT-[A-Z0-9-]*[0-9]{4}$` |
 | Expected state ID | `^EXP-MFOS-STATE-[A-Z0-9-]*[0-9]{4}$` |
@@ -220,4 +220,3 @@ Rejected evidence:
 | `EXECSPEC-GAP-0002` | Semantic evaluator implementation is intentionally absent. | Blocks automated oracle evaluation. |
 | `EXECSPEC-GAP-0003` | Phase 0.8 planned catalogs are not migrated into this artifact format. | Blocks full suite coverage. |
 | `EXECSPEC-GAP-0004` | Canonical observation report schema is not defined in this phase. | Blocks final evidence archival. |
-

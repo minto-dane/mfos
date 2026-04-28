@@ -382,13 +382,13 @@ entries:
       from: INITIAL
       action: EVALUATE
       to: FAILED
-      reason: MFOS_ERR_UNAUTHORIZED
+      reason: PROTECTED_RESOURCE_HANDLE_NOT_PERMITTED
     audit_records:
     - record_type: SECURITY_DECISION
       decision: DENY
-      reason_code: MFOS_ERR_UNAUTHORIZED
+      reason_code: PROTECTED_RESOURCE_HANDLE_NOT_PERMITTED
       before_return: true
-    failure_mode: MFOS_ERR_UNAUTHORIZED
+    failure_mode: MFOS_ERR_POLICY_DENIED
     final_state: FAILED
   oracle_ref: tests/golden/auth/unauthorized-handle-0925.yml
   fixture_ref: tests/fixtures/auth/unauthorized-handle-0925.yml

@@ -81,9 +81,9 @@ audit evidence for the first success and failure flows.
 
 | step_id | actor | operation | required_spec | required_requirement | required_audit | expected_result | failure_mode | evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| VS-S-001 | operator | define ALICE principal | 10-operator-console / 06-authorization | MFOS-REQ-OPER-0101 / MFOS-REQ-AUTH-0101 | OPERATOR_COMMAND | principal definition accepted as semantic plan | MFOS_ERR_UNAUTHORIZED | EV-MFOS-VSLICE-HELLO-0001 |
+| VS-S-001 | operator | define ALICE principal | 10-operator-console / 06-authorization | MFOS-REQ-OPER-0101 / MFOS-REQ-AUTH-0101 | OPERATOR_COMMAND | principal definition accepted as semantic plan | MFOS_ERR_POLICY_DENIED | EV-MFOS-VSLICE-HELLO-0001 |
 | VS-S-002 | operator | define committed dataset entry | 08-dataset-catalog | MFOS-REQ-CATALOG-0101 | CATALOG_UPDATE | committed catalog entry exists | MFOS_ERR_CATALOG_NOT_FOUND | EV-MFOS-VSLICE-HELLO-0001 |
-| VS-S-003 | operator | submit HELLO job | 10-operator-console / 09-job-spool | MFOS-REQ-OPER-0101 / MFOS-REQ-JOB-0101 | JOB_SUBMIT | job identity and effective principal established | MFOS_ERR_UNAUTHORIZED | EV-MFOS-VSLICE-HELLO-0001 |
+| VS-S-003 | operator | submit HELLO job | 10-operator-console / 09-job-spool | MFOS-REQ-OPER-0101 / MFOS-REQ-JOB-0101 | JOB_SUBMIT | job identity and effective principal established | MFOS_ERR_POLICY_DENIED | EV-MFOS-VSLICE-HELLO-0001 |
 | VS-S-004 | jobd | resolve input DD | 09-job-spool / 08-dataset-catalog | MFOS-REQ-JOB-0102 / MFOS-REQ-CATALOG-0101 | DATASET_OPEN_ALLOW | catalogd returns committed dataset entry | MFOS_ERR_CATALOG_NOT_FOUND | EV-MFOS-VSLICE-HELLO-0001 |
 | VS-S-005 | datasetd | create read handle | 08-dataset-catalog / 06-authorization | MFOS-REQ-DATASET-0101 / MFOS-REQ-AUTH-0102 | DATASET_OPEN_ALLOW | handle bound to decision, policy, and generations | MFOS_ERR_STALE_HANDLE | EV-MFOS-VSLICE-HELLO-0001 |
 | VS-S-006 | jobd | run ECHO step | 09-job-spool | MFOS-REQ-JOB-0101 | STEP_EXECUTE | step completes RC=0 | MFOS_ERR_SPEC_GAP | EV-MFOS-VSLICE-HELLO-0001 |
@@ -94,8 +94,8 @@ audit evidence for the first success and failure flows.
 
 | step_id | actor | operation | required_spec | required_requirement | required_audit | expected_result | failure_mode | evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| VS-F-001 | operator | submit BOB job | 10-operator-console / 09-job-spool | MFOS-REQ-OPER-0101 / MFOS-REQ-JOB-0101 | JOB_SUBMIT | job accepted for semantic validation | MFOS_ERR_UNAUTHORIZED | EV-MFOS-VSLICE-BOB-DENIED-0001 |
-| VS-F-002 | jobd | establish BOB principal | 09-job-spool / 06-authorization | MFOS-REQ-JOB-0101 / MFOS-REQ-AUTH-0101 | JOB_IDENTITY | BOB effective principal established | MFOS_ERR_UNAUTHORIZED | EV-MFOS-VSLICE-BOB-DENIED-0001 |
+| VS-F-001 | operator | submit BOB job | 10-operator-console / 09-job-spool | MFOS-REQ-OPER-0101 / MFOS-REQ-JOB-0101 | JOB_SUBMIT | job accepted for semantic validation | MFOS_ERR_POLICY_DENIED | EV-MFOS-VSLICE-BOB-DENIED-0001 |
+| VS-F-002 | jobd | establish BOB principal | 09-job-spool / 06-authorization | MFOS-REQ-JOB-0101 / MFOS-REQ-AUTH-0101 | JOB_IDENTITY | BOB effective principal established | MFOS_ERR_UNAUTHENTICATED | EV-MFOS-VSLICE-BOB-DENIED-0001 |
 | VS-F-003 | jobd | resolve ALICE dataset DD | 09-job-spool / 08-dataset-catalog | MFOS-REQ-JOB-0102 / MFOS-REQ-CATALOG-0101 | DATASET_OPEN_DENY | securityd DENY for BOB READ | MFOS_ERR_POLICY_DENIED | EV-MFOS-VSLICE-BOB-DENIED-0001 |
 | VS-F-004 | auditd | record OPEN_DENY | 07-audit | MFOS-REQ-AUDIT-0102 | OPEN_DENY | durable audit exists before jobd final result | MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE | EV-MFOS-VSLICE-BOB-DENIED-0001 |
 | VS-F-005 | datasetd | deny handle creation | 08-dataset-catalog / 06-authorization | MFOS-REQ-DATASET-0101 / MFOS-REQ-AUTH-0102 | DATASET_HANDLE_DENY | no dataset handle exists | MFOS_ERR_POLICY_DENIED | EV-MFOS-VSLICE-BOB-DENIED-0001 |
@@ -107,6 +107,9 @@ audit evidence for the first success and failure flows.
 
 - No dataset handle is created on DENY.
 - OPEN_DENY is recorded before the caller receives the final result.
+- The BOB denied path uses `MFOS_ERR_POLICY_DENIED` with audit
+  `reason_code: DATASET_READ_NOT_PERMITTED` because BOB is a valid subject and
+  `securityd` denies the dataset `READ` operation by policy.
 - jobd does not issue final authorization decisions.
 - spool entries are protected resources, not audit evidence.
 - operator display state follows audited lifecycle state, not ad hoc logs.

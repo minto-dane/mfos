@@ -24,7 +24,7 @@ inputs:
 - input_id: INPUT-MFOS-PHASE09-0001
   operation: HELLO-JOB
   deterministic_seed: SEED-MFOS-PHASE09-0001
-expected_oracle: tests/golden/fvs/hello-job-9001.yml
+expected_oracle: tests/golden/first-vertical-slice/hello-job.yml
 expected_evidence:
 - EV-MFOS-FVS-HELLO-JOB-9001
 not_allowed:

@@ -305,6 +305,26 @@ phase_0_9_golden_vectors: 74
 phase_0_9_fuzz_targets: 9
 ```
 
+## PR #5 Review Closure
+
+Status: reviewed for merge readiness on 2026-04-28.
+
+- Phase 0.9 artifacts remain executable-spec artifacts only.
+- No production implementation, hosted daemon, Portable Semantic Core,
+  semantic evaluator, semantic runner, service logic, nucleus, PXM, or Guard
+  implementation was added.
+- Policy-denial error mapping is resolved for Phase 1 executable-spec inputs:
+  no valid subject is `MFOS_ERR_UNAUTHENTICATED`; a valid subject denied by
+  policy is `MFOS_ERR_POLICY_DENIED`; `MFOS_ERR_UNAUTHORIZED` is legacy umbrella
+  wording and is not a primary Phase 1 policy-denial result.
+- The BOB denied first-vertical-slice path now expects
+  `MFOS_ERR_POLICY_DENIED` with audit `reason_code:
+  DATASET_READ_NOT_PERMITTED`.
+- First-vertical-slice fixtures and golden vectors are under the explicit
+  `tests/fixtures/first-vertical-slice/` and
+  `tests/golden/first-vertical-slice/` paths.
+- PR #5 review findings: no Critical or Major findings remain.
+
 ## Remaining Gaps
 
 - Evidence registry entries are draft placeholders and must not be treated as
@@ -328,8 +348,9 @@ phase_0_9_fuzz_targets: 9
 - Public release remains blocked pending human legal/IP review, even though the
   naming-safety lint passes locally.
 - The first vertical slice now has Phase 0.9 fixtures and golden vectors. The
-  user-facing policy-denial error mapping remains a deliberate `SPEC_GAP` until
-  Phase 1 resolves it without weakening fail-closed behavior.
+  user-facing policy-denial error mapping is resolved for Phase 1 as
+  `MFOS_ERR_POLICY_DENIED` with audit `reason_code:
+  DATASET_READ_NOT_PERMITTED`.
 - Phase 0.9 does not provide verified execution evidence; it provides the
   executable-spec artifacts that Phase 1 must implement against.
 

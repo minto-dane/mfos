@@ -6383,7 +6383,7 @@ entries:
     before_return: true
     redaction_policy: MFOS_DEFAULT_REDACTION
   failure_mode:
-    error: MFOS_ERR_UNAUTHORIZED
+    error: MFOS_ERR_POLICY_DENIED
     fail_closed: true
     conditions:
     - Phase 0.8 semantic violation
@@ -6437,7 +6437,7 @@ entries:
     before_return: true
     redaction_policy: MFOS_DEFAULT_REDACTION
   failure_mode:
-    error: MFOS_ERR_UNAUTHORIZED
+    error: MFOS_ERR_POLICY_DENIED
     fail_closed: true
     conditions:
     - Phase 0.8 semantic violation
@@ -6539,7 +6539,7 @@ entries:
     before_return: true
     redaction_policy: MFOS_DEFAULT_REDACTION
   failure_mode:
-    error: MFOS_ERR_UNAUTHORIZED
+    error: MFOS_ERR_POLICY_DENIED
     fail_closed: true
     conditions:
     - Phase 0.8 semantic violation
@@ -6844,7 +6844,7 @@ entries:
     before_return: false
     redaction_policy: MFOS_DEFAULT_REDACTION
   failure_mode:
-    error: MFOS_ERR_UNAUTHORIZED
+    error: MFOS_ERR_POLICY_DENIED
     fail_closed: true
     conditions:
     - Phase 0.8 semantic violation
@@ -7146,7 +7146,7 @@ entries:
     before_return: true
     redaction_policy: MFOS_DEFAULT_REDACTION
   failure_mode:
-    error: MFOS_ERR_UNAUTHORIZED
+    error: MFOS_ERR_UNAUTHENTICATED
     fail_closed: true
     conditions:
     - Phase 0.8 semantic violation
@@ -7253,7 +7253,7 @@ entries:
     before_return: true
     redaction_policy: MFOS_DEFAULT_REDACTION
   failure_mode:
-    error: MFOS_ERR_UNAUTHORIZED
+    error: MFOS_ERR_POLICY_DENIED
     fail_closed: true
     conditions:
     - Phase 0.8 semantic violation
@@ -7412,7 +7412,7 @@ entries:
     before_return: true
     redaction_policy: MFOS_DEFAULT_REDACTION
   failure_mode:
-    error: MFOS_ERR_UNAUTHORIZED
+    error: MFOS_ERR_POLICY_DENIED
     fail_closed: true
     conditions:
     - Phase 0.8 semantic violation
@@ -7564,7 +7564,7 @@ entries:
     before_return: true
     redaction_policy: MFOS_DEFAULT_REDACTION
   failure_mode:
-    error: MFOS_ERR_UNAUTHORIZED
+    error: MFOS_ERR_POLICY_DENIED
     fail_closed: true
     conditions:
     - Phase 0.8 semantic violation

@@ -61,9 +61,9 @@ entries:
       before_return: false
     failure_mode: null
     final_state: COMPLETE
-  oracle_ref: tests/golden/fvs/hello-job-9001.yml
-  fixture_ref: tests/fixtures/fvs/hello-job-9001.yml
-  golden_ref: tests/golden/fvs/hello-job-9001.yml
+  oracle_ref: tests/golden/first-vertical-slice/hello-job.yml
+  fixture_ref: tests/fixtures/first-vertical-slice/hello-job.yml
+  golden_ref: tests/golden/first-vertical-slice/hello-job.yml
   negative: false
   security_sensitive: true
   audit_obligation_required: true
@@ -111,17 +111,17 @@ entries:
       from: INITIAL
       action: EVALUATE
       to: FAILED
-      reason: MFOS_ERR_SPEC_GAP
+      reason: DATASET_READ_NOT_PERMITTED
     audit_records:
     - record_type: SECURITY_DECISION
       decision: DENY
-      reason_code: MFOS_ERR_SPEC_GAP
+      reason_code: DATASET_READ_NOT_PERMITTED
       before_return: true
-    failure_mode: MFOS_ERR_SPEC_GAP
+    failure_mode: MFOS_ERR_POLICY_DENIED
     final_state: FAILED
-  oracle_ref: tests/golden/fvs/bob-denied-9002.yml
-  fixture_ref: tests/fixtures/fvs/bob-denied-9002.yml
-  golden_ref: tests/golden/fvs/bob-denied-9002.yml
+  oracle_ref: tests/golden/first-vertical-slice/bob-denied-alice-dataset.yml
+  fixture_ref: tests/fixtures/first-vertical-slice/bob-denied-alice-dataset.yml
+  golden_ref: tests/golden/first-vertical-slice/bob-denied-alice-dataset.yml
   negative: true
   security_sensitive: true
   audit_obligation_required: true

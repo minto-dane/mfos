@@ -52,10 +52,10 @@ object_model_refs:
 state_machine_refs:
 - formal/tla/authorization/state-machine.yml
 failure_modes:
+- MFOS_ERR_UNAUTHENTICATED
 - MFOS_ERR_POLICY_DENIED
 - MFOS_ERR_POLICY_VERSION_MISMATCH
 - MFOS_ERR_SPEC_GAP
-- MFOS_ERR_UNAUTHORIZED
 - MFOS_ERR_UNSUPPORTED
 audit_obligations:
 - AUTHZ_DECISION

@@ -108,7 +108,7 @@ Out of scope:
 
 `SPEC_GAP` means the behavior is undefined by specification. The required result is `MFOS_ERR_SPEC_GAP`, no protected side effect, and a spec-gap evidence record or report entry.
 
-`DENY` means `securityd` refused the operation. The required result is `MFOS_ERR_POLICY_DENIED` or `MFOS_ERR_UNAUTHORIZED`, no protected handle or content return, and deny audit before final caller result.
+`DENY` means `securityd` refused the operation for a valid subject. The required result is `MFOS_ERR_POLICY_DENIED`, no protected handle or content return, and deny audit before final caller result. Missing or untrusted job identity is `MFOS_ERR_UNAUTHENTICATED`, not a policy denial.
 
 `AUDIT_REQUIRED_BUT_UNAVAILABLE` means an audit obligation that must complete before return or before effect cannot be satisfied. Protected work MUST fail closed with `MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE`.
 
@@ -867,7 +867,7 @@ Ordering rules:
 | --- | --- | --- |
 | `MFOS_ERR_INVALID_PARAMETER` | `JOB_CONTROL_STREAM_ERROR` or request reject | Reject before queueing and before protected side effects. |
 | `MFOS_ERR_INVALID_JOB_CONTROL` | `JOB_CONTROL_STREAM_ERROR` | Record diagnostics; do not enqueue. |
-| `MFOS_ERR_UNAUTHORIZED` | `SECURITY_DENIED` or step `FAILED` | No handle, no content, deny audit before final result. |
+| `MFOS_ERR_UNAUTHENTICATED` | submit or step `FAILED` before protected open | No effective principal exists; no handle, no content, audit when possible. |
 | `MFOS_ERR_POLICY_DENIED` | `SECURITY_DENIED` or step `FAILED` | No handle, no content, deny audit before final result. |
 | `MFOS_ERR_INVALID_DSN` | step `FAILED` or `JOB_CONTROL_STREAM_ERROR` | No catalog or dataset handle. |
 | `MFOS_ERR_CATALOG_NOT_FOUND` | step `FAILED` | No dataset handle; DD resolution audit records failure. |

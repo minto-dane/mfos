@@ -32,7 +32,11 @@ Production implementation remains blocked.
 2. Implement deterministic normalized result output.
 3. Implement fail-closed `SPEC_GAP` and `UNSUPPORTED` handling.
 4. Implement conformance harness execution for the first vertical slice.
-5. Preserve naming-safety and source-grounding validators in CI.
+5. Preserve the policy-denial taxonomy: no valid subject is
+   `MFOS_ERR_UNAUTHENTICATED`; valid subject denied by policy is
+   `MFOS_ERR_POLICY_DENIED`; `MFOS_ERR_UNAUTHORIZED` is not a primary Phase 1
+   policy-denial result.
+6. Preserve naming-safety and source-grounding validators in CI.
 
 ## Judgment
 

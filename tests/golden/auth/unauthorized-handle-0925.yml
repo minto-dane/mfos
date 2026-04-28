@@ -17,16 +17,16 @@ expected_decisions: &id001
 expected_audit_sequence: &id003
 - record_type: SECURITY_DECISION
   decision: DENY
-  reason_code: MFOS_ERR_UNAUTHORIZED
+  reason_code: PROTECTED_RESOURCE_HANDLE_NOT_PERMITTED
   before_return: true
 expected_state_transitions: &id002
 - object: PHASE09_OBJECT
   from: INITIAL
   action: EVALUATE
   to: FAILED
-  reason: MFOS_ERR_UNAUTHORIZED
+  reason: PROTECTED_RESOURCE_HANDLE_NOT_PERMITTED
 expected_final_state: FAILED
-expected_failure_mode: MFOS_ERR_UNAUTHORIZED
+expected_failure_mode: MFOS_ERR_POLICY_DENIED
 deterministic: true
 oracle:
   oracle_id: ORACLE-MFOS-AUTH-UNAUTHORIZED-HANDLE-0925
@@ -36,7 +36,7 @@ oracle:
   expected_state_transitions: *id002
   expected_audit_records: *id003
   expected_failure:
-    error_code: MFOS_ERR_UNAUTHORIZED
+    error_code: MFOS_ERR_POLICY_DENIED
     fail_closed: true
   expected_final_state: FAILED
   evidence_required:
