@@ -1,8 +1,40 @@
 schema_version: 1
 report_index_kind: mfos_report_inventory
-status: draft
+status: current
 canonical_report_root: reports
 current:
+- path: reports/current/total-repo-remediation-summary.md
+  purpose: Phase 0.10 total repository remediation summary.
+- path: reports/current/total-repo-remediation-summary.yml
+  purpose: Machine-readable Phase 0.10 total repository remediation summary.
+- path: reports/current/live-repo-structure-audit.md
+  purpose: Live repository structure audit for the total remediation pass.
+- path: reports/current/source-grounding-remediation.md
+  purpose: Source grounding remediation and conditional semantic-freeze status.
+- path: reports/current/legal-naming-remediation.md
+  purpose: Legal and naming-safety remediation status.
+- path: reports/current/requirements-schema-remediation.md
+  purpose: Requirement and schema remediation status.
+- path: reports/current/spec-doc-remediation.md
+  purpose: Spec and documentation remediation status.
+- path: reports/current/test-fixture-golden-remediation.md
+  purpose: Test, fixture, and golden-vector remediation status.
+- path: reports/current/evidence-traceability-remediation.md
+  purpose: Evidence and traceability remediation status.
+- path: reports/current/ci-workflow-remediation.md
+  purpose: CI and workflow remediation status.
+- path: reports/current/component-scaffold-remediation.md
+  purpose: Component scaffold metadata remediation status.
+- path: reports/current/virtualization-confidential-vm-remediation.md
+  purpose: Virtualization and confidential workload remediation status.
+- path: reports/current/datacenter-cluster-remediation.md
+  purpose: Datacenter and cluster remediation status.
+- path: reports/current/language-formal-assurance-remediation.md
+  purpose: Language, formal assurance, and secure-operations remediation status.
+- path: reports/current/total-remediation-red-team-review.md
+  purpose: Total remediation red-team review.
+- path: reports/current/total-remediation-open-issues.md
+  purpose: Nonblocking total remediation open issues.
 - path: reports/current/policy-denial-error-taxonomy.md
   purpose: Phase 0.9 policy-denial error mapping decision.
 - path: reports/current/artifact-hygiene-audit.md

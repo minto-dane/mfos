@@ -1,0 +1,22 @@
+schema_version: 1
+report_id: MFOS-REPORT-TOTAL-REMEDIATION-SUMMARY-2026-04-28
+status: current
+branch: fix/total-repo-remediation
+base_branch: dev
+production_implementation_allowed: false
+hosted_daemon_implementation_allowed: false
+semantic_runner_implementation_allowed: false
+phase_1_loader_allowed: true
+phase_1_core_semantic_evaluator_allowed: false
+phase_1_pxm_or_cvm_semantic_evaluator_allowed: false
+phase_1_cluster_semantic_evaluator_allowed: false
+public_release_allowed: false
+requires_ip_attorney_review_before_public_release: true
+artifacts_added:
+  - component_scaffold_metadata
+  - component_scaffold_validator
+  - deferred_specs_36_to_41
+  - remediation_reports
+critical_findings_remaining: 0
+major_findings_remaining: 0
+recommended_next_action: open_pull_request_to_dev_after_validation

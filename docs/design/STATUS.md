@@ -9,7 +9,7 @@ pending IP/trademark attorney review.
 
 ## Current Phase
 
-Phase 0.9.9: Repository Closure, Artifact Hygiene, And Source Workbench Parity
+Phase 0.10: Total Repository Remediation
 
 Final judgment:
 
@@ -40,6 +40,26 @@ next_phase: Phase 1 Loader-Only Artifact Loading And Traceability Repair
 No production nucleus, service, PXM, Guard, or other OS-body implementation was
 started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
 0.9.
+
+## Completed In Phase 0.10 Total Remediation
+
+- Added component scaffold metadata validation and `.mfos-dir.yml` records for
+  canonical, bridge, validation, test, source, and implementation scaffold
+  roots.
+- Kept empty implementation, test, fuzz, and CI scaffold directories from
+  implying implementation readiness.
+- Added deferred draft specs `36` through `41` for virtualization planning,
+  confidential workload planning, datacenter/cluster operations, language and
+  verification policy, automated reasoning, and performance/secure operations.
+- Kept those new specs as design scaffolds only; they do not authorize
+  hypervisor, confidential workload, cluster scheduler, semantic runner,
+  hosted daemon, service, or production implementation.
+- Reaffirmed that `docs/design/source-matrix/cards/` is the canonical Source
+  Card path and that `sources/` remains a public-safe workbench until an
+  ADR-backed migration.
+- Reaffirmed that source cards remain draft and semantic freeze remains
+  conditional; Phase 1 remains loader-only.
+- Updated repository remediation reports and indexes under `reports/current/`.
 
 ## Completed In Phase 0.9.9
 
