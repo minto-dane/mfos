@@ -1,0 +1,45 @@
+golden_id: GOLDEN-MFOS-DATASET-CATALOG-PARTIAL-JOURNAL-0906
+golden_version: 1
+fixture_ref: tests/fixtures/dataset/catalog-partial-journal-0906.yml
+normalized_input:
+  fixture_id: FIXTURE-MFOS-DATASET-CATALOG-PARTIAL-JOURNAL-0906
+  operation: CATALOG-PARTIAL-JOURNAL
+  deterministic_seed: SEED-MFOS-PHASE09-0001
+expected_normalized_output:
+  outcome: EXPECTED_FAIL_CLOSED
+  final_state: FAILED
+expected_decisions: &id001
+- decision_id: DECISION-MFOS-PHASE09-0001
+  result: DENY
+  policy_version: 1
+  obligations:
+  - AUDIT_SECURITY_DECISION
+expected_audit_sequence: &id003
+- record_type: SECURITY_DECISION
+  decision: DENY
+  reason_code: MFOS_ERR_INTERNAL_CORRUPTION
+  before_return: true
+expected_state_transitions: &id002
+- object: PHASE09_OBJECT
+  from: INITIAL
+  action: EVALUATE
+  to: FAILED
+  reason: MFOS_ERR_INTERNAL_CORRUPTION
+expected_final_state: FAILED
+expected_failure_mode: MFOS_ERR_INTERNAL_CORRUPTION
+deterministic: true
+oracle:
+  oracle_id: ORACLE-MFOS-DATASET-CATALOG-PARTIAL-JOURNAL-0906
+  oracle_version: 1
+  fixture_ref: tests/fixtures/dataset/catalog-partial-journal-0906.yml
+  expected_decisions: *id001
+  expected_state_transitions: *id002
+  expected_audit_records: *id003
+  expected_failure:
+    error_code: MFOS_ERR_INTERNAL_CORRUPTION
+    fail_closed: true
+  expected_final_state: FAILED
+  evidence_required:
+  - EV-MFOS-DATASET-CATALOG-PARTIAL-JOURNAL-0906
+  status: draft
+status: draft

@@ -1,0 +1,31 @@
+fixture_id: FIXTURE-MFOS-AUDIT-UNAUTHORIZED-QUERY-0907
+fixture_version: 1
+description: unauthorized audit query
+target_specs:
+- docs/design/specs/07-audit.md
+target_requirements:
+- MFOS-REQ-AUDIT-0001
+- MFOS-REQ-AUDIT-0002
+- MFOS-REQ-AUDIT-0101
+preconditions:
+- All subjects, policy versions, object generations, and dependency states are symbolic
+  and deterministic.
+initial_state:
+  clock: T0
+  security_epoch: 1
+  policy_version: 1
+  objects:
+  - object_ref: OBJ-MFOS-PHASE09-0001
+    generation: 1
+inputs:
+- input_id: INPUT-MFOS-PHASE09-0001
+  operation: UNAUTHORIZED-QUERY
+  deterministic_seed: SEED-MFOS-PHASE09-0001
+expected_oracle: tests/golden/audit/unauthorized-query-0907.yml
+expected_evidence:
+- EV-MFOS-AUDIT-UNAUTHORIZED-QUERY-0907
+not_allowed:
+- production_claim
+- external_compatibility_claim
+- host_os_semantics_dependency
+status: draft

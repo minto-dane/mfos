@@ -1,0 +1,45 @@
+golden_id: GOLDEN-MFOS-OPER-SUBMIT-JOB-0904
+golden_version: 1
+fixture_ref: tests/fixtures/oper/submit-job-0904.yml
+normalized_input:
+  fixture_id: FIXTURE-MFOS-OPER-SUBMIT-JOB-0904
+  operation: SUBMIT-JOB
+  deterministic_seed: SEED-MFOS-PHASE09-0001
+expected_normalized_output:
+  outcome: EXPECTED_ALLOW
+  final_state: COMPLETE
+expected_decisions: &id001
+- decision_id: DECISION-MFOS-PHASE09-0001
+  result: ALLOW
+  policy_version: 1
+  obligations:
+  - AUDIT_SECURITY_DECISION
+expected_audit_sequence: &id003
+- record_type: SECURITY_DECISION
+  decision: ALLOW
+  reason_code: OK
+  before_return: false
+expected_state_transitions: &id002
+- object: PHASE09_OBJECT
+  from: INITIAL
+  action: EVALUATE
+  to: COMPLETE
+  reason: EXPECTED
+expected_final_state: COMPLETE
+expected_failure_mode: null
+deterministic: true
+oracle:
+  oracle_id: ORACLE-MFOS-OPER-SUBMIT-JOB-0904
+  oracle_version: 1
+  fixture_ref: tests/fixtures/oper/submit-job-0904.yml
+  expected_decisions: *id001
+  expected_state_transitions: *id002
+  expected_audit_records: *id003
+  expected_failure:
+    error_code: null
+    fail_closed: false
+  expected_final_state: COMPLETE
+  evidence_required:
+  - EV-MFOS-OPER-SUBMIT-JOB-0904
+  status: draft
+status: draft

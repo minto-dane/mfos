@@ -1,0 +1,31 @@
+fixture_id: FIXTURE-MFOS-AUTH-STALE-POLICY-0920
+fixture_version: 1
+description: stale policy version
+target_specs:
+- docs/design/specs/06-authorization.md
+target_requirements:
+- MFOS-REQ-AUTH-0001
+- MFOS-REQ-AUTH-0003
+- MFOS-REQ-AUTH-0101
+preconditions:
+- All subjects, policy versions, object generations, and dependency states are symbolic
+  and deterministic.
+initial_state:
+  clock: T0
+  security_epoch: 1
+  policy_version: 1
+  objects:
+  - object_ref: OBJ-MFOS-PHASE09-0001
+    generation: 1
+inputs:
+- input_id: INPUT-MFOS-PHASE09-0001
+  operation: STALE-POLICY
+  deterministic_seed: SEED-MFOS-PHASE09-0001
+expected_oracle: tests/golden/auth/stale-policy-0920.yml
+expected_evidence:
+- EV-MFOS-AUTH-STALE-POLICY-0920
+not_allowed:
+- production_claim
+- external_compatibility_claim
+- host_os_semantics_dependency
+status: draft

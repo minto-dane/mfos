@@ -1,0 +1,702 @@
+catalog_id: MFOS-TEST-CATALOG-AUTHORIZATION_TESTS
+schema_version: 1
+phase: '0.9'
+status: draft
+implementation_allowed: false
+runner_implementation_allowed: false
+entries:
+- test_id: TEST-MFOS-AUTH-ALLOW-0901
+  test_name: ALLOW decision
+  test_type: conformance
+  phase_to_implement: Phase 1
+  target_pack: PACK-05
+  target_specs: &id001
+  - docs/design/specs/06-authorization.md
+  target_requirements: &id002
+  - MFOS-REQ-AUTH-0001
+  - MFOS-REQ-AUTH-0003
+  - MFOS-REQ-AUTH-0101
+  source_refs: &id003
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: ALLOW
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: ALLOW
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: COMPLETE
+      reason: EXPECTED
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: ALLOW
+      reason_code: OK
+      before_return: false
+    failure_mode: null
+    final_state: COMPLETE
+  oracle_ref: tests/golden/auth/allow-0901.yml
+  fixture_ref: tests/fixtures/auth/allow-0901.yml
+  golden_ref: tests/golden/auth/allow-0901.yml
+  negative: false
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-AUTH-ALLOW-0901
+  status: draft
+- test_id: NEG-MFOS-AUTH-DENY-0902
+  test_name: DENY decision
+  test_type: negative
+  phase_to_implement: Phase 1
+  target_pack: PACK-05
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: DENY
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: DENY
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: BLOCKED
+      reason: MFOS_ERR_POLICY_DENIED
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: DENY
+      reason_code: MFOS_ERR_POLICY_DENIED
+      before_return: true
+    failure_mode: MFOS_ERR_POLICY_DENIED
+    final_state: BLOCKED
+  oracle_ref: tests/golden/auth/deny-0902.yml
+  fixture_ref: tests/fixtures/auth/deny-0902.yml
+  golden_ref: tests/golden/auth/deny-0902.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-AUTH-DENY-0902
+  status: draft
+- test_id: TEST-MFOS-AUTH-ALLOW-WITH-AUDIT-0903
+  test_name: ALLOW_WITH_AUDIT decision
+  test_type: conformance
+  phase_to_implement: Phase 1
+  target_pack: PACK-05
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: ALLOW-WITH-AUDIT
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: ALLOW
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: COMPLETE
+      reason: EXPECTED
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: ALLOW
+      reason_code: OK
+      before_return: false
+    failure_mode: null
+    final_state: COMPLETE
+  oracle_ref: tests/golden/auth/allow-with-audit-0903.yml
+  fixture_ref: tests/fixtures/auth/allow-with-audit-0903.yml
+  golden_ref: tests/golden/auth/allow-with-audit-0903.yml
+  negative: false
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-AUTH-ALLOW-WITH-AUDIT-0903
+  status: draft
+- test_id: TEST-MFOS-AUTH-REQUIRE-MFA-0904
+  test_name: REQUIRE_MFA decision
+  test_type: conformance
+  phase_to_implement: Phase 1
+  target_pack: PACK-05
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: REQUIRE-MFA
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: ALLOW
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: COMPLETE
+      reason: EXPECTED
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: ALLOW
+      reason_code: OK
+      before_return: false
+    failure_mode: null
+    final_state: COMPLETE
+  oracle_ref: tests/golden/auth/require-mfa-0904.yml
+  fixture_ref: tests/fixtures/auth/require-mfa-0904.yml
+  golden_ref: tests/golden/auth/require-mfa-0904.yml
+  negative: false
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-AUTH-REQUIRE-MFA-0904
+  status: draft
+- test_id: TEST-MFOS-AUTH-REQUIRE-DUAL-CONTROL-0905
+  test_name: REQUIRE_DUAL_CONTROL decision
+  test_type: conformance
+  phase_to_implement: Phase 1
+  target_pack: PACK-05
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: REQUIRE-DUAL-CONTROL
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: ALLOW
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: COMPLETE
+      reason: EXPECTED
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: ALLOW
+      reason_code: OK
+      before_return: false
+    failure_mode: null
+    final_state: COMPLETE
+  oracle_ref: tests/golden/auth/require-dual-control-0905.yml
+  fixture_ref: tests/fixtures/auth/require-dual-control-0905.yml
+  golden_ref: tests/golden/auth/require-dual-control-0905.yml
+  negative: false
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-AUTH-REQUIRE-DUAL-CONTROL-0905
+  status: draft
+- test_id: TEST-MFOS-AUTH-REQUIRE-BREAK-GLASS-0906
+  test_name: REQUIRE_BREAK_GLASS decision
+  test_type: conformance
+  phase_to_implement: Phase 1
+  target_pack: PACK-05
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: REQUIRE-BREAK-GLASS
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: ALLOW
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: COMPLETE
+      reason: EXPECTED
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: ALLOW
+      reason_code: OK
+      before_return: false
+    failure_mode: null
+    final_state: COMPLETE
+  oracle_ref: tests/golden/auth/require-break-glass-0906.yml
+  fixture_ref: tests/fixtures/auth/require-break-glass-0906.yml
+  golden_ref: tests/golden/auth/require-break-glass-0906.yml
+  negative: false
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-AUTH-REQUIRE-BREAK-GLASS-0906
+  status: draft
+- test_id: TEST-MFOS-AUTH-REQUIRE-GUARD-APPROVAL-0907
+  test_name: REQUIRE_GUARD_APPROVAL decision
+  test_type: conformance
+  phase_to_implement: Phase 1
+  target_pack: PACK-05
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: REQUIRE-GUARD-APPROVAL
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: ALLOW
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: COMPLETE
+      reason: EXPECTED
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: ALLOW
+      reason_code: OK
+      before_return: false
+    failure_mode: null
+    final_state: COMPLETE
+  oracle_ref: tests/golden/auth/require-guard-approval-0907.yml
+  fixture_ref: tests/fixtures/auth/require-guard-approval-0907.yml
+  golden_ref: tests/golden/auth/require-guard-approval-0907.yml
+  negative: false
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-AUTH-REQUIRE-GUARD-APPROVAL-0907
+  status: draft
+- test_id: TEST-MFOS-AUTH-REQUIRE-OPERATOR-CONFIRMATION-0908
+  test_name: REQUIRE_OPERATOR_CONFIRMATION decision
+  test_type: conformance
+  phase_to_implement: Phase 1
+  target_pack: PACK-05
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: REQUIRE-OPERATOR-CONFIRMATION
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: ALLOW
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: COMPLETE
+      reason: EXPECTED
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: ALLOW
+      reason_code: OK
+      before_return: false
+    failure_mode: null
+    final_state: COMPLETE
+  oracle_ref: tests/golden/auth/require-operator-confirmation-0908.yml
+  fixture_ref: tests/fixtures/auth/require-operator-confirmation-0908.yml
+  golden_ref: tests/golden/auth/require-operator-confirmation-0908.yml
+  negative: false
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-AUTH-REQUIRE-OPERATOR-CONFIRMATION-0908
+  status: draft
+- test_id: NEG-MFOS-AUTH-UNSUPPORTED-0909
+  test_name: UNSUPPORTED fails closed
+  test_type: negative
+  phase_to_implement: Phase 1
+  target_pack: PACK-05
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: UNSUPPORTED
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: DENY
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: BLOCKED
+      reason: MFOS_ERR_UNSUPPORTED
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: DENY
+      reason_code: MFOS_ERR_UNSUPPORTED
+      before_return: true
+    failure_mode: MFOS_ERR_UNSUPPORTED
+    final_state: BLOCKED
+  oracle_ref: tests/golden/auth/unsupported-0909.yml
+  fixture_ref: tests/fixtures/auth/unsupported-0909.yml
+  golden_ref: tests/golden/auth/unsupported-0909.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-AUTH-UNSUPPORTED-0909
+  status: draft
+- test_id: NEG-MFOS-AUTH-SPEC-GAP-0910
+  test_name: SPEC_GAP fails closed
+  test_type: negative
+  phase_to_implement: Phase 1
+  target_pack: PACK-05
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: SPEC-GAP
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: DENY
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: BLOCKED
+      reason: MFOS_ERR_SPEC_GAP
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: DENY
+      reason_code: MFOS_ERR_SPEC_GAP
+      before_return: true
+    failure_mode: MFOS_ERR_SPEC_GAP
+    final_state: BLOCKED
+  oracle_ref: tests/golden/auth/spec-gap-0910.yml
+  fixture_ref: tests/fixtures/auth/spec-gap-0910.yml
+  golden_ref: tests/golden/auth/spec-gap-0910.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-AUTH-SPEC-GAP-0910
+  status: draft
+- test_id: NEG-MFOS-AUTH-STALE-POLICY-0920
+  test_name: stale policy version
+  test_type: negative
+  phase_to_implement: Phase 1
+  target_pack: PACK-05
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: STALE-POLICY
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: DENY
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: FAILED
+      reason: MFOS_ERR_POLICY_VERSION_MISMATCH
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: DENY
+      reason_code: MFOS_ERR_POLICY_VERSION_MISMATCH
+      before_return: true
+    failure_mode: MFOS_ERR_POLICY_VERSION_MISMATCH
+    final_state: FAILED
+  oracle_ref: tests/golden/auth/stale-policy-0920.yml
+  fixture_ref: tests/fixtures/auth/stale-policy-0920.yml
+  golden_ref: tests/golden/auth/stale-policy-0920.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-AUTH-STALE-POLICY-0920
+  status: draft
+- test_id: NEG-MFOS-AUTH-EXPIRED-DELEGATION-0921
+  test_name: expired delegation
+  test_type: negative
+  phase_to_implement: Phase 1
+  target_pack: PACK-05
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: EXPIRED-DELEGATION
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: DENY
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: FAILED
+      reason: MFOS_ERR_POLICY_DENIED
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: DENY
+      reason_code: MFOS_ERR_POLICY_DENIED
+      before_return: true
+    failure_mode: MFOS_ERR_POLICY_DENIED
+    final_state: FAILED
+  oracle_ref: tests/golden/auth/expired-delegation-0921.yml
+  fixture_ref: tests/fixtures/auth/expired-delegation-0921.yml
+  golden_ref: tests/golden/auth/expired-delegation-0921.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-AUTH-EXPIRED-DELEGATION-0921
+  status: draft
+- test_id: NEG-MFOS-AUTH-BREAK-GLASS-NO-REASON-0922
+  test_name: break-glass without reason
+  test_type: negative
+  phase_to_implement: Phase 1
+  target_pack: PACK-05
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: BREAK-GLASS-NO-REASON
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: DENY
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: FAILED
+      reason: MFOS_ERR_POLICY_DENIED
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: DENY
+      reason_code: MFOS_ERR_POLICY_DENIED
+      before_return: true
+    failure_mode: MFOS_ERR_POLICY_DENIED
+    final_state: FAILED
+  oracle_ref: tests/golden/auth/break-glass-no-reason-0922.yml
+  fixture_ref: tests/fixtures/auth/break-glass-no-reason-0922.yml
+  golden_ref: tests/golden/auth/break-glass-no-reason-0922.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-AUTH-BREAK-GLASS-NO-REASON-0922
+  status: draft
+- test_id: NEG-MFOS-AUTH-BREAK-GLASS-NO-EXPIRY-0923
+  test_name: break-glass without expiry
+  test_type: negative
+  phase_to_implement: Phase 1
+  target_pack: PACK-05
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: BREAK-GLASS-NO-EXPIRY
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: DENY
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: FAILED
+      reason: MFOS_ERR_POLICY_DENIED
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: DENY
+      reason_code: MFOS_ERR_POLICY_DENIED
+      before_return: true
+    failure_mode: MFOS_ERR_POLICY_DENIED
+    final_state: FAILED
+  oracle_ref: tests/golden/auth/break-glass-no-expiry-0923.yml
+  fixture_ref: tests/fixtures/auth/break-glass-no-expiry-0923.yml
+  golden_ref: tests/golden/auth/break-glass-no-expiry-0923.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-AUTH-BREAK-GLASS-NO-EXPIRY-0923
+  status: draft
+- test_id: NEG-MFOS-AUTH-POLICY-LINT-WILDCARD-0924
+  test_name: overly broad default access
+  test_type: negative
+  phase_to_implement: Phase 1
+  target_pack: PACK-05
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: POLICY-LINT-WILDCARD
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: DENY
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: FAILED
+      reason: MFOS_ERR_POLICY_LINT_FAILED
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: DENY
+      reason_code: MFOS_ERR_POLICY_LINT_FAILED
+      before_return: true
+    failure_mode: MFOS_ERR_POLICY_LINT_FAILED
+    final_state: FAILED
+  oracle_ref: tests/golden/auth/policy-lint-wildcard-0924.yml
+  fixture_ref: tests/fixtures/auth/policy-lint-wildcard-0924.yml
+  golden_ref: tests/golden/auth/policy-lint-wildcard-0924.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-AUTH-POLICY-LINT-WILDCARD-0924
+  status: draft
+- test_id: NEG-MFOS-AUTH-UNAUTHORIZED-HANDLE-0925
+  test_name: unauthorized protected-resource handle creation
+  test_type: negative
+  phase_to_implement: Phase 1
+  target_pack: PACK-05
+  target_specs: *id001
+  target_requirements: *id002
+  source_refs: *id003
+  preconditions:
+  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: UNAUTHORIZED-HANDLE
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-PHASE09-0001
+      result: DENY
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: PHASE09_OBJECT
+      from: INITIAL
+      action: EVALUATE
+      to: FAILED
+      reason: MFOS_ERR_UNAUTHORIZED
+    audit_records:
+    - record_type: SECURITY_DECISION
+      decision: DENY
+      reason_code: MFOS_ERR_UNAUTHORIZED
+      before_return: true
+    failure_mode: MFOS_ERR_UNAUTHORIZED
+    final_state: FAILED
+  oracle_ref: tests/golden/auth/unauthorized-handle-0925.yml
+  fixture_ref: tests/fixtures/auth/unauthorized-handle-0925.yml
+  golden_ref: tests/golden/auth/unauthorized-handle-0925.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required:
+  - EV-MFOS-AUTH-UNAUTHORIZED-HANDLE-0925
+  status: draft

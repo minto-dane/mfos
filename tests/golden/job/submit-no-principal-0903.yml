@@ -1,0 +1,45 @@
+golden_id: GOLDEN-MFOS-JOB-SUBMIT-NO-PRINCIPAL-0903
+golden_version: 1
+fixture_ref: tests/fixtures/job/submit-no-principal-0903.yml
+normalized_input:
+  fixture_id: FIXTURE-MFOS-JOB-SUBMIT-NO-PRINCIPAL-0903
+  operation: SUBMIT-NO-PRINCIPAL
+  deterministic_seed: SEED-MFOS-PHASE09-0001
+expected_normalized_output:
+  outcome: EXPECTED_FAIL_CLOSED
+  final_state: FAILED
+expected_decisions: &id001
+- decision_id: DECISION-MFOS-PHASE09-0001
+  result: DENY
+  policy_version: 1
+  obligations:
+  - AUDIT_SECURITY_DECISION
+expected_audit_sequence: &id003
+- record_type: SECURITY_DECISION
+  decision: DENY
+  reason_code: MFOS_ERR_UNAUTHENTICATED
+  before_return: true
+expected_state_transitions: &id002
+- object: PHASE09_OBJECT
+  from: INITIAL
+  action: EVALUATE
+  to: FAILED
+  reason: MFOS_ERR_UNAUTHENTICATED
+expected_final_state: FAILED
+expected_failure_mode: MFOS_ERR_UNAUTHENTICATED
+deterministic: true
+oracle:
+  oracle_id: ORACLE-MFOS-JOB-SUBMIT-NO-PRINCIPAL-0903
+  oracle_version: 1
+  fixture_ref: tests/fixtures/job/submit-no-principal-0903.yml
+  expected_decisions: *id001
+  expected_state_transitions: *id002
+  expected_audit_records: *id003
+  expected_failure:
+    error_code: MFOS_ERR_UNAUTHENTICATED
+    fail_closed: true
+  expected_final_state: FAILED
+  evidence_required:
+  - EV-MFOS-JOB-SUBMIT-NO-PRINCIPAL-0903
+  status: draft
+status: draft
