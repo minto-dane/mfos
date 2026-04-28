@@ -21,7 +21,7 @@ Status: Draft index
 Owner: MFOS architecture
 Scope: `docs/design/specs/*.md`
 
-This index lists the current MFOS split specifications and routes implementation agents to the correct source material. It covers the numbered specs from `00` through `35`, including Phase 0.9 executable-spec artifacts.
+This index lists the current MFOS split specifications and routes implementation agents to the correct source material. It covers the numbered specs from `00` through `41`, including Phase 0.9 executable-spec artifacts and deferred Phase 0.10 planning scaffolds.
 
 MFOS is source-grounded and z/OS-inspired. This index does not claim z/OS compatibility, IBM product compatibility, z/Architecture compatibility, RACF compatibility, JES compatibility, DFSMS compatibility, SMF compatibility, Windows VBS compatibility, or Linux compatibility.
 
@@ -92,6 +92,12 @@ PXM, Guard, or production work.
 | [33-semantic-runner-contract.md](33-semantic-runner-contract.md) | Defines future Phase 1 semantic runner command contract and output obligations. | future runner contract, conformance harness design | EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001, EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001, EXTREF-IBM-ZOS-SECURITY-SERVER-0001, EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001 | future `mfos-semantic-runner` contract only | 31-executable-spec-test-harness, 32-conformance-fixture-format, 34-oracle-definition-format | Draft. Runner implementation is explicitly prohibited in Phase 0.9. |
 | [34-oracle-definition-format.md](34-oracle-definition-format.md) | Defines oracle and golden-vector formats for expected decisions, audit sequence, state transitions, failures, and final state. | oracle authors, golden-vector validation | EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001, EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001, EXTREF-IBM-ZOS-SECURITY-SERVER-0001, EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001 | `tests/golden/**`, `schemas/oracle.schema.yml` | 31-executable-spec-test-harness, 32-conformance-fixture-format | Draft. Oracle evaluator implementation is prohibited. |
 | [35-fuzz-corpus-plan.md](35-fuzz-corpus-plan.md) | Defines Phase 0.9 fuzz corpus planning for MFOS-defined parsers and fixture formats. | fuzz planning, parser test design | EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001, EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001, EXTREF-IBM-ZOS-JES-INTRODUCTION-0001, EXTREF-IBM-ZOS-SECURITY-SERVER-0001, EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001 | `fuzz/targets/fuzz-target-plan.yml`, `fuzz/corpora/*/seed-plan.yml` | 29-test-strategy, 31-executable-spec-test-harness | Draft. Fuzzer implementation is prohibited. |
+| [36-hypervisor-class-virtualization.md](36-hypervisor-class-virtualization.md) | Reserves MFOS-owned virtualization planning concepts without importing external hypervisor APIs or compatibility claims. | virtualization planning, partition-resource accounting, future device assignment policy | X64-INTEL-001, X64-AMD-001, MS-VBS-001, MS-VSM-001, NIST-160-001, FBVBS-001 | future `MFOS-REQ-VIRT-*` planning only | 03, 04, 16, 26 | Draft scaffold. No virtualization implementation, VM control API, device model, snapshot, or migration work is authorized. |
+| [37-confidential-vm.md](37-confidential-vm.md) | Reserves confidential workload planning boundaries for measurement, attestation, secret release, and private/shared memory policy. | confidential workload planning, attestation boundaries, Guard claim boundaries | X64-INTEL-001, X64-AMD-001, TCG-001, NIST-160-001, NIST-193-001, MS-VBS-001, MS-VSM-001, FBVBS-001 | future `MFOS-REQ-CVM-*` planning only | 03, 04, 17, 26, 30, 36 | Draft scaffold. No confidential workload implementation, hardware-enforcement claim, or secret-release service is authorized. |
+| [38-datacenter-cluster-operations.md](38-datacenter-cluster-operations.md) | Reserves datacenter and cluster operations concepts for node identity, membership, policy distribution, audit collection, updates, and runbooks. | operations planning, cluster governance, future management-plane policy | NIST-160-001, NIST-218-001, SLSA-001, TCG-001, EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001, FBVBS-001 | future `MFOS-REQ-CLUSTER-*` and `MFOS-REQ-OPS-*` planning only | 07, 11, 13, 25, 30, 31 | Draft scaffold. No cluster scheduler, quorum service, or distributed control plane is authorized. |
+| [39-language-and-verification-policy.md](39-language-and-verification-policy.md) | Reserves language, unsafe-boundary, control-flow, hardware-aid, and proof-tool policy areas. | language policy, verification policy, unsafe-boundary review | X64-INTEL-001, X64-AMD-001, X64-LINUX-CET-001, X64-LINUX-PKU-001, NIST-160-001, NIST-218-001, FBVBS-001 | future `MFOS-REQ-LANG-*`, `MFOS-REQ-FORMAL-*`, and `MFOS-REQ-ASSURANCE-*` planning only | 03, 04, 21, 22, 24 | Draft scaffold. No language safety, CFI, hardware-aid, or proof-coverage claim is authorized. |
+| [40-automated-reasoning-program.md](40-automated-reasoning-program.md) | Reserves automated-reasoning program structure, proof obligation fields, model registry expectations, and evidence boundaries. | formal assurance planning, model registry, proof obligation governance | NIST-160-001, NIST-218-001, SEL4-001, TUF-001, FBVBS-001 | future proof-obligation registry and model evidence planning | 19, 20, 24, 39 | Draft scaffold. No verified implementation or release proof evidence is claimed. |
+| [41-performance-and-secure-operations.md](41-performance-and-secure-operations.md) | Reserves performance budget, secure operations, benchmark, rollback drill, and release operations evidence policies. | secure operations planning, performance evidence, release operations | NIST-160-001, NIST-218-001, NIST-193-001, SLSA-001, TUF-001, TCG-001, X64-INTEL-001, X64-AMD-001, EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001, FBVBS-001 | future `MFOS-REQ-PERF-*` and `MFOS-REQ-OPS-*` planning only | 11, 13, 22, 25, 26, 30, 31, 38 | Draft scaffold. No performance, scalability, availability, or production operations claim is authorized. |
 
 ## Numbering Gaps
 
@@ -123,6 +129,7 @@ Recommended read and implementation order:
 15. Spec/registry schemas and testing: `27`, `28`, `29`
 16. Release distribution and rollback: `31`
 17. Language/localization and policy lint: `32`, `33`
+18. Deferred virtualization, confidential workload, cluster, verification, and secure-operations scaffolds: `36`, `37`, `38`, `39`, `40`, `41`
 
 ## Implementation Target Matrix
 
@@ -157,6 +164,12 @@ Recommended read and implementation order:
 | Release pipeline | 00, 01, 02, 04, 07, 13, 19, 20, 21, 22, 23, 25, 30, 31 |
 | Language and Japanese mirror workflow | 00, 01, 02, 21, 22, 27, 32 |
 | Policy lint | 04, 05, 06, 07, 21, 22, 23, 33 |
+| Hypervisor-class virtualization planning | 03, 04, 16, 26, 36 |
+| Confidential workload planning | 03, 04, 17, 26, 30, 36, 37 |
+| Datacenter and cluster operations planning | 07, 11, 13, 25, 30, 31, 38 |
+| Language and verification policy planning | 03, 04, 21, 22, 24, 39 |
+| Automated reasoning program planning | 19, 20, 24, 39, 40 |
+| Performance and secure operations planning | 11, 13, 22, 25, 26, 30, 31, 38, 41 |
 
 ## Global Gaps To Track
 
@@ -177,6 +190,7 @@ These gaps recur across multiple specs and should be resolved by dedicated follo
 - Requirements catalog automation and uniform test ID traceability.
 - Operations/recovery runbook formats, remote audit collector failover, OOB audit path, and evidence archive policy.
 - Registration of requirement namespaces introduced after `00`, especially `OBJ`, `SVC`, `PCALL`, `GLOSS`, `PROD`, `LANG`, and `POLICY-LINT`.
+- Registration of deferred planning namespaces introduced by `36` through `41`, especially `VIRT`, `CVM`, `CLUSTER`, `OPS`, `PERF`, `FORMAL`, and `ASSURANCE`.
 - Complete Japanese mirror generation and language drift CI.
 - Policy lint grammar, policy diff algorithm, and activation gate implementation.
 
@@ -187,5 +201,3 @@ These gaps recur across multiple specs and should be resolved by dedicated follo
 - Do not move gap ownership into an unrelated subsystem to make a row look complete.
 - Keep source IDs explicit enough for AI routing; component specs remain authoritative for detailed citations.
 - Keep compatibility wording negative and explicit: MFOS is inspired by selected source concepts and does not claim product compatibility.
-
-- [30 First Vertical Slice Contract](30-first-vertical-slice-contract.md) - Phase 0.8 cross-domain semantic contract.
