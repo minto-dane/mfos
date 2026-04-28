@@ -56,7 +56,7 @@ mfos_mapping:
 mfos_divergence:
 - MFOS adds source IDs, negative tests, no-fake-success checks, and enterprise OS evidence discipline.
 prohibited_inference:
-- SSDF compliance alone proves MFOS system integrity.
+- Forbidden claim: SSDF compliance alone proves MFOS system integrity.
 - Do not claim z/OS compatibility.
 legal_controls:
   public_safe: true

@@ -1,0 +1,119 @@
+schema_version: 1
+audit_id: MFOS-AUDIT-SOURCE-GROUNDING-CARDS-0001
+status: current
+audit_date: "2026-04-27"
+scope:
+  card_directory: docs/design/source-matrix/cards
+  cards_audited: 37
+  canonical_source_index: docs/design/source-matrix/source-matrix.yml
+grounding_model:
+  SG0_IDENTIFIED: URL, title, or vendor only.
+  SG1_PUBLIC_SAFE_CARD: legal-safe card metadata exists.
+  SG2_REVIEW_TOPICS: review topics, divergence, and prohibited inference exist.
+  SG3_REQUIREMENT_LINKED: MFOS requirements are linked.
+  SG4_SPEC_MAPPED: specs cite the source, at least by reverse lookup.
+  SG5_NEGATIVE_TEST_LINKED: negative tests or verification refs are linked.
+  SG6_REVIEWED: reviewed source-grounding record exists.
+  SG7_FROZEN: source-grounded semantic freeze may be claimed.
+summary:
+  all_required_card_fields_present: true
+  public_safe_cards: 37
+  forbidden_old_fields_found: 0
+  cards_with_requirement_refs: 37
+  cards_with_reverse_spec_mapping: 37
+  cards_with_required_negative_tests: 37
+  cards_with_review_status_reviewed: 0
+  cards_with_direct_mfos_specs: 0
+  cards_with_direct_mfos_tests: 0
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  distribution:
+    SG4_SPEC_MAPPED_PENDING_PIN_REVIEW: 10
+    SG5_NEGATIVE_TEST_LINKED_DRAFT: 27
+    SG6_REVIEWED: 0
+    SG7_FROZEN: 0
+major_gaps:
+  - gap_id: SG-CARD-GAP-0001
+    severity: major
+    description: Source Cards do not carry direct `mfos_mapping.mfos_specs` links.
+    impact: Source-to-spec grounding is reverse-inferred from specs and generated traceability, not card-local.
+    recommended_action: add direct public-safe spec path refs to Source Cards after review.
+  - gap_id: SG-CARD-GAP-0002
+    severity: major
+    description: "All Source Cards remain `review_status: draft`."
+    impact: No card reaches SG6 or SG7.
+    recommended_action: perform targeted source review and mark reviewed cards without copying external text.
+  - gap_id: SG-CARD-GAP-0003
+    severity: major
+    description: Ten cards carry pin-quality review gaps.
+    impacted_source_ids:
+      - EXTREF-IBM-Z-DPM-0001
+      - EXTREF-IBM-Z-LPAR-INTRODUCTION-0001
+      - EXTREF-IBM-ZOS-CROSS-MEMORY-CONTROL-0001
+      - EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
+      - EXTREF-IBM-ZOS-JES-JOB-FLOW-0001
+      - EXTREF-IBM-ZOS-STORAGE-PROTECTION-0001
+      - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+      - FBVBS-001
+      - SEL4-001
+      - TUF-001
+    recommended_action: complete publication, version, or section pin review.
+entries:
+  - group: pinned_public_safe_draft_cards
+    count: 27
+    grounding_level: SG5_NEGATIVE_TEST_LINKED_DRAFT
+    source_ids:
+      - EXTREF-IBM-Z-ARCHITECTURE-PRINCIPLES-0001
+      - EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
+      - EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001
+      - EXTREF-IBM-ZOS-CROSS-MEMORY-SYNCHRONOUS-0001
+      - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+      - EXTREF-IBM-ZOS-DFSMS-LIBRARY-0001
+      - EXTREF-IBM-ZOS-JES2-LIBRARY-0001
+      - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+      - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+      - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+      - EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+      - EXTREF-IBM-ZOS-SMPE-SECINT-HOLDDATA-0001
+      - EXTREF-IBM-ZOS-STORAGE-PROTECTION-SUMMARY-0001
+      - EXTREF-IBM-ZOS-UNIX-INTRODUCTION-0001
+      - EXTREF-IBM-ZOS-UNIX-SERVICES-LIBRARY-0001
+      - EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001
+      - MS-VBS-001
+      - MS-VSM-001
+      - NIST-160-001
+      - NIST-193-001
+      - NIST-218-001
+      - SLSA-001
+      - TCG-001
+      - X64-AMD-001
+      - X64-INTEL-001
+      - X64-LINUX-CET-001
+      - X64-LINUX-PKU-001
+    public_safe: true
+    source_summary_risk: low
+    replacement_for_source_risk: low
+    reason: Cards have public-safe metadata, review topics, divergence, prohibited inference, requirement refs, and negative-test or verification refs, but no reviewed status.
+  - group: pending_pin_review_cards
+    count: 10
+    grounding_level: SG4_SPEC_MAPPED_PENDING_PIN_REVIEW
+    source_ids:
+      - EXTREF-IBM-Z-DPM-0001
+      - EXTREF-IBM-Z-LPAR-INTRODUCTION-0001
+      - EXTREF-IBM-ZOS-CROSS-MEMORY-CONTROL-0001
+      - EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
+      - EXTREF-IBM-ZOS-JES-JOB-FLOW-0001
+      - EXTREF-IBM-ZOS-STORAGE-PROTECTION-0001
+      - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+      - FBVBS-001
+      - SEL4-001
+      - TUF-001
+    public_safe: true
+    source_summary_risk: low
+    replacement_for_source_risk: low
+    reason: Cards are structurally mapped but pin quality requires source review before SG5+ claims.
+next_actions:
+  - add card-local `mfos_mapping.mfos_specs` links.
+  - add card-local test or verification links that correspond to current catalogs.
+  - complete targeted source review for the ten pin-review cards.
+  - do not add copied external text, tables, record layouts, command syntax, or macro signatures.

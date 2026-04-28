@@ -64,7 +64,7 @@ mfos_mapping:
 mfos_divergence:
 - Hardware mechanisms are enforcement aids; they do not define MFOS enterprise authorization semantics.
 prohibited_inference:
-- Intel features provide z/OS semantic compatibility.
+- Forbidden claim: Intel features provide z/OS semantic compatibility.
 - Do not claim z/OS compatibility.
 legal_controls:
   public_safe: true

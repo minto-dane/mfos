@@ -1,0 +1,87 @@
+schema_version: 1
+audit_id: MFOS-AUDIT-PHASE1-PACK-READINESS-0001
+status: current
+audit_date: "2026-04-27"
+summary:
+  packs_audited: 5
+  production_allowed: false
+  loader_allowed_count: 5
+  semantic_evaluator_allowed_count: 0
+  all_pack_contracts_block_production: true
+  all_pack_contracts_block_portable_semantic_core: true
+  all_pack_contracts_block_executable_spec: true
+pack_entries:
+  - pack_id: PACK-05
+    title: Authorization Model
+    source_grounding_level: SG5_NEGATIVE_TEST_LINKED_DRAFT
+    all_requirements_sg_level: SG5_NEGATIVE_TEST_LINKED_DRAFT
+    all_tests_linked: partial
+    all_audit_obligations_linked: true
+    all_fixtures_linked: true
+    all_oracles_linked: true
+    phase_1_loader_allowed: true
+    phase_1_semantic_evaluator_allowed: false
+    production_allowed: false
+    blockers:
+      - pack uses planned 010x test IDs while current catalogs use concrete 09xx cases.
+      - authorization fixtures and golden/oracle vectors lack direct source_refs and target_requirements.
+  - pack_id: PACK-06
+    title: Audit Schema
+    source_grounding_level: SG5_NEGATIVE_TEST_LINKED_DRAFT
+    all_requirements_sg_level: SG5_NEGATIVE_TEST_LINKED_DRAFT
+    all_tests_linked: partial
+    all_audit_obligations_linked: true
+    all_fixtures_linked: true
+    all_oracles_linked: true
+    phase_1_loader_allowed: true
+    phase_1_semantic_evaluator_allowed: false
+    production_allowed: false
+    blockers:
+      - evidence remains draft-only and unverified.
+      - golden/oracle vectors lack direct source_refs and target_requirements.
+  - pack_id: PACK-07
+    title: Dataset/Catalog
+    source_grounding_level: SG5_NEGATIVE_TEST_LINKED_DRAFT
+    all_requirements_sg_level: SG5_NEGATIVE_TEST_LINKED_DRAFT
+    all_tests_linked: partial
+    all_audit_obligations_linked: true
+    all_fixtures_linked: true
+    all_oracles_linked: true
+    phase_1_loader_allowed: true
+    phase_1_semantic_evaluator_allowed: false
+    production_allowed: false
+    blockers:
+      - fixtures lack direct source_refs.
+  - pack_id: PACK-08
+    title: Job/Spool
+    source_grounding_level: SG4_SPEC_MAPPED
+    all_requirements_sg_level: SG4_SPEC_MAPPED
+    all_tests_linked: partial
+    all_audit_obligations_linked: true
+    all_fixtures_linked: true
+    all_oracles_linked: true
+    phase_1_loader_allowed: true
+    phase_1_semantic_evaluator_allowed: false
+    production_allowed: false
+    blockers:
+      - job-control stream grammar uses external-looking control syntax.
+      - MFOS-owned IDs still contain DD-like terms in fixtures and planned aliases.
+      - generic golden outputs do not encode enough job/catalog/spool semantics.
+  - pack_id: PACK-09
+    title: Operator Console
+    source_grounding_level: SG5_NEGATIVE_TEST_LINKED_DRAFT
+    all_requirements_sg_level: SG5_NEGATIVE_TEST_LINKED_DRAFT
+    all_tests_linked: partial
+    all_audit_obligations_linked: true
+    all_fixtures_linked: true
+    all_oracles_linked: true
+    phase_1_loader_allowed: true
+    phase_1_semantic_evaluator_allowed: false
+    production_allowed: false
+    blockers:
+      - golden/oracle vectors lack direct source_refs and target_requirements.
+required_before_phase_1_semantic_evaluator:
+  - align planned 010x requirement tests with current 09xx executable-spec catalogs, or add explicit alias maps.
+  - propagate source_refs and target_requirements into fixtures and golden/oracle vectors.
+  - downgrade or refactor external-looking job-control syntax and remaining MFOS-owned DD-like identifiers.
+  - mark relevant Source Cards reviewed or keep semantic evaluator blocked for affected domains.

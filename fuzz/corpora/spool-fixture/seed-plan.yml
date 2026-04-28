@@ -1,0 +1,11 @@
+corpus_id: MFOS-CORPUS-SPOOL-FIXTURE-0001
+target_name: spool-fixture-parser
+phase: '0.9'
+implementation_allowed: false
+seed_categories:
+- valid_spool_fixture
+- nonowner_browse
+- export_without_audit
+- purge_without_authority
+- spool_as_audit_evidence
+status: draft

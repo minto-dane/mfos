@@ -839,6 +839,20 @@ MFOS-INV-AUTH-0010:
 
 ## 28. Failure Modes
 
+### 28.1 Authorization Error Taxonomy
+
+Phase 1 executable-spec artifacts use this minimum authorization error taxonomy:
+
+- `MFOS_ERR_UNAUTHENTICATED`: no valid subject, principal, session, or
+  authenticated identity exists.
+- `MFOS_ERR_POLICY_DENIED`: a valid subject exists, but `securityd` returns a
+  `DENY` decision for the requested object, operation, context, and policy
+  version.
+- `MFOS_ERR_UNAUTHORIZED`: legacy umbrella wording only. New Phase 1
+  executable-spec artifacts MUST NOT use it as the primary policy-denial error.
+  Existing pre-Phase 0.9 references are treated as deprecated aliases or
+  cleanup targets unless a later error-model spec assigns a narrower meaning.
+
 | Failure | Required result |
 | --- | --- |
 | Invalid request schema | `MFOS_ERR_INVALID_PARAMETER`; no side effect. |
@@ -946,7 +960,7 @@ MFOS-INV-AUTH-0010:
 | `EV-MFOS-AUTH-SCHEMA-0001` | Schema review for `schemas/mfos/security-decision.schema.yml`. |
 | `EV-MFOS-AUTH-SCHEMA-0002` | Schema review for `schemas/mfos/policy-binding.schema.yml`. |
 | `EV-MFOS-AUTH-FORMAL-0001` | State-machine review for `formal/tla/authorization/MFOSAuthorization.tla`. |
-| `EV-MFOS-AUTH-TESTCAT-0001` | Review of `tests/catalog/phase-0-8-authorization-tests.yml`. |
+| `EV-MFOS-AUTH-TESTCAT-0001` | Review of `tests/catalog/authorization.yml`. |
 | `EV-MFOS-AUTH-LINT-0001` | Policy lint gate evidence for activation and rollback semantics. |
 | `EV-MFOS-AUTH-AUDIT-0001` | Audit obligation mapping showing before-return and before-effect barriers. |
 | `EV-MFOS-AUTH-GAP-0001` | Open-gap review confirming no implementation may infer gap behavior. |

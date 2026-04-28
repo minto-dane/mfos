@@ -55,8 +55,8 @@ mfos_mapping:
 mfos_divergence:
 - MFOS is x64-native and uses this source to avoid incorrect terminology mapping, not to emulate z/Architecture.
 prohibited_inference:
-- MFOS is a z/Architecture emulator.
-- MFOS implements z/Architecture.
+- Forbidden claim: MFOS is a z/Architecture emulator.
+- Forbidden claim: MFOS implements z/Architecture.
 - Do not claim z/OS compatibility.
 - Do not treat IBM product behavior as MFOS compatibility.
 legal_controls:

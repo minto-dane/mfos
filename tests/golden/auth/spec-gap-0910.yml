@@ -1,0 +1,45 @@
+golden_id: GOLDEN-MFOS-AUTH-SPEC-GAP-0910
+golden_version: 1
+fixture_ref: tests/fixtures/auth/spec-gap-0910.yml
+normalized_input:
+  fixture_id: FIXTURE-MFOS-AUTH-SPEC-GAP-0910
+  operation: SPEC-GAP
+  deterministic_seed: SEED-MFOS-PHASE09-0001
+expected_normalized_output:
+  outcome: EXPECTED_FAIL_CLOSED
+  final_state: BLOCKED
+expected_decisions: &id001
+- decision_id: DECISION-MFOS-PHASE09-0001
+  result: DENY
+  policy_version: 1
+  obligations:
+  - AUDIT_SECURITY_DECISION
+expected_audit_sequence: &id003
+- record_type: SECURITY_DECISION
+  decision: DENY
+  reason_code: MFOS_ERR_SPEC_GAP
+  before_return: true
+expected_state_transitions: &id002
+- object: PHASE09_OBJECT
+  from: INITIAL
+  action: EVALUATE
+  to: BLOCKED
+  reason: MFOS_ERR_SPEC_GAP
+expected_final_state: BLOCKED
+expected_failure_mode: MFOS_ERR_SPEC_GAP
+deterministic: true
+oracle:
+  oracle_id: ORACLE-MFOS-AUTH-SPEC-GAP-0910
+  oracle_version: 1
+  fixture_ref: tests/fixtures/auth/spec-gap-0910.yml
+  expected_decisions: *id001
+  expected_state_transitions: *id002
+  expected_audit_records: *id003
+  expected_failure:
+    error_code: MFOS_ERR_SPEC_GAP
+    fail_closed: true
+  expected_final_state: BLOCKED
+  evidence_required:
+  - EV-MFOS-AUTH-SPEC-GAP-0910
+  status: draft
+status: draft

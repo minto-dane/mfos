@@ -1,0 +1,63 @@
+schema_version: 1
+status: draft
+maturity: concept_grounding_worker_draft
+concept_cards:
+  - concept_id: MFOS-CONCEPT-SECURITYD-PROFILES-0001
+    title: securityd Profile Administration
+    source_ids:
+      - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+      - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+    review_topics:
+      - central security manager
+      - resource profile
+      - access list
+      - policy transaction
+    mfos_mapping:
+      components:
+        - securityd
+        - SecurityProfile
+        - policy transaction log
+      requirements:
+        - MFOS-REQ-AUTH-0001
+        - MFOS-REQ-AUTH-0002
+        - MFOS-REQ-AUTH-0003
+        - MFOS-REQ-AUTH-0008
+    divergence:
+      - securityd profiles are MFOS-native and typed by protected resource class.
+    prohibited_inference:
+      - Do not claim RACF command, macro, profile, or database compatibility.
+    requirements:
+      - Profile updates must be authorized, transactional, versioned, and audited.
+    negative_tests:
+      - TEST-SEC-POLICY-ROLLBACK-AUDIT-001
+    status: draft
+  - concept_id: MFOS-CONCEPT-SECURITYD-DECISION-0001
+    title: Security Decision With Obligations
+    source_ids:
+      - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+    review_topics:
+      - principal
+      - group
+      - protected resource
+      - default access
+      - explicit access entry
+    mfos_mapping:
+      components:
+        - SecurityDecision
+        - obligation engine
+        - auditd handoff
+      requirements:
+        - MFOS-REQ-AUTH-0004
+        - MFOS-REQ-AUTH-0005
+        - MFOS-REQ-AUTH-0006
+        - MFOS-REQ-AUTH-0009
+    divergence:
+      - MFOS decisions can return obligations and unsupported/spec-gap states beyond allow/deny.
+    prohibited_inference:
+      - Do not import IBM access-level names or defaults without separate review.
+    requirements:
+      - Every decision must bind subject, resource, operation, result, reason, and policy version.
+    negative_tests:
+      - TEST-DATA-DENY-001
+      - TEST-OPER-COMMAND-DENY-001
+    status: draft

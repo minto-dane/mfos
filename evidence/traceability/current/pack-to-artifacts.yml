@@ -1,0 +1,394 @@
+schema_version: 1
+status: draft
+generated_at: '2026-04-27'
+generated_by: scripts/generators/generate-traceability.py
+non_compatibility_statement: MFOS is z/OS-inspired and does not claim z/OS compatibility
+  or IBM product compatibility.
+entries:
+- pack_id: PACK-00
+  requirements:
+  - MFOS-REQ-PROFILE-0001
+  - MFOS-REQ-NUCLEUS-0008
+  inputs:
+  - docs/design/specs/00-normative-language.md
+  outputs:
+  - reports/audits/packs/pack-audit.md
+  tests: []
+- pack_id: PACK-01
+  requirements:
+  - MFOS-REQ-SOURCE-*
+  inputs:
+  - docs/design/source-matrix/source-matrix.yml
+  - docs/design/source-matrix/cards
+  outputs:
+  - docs/design/source-matrix/cards
+  tests: []
+- pack_id: PACK-02
+  requirements:
+  - MFOS-REQ-SOURCE-*
+  inputs:
+  - docs/design/specs/01-glossary.md
+  outputs:
+  - reports/audits/packs/pack-audit.md
+  tests: []
+- pack_id: PACK-03
+  requirements:
+  - MFOS-REQ-SYSINT-*
+  inputs:
+  - docs/design/specs/03-system-integrity.md
+  outputs:
+  - formal/tla/authorization
+  - tests/negative
+  tests:
+  - NEG-MFOS-SYSINT-SVC-BYPASS-0001
+- pack_id: PACK-04
+  requirements:
+  - MFOS-REQ-OBJ-*
+  inputs:
+  - docs/design/specs/05-object-model.md
+  outputs:
+  - schemas/mfos
+  tests: []
+- pack_id: PACK-05
+  requirements:
+  - MFOS-REQ-AUTH-0101
+  - MFOS-REQ-AUTH-0102
+  - MFOS-REQ-AUTH-0103
+  - MFOS-REQ-AUTH-0104
+  - MFOS-REQ-AUTH-0105
+  inputs:
+  - docs/design/specs/06-authorization.md
+  - docs/design/source-matrix/source-matrix.yml
+  - docs/design/registries/requirements.yaml
+  outputs:
+  - schemas/mfos/security-decision.schema.yml
+  - schemas/mfos/policy-binding.schema.yml
+  - formal/tla/authorization/state-machine.yml
+  - tests/catalog/authorization.yml
+  - requirements/by-domain/auth.yml
+  tests:
+  - TEST-MFOS-AUTH-SECURITY-DECISION-0101
+  - TEST-MFOS-AUTH-HANDLE-BINDING-0102
+  - TEST-MFOS-AUTH-POLICY-BINDING-0103
+  - TEST-MFOS-AUTH-EMERGENCY-0104
+  - TEST-MFOS-AUTH-POLICY-LINT-0105
+  - NEG-MFOS-AUTH-BYPASS-0101
+  - NEG-MFOS-AUTH-HANDLE-WITHOUT-ALLOW-0102
+  - NEG-MFOS-AUTH-POLICY-VERSION-MISMATCH-0103
+  - NEG-MFOS-AUTH-EMERGENCY-NO-EXPIRY-0104
+  - NEG-MFOS-AUTH-POLICY-LINT-MISSING-0105
+- pack_id: PACK-06
+  requirements:
+  - MFOS-REQ-AUDIT-0101
+  - MFOS-REQ-AUDIT-0102
+  - MFOS-REQ-AUDIT-0103
+  - MFOS-REQ-AUDIT-0104
+  - MFOS-REQ-AUDIT-0105
+  inputs:
+  - docs/design/specs/07-audit.md
+  - docs/design/source-matrix/source-matrix.yml
+  - docs/design/registries/requirements.yaml
+  outputs:
+  - schemas/mfos/audit-record.schema.yml
+  - formal/tla/audit-append/state-machine.yml
+  - tests/catalog/audit.yml
+  - requirements/by-domain/audit.yml
+  tests:
+  - TEST-MFOS-AUDIT-RECORD-SCHEMA-0101
+  - TEST-MFOS-AUDIT-DENY-BEFORE-RETURN-0102
+  - TEST-MFOS-AUDIT-HASH-CHAIN-0103
+  - TEST-MFOS-AUDIT-RECORD-ONLY-0104
+  - TEST-MFOS-AUDIT-QUERY-0105
+  - NEG-MFOS-AUDIT-MISSING-CORRELATION-0101
+  - NEG-MFOS-AUDIT-DENY-NO-RECORD-0102
+  - NEG-MFOS-AUDIT-TAMPERED-HASH-0103
+  - NEG-MFOS-AUDIT-SPOOL-AS-EVIDENCE-0104
+  - NEG-MFOS-AUDIT-UNAUTHORIZED-QUERY-0105
+- pack_id: PACK-07
+  requirements:
+  - MFOS-REQ-CATALOG-0101
+  - MFOS-REQ-CATALOG-0102
+  - MFOS-REQ-DATASET-0101
+  - MFOS-REQ-DATASET-0102
+  - MFOS-REQ-DATASET-0103
+  inputs:
+  - docs/design/specs/08-dataset-catalog.md
+  - docs/design/source-matrix/source-matrix.yml
+  - docs/design/registries/requirements.yaml
+  outputs:
+  - schemas/mfos/dataset.schema.yml
+  - schemas/mfos/catalog-entry.schema.yml
+  - schemas/mfos/dataset-handle.schema.yml
+  - schemas/mfos/object-generation-binding.schema.yml
+  - formal/tla/dataset-open/state-machine.yml
+  - formal/tla/catalog-transaction/state-machine.yml
+  - tests/catalog/dataset-catalog.yml
+  - requirements/by-domain/catalog.yml
+  - requirements/by-domain/dataset.yml
+  tests:
+  - TEST-MFOS-CATALOG-COMMITTED-0101
+  - TEST-MFOS-CATALOG-RECOVERY-0102
+  - TEST-MFOS-DATASET-HANDLE-BINDING-0101
+  - TEST-MFOS-DATASET-MANAGED-0102
+  - TEST-MFOS-DATASET-RETENTION-0103
+  - NEG-MFOS-CATALOG-UNCOMMITTED-0101
+  - NEG-MFOS-CATALOG-CRASH-MID-COMMIT-0102
+  - NEG-MFOS-DATASET-STALE-HANDLE-0101
+  - NEG-MFOS-DATASET-POSIX-CONFUSION-0102
+  - NEG-MFOS-DATASET-DELETE-BEFORE-RETENTION-0103
+- pack_id: PACK-08
+  requirements:
+  - MFOS-REQ-JOB-0101
+  - MFOS-REQ-JOB-0102
+  - MFOS-REQ-JOB-0103
+  - MFOS-REQ-SPOOL-0101
+  - MFOS-REQ-SPOOL-0102
+  inputs:
+  - docs/design/specs/09-job-spool.md
+  - docs/design/source-matrix/source-matrix.yml
+  - docs/design/registries/requirements.yaml
+  outputs:
+  - schemas/mfos/job.schema.yml
+  - schemas/mfos/job-step.schema.yml
+  - schemas/mfos/dd.schema.yml
+  - schemas/mfos/spool-entry.schema.yml
+  - formal/tla/job-lifecycle/state-machine.yml
+  - formal/tla/spool-access/state-machine.yml
+  - tests/catalog/job-spool.yml
+  - requirements/by-domain/job.yml
+  - requirements/by-domain/spool.yml
+  tests:
+  - TEST-MFOS-JOB-PRINCIPAL-0101
+  - TEST-MFOS-JOB-DD-RESOLVE-0102
+  - TEST-MFOS-JOB-AUTH-ENFORCE-0103
+  - TEST-MFOS-SPOOL-PROTECTED-0101
+  - TEST-MFOS-SPOOL-EXPORT-0102
+  - NEG-MFOS-JOB-NO-PRINCIPAL-0101
+  - NEG-MFOS-JOB-DD-BYPASS-0102
+  - NEG-MFOS-JOB-AUTH-BYPASS-0103
+  - NEG-MFOS-SPOOL-BROWSE-NONOWNER-0101
+  - NEG-MFOS-SPOOL-EXPORT-NO-AUDIT-0102
+- pack_id: PACK-09
+  requirements:
+  - MFOS-REQ-OPER-0101
+  - MFOS-REQ-OPER-0102
+  - MFOS-REQ-OPER-0103
+  - MFOS-REQ-OPER-0104
+  inputs:
+  - docs/design/specs/10-operator-console.md
+  - docs/design/source-matrix/source-matrix.yml
+  - docs/design/registries/requirements.yaml
+  outputs:
+  - schemas/mfos/operator-command.schema.yml
+  - formal/tla/operator-command/state-machine.yml
+  - tests/catalog/operator-console.yml
+  - requirements/by-domain/operator.yml
+  tests:
+  - TEST-MFOS-OPER-COMMAND-0101
+  - TEST-MFOS-OPER-GOVERNED-0102
+  - TEST-MFOS-OPER-CONFIRM-0103
+  - TEST-MFOS-OPER-AUTOMATION-0104
+  - NEG-MFOS-OPER-COMMAND-NO-AUTH-0101
+  - NEG-MFOS-OPER-ROOT-SHELL-0102
+  - NEG-MFOS-OPER-DESTRUCTIVE-NO-CONFIRM-0103
+  - NEG-MFOS-OPER-AUTOMATION-BYPASS-0104
+- pack_id: PACK-10
+  requirements:
+  - MFOS-REQ-WPOL-*
+  inputs:
+  - docs/design/specs/11-workload-policy.md
+  outputs:
+  - implementation/prototypes/hosted-semantic/services/workpolicyd
+  tests: []
+- pack_id: PACK-11
+  requirements:
+  - MFOS-REQ-AMF-0021
+  inputs:
+  - docs/design/specs/12-amf.md
+  outputs:
+  - reports/audits/packs/pack-audit.md
+  tests:
+  - NEG-MFOS-AMF-LOAD-DISABLED-0021
+- pack_id: PACK-12
+  requirements:
+  - MFOS-REQ-UPDATE-0004
+  - MFOS-REQ-UPDATE-0005
+  - MFOS-REQ-UPDATE-0006
+  inputs:
+  - docs/design/specs/13-update.md
+  outputs:
+  - implementation/prototypes/hosted-semantic/services/uvsd
+  tests:
+  - NEG-MFOS-UPDATE-ROLLBACK-0004
+  - NEG-MFOS-UPDATE-FREEZE-0005
+  - NEG-MFOS-UPDATE-MIXMATCH-0006
+- pack_id: PACK-13
+  requirements:
+  - MFOS-REQ-NUCLEUS-0008
+  - MFOS-REQ-SVC-*
+  - MFOS-REQ-PCALL-*
+  inputs:
+  - docs/design/specs/14-nucleus.md
+  - docs/design/specs/15-svc-pcall.md
+  outputs:
+  - implementation/nucleus
+  - implementation/runtime/abi
+  tests: []
+- pack_id: PACK-14
+  requirements:
+  - MFOS-REQ-PARTITION-0005
+  - MFOS-REQ-PARTITION-0006
+  - MFOS-REQ-PARTITION-0016
+  - MFOS-REQ-PARTITION-0017
+  inputs:
+  - docs/design/specs/16-pxm.md
+  outputs:
+  - implementation/pxm
+  tests:
+  - NEG-MFOS-PARTITION-DEVICE-TEARDOWN-0006
+- pack_id: PACK-15
+  requirements:
+  - MFOS-REQ-GUARD-*
+  inputs:
+  - docs/design/specs/17-guard.md
+  outputs:
+  - implementation/guard
+  tests: []
+- pack_id: PACK-16
+  requirements:
+  - MFOS-REQ-LINUX-GATEWAY-*
+  inputs:
+  - docs/design/specs/18-linux-gateway.md
+  outputs:
+  - implementation/interfaces/linux-gateway
+  - implementation/sidecars/linux-desktop-partition
+  tests: []
+- pack_id: PACK-17
+  requirements:
+  - MFOS-REQ-PROFILE-*
+  inputs:
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/20-conformance.md
+  outputs:
+  - docs/design/assurance/claim-tree.yml
+  - claims
+  tests: []
+- pack_id: PACK-18
+  requirements:
+  - MFOS-REQ-AI-*
+  inputs:
+  - docs/design/prompts/ai-prompts.md
+  outputs:
+  - prompts/canonical
+  - ai/prompt-library
+  tests: []
+- pack_id: PACK-19
+  requirements:
+  - MFOS-REQ-AI-*
+  inputs:
+  - docs/design/tasks/work-breakdown.md
+  outputs:
+  - tasks
+  tests: []
+- pack_id: PACK-20
+  requirements:
+  - MFOS-REQ-AI-*
+  - MFOS-REQ-PROD-*
+  inputs:
+  - docs/design/specs/21-ai-implementation-contract.md
+  - docs/design/specs/22-production-readiness.md
+  outputs:
+  - ai/contracts/ai-implementation-contract.md
+  tests: []
+- pack_id: PACK-21
+  requirements:
+  - MFOS-REQ-*
+  inputs:
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/registries/requirements.yaml
+  outputs:
+  - requirements/catalog.yml
+  tests: []
+- pack_id: PACK-22
+  requirements:
+  - MFOS-REQ-QUALITY-*
+  inputs:
+  - docs/design/specs/24-formal-methods.md
+  outputs:
+  - formal/tla
+  tests: []
+- pack_id: PACK-23
+  requirements:
+  - MFOS-REQ-OPER-*
+  inputs:
+  - docs/design/specs/25-operations-recovery.md
+  outputs:
+  - evidence/reviews
+  tests: []
+- pack_id: PACK-24
+  requirements:
+  - MFOS-REQ-NUCLEUS-0008
+  inputs:
+  - docs/design/specs/26-hardware-profile.md
+  - docs/design/specs/30-attestation-measured-boot.md
+  outputs:
+  - build/profiles
+  - evidence/attestations
+  tests: []
+- pack_id: PACK-25
+  requirements:
+  - MFOS-REQ-QUALITY-*
+  inputs:
+  - docs/design/specs/27-spec-front-matter.md
+  - docs/design/specs/28-machine-readable-registries.md
+  outputs:
+  - schemas
+  - scripts
+  tests: []
+- pack_id: PACK-26
+  requirements:
+  - MFOS-REQ-QUALITY-*
+  inputs:
+  - docs/design/specs/29-test-strategy.md
+  outputs:
+  - tests
+  - fuzz
+  tests: []
+- pack_id: PACK-27
+  requirements:
+  - MFOS-REQ-UPDATE-*
+  - MFOS-REQ-PROD-*
+  inputs:
+  - docs/design/specs/31-release-distribution-rollback.md
+  outputs:
+  - supply-chain/releases
+  tests: []
+- pack_id: PACK-28
+  requirements:
+  - MFOS-REQ-SOURCE-*
+  - MFOS-REQ-QUALITY-*
+  inputs:
+  - docs/design/source-matrix/source-lint-spec.md
+  - docs/design/source-matrix/traceability-index.md
+  outputs:
+  - evidence/traceability
+  - scripts/generators/generate-traceability.py
+  tests: []
+- pack_id: PACK-29
+  requirements:
+  - MFOS-REQ-LANG-*
+  inputs:
+  - docs/design/specs/32-language-localization.md
+  - docs/design/ja/SYNC-POLICY.md
+  outputs:
+  - docs/design/ja/translation-units.yaml
+  - docs/design/ja/sync-status.yaml
+  tests: []
+- pack_id: PACK-30
+  requirements:
+  - MFOS-REQ-POLICY-LINT-*
+  inputs:
+  - docs/design/specs/33-policy-lint.md
+  outputs:
+  - ci/linters
+  tests: []

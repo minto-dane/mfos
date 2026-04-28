@@ -1,0 +1,8 @@
+index_kind: source_namespace_index
+schema_version: 1
+status: populated_workbench_public_safe
+authority_status: preparatory_until_adr_migration
+namespace: internal
+domains:
+- path: sources/internal/fbvbs
+  index: sources/internal/fbvbs/index.yml

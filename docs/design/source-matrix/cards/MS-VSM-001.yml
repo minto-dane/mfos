@@ -57,8 +57,8 @@ mfos_mapping:
 mfos_divergence:
 - MFOS Guard uses the concept only for selected root objects and does not implement Windows VTL semantics.
 prohibited_inference:
-- MFOS implements VTLs.
-- PXM Guard is VSM-compatible.
+- Forbidden claim: MFOS implements VTLs.
+- Forbidden claim: PXM Guard is VSM-compatible.
 - Do not claim z/OS compatibility.
 legal_controls:
   public_safe: true

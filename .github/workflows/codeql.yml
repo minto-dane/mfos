@@ -30,19 +30,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Record private repository CodeQL limitation
+        if: ${{ github.event.repository.private && vars.MFOS_ENABLE_PRIVATE_CODEQL != 'true' }}
+        run: |
+          echo "CodeQL upload is skipped for this private repository because code scanning is not enabled."
+          echo "Set repository variable MFOS_ENABLE_PRIVATE_CODEQL=true after GitHub Advanced Security/code scanning is available."
+
       - name: Initialize CodeQL
-        if: ${{ !github.event.repository.private }}
+        if: ${{ !github.event.repository.private || vars.MFOS_ENABLE_PRIVATE_CODEQL == 'true' }}
         uses: github/codeql-action/init@v4
         with:
           languages: ${{ matrix.language }}
 
       - name: Perform CodeQL Analysis
-        if: ${{ !github.event.repository.private }}
+        if: ${{ !github.event.repository.private || vars.MFOS_ENABLE_PRIVATE_CODEQL == 'true' }}
         uses: github/codeql-action/analyze@v4
-
-      - name: Record private repository CodeQL limitation
-        if: ${{ github.event.repository.private }}
-        run: |
-          echo "CodeQL workflow is installed."
-          echo "GitHub code scanning upload is unavailable for this private repository without GitHub Advanced Security."
-          echo "This gate intentionally passes while preserving the scanner workflow for public or GHAS-enabled repositories."

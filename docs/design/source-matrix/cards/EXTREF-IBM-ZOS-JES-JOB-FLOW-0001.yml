@@ -61,7 +61,7 @@ mfos_mapping:
 mfos_divergence:
 - MFOS maps these into SUBMITTED, INPUT, CONVERSION, VALIDATED, QUEUED, SELECTED, EXECUTING_STEP, STEP_COMPLETE, OUTPUT, COMPLETE, PURGE_PENDING, and PURGED.
 prohibited_inference:
-- MFOS implements z/OS job lifecycle compatibility.
+- Forbidden claim: MFOS implements z/OS job lifecycle compatibility.
 - Do not claim z/OS compatibility.
 - Do not treat IBM product behavior as MFOS compatibility.
 legal_controls:

@@ -1,0 +1,115 @@
+schema_version: 1
+status: draft
+maturity: source_grounding_worker_draft
+retrieved_at: '2026-04-28'
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  attribution_required: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+  no_message_tables_copied: true
+source_cards:
+- card_id: SRC-CARD-EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  source_id: EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-SECURITY-SERVER-0001.yml
+  vendor: IBM
+  product_family: IBM z/OS
+  document_title: z/OS Security Server RACF library
+  current_official_urls:
+  - https://www.ibm.com/docs/en/zos/3.2.0?topic=zos-security-server-racf
+  version_or_scope: z/OS 3.2.0 library page
+  pin_quality: release_and_topic_pinned_from_url
+  review_topics:
+  - central security manager
+  - resource profiles
+  - security administration
+  - auditing interfaces
+  - callable and macro interface bibliography
+  mfos_mapping:
+    components:
+    - securityd
+    - security profile administration
+    - policy transactions
+    requirements:
+    - MFOS-REQ-AUTH-0001
+    - MFOS-REQ-AUTH-0002
+    - MFOS-REQ-AUTH-0003
+    - MFOS-REQ-AUTH-0008
+    notes:
+    - Grounds the central-security-manager role and profile-centered administration
+      model.
+    - Library page is used as bibliography only; no command, macro, or data-area content
+      is stored.
+  divergence:
+  - securityd has MFOS-native profiles, typed decisions, obligations, transactions,
+    and policy-version binding.
+  - securityd is RACF-inspired but not RACF-compatible.
+  prohibited_inference:
+  - Forbidden claim: securityd is RACF-compatible.
+  - Forbidden claim: MFOS implements RACF commands, macros, databases, or messages.
+  - Forbidden claim: IBM interface syntax may be copied.
+  requirements:
+  - Define securityd profile language, administrative operations, transaction semantics,
+    and audit obligations.
+  negative_tests:
+  - TEST-SEC-BYPASS-DENY-001
+  - TEST-SEC-POLICY-ROLLBACK-AUDIT-001
+  status: draft
+- card_id: SRC-CARD-EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  source_id: EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001.yml
+  vendor: IBM
+  product_family: IBM z/OS
+  document_title: Authorizing users to access protected resources
+  current_official_urls:
+  - https://www.ibm.com/docs/en/zos/3.2.0?topic=racf-authorizing-users-access-protected-resources
+  version_or_scope: z/OS 3.2.0 topic
+  pin_quality: release_and_topic_pinned_from_url
+  review_topics:
+  - principal
+  - group
+  - protected resource
+  - resource profile
+  - access list
+  - default access
+  mfos_mapping:
+    components:
+    - SecurityProfile
+    - SecurityDecision
+    - resource access control
+    requirements:
+    - MFOS-REQ-AUTH-0002
+    - MFOS-REQ-AUTH-0004
+    - MFOS-REQ-AUTH-0005
+    - MFOS-REQ-AUTH-0006
+    - MFOS-REQ-AUTH-0009
+    notes:
+    - Grounds users, groups, protected resources, profiles, explicit access entries,
+      and default access as review topics.
+    - Supports MFOS decisions that bind subject, resource, operation, policy version,
+      and obligations.
+  divergence:
+  - MFOS adds decision obligations such as audit, MFA, dual control, break-glass,
+    Guard approval, operator confirmation, unsupported, and spec-gap outcomes.
+  - MFOS access authorities are native and must not copy RACF taxonomies by default.
+  prohibited_inference:
+  - Forbidden claim: MFOS resource profiles are RACF profiles.
+  - Forbidden claim: MFOS supports RACF profile syntax or command behavior.
+  - Forbidden claim: IBM default access semantics are MFOS semantics.
+  requirements:
+  - Define access-authority taxonomy for DATASET, SPOOL, JOB, PROGRAM, OPERATOR_COMMAND,
+    PARTITION, and UPDATE_ARTIFACT.
+  - Every DENY decision must be auditable with reason code and policy version.
+  negative_tests:
+  - TEST-DATA-DENY-001
+  - TEST-DATA-STALE-HANDLE-001
+  - TEST-OPER-COMMAND-DENY-001
+  status: draft

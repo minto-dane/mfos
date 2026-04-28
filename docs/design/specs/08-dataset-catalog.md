@@ -605,7 +605,7 @@ Required evidence artifacts:
 - Schema validation evidence for `schemas/mfos/dataset.schema.yml`, `schemas/mfos/catalog-entry.schema.yml`, `schemas/mfos/dataset-handle.schema.yml`, and `schemas/mfos/object-generation-binding.schema.yml`.
 - Catalog transaction model-check or reviewed transition trace evidence showing that uncommitted, rolled-back, partial-journal, and integrity-failed entries never resolve.
 - Dataset open model-check or reviewed transition trace evidence showing no ACTIVE handle without committed catalog resolution, authorization, audit obligation, generation binding, and integrity verification.
-- Positive and negative test plan evidence from `tests/catalog/phase-0-8-dataset-catalog-tests.yml`.
+- Positive and negative test plan evidence from `tests/catalog/dataset-catalog.yml`.
 - Crash recovery evidence for torn journal, duplicate commit, missing audit marker, orphan extent, and integrity-tag mismatch cases.
 - Audit evidence samples for catalog resolve deny, dataset open allow, dataset open deny, stale handle, immutable system dataset denial, retention denial, and integrity failure.
 - Fuzz decision evidence listing enabled targets, deferred targets, seed corpus paths, and minimum acceptance criteria.
@@ -686,9 +686,9 @@ This section freezes the Dataset/Catalog semantics for Phase 0.8. It is a design
 
 - Pack contract: `docs/design/packs/PACK-07-*/pack.yml`
 - State machine: `formal/tla/dataset-open/state-machine.yml and formal/tla/catalog-transaction/state-machine.yml`
-- Test catalog: `tests/catalog/phase-0-8-*`
+- Test catalog: `tests/catalog/dataset-catalog.yml`
 - Requirement mirror: `requirements/by-domain/`
-- Evidence traceability: `evidence/traceability/phase-0-8-*`
+- Evidence traceability: `evidence/traceability/current/`
 
 ### Freeze Rules
 

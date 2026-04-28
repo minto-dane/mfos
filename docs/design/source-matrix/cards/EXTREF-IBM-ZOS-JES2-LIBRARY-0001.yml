@@ -56,8 +56,8 @@ mfos_mapping:
 mfos_divergence:
 - MFOS may borrow operational concepts but must not claim JES2 command compatibility.
 prohibited_inference:
-- MFOS supports JES2 commands.
-- JES2-compatible.
+- Forbidden claim: MFOS supports JES2 commands.
+- Forbidden claim: JES2-compatible.
 - Do not claim z/OS compatibility.
 - Do not treat IBM product behavior as MFOS compatibility.
 legal_controls:

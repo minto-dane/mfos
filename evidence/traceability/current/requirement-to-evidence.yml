@@ -1,0 +1,473 @@
+schema_version: 1
+status: draft
+generated_at: '2026-04-27'
+generated_by: scripts/generators/generate-traceability.py
+non_compatibility_statement: MFOS is z/OS-inspired and does not claim z/OS compatibility
+  or IBM product compatibility.
+entries:
+- requirement_id: MFOS-REQ-AI-0001
+  evidence:
+  - EV-MFOS-AI-REQ-RESERVED-0001
+- requirement_id: MFOS-REQ-AI-0005
+  evidence:
+  - EV-MFOS-AI-NEG-0005
+  - EV-MFOS-AI-REVIEW-0005
+  - EV-MFOS-CI-0001
+  - EV-MFOS-CI-NOFAKE-0005
+- requirement_id: MFOS-REQ-AMF-0001
+  evidence:
+  - EV-MFOS-AMF-REQ-RESERVED-0001
+- requirement_id: MFOS-REQ-AMF-0003
+  evidence:
+  - EV-MFOS-AMF-REQ-RESERVED-0003
+- requirement_id: MFOS-REQ-AMF-0004
+  evidence:
+  - EV-MFOS-AMF-REQ-RESERVED-0004
+- requirement_id: MFOS-REQ-AMF-0007
+  evidence:
+  - EV-MFOS-AMF-REQ-RESERVED-0007
+- requirement_id: MFOS-REQ-AMF-0008
+  evidence:
+  - EV-MFOS-AMF-REQ-RESERVED-0008
+- requirement_id: MFOS-REQ-AMF-0021
+  evidence:
+  - EV-MFOS-AMF-DISABLED-0021
+  - EV-MFOS-AUDIT-AMF-UNSUPPORTED-0021
+  - EV-MFOS-CI-AMF-0021
+  - EV-MFOS-SYSINT-AMF-BOUNDARY-0017
+- requirement_id: MFOS-REQ-AUDIT-0001
+  evidence:
+  - EV-MFOS-AUDIT-REQ-RESERVED-0001
+- requirement_id: MFOS-REQ-AUDIT-0002
+  evidence:
+  - EV-MFOS-AUDIT-0001
+  - EV-MFOS-AUDIT-FAULT-0002
+  - EV-MFOS-AUDIT-ORDER-0002
+  - EV-MFOS-AUDIT-SAMPLE-0002
+  - EV-MFOS-GUARD-AUDIT-0007
+  - EV-MFOS-SYSINT-AUDIT-SUBSTITUTE-0013
+- requirement_id: MFOS-REQ-AUDIT-0003
+  evidence:
+  - EV-MFOS-AUDIT-REQ-RESERVED-0003
+- requirement_id: MFOS-REQ-AUDIT-0004
+  evidence:
+  - EV-MFOS-AUDIT-REQ-RESERVED-0004
+- requirement_id: MFOS-REQ-AUDIT-0005
+  evidence:
+  - EV-MFOS-AUDIT-BOOT-0005
+  - EV-MFOS-AUDIT-FAILPOL-0005
+  - EV-MFOS-AUDIT-RECOVERY-0005
+- requirement_id: MFOS-REQ-AUDIT-0101
+  evidence:
+  - EV-MFOS-AUDIT-0101
+- requirement_id: MFOS-REQ-AUDIT-0102
+  evidence:
+  - EV-MFOS-AUDIT-0102
+- requirement_id: MFOS-REQ-AUDIT-0103
+  evidence:
+  - EV-MFOS-AUDIT-0103
+- requirement_id: MFOS-REQ-AUDIT-0104
+  evidence:
+  - EV-MFOS-AUDIT-0104
+- requirement_id: MFOS-REQ-AUDIT-0105
+  evidence:
+  - EV-MFOS-AUDIT-0105
+- requirement_id: MFOS-REQ-AUTH-0001
+  evidence:
+  - EV-MFOS-AUTH-ARCH-0001
+  - EV-MFOS-AUTH-AUDIT-0001
+  - EV-MFOS-AUTH-PDP-0001
+- requirement_id: MFOS-REQ-AUTH-0002
+  evidence:
+  - EV-MFOS-AUTH-AUDIT-0002
+  - EV-MFOS-AUTH-FUZZ-0002
+  - EV-MFOS-AUTH-SCHEMA-0002
+- requirement_id: MFOS-REQ-AUTH-0003
+  evidence:
+  - EV-MFOS-AUTH-REQ-RESERVED-0003
+- requirement_id: MFOS-REQ-AUTH-0004
+  evidence:
+  - EV-MFOS-AUDIT-DATA-DENY-0001
+  - EV-MFOS-DATASET-0001
+  - EV-MFOS-DATASET-AUTH-0001
+  - EV-MFOS-DATASET-DENY-0001
+- requirement_id: MFOS-REQ-AUTH-0005
+  evidence:
+  - EV-MFOS-AUTH-REQ-RESERVED-0005
+- requirement_id: MFOS-REQ-AUTH-0006
+  evidence:
+  - EV-MFOS-AUTH-REQ-RESERVED-0006
+- requirement_id: MFOS-REQ-AUTH-0008
+  evidence:
+  - EV-MFOS-AUTH-REQ-RESERVED-0008
+- requirement_id: MFOS-REQ-AUTH-0009
+  evidence:
+  - EV-MFOS-AUTH-REQ-RESERVED-0009
+- requirement_id: MFOS-REQ-AUTH-0101
+  evidence:
+  - EV-MFOS-AUTH-0101
+- requirement_id: MFOS-REQ-AUTH-0102
+  evidence:
+  - EV-MFOS-AUTH-0102
+- requirement_id: MFOS-REQ-AUTH-0103
+  evidence:
+  - EV-MFOS-AUTH-0103
+- requirement_id: MFOS-REQ-AUTH-0104
+  evidence:
+  - EV-MFOS-AUTH-0104
+- requirement_id: MFOS-REQ-AUTH-0105
+  evidence:
+  - EV-MFOS-AUTH-0105
+- requirement_id: MFOS-REQ-CATALOG-0002
+  evidence:
+  - EV-MFOS-AUDIT-CAT-DENY-0002
+  - EV-MFOS-CATALOG-CRASH-0002
+  - EV-MFOS-CATALOG-TX-0002
+- requirement_id: MFOS-REQ-CATALOG-0003
+  evidence:
+  - EV-MFOS-CATALOG-REQ-RESERVED-0003
+- requirement_id: MFOS-REQ-CATALOG-0004
+  evidence:
+  - EV-MFOS-CATALOG-REQ-RESERVED-0004
+- requirement_id: MFOS-REQ-CATALOG-0101
+  evidence:
+  - EV-MFOS-CATALOG-0101
+- requirement_id: MFOS-REQ-CATALOG-0102
+  evidence:
+  - EV-MFOS-CATALOG-0102
+- requirement_id: MFOS-REQ-DATASET-0001
+  evidence:
+  - EV-MFOS-AUDIT-DATA-HANDLE-0001
+  - EV-MFOS-DATASET-HANDLE-0001
+  - EV-MFOS-DATASET-STALE-0001
+  - EV-MFOS-SYSINT-DATASET-HANDLE-0014
+- requirement_id: MFOS-REQ-DATASET-0002
+  evidence:
+  - EV-MFOS-AUDIT-DATA-DENY-0002
+  - EV-MFOS-DATASET-INTEG-0002
+  - EV-MFOS-DATASET-NO-HANDLE-0002
+- requirement_id: MFOS-REQ-DATASET-0003
+  evidence:
+  - EV-MFOS-DATASET-REQ-RESERVED-0003
+- requirement_id: MFOS-REQ-DATASET-0004
+  evidence:
+  - EV-MFOS-DATASET-REQ-RESERVED-0004
+- requirement_id: MFOS-REQ-DATASET-0005
+  evidence:
+  - EV-MFOS-DATASET-REQ-RESERVED-0005
+- requirement_id: MFOS-REQ-DATASET-0006
+  evidence:
+  - EV-MFOS-AUDIT-DATA-DENY-0006
+  - EV-MFOS-DATASET-AUD-FAULT-0006
+  - EV-MFOS-DATASET-AUD-ORDER-0006
+- requirement_id: MFOS-REQ-DATASET-0101
+  evidence:
+  - EV-MFOS-DATASET-0101
+- requirement_id: MFOS-REQ-DATASET-0102
+  evidence:
+  - EV-MFOS-DATASET-0102
+- requirement_id: MFOS-REQ-DATASET-0103
+  evidence:
+  - EV-MFOS-DATASET-0103
+- requirement_id: MFOS-REQ-GUARD-0001
+  evidence:
+  - EV-MFOS-GUARD-REQ-RESERVED-0001
+- requirement_id: MFOS-REQ-GUARD-0002
+  evidence:
+  - EV-MFOS-GUARD-REQ-RESERVED-0002
+- requirement_id: MFOS-REQ-GUARD-0003
+  evidence:
+  - EV-MFOS-GUARD-REQ-RESERVED-0003
+- requirement_id: MFOS-REQ-GUARD-0004
+  evidence:
+  - EV-MFOS-GUARD-REQ-RESERVED-0004
+- requirement_id: MFOS-REQ-GUARD-0005
+  evidence:
+  - EV-MFOS-GUARD-REQ-RESERVED-0005
+- requirement_id: MFOS-REQ-GUARD-0008
+  evidence:
+  - EV-MFOS-GUARD-REQ-RESERVED-0008
+- requirement_id: MFOS-REQ-JOB-0001
+  evidence:
+  - EV-MFOS-JOB-REQ-RESERVED-0001
+- requirement_id: MFOS-REQ-JOB-0002
+  evidence:
+  - EV-MFOS-JOB-REQ-RESERVED-0002
+- requirement_id: MFOS-REQ-JOB-0003
+  evidence:
+  - EV-MFOS-JOB-REQ-RESERVED-0003
+- requirement_id: MFOS-REQ-JOB-0005
+  evidence:
+  - EV-MFOS-JOB-REQ-RESERVED-0005
+- requirement_id: MFOS-REQ-JOB-0101
+  evidence:
+  - EV-MFOS-JOB-0101
+- requirement_id: MFOS-REQ-JOB-0102
+  evidence:
+  - EV-MFOS-JOB-0102
+- requirement_id: MFOS-REQ-JOB-0103
+  evidence:
+  - EV-MFOS-JOB-0103
+- requirement_id: MFOS-REQ-NUCLEUS-0005
+  evidence:
+  - EV-MFOS-NUCLEUS-REQ-RESERVED-0005
+- requirement_id: MFOS-REQ-NUCLEUS-0007
+  evidence:
+  - EV-MFOS-NUCLEUS-REQ-RESERVED-0007
+- requirement_id: MFOS-REQ-NUCLEUS-0008
+  evidence:
+  - EV-MFOS-NUCLEUS-BOOT-0001
+  - EV-MFOS-NUCLEUS-NX-0001
+  - EV-MFOS-NUCLEUS-WX-0001
+- requirement_id: MFOS-REQ-OPER-0002
+  evidence:
+  - EV-MFOS-OPER-REQ-RESERVED-0002
+- requirement_id: MFOS-REQ-OPER-0003
+  evidence:
+  - EV-MFOS-OPER-REQ-RESERVED-0003
+- requirement_id: MFOS-REQ-OPER-0101
+  evidence:
+  - EV-MFOS-OPER-0101
+- requirement_id: MFOS-REQ-OPER-0102
+  evidence:
+  - EV-MFOS-OPER-0102
+- requirement_id: MFOS-REQ-OPER-0103
+  evidence:
+  - EV-MFOS-OPER-0103
+- requirement_id: MFOS-REQ-OPER-0104
+  evidence:
+  - EV-MFOS-OPER-0104
+- requirement_id: MFOS-REQ-PARTITION-0001
+  evidence:
+  - EV-MFOS-PARTITION-REQ-RESERVED-0001
+- requirement_id: MFOS-REQ-PARTITION-0002
+  evidence:
+  - EV-MFOS-PARTITION-REQ-RESERVED-0002
+- requirement_id: MFOS-REQ-PARTITION-0003
+  evidence:
+  - EV-MFOS-PARTITION-REQ-RESERVED-0003
+- requirement_id: MFOS-REQ-PARTITION-0004
+  evidence:
+  - EV-MFOS-PARTITION-REQ-RESERVED-0004
+- requirement_id: MFOS-REQ-PARTITION-0005
+  evidence:
+  - EV-MFOS-AUDIT-PXM-DEVICE-0005
+  - EV-MFOS-PARTITION-DEVICE-0005
+  - EV-MFOS-PARTITION-PLATFORM-0005
+- requirement_id: MFOS-REQ-PARTITION-0006
+  evidence:
+  - EV-MFOS-AUDIT-PXM-TEARDOWN-0006
+  - EV-MFOS-PARTITION-REASSIGN-DENY-0006
+  - EV-MFOS-PARTITION-TEARDOWN-0006
+- requirement_id: MFOS-REQ-PARTITION-0007
+  evidence:
+  - EV-MFOS-PARTITION-REQ-RESERVED-0007
+- requirement_id: MFOS-REQ-PARTITION-0008
+  evidence:
+  - EV-MFOS-PARTITION-REQ-RESERVED-0008
+- requirement_id: MFOS-REQ-PARTITION-0016
+  evidence:
+  - EV-MFOS-AUDIT-PXM-DENY-0016
+  - EV-MFOS-CI-NOFAKE-0016
+  - EV-MFOS-PARTITION-PLATFORM-0016
+- requirement_id: MFOS-REQ-PARTITION-0017
+  evidence:
+  - EV-MFOS-AUDIT-PXM-MEMORY-0017
+  - EV-MFOS-PARTITION-MEMORY-0017
+  - EV-MFOS-PARTITION-TEARDOWN-0017
+- requirement_id: MFOS-REQ-PROFILE-0001
+  evidence:
+  - EV-MFOS-PROFILE-0001
+  - EV-MFOS-PROFILE-0002
+  - EV-MFOS-PROFILE-0003
+- requirement_id: MFOS-REQ-QUALITY-0001
+  evidence:
+  - EV-MFOS-QUALITY-REQ-RESERVED-0001
+- requirement_id: MFOS-REQ-QUALITY-0002
+  evidence:
+  - EV-MFOS-QUALITY-REQ-RESERVED-0002
+- requirement_id: MFOS-REQ-QUALITY-0003
+  evidence:
+  - EV-MFOS-QUALITY-REQ-RESERVED-0003
+- requirement_id: MFOS-REQ-QUALITY-0004
+  evidence:
+  - EV-MFOS-QUALITY-REQ-RESERVED-0004
+- requirement_id: MFOS-REQ-QUALITY-0005
+  evidence:
+  - EV-MFOS-QUALITY-REQ-RESERVED-0005
+- requirement_id: MFOS-REQ-QUALITY-0006
+  evidence:
+  - EV-MFOS-QUALITY-REQ-RESERVED-0006
+- requirement_id: MFOS-REQ-QUALITY-0007
+  evidence:
+  - EV-MFOS-QUALITY-REQ-RESERVED-0007
+- requirement_id: MFOS-REQ-QUALITY-0008
+  evidence:
+  - EV-MFOS-QUALITY-REQ-RESERVED-0008
+- requirement_id: MFOS-REQ-QUALITY-0009
+  evidence:
+  - EV-MFOS-QUALITY-REQ-RESERVED-0009
+- requirement_id: MFOS-REQ-QUALITY-0010
+  evidence:
+  - EV-MFOS-QUALITY-REQ-RESERVED-0010
+- requirement_id: MFOS-REQ-SOURCE-0001
+  evidence:
+  - EV-MFOS-SOURCE-REQ-RESERVED-0001
+- requirement_id: MFOS-REQ-SOURCE-0002
+  evidence:
+  - EV-MFOS-SOURCE-REQ-RESERVED-0002
+- requirement_id: MFOS-REQ-SOURCE-0003
+  evidence:
+  - EV-MFOS-SOURCE-REQ-RESERVED-0003
+- requirement_id: MFOS-REQ-SOURCE-0004
+  evidence:
+  - EV-MFOS-SOURCE-REQ-RESERVED-0004
+- requirement_id: MFOS-REQ-SPOOL-0001
+  evidence:
+  - EV-MFOS-SPOOL-REQ-RESERVED-0001
+- requirement_id: MFOS-REQ-SPOOL-0003
+  evidence:
+  - EV-MFOS-SPOOL-REQ-RESERVED-0003
+- requirement_id: MFOS-REQ-SPOOL-0004
+  evidence:
+  - EV-MFOS-SPOOL-REQ-RESERVED-0004
+- requirement_id: MFOS-REQ-SPOOL-0101
+  evidence:
+  - EV-MFOS-SPOOL-0101
+- requirement_id: MFOS-REQ-SPOOL-0102
+  evidence:
+  - EV-MFOS-SPOOL-0102
+- requirement_id: MFOS-REQ-SYSINT-0001
+  evidence:
+  - EV-MFOS-AUDIT-SI-DENY-0001
+  - EV-MFOS-DATASET-0001
+  - EV-MFOS-SYSINT-ARCH-0001
+  - EV-MFOS-SYSINT-BYPASS-0001
+- requirement_id: MFOS-REQ-SYSINT-0002
+  evidence:
+  - EV-MFOS-SYSINT-INTERFACE-0002
+  - EV-MFOS-SYSINT-INTERFACE-LINT-0002
+- requirement_id: MFOS-REQ-SYSINT-0003
+  evidence:
+  - EV-MFOS-SYSINT-INTERFACE-0002
+  - EV-MFOS-SYSINT-INTERFACE-0003
+  - EV-MFOS-SYSINT-SVC-BOUNDARY-0003
+- requirement_id: MFOS-REQ-SYSINT-0004
+  evidence:
+  - EV-MFOS-SYSINT-AMF-CONFUSION-0004
+  - EV-MFOS-SYSINT-AUTHORITY-0004
+- requirement_id: MFOS-REQ-SYSINT-0005
+  evidence:
+  - EV-MFOS-SYSINT-CLAIM-BOUNDARY-0005
+  - EV-MFOS-SYSINT-CLAIM-LINT-0005
+- requirement_id: MFOS-REQ-SYSINT-0006
+  evidence:
+  - EV-MFOS-ATTESTATION-HA-0001
+  - EV-MFOS-GUARD-AUDIT-0007
+  - EV-MFOS-GUARD-ROOT-0001
+  - EV-MFOS-SYSINT-ATTESTATION-0006
+  - EV-MFOS-SYSINT-GUARD-EVIDENCE-0006
+- requirement_id: MFOS-REQ-SYSINT-0007
+  evidence:
+  - EV-MFOS-SYSINT-COPYIN-FUZZ-0007
+  - EV-MFOS-SYSINT-POINTER-REVIEW-0007
+- requirement_id: MFOS-REQ-SYSINT-0008
+  evidence:
+  - EV-MFOS-SYSINT-COPY-BOUNDS-0008
+  - EV-MFOS-SYSINT-COPYIN-FUZZ-0007
+- requirement_id: MFOS-REQ-SYSINT-0009
+  evidence:
+  - EV-MFOS-SYSINT-COPYIN-FUZZ-0007
+  - EV-MFOS-SYSINT-SVC-FUZZ-0009
+  - EV-MFOS-SYSINT-SVC-IDENTITY-0009
+- requirement_id: MFOS-REQ-SYSINT-0010
+  evidence:
+  - EV-MFOS-SYSINT-UNSUPPORTED-0010
+  - EV-MFOS-SYSINT-UNSUPPORTED-NEG-0010
+- requirement_id: MFOS-REQ-SYSINT-0011
+  evidence:
+  - EV-MFOS-SYSINT-SPEC-GAP-0011
+  - EV-MFOS-SYSINT-SPEC-GAP-NEG-0011
+  - EV-MFOS-SYSINT-UNSUPPORTED-0010
+- requirement_id: MFOS-REQ-SYSINT-0012
+  evidence:
+  - EV-MFOS-SYSINT-PDP-0012
+  - EV-MFOS-SYSINT-PDP-BYPASS-0012
+- requirement_id: MFOS-REQ-SYSINT-0013
+  evidence:
+  - EV-MFOS-SYSINT-AUDIT-EVIDENCE-0013
+  - EV-MFOS-SYSINT-AUDIT-SUBSTITUTE-0013
+- requirement_id: MFOS-REQ-SYSINT-0014
+  evidence:
+  - EV-MFOS-AUDIT-DATA-HANDLE-0001
+  - EV-MFOS-SYSINT-DATASET-HANDLE-0014
+- requirement_id: MFOS-REQ-SYSINT-0015
+  evidence:
+  - EV-MFOS-SYSINT-JOB-AUDIT-0015
+  - EV-MFOS-SYSINT-JOB-PRINCIPAL-0015
+- requirement_id: MFOS-REQ-SYSINT-0016
+  evidence:
+  - EV-MFOS-SYSINT-OPERATOR-AUDIT-0016
+  - EV-MFOS-SYSINT-OPERATOR-COMMAND-0016
+- requirement_id: MFOS-REQ-SYSINT-0017
+  evidence:
+  - EV-MFOS-AUDIT-AMF-UNSUPPORTED-0021
+  - EV-MFOS-SYSINT-AMF-BOUNDARY-0017
+- requirement_id: MFOS-REQ-SYSINT-0018
+  evidence:
+  - EV-MFOS-SYSINT-PXM-SCOPE-0018
+  - EV-MFOS-SYSINT-PXM-SEMANTICS-0018
+- requirement_id: MFOS-REQ-SYSINT-0019
+  evidence:
+  - EV-MFOS-GUARD-ROOT-0001
+  - EV-MFOS-SYSINT-GUARD-NEG-0019
+  - EV-MFOS-SYSINT-GUARD-SCOPE-0019
+- requirement_id: MFOS-REQ-SYSINT-0020
+  evidence:
+  - EV-MFOS-SYSINT-HW-MECHANISM-0020
+  - EV-MFOS-SYSINT-HW-OVERCLAIM-0020
+- requirement_id: MFOS-REQ-UPDATE-0001
+  evidence:
+  - EV-MFOS-UPDATE-REQ-RESERVED-0001
+- requirement_id: MFOS-REQ-UPDATE-0003
+  evidence:
+  - EV-MFOS-UPDATE-REQ-RESERVED-0003
+- requirement_id: MFOS-REQ-UPDATE-0004
+  evidence:
+  - EV-MFOS-AUDIT-UVS-ROLLBACK-0004
+  - EV-MFOS-UPDATE-MANIFEST-0004
+  - EV-MFOS-UPDATE-ROLLBACK-0004
+- requirement_id: MFOS-REQ-UPDATE-0005
+  evidence:
+  - EV-MFOS-AUDIT-UVS-FREEZE-0005
+  - EV-MFOS-UPDATE-FREEZE-0005
+  - EV-MFOS-UPDATE-TIME-0005
+- requirement_id: MFOS-REQ-UPDATE-0006
+  evidence:
+  - EV-MFOS-AUDIT-UVS-MIXMATCH-0006
+  - EV-MFOS-UPDATE-MIXMATCH-0006
+  - EV-MFOS-UPDATE-PROV-0006
+- requirement_id: MFOS-REQ-UPDATE-0007
+  evidence:
+  - EV-MFOS-UPDATE-REQ-RESERVED-0007
+- requirement_id: MFOS-REQ-UPDATE-0008
+  evidence:
+  - EV-MFOS-UPDATE-REQ-RESERVED-0008
+- requirement_id: MFOS-REQ-UPDATE-0012
+  evidence:
+  - EV-MFOS-UPDATE-REQ-RESERVED-0012
+- requirement_id: MFOS-REQ-WPOL-0001
+  evidence:
+  - EV-MFOS-WPOL-REQ-RESERVED-0001
+- requirement_id: MFOS-REQ-WPOL-0002
+  evidence:
+  - EV-MFOS-WPOL-REQ-RESERVED-0002
+- requirement_id: MFOS-REQ-WPOL-0006
+  evidence:
+  - EV-MFOS-WPOL-REQ-RESERVED-0006
+- requirement_id: MFOS-REQ-WPOL-0009
+  evidence:
+  - EV-MFOS-WPOL-REQ-RESERVED-0009
+- requirement_id: MFOS-REQ-WPOL-0010
+  evidence:
+  - EV-MFOS-WPOL-REQ-RESERVED-0010

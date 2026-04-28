@@ -1,0 +1,31 @@
+fixture_id: FIXTURE-MFOS-OPER-EMERGENCY-NO-REASON-0908
+fixture_version: 1
+description: emergency mode without reason denied
+target_specs:
+- docs/design/specs/10-operator-console.md
+target_requirements:
+- MFOS-REQ-OPER-0101
+- MFOS-REQ-OPER-0102
+- MFOS-REQ-OPER-0103
+preconditions:
+- All subjects, policy versions, object generations, and dependency states are symbolic
+  and deterministic.
+initial_state:
+  clock: T0
+  security_epoch: 1
+  policy_version: 1
+  objects:
+  - object_ref: OBJ-MFOS-PHASE09-0001
+    generation: 1
+inputs:
+- input_id: INPUT-MFOS-PHASE09-0001
+  operation: EMERGENCY-NO-REASON
+  deterministic_seed: SEED-MFOS-PHASE09-0001
+expected_oracle: tests/golden/oper/emergency-no-reason-0908.yml
+expected_evidence:
+- EV-MFOS-OPER-EMERGENCY-NO-REASON-0908
+not_allowed:
+- production_claim
+- external_compatibility_claim
+- host_os_semantics_dependency
+status: draft

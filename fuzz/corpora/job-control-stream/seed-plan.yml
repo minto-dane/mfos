@@ -1,0 +1,11 @@
+corpus_id: MFOS-CORPUS-JOB-CONTROL-0001
+target_name: job-control-stream-parser
+phase: '0.9'
+implementation_allowed: false
+seed_categories:
+- valid_hello_job
+- malformed_statement
+- missing_effective_principal
+- unsupported_control_feature
+- spec_gap_control_feature
+status: draft

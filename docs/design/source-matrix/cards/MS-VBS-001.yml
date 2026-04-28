@@ -55,8 +55,8 @@ mfos_mapping:
 mfos_divergence:
 - PXM Guard is High-Assurance-only and protects selected MFOS root objects; it is not Windows VBS compatibility.
 prohibited_inference:
-- MFOS implements Windows VBS.
-- Guard is required for Baseline.
+- Forbidden claim: MFOS implements Windows VBS.
+- Forbidden claim: Guard is required for Baseline.
 - Do not claim z/OS compatibility.
 legal_controls:
   public_safe: true

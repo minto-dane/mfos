@@ -1,0 +1,34 @@
+schema_version: 1
+artifact_index_kind: mfos_fixture_inventory
+status: current
+
+current:
+  authorization:
+    path: tests/fixtures/auth/
+    status: current
+    origin_phase: phase-0-9
+  audit:
+    path: tests/fixtures/audit/
+    status: current
+    origin_phase: phase-0-9
+  dataset_catalog:
+    path: tests/fixtures/dataset/
+    status: current
+    origin_phase: phase-0-9
+  job_spool:
+    path: tests/fixtures/job/
+    status: current
+    origin_phase: phase-0-9
+  operator_console:
+    path: tests/fixtures/oper/
+    status: current
+    origin_phase: phase-0-9
+  first_vertical_slice:
+    path: tests/fixtures/first-vertical-slice/
+    status: current
+    origin_phase: phase-0-9
+
+policy:
+  phase_specific_filenames_allowed_in_root: false
+  deterministic_fixtures_required: true
+  implementation_allowed: false

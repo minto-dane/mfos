@@ -58,8 +58,8 @@ mfos_mapping:
 mfos_divergence:
 - securityd is RACF-inspired but has MFOS-native profiles, typed decisions, obligations, transactions, and policy-version binding.
 prohibited_inference:
-- securityd is RACF-compatible.
-- MFOS implements RACF.
+- Forbidden claim: securityd is RACF-compatible.
+- Forbidden claim: MFOS implements RACF.
 - Do not claim z/OS compatibility.
 - Do not treat IBM product behavior as MFOS compatibility.
 legal_controls:

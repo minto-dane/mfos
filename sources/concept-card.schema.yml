@@ -1,6 +1,7 @@
 schema_kind: concept_card_shape
-schema_version: 1
-status: draft
+schema_version: 2
+status: draft_public_safe_workbench
+authority_status: preparatory_until_adr_migration
 required_fields:
   - concept_id
   - source_ids
@@ -11,8 +12,30 @@ required_fields:
   - mfos_divergence
   - requirements
   - negative_tests
+  - prohibited_inference
+  - review_status
+recommended_fields:
+  - canonical_current_source_matrix_ids
+  - source_grounding_index_refs
+  - citation_scope
+  - cache_disposition
+  - legal_controls
+public_safe_constraints:
+  summary:
+    - short_paraphrase_only
+    - not_substitute_documentation
+  source_terms:
+    - bibliographic_reference_only
+    - no_external_mark_as_mfos_feature_name
+  mfos_mapping:
+    - must_distinguish_overlap_from_divergence
+    - must_link_requirement_ids_when_normative
 rules:
   - A concept card is not a source document.
   - A concept card must not claim IBM product compatibility.
   - A concept card must distinguish semantic overlap from MFOS divergence.
-
+  - A concept card under sources/ is preparatory until ADR migration.
+  - A concept card must not embed copied tables, record layouts, command syntax,
+    diagrams, message catalogs, or long excerpts.
+  - A concept card must cite canonical Source Matrix IDs while
+    docs/design/source-matrix remains canonical.

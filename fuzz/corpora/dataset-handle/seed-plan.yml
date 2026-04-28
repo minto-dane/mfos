@@ -1,0 +1,11 @@
+corpus_id: MFOS-CORPUS-DATASET-HANDLE-0001
+target_name: dataset-handle-decoder
+phase: '0.9'
+implementation_allowed: false
+seed_categories:
+- valid_bound_handle
+- stale_policy_version
+- stale_catalog_generation
+- missing_decision_id
+- forged_subject
+status: draft

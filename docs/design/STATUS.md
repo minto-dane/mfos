@@ -1,12 +1,14 @@
 # MFOS Design Work Status
 
-Status date: 2026-04-27  
-Workspace: `/home/nia/mfos`  
-Git status: initialized locally on branch `main`; remote repository setup is private-only pending public legal/IP review.
+Status date: 2026-04-28
+Workspace: `/home/nia/mfos`
+Git status: working branch `phase/0.9-executable-spec-freeze-artifacts` tracks
+`origin/phase/0.9-executable-spec-freeze-artifacts`; remote repository remains
+private pending public legal/IP review.
 
 ## Current Phase
 
-Phase 0.8: Core Semantics Freeze
+Phase 0.9.9: Repository Closure, Artifact Hygiene, And Source Workbench Parity
 
 Final judgment:
 
@@ -16,18 +18,44 @@ phase_0_7_status: in_progress_registry_coverage_closed
 phase_0_7_gap_closure_status: complete_for_machine_checkable_scaffold
 naming_safety_refactor_status: complete_for_private_internal_review
 phase_0_8_status: complete_for_design_level_core_semantics_freeze
+phase_0_9_status: complete_for_executable_spec_artifact_freeze
+phase_0_9_7_source_grounding_status: semantic_freeze_conditional
+structural_freeze_remains_valid: true
+semantic_freeze_fully_valid: false
+phase_1_loader_allowed: true
+phase_1_portable_semantic_core_allowed: false
+phase_1_semantic_evaluator_allowed_domains: []
 production_implementation_allowed: false
 hosted_daemon_implementation_allowed: false
 portable_semantic_core_implementation_allowed: false
+semantic_runner_implementation_allowed: false
 hosted_semantic_prototype_allowed: false
 public_release_allowed: false
 private_internal_use_allowed: true
 requires_ip_attorney_review_before_public_release: true
-next_phase: Phase 0.9 Executable Specs / Test Harness Freeze
+next_phase: Phase 1 Loader-Only Artifact Loading And Traceability Repair
 ```
 
 No production nucleus, service, PXM, Guard, or other OS-body implementation was
-started in Phase 0.6, Phase 0.7, naming-safety refactor, or Phase 0.8.
+started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
+0.9.
+
+## Completed In Phase 0.9.9
+
+- Closed artifact-hygiene validator gaps for Phase 1+ filenames, check-mode
+  mutation, planned empty parser-target directories, and script/task indexes.
+- Moved the Phase 1 pack-readiness recheck out of `reports/current/` and into
+  `reports/phases/phase-1/`.
+- Synchronized pack failure-mode and fuzz-target IDs with the current Phase 0.9
+  fuzz target plan and policy-denial taxonomy.
+- Added public-safe workbench cards for the remaining canonical Source Matrix
+  IDs that lacked `sources/` candidates.
+- Added `sources/source-matrix-parity.yml` and populated retrieval metadata for
+  the new workbench source cards.
+- Kept `sources/` noncanonical; `docs/design/source-matrix/` remains the
+  source authority until an ADR-backed migration.
+- Confirmed `./scripts/validate-all.sh --check` does not mutate the generated
+  registry-link audit report.
 
 ## Completed In Phase 0.6
 
@@ -51,7 +79,7 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, or Phase 0.8.
   `docs/design/specs/28-machine-readable-registries.md`, and
   `ai/contracts/ai-implementation-contract.md`.
 - Added Phase 0.7 task plan:
-  `tasks/phase-0-7-system-integrity-deep-spec.yml`.
+  `tasks/archive/phase-0-7/system-integrity-deep-spec.yml`.
 
 ## Corrections Preserved
 
@@ -136,7 +164,7 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, or Phase 0.8.
 - Migrated IBM-derived canonical Source IDs from legacy `IBM-*` IDs to
   `EXTREF-IBM-*` IDs.
 - Preserved old source IDs only as `legacy_source_ids` aliases and in
-  `reports/naming-alias-map.yml`.
+  `reports/naming-safety/naming-alias-map.yml`.
 - Renamed IBM-derived Source Card filenames to match the new `EXTREF-*`
   canonical IDs.
 - Converted Source Cards from concept-summary cards to public-safe
@@ -184,7 +212,7 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, or Phase 0.8.
   `formal/tla/job-lifecycle`, `formal/tla/spool-access`, and
   `formal/tla/operator-command`.
 - Added Phase 0.8 planned test catalogs under `tests/catalog/` and a fuzz target
-  plan under `fuzz/targets/phase-0-8-fuzz-target-plan.yml`.
+  plan under `fuzz/targets/archive/phase-0-8/fuzz-target-plan.yml`.
 - Added Phase 0.8 traceability matrices under `evidence/traceability/`.
 - Updated PACK-05 through PACK-09 machine-readable pack contracts with
   `implementation_allowed.production: false`,
@@ -192,7 +220,7 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, or Phase 0.8.
   `implementation_allowed.portable_semantic_core: false`,
   `implementation_allowed.executable_spec: false`, and
   `implementation_allowed.specification_only: true`.
-- Added `scripts/check-phase-0-8-traceability.py` and wired it into
+- Added `scripts/phases/phase-0-8/check-traceability.py` and wired it into
   `./scripts/validate-all.sh`.
 - Closed red-team Critical/Major issues by materializing `010x` planned semantic tests,
   removing hosted-prototype readiness language, aligning emergency duration and
@@ -204,26 +232,55 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, or Phase 0.8.
   semantic core implementation, nucleus, PXM, Guard, or service logic was
   started.
 
+## Completed In Phase 0.9 Executable Specs / Test Harness Freeze
+
+- Added Phase 0.9 executable-spec specs:
+  `31-executable-spec-test-harness.md`,
+  `32-conformance-fixture-format.md`,
+  `33-semantic-runner-contract.md`,
+  `34-oracle-definition-format.md`, and
+  `35-fuzz-corpus-plan.md`.
+- Added Phase 0.9 schemas for test cases, fixtures, oracles, expected audit
+  records, expected state transitions, expected failures, and conformance
+  suites.
+- Added 154 Phase 0.9 test catalog entries across authorization, audit,
+  dataset/catalog, job/spool, operator console, first vertical slice, negative
+  tests, failure modes, and conformance index catalogs.
+- Added 74 deterministic fixtures and 74 golden vectors with embedded oracles.
+- Added Phase 0.9 fuzz corpus planning for dataset names, job-control streams,
+  operator commands, policy language, audit records, dataset handles, job
+  fixtures, spool fixtures, and semantic fixtures.
+- Added Phase 0.9 validation scripts and wired
+  `./scripts/phases/phase-0-9/validate.sh` into `./scripts/validate-all.sh`.
+- Generated Phase 0.9 traceability matrices under `evidence/traceability/`.
+- Added Phase 0.9 freeze, validation, gap, red-team, open-issue, and Phase 1
+  readiness reports.
+- Confirmed no production implementation, hosted daemon implementation,
+  Portable Semantic Core implementation, semantic evaluator implementation, or
+  semantic runner implementation was started in Phase 0.9.
+
 ## Validation Commands
 
 ```bash
-python3 scripts/validate-source-cards.py
-python3 scripts/validate-requirements.py
-python3 scripts/validate-claims.py
-python3 scripts/validate-spec-front-matter.py
-python3 scripts/validate-packs.py
-python3 scripts/check-prohibited-terms.py
-python3 scripts/check-no-fake-success.py
-python3 scripts/check-source-grounding.py
-python3 scripts/check-audit-obligations.py
-python3 scripts/check-spec-gap-misuse.py
-python3 scripts/check-phase-0-8-traceability.py --mode release
-python3 scripts/generate-traceability.py
+python3 scripts/validators/validate-source-cards.py
+python3 scripts/validators/validate-requirements.py
+python3 scripts/validators/validate-claims.py
+python3 scripts/validators/validate-spec-front-matter.py
+python3 scripts/validators/validate-packs.py
+python3 scripts/checks/check-prohibited-terms.py
+python3 scripts/checks/check-no-fake-success.py
+python3 scripts/checks/check-source-grounding.py
+python3 scripts/checks/check-audit-obligations.py
+python3 scripts/checks/check-spec-gap-misuse.py
+python3 scripts/phases/phase-0-8/check-traceability.py --mode release
+./scripts/phases/phase-0-9/validate.sh
+python3 scripts/generators/generate-traceability.py
 ./scripts/validate-all.sh
-python3 -m py_compile scripts/*.py
-python3 scripts/check-evidence-status.py --mode release
-python3 scripts/check-source-grounding.py --mode release
+python3 -m py_compile $(find scripts -name '*.py' -print)
+python3 scripts/checks/check-evidence-status.py --mode release
+python3 scripts/checks/check-source-grounding.py --mode release
 ./scripts/validate-naming-safety.sh release
+./scripts/validate-artifact-hygiene.sh
 ```
 
 ## Current Validation Results
@@ -233,18 +290,21 @@ traceability.
 
 Observed draft warnings: none.
 
-`python3 scripts/check-evidence-status.py --mode release` fails closed as
+`python3 scripts/checks/check-evidence-status.py --mode release` fails closed as
 expected with 18 errors and 20 warnings because release claims require
 verified or archived evidence with review metadata.
 
-`python3 scripts/check-source-grounding.py --mode release` passes with 0
+`python3 scripts/checks/check-source-grounding.py --mode release` passes with 0
 warnings for current opt-in statement-level grounding.
 
-`python3 scripts/check-phase-0-8-traceability.py --mode release` passes.
+`python3 scripts/phases/phase-0-8/check-traceability.py --mode release` passes.
+
+`./scripts/phases/phase-0-9/validate.sh` passes and generates Phase 0.9 traceability.
 
 `./scripts/validate-naming-safety.sh release` passes with 0 warnings.
 
-`python3 -m py_compile scripts/*.py` passed. YAML and JSON parse checks passed.
+`python3 -m py_compile $(find scripts -name '*.py' -print)` passed. YAML and
+JSON parse checks passed.
 
 Current registry counts:
 
@@ -265,7 +325,31 @@ release_evidence_errors: 18
 release_evidence_warnings: 20
 naming_safety_release_warnings: 0
 extref_ibm_source_cards: 23
+phase_0_9_test_catalog_entries: 154
+phase_0_9_fixtures: 74
+phase_0_9_golden_vectors: 74
+phase_0_9_fuzz_targets: 9
 ```
+
+## PR #5 Review Closure
+
+Status: reviewed for merge readiness on 2026-04-28.
+
+- Phase 0.9 artifacts remain executable-spec artifacts only.
+- No production implementation, hosted daemon, Portable Semantic Core,
+  semantic evaluator, semantic runner, service logic, nucleus, PXM, or Guard
+  implementation was added.
+- Policy-denial error mapping is resolved for Phase 1 executable-spec inputs:
+  no valid subject is `MFOS_ERR_UNAUTHENTICATED`; a valid subject denied by
+  policy is `MFOS_ERR_POLICY_DENIED`; `MFOS_ERR_UNAUTHORIZED` is legacy umbrella
+  wording and is not a primary Phase 1 policy-denial result.
+- The BOB denied first-vertical-slice path now expects
+  `MFOS_ERR_POLICY_DENIED` with audit `reason_code:
+  DATASET_READ_NOT_PERMITTED`.
+- First-vertical-slice fixtures and golden vectors are under the explicit
+  `tests/fixtures/first-vertical-slice/` and
+  `tests/golden/first-vertical-slice/` paths.
+- PR #5 review findings: no Critical or Major findings remain.
 
 ## Remaining Gaps
 
@@ -277,82 +361,108 @@ extref_ibm_source_cards: 23
   implementation-ready requirements. Deep specs, final tests, evidence, and
   red-team review are still required before any implementation packet can use
   them.
-- The system-integrity body has a stronger registry surface, but Phase 0.7 is
-  still blocked from implementation by source-card pin limits, reserved
-  requirements, and draft-only evidence.
+- Source-card pin limits, reserved requirements, draft-only evidence, and
+  populated noncanonical `sources/` workbench drift still block production,
+  release, Portable Semantic Core behavior, semantic evaluator, and semantic
+  runner claims. They do not block Phase 1 loader-only validation of the Phase
+  0.9 executable-spec artifact set.
 - Release-mode evidence checking intentionally blocks claims until verified
   evidence artifacts, digests, verifiers, and verification timestamps exist.
 - CI design validation is wired, but release-mode evidence gates still require
   future verified evidence archive work.
 - Japanese mirror mechanics are incomplete; `japanese_mirror_status` remains
   incomplete and nonblocking while English remains canonical.
-- Public release remains blocked pending human legal/IP review, even though the
-  naming-safety lint passes locally.
-- Phase 0.8 first vertical slice conflicts are implementation-blocking until
-  Phase 0.9 closes dataset staging, ECHO program identity, queue/select/workload
-  executable semantics, failure-summary spool ownership/redaction, catalog
-  transaction fixture boundaries, and spec numbering cleanup.
-- Phase 0.8 minor red-team issues remain tracked in
-  `reports/phase-0-8-open-issues.md`; they do not block the design-level freeze
-  but block formal-evidence or implementation use where applicable.
+- Public release remains blocked pending human legal/IP review. Naming-safety
+  now includes a `sources/` workbench public-safety check and must continue to
+  pass before any public release discussion.
+- The first vertical slice now has Phase 0.9 fixtures and golden vectors. The
+  user-facing policy-denial error mapping is resolved for Phase 1 as
+  `MFOS_ERR_POLICY_DENIED` with audit `reason_code:
+  DATASET_READ_NOT_PERMITTED`.
+- Phase 0.9 does not provide verified execution evidence; it provides
+  executable-spec artifacts that may be loaded and validated, but semantic
+  evaluator implementation remains blocked until Phase 0.9.7 source-grounding
+  gaps are closed.
+
+## Completed In Phase 0.9.7 Source Grounding Adequacy Audit
+
+- Audited the 37 canonical Source Cards under
+  `docs/design/source-matrix/cards/`.
+- Confirmed Source Cards are public-safe and do not contain copied external
+  documentation fields, record layouts, command syntax, or macro signatures.
+- Confirmed no Source Card reaches SG6/SG7 because all remain draft and direct
+  card-local spec/test links are missing.
+- Rechecked PACK-05 through PACK-09 for loader-only versus semantic evaluator
+  readiness.
+- Downgraded Phase 1 permission to loader-only artifact validation and
+  traceability repair.
+- Blocked Portable Semantic Core behavior, semantic evaluator, and semantic
+  runner command implementation until source-grounding trace gaps close.
+- Recorded conditional refreeze outputs under
+  `reports/current/source-grounding/`.
+
+## Completed In Phase 0.9.8 Source Workbench Population
+
+- Populated `sources/` as a public-safe, noncanonical source-grounding
+  workbench with IBM, x64, security-assurance, and internal FBVBS source cards,
+  concept cards, indexes, and mapping notes.
+- Kept `docs/design/source-matrix/source-matrix.yml` and
+  `docs/design/source-matrix/cards/` as canonical source authority until an
+  ADR-backed migration updates validators, traceability, packs, docs, and
+  indexes together.
+- Did not commit IBM PDFs, HTML mirrors, screenshots, copied manuals, record
+  layouts, command syntax, macro signatures, message catalogs, or external
+  source-substitute material.
+- Added `sources/` workbench public-safety validation to naming-safety checks.
+- Confirmed source population improves review depth but does not upgrade
+  semantic freeze from conditional to full.
 
 ## Reports
 
-- `reports/repo-audit.md`
-- `reports/source-card-audit.md`
-- `reports/source-card-pin-audit.md`
-- `reports/requirement-audit.md`
-- `reports/requirement-gap-closure.md`
-- `reports/reserved-requirement-test-evidence-closure.md`
-- `reports/spec-front-matter-audit.md`
-- `reports/traceability-audit.md`
-- `reports/lint-audit.md`
-- `reports/spec-gap-warning-cleanup.md`
-- `reports/japanese-mirror-audit.md`
-- `reports/ci-enforcement-audit.md`
-- `reports/pack-audit.md`
-- `reports/assurance-audit.md`
-- `reports/red-team-review.md`
-- `reports/final-phase-0-6-summary.md`
-- `reports/phase-0-7-system-integrity-progress.md`
-- `reports/phase-0-7-gap-closure-summary.md`
-- `reports/system-integrity-front-half-review.md`
-- `reports/system-integrity-boundary-review.md`
-- `reports/system-integrity-tail-review.md`
-- `reports/status-sync-audit.md`
-- `reports/naming-source-id-audit.md`
-- `reports/mfos-owned-name-audit.md`
-- `reports/naming-registry-audit.md`
-- `reports/naming-alias-map.yml`
-- `reports/naming-safety-refactor-report.md`
-- `reports/naming-safety-open-issues.md`
-- `reports/naming-safety-red-team-review.md`
-- `reports/naming-path-fix-report.md`
-- `reports/source-guidance-fix-report.md`
-- `reports/naming-validator-coverage-report.md`
-- `reports/phase-0-8-core-semantics-freeze-report.md`
-- `reports/phase-0-8-gap-report.md`
-- `reports/phase-0-8-red-team-review.md`
-- `reports/phase-0-8-open-issues.md`
-- `reports/phase-0-8-requirement-traceability.md`
-- `reports/phase-0-8-authorization-lead.md`
-- `reports/phase-0-8-audit-lead.md`
-- `reports/phase-0-8-dataset-catalog-lead.md`
-- `reports/phase-0-8-job-spool-lead.md`
-- `reports/phase-0-8-operator-console-lead.md`
-- `reports/phase-0-8-cross-domain-lead.md`
-- `reports/phase-0-9-readiness.md`
+Reports are indexed in `reports/index.yml`. The root `reports/` directory now
+contains only index/policy files and categorized report families.
+
+Artifact inventories are maintained in:
+
+- `reports/index.yml`
+- `tests/catalog/index.yml`
+- `tests/fixtures/index.yml`
+- `tests/golden/index.yml`
+- `evidence/traceability/index.yml`
+- `scripts/index.yml`
+- `fuzz/targets/index.yml`
+- `tasks/index.yml`
+- `docs/design/tasks/index.yml`
+- `docs/design/specs/INDEX.md`
+- `docs/design/packs/PACKS.md`
+
+Current PR and readiness reports:
+
+- `reports/phases/phase-0-9/pr-5-review-report.md`
+- `reports/phases/phase-0-9/pr-5-post-gap-validation.md`
+- `reports/current/policy-denial-error-taxonomy.md`
+- `reports/phases/phase-1/readiness-report.md`
+- `reports/phases/phase-1/open-issues.md`
+- `reports/current/source-grounding/conditional-refreeze-plan.md`
+- `reports/phases/phase-1/pack-readiness-recheck.md`
+
+Historical phase reports are under `reports/phases/`. Cross-phase audits are
+under `reports/audits/`. Naming-safety reports are under
+`reports/naming-safety/`. Deterministic script outputs are under
+`reports/generated/`. Superseded reports are retained under
+`reports/archive/`.
 
 ## Next Recommended Work
 
-Proceed to Phase 0.9 Executable Specs / Test Harness Freeze:
+Proceed to Phase 0.9.8 Source-Grounding Trace Closure:
 
-1. Convert the Phase 0.8 planned test catalogs into executable-spec/test-harness
-   contracts without starting production service or daemon implementation.
-2. Close first-vertical-slice implementation blockers: dataset staging, program
-   identity, queue/select semantics, failure-summary spool policy, catalog
-   fixture boundaries, and duplicate spec numbering.
-3. Preserve the Phase 0.8 closure fixes: authorization formal reachability
-   predicates, inactive future prompt gates, MFOS-native job-control stream
-   identifiers, and workload-policy naming.
-4. Run Red Team review again before any implementation packet is authorized.
+1. Propagate `source_refs` into current fixtures.
+2. Propagate `source_refs` and `target_requirements` into current
+   golden/oracle vectors.
+3. Reconcile planned `010x` requirement tests with current `09xx`
+   executable-spec artifacts, or add a machine-readable alias map.
+4. Refactor or explicitly re-bound job/spool control-stream syntax and
+   JCL/DD-style MFOS-owned identifiers.
+5. Keep production implementation, hosted daemon implementation, Portable
+   Semantic Core behavior, semantic evaluator logic, semantic runner commands,
+   and hardware enforcement claims blocked.

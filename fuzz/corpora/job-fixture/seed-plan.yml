@@ -1,0 +1,11 @@
+corpus_id: MFOS-CORPUS-JOB-FIXTURE-0001
+target_name: job-fixture-parser
+phase: '0.9'
+implementation_allowed: false
+seed_categories:
+- valid_job_fixture
+- invalid_lifecycle_transition
+- missing_audit_correlation
+- unauthorized_dataset_reference
+- nondeterministic_identity
+status: draft

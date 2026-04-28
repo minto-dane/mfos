@@ -1,0 +1,18 @@
+schema_version: 1
+artifact_index_kind: mfos_task_inventory
+status: current
+
+current:
+  readme:
+    path: tasks/README.md
+    status: current
+
+archive:
+  phase_0_7:
+    path: tasks/archive/phase-0-7/
+    status: historical
+    origin_phase: phase-0-7
+
+policy:
+  root_current_only: true
+  phase_specific_filenames_allowed_in_root: false

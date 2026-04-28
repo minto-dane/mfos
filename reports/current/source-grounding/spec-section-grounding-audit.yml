@@ -1,0 +1,194 @@
+schema_version: 1
+audit_id: MFOS-AUDIT-SOURCE-GROUNDING-SPECS-0001
+status: current
+audit_date: "2026-04-27"
+scope:
+  p0_core_specs:
+    - docs/design/specs/03-system-integrity.md
+    - docs/design/specs/06-authorization.md
+    - docs/design/specs/07-audit.md
+    - docs/design/specs/08-dataset-catalog.md
+    - docs/design/specs/09-job-spool.md
+    - docs/design/specs/10-operator-console.md
+    - docs/design/specs/30-first-vertical-slice-contract.md
+    - docs/design/specs/31-executable-spec-test-harness.md
+    - docs/design/specs/32-conformance-fixture-format.md
+    - docs/design/specs/33-semantic-runner-contract.md
+    - docs/design/specs/34-oracle-definition-format.md
+    - docs/design/specs/35-fuzz-corpus-plan.md
+summary:
+  front_matter_validation: pass
+  source_grounding_check: pass
+  structurally_frozen_specs: 12
+  fully_semantically_frozen_specs: 0
+  conditional_semantic_freeze_specs: 7
+  draft_or_contract_only_specs: 5
+entries:
+  - spec_id: MFOS-SPEC-03-SYSTEM-INTEGRITY
+    path: docs/design/specs/03-system-integrity.md
+    section_id: document
+    grounding_level: SG4_SPEC_MAPPED
+    freeze_status:
+      structural: frozen
+      semantic: frozen_pending_source_review
+    missing_source_refs: []
+    missing_requirement_refs: []
+    missing_negative_tests:
+      - front_matter_test_refs_empty
+    missing_audit_obligations: []
+    risk: medium
+    recommended_action: Add front-matter test/evidence refs that reflect body-level tests and evidence.
+  - spec_id: MFOS-SPEC-06-AUTHORIZATION
+    path: docs/design/specs/06-authorization.md
+    section_id: document
+    grounding_level: SG5_NEGATIVE_TEST_LINKED
+    freeze_status:
+      structural: frozen
+      semantic: frozen_pending_source_review
+    missing_source_refs: []
+    missing_requirement_refs: []
+    missing_negative_tests: []
+    missing_audit_obligations: []
+    risk: medium
+    recommended_action: Keep design freeze, but do not authorize semantic evaluator until exact test/evidence links are current.
+  - spec_id: MFOS-SPEC-07-AUDIT
+    path: docs/design/specs/07-audit.md
+    section_id: document
+    grounding_level: SG5_NEGATIVE_TEST_LINKED
+    freeze_status:
+      structural: frozen
+      semantic: frozen_pending_source_review
+    missing_source_refs: []
+    missing_requirement_refs: []
+    missing_negative_tests: []
+    missing_audit_obligations: []
+    risk: medium
+    recommended_action: Keep design freeze, but treat evidence as draft-only.
+  - spec_id: MFOS-SPEC-08-DATASET-CATALOG
+    path: docs/design/specs/08-dataset-catalog.md
+    section_id: document
+    grounding_level: SG4_SPEC_MAPPED
+    freeze_status:
+      structural: frozen
+      semantic: frozen_pending_source_review
+    missing_source_refs: []
+    missing_requirement_refs: []
+    missing_negative_tests:
+      - front_matter_test_alias_drift
+    missing_audit_obligations: []
+    risk: medium
+    recommended_action: Resolve front-matter test/evidence alias drift before stronger semantic freeze.
+  - spec_id: MFOS-SPEC-09-JOB-SPOOL
+    path: docs/design/specs/09-job-spool.md
+    section_id: document
+    grounding_level: SG4_SPEC_MAPPED
+    freeze_status:
+      structural: frozen
+      semantic: blocked_by_source_gap
+    missing_source_refs: []
+    missing_requirement_refs: []
+    missing_negative_tests:
+      - current front matter uses catalog path rather than concrete TEST/NEG ids
+    missing_audit_obligations: []
+    risk: high
+    recommended_action: Rework job-control stream naming/syntax to reduce external command-syntax impression before semantic evaluator work.
+  - spec_id: MFOS-SPEC-10-OPERATOR-CONSOLE
+    path: docs/design/specs/10-operator-console.md
+    section_id: document
+    grounding_level: SG4_SPEC_MAPPED
+    freeze_status:
+      structural: frozen
+      semantic: frozen_pending_source_review
+    missing_source_refs: []
+    missing_requirement_refs: []
+    missing_negative_tests:
+      - front_matter_test_refs_use_catalog_path
+    missing_audit_obligations:
+      - front_matter_evidence_refs_empty
+    risk: medium
+    recommended_action: Add concrete test/evidence refs before unqualified semantic freeze.
+  - spec_id: MFOS-SPEC-30-FIRST-VERTICAL-SLICE
+    path: docs/design/specs/30-first-vertical-slice-contract.md
+    section_id: document
+    grounding_level: SG5_NEGATIVE_TEST_LINKED
+    freeze_status:
+      structural: frozen
+      semantic: frozen_pending_source_review
+    missing_source_refs: []
+    missing_requirement_refs: []
+    missing_negative_tests: []
+    missing_audit_obligations: []
+    risk: medium
+    recommended_action: Keep as contract only; do not treat as implementation authorization.
+  - spec_id: MFOS-SPEC-31-EXECUTABLE-SPEC-HARNESS
+    path: docs/design/specs/31-executable-spec-test-harness.md
+    section_id: artifact_contract
+    grounding_level: SG3_REQUIREMENT_LINKED
+    freeze_status:
+      structural: current
+      semantic: provisional
+    missing_source_refs: []
+    missing_requirement_refs:
+      - MFOS-REQ-EXECSPEC-* not closed in current requirement registry
+    missing_negative_tests: []
+    missing_audit_obligations: []
+    risk: high
+    recommended_action: Register EXECSPEC requirements before freeze.
+  - spec_id: MFOS-SPEC-32-FIXTURE-FORMAT
+    path: docs/design/specs/32-conformance-fixture-format.md
+    section_id: artifact_contract
+    grounding_level: SG3_REQUIREMENT_LINKED
+    freeze_status:
+      structural: current
+      semantic: provisional
+    missing_source_refs:
+      - current fixtures lack direct source_refs
+    missing_requirement_refs:
+      - MFOS-REQ-EXECSPEC-* not closed in current requirement registry
+    missing_negative_tests: []
+    missing_audit_obligations: []
+    risk: high
+    recommended_action: Propagate catalog source refs into fixtures.
+  - spec_id: MFOS-SPEC-33-RUNNER-CONTRACT
+    path: docs/design/specs/33-semantic-runner-contract.md
+    section_id: artifact_contract
+    grounding_level: SG3_REQUIREMENT_LINKED
+    freeze_status:
+      structural: current
+      semantic: provisional
+    missing_source_refs: []
+    missing_requirement_refs:
+      - MFOS-REQ-EXECSPEC-* not closed in current requirement registry
+    missing_negative_tests: []
+    missing_audit_obligations: []
+    risk: high
+    recommended_action: Keep as draft contract; do not implement semantic runner until contract closure.
+  - spec_id: MFOS-SPEC-34-ORACLE-FORMAT
+    path: docs/design/specs/34-oracle-definition-format.md
+    section_id: artifact_contract
+    grounding_level: SG3_REQUIREMENT_LINKED
+    freeze_status:
+      structural: current
+      semantic: provisional
+    missing_source_refs:
+      - current golden/oracle vectors lack direct source_refs
+    missing_requirement_refs:
+      - current golden/oracle vectors lack direct target_requirements
+    missing_negative_tests: []
+    missing_audit_obligations: []
+    risk: high
+    recommended_action: Propagate requirement/source refs into golden/oracle vectors.
+  - spec_id: MFOS-SPEC-35-FUZZ-CORPUS-PLAN
+    path: docs/design/specs/35-fuzz-corpus-plan.md
+    section_id: planning_contract
+    grounding_level: SG4_SPEC_MAPPED
+    freeze_status:
+      structural: current
+      semantic: structural_frozen_semantic_pending
+    missing_source_refs:
+      - fuzz/targets/fuzz-target-plan.yml has no per-target source_refs
+    missing_requirement_refs: []
+    missing_negative_tests: []
+    missing_audit_obligations: []
+    risk: medium
+    recommended_action: Freeze only as corpus planning scope until per-target source refs are added.

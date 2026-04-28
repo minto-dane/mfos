@@ -1,0 +1,11 @@
+corpus_id: MFOS-CORPUS-SEMANTIC-FIXTURE-0001
+target_name: semantic-fixture-parser
+phase: '0.9'
+implementation_allowed: false
+seed_categories:
+- hello_job_success
+- denied_dataset_open
+- missing_oracle
+- spec_gap_expected
+- unsupported_expected
+status: draft

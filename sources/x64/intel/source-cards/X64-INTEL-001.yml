@@ -1,0 +1,94 @@
+schema_version: 1
+status: draft
+card_id: SRC-CARD-X64-INTEL-001
+source_id: X64-INTEL-001
+source_kind: bibliographic_reference
+source_type: external_reference
+semantic_role: design_background
+vendor: Intel
+vendor_mark_used: true
+product_family: Intel 64 and IA-32 architectures
+document_title: Intel 64 and IA-32 Architectures Software Developer Manuals
+document_url:
+- https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html
+retrieved_at: '2026-04-28'
+version_or_release: SDM PDF set version 091; Intel page updated 2026-04-06
+publication_number: null
+section_scope: x64 system programming, paging, protection, interrupts, VMX, EPT, MSRs,
+  CET, PKU, PKS
+pin_quality: official_landing_page_verified_manual_version_pinned
+reference_purpose:
+- source discovery
+- concept mapping
+- non-compatibility boundary definition
+- independent MFOS design traceability
+review_topics:
+- x64 protection
+- paging
+- interrupt handling
+- VMX
+- EPT
+- MSR
+- CET
+- PKU
+- PKS
+mfos_mapping:
+  mfos_components:
+  - nucleus x64 backend
+  - PXM Intel backend
+  - hardware feature matrix
+  mfos_specs: []
+  mfos_requirements:
+  - MFOS-REQ-NUCLEUS-0007
+  - MFOS-REQ-NUCLEUS-0008
+  - MFOS-REQ-PARTITION-0005
+  - MFOS-REQ-PARTITION-0007
+  mapping_notes:
+  - Use Intel mechanisms as implementation enforcement aids for MFOS-owned abstractions.
+  - Do not derive enterprise authorization or audit policy directly from CPU features.
+mfos_divergence:
+- MFOS policy roots are MFOS requirements and assurance evidence, not Intel hardware
+  feature presence.
+- Intel mechanisms may support isolation, translation, and control-flow enforcement
+  but do not define MFOS semantics.
+prohibited_inference:
+- Intel features provide compatibility with any external operating system.
+- Intel feature availability alone satisfies MFOS authorization, audit, or system-integrity
+  requirements.
+- Do not treat this card as a substitute for the Intel manuals.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+  no_affiliation_claim: true
+  no_compatibility_claim: true
+  no_conformance_claim: true
+  no_certification_claim: true
+  no_source_substitution: true
+source_refs:
+- source_id: X64-INTEL-001
+  source_type: external_reference
+  role: card_subject
+requirement_refs:
+- MFOS-REQ-NUCLEUS-0007
+- MFOS-REQ-NUCLEUS-0008
+- MFOS-REQ-PARTITION-0005
+- MFOS-REQ-PARTITION-0007
+review_status: draft
+gaps:
+- Add section-level pins for selected Vol. 3 and Vol. 4 topics after source review.
+- Define supported Intel CPU feature matrix and fallback behavior.
+authority_status: preparatory_until_adr_migration
+citation_scope: metadata_only_public_reference
+cache_disposition: no_local_cache

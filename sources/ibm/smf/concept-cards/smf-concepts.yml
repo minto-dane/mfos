@@ -1,0 +1,62 @@
+schema_version: 1
+status: draft
+maturity: concept_grounding_worker_draft
+concept_cards:
+  - concept_id: MFOS-CONCEPT-AUDITD-EVIDENCE-0001
+    title: Structured Audit Evidence
+    source_ids:
+      - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+    review_topics:
+      - system evidence
+      - job evidence
+      - dataset evidence
+      - security evidence
+      - durable recording
+    mfos_mapping:
+      components:
+        - auditd
+        - AuditRecord
+        - export pipeline
+      requirements:
+        - MFOS-REQ-AUDIT-0001
+        - MFOS-REQ-AUDIT-0003
+        - MFOS-REQ-AUDIT-0004
+        - MFOS-REQ-AUDIT-0005
+    divergence:
+      - MFOS audit evidence is schema-validated and hash-chained, not SMF-formatted.
+    prohibited_inference:
+      - Do not claim SMF compatibility or copy SMF record layouts.
+    requirements:
+      - Audit records must be tamper-evident, query-authorized, retained by policy, and exportable.
+    negative_tests:
+      - TEST-AUD-TAMPER-CHAIN-001
+      - TEST-AUD-UNAVAILABLE-FAIL-CLOSED-001
+    status: draft
+  - concept_id: MFOS-CONCEPT-AUDITD-SECURITY-REASON-0001
+    title: Security Audit Reason Codes
+    source_ids:
+      - EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+    review_topics:
+      - unauthorized attempt
+      - protected-resource decision
+      - reason code
+      - authorities used
+    mfos_mapping:
+      components:
+        - security audit records
+        - reason_code taxonomy
+        - policy_version binding
+      requirements:
+        - MFOS-REQ-AUDIT-0001
+        - MFOS-REQ-AUDIT-0002
+        - MFOS-REQ-AUDIT-0003
+    divergence:
+      - MFOS reason codes are native and intentionally not IBM event codes.
+    prohibited_inference:
+      - Do not import IBM event-code tables, record layouts, or macro syntax.
+    requirements:
+      - Every security decision event must carry reason_code, decision, policy_version, and actor identity.
+    negative_tests:
+      - TEST-AUD-DENY-BEFORE-RETURN-001
+      - TEST-AUD-REASON-CODE-REQUIRED-001
+    status: draft

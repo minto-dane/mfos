@@ -59,7 +59,7 @@ mfos_mapping:
 mfos_divergence:
 - MFOS does not implement SMP/E. uvsd uses TUF-like metadata, security epochs, and signed provenance.
 prohibited_inference:
-- MFOS implements SMP/E.
+- Forbidden claim: MFOS implements SMP/E.
 - Do not claim z/OS compatibility.
 - Do not treat IBM product behavior as MFOS compatibility.
 legal_controls:

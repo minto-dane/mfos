@@ -1,0 +1,59 @@
+schema_version: 1
+artifact_index_kind: mfos_script_inventory
+status: current
+
+current:
+  entrypoints:
+    validate_all:
+      path: scripts/validate-all.sh
+      status: current
+    validate_artifact_hygiene:
+      path: scripts/validate-artifact-hygiene.sh
+      status: current
+    validate_naming_safety:
+      path: scripts/validate-naming-safety.sh
+      status: current
+
+sections:
+  validators:
+    path: scripts/validators/
+    status: current
+  checks:
+    path: scripts/checks/
+    status: current
+  artifact_hygiene_checks:
+    path: scripts/checks/artifact-hygiene/
+    status: current
+  naming_safety_checks:
+    path: scripts/checks/naming-safety/
+    status: current
+  generators:
+    path: scripts/generators/
+    status: current
+  library:
+    path: scripts/lib/
+    status: current
+  bootstrap:
+    path: scripts/bootstrap/
+    status: current
+  phase_helpers:
+    path: scripts/phases/
+    status: current
+    note: Contains phase-scoped validators; phase-specific filenames are allowed only under this directory.
+
+archive:
+  phase_0_8:
+    path: scripts/phases/phase-0-8/
+    status: historical
+    origin_phase: phase-0-8
+
+generated:
+  phase_0_9:
+    path: scripts/phases/phase-0-9/
+    status: current
+    origin_phase: phase-0-9
+
+policy:
+  root_entrypoints_only: true
+  phase_specific_filenames_allowed_in_root: false
+  phase_specific_helpers_must_live_under: scripts/phases/

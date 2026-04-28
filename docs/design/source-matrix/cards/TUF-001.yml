@@ -64,7 +64,7 @@ mfos_mapping:
 mfos_divergence:
 - MFOS uvsd uses a TUF-like model with MFOS component types, security epochs, activation profile constraints, audit, and recovery rollback workflow.
 prohibited_inference:
-- A signature alone is sufficient update security.
+- Forbidden claim: A signature alone is sufficient update security.
 - Do not claim z/OS compatibility.
 legal_controls:
   public_safe: true

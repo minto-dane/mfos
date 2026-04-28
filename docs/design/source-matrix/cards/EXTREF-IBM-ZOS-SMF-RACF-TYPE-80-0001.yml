@@ -57,7 +57,7 @@ mfos_mapping:
 mfos_divergence:
 - MFOS security audit records use MFOS-native subject, object, operation, decision, reason_code, policy_version, hashes, and optional signatures.
 prohibited_inference:
-- MFOS emits RACF type 80 compatible records.
+- Forbidden claim: MFOS emits RACF type 80 compatible records.
 - Do not claim z/OS compatibility.
 - Do not treat IBM product behavior as MFOS compatibility.
 legal_controls:

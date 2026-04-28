@@ -1,0 +1,253 @@
+schema_version: 1
+status: draft
+maturity: source_grounding_worker_draft
+retrieved_at: '2026-04-28'
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  attribution_required: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+  no_message_tables_copied: true
+source_cards:
+- card_id: SRC-CARD-EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  source_id: EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001.yml
+  vendor: IBM
+  product_family: IBM z/OS
+  document_title: z/OS and system integrity
+  current_official_urls:
+  - https://www.ibm.com/docs/en/zos-basic-skills?topic=zos-system-integrity
+  version_or_scope: z/OS Basic Skills path; release not pinned in URL
+  pin_quality: official_topic_verified_release_unpinned_needs_review
+  review_topics:
+  - unauthorized program boundaries
+  - system interface protection
+  - protection-check bypass prevention
+  - authorized state boundaries
+  - installation-written authorized code review
+  mfos_mapping:
+    components:
+    - MFOS System Integrity Statement
+    - ExecutionState
+    - AuthorityClass
+    - SystemInterface
+    requirements:
+    - MFOS-REQ-SOURCE-0001
+    - MFOS-REQ-SOURCE-0003
+    - MFOS-REQ-SYSINT-0001
+    - MFOS-REQ-SYSINT-0002
+    - MFOS-REQ-SYSINT-0003
+    notes:
+    - Grounds MFOS treatment of every privileged service entry as a security boundary.
+    - Supports negative testing for unauthorized transitions into protected state.
+  divergence:
+  - MFOS maps this to principals, programs, jobs, services, protected resources, securityd,
+    and auditd.
+  - MFOS Baseline does not claim resilience after nucleus or authorized-module compromise.
+  prohibited_inference:
+  - Forbidden claim: MFOS is z/OS-compatible.
+  - Forbidden claim: MFOS provides z/OS system-integrity compatibility.
+  - Forbidden claim: IBM product behavior is MFOS behavior.
+  requirements:
+  - Define a public MFOS system-integrity statement in MFOS-native terms.
+  - Treat all authority transitions as explicit, auditable interface decisions.
+  - Maintain negative tests for unauthorized bypass attempts.
+  negative_tests:
+  - TEST-SI-UNAUTHORIZED-SVC-001
+  - TEST-DATA-DENY-001
+  - TEST-AMF-UNAUTHORIZED-TRANSITION-001
+  status: draft
+- card_id: SRC-CARD-EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001
+  source_id: EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001
+  canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001.yml
+  vendor: IBM
+  product_family: IBM z/OS
+  document_title: Authorized programs
+  current_official_urls:
+  - https://www.ibm.com/docs/en/zos/3.2.0?topic=system-authorized-programs
+  version_or_scope: z/OS 3.2.0 topic
+  pin_quality: release_and_topic_pinned_from_url
+  review_topics:
+  - authorized program
+  - authorized state
+  - restricted service entry
+  - sensitive system functions
+  - OS extension authorization
+  mfos_mapping:
+    components:
+    - AMF
+    - AuthorityClass
+    - authorized module lifecycle
+    requirements:
+    - MFOS-REQ-SYSINT-0004
+    - MFOS-REQ-AMF-0001
+    - MFOS-REQ-AMF-0003
+    - MFOS-REQ-AMF-0004
+    - MFOS-REQ-AMF-0007
+    notes:
+    - Grounds the distinction between ordinary user authority and special OS extension
+      authority.
+    - Supports an explicit authorized-module boundary around sensitive service paths.
+  divergence:
+  - MFOS AMF is signed, measured, revocable, ABI-limited, audited, and optionally
+    Guard-approved.
+  - AMF is not administrator privilege and is not APF compatibility.
+  prohibited_inference:
+  - Forbidden claim: AMF is APF-compatible.
+  - Forbidden claim: AMF grants root or administrator privilege.
+  - Forbidden claim: MFOS supports z/OS authorized-program behavior.
+  requirements:
+  - Authorized-module metadata must bind code identity, authority class, ABI scope,
+    and revocation state.
+  - AMF loads must be auditable and reject unsigned or revoked authority.
+  negative_tests:
+  - TEST-AMF-ADMIN-CONFUSION-001
+  - TEST-AMF-UNSIGNED-LOAD-001
+  - TEST-AMF-AUDIT-DISABLE-DENY-001
+  status: draft
+- card_id: SRC-CARD-EXTREF-IBM-ZOS-STORAGE-PROTECTION-SUMMARY-0001
+  source_id: EXTREF-IBM-ZOS-STORAGE-PROTECTION-SUMMARY-0001
+  canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-STORAGE-PROTECTION-SUMMARY-0001.yml
+  vendor: IBM
+  product_family: IBM z/OS
+  document_title: Storage protection summary
+  current_official_urls:
+  - https://www.ibm.com/docs/en/zos/3.2.0?topic=summary-storage-protection
+  - https://www.ibm.com/docs/en/zos-basic-skills?topic=storage-what-is-protection
+  version_or_scope: z/OS 3.2.0 topic plus Basic Skills overview
+  pin_quality: release_and_topic_pinned_for_summary_basic_skills_unpinned
+  review_topics:
+  - storage protection terminology
+  - storage keys
+  - fetch-protection concept
+  - reference and change tracking concepts
+  - x64 divergence analysis
+  mfos_mapping:
+    components:
+    - storage-key divergence table
+    - x64 protection mapping
+    - memory-domain checks
+    requirements:
+    - MFOS-REQ-SOURCE-0002
+    - MFOS-REQ-SYSINT-0005
+    notes:
+    - Grounds terminology review for memory protection without importing hardware
+      behavior.
+    - Supports linting that prevents MFOS page-domain terms from being mislabeled
+      as z/OS storage keys.
+  divergence:
+  - MFOS uses x64-native page protections, capability checks, and optional hardware
+    isolation.
+  - MFOS storage domains are not z/OS storage keys and do not claim binary compatibility.
+  prohibited_inference:
+  - Forbidden claim: MFOS storage domains are z/OS storage keys.
+  - Forbidden claim: MFOS implements IBM storage-key semantics.
+  - Forbidden claim: IBM hardware bit layouts can be copied into MFOS docs.
+  requirements:
+  - Publish a divergence table before using IBM storage-protection terms in MFOS specs.
+  - Keep protection tests framed as MFOS behavior, not IBM compatibility.
+  negative_tests:
+  - TEST-STG-PKU-STORAGE-KEY-CLAIM-LINT-001
+  - TEST-STG-FETCH-PROTECTION-MISMAPPING-001
+  status: draft
+- card_id: SRC-CARD-EXTREF-IBM-ZOS-CROSS-MEMORY-SYNCHRONOUS-0001
+  source_id: EXTREF-IBM-ZOS-CROSS-MEMORY-SYNCHRONOUS-0001
+  canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-CROSS-MEMORY-SYNCHRONOUS-0001.yml
+  vendor: IBM
+  product_family: IBM z/OS
+  document_title: Synchronous cross memory communication
+  current_official_urls:
+  - https://www.ibm.com/docs/en/zos/3.2.0?topic=guide-synchronous-cross-memory-communication
+  - https://www.ibm.com/docs/en/zos-basic-skills?topic=integrity-controlling-cross-memory-communication
+  version_or_scope: z/OS 3.2.0 topic plus Basic Skills overview
+  pin_quality: release_and_topic_pinned_for_programming_topic_basic_skills_unpinned
+  review_topics:
+  - cross-address-space service entry
+  - controlled endpoint invocation
+  - parameter trust boundary
+  - sealed-buffer handoff
+  mfos_mapping:
+    components:
+    - PCALL ABI
+    - typed endpoint registry
+    - sealed buffer transfer
+    requirements:
+    - MFOS-REQ-SYSINT-0008
+    - MFOS-REQ-SYSINT-0009
+    - MFOS-REQ-NUCLEUS-0005
+    notes:
+    - Grounds controlled synchronous transfer to service routines across address-space
+      boundaries.
+    - Supports requiring endpoint authorization before copying or interpreting caller-supplied
+      data.
+  divergence:
+  - MFOS PCALL uses typed endpoints, bounded requests, scheduler-derived identity,
+    and sealed buffers.
+  - PCALL is not IBM PC instruction or z/OS cross-memory compatibility.
+  prohibited_inference:
+  - Forbidden claim: PCALL implements z/OS PC instruction compatibility.
+  - Forbidden claim: MFOS supports z/OS cross-memory interfaces.
+  - Forbidden claim: IBM macro or instruction syntax may be reproduced.
+  requirements:
+  - PCALL endpoint registration must include authority, object scope, input size limits,
+    and audit policy.
+  - Foreign pointer or unsealed-buffer input must fail closed.
+  negative_tests:
+  - TEST-PCALL-FOREIGN-POINTER-DENY-001
+  - TEST-PCALL-UNAUTHORIZED-ENDPOINT-DENY-001
+  status: draft
+- card_id: SRC-CARD-EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
+  source_id: EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
+  canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001.yml
+  vendor: IBM
+  product_family: IBM z/OS
+  document_title: z/OS Authorized Code Scanner introduction and overview
+  current_official_urls:
+  - https://www.ibm.com/docs/en/zos/3.2.0?topic=zacsg-introduction
+  - https://www.ibm.com/docs/en/zos/3.2.0?topic=guide-overview
+  version_or_scope: z/OS 3.2.0 topics
+  pin_quality: release_and_topic_pinned_from_url
+  review_topics:
+  - authorized-code vulnerability testing
+  - unauthorized caller to authorized service boundary
+  - active scanner versus passive monitor distinction
+  - sensitive scanner output handling
+  mfos_mapping:
+    components:
+    - AMF negative-test harness
+    - system-interface fuzz campaign
+    - privileged-boundary monitor
+    requirements:
+    - MFOS-REQ-SYSINT-0003
+    - MFOS-REQ-SYSINT-0004
+    - MFOS-REQ-AMF-0007
+    - MFOS-REQ-AUDIT-0003
+    notes:
+    - Grounds the need for targeted testing of authorized-service boundaries.
+    - Supports treating scanner inputs and results as sensitive operational evidence.
+  divergence:
+  - MFOS testing must be MFOS-native and must not reuse IBM scanner datasets, rules,
+    or output formats.
+  - Production monitoring must avoid disruptive active probes unless an explicit test
+    profile permits them.
+  prohibited_inference:
+  - Forbidden claim: MFOS includes zACS.
+  - Forbidden claim: MFOS can reproduce IBM scanner algorithms, inputs, or findings.
+  - Forbidden claim: Scanner output can be stored in public artifacts.
+  requirements:
+  - Boundary tests must distinguish active destructive tests from passive monitoring.
+  - Public artifacts must summarize only test intent, not exploit mechanics or proprietary
+    findings.
+  negative_tests:
+  - TEST-AMF-UNAUTHORIZED-TRANSITION-001
+  - TEST-SI-SCANNER-OUTPUT-PUBLIC-LEAK-001
+  - TEST-SI-PROD-ACTIVE-SCAN-DENY-001
+  status: draft

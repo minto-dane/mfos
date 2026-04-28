@@ -60,7 +60,7 @@ mfos_mapping:
 mfos_divergence:
 - MFOS PXM management is not HMC/DPM compatibility and does not manage business-level MFOS resources.
 prohibited_inference:
-- PXM implements DPM.
+- Forbidden claim: PXM implements DPM.
 - Do not claim z/OS compatibility.
 - Do not treat IBM product behavior as MFOS compatibility.
 legal_controls:
