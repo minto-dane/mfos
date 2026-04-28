@@ -33,6 +33,7 @@ python3 scripts/checks/check-spec-gap-misuse.py
 python3 scripts/generators/generate-traceability.py
 ./scripts/validate-all.sh
 ./scripts/validate-artifact-hygiene.sh
+./scripts/validate-component-scaffold.sh
 ./scripts/validate-naming-safety.sh release
 ```
 
