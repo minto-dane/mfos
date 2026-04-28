@@ -16,13 +16,13 @@ Scope: Phase 0.6 baseline plus current Phase 0.7 system-integrity registry expan
 
 ## Outputs
 
-- `evidence/traceability/source-to-requirement.yml`
-- `evidence/traceability/requirement-to-spec.yml`
-- `evidence/traceability/requirement-to-test.yml`
-- `evidence/traceability/requirement-to-evidence.yml`
-- `evidence/traceability/claim-to-requirement.yml`
-- `evidence/traceability/pack-to-artifacts.yml`
-- `evidence/traceability/gap-report.yml`
+- `evidence/traceability/current/source-to-requirement.yml`
+- `evidence/traceability/current/requirement-to-spec.yml`
+- `evidence/traceability/current/requirement-to-test.yml`
+- `evidence/traceability/current/requirement-to-evidence.yml`
+- `evidence/traceability/current/claim-to-requirement.yml`
+- `evidence/traceability/current/pack-to-artifacts.yml`
+- `evidence/traceability/current/gap-report.yml`
 - `reports/generated/traceability.md`
 
 ## Findings

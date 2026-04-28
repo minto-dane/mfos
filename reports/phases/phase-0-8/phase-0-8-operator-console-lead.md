@@ -14,7 +14,7 @@ code was added.
 | `docs/design/specs/10-operator-console.md` | Rewritten as Phase 0.8 semantics freeze. |
 | `schemas/mfos/operator-command.schema.yml` | Added machine-readable design schema. |
 | `formal/tla/operator-command/` | Added TLA+ design state-machine artifact and invariant list. |
-| `tests/catalog/phase-0-8-operator-console-tests.yml` | Added positive, negative, fault-injection, conformance, and fuzz catalog. |
+| `tests/catalog/archive/phase-0-8/operator-console-tests.yml` | Added positive, negative, fault-injection, conformance, and fuzz catalog. |
 | `reports/phases/phase-0-8/phase-0-8-operator-console-lead.md` | Added this closure report. |
 
 ## Source Reference Boundary

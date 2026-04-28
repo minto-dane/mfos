@@ -19,7 +19,7 @@ source_refs:
   - "EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001"
 requirement_refs: ["MFOS-REQ-OPER-*", "MFOS-REQ-AUTH-*", "MFOS-REQ-AUDIT-*", "MFOS-REQ-SYSINT-*"]
 claim_refs: []
-test_refs: ["tests/catalog/phase-0-8-operator-console-tests.yml"]
+test_refs: ["tests/catalog/archive/phase-0-8/operator-console-tests.yml"]
 evidence_refs: []
 implementation_allowed: false
 downstream_packs: []
@@ -47,7 +47,7 @@ Related artifacts:
 
 - `schemas/mfos/operator-command.schema.yml`
 - `formal/tla/operator-command/`
-- `tests/catalog/phase-0-8-operator-console-tests.yml`
+- `tests/catalog/archive/phase-0-8/operator-console-tests.yml`
 - `reports/phases/phase-0-8/phase-0-8-operator-console-lead.md`
 
 ## 1. Purpose
@@ -1048,9 +1048,9 @@ This section freezes the Operator Console semantics for Phase 0.8. It is a desig
 
 - Pack contract: `docs/design/packs/PACK-09-*/pack.yml`
 - State machine: `formal/tla/operator-command/state-machine.yml`
-- Test catalog: `tests/catalog/phase-0-8-*`
+- Test catalog: `tests/catalog/archive/phase-0-8/*`
 - Requirement mirror: `requirements/by-domain/`
-- Evidence traceability: `evidence/traceability/phase-0-8-*`
+- Evidence traceability: `evidence/traceability/archive/phase-0-8/*`
 
 ### Freeze Rules
 

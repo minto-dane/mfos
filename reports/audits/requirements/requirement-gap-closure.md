@@ -1,6 +1,6 @@
 # Requirement Gap Closure
 
-Generated from `evidence/traceability/gap-report.yml` on 2026-04-27.
+Generated from `evidence/traceability/current/gap-report.yml` on 2026-04-27.
 
 Scope:
 - Updated `docs/design/registries/requirements.yaml` only.
@@ -87,7 +87,7 @@ Reservation semantics:
 Validation:
 - `python3 scripts/validate-requirements.py`
 - Result: `Requirement validation OK: 106 entries`
-- Non-writing source-gap check against the current `evidence/traceability/gap-report.yml`: `TRACE-SRC-0001 unregistered requirement IDs remaining: 0`
+- Non-writing source-gap check against the current `evidence/traceability/current/gap-report.yml`: `TRACE-SRC-0001 unregistered requirement IDs remaining: 0`
 
 Scope note:
 - This closes the source-card/source-mapping-to-requirement registration gap.

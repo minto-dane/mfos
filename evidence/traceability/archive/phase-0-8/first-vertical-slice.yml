@@ -9,7 +9,7 @@ contract:
   path: docs/design/specs/30-first-vertical-slice-contract.md
   evidence_id: EV-MFOS-FVS-CONTRACT-0001
 test_catalog:
-  path: tests/catalog/phase-0-8-first-vertical-slice-tests.yml
+  path: tests/catalog/archive/phase-0-8/first-vertical-slice-tests.yml
   evidence_id: EV-MFOS-FVS-TESTCAT-0001
 reports:
   readiness:
@@ -180,7 +180,7 @@ evidence_records:
       - MFOS-REQ-JOB-0001
       - MFOS-REQ-SPOOL-0003
       - MFOS-REQ-OPER-0007
-    path: tests/catalog/phase-0-8-first-vertical-slice-tests.yml
+    path: tests/catalog/archive/phase-0-8/first-vertical-slice-tests.yml
     status: draft
     proof_status: planned_tests_only
   - evidence_id: EV-MFOS-FVS-TRACE-0001
@@ -216,7 +216,7 @@ evidence_records:
       - MFOS-REQ-OPER-0007
       - MFOS-REQ-OPER-0009
       - MFOS-REQ-OPER-0010
-    path: evidence/traceability/phase-0-8-first-vertical-slice.yml
+    path: evidence/traceability/archive/phase-0-8/first-vertical-slice.yml
     status: draft
     proof_status: mapping_only
   - evidence_id: EV-MFOS-FVS-READINESS-0001

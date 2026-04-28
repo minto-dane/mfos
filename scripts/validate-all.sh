@@ -26,6 +26,7 @@ python3 scripts/validate-claims.py --mode "$MODE"
 python3 scripts/check-registry-links.py --mode "$MODE"
 python3 scripts/check-phase-0-8-traceability.py --mode "$MODE"
 ./scripts/validate-phase-0-9.sh
+./scripts/validate-artifact-hygiene.sh "$MODE"
 python3 scripts/check-evidence-status.py --mode "$MODE"
 ./scripts/validate-naming-safety.sh "$MODE"
 if [[ "$GENERATE_TRACEABILITY" == "1" ]]; then

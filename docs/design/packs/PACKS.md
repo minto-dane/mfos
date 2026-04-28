@@ -149,12 +149,12 @@ Phase 0.9 outputs:
 
 | Pack | Phase 0.9 artifacts |
 | --- | --- |
-| PACK-05 | `tests/catalog/authorization-tests.yml`, `tests/fixtures/auth/`, `tests/golden/auth/` |
-| PACK-06 | `tests/catalog/audit-tests.yml`, `tests/fixtures/audit/`, `tests/golden/audit/` |
-| PACK-07 | `tests/catalog/dataset-catalog-tests.yml`, `tests/fixtures/dataset/`, `tests/golden/dataset/` |
-| PACK-08 | `tests/catalog/job-spool-tests.yml`, `tests/fixtures/job/`, `tests/golden/job/` |
-| PACK-09 | `tests/catalog/operator-console-tests.yml`, `tests/fixtures/oper/`, `tests/golden/oper/` |
-| Cross-domain | `tests/catalog/first-vertical-slice-tests.yml`, `tests/fixtures/first-vertical-slice/`, `tests/golden/first-vertical-slice/` |
+| PACK-05 | `tests/catalog/authorization.yml`, `tests/fixtures/auth/`, `tests/golden/auth/` |
+| PACK-06 | `tests/catalog/audit.yml`, `tests/fixtures/audit/`, `tests/golden/audit/` |
+| PACK-07 | `tests/catalog/dataset-catalog.yml`, `tests/fixtures/dataset/`, `tests/golden/dataset/` |
+| PACK-08 | `tests/catalog/job-spool.yml`, `tests/fixtures/job/`, `tests/golden/job/` |
+| PACK-09 | `tests/catalog/operator-console.yml`, `tests/fixtures/oper/`, `tests/golden/oper/` |
+| Cross-domain | `tests/catalog/first-vertical-slice.yml`, `tests/fixtures/first-vertical-slice/`, `tests/golden/first-vertical-slice/` |
 | Fuzz planning | `fuzz/targets/phase-0-9-fuzz-target-plan.yml`, `fuzz/corpora/*/seed-plan.yml` |
 
 The runner contract is defined in

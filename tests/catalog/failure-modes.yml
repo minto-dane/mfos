@@ -1,7 +1,9 @@
-catalog_id: MFOS-TEST-CATALOG-NEGATIVE_TESTS
+artifact_id: ARTIFACT-MFOS-TEST-CATALOG-FAILURE-MODES
+artifact_type: test_catalog
+catalog_id: MFOS-TEST-CATALOG-FAILURE_MODE_TESTS
 schema_version: 1
 phase: '0.9'
-status: draft
+status: current
 implementation_allowed: false
 runner_implementation_allowed: false
 entries:
@@ -1324,3 +1326,5 @@ entries:
   evidence_required:
   - EV-MFOS-JOB-MALFORMED-CONTROL-0902
   status: draft
+origin_phase: phase-0-9
+current_since: phase-0-9

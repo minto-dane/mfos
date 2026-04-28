@@ -1,6 +1,8 @@
+artifact_id: ARTIFACT-MFOS-ARCHIVE-PHASE-0-8-AUTHORIZATION-TESTS
+artifact_type: test_catalog_archive
 catalog_id: MFOS-TEST-CATALOG-AUTH-0001
 schema_version: 1
-status: design_freeze
+status: historical
 phase: '0.8'
 owning_spec:
   path: docs/design/specs/06-authorization.md
@@ -32,11 +34,13 @@ entries:
   - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
   - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
   preconditions:
-  - Matching subject, dataset object, READ operation, policy version, and resource profile exist.
+  - Matching subject, dataset object, READ operation, policy version, and resource
+    profile exist.
   steps:
   - Submit a design-level DecisionRequest for dataset READ.
   - Validate SecurityDecision fields and handle constraints.
-  expected_result: MFOS_AUTH_ALLOW or MFOS_AUTH_ALLOW_WITH_OBLIGATIONS with matching policy_version and object generation.
+  expected_result: MFOS_AUTH_ALLOW or MFOS_AUTH_ALLOW_WITH_OBLIGATIONS with matching
+    policy_version and object generation.
   expected_absence:
   - no unbound dataset handle
   - no policy-version-free allow
@@ -60,11 +64,13 @@ entries:
   steps:
   - Request job submit authorization.
   - Check audit obligation timing.
-  expected_result: Job submit decision carries required audit obligation before final caller result.
+  expected_result: Job submit decision carries required audit obligation before final
+    caller result.
   expected_absence:
   - no job accepted before required audit barrier
   audit_expectations:
-  - Security decision audit includes subject, job object, operation, reason_code, and policy_version.
+  - Security decision audit includes subject, job object, operation, reason_code,
+    and policy_version.
   evidence_ids:
   - EV-MFOS-AUTH-AUDIT-0001
 - test_id: TEST-MFOS-AUTH-POS-0003
@@ -81,7 +87,8 @@ entries:
   steps:
   - Parse typed command into an operator command object.
   - Request authorization for MFOS_OP_EXECUTE.
-  expected_result: MFOS_AUTH_ALLOW with command object binding and audit obligation according to profile.
+  expected_result: MFOS_AUTH_ALLOW with command object binding and audit obligation
+    according to profile.
   expected_absence:
   - no shell command interpretation
   audit_expectations:
@@ -103,7 +110,8 @@ entries:
   steps:
   - Request destructive command authorization without confirmation.
   - Present request-bound confirmation token.
-  expected_result: Initial result is MFOS_AUTH_REQUIRE_OPERATOR_CONFIRMATION; later result can allow after valid confirmation.
+  expected_result: Initial result is MFOS_AUTH_REQUIRE_OPERATOR_CONFIRMATION; later
+    result can allow after valid confirmation.
   expected_absence:
   - no destructive side effect before confirmation
   audit_expectations:
@@ -126,7 +134,8 @@ entries:
   steps:
   - Run policy transaction lifecycle.
   - Inspect version transition and cache invalidation state.
-  expected_result: New active policy_version is committed and prior decision cache is invalidated.
+  expected_result: New active policy_version is committed and prior decision cache
+    is invalidated.
   expected_absence:
   - no active policy change without lint
   - no stale allow cache
@@ -146,9 +155,11 @@ entries:
   preconditions:
   - Emergency binding permits bounded access and audit is available.
   steps:
-  - Request emergency access with reason, expiry, operator identity, and incident reference.
+  - Request emergency access with reason, expiry, operator identity, and incident
+    reference.
   - Verify state transition to emergency context.
-  expected_result: Emergency context activates only after required audit and expires within policy lifetime.
+  expected_result: Emergency context activates only after required audit and expires
+    within policy lifetime.
   expected_absence:
   - no emergency access without reason
   - no audit bypass
@@ -170,7 +181,8 @@ entries:
   steps:
   - Resolve delegation chain.
   - Request delegated operation within scope and expiry.
-  expected_result: MFOS_AUTH_ALLOW only for delegated subject, object, operation, context, and policy version range.
+  expected_result: MFOS_AUTH_ALLOW only for delegated subject, object, operation,
+    context, and policy version range.
   expected_absence:
   - no broader authority than delegator
   - no transitive delegation unless explicit
@@ -192,7 +204,8 @@ entries:
   steps:
   - Authorize rollback.
   - Run rollback transaction.
-  expected_result: Rollback commits a new policy_version and preserves or increases security_epoch.
+  expected_result: Rollback commits a new policy_version and preserves or increases
+    security_epoch.
   expected_absence:
   - no old version number reuse
   - no audit weakening
@@ -470,7 +483,8 @@ entries:
     target_schema: schemas/mfos/security-decision.schema.yml
     corpus_path: tests/fuzz/corpus/auth/security-decision/
     required_property: malformed decision cannot become allow
-  expected_result: Invalid decision payloads fail schema validation or return fail-closed decision.
+  expected_result: Invalid decision payloads fail schema validation or return fail-closed
+    decision.
   expected_absence:
   - no allow from unknown result
   - no ignored malformed obligation
@@ -490,7 +504,8 @@ entries:
     target_schema: schemas/mfos/policy-binding.schema.yml
     corpus_path: tests/fuzz/corpus/auth/policy-binding/
     required_property: ambiguous binding cannot activate
-  expected_result: Malformed or ambiguous binding fails closed and cannot enter active policy.
+  expected_result: Malformed or ambiguous binding fails closed and cannot enter active
+    policy.
   expected_absence:
   - no wildcard destructive allow from ambiguous selector
   evidence_ids:
@@ -526,7 +541,8 @@ entries:
     target_schema: docs/design/specs/06-authorization.md
     corpus_path: tests/fuzz/corpus/auth/operation-matrix/
     required_property: undefined and unsupported pairs never allow
-  expected_result: Unknown pairs return MFOS_ERR_SPEC_GAP; known unavailable pairs return MFOS_ERR_UNSUPPORTED.
+  expected_result: Unknown pairs return MFOS_ERR_SPEC_GAP; known unavailable pairs
+    return MFOS_ERR_UNSUPPORTED.
   expected_absence:
   - no protected effect
   evidence_ids:
@@ -544,7 +560,8 @@ entries:
     target_schema: schemas/mfos/security-decision.schema.yml
     corpus_path: tests/fuzz/corpus/auth/dual-control/
     required_property: token mismatch cannot satisfy approval
-  expected_result: Token mismatch, self approval, expired token, and policy mismatch fail closed.
+  expected_result: Token mismatch, self approval, expired token, and policy mismatch
+    fail closed.
   expected_absence:
   - no dual-control bypass
   evidence_ids:
@@ -563,7 +580,8 @@ entries:
     target_schema: schemas/mfos/security-decision.schema.yml
     corpus_path: tests/fuzz/corpus/auth/emergency/
     required_property: malformed emergency access cannot activate
-  expected_result: Missing reason, invalid expiry, audit disable, and excessive lifetime fail closed.
+  expected_result: Missing reason, invalid expiry, audit disable, and excessive lifetime
+    fail closed.
   expected_absence:
   - no emergency context
   evidence_ids:
@@ -583,7 +601,8 @@ entries:
     target_schema: schemas/mfos/policy-binding.schema.yml
     corpus_path: tests/fuzz/corpus/auth/policy-transaction/
     required_property: invalid policy transaction cannot activate
-  expected_result: Rollback downgrade, old version reuse, precommit audit omission, and lint bypass fail closed.
+  expected_result: Rollback downgrade, old version reuse, precommit audit omission,
+    and lint bypass fail closed.
   expected_absence:
   - no active policy change
   evidence_ids:
@@ -600,13 +619,15 @@ entries:
     target_schema: schemas/mfos/security-decision.schema.yml
     corpus_path: tests/fuzz/corpus/auth/decision-cache/
     required_property: mismatched cache key cannot return allow
-  expected_result: Policy version, policy epoch, object generation, subject, operation, and context mismatch re-evaluate or deny.
+  expected_result: Policy version, policy epoch, object generation, subject, operation,
+    and context mismatch re-evaluate or deny.
   expected_absence:
   - no stale allow
   evidence_ids:
   - EV-MFOS-AUTH-TESTCAT-0001
 - test_id: TEST-MFOS-AUTH-SECURITY-DECISION-0101
-  title: SecurityDecision allow result validates exact subject object operation context and policy version
+  title: SecurityDecision allow result validates exact subject object operation context
+    and policy version
   test_type: design_positive
   status: planned_design
   target_spec: docs/design/specs/06-authorization.md
@@ -617,16 +638,20 @@ entries:
   preconditions:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
-  input: DecisionRequest for ALICE reading USER.ALICE.INPUT with active policy version 7 and matching object generation.
-  expected_decision: MFOS_AUTH_ALLOW or MFOS_AUTH_ALLOW_WITH_OBLIGATIONS with exact subject/object/operation/context/policy_version binding.
-  expected_audit: audit obligation is present where the target requirement declares one
+  input: DecisionRequest for ALICE reading USER.ALICE.INPUT with active policy version
+    7 and matching object generation.
+  expected_decision: MFOS_AUTH_ALLOW or MFOS_AUTH_ALLOW_WITH_OBLIGATIONS with exact
+    subject/object/operation/context/policy_version binding.
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: none_for_positive_case
   evidence_required:
   - test_result
   - traceability_link
   - red_team_review_record
   phase_to_implement: Phase 0.9 or later
-  expected_result: MFOS_AUTH_ALLOW or MFOS_AUTH_ALLOW_WITH_OBLIGATIONS with exact subject/object/operation/context/policy_version binding.
+  expected_result: MFOS_AUTH_ALLOW or MFOS_AUTH_ALLOW_WITH_OBLIGATIONS with exact
+    subject/object/operation/context/policy_version binding.
   coverage_note: Concrete Phase 0.8 planned semantic test.
 - test_id: NEG-MFOS-AUTH-BYPASS-0101
   title: Protected resource access without SecurityDecision is denied
@@ -640,9 +665,11 @@ entries:
   preconditions:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
-  input: datasetd/jobd attempts to create or use a protected resource handle without a SecurityDecision reference.
+  input: datasetd/jobd attempts to create or use a protected resource handle without
+    a SecurityDecision reference.
   expected_decision: MFOS_ERR_UNAUTHORIZED and no protected handle or side effect.
-  expected_audit: audit obligation is present where the target requirement declares one
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: specified_error_without_side_effect_or_fake_success
   evidence_required:
   - test_result
@@ -663,16 +690,20 @@ entries:
   preconditions:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
-  input: Allowed READ decision for ALICE is presented for USER.ALICE.INPUT with matching policy and catalog generation.
-  expected_decision: handle constraints match decision_id, subject, object, operation, policy_version, and generation.
-  expected_audit: audit obligation is present where the target requirement declares one
+  input: Allowed READ decision for ALICE is presented for USER.ALICE.INPUT with matching
+    policy and catalog generation.
+  expected_decision: handle constraints match decision_id, subject, object, operation,
+    policy_version, and generation.
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: none_for_positive_case
   evidence_required:
   - test_result
   - traceability_link
   - red_team_review_record
   phase_to_implement: Phase 0.9 or later
-  expected_result: handle constraints match decision_id, subject, object, operation, policy_version, and generation.
+  expected_result: handle constraints match decision_id, subject, object, operation,
+    policy_version, and generation.
   coverage_note: Concrete Phase 0.8 planned semantic test.
 - test_id: NEG-MFOS-AUTH-HANDLE-WITHOUT-ALLOW-0102
   title: Handle creation from deny or pending decision is rejected
@@ -686,16 +717,20 @@ entries:
   preconditions:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
-  input: Dataset handle creation uses MFOS_AUTH_DENY, MFOS_AUTH_REQUIRE_MFA, MFOS_AUTH_REQUIRE_BREAK_GLASS, MFOS_AUTH_UNSUPPORTED, or MFOS_AUTH_SPEC_GAP decision.
-  expected_decision: MFOS_ERR_UNAUTHORIZED or mapped fail-closed error and no handle of any kind.
-  expected_audit: audit obligation is present where the target requirement declares one
+  input: Dataset handle creation uses MFOS_AUTH_DENY, MFOS_AUTH_REQUIRE_MFA, MFOS_AUTH_REQUIRE_BREAK_GLASS,
+    MFOS_AUTH_UNSUPPORTED, or MFOS_AUTH_SPEC_GAP decision.
+  expected_decision: MFOS_ERR_UNAUTHORIZED or mapped fail-closed error and no handle
+    of any kind.
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: specified_error_without_side_effect_or_fake_success
   evidence_required:
   - test_result
   - traceability_link
   - red_team_review_record
   phase_to_implement: Phase 0.9 or later
-  expected_result: MFOS_ERR_UNAUTHORIZED or mapped fail-closed error and no handle of any kind.
+  expected_result: MFOS_ERR_UNAUTHORIZED or mapped fail-closed error and no handle
+    of any kind.
   coverage_note: Concrete Phase 0.8 planned semantic test.
 - test_id: TEST-MFOS-AUTH-POLICY-BINDING-0103
   title: PolicyBinding records active policy version and obligations hash
@@ -709,16 +744,20 @@ entries:
   preconditions:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
-  input: Authorization decision over active policy version 8 includes PolicyBinding and obligation digest.
-  expected_decision: decision evidence references policy_version 8, decision_id, and obligations_hash.
-  expected_audit: audit obligation is present where the target requirement declares one
+  input: Authorization decision over active policy version 8 includes PolicyBinding
+    and obligation digest.
+  expected_decision: decision evidence references policy_version 8, decision_id, and
+    obligations_hash.
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: none_for_positive_case
   evidence_required:
   - test_result
   - traceability_link
   - red_team_review_record
   phase_to_implement: Phase 0.9 or later
-  expected_result: decision evidence references policy_version 8, decision_id, and obligations_hash.
+  expected_result: decision evidence references policy_version 8, decision_id, and
+    obligations_hash.
   coverage_note: Concrete Phase 0.8 planned semantic test.
 - test_id: NEG-MFOS-AUTH-POLICY-VERSION-MISMATCH-0103
   title: Policy version mismatch invalidates authorization use
@@ -732,19 +771,24 @@ entries:
   preconditions:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
-  input: Caller presents decision bound to policy version 8 after active policy moves to version 9.
-  expected_decision: MFOS_ERR_POLICY_VERSION_MISMATCH, reauthorization required, no protected effect.
-  expected_audit: audit obligation is present where the target requirement declares one
+  input: Caller presents decision bound to policy version 8 after active policy moves
+    to version 9.
+  expected_decision: MFOS_ERR_POLICY_VERSION_MISMATCH, reauthorization required, no
+    protected effect.
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: specified_error_without_side_effect_or_fake_success
   evidence_required:
   - test_result
   - traceability_link
   - red_team_review_record
   phase_to_implement: Phase 0.9 or later
-  expected_result: MFOS_ERR_POLICY_VERSION_MISMATCH, reauthorization required, no protected effect.
+  expected_result: MFOS_ERR_POLICY_VERSION_MISMATCH, reauthorization required, no
+    protected effect.
   coverage_note: Concrete Phase 0.8 planned semantic test.
 - test_id: TEST-MFOS-AUTH-EMERGENCY-0104
-  title: Break-glass authorization activates only with reason expiry audit and incident reference
+  title: Break-glass authorization activates only with reason expiry audit and incident
+    reference
   test_type: design_positive
   status: planned_design
   target_spec: docs/design/specs/06-authorization.md
@@ -755,16 +799,20 @@ entries:
   preconditions:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
-  input: Operator requests bounded break-glass context for recovery with reason, incident, 60-minute-or-shorter expiry, and audit available.
-  expected_decision: MFOS_AUTH_REQUIRE_BREAK_GLASS workflow completes only after required obligations are satisfied.
-  expected_audit: audit obligation is present where the target requirement declares one
+  input: Operator requests bounded break-glass context for recovery with reason, incident,
+    60-minute-or-shorter expiry, and audit available.
+  expected_decision: MFOS_AUTH_REQUIRE_BREAK_GLASS workflow completes only after required
+    obligations are satisfied.
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: none_for_positive_case
   evidence_required:
   - test_result
   - traceability_link
   - red_team_review_record
   phase_to_implement: Phase 0.9 or later
-  expected_result: MFOS_AUTH_REQUIRE_BREAK_GLASS workflow completes only after required obligations are satisfied.
+  expected_result: MFOS_AUTH_REQUIRE_BREAK_GLASS workflow completes only after required
+    obligations are satisfied.
   coverage_note: Concrete Phase 0.8 planned semantic test.
 - test_id: NEG-MFOS-AUTH-EMERGENCY-NO-EXPIRY-0104
   title: Break-glass request without valid expiry is rejected
@@ -778,9 +826,12 @@ entries:
   preconditions:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
-  input: Emergency authorization request omits expiry or requests duration greater than 60 minutes.
-  expected_decision: MFOS_ERR_SPEC_GAP or MFOS_AUTH_DENY; no emergency context is active.
-  expected_audit: audit obligation is present where the target requirement declares one
+  input: Emergency authorization request omits expiry or requests duration greater
+    than 60 minutes.
+  expected_decision: MFOS_ERR_SPEC_GAP or MFOS_AUTH_DENY; no emergency context is
+    active.
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: specified_error_without_side_effect_or_fake_success
   evidence_required:
   - test_result
@@ -801,9 +852,11 @@ entries:
   preconditions:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
-  input: Policy activation runs lint over explicit deny defaults, scoped grants, audit query controls, delegation expiry, and export redaction.
+  input: Policy activation runs lint over explicit deny defaults, scoped grants, audit
+    query controls, delegation expiry, and export redaction.
   expected_decision: lint PASS permits review to continue and emits policy-lint evidence.
-  expected_audit: audit obligation is present where the target requirement declares one
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: none_for_positive_case
   evidence_required:
   - test_result
@@ -824,16 +877,20 @@ entries:
   preconditions:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
-  input: Production policy activation skips required lint or returns UNSUPPORTED for mandatory lint rule.
-  expected_decision: MFOS_ERR_UNSUPPORTED or policy activation denial; active policy unchanged.
-  expected_audit: audit obligation is present where the target requirement declares one
+  input: Production policy activation skips required lint or returns UNSUPPORTED for
+    mandatory lint rule.
+  expected_decision: MFOS_ERR_UNSUPPORTED or policy activation denial; active policy
+    unchanged.
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: specified_error_without_side_effect_or_fake_success
   evidence_required:
   - test_result
   - traceability_link
   - red_team_review_record
   phase_to_implement: Phase 0.9 or later
-  expected_result: MFOS_ERR_UNSUPPORTED or policy activation denial; active policy unchanged.
+  expected_result: MFOS_ERR_UNSUPPORTED or policy activation denial; active policy
+    unchanged.
   coverage_note: Concrete Phase 0.8 planned semantic test.
 - test_id: NEG-MFOS-AUTH-BREAK-GLASS-OVERLIMIT-0104
   title: Break-glass request over 60 minutes fails closed
@@ -847,7 +904,8 @@ entries:
   preconditions: &id001
   - Phase 0.8 design catalog is used only for planning.
   - No production or hosted daemon implementation is started.
-  input: Emergency or break-glass authorization request with expiry greater than 60 minutes.
+  input: Emergency or break-glass authorization request with expiry greater than 60
+    minutes.
   expected_decision: MFOS_AUTH_SPEC_GAP or MFOS_AUTH_DENY; no allow decision
   expected_audit: AUTHZ_BREAK_GLASS denial is audited when audit is available
   expected_failure_mode: MFOS_ERR_SPEC_GAP without emergency activation
@@ -869,9 +927,12 @@ entries:
   input: Decision result outside the SecurityDecision enum for a break-glass workflow.
   expected_decision: schema invalid and fail closed
   expected_audit: schema rejection is auditable where audit is available
-  expected_failure_mode: MFOS_ERR_SPEC_GAP or MFOS_ERR_INVALID_PARAMETER without emergency activation
+  expected_failure_mode: MFOS_ERR_SPEC_GAP or MFOS_ERR_INVALID_PARAMETER without emergency
+    activation
   evidence_required:
   - test_result
   - schema_validation
   - traceability_link
   phase_to_implement: Phase 0.9 or later
+origin_phase: phase-0-8
+superseded_by: tests/catalog/authorization.yml

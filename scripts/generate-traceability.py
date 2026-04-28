@@ -11,7 +11,7 @@ import yaml
 from mfos_lint import EVIDENCE, REQUIREMENTS, ROOT, SOURCE_INDEX, SPECS_DIR, TESTS, load_yaml, parse_front_matter
 
 
-OUT = ROOT / "evidence/traceability"
+OUT = ROOT / "evidence/traceability/current"
 REPORT = ROOT / "reports/generated/traceability.md"
 CLAIMS = ROOT / "docs/design/assurance/claim-tree.yml"
 PACKS = ROOT / "packs/pack-index.yml"

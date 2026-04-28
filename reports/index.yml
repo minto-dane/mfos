@@ -14,6 +14,14 @@ current:
     purpose: Phase 1 readiness judgement.
   - path: reports/current/phase-1-open-issues.md
     purpose: Phase 1 nonblocking follow-up issues.
+  - path: reports/current/artifact-hygiene-audit.md
+    purpose: Repository artifact hygiene audit.
+  - path: reports/current/artifact-hygiene-audit.yml
+    purpose: Machine-readable repository artifact hygiene audit.
+  - path: reports/current/artifact-hygiene-red-team-review.md
+    purpose: Repository artifact hygiene red-team review.
+  - path: reports/current/artifact-hygiene-open-issues.md
+    purpose: Nonblocking artifact hygiene follow-up issues.
 
 sections:
   - path: reports/phases/phase-0-6/

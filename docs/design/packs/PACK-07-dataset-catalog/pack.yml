@@ -30,7 +30,7 @@ outputs:
 - schemas/mfos/object-generation-binding.schema.yml
 - formal/tla/dataset-open/state-machine.yml
 - formal/tla/catalog-transaction/state-machine.yml
-- tests/catalog/phase-0-8-dataset-catalog-tests.yml
+- tests/catalog/archive/phase-0-8/dataset-catalog-tests.yml
 - requirements/by-domain/catalog.yml
 - requirements/by-domain/dataset.yml
 source_refs:

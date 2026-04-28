@@ -23,13 +23,13 @@ validation in CI.
 - `scripts/validate-all.sh`
 - `docs/design/assurance/claim-tree.yml`
 - `docs/design/registries/evidence.yaml`
-- `evidence/traceability/claim-to-requirement.yml`
-- `evidence/traceability/gap-report.yml`
-- `evidence/traceability/requirement-to-evidence.yml`
-- `evidence/traceability/requirement-to-spec.yml`
-- `evidence/traceability/requirement-to-test.yml`
-- `evidence/traceability/source-to-requirement.yml`
-- `evidence/traceability/pack-to-artifacts.yml`
+- `evidence/traceability/current/claim-to-requirement.yml`
+- `evidence/traceability/current/gap-report.yml`
+- `evidence/traceability/current/requirement-to-evidence.yml`
+- `evidence/traceability/current/requirement-to-spec.yml`
+- `evidence/traceability/current/requirement-to-test.yml`
+- `evidence/traceability/current/source-to-requirement.yml`
+- `evidence/traceability/current/pack-to-artifacts.yml`
 - `reports/generated/traceability.md`
 - `reports/audits/ci/ci-enforcement-audit.md`
 

@@ -960,7 +960,7 @@ Phase 1 executable-spec artifacts use this minimum authorization error taxonomy:
 | `EV-MFOS-AUTH-SCHEMA-0001` | Schema review for `schemas/mfos/security-decision.schema.yml`. |
 | `EV-MFOS-AUTH-SCHEMA-0002` | Schema review for `schemas/mfos/policy-binding.schema.yml`. |
 | `EV-MFOS-AUTH-FORMAL-0001` | State-machine review for `formal/tla/authorization/MFOSAuthorization.tla`. |
-| `EV-MFOS-AUTH-TESTCAT-0001` | Review of `tests/catalog/phase-0-8-authorization-tests.yml`. |
+| `EV-MFOS-AUTH-TESTCAT-0001` | Review of `tests/catalog/archive/phase-0-8/authorization-tests.yml`. |
 | `EV-MFOS-AUTH-LINT-0001` | Policy lint gate evidence for activation and rollback semantics. |
 | `EV-MFOS-AUTH-AUDIT-0001` | Audit obligation mapping showing before-return and before-effect barriers. |
 | `EV-MFOS-AUTH-GAP-0001` | Open-gap review confirming no implementation may infer gap behavior. |

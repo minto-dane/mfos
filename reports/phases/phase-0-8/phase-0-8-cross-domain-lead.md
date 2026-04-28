@@ -26,8 +26,8 @@ No production code was added. No hosted prototype behavior is claimed.
 | Path | Purpose |
 | --- | --- |
 | `docs/design/specs/30-first-vertical-slice-contract.md` | Normative semantic obligations and sequence tables for HELLO and BOB paths. |
-| `tests/catalog/phase-0-8-first-vertical-slice-tests.yml` | Planned integration, negative, and conformance tests for the contract. |
-| `evidence/traceability/phase-0-8-first-vertical-slice.yml` | Draft design-only requirement/test/evidence traceability. |
+| `tests/catalog/archive/phase-0-8/first-vertical-slice-tests.yml` | Planned integration, negative, and conformance tests for the contract. |
+| `evidence/traceability/archive/phase-0-8/first-vertical-slice.yml` | Draft design-only requirement/test/evidence traceability. |
 | `reports/archive/superseded/phase-0-9-readiness.md` | Phase 0.9 readiness and conflict list. |
 | `reports/phases/phase-0-8/phase-0-8-cross-domain-lead.md` | This cross-domain handoff report. |
 

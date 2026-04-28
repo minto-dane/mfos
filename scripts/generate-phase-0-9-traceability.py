@@ -18,7 +18,7 @@ from mfos_phase09 import (
 )
 
 
-OUT = ROOT / "evidence/traceability"
+OUT = ROOT / "evidence/traceability/generated/phase-0-9"
 
 
 def main() -> int:
@@ -66,23 +66,23 @@ def main() -> int:
         gaps.append({"gap_type": "missing_fuzz_target", "artifact": rel(FUZZ_PLAN), "test_id": ""})
 
     write_yaml(
-        OUT / "phase-0-9-requirement-to-test.yml",
+        OUT / "requirement-to-test.yml",
         {"traceability_kind": "phase_0_9_requirement_to_test", "entries": [{"requirement_id": k, "tests": sorted(v)} for k, v in sorted(req_to_test.items())]},
     )
     write_yaml(
-        OUT / "phase-0-9-test-to-fixture.yml",
+        OUT / "test-to-fixture.yml",
         {"traceability_kind": "phase_0_9_test_to_fixture", "entries": [{"test_id": k, **v} for k, v in sorted(test_to_fixture.items())]},
     )
     write_yaml(
-        OUT / "phase-0-9-fixture-to-oracle.yml",
+        OUT / "fixture-to-oracle.yml",
         {"traceability_kind": "phase_0_9_fixture_to_oracle", "entries": [{"fixture_ref": k, **v} for k, v in sorted(fixture_to_oracle.items())]},
     )
     write_yaml(
-        OUT / "phase-0-9-requirement-to-fuzz-target.yml",
+        OUT / "requirement-to-fuzz-target.yml",
         {"traceability_kind": "phase_0_9_requirement_to_fuzz_target", "entries": [{"requirement_id": k, "fuzz_targets": sorted(v)} for k, v in sorted(req_to_fuzz.items())]},
     )
     write_yaml(
-        OUT / "phase-0-9-gap-report.yml",
+        OUT / "gap-report.yml",
         {
             "traceability_kind": "phase_0_9_gap_report",
             "status": "generated",

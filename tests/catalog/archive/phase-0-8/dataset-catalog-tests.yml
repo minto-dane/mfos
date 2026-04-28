@@ -1,6 +1,8 @@
+artifact_id: ARTIFACT-MFOS-ARCHIVE-PHASE-0-8-DATASET-CATALOG-TESTS
+artifact_type: test_catalog_archive
 registry_kind: phase_0_8_dataset_catalog_tests
 schema_version: 1
-status: draft
+status: historical
 updated_at_utc: '2026-04-27T00:00:00Z'
 updated_by: dataset-catalog-lead
 implementation_allowed: false
@@ -73,7 +75,8 @@ entries:
   - Validate USER.ALICE.INPUT.
   - Validate SYS.CATALOG.
   - Validate TEMP.JOB_01.OUT-1.
-  expected_result: Accepted DSNs canonicalize to identical uppercase DSNs with no catalog mutation.
+  expected_result: Accepted DSNs canonicalize to identical uppercase DSNs with no
+    catalog mutation.
   expected_absence:
   - no POSIX path interpretation
   - no catalog entry creation during parse-only validation
@@ -110,7 +113,8 @@ entries:
   - integrity_tag verifies.
   steps:
   - Resolve USER.ALICE.INPUT through catalogd.
-  expected_result: catalogd returns entry_id, dataset_id, generation, location reference, and integrity tag.
+  expected_result: catalogd returns entry_id, dataset_id, generation, location reference,
+    and integrity tag.
   expected_absence:
   - no raw volume handle
   - no POSIX path returned
@@ -226,7 +230,8 @@ entries:
   steps:
   - Open USER.ALICE.INPUT for READ as ALICE.
   - Inspect DatasetHandle.
-  expected_result: ACTIVE handle binds subject, operation, policy_version, catalog_entry_generation, dataset_generation, expiry, correlation_id, and ObjectGenerationBinding.
+  expected_result: ACTIVE handle binds subject, operation, policy_version, catalog_entry_generation,
+    dataset_generation, expiry, correlation_id, and ObjectGenerationBinding.
   expected_absence:
   - no POSIX file descriptor semantics
   - no caller-supplied generation authority
@@ -308,7 +313,8 @@ entries:
   - securityd allows DELETE.
   steps:
   - Delete TEMP.JOB01.OUT.
-  expected_result: Dataset reaches DELETED or tombstoned state according to secure deletion policy.
+  expected_result: Dataset reaches DELETED or tombstoned state according to secure
+    deletion policy.
   expected_absence:
   - no deletion without audit record
   audit_expectations:
@@ -413,9 +419,11 @@ entries:
   preconditions:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
-  input: catalogd resolves USER.ALICE.INPUT after COMMIT_COMPLETE with integrity_tag verified.
+  input: catalogd resolves USER.ALICE.INPUT after COMMIT_COMPLETE with integrity_tag
+    verified.
   expected_decision: canonical catalog entry and generation returned.
-  expected_audit: audit obligation is present where the target requirement declares one
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: none_for_positive_case
   evidence_required:
   - test_result
@@ -436,16 +444,20 @@ entries:
   preconditions:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
-  input: catalogd resolve observes entry in PREPARE, WRITE_JOURNAL, COMMITTING, ROLLED_BACK, or integrity-failed state.
-  expected_decision: MFOS_ERR_CATALOG_NOT_FOUND or corruption fail-closed; no usable dataset location.
-  expected_audit: audit obligation is present where the target requirement declares one
+  input: catalogd resolve observes entry in PREPARE, WRITE_JOURNAL, COMMITTING, ROLLED_BACK,
+    or integrity-failed state.
+  expected_decision: MFOS_ERR_CATALOG_NOT_FOUND or corruption fail-closed; no usable
+    dataset location.
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: specified_error_without_side_effect_or_fake_success
   evidence_required:
   - test_result
   - traceability_link
   - red_team_review_record
   phase_to_implement: Phase 0.9 or later
-  expected_result: MFOS_ERR_CATALOG_NOT_FOUND or corruption fail-closed; no usable dataset location.
+  expected_result: MFOS_ERR_CATALOG_NOT_FOUND or corruption fail-closed; no usable
+    dataset location.
   coverage_note: Concrete Phase 0.8 planned semantic test.
 - test_id: TEST-MFOS-CATALOG-RECOVERY-0102
   title: Catalog recovery exposes only old or fully committed state
@@ -460,15 +472,18 @@ entries:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
   input: Crash occurs after journal write and recovery replays catalog transaction.
-  expected_decision: resolver returns prior committed entry or fully committed new entry, never partial state.
-  expected_audit: audit obligation is present where the target requirement declares one
+  expected_decision: resolver returns prior committed entry or fully committed new
+    entry, never partial state.
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: none_for_positive_case
   evidence_required:
   - test_result
   - traceability_link
   - red_team_review_record
   phase_to_implement: Phase 0.9 or later
-  expected_result: resolver returns prior committed entry or fully committed new entry, never partial state.
+  expected_result: resolver returns prior committed entry or fully committed new entry,
+    never partial state.
   coverage_note: Concrete Phase 0.8 planned semantic test.
 - test_id: NEG-MFOS-CATALOG-CRASH-MID-COMMIT-0102
   title: Crash mid-commit does not expose torn catalog entry
@@ -484,7 +499,8 @@ entries:
   - No production or hosted daemon implementation is started.
   input: Crash interrupts commit before integrity tag and generation are durable.
   expected_decision: recovery rejects partial journal entry and audits inconsistency.
-  expected_audit: audit obligation is present where the target requirement declares one
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: specified_error_without_side_effect_or_fake_success
   evidence_required:
   - test_result
@@ -505,16 +521,20 @@ entries:
   preconditions:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
-  input: Allowed READ creates handle for ALICE on USER.ALICE.INPUT with decision_id, policy_version, catalog_entry_generation, dataset_generation, and expiry.
-  expected_decision: handle metadata exactly matches authorization and object generation binding.
-  expected_audit: audit obligation is present where the target requirement declares one
+  input: Allowed READ creates handle for ALICE on USER.ALICE.INPUT with decision_id,
+    policy_version, catalog_entry_generation, dataset_generation, and expiry.
+  expected_decision: handle metadata exactly matches authorization and object generation
+    binding.
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: none_for_positive_case
   evidence_required:
   - test_result
   - traceability_link
   - red_team_review_record
   phase_to_implement: Phase 0.9 or later
-  expected_result: handle metadata exactly matches authorization and object generation binding.
+  expected_result: handle metadata exactly matches authorization and object generation
+    binding.
   coverage_note: Concrete Phase 0.8 planned semantic test.
 - test_id: NEG-MFOS-DATASET-STALE-HANDLE-0101
   title: DatasetHandle stale after policy or catalog generation change
@@ -528,16 +548,20 @@ entries:
   preconditions:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
-  input: Existing handle is reused after policy_version or catalog_entry_generation changes.
-  expected_decision: MFOS_ERR_STALE_HANDLE or MFOS_ERR_POLICY_VERSION_MISMATCH; reauthorization required.
-  expected_audit: audit obligation is present where the target requirement declares one
+  input: Existing handle is reused after policy_version or catalog_entry_generation
+    changes.
+  expected_decision: MFOS_ERR_STALE_HANDLE or MFOS_ERR_POLICY_VERSION_MISMATCH; reauthorization
+    required.
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: specified_error_without_side_effect_or_fake_success
   evidence_required:
   - test_result
   - traceability_link
   - red_team_review_record
   phase_to_implement: Phase 0.9 or later
-  expected_result: MFOS_ERR_STALE_HANDLE or MFOS_ERR_POLICY_VERSION_MISMATCH; reauthorization required.
+  expected_result: MFOS_ERR_STALE_HANDLE or MFOS_ERR_POLICY_VERSION_MISMATCH; reauthorization
+    required.
   coverage_note: Concrete Phase 0.8 planned semantic test.
 - test_id: TEST-MFOS-DATASET-MANAGED-0102
   title: Dataset is opened as managed protected resource
@@ -551,9 +575,11 @@ entries:
   preconditions:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
-  input: datasetd opens a logical dataset through catalogd/securityd/auditd, not a host path.
+  input: datasetd opens a logical dataset through catalogd/securityd/auditd, not a
+    host path.
   expected_decision: open result is a DatasetHandle with protected-resource metadata.
-  expected_audit: audit obligation is present where the target requirement declares one
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: none_for_positive_case
   evidence_required:
   - test_result
@@ -574,9 +600,11 @@ entries:
   preconditions:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
-  input: Request uses /tmp/file, relative path, raw block path, or host file descriptor as DSN substitute.
+  input: Request uses /tmp/file, relative path, raw block path, or host file descriptor
+    as DSN substitute.
   expected_decision: MFOS_ERR_INVALID_DSN or MFOS_ERR_SPEC_GAP; no dataset handle.
-  expected_audit: audit obligation is present where the target requirement declares one
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: specified_error_without_side_effect_or_fake_success
   evidence_required:
   - test_result
@@ -597,16 +625,20 @@ entries:
   preconditions:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
-  input: Dataset with active retention is queried for deletion eligibility before expiry.
-  expected_decision: delete request is denied unless authorized retention override is specified.
-  expected_audit: audit obligation is present where the target requirement declares one
+  input: Dataset with active retention is queried for deletion eligibility before
+    expiry.
+  expected_decision: delete request is denied unless authorized retention override
+    is specified.
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: none_for_positive_case
   evidence_required:
   - test_result
   - traceability_link
   - red_team_review_record
   phase_to_implement: Phase 0.9 or later
-  expected_result: delete request is denied unless authorized retention override is specified.
+  expected_result: delete request is denied unless authorized retention override is
+    specified.
   coverage_note: Concrete Phase 0.8 planned semantic test.
 - test_id: NEG-MFOS-DATASET-DELETE-BEFORE-RETENTION-0103
   title: Delete before retention expiry fails closed
@@ -622,7 +654,8 @@ entries:
   - No production or hosted daemon implementation is started.
   input: Caller requests dataset delete before retention expiry without valid override.
   expected_decision: MFOS_ERR_POLICY_DENIED and audit obligation for retention denial.
-  expected_audit: audit obligation is present where the target requirement declares one
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: specified_error_without_side_effect_or_fake_success
   evidence_required:
   - test_result
@@ -659,4 +692,7 @@ fuzz_decisions:
   - mismatched committed generations are rejected
 - target_name: fuzz_encryption_crypto
   status: deferred
-  reason: Phase 0.8 defines only encryption policy placeholder semantics; key-service ABI is a spec gap.
+  reason: Phase 0.8 defines only encryption policy placeholder semantics; key-service
+    ABI is a spec gap.
+origin_phase: phase-0-8
+superseded_by: tests/catalog/dataset-catalog.yml

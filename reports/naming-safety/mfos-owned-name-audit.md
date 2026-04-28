@@ -108,7 +108,7 @@ Representative locations:
   `MFOS-REQ-SVC-*` and `MFOS-REQ-PCALL-*`.
 - `packs/pack-index.yml:159` through `165` names PACK-13
   `Nucleus and SVC/PCALL`.
-- `evidence/traceability/pack-to-artifacts.yml:138` through `142` references
+- `evidence/traceability/current/pack-to-artifacts.yml:138` through `142` references
   `MFOS-REQ-SVC-*`, `MFOS-REQ-PCALL-*`, and `15-svc-pcall.md`.
 - Owned paths include `implementation/nucleus/svc/`,
   `implementation/runtime/abi/svc/`, `implementation/guard/roots/svc-table/`,
