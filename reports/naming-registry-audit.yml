@@ -1,0 +1,319 @@
+audit:
+  generated_at_utc: "2026-04-27T22:17:09Z"
+  scope:
+    - "docs/design/registries/requirements.yaml"
+    - "docs/design/registries/tests.yaml"
+    - "docs/design/registries/evidence.yaml"
+    - "docs/design/assurance/claim-tree.yml"
+    - "schemas/*.json"
+  registry_files_edited: false
+  policy:
+    requirements: "^MFOS-REQ-[A-Z0-9]+-[0-9]{4}$"
+    tests_any: "^(TEST|NEG)-MFOS-[A-Z0-9-]+$"
+    tests_positive_or_nonnegative: "^TEST-MFOS-[A-Z0-9-]+$"
+    tests_negative: "^NEG-MFOS-[A-Z0-9-]+$"
+    evidence: "^EV-MFOS-[A-Z0-9-]+$"
+    claims: "^MFOS-CLAIM-[A-Z0-9-]+$"
+    source_refs: "^EXTREF-[A-Z0-9-]+$"
+  summary:
+    requirements_target_compliant: true
+    tests_target_compliant: false
+    evidence_target_compliant: false
+    claims_target_compliant: false
+    source_refs_target_compliant: false
+    unresolved_cross_registry_refs_under_current_ids: 0
+
+definition_results:
+  requirements:
+    file: "docs/design/registries/requirements.yaml"
+    total: 106
+    unique: 106
+    duplicates: 0
+    target_compliant: 106
+    target_noncompliant: 0
+    domains:
+      AI: 2
+      AMF: 6
+      AUD: 5
+      CAT: 3
+      DATA: 6
+      GRD: 6
+      JOB: 4
+      NUC: 3
+      OPER: 2
+      PROF: 1
+      PXM: 10
+      QUAL: 10
+      SEC: 8
+      SI: 20
+      SPL: 3
+      SRC: 4
+      UVS: 8
+      WLM: 5
+  tests:
+    file: "docs/design/registries/tests.yaml"
+    total: 261
+    unique: 261
+    duplicates: 0
+    target_compliant: 0
+    target_noncompliant: 261
+    current_prefix_counts:
+      MFOS-TEST: 261
+    test_type_counts:
+      positive: 102
+      negative: 158
+      fuzz: 1
+    examples:
+      - "MFOS-TEST-DATA-POS-0001"
+      - "MFOS-TEST-DATA-NEG-0001"
+      - "MFOS-TEST-AUD-NEG-0001"
+  evidence:
+    file: "docs/design/registries/evidence.yaml"
+    total: 170
+    unique: 170
+    duplicates: 0
+    target_compliant: 0
+    target_noncompliant: 170
+    current_prefix_counts:
+      MFOS-EVID: 170
+    examples:
+      - "MFOS-EVID-DATA-0001"
+      - "MFOS-EVID-AUD-0001"
+      - "MFOS-EVID-CI-0001"
+  claims:
+    file: "docs/design/assurance/claim-tree.yml"
+    total: 5
+    unique: 5
+    duplicates: 0
+    target_compliant: 0
+    target_noncompliant: 5
+    current_prefix_counts:
+      CLAIM: 5
+    examples:
+      - "CLAIM-SI-BASELINE-001"
+      - "CLAIM-AUD-BASELINE-001"
+      - "CLAIM-UVS-ENTERPRISE-STANDALONE-001"
+
+reference_results:
+  requirements_yaml:
+    verification_test_refs:
+      instances: 261
+      unique: 248
+      target_compliant_instances: 0
+      unresolved_current_ids: 0
+    evidence_required_refs:
+      instances: 167
+      unique: 164
+      target_compliant_instances: 0
+      unresolved_current_ids: 0
+    source_refs_source_id:
+      instances: 250
+      unique: 37
+      target_compliant_instances: 0
+  tests_yaml:
+    requirement_refs:
+      instances: 308
+      unique: 106
+      target_compliant_instances: 308
+      unresolved_current_ids: 0
+    evidence_refs:
+      instances: 101
+      unique: 101
+      target_compliant_instances: 0
+      unresolved_current_ids: 0
+    source_matrix_ids:
+      instances: 704
+      unique: 37
+      target_compliant_instances: 0
+    legacy_ids:
+      instances: 21
+      unique: 21
+  evidence_yaml:
+    requirement_refs:
+      instances: 182
+      unique: 106
+      target_compliant_instances: 182
+      unresolved_current_ids: 0
+    test_refs:
+      instances: 341
+      unique: 185
+      target_compliant_instances: 0
+      unresolved_current_ids: 0
+    claim_refs:
+      instances: 20
+      unique: 5
+      target_compliant_instances: 0
+      unresolved_current_ids: 0
+    source_matrix_ids:
+      instances: 479
+      unique: 37
+      target_compliant_instances: 0
+  claim_tree_yml:
+    requirement_refs:
+      instances: 19
+      unique: 17
+      target_compliant_instances: 19
+      unresolved_current_ids: 0
+    test_refs:
+      instances: 13
+      unique: 13
+      target_compliant_instances: 0
+      unresolved_current_ids: 0
+    evidence_refs:
+      instances: 18
+      unique: 17
+      target_compliant_instances: 0
+      unresolved_current_ids: 0
+
+source_reference_impact:
+  total_source_like_instances: 1433
+  unique_current_ids: 37
+  target_compliant_instances: 0
+  current_ids:
+    - "FBVBS-001"
+    - "IBM-APF-001"
+    - "IBM-DFSMS-001"
+    - "IBM-DFSMS-002"
+    - "IBM-DPM-001"
+    - "IBM-JES-001"
+    - "IBM-JES-002"
+    - "IBM-JES2-001"
+    - "IBM-LPAR-001"
+    - "IBM-RACF-001"
+    - "IBM-RACF-002"
+    - "IBM-SI-001"
+    - "IBM-SMF-001"
+    - "IBM-SMF-002"
+    - "IBM-SMPE-001"
+    - "IBM-STG-001"
+    - "IBM-STG-002"
+    - "IBM-UNIX-001"
+    - "IBM-UNIX-002"
+    - "IBM-WPOL-001"
+    - "IBM-XMEM-001"
+    - "IBM-XMEM-002"
+    - "IBM-ZACS-001"
+    - "IBM-ZARCH-001"
+    - "MS-VBS-001"
+    - "MS-VSM-001"
+    - "NIST-160-001"
+    - "NIST-193-001"
+    - "NIST-218-001"
+    - "SEL4-001"
+    - "SLSA-001"
+    - "TCG-001"
+    - "TUF-001"
+    - "X64-AMD-001"
+    - "X64-INTEL-001"
+    - "X64-LINUX-CET-001"
+    - "X64-LINUX-PKU-001"
+
+schema_findings:
+  - schema: "schemas/requirement.schema.json"
+    line: 146
+    field: "$defs.sourceRef.properties.source_id.pattern"
+    current: "^[A-Z0-9]+(?:-[A-Z0-9]+)*-[0-9]{3}$"
+    target_ready: false
+    impact: "Rejects EXTREF-* source refs if requirements migrate first."
+  - schema: "schemas/requirement.schema.json"
+    line: 166
+    field: "$defs.verification.properties.tests.properties.positive.items.pattern"
+    current: "^MFOS-TEST-[A-Z0-9-]+$"
+    target_ready: false
+    impact: "Rejects TEST-MFOS-* positive test refs."
+  - schema: "schemas/requirement.schema.json"
+    line: 170
+    field: "$defs.verification.properties.tests.properties.negative.items.pattern"
+    current: "^MFOS-TEST-[A-Z0-9-]+$"
+    target_ready: false
+    impact: "Rejects NEG-MFOS-* negative test refs."
+  - schema: "schemas/requirement.schema.json"
+    line: 222
+    field: "$defs.evidenceRequired.properties.evidence_id.pattern"
+    current: "^MFOS-EVID-[A-Z0-9-]+$"
+    target_ready: false
+    impact: "Rejects EV-MFOS-* evidence refs."
+  - schema: "schemas/requirement.schema.json"
+    line: 241
+    field: "$defs.requirementEntry.properties.requirement_id.pattern"
+    current: "^MFOS-REQ-[A-Z0-9]+-[0-9]{4}$"
+    target_ready: true
+    impact: "Requirement IDs already align."
+  - schema: "schemas/test-case.schema.json"
+    line: 8
+    field: "properties.test_id"
+    current: "string_without_pattern"
+    target_ready: false
+    impact: "Does not enforce TEST-MFOS-* or NEG-MFOS-*."
+  - schema: "schemas/evidence.schema.json"
+    line: 8
+    field: "properties.evidence_id"
+    current: "string_without_pattern"
+    target_ready: false
+    impact: "Does not enforce EV-MFOS-*."
+  - schema: "schemas/claim.schema.json"
+    line: 21
+    field: "properties.claim_id"
+    current: "string_without_pattern"
+    target_ready: false
+    impact: "Does not enforce MFOS-CLAIM-*."
+  - schema: "schemas/source-card.schema.json"
+    line: 26
+    field: "properties.source_id.pattern"
+    current: "^[A-Z0-9-]+$"
+    target_ready: false
+    impact: "Does not require EXTREF-*."
+  - schema: "schemas/source-card.schema.json"
+    line: 43
+    field: "properties.source_refs"
+    current: "array_of_unconstrained_objects"
+    target_ready: false
+    impact: "Does not constrain source_refs to EXTREF-*."
+  - schema: "schemas/spec-front-matter.schema.json"
+    line: 31
+    field: "properties.source_refs"
+    current: "array_of_unconstrained_strings"
+    target_ready: false
+    impact: "Does not constrain source_refs to EXTREF-*."
+  - schema: "schemas/pack.schema.json"
+    line: 37
+    field: "properties.source_refs"
+    current: "array_of_unconstrained_strings"
+    target_ready: false
+    impact: "Does not constrain source_refs to EXTREF-*."
+
+migration_impact:
+  rename_definitions:
+    requirements: 0
+    tests: 261
+    evidence: 170
+    claims: 5
+  update_references:
+    test_reference_instances: 615
+    evidence_reference_instances: 286
+    claim_reference_instances: 20
+    source_like_reference_instances: 1433
+  schema_updates_required: true
+  current_graph_unresolved_references: 0
+
+compatibility_risks:
+  - id: "RISK-001"
+    severity: "high"
+    title: "Requirement schema rejects target refs"
+    detail: "schemas/requirement.schema.json must be updated before target test, evidence, and source refs are accepted."
+  - id: "RISK-002"
+    severity: "high"
+    title: "Partial registry migration breaks current traceability"
+    detail: "Current cross-registry references resolve cleanly; definition-only or reference-only renames will create unresolved links."
+  - id: "RISK-003"
+    severity: "medium"
+    title: "Negative test rewrite ambiguity"
+    detail: "Current test IDs embed NEG; a prefix-only migration to NEG-MFOS-* may duplicate the negative marker unless the mapping rule is reviewed."
+  - id: "RISK-004"
+    severity: "high"
+    title: "Source matrix aliasing required"
+    detail: "Current source references are source-card/source-matrix IDs, not EXTREF-*; source resolution needs aliases or synchronized source-card migration."
+  - id: "RISK-005"
+    severity: "medium"
+    title: "Permissive schemas allow mixed namespaces"
+    detail: "Test, evidence, claim, pack, source-card, and spec-front-matter schemas lack target namespace enforcement."

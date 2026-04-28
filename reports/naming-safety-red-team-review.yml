@@ -1,0 +1,196 @@
+report_id: MFOS-NAMING-SAFETY-RED-TEAM-20260427
+date: "2026-04-27"
+workspace: /home/nia/mfos
+mode: read_only_review
+written_artifacts:
+  - reports/naming-safety-red-team-review.md
+  - reports/naming-safety-red-team-review.yml
+overall_judgment:
+  naming_migration_private_review_ready: true
+  public_release_ready: false
+  production_claim_ready: false
+  requires_legal_ip_review: true
+post_review_remediation:
+  completed:
+    - finding_id: NSRT-CRIT-002
+      status: remediated_for_explicitly_prohibited_paths
+      detail: "tso-like/ispf-like/zosmf-like-api/tsoed/ispfd paths were renamed to neutral MFOS-owned names."
+    - finding_id: NSRT-MAJ-001
+      status: remediated
+      detail: "Source Card guidance now uses public-safe bibliographic reference card shape."
+    - finding_id: NSRT-MAJ-002
+      status: remediated
+      detail: "Non-naming reports now use current EXTREF-* source IDs."
+    - finding_id: NSRT-MAJ-003
+      status: remediated_for_current_cards
+      detail: "Non-IBM external Source Cards use reference-only mark controls and NOTICE has generic external-name language."
+    - finding_id: NSRT-MAJ-004
+      status: remediated_for_current_local_gates
+      detail: "Validators scan directories, reports, stale guidance, and reject canonical IBM-style source IDs."
+    - finding_id: NSRT-MIN-001
+      status: remediated
+      detail: "README local checks include the naming-safety gate."
+    - finding_id: NSRT-OPEN-WLM
+      status: remediated
+      detail: "WLM was removed from MFOS-owned namespaces and replaced with workload-policy/workpolicyd/WPOL; EXTREF source IDs remain unchanged."
+  still_open:
+    - finding_id: NSRT-CRIT-001
+      status: intentionally_open
+      detail: "Public release remains blocked by legal/IP review and release evidence validation."
+    - finding_id: NSRT-OPEN-OWNED-TERMS
+      status: deferred_legal_architecture_review
+      detail: "AMF, PXM, SVC, and PCALL remain MFOS-owned terms pending later review."
+validation:
+  commands:
+    - command: ./scripts/validate-naming-safety.sh release
+      status: pass
+      summary: "0 warnings"
+    - command: ./scripts/validate-all.sh --check
+      status: pass
+      summary: "draft/check validation passed without traceability regeneration"
+    - command: python3 scripts/check-evidence-status.py --mode release
+      status: fail
+      summary: "18 errors, 20 warnings; release claims require verified or archived evidence"
+    - command: python3 scripts/check-prohibited-terms.py
+      status: pass
+      summary: "Prohibited wording check OK"
+    - command: python3 scripts/check-source-card-public-safe.py --mode release
+      status: pass
+      summary: "0 warnings"
+    - command: python3 -m py_compile scripts/*.py
+      status: pass
+      summary: "scripts compile"
+  targeted_scans:
+    canonical_ibm_source_id_scan:
+      status: pass
+      summary: "No active source_id: IBM-* canonical values found in scoped current artifacts."
+    old_ibm_ids_in_reports:
+      status: fail
+      summary: "Legacy IBM-* IDs remain in non-naming reports."
+    prohibited_owned_directories:
+      status: fail
+      summary: "Prohibited or high-risk IBM-derived owned path names remain under implementation/."
+    long_block_quote_scan:
+      status: pass
+      summary: "No long Markdown block quotes found in scoped docs."
+findings:
+  - id: NSRT-CRIT-001
+    severity: critical
+    title: Public release is still blocked
+    evidence:
+      - path: docs/design/STATUS.md
+        lines: "20-22"
+        detail: "public_release_allowed: false; requires IP attorney review"
+      - path: docs/design/STATUS.md
+        lines: "177-179"
+        detail: "release evidence gate expected to fail closed"
+      - command: python3 scripts/check-evidence-status.py --mode release
+        result: "failed with 18 errors and 20 warnings"
+    impact: "Naming-safety pass must not be presented as public release, production, conformance, or verified evidence readiness."
+    required_action: "Keep public release blocked until legal review, verified evidence, and Source Card/source-pin release gates are complete."
+  - id: NSRT-CRIT-002
+    severity: critical
+    title: Prohibited IBM-interface tokens remain in MFOS-owned paths
+    evidence:
+      - path: implementation/interfaces/command-processor
+      - path: implementation/interfaces/panel-ui
+      - path: implementation/interfaces/management-api
+      - path: implementation/services/commandd
+      - path: implementation/services/paneld
+      - path: implementation/services/workpolicyd
+      - path: implementation/prototypes/hosted-semantic/services/workpolicyd
+      - path: implementation/nucleus/svc
+      - path: implementation/runtime/abi/svc
+      - path: implementation/guard/roots/svc-table
+      - path: implementation/nucleus/pcall
+      - path: implementation/runtime/abi/pcall
+      - path: scripts/check-mf-owned-names.py
+        lines: "37-42,112"
+        detail: "forbids ispf/tso/zosmf but walks text files, missing empty directories"
+    impact: "Owned paths can imply compatibility surfaces while validator still passes."
+    required_action: "Rename to neutral MFOS-owned terms or add explicit legal/architecture exceptions; extend validator to scan directories."
+  - id: NSRT-MAJ-001
+    severity: major
+    title: Canonical Source Card guidance still contains removed summary-style shape
+    evidence:
+      - path: docs/design/source-matrix/source-card-schema.md
+        lines: "5-7"
+        detail: "current schema says cards are not summaries or substitutes"
+      - path: docs/design/mfos-design.md
+        lines: "288-303"
+        detail: "old template includes source_type: normative, title, url, canonical_concepts, list-style mfos_mapping"
+      - path: sources/citation-policy.md
+        lines: "3-5"
+        detail: "still says Source Cards store short summaries"
+      - path: docs/design/source-matrix/source-lint-spec.md
+        lines: "132,276"
+        detail: "source_type guidance conflicts with current public-safe source_type model"
+    impact: "Future contributors can reintroduce summary/copy-risk fields despite current card validators passing."
+    required_action: "Update stale public guidance and lint specs; add lint coverage for stale Source Card examples outside card YAML."
+  - id: NSRT-MAJ-002
+    severity: major
+    title: Legacy IBM-* IDs remain in non-naming reports outside strict alias contexts
+    evidence:
+      - path: docs/design/legal-risk-policy.md
+        lines: "9-12"
+        detail: "legacy IBM-* IDs are said to be retained only in legacy_source_ids and naming migration report"
+      - path: reports/requirement-gap-closure.md
+        lines: "15-27"
+        detail: "old IBM-* IDs appear as source refs in report table"
+      - path: reports/source-card-pin-audit.md
+        lines: "57-65"
+        detail: "old IBM-* IDs appear in pin-review table"
+      - path: scripts/check-extref-namespace.py
+        lines: "64-83"
+        detail: "reports/ is not scanned"
+    impact: "Public report bundles can expose obsolete canonical-looking IBM IDs outside the stated alias context."
+    required_action: "Migrate release-bound report references to EXTREF-* or archive/exclude historical reports with explicit disclaimer; scan reports in release mode."
+  - id: NSRT-MAJ-003
+    severity: major
+    title: Non-IBM external mark and affiliation controls are incomplete
+    evidence:
+      - path: NOTICE.md
+        lines: "5-19"
+        detail: "NOTICE covers IBM marks and IBM non-affiliation, not generic external marks"
+      - path: docs/design/source-matrix/cards/MS-VBS-001.yml
+        lines: "27-32,72"
+        detail: "names Microsoft and URL but trademark_reference_only is false"
+      - path: docs/design/source-matrix/cards/X64-INTEL-001.yml
+        lines: "29-34,80"
+        detail: "names Intel and SDM but trademark_reference_only is false"
+      - scan: non_ibm_external_cards_with_mark_controls_false
+        result: "13 cards"
+    impact: "External-reference legal posture is IBM-specific and does not fully cover other named vendors or projects."
+    required_action: "Add generic external-name NOTICE/disclaimer or per-vendor notice policy; align non-IBM Source Card controls with actual mark use."
+  - id: NSRT-MAJ-004
+    severity: major
+    title: Validator coverage is not release-grade
+    evidence:
+      - path: scripts/check-mf-owned-names.py
+        lines: "112"
+        detail: "does not scan empty directories"
+      - path: scripts/check-extref-namespace.py
+        lines: "64-83"
+        detail: "does not scan reports/"
+      - path: scripts/check-source-card-public-safe.py
+        lines: "11-67"
+        detail: "checks only card YAML, not stale public guidance"
+      - path: schemas/source-card.schema.json
+        lines: "28-34"
+        detail: "schema allows generic AAA-BBB-001 source_id, including legacy IBM-* shape"
+    impact: "A green naming-safety validation can coexist with release-visible naming hazards."
+    required_action: "Define release-bound file set, scan directories and reports, align schemas with EXTREF policy, and add negative tests for known misses."
+  - id: NSRT-MIN-001
+    severity: minor
+    title: Root README local checks omit the new naming-safety gate
+    evidence:
+      - path: README.md
+        lines: "48-55"
+        detail: "lists older checks but omits validate-all --check and validate-naming-safety.sh release"
+    impact: "Contributors following root instructions can miss naming-safety validation."
+    recommended_action: "Update contributor-facing check instructions before public release."
+non_findings:
+  - "No active canonical source_id: IBM-* values found in scoped current artifacts."
+  - "Current Source Card YAML files pass public-safety validation."
+  - "No long Markdown block quotes found in scoped docs."
+  - "Root README and NOTICE include clear IBM non-affiliation and non-compatibility language."
