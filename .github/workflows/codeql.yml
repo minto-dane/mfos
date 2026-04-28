@@ -15,7 +15,6 @@ jobs:
   analyze:
     name: CodeQL analysis
     runs-on: ubuntu-latest
-    continue-on-error: ${{ github.event.repository.private }}
     permissions:
       actions: read
       contents: read
@@ -32,9 +31,18 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Initialize CodeQL
+        if: ${{ !github.event.repository.private }}
         uses: github/codeql-action/init@v4
         with:
           languages: ${{ matrix.language }}
 
       - name: Perform CodeQL Analysis
+        if: ${{ !github.event.repository.private }}
         uses: github/codeql-action/analyze@v4
+
+      - name: Record private repository CodeQL limitation
+        if: ${{ github.event.repository.private }}
+        run: |
+          echo "CodeQL workflow is installed."
+          echo "GitHub code scanning upload is unavailable for this private repository without GitHub Advanced Security."
+          echo "This gate intentionally passes while preserving the scanner workflow for public or GHAS-enabled repositories."
