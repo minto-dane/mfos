@@ -1,0 +1,98 @@
+pack_id: PACK-07
+title: Dataset/Catalog
+purpose: Freeze Phase 0.8 Dataset/Catalog semantics as specification, requirements, state machines, tests, evidence planning, and pack contract only.
+scope:
+- Phase 0.8 design freeze
+- machine-readable semantics
+- negative-test planning
+- audit-obligation planning
+non_objectives:
+- production implementation
+- hosted daemon implementation
+- portable semantic core implementation
+- external product compatibility claims
+depends_on:
+- PACK-00
+- PACK-01
+- PACK-02
+- PACK-03
+- PACK-04
+- PACK-05
+- PACK-06
+inputs:
+- docs/design/specs/08-dataset-catalog.md
+- docs/design/source-matrix/source-matrix.yml
+- docs/design/registries/requirements.yaml
+outputs:
+- schemas/mfos/dataset.schema.yml
+- schemas/mfos/catalog-entry.schema.yml
+- schemas/mfos/dataset-handle.schema.yml
+- schemas/mfos/object-generation-binding.schema.yml
+- formal/tla/dataset-open/state-machine.yml
+- formal/tla/catalog-transaction/state-machine.yml
+- tests/catalog/phase-0-8-dataset-catalog-tests.yml
+- requirements/by-domain/catalog.yml
+- requirements/by-domain/dataset.yml
+source_refs:
+- EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+- EXTREF-IBM-ZOS-DFSMS-LIBRARY-0001
+- EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+- EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+- EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+- EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+requirements:
+- MFOS-REQ-CATALOG-0101
+- MFOS-REQ-CATALOG-0102
+- MFOS-REQ-DATASET-0101
+- MFOS-REQ-DATASET-0102
+- MFOS-REQ-DATASET-0103
+object_model_refs:
+- docs/design/specs/05-object-model.md
+- schemas/mfos/dataset.schema.yml
+- schemas/mfos/catalog-entry.schema.yml
+- schemas/mfos/dataset-handle.schema.yml
+- schemas/mfos/object-generation-binding.schema.yml
+state_machine_refs:
+- formal/tla/dataset-open/state-machine.yml
+- formal/tla/catalog-transaction/state-machine.yml
+failure_modes:
+- MFOS_ERR_CATALOG_NOT_FOUND
+- MFOS_ERR_INTERNAL_CORRUPTION
+- MFOS_ERR_POLICY_DENIED
+- MFOS_ERR_SPEC_GAP
+- MFOS_ERR_STALE_HANDLE
+- MFOS_ERR_UNSUPPORTED
+audit_obligations:
+- CATALOG_RESOLVE_DENY
+- CATALOG_RECOVERY_INCONSISTENCY
+- DATASET_HANDLE_DENY
+- DATASET_MODEL_CONFUSION_DENY
+- DATASET_RETENTION_DENY
+positive_tests:
+- TEST-MFOS-CATALOG-COMMITTED-0101
+- TEST-MFOS-CATALOG-RECOVERY-0102
+- TEST-MFOS-DATASET-HANDLE-BINDING-0101
+- TEST-MFOS-DATASET-MANAGED-0102
+- TEST-MFOS-DATASET-RETENTION-0103
+negative_tests:
+- NEG-MFOS-CATALOG-UNCOMMITTED-0101
+- NEG-MFOS-CATALOG-CRASH-MID-COMMIT-0102
+- NEG-MFOS-DATASET-STALE-HANDLE-0101
+- NEG-MFOS-DATASET-POSIX-CONFUSION-0102
+- NEG-MFOS-DATASET-DELETE-BEFORE-RETENTION-0103
+fuzz_targets:
+- FUZZ-MFOS-DSN-0001
+- FUZZ-MFOS-DATASET-HANDLE-0001
+spec_gaps:
+- Executable specs and implementation are deferred to Phase 0.9 or later.
+- Release evidence is draft-only and must not be treated as verified proof.
+implementation_allowed:
+  hosted_semantic_prototype: false
+  production: false
+  hardware_enforcement_claim: false
+  system_integrity_claim: none
+  hosted_daemon: false
+  portable_semantic_core: false
+  executable_spec: false
+  specification_only: true
+prompt: docs/design/prompts/ai-prompts.md

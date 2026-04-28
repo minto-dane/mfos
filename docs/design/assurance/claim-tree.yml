@@ -1,0 +1,206 @@
+registry_kind: assurance_claim_tree
+schema_version: 1
+status: draft
+updated_at_utc: '2026-04-27T00:00:00Z'
+non_compatibility_statement: MFOS is z/OS-inspired and does not claim z/OS or IBM product compatibility.
+claims:
+- claim_id: MFOS-CLAIM-BASELINE-SYSINT-0001
+  profile: Baseline
+  claim: Unauthorized subjects cannot obtain protected dataset handles through defined MFOS system interfaces.
+  protected_assets:
+  - dataset handles
+  - catalog entries
+  - security decisions
+  - audit obligations
+  threat_scope:
+  - unauthorized user job
+  - malformed SVC/PCALL request
+  - stale handle reuse
+  trusted_components:
+  - nucleus caller identity
+  - securityd
+  - auditd
+  - catalogd
+  - datasetd
+  requirements:
+  - MFOS-REQ-SYSINT-0001
+  - MFOS-REQ-AUTH-0004
+  - MFOS-REQ-CATALOG-0002
+  - MFOS-REQ-DATASET-0002
+  - MFOS-REQ-AUDIT-0002
+  tests:
+  - NEG-MFOS-SYSINT-DATASET-BYPASS-0001
+  - NEG-MFOS-DATASET-UNAUTHORIZED-OPEN-0002
+  - NEG-MFOS-CATALOG-UNCOMMITTED-0002
+  evidence:
+  - EV-MFOS-SYSINT-PDP-0012
+  - EV-MFOS-CATALOG-TX-0002
+  - EV-MFOS-DATASET-NO-HANDLE-0002
+  - EV-MFOS-DATASET-AUD-ORDER-0006
+  assumptions:
+  - The nucleus correctly identifies caller context.
+  - securityd policy store is available or protected operations fail closed.
+  - auditd pre-return failure policy is enforced for denied operations.
+  not_claimed:
+  - Protection after nucleus compromise.
+  - Protection after malicious signed AMF module compromise.
+  - z/OS, RACF, DFSMS, or JES compatibility.
+  residual_risks:
+  - Policy administrator may grant overly broad access; policy lint and review mitigate this.
+  legacy_claim_ids:
+  - CLAIM-SI-BASELINE-001
+- claim_id: MFOS-CLAIM-BASELINE-AUDIT-0001
+  profile: Baseline
+  claim: Required authorization denial records are emitted before callers receive final denied results.
+  protected_assets:
+  - audit record stream
+  - denied operation evidence
+  - audit correlation IDs
+  threat_scope:
+  - caller attempts to observe denial without evidence
+  - auditd unavailable during protected operation
+  trusted_components:
+  - auditd
+  - securityd
+  - protected resource clients
+  requirements:
+  - MFOS-REQ-AUDIT-0002
+  - MFOS-REQ-AUDIT-0005
+  - MFOS-REQ-AUTH-0002
+  tests:
+  - NEG-MFOS-AUDIT-DENY-BEFORE-RETURN-0002
+  - NEG-MFOS-AUDIT-UNAVAILABLE-0005
+  evidence:
+  - EV-MFOS-DATASET-AUD-ORDER-0006
+  - EV-MFOS-AUDIT-FAILPOL-0005
+  assumptions:
+  - auditd durable append semantics match the audit spec.
+  - Callers cannot forge final protected operation results.
+  not_claimed:
+  - Protection after nucleus compromise.
+  - Protection after malicious signed AMF module compromise.
+  - Tamper resistance after full local storage compromise.
+  - Guard-sealed audit root in Baseline.
+  residual_risks:
+  - Local audit storage can fail; profile-specific fail-closed policy applies.
+  legacy_claim_ids:
+  - CLAIM-AUD-BASELINE-001
+- claim_id: MFOS-CLAIM-ENTERPRISE-STANDALONE-UPDATE-0001
+  profile: Enterprise-Standalone
+  claim: Update rollback, freeze, and mix-and-match attempts are detected before activation.
+  protected_assets:
+  - update metadata view
+  - staged artifacts
+  - security epoch
+  threat_scope:
+  - rollback attempt
+  - freeze attempt
+  - mix-and-match metadata attempt
+  trusted_components:
+  - uvsd
+  - signed update metadata
+  - auditd
+  requirements:
+  - MFOS-REQ-UPDATE-0004
+  - MFOS-REQ-UPDATE-0005
+  - MFOS-REQ-UPDATE-0006
+  tests:
+  - NEG-MFOS-UPDATE-ROLLBACK-0004
+  - NEG-MFOS-UPDATE-FREEZE-0005
+  - NEG-MFOS-UPDATE-MIXMATCH-0006
+  evidence:
+  - EV-MFOS-UPDATE-ROLLBACK-0004
+  - EV-MFOS-UPDATE-FREEZE-0005
+  - EV-MFOS-UPDATE-MIXMATCH-0006
+  assumptions:
+  - TUF-like metadata roles and signing keys are configured according to the update spec.
+  - Time/freshness inputs used by uvsd are within the Enterprise-Standalone threat model.
+  not_claimed:
+  - PXM partition rollback protection.
+  - Guard-sealed update policy.
+  residual_risks:
+  - Key compromise response depends on revocation and recovery workflows.
+  legacy_claim_ids:
+  - CLAIM-UVS-ENTERPRISE-STANDALONE-001
+- claim_id: MFOS-CLAIM-ENTERPRISE-PXM-PARTITION-0001
+  profile: Enterprise-PXM
+  claim: Device reassignment is blocked until PXM teardown and memory/DMA cleanup evidence exists.
+  protected_assets:
+  - partition memory
+  - IOMMU mappings
+  - interrupt routes
+  - device ownership records
+  threat_scope:
+  - cross-partition DMA exposure
+  - stale interrupt route reuse
+  - incomplete device teardown
+  trusted_components:
+  - PXM core
+  - IOMMU programming path
+  - interrupt remapping path
+  - auditd
+  requirements:
+  - MFOS-REQ-PARTITION-0005
+  - MFOS-REQ-PARTITION-0006
+  - MFOS-REQ-PARTITION-0016
+  - MFOS-REQ-PARTITION-0017
+  tests:
+  - NEG-MFOS-PARTITION-DEVICE-TEARDOWN-0006
+  - NEG-MFOS-PARTITION-INTERRUPT-ROUTE-0016
+  evidence:
+  - EV-MFOS-PARTITION-DEVICE-0005
+  - EV-MFOS-PARTITION-TEARDOWN-0006
+  - EV-MFOS-PARTITION-PLATFORM-0016
+  - EV-MFOS-PARTITION-MEMORY-0017
+  assumptions:
+  - Platform IOMMU and interrupt remapping facilities match the declared hardware profile.
+  - PXM does not interpret MFOS enterprise semantics.
+  not_claimed:
+  - Device assignment in Enterprise-Standalone.
+  - Protection against malicious hardware outside the hardware profile.
+  residual_risks:
+  - Vendor-specific errata may require platform exclusions.
+  legacy_claim_ids:
+  - CLAIM-PXM-ENTERPRISE-PXM-001
+- claim_id: MFOS-CLAIM-HA-GUARD-0001
+  profile: High-Assurance
+  claim: Selected security and audit root transitions are protected by Guard root-object verification.
+  protected_assets:
+  - GUARD_ROOT_SECURITY_POLICY
+  - GUARD_ROOT_AUDIT_CHAIN
+  - GUARD_ROOT_AMF_REGISTRY
+  threat_scope:
+  - root object rollback
+  - SVC table mismatch
+  - AMF registry mismatch
+  trusted_components:
+  - PXM Guard
+  - PXM core
+  - auditd
+  - measured boot evidence
+  requirements:
+  - MFOS-REQ-SYSINT-0006
+  - MFOS-REQ-SYSINT-0017
+  - MFOS-REQ-SYSINT-0019
+  - MFOS-REQ-AUDIT-0002
+  tests:
+  - NEG-MFOS-SYSINT-HA-CLAIM-NO-GUARD-0006
+  - NEG-MFOS-SYSINT-GUARD-SCOPE-0019
+  - NEG-MFOS-SYSINT-AMF-BOUNDARY-0017
+  evidence:
+  - EV-MFOS-SYSINT-GUARD-EVIDENCE-0006
+  - EV-MFOS-SYSINT-GUARD-NEG-0019
+  - EV-MFOS-GUARD-ROOT-0001
+  - EV-MFOS-GUARD-AUDIT-0007
+  - EV-MFOS-ATTESTATION-HA-0001
+  assumptions:
+  - Guard isolation mechanism is implemented and verified for the High-Assurance hardware profile.
+  - Guard root canonicalization and measurements are stable.
+  not_claimed:
+  - Guard interpretation of dataset, job, spool, or operator business semantics.
+  - Full protection after PXM Guard compromise.
+  - Windows VBS compatibility.
+  residual_risks:
+  - Guard implementation and isolation mechanism remain future proof obligations.
+  legacy_claim_ids:
+  - CLAIM-GRD-HA-001

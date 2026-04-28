@@ -1,0 +1,80 @@
+registry_kind: phase_0_8_domain_requirements
+domain: catalog
+schema_version: 1
+status: draft
+canonical_registry: docs/design/registries/requirements.yaml
+entries:
+- id: MFOS-REQ-CATALOG-0101
+  title: Catalog resolution returns committed entries only
+  status: draft
+  normative_text: catalogd MUST resolve only committed catalog entries and MUST NOT
+    return uncommitted, rolled-back, partially journaled, integrity-failed, orphaned,
+    or recovery-pending entries as usable dataset locations.
+  source_refs:
+  - source_id: EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+    role: design_background
+  profile_applicability:
+    baseline: required
+    enterprise_standalone: required
+    enterprise_pxm: required
+    high_assurance: required
+  target_components:
+  - catalogd
+  - datasetd
+  - jobd
+  verification:
+    primary:
+    - spec_review
+    - negative_test_design
+    positive_tests:
+    - TEST-MFOS-CATALOG-COMMITTED-0101
+    negative_tests:
+    - NEG-MFOS-CATALOG-UNCOMMITTED-0101
+  positive_tests:
+  - TEST-MFOS-CATALOG-COMMITTED-0101
+  negative_tests:
+  - NEG-MFOS-CATALOG-UNCOMMITTED-0101
+  audit_obligations:
+  - CATALOG_RESOLVE_DENY
+  failure_modes:
+  - MFOS_ERR_CATALOG_NOT_FOUND
+  evidence_required:
+  - EV-MFOS-CATALOG-0101
+  mfos_non_compatibility:
+  - External references are design background only.
+- id: MFOS-REQ-CATALOG-0102
+  title: Catalog transactions recover to committed or absent state
+  status: draft
+  normative_text: A catalog transaction MUST recover after crash to either the last
+    committed entry state or an absent entry. Recovery MUST NOT expose partial journal
+    state as a usable catalog entry.
+  source_refs:
+  - source_id: EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+    role: design_background
+  profile_applicability:
+    baseline: required
+    enterprise_standalone: required
+    enterprise_pxm: required
+    high_assurance: required
+  target_components:
+  - catalogd
+  verification:
+    primary:
+    - spec_review
+    - negative_test_design
+    positive_tests:
+    - TEST-MFOS-CATALOG-RECOVERY-0102
+    negative_tests:
+    - NEG-MFOS-CATALOG-CRASH-MID-COMMIT-0102
+  positive_tests:
+  - TEST-MFOS-CATALOG-RECOVERY-0102
+  negative_tests:
+  - NEG-MFOS-CATALOG-CRASH-MID-COMMIT-0102
+  audit_obligations:
+  - CATALOG_RECOVERY_INCONSISTENCY
+  failure_modes:
+  - MFOS_ERR_INTERNAL_CORRUPTION
+  evidence_required:
+  - EV-MFOS-CATALOG-0102
+  mfos_non_compatibility:
+  - External references are design background only.

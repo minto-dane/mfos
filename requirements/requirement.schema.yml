@@ -1,0 +1,21 @@
+schema_kind: requirement_shape
+schema_version: 1
+canonical_current: docs/design/registries/requirements-schema.md
+required_fields:
+  - requirement_id
+  - title
+  - normative_text
+  - source_refs
+  - profile_applicability
+  - target_components
+  - verification
+  - audit_obligation
+  - failure_mode
+  - evidence_required
+  - status
+profile_keys:
+  - baseline
+  - enterprise_standalone
+  - enterprise_pxm
+  - high_assurance
+

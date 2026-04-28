@@ -1,0 +1,198 @@
+registry_kind: phase_0_8_domain_requirements
+domain: audit
+schema_version: 1
+status: draft
+canonical_registry: docs/design/registries/requirements.yaml
+entries:
+- id: MFOS-REQ-AUDIT-0101
+  title: AuditRecord schema is required for security-relevant decisions
+  status: draft
+  normative_text: auditd MUST record security-relevant decisions as independently
+    specified MFOS AuditRecord objects with schema_version, record_id, timestamp_utc,
+    partition_id, component_id, correlation_id, subject, object, operation, decision,
+    reason_code, policy_version, previous_hash, payload_hash, and record_hash.
+  source_refs:
+  - source_id: EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+    role: design_background
+  - source_id: EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+    role: design_background
+  profile_applicability:
+    baseline: required
+    enterprise_standalone: required
+    enterprise_pxm: required
+    high_assurance: required
+  target_components:
+  - auditd
+  verification:
+    primary:
+    - spec_review
+    - negative_test_design
+    positive_tests:
+    - TEST-MFOS-AUDIT-RECORD-SCHEMA-0101
+    negative_tests:
+    - NEG-MFOS-AUDIT-MISSING-CORRELATION-0101
+  positive_tests:
+  - TEST-MFOS-AUDIT-RECORD-SCHEMA-0101
+  negative_tests:
+  - NEG-MFOS-AUDIT-MISSING-CORRELATION-0101
+  audit_obligations:
+  - AUDIT_RECORD_APPEND
+  failure_modes:
+  - MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+  evidence_required:
+  - EV-MFOS-AUDIT-0101
+  mfos_non_compatibility:
+  - External references are design background only.
+- id: MFOS-REQ-AUDIT-0102
+  title: Deny decisions with audit obligation are recorded before caller result
+  status: draft
+  normative_text: A DENY decision with an audit obligation MUST be recorded durably
+    before the caller receives the final result. If this cannot be done, the operation
+    MUST fail closed or enter operator recovery mode as specified by profile.
+  source_refs:
+  - source_id: EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+    role: design_background
+  - source_id: EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+    role: design_background
+  profile_applicability:
+    baseline: required
+    enterprise_standalone: required
+    enterprise_pxm: required
+    high_assurance: required
+  target_components:
+  - auditd
+  - securityd
+  - all-enforcement-points
+  verification:
+    primary:
+    - spec_review
+    - negative_test_design
+    positive_tests:
+    - TEST-MFOS-AUDIT-DENY-BEFORE-RETURN-0102
+    negative_tests:
+    - NEG-MFOS-AUDIT-DENY-NO-RECORD-0102
+  positive_tests:
+  - TEST-MFOS-AUDIT-DENY-BEFORE-RETURN-0102
+  negative_tests:
+  - NEG-MFOS-AUDIT-DENY-NO-RECORD-0102
+  audit_obligations:
+  - AUDIT_DENY_BEFORE_RETURN
+  failure_modes:
+  - MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+  evidence_required:
+  - EV-MFOS-AUDIT-0102
+  mfos_non_compatibility:
+  - External references are design background only.
+- id: MFOS-REQ-AUDIT-0103
+  title: Audit hash chain detects tampering and gaps
+  status: draft
+  normative_text: auditd MUST link records with previous_hash, payload_hash, and record_hash
+    so tampering, deletion, insertion, or reordering is detectable by audit-chain
+    verification.
+  source_refs:
+  - source_id: EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+    role: design_background
+  profile_applicability:
+    baseline: required
+    enterprise_standalone: required
+    enterprise_pxm: required
+    high_assurance: required
+  target_components:
+  - auditd
+  - audit-chain-verifier
+  verification:
+    primary:
+    - spec_review
+    - negative_test_design
+    positive_tests:
+    - TEST-MFOS-AUDIT-HASH-CHAIN-0103
+    negative_tests:
+    - NEG-MFOS-AUDIT-TAMPERED-HASH-0103
+  positive_tests:
+  - TEST-MFOS-AUDIT-HASH-CHAIN-0103
+  negative_tests:
+  - NEG-MFOS-AUDIT-TAMPERED-HASH-0103
+  audit_obligations:
+  - AUDIT_CHAIN_VERIFY
+  failure_modes:
+  - MFOS_ERR_INTERNAL_CORRUPTION
+  evidence_required:
+  - EV-MFOS-AUDIT-0103
+  mfos_non_compatibility:
+  - External references are design background only.
+- id: MFOS-REQ-AUDIT-0104
+  title: Log lines and spool entries are not audit evidence
+  status: draft
+  normative_text: A log line or spool entry MUST NOT satisfy an audit obligation.
+    Only a valid MFOS AuditRecord accepted by auditd can satisfy an audit obligation.
+  source_refs:
+  - source_id: EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+    role: design_background
+  profile_applicability:
+    baseline: required
+    enterprise_standalone: required
+    enterprise_pxm: required
+    high_assurance: required
+  target_components:
+  - auditd
+  - spoold
+  - all-services
+  verification:
+    primary:
+    - spec_review
+    - negative_test_design
+    positive_tests:
+    - TEST-MFOS-AUDIT-RECORD-ONLY-0104
+    negative_tests:
+    - NEG-MFOS-AUDIT-SPOOL-AS-EVIDENCE-0104
+  positive_tests:
+  - TEST-MFOS-AUDIT-RECORD-ONLY-0104
+  negative_tests:
+  - NEG-MFOS-AUDIT-SPOOL-AS-EVIDENCE-0104
+  audit_obligations:
+  - AUDIT_SUBSTITUTE_DENY
+  failure_modes:
+  - MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+  evidence_required:
+  - EV-MFOS-AUDIT-0104
+  mfos_non_compatibility:
+  - External references are design background only.
+- id: MFOS-REQ-AUDIT-0105
+  title: Audit query access is authorization-controlled and redacted
+  status: draft
+  normative_text: Audit query, browse, export, and redaction operations MUST be authorized
+    through securityd and MUST apply the redaction policy before returning records
+    to the requester.
+  source_refs:
+  - source_id: EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+    role: design_background
+  - source_id: EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+    role: design_background
+  profile_applicability:
+    baseline: required
+    enterprise_standalone: required
+    enterprise_pxm: required
+    high_assurance: required
+  target_components:
+  - auditd
+  - securityd
+  verification:
+    primary:
+    - spec_review
+    - negative_test_design
+    positive_tests:
+    - TEST-MFOS-AUDIT-QUERY-0105
+    negative_tests:
+    - NEG-MFOS-AUDIT-UNAUTHORIZED-QUERY-0105
+  positive_tests:
+  - TEST-MFOS-AUDIT-QUERY-0105
+  negative_tests:
+  - NEG-MFOS-AUDIT-UNAUTHORIZED-QUERY-0105
+  audit_obligations:
+  - AUDIT_QUERY
+  failure_modes:
+  - MFOS_ERR_UNAUTHORIZED
+  evidence_required:
+  - EV-MFOS-AUDIT-0105
+  mfos_non_compatibility:
+  - External references are design background only.

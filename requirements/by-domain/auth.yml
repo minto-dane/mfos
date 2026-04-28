@@ -1,0 +1,209 @@
+registry_kind: phase_0_8_domain_requirements
+domain: auth
+schema_version: 1
+status: draft
+canonical_registry: docs/design/registries/requirements.yaml
+entries:
+- id: MFOS-REQ-AUTH-0101
+  title: SecurityDecision is the only authorization decision object for protected
+    resources
+  status: draft
+  normative_text: securityd MUST produce a SecurityDecision for every protected resource
+    operation. Enforcement points MUST NOT fabricate, infer, cache-as-authority, or
+    replace SecurityDecision objects.
+  source_refs:
+  - source_id: EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+    role: design_background
+  - source_id: EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+    role: design_background
+  - source_id: EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+    role: design_background
+  profile_applicability:
+    baseline: required
+    enterprise_standalone: required
+    enterprise_pxm: required
+    high_assurance: required
+  target_components:
+  - securityd
+  - all-enforcement-points
+  verification:
+    primary:
+    - spec_review
+    - negative_test_design
+    positive_tests:
+    - TEST-MFOS-AUTH-SECURITY-DECISION-0101
+    negative_tests:
+    - NEG-MFOS-AUTH-BYPASS-0101
+  positive_tests:
+  - TEST-MFOS-AUTH-SECURITY-DECISION-0101
+  negative_tests:
+  - NEG-MFOS-AUTH-BYPASS-0101
+  audit_obligations:
+  - AUTHZ_DECISION
+  failure_modes:
+  - MFOS_ERR_UNAUTHORIZED
+  evidence_required:
+  - EV-MFOS-AUTH-0101
+  mfos_non_compatibility:
+  - External references are design background only.
+- id: MFOS-REQ-AUTH-0102
+  title: Protected resource handles require matching ALLOW decisions
+  status: draft
+  normative_text: A protected resource handle MUST NOT exist unless a valid SecurityDecision
+    produced ALLOW or ALLOW_WITH_AUDIT for the same subject, object, operation, context,
+    and policy_version.
+  source_refs:
+  - source_id: EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+    role: design_background
+  - source_id: EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+    role: design_background
+  profile_applicability:
+    baseline: required
+    enterprise_standalone: required
+    enterprise_pxm: required
+    high_assurance: required
+  target_components:
+  - securityd
+  - datasetd
+  - spoold
+  - jobd
+  - operatord
+  verification:
+    primary:
+    - spec_review
+    - negative_test_design
+    positive_tests:
+    - TEST-MFOS-AUTH-HANDLE-BINDING-0102
+    negative_tests:
+    - NEG-MFOS-AUTH-HANDLE-WITHOUT-ALLOW-0102
+  positive_tests:
+  - TEST-MFOS-AUTH-HANDLE-BINDING-0102
+  negative_tests:
+  - NEG-MFOS-AUTH-HANDLE-WITHOUT-ALLOW-0102
+  audit_obligations:
+  - AUTHZ_HANDLE_BINDING_DENY
+  failure_modes:
+  - MFOS_ERR_UNAUTHORIZED
+  evidence_required:
+  - EV-MFOS-AUTH-0102
+  mfos_non_compatibility:
+  - External references are design background only.
+- id: MFOS-REQ-AUTH-0103
+  title: PolicyBinding binds policy version and obligations to authorizations
+  status: draft
+  normative_text: PolicyBinding MUST bind decision_id, policy_version, obligations_hash,
+    decision_time, and optional expiry to every successful protected-resource handle
+    or operator command authorization.
+  source_refs:
+  - source_id: EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+    role: design_background
+  profile_applicability:
+    baseline: required
+    enterprise_standalone: required
+    enterprise_pxm: required
+    high_assurance: required
+  target_components:
+  - securityd
+  - datasetd
+  - spoold
+  - operatord
+  verification:
+    primary:
+    - spec_review
+    - negative_test_design
+    positive_tests:
+    - TEST-MFOS-AUTH-POLICY-BINDING-0103
+    negative_tests:
+    - NEG-MFOS-AUTH-POLICY-VERSION-MISMATCH-0103
+  positive_tests:
+  - TEST-MFOS-AUTH-POLICY-BINDING-0103
+  negative_tests:
+  - NEG-MFOS-AUTH-POLICY-VERSION-MISMATCH-0103
+  audit_obligations:
+  - AUTHZ_POLICY_BINDING_DENY
+  failure_modes:
+  - MFOS_ERR_POLICY_VERSION_MISMATCH
+  evidence_required:
+  - EV-MFOS-AUTH-0103
+  mfos_non_compatibility:
+  - External references are design background only.
+- id: MFOS-REQ-AUTH-0104
+  title: Emergency access requires reason, expiry, audit, and review marker
+  status: draft
+  normative_text: Emergency access MUST require a reason code, explicit expiry, audit
+    obligation, and post-event review marker. Emergency access MUST fail closed if
+    expiry or audit cannot be established.
+  source_refs:
+  - source_id: EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+    role: design_background
+  - source_id: EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+    role: design_background
+  profile_applicability:
+    baseline: required
+    enterprise_standalone: required
+    enterprise_pxm: required
+    high_assurance: required
+  target_components:
+  - securityd
+  - operatord
+  - auditd
+  verification:
+    primary:
+    - spec_review
+    - negative_test_design
+    positive_tests:
+    - TEST-MFOS-AUTH-EMERGENCY-0104
+    negative_tests:
+    - NEG-MFOS-AUTH-EMERGENCY-NO-EXPIRY-0104
+  positive_tests:
+  - TEST-MFOS-AUTH-EMERGENCY-0104
+  negative_tests:
+  - NEG-MFOS-AUTH-EMERGENCY-NO-EXPIRY-0104
+  audit_obligations:
+  - AUTHZ_BREAK_GLASS
+  failure_modes:
+  - MFOS_ERR_UNAUTHORIZED
+  evidence_required:
+  - EV-MFOS-AUTH-0104
+  mfos_non_compatibility:
+  - External references are design background only.
+- id: MFOS-REQ-AUTH-0105
+  title: Policy lint detects high-risk authorization patterns
+  status: draft
+  normative_text: Policy lint MUST detect overly broad default access, wildcard dataset
+    ALTER grants, broad authorized-module authority, emergency roles without expiry,
+    spool export without audit, policy update without dual-control, broad audit-query
+    access, and stale delegation.
+  source_refs:
+  - source_id: EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+    role: design_background
+  - source_id: EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+    role: design_background
+  profile_applicability:
+    baseline: required
+    enterprise_standalone: required
+    enterprise_pxm: required
+    high_assurance: required
+  target_components:
+  - securityd
+  - policy-lint
+  verification:
+    primary:
+    - spec_review
+    - negative_test_design
+    positive_tests:
+    - TEST-MFOS-AUTH-POLICY-LINT-0105
+    negative_tests:
+    - NEG-MFOS-AUTH-POLICY-LINT-MISSING-0105
+  positive_tests:
+  - TEST-MFOS-AUTH-POLICY-LINT-0105
+  negative_tests:
+  - NEG-MFOS-AUTH-POLICY-LINT-MISSING-0105
+  audit_obligations:
+  - AUTHZ_POLICY_LINT
+  failure_modes:
+  - MFOS_ERR_POLICY_DENIED
+  evidence_required:
+  - EV-MFOS-AUTH-0105
+  mfos_non_compatibility:
+  - External references are design background only.

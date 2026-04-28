@@ -1,0 +1,86 @@
+pack_id: PACK-09
+title: Operator Console
+purpose: Freeze Phase 0.8 Operator Console semantics as specification, requirements, state machines, tests, evidence planning, and pack contract only.
+scope:
+- Phase 0.8 design freeze
+- machine-readable semantics
+- negative-test planning
+- audit-obligation planning
+non_objectives:
+- production implementation
+- hosted daemon implementation
+- portable semantic core implementation
+- external product compatibility claims
+depends_on:
+- PACK-00
+- PACK-01
+- PACK-02
+- PACK-03
+- PACK-04
+- PACK-05
+- PACK-06
+inputs:
+- docs/design/specs/10-operator-console.md
+- docs/design/source-matrix/source-matrix.yml
+- docs/design/registries/requirements.yaml
+outputs:
+- schemas/mfos/operator-command.schema.yml
+- formal/tla/operator-command/state-machine.yml
+- tests/catalog/phase-0-8-operator-console-tests.yml
+- requirements/by-domain/operator.yml
+source_refs:
+- EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+- EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
+- EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+- EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+- EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+- EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+- EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
+- EXTREF-IBM-ZOS-JES2-LIBRARY-0001
+- EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+- EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001
+requirements:
+- MFOS-REQ-OPER-0101
+- MFOS-REQ-OPER-0102
+- MFOS-REQ-OPER-0103
+- MFOS-REQ-OPER-0104
+object_model_refs:
+- docs/design/specs/05-object-model.md
+- schemas/mfos/operator-command.schema.yml
+state_machine_refs:
+- formal/tla/operator-command/state-machine.yml
+failure_modes:
+- MFOS_ERR_OPERATOR_CONFIRMATION_REQUIRED
+- MFOS_ERR_SPEC_GAP
+- MFOS_ERR_UNAUTHORIZED
+- MFOS_ERR_UNSUPPORTED
+audit_obligations:
+- OPERATOR_COMMAND_DENY
+- OPERATOR_INTERFACE_DENY
+- OPERATOR_CONFIRMATION_DENY
+- OPERATOR_AUTOMATION_DENY
+positive_tests:
+- TEST-MFOS-OPER-COMMAND-0101
+- TEST-MFOS-OPER-GOVERNED-0102
+- TEST-MFOS-OPER-CONFIRM-0103
+- TEST-MFOS-OPER-AUTOMATION-0104
+negative_tests:
+- NEG-MFOS-OPER-COMMAND-NO-AUTH-0101
+- NEG-MFOS-OPER-ROOT-SHELL-0102
+- NEG-MFOS-OPER-DESTRUCTIVE-NO-CONFIRM-0103
+- NEG-MFOS-OPER-AUTOMATION-BYPASS-0104
+fuzz_targets:
+- FUZZ-MFOS-OPER-COMMAND-0001
+spec_gaps:
+- Executable specs and implementation are deferred to Phase 0.9 or later.
+- Release evidence is draft-only and must not be treated as verified proof.
+implementation_allowed:
+  hosted_semantic_prototype: false
+  production: false
+  hardware_enforcement_claim: false
+  system_integrity_claim: none
+  hosted_daemon: false
+  portable_semantic_core: false
+  executable_spec: false
+  specification_only: true
+prompt: docs/design/prompts/ai-prompts.md

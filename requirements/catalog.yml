@@ -1,0 +1,28 @@
+catalog_kind: requirements_bridge
+schema_version: 1
+status: bridge
+canonical_current:
+  registry: docs/design/registries/requirements.yaml
+  schema_note: docs/design/registries/requirements-schema.md
+planned_split:
+  directory: requirements/by-domain
+  domains:
+    - src
+    - si
+    - sec
+    - aud
+    - cat
+    - data
+    - job
+    - spl
+    - oper
+    - wlm
+    - amf
+    - uvs
+    - nuc
+    - svc-pcall
+    - pxm
+    - grd
+    - ai
+    - qual
+

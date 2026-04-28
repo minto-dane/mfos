@@ -1,0 +1,125 @@
+registry_kind: phase_0_8_domain_requirements
+domain: dataset
+schema_version: 1
+status: draft
+canonical_registry: docs/design/registries/requirements.yaml
+entries:
+- id: MFOS-REQ-DATASET-0101
+  title: Dataset handles bind subject, operation, decision, policy, and generations
+  status: draft
+  normative_text: DatasetHandle MUST bind subject, operation, decision_id, policy_version,
+    catalog_entry_generation, dataset_generation when applicable, and expiry when
+    applicable.
+  source_refs:
+  - source_id: EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+    role: design_background
+  - source_id: EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+    role: design_background
+  profile_applicability:
+    baseline: required
+    enterprise_standalone: required
+    enterprise_pxm: required
+    high_assurance: required
+  target_components:
+  - datasetd
+  - catalogd
+  - securityd
+  verification:
+    primary:
+    - spec_review
+    - negative_test_design
+    positive_tests:
+    - TEST-MFOS-DATASET-HANDLE-BINDING-0101
+    negative_tests:
+    - NEG-MFOS-DATASET-STALE-HANDLE-0101
+  positive_tests:
+  - TEST-MFOS-DATASET-HANDLE-BINDING-0101
+  negative_tests:
+  - NEG-MFOS-DATASET-STALE-HANDLE-0101
+  audit_obligations:
+  - DATASET_HANDLE_DENY
+  failure_modes:
+  - MFOS_ERR_STALE_HANDLE
+  evidence_required:
+  - EV-MFOS-DATASET-0101
+  mfos_non_compatibility:
+  - External references are design background only.
+- id: MFOS-REQ-DATASET-0102
+  title: Dataset is not a POSIX file substitute
+  status: draft
+  normative_text: Dataset operations MUST use MFOS dataset/catalog semantics and MUST
+    NOT be treated as ordinary POSIX path or file-wrapper operations for authorization,
+    retention, audit, or catalog resolution.
+  source_refs:
+  - source_id: EXTREF-IBM-ZOS-DFSMS-LIBRARY-0001
+    role: design_background
+  - source_id: EXTREF-IBM-ZOS-UNIX-INTRODUCTION-0001
+    role: design_background
+  profile_applicability:
+    baseline: required
+    enterprise_standalone: required
+    enterprise_pxm: required
+    high_assurance: required
+  target_components:
+  - datasetd
+  - catalogd
+  verification:
+    primary:
+    - spec_review
+    - negative_test_design
+    positive_tests:
+    - TEST-MFOS-DATASET-MANAGED-0102
+    negative_tests:
+    - NEG-MFOS-DATASET-POSIX-CONFUSION-0102
+  positive_tests:
+  - TEST-MFOS-DATASET-MANAGED-0102
+  negative_tests:
+  - NEG-MFOS-DATASET-POSIX-CONFUSION-0102
+  audit_obligations:
+  - DATASET_MODEL_CONFUSION_DENY
+  failure_modes:
+  - MFOS_ERR_SPEC_GAP
+  evidence_required:
+  - EV-MFOS-DATASET-0102
+  mfos_non_compatibility:
+  - External references are design background only.
+- id: MFOS-REQ-DATASET-0103
+  title: Dataset retention blocks unauthorized early deletion
+  status: draft
+  normative_text: datasetd MUST enforce retention metadata. Dataset deletion before
+    retention expiry MUST fail closed unless a specifically authorized retention override
+    decision and audit obligation exist.
+  source_refs:
+  - source_id: EXTREF-IBM-ZOS-DFSMS-LIBRARY-0001
+    role: design_background
+  - source_id: EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+    role: design_background
+  profile_applicability:
+    baseline: required
+    enterprise_standalone: required
+    enterprise_pxm: required
+    high_assurance: required
+  target_components:
+  - datasetd
+  - securityd
+  - auditd
+  verification:
+    primary:
+    - spec_review
+    - negative_test_design
+    positive_tests:
+    - TEST-MFOS-DATASET-RETENTION-0103
+    negative_tests:
+    - NEG-MFOS-DATASET-DELETE-BEFORE-RETENTION-0103
+  positive_tests:
+  - TEST-MFOS-DATASET-RETENTION-0103
+  negative_tests:
+  - NEG-MFOS-DATASET-DELETE-BEFORE-RETENTION-0103
+  audit_obligations:
+  - DATASET_RETENTION_DENY
+  failure_modes:
+  - MFOS_ERR_POLICY_DENIED
+  evidence_required:
+  - EV-MFOS-DATASET-0103
+  mfos_non_compatibility:
+  - External references are design background only.

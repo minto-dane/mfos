@@ -1,0 +1,92 @@
+pack_id: PACK-05
+title: Authorization Model
+purpose: Freeze Phase 0.8 Authorization Model semantics as specification, requirements, state machines, tests, evidence planning, and pack contract only.
+scope:
+- Phase 0.8 design freeze
+- machine-readable semantics
+- negative-test planning
+- audit-obligation planning
+non_objectives:
+- production implementation
+- hosted daemon implementation
+- portable semantic core implementation
+- external product compatibility claims
+depends_on:
+- PACK-00
+- PACK-01
+- PACK-02
+- PACK-03
+- PACK-04
+inputs:
+- docs/design/specs/06-authorization.md
+- docs/design/source-matrix/source-matrix.yml
+- docs/design/registries/requirements.yaml
+outputs:
+- schemas/mfos/security-decision.schema.yml
+- schemas/mfos/policy-binding.schema.yml
+- formal/tla/authorization/state-machine.yml
+- tests/catalog/phase-0-8-authorization-tests.yml
+- requirements/by-domain/auth.yml
+source_refs:
+- EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001
+- EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
+- EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+- EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
+- EXTREF-IBM-Z-LPAR-INTRODUCTION-0001
+- EXTREF-IBM-Z-DPM-0001
+- EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+- EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+- EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+- EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+- EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+requirements:
+- MFOS-REQ-AUTH-0101
+- MFOS-REQ-AUTH-0102
+- MFOS-REQ-AUTH-0103
+- MFOS-REQ-AUTH-0104
+- MFOS-REQ-AUTH-0105
+object_model_refs:
+- docs/design/specs/05-object-model.md
+- schemas/mfos/security-decision.schema.yml
+- schemas/mfos/policy-binding.schema.yml
+state_machine_refs:
+- formal/tla/authorization/state-machine.yml
+failure_modes:
+- MFOS_ERR_POLICY_DENIED
+- MFOS_ERR_POLICY_VERSION_MISMATCH
+- MFOS_ERR_SPEC_GAP
+- MFOS_ERR_UNAUTHORIZED
+- MFOS_ERR_UNSUPPORTED
+audit_obligations:
+- AUTHZ_DECISION
+- AUTHZ_HANDLE_BINDING_DENY
+- AUTHZ_POLICY_BINDING_DENY
+- AUTHZ_BREAK_GLASS
+- AUTHZ_POLICY_LINT
+positive_tests:
+- TEST-MFOS-AUTH-SECURITY-DECISION-0101
+- TEST-MFOS-AUTH-HANDLE-BINDING-0102
+- TEST-MFOS-AUTH-POLICY-BINDING-0103
+- TEST-MFOS-AUTH-EMERGENCY-0104
+- TEST-MFOS-AUTH-POLICY-LINT-0105
+negative_tests:
+- NEG-MFOS-AUTH-BYPASS-0101
+- NEG-MFOS-AUTH-HANDLE-WITHOUT-ALLOW-0102
+- NEG-MFOS-AUTH-POLICY-VERSION-MISMATCH-0103
+- NEG-MFOS-AUTH-EMERGENCY-NO-EXPIRY-0104
+- NEG-MFOS-AUTH-POLICY-LINT-MISSING-0105
+fuzz_targets:
+- FUZZ-MFOS-POLICY-LANGUAGE-0001
+spec_gaps:
+- Executable specs and implementation are deferred to Phase 0.9 or later.
+- Release evidence is draft-only and must not be treated as verified proof.
+implementation_allowed:
+  hosted_semantic_prototype: false
+  production: false
+  hardware_enforcement_claim: false
+  system_integrity_claim: none
+  hosted_daemon: false
+  portable_semantic_core: false
+  executable_spec: false
+  specification_only: true
+prompt: docs/design/prompts/ai-prompts.md

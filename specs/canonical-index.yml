@@ -1,0 +1,11 @@
+index_kind: specs_bridge
+schema_version: 1
+status: bridge
+canonical_current:
+  index: docs/design/specs/INDEX.md
+  directory: docs/design/specs
+rules:
+  - English specs are canonical.
+  - Japanese specs are explanatory mirrors unless explicitly marked otherwise.
+  - Security-sensitive spec changes require requirement, source, test, and audit updates.
+

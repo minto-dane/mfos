@@ -1,0 +1,216 @@
+# MFOS task registry seed.
+# Schema source: docs/design/specs/28-machine-readable-registries.md
+# Tasks define ownership scope for AI agents and link expected outputs to requirements/tests/evidence.
+registry_kind: tasks
+schema_version: 1
+registry_id: MFOS-REG-TASKS-0001
+status: draft
+generated_from:
+  - path: docs/design/specs/21-ai-implementation-contract.md
+  - path: docs/design/specs/22-production-readiness.md
+  - path: docs/design/specs/23-requirements-catalog.md
+  - path: docs/design/specs/28-machine-readable-registries.md
+generated_at_utc: null
+updated_at_utc: "2026-04-27T00:00:00Z"
+updated_by: codex
+non_compatibility_statement: "MFOS is z/OS-inspired and does not claim z/OS compatibility or IBM product compatibility."
+source_matrix_ref:
+  path: docs/design/source-matrix/source-matrix.yml
+  schema_version: 1
+
+# Entry notes:
+# - allowed_paths are intended for future ownership-scope CI.
+# - closed tasks must later link AI output or evidence records.
+entries:
+  - task_id: REQCAT-001
+    title: Seed machine-readable registries
+    task_type: spec
+    status: implemented
+    owner: registry-agent
+    owning_subsystem: registry-governance
+    description: Create initial draft requirements, tests, evidence, and task registries from the machine-readable registry schema.
+    allowed_paths:
+      - docs/design/registries/requirements.yaml
+      - docs/design/registries/tests.yaml
+      - docs/design/registries/evidence.yaml
+      - docs/design/registries/tasks.yaml
+      - docs/design/registries/README.md
+    prohibited_paths:
+      - docs/design/specs/INDEX.md
+      - README.md
+      - docs/design/packs/
+    requirement_ids: []
+    source_matrix_ids:
+      - FBVBS-001
+      - NIST-218-001
+    prerequisite_task_ids: []
+    prerequisite_spec_refs:
+      - path: docs/design/specs/28-machine-readable-registries.md
+    expected_outputs:
+      - seed requirements registry
+      - seed tests registry
+      - seed evidence registry
+      - seed tasks registry
+      - registry README
+    expected_tests:
+      - YAML parse check
+      - source ID reference check
+      - cross-registry seed link check
+    expected_evidence:
+      - registry lint report
+    negative_test_required: false
+    fuzz_target_required: false
+    ci_required:
+      - registry-schema-lint
+      - registry-reference-lint
+      - compatibility-wording-lint
+    ai_output_ids: []
+    evidence_ids: []
+    spec_gap_ids:
+      - REG-GAP-0001
+      - REG-GAP-0002
+    created_at_utc: "2026-04-27T00:00:00Z"
+    updated_at_utc: "2026-04-27T00:00:00Z"
+
+  - task_id: HOST-012
+    title: Unauthorized dataset access deny integration
+    task_type: hosted_prototype
+    status: ready
+    owner: hosted-services-agent
+    owning_subsystem: datasetd-securityd-auditd
+    description: Implement hosted integration proving BOB cannot open ALICE dataset and no dataset handle is created.
+    allowed_paths:
+      - services/securityd/
+      - services/auditd/
+      - services/catalogd/
+      - services/datasetd/
+      - tests/integration/hosted/
+      - tests/negative/dataset/
+    prohibited_paths: []
+    requirement_ids:
+      - MFOS-REQ-SYSINT-0001
+      - MFOS-REQ-AUTH-0004
+    source_matrix_ids:
+      - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+      - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+      - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+      - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+    prerequisite_task_ids: []
+    prerequisite_spec_refs:
+      - path: docs/design/specs/03-system-integrity.md
+      - path: docs/design/specs/06-authorization.md
+      - path: docs/design/specs/08-dataset-catalog.md
+    expected_outputs:
+      - hosted dataset open denial path
+      - stale/no-handle assertion
+    expected_tests:
+      - NEG-MFOS-DATASET-0001
+    expected_evidence:
+      - EV-MFOS-DATASET-0001
+    negative_test_required: true
+    fuzz_target_required: false
+    ci_required:
+      - negative-test-presence-lint
+      - audit-obligation-lint
+    ai_output_ids: []
+    evidence_ids:
+      - EV-MFOS-DATASET-0001
+    spec_gap_ids: []
+    created_at_utc: "2026-04-27T00:00:00Z"
+    updated_at_utc: "2026-04-27T00:00:00Z"
+
+  - task_id: AUD-002
+    title: Audit append ordering for deny decisions
+    task_type: service
+    status: ready
+    owner: auditd-agent
+    owning_subsystem: auditd
+    description: Implement or test required deny audit ordering before caller final result.
+    allowed_paths:
+      - services/auditd/
+      - tests/negative/audit/
+      - tests/integration/audit/
+    prohibited_paths: []
+    requirement_ids:
+      - MFOS-REQ-AUDIT-0002
+    source_matrix_ids:
+      - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+      - EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+      - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+    prerequisite_task_ids: []
+    prerequisite_spec_refs:
+      - path: docs/design/specs/07-audit.md
+    expected_outputs:
+      - deny audit ordering behavior
+    expected_tests:
+      - NEG-MFOS-AUDIT-0001
+    expected_evidence:
+      - EV-MFOS-AUDIT-0001
+    negative_test_required: true
+    fuzz_target_required: false
+    ci_required:
+      - audit-obligation-lint
+      - negative-test-presence-lint
+    ai_output_ids: []
+    evidence_ids:
+      - EV-MFOS-AUDIT-0001
+    spec_gap_ids:
+      - REG-GAP-0005
+    created_at_utc: "2026-04-27T00:00:00Z"
+    updated_at_utc: "2026-04-27T00:00:00Z"
+
+  - task_id: CI-003
+    title: No-fake-success scanner
+    task_type: ci
+    status: proposed
+    owner: ci-agent
+    owning_subsystem: ci
+    description: Design and implement scanner for fake success, empty stubs, silent fallback, and reachable placeholder success in production paths.
+    allowed_paths:
+      - ci/no-fake-success/
+      - tests/fixtures/ci/
+      - docs/design/registries/
+    prohibited_paths: []
+    requirement_ids:
+      - MFOS-REQ-AI-0005
+    source_matrix_ids:
+      - FBVBS-001
+      - NIST-218-001
+    prerequisite_task_ids:
+      - REQCAT-001
+    prerequisite_spec_refs:
+      - path: docs/design/specs/21-ai-implementation-contract.md
+      - path: docs/design/specs/28-machine-readable-registries.md
+    expected_outputs:
+      - no-fake-success scanner
+      - production path fixture tests
+    expected_tests:
+      - NEG-MFOS-CI-0001
+    expected_evidence:
+      - EV-MFOS-CI-0001
+    negative_test_required: true
+    fuzz_target_required: false
+    ci_required:
+      - no-fake-success-lint
+    ai_output_ids: []
+    evidence_ids:
+      - EV-MFOS-CI-0001
+    spec_gap_ids:
+      - REG-GAP-0010
+    created_at_utc: "2026-04-27T00:00:00Z"
+    updated_at_utc: "2026-04-27T00:00:00Z"
+
+spec_gaps:
+  - gap_id: REG-GAP-0001
+    summary: Final JSON Schema or CUE schema files are not created.
+  - gap_id: REG-GAP-0002
+    summary: Actual registry YAML paths now exist as draft seed files, but generator tooling is not implemented.
+  - gap_id: REG-GAP-0010
+    summary: Machine-readable ownership-scope enforcement is not implemented.
+registry_hash:
+  algorithm: sha384
+  value: null
+registry_signature:
+  signing_key_id: null
+  signature: null
+  signed_at_utc: null

@@ -1,0 +1,84 @@
+registry_kind: phase_0_8_domain_requirements
+domain: spool
+schema_version: 1
+status: draft
+canonical_registry: docs/design/registries/requirements.yaml
+entries:
+- id: MFOS-REQ-SPOOL-0101
+  title: SpoolEntry is a protected resource
+  status: draft
+  normative_text: SpoolEntry MUST be a protected resource. Browse, purge, hold, release,
+    and export operations MUST be authorized and audited according to policy.
+  source_refs:
+  - source_id: EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
+    role: design_background
+  - source_id: EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+    role: design_background
+  profile_applicability:
+    baseline: required
+    enterprise_standalone: required
+    enterprise_pxm: required
+    high_assurance: required
+  target_components:
+  - spoold
+  - securityd
+  - auditd
+  verification:
+    primary:
+    - spec_review
+    - negative_test_design
+    positive_tests:
+    - TEST-MFOS-SPOOL-PROTECTED-0101
+    negative_tests:
+    - NEG-MFOS-SPOOL-BROWSE-NONOWNER-0101
+  positive_tests:
+  - TEST-MFOS-SPOOL-PROTECTED-0101
+  negative_tests:
+  - NEG-MFOS-SPOOL-BROWSE-NONOWNER-0101
+  audit_obligations:
+  - SPOOL_ACCESS_DENY
+  failure_modes:
+  - MFOS_ERR_POLICY_DENIED
+  evidence_required:
+  - EV-MFOS-SPOOL-0101
+  mfos_non_compatibility:
+  - External references are design background only.
+- id: MFOS-REQ-SPOOL-0102
+  title: Spool export requires audit before export result
+  status: draft
+  normative_text: Spool export MUST require securityd authorization and an audit obligation.
+    Export MUST NOT return data to the caller until required audit evidence is recorded.
+  source_refs:
+  - source_id: EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
+    role: design_background
+  - source_id: EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+    role: design_background
+  profile_applicability:
+    baseline: required
+    enterprise_standalone: required
+    enterprise_pxm: required
+    high_assurance: required
+  target_components:
+  - spoold
+  - securityd
+  - auditd
+  verification:
+    primary:
+    - spec_review
+    - negative_test_design
+    positive_tests:
+    - TEST-MFOS-SPOOL-EXPORT-0102
+    negative_tests:
+    - NEG-MFOS-SPOOL-EXPORT-NO-AUDIT-0102
+  positive_tests:
+  - TEST-MFOS-SPOOL-EXPORT-0102
+  negative_tests:
+  - NEG-MFOS-SPOOL-EXPORT-NO-AUDIT-0102
+  audit_obligations:
+  - SPOOL_EXPORT_DENY
+  failure_modes:
+  - MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+  evidence_required:
+  - EV-MFOS-SPOOL-0102
+  mfos_non_compatibility:
+  - External references are design background only.

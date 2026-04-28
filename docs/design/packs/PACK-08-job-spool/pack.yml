@@ -1,0 +1,101 @@
+pack_id: PACK-08
+title: Job/Spool
+purpose: Freeze Phase 0.8 Job/Spool semantics as specification, requirements, state machines, tests, evidence planning, and pack contract only.
+scope:
+- Phase 0.8 design freeze
+- machine-readable semantics
+- negative-test planning
+- audit-obligation planning
+non_objectives:
+- production implementation
+- hosted daemon implementation
+- portable semantic core implementation
+- external product compatibility claims
+depends_on:
+- PACK-00
+- PACK-01
+- PACK-02
+- PACK-03
+- PACK-04
+- PACK-05
+- PACK-06
+- PACK-07
+inputs:
+- docs/design/specs/09-job-spool.md
+- docs/design/source-matrix/source-matrix.yml
+- docs/design/registries/requirements.yaml
+outputs:
+- schemas/mfos/job.schema.yml
+- schemas/mfos/job-step.schema.yml
+- schemas/mfos/dd.schema.yml
+- schemas/mfos/spool-entry.schema.yml
+- formal/tla/job-lifecycle/state-machine.yml
+- formal/tla/spool-access/state-machine.yml
+- tests/catalog/phase-0-8-job-spool-tests.yml
+- requirements/by-domain/job.yml
+- requirements/by-domain/spool.yml
+source_refs:
+- EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+- EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
+- EXTREF-IBM-ZOS-JES-JOB-FLOW-0001
+- EXTREF-IBM-ZOS-JES2-LIBRARY-0001
+- EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+- EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+- EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+- EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+requirements:
+- MFOS-REQ-JOB-0101
+- MFOS-REQ-JOB-0102
+- MFOS-REQ-JOB-0103
+- MFOS-REQ-SPOOL-0101
+- MFOS-REQ-SPOOL-0102
+object_model_refs:
+- docs/design/specs/05-object-model.md
+- schemas/mfos/job.schema.yml
+- schemas/mfos/job-step.schema.yml
+- schemas/mfos/dd.schema.yml
+- schemas/mfos/spool-entry.schema.yml
+state_machine_refs:
+- formal/tla/job-lifecycle/state-machine.yml
+- formal/tla/spool-access/state-machine.yml
+failure_modes:
+- MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+- MFOS_ERR_POLICY_DENIED
+- MFOS_ERR_SPEC_GAP
+- MFOS_ERR_UNAUTHORIZED
+- MFOS_ERR_UNSUPPORTED
+audit_obligations:
+- JOB_SUBMIT_DENY
+- JOB_DD_RESOLVE_DENY
+- JOB_AUTHZ_BYPASS_DENY
+- SPOOL_ACCESS_DENY
+- SPOOL_EXPORT_DENY
+positive_tests:
+- TEST-MFOS-JOB-PRINCIPAL-0101
+- TEST-MFOS-JOB-DD-RESOLVE-0102
+- TEST-MFOS-JOB-AUTH-ENFORCE-0103
+- TEST-MFOS-SPOOL-PROTECTED-0101
+- TEST-MFOS-SPOOL-EXPORT-0102
+negative_tests:
+- NEG-MFOS-JOB-NO-PRINCIPAL-0101
+- NEG-MFOS-JOB-DD-BYPASS-0102
+- NEG-MFOS-JOB-AUTH-BYPASS-0103
+- NEG-MFOS-SPOOL-BROWSE-NONOWNER-0101
+- NEG-MFOS-SPOOL-EXPORT-NO-AUDIT-0102
+fuzz_targets:
+- FUZZ-MFOS-JOB-CONTROL-STREAM-0001
+- FUZZ-MFOS-JOB-FIXTURE-0001
+- FUZZ-MFOS-SPOOL-FIXTURE-0001
+spec_gaps:
+- Executable specs and implementation are deferred to Phase 0.9 or later.
+- Release evidence is draft-only and must not be treated as verified proof.
+implementation_allowed:
+  hosted_semantic_prototype: false
+  production: false
+  hardware_enforcement_claim: false
+  system_integrity_claim: none
+  hosted_daemon: false
+  portable_semantic_core: false
+  executable_spec: false
+  specification_only: true
+prompt: docs/design/prompts/ai-prompts.md

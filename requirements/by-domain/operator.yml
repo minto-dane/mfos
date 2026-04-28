@@ -1,0 +1,165 @@
+registry_kind: phase_0_8_domain_requirements
+domain: operator
+schema_version: 1
+status: draft
+canonical_registry: docs/design/registries/requirements.yaml
+entries:
+- id: MFOS-REQ-OPER-0101
+  title: Operator command execution requires command identity, target, authorization,
+    and audit resolution
+  status: draft
+  normative_text: No operator command MUST execute without command_id, subject, target
+    resolution, SecurityDecision, and audit obligation resolution.
+  source_refs:
+  - source_id: EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+    role: design_background
+  - source_id: EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+    role: design_background
+  - source_id: EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+    role: design_background
+  profile_applicability:
+    baseline: required
+    enterprise_standalone: required
+    enterprise_pxm: required
+    high_assurance: required
+  target_components:
+  - operatord
+  - securityd
+  - auditd
+  verification:
+    primary:
+    - spec_review
+    - negative_test_design
+    positive_tests:
+    - TEST-MFOS-OPER-COMMAND-0101
+    negative_tests:
+    - NEG-MFOS-OPER-COMMAND-NO-AUTH-0101
+  positive_tests:
+  - TEST-MFOS-OPER-COMMAND-0101
+  negative_tests:
+  - NEG-MFOS-OPER-COMMAND-NO-AUTH-0101
+  audit_obligations:
+  - OPERATOR_COMMAND_DENY
+  failure_modes:
+  - MFOS_ERR_UNAUTHORIZED
+  evidence_required:
+  - EV-MFOS-OPER-0101
+  mfos_non_compatibility:
+  - External references are design background only.
+- id: MFOS-REQ-OPER-0102
+  title: Operator console is not a root shell
+  status: draft
+  normative_text: The operator console MUST be a governed command interface and MUST
+    NOT expose a first privileged root shell or arbitrary privileged command execution
+    surface.
+  source_refs:
+  - source_id: EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+    role: design_background
+  profile_applicability:
+    baseline: required
+    enterprise_standalone: required
+    enterprise_pxm: required
+    high_assurance: required
+  target_components:
+  - operatord
+  verification:
+    primary:
+    - spec_review
+    - negative_test_design
+    positive_tests:
+    - TEST-MFOS-OPER-GOVERNED-0102
+    negative_tests:
+    - NEG-MFOS-OPER-ROOT-SHELL-0102
+  positive_tests:
+  - TEST-MFOS-OPER-GOVERNED-0102
+  negative_tests:
+  - NEG-MFOS-OPER-ROOT-SHELL-0102
+  audit_obligations:
+  - OPERATOR_INTERFACE_DENY
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  evidence_required:
+  - EV-MFOS-OPER-0102
+  mfos_non_compatibility:
+  - External references are design background only.
+- id: MFOS-REQ-OPER-0103
+  title: Destructive commands require confirmation or dual control as specified
+  status: draft
+  normative_text: Destructive operator commands MUST require confirmation or dual
+    control according to command registry policy, and MUST fail closed when required
+    approval is missing, stale, or mismatched.
+  source_refs:
+  - source_id: EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+    role: design_background
+  - source_id: EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+    role: design_background
+  profile_applicability:
+    baseline: required
+    enterprise_standalone: required
+    enterprise_pxm: required
+    high_assurance: required
+  target_components:
+  - operatord
+  - securityd
+  - auditd
+  verification:
+    primary:
+    - spec_review
+    - negative_test_design
+    positive_tests:
+    - TEST-MFOS-OPER-CONFIRM-0103
+    negative_tests:
+    - NEG-MFOS-OPER-DESTRUCTIVE-NO-CONFIRM-0103
+  positive_tests:
+  - TEST-MFOS-OPER-CONFIRM-0103
+  negative_tests:
+  - NEG-MFOS-OPER-DESTRUCTIVE-NO-CONFIRM-0103
+  audit_obligations:
+  - OPERATOR_CONFIRMATION_DENY
+  failure_modes:
+  - MFOS_ERR_OPERATOR_CONFIRMATION_REQUIRED
+  evidence_required:
+  - EV-MFOS-OPER-0103
+  mfos_non_compatibility:
+  - External references are design background only.
+- id: MFOS-REQ-OPER-0104
+  title: Automation hooks cannot bypass command authorization or audit
+  status: draft
+  normative_text: Operator automation hooks MUST submit typed OperatorCommand requests
+    through the same target resolution, securityd authorization, confirmation, and
+    audit obligation path as interactive operator commands.
+  source_refs:
+  - source_id: EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+    role: design_background
+  - source_id: EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+    role: design_background
+  profile_applicability:
+    baseline: required
+    enterprise_standalone: required
+    enterprise_pxm: required
+    high_assurance: required
+  target_components:
+  - operatord
+  - automation-hooks
+  - securityd
+  - auditd
+  verification:
+    primary:
+    - spec_review
+    - negative_test_design
+    positive_tests:
+    - TEST-MFOS-OPER-AUTOMATION-0104
+    negative_tests:
+    - NEG-MFOS-OPER-AUTOMATION-BYPASS-0104
+  positive_tests:
+  - TEST-MFOS-OPER-AUTOMATION-0104
+  negative_tests:
+  - NEG-MFOS-OPER-AUTOMATION-BYPASS-0104
+  audit_obligations:
+  - OPERATOR_AUTOMATION_DENY
+  failure_modes:
+  - MFOS_ERR_UNAUTHORIZED
+  evidence_required:
+  - EV-MFOS-OPER-0104
+  mfos_non_compatibility:
+  - External references are design background only.

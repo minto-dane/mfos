@@ -1,0 +1,124 @@
+registry_kind: phase_0_8_domain_requirements
+domain: job
+schema_version: 1
+status: draft
+canonical_registry: docs/design/registries/requirements.yaml
+entries:
+- id: MFOS-REQ-JOB-0101
+  title: Job effective principal is established before protected opens
+  status: draft
+  normative_text: jobd MUST establish job identity and effective principal before
+    any dataset, program, spool, or protected resource is opened for a job or step.
+  source_refs:
+  - source_id: EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
+    role: design_background
+  - source_id: EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+    role: design_background
+  profile_applicability:
+    baseline: required
+    enterprise_standalone: required
+    enterprise_pxm: required
+    high_assurance: required
+  target_components:
+  - jobd
+  - securityd
+  verification:
+    primary:
+    - spec_review
+    - negative_test_design
+    positive_tests:
+    - TEST-MFOS-JOB-PRINCIPAL-0101
+    negative_tests:
+    - NEG-MFOS-JOB-NO-PRINCIPAL-0101
+  positive_tests:
+  - TEST-MFOS-JOB-PRINCIPAL-0101
+  negative_tests:
+  - NEG-MFOS-JOB-NO-PRINCIPAL-0101
+  audit_obligations:
+  - JOB_SUBMIT_DENY
+  failure_modes:
+  - MFOS_ERR_UNAUTHORIZED
+  evidence_required:
+  - EV-MFOS-JOB-0101
+  mfos_non_compatibility:
+  - External references are design background only.
+- id: MFOS-REQ-JOB-0102
+  title: DD resolution goes through catalogd and securityd
+  status: draft
+  normative_text: DD resolution for dataset inputs and outputs MUST go through catalogd
+    resolution and securityd authorization before jobd receives a usable handle.
+  source_refs:
+  - source_id: EXTREF-IBM-ZOS-JES-JOB-FLOW-0001
+    role: design_background
+  - source_id: EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+    role: design_background
+  - source_id: EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+    role: design_background
+  profile_applicability:
+    baseline: required
+    enterprise_standalone: required
+    enterprise_pxm: required
+    high_assurance: required
+  target_components:
+  - jobd
+  - catalogd
+  - datasetd
+  - securityd
+  verification:
+    primary:
+    - spec_review
+    - negative_test_design
+    positive_tests:
+    - TEST-MFOS-JOB-DD-RESOLVE-0102
+    negative_tests:
+    - NEG-MFOS-JOB-DD-BYPASS-0102
+  positive_tests:
+  - TEST-MFOS-JOB-DD-RESOLVE-0102
+  negative_tests:
+  - NEG-MFOS-JOB-DD-BYPASS-0102
+  audit_obligations:
+  - JOB_DD_RESOLVE_DENY
+  failure_modes:
+  - MFOS_ERR_POLICY_DENIED
+  evidence_required:
+  - EV-MFOS-JOB-0102
+  mfos_non_compatibility:
+  - External references are design background only.
+- id: MFOS-REQ-JOB-0103
+  title: jobd does not issue final authorization decisions
+  status: draft
+  normative_text: jobd MUST NOT issue final authorization decisions independently
+    of securityd. jobd may request decisions and enforce returned obligations only.
+  source_refs:
+  - source_id: EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
+    role: design_background
+  - source_id: EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+    role: design_background
+  profile_applicability:
+    baseline: required
+    enterprise_standalone: required
+    enterprise_pxm: required
+    high_assurance: required
+  target_components:
+  - jobd
+  - securityd
+  verification:
+    primary:
+    - spec_review
+    - negative_test_design
+    positive_tests:
+    - TEST-MFOS-JOB-AUTH-ENFORCE-0103
+    negative_tests:
+    - NEG-MFOS-JOB-AUTH-BYPASS-0103
+  positive_tests:
+  - TEST-MFOS-JOB-AUTH-ENFORCE-0103
+  negative_tests:
+  - NEG-MFOS-JOB-AUTH-BYPASS-0103
+  audit_obligations:
+  - JOB_AUTHZ_BYPASS_DENY
+  failure_modes:
+  - MFOS_ERR_UNAUTHORIZED
+  evidence_required:
+  - EV-MFOS-JOB-0103
+  mfos_non_compatibility:
+  - External references are design background only.

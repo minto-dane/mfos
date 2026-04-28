@@ -1,0 +1,1593 @@
+registry_kind: pack_contracts
+schema_version: 1
+status: draft
+updated_at_utc: '2026-04-27T00:00:00Z'
+defaults:
+  scope:
+  - design and validation
+  non_objectives:
+  - production implementation
+  - compatibility claims
+  object_model_refs: []
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  audit_obligations: []
+  positive_tests: []
+  negative_tests: []
+  fuzz_targets: []
+  spec_gaps:
+  - Phase 0.6 pack contract requires later deepening before implementation.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+  prompt: docs/design/prompts/ai-prompts.md
+entries:
+- scope:
+  - design and validation
+  non_objectives:
+  - production implementation
+  - compatibility claims
+  object_model_refs: []
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  audit_obligations: []
+  positive_tests: []
+  negative_tests: []
+  fuzz_targets: []
+  spec_gaps:
+  - Phase 0.6 pack contract requires later deepening before implementation.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-00
+  title: Normative Language and Profiles
+  purpose: Maintain normative language, profile, and no-fake-success rules.
+  depends_on: []
+  inputs:
+  - docs/design/specs/00-normative-language.md
+  outputs:
+  - reports/pack-audit.md
+  source_refs:
+  - FBVBS-001
+  - NIST-160-001
+  requirements:
+  - MFOS-REQ-PROFILE-0001
+  - MFOS-REQ-NUCLEUS-0008
+- scope:
+  - design and validation
+  non_objectives:
+  - production implementation
+  - compatibility claims
+  object_model_refs: []
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  audit_obligations: []
+  positive_tests: []
+  negative_tests: []
+  fuzz_targets: []
+  spec_gaps:
+  - Phase 0.6 pack contract requires later deepening before implementation.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-01
+  title: Source Matrix and External Reference Mapping
+  purpose: Maintain source-card, external-reference, and concept-mapping rules without product-compatibility claims.
+  depends_on:
+  - PACK-00
+  inputs:
+  - docs/design/source-matrix/source-matrix.yml
+  - docs/design/source-matrix/cards
+  outputs:
+  - docs/design/source-matrix/cards
+  source_refs:
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - FBVBS-001
+  requirements:
+  - MFOS-REQ-SOURCE-*
+- scope:
+  - design and validation
+  non_objectives:
+  - production implementation
+  - compatibility claims
+  object_model_refs: []
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  audit_obligations: []
+  positive_tests: []
+  negative_tests: []
+  fuzz_targets: []
+  spec_gaps:
+  - Phase 0.6 pack contract requires later deepening before implementation.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-02
+  title: Glossary
+  purpose: Maintain controlled vocabulary and prohibited wording.
+  depends_on:
+  - PACK-00
+  - PACK-01
+  inputs:
+  - docs/design/specs/01-glossary.md
+  outputs:
+  - reports/pack-audit.md
+  source_refs:
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  requirements:
+  - MFOS-REQ-SOURCE-*
+- scope:
+  - design and validation
+  non_objectives:
+  - production implementation
+  - compatibility claims
+  object_model_refs: []
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  audit_obligations: []
+  positive_tests: []
+  negative_tests:
+  - NEG-MFOS-SYSINT-SVC-BYPASS-0001
+  fuzz_targets: []
+  spec_gaps:
+  - Phase 0.6 pack contract requires later deepening before implementation.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-03
+  title: System Integrity
+  purpose: Govern unauthorized bypass prevention and system interfaces.
+  depends_on:
+  - PACK-00
+  - PACK-01
+  - PACK-02
+  inputs:
+  - docs/design/specs/03-system-integrity.md
+  outputs:
+  - formal/tla/authorization
+  - tests/negative
+  source_refs:
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
+  - EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001
+  requirements:
+  - MFOS-REQ-SYSINT-*
+- scope:
+  - design and validation
+  non_objectives:
+  - production implementation
+  - compatibility claims
+  object_model_refs: []
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  audit_obligations: []
+  positive_tests: []
+  negative_tests: []
+  fuzz_targets: []
+  spec_gaps:
+  - Phase 0.6 pack contract requires later deepening before implementation.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-04
+  title: Object Model
+  purpose: Maintain shared first-class object definitions.
+  depends_on:
+  - PACK-00
+  - PACK-01
+  - PACK-02
+  - PACK-03
+  inputs:
+  - docs/design/specs/05-object-model.md
+  outputs:
+  - schemas/mfos
+  source_refs:
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  - EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
+  - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+  requirements:
+  - MFOS-REQ-OBJ-*
+- scope:
+  - Phase 0.8 design freeze
+  - machine-readable semantics
+  - negative-test planning
+  - audit-obligation planning
+  non_objectives:
+  - production implementation
+  - hosted daemon implementation
+  - portable semantic core implementation
+  - external product compatibility claims
+  object_model_refs:
+  - docs/design/specs/05-object-model.md
+  - schemas/mfos/security-decision.schema.yml
+  - schemas/mfos/policy-binding.schema.yml
+  state_machine_refs:
+  - formal/tla/authorization/state-machine.yml
+  failure_modes:
+  - MFOS_ERR_POLICY_DENIED
+  - MFOS_ERR_POLICY_VERSION_MISMATCH
+  - MFOS_ERR_SPEC_GAP
+  - MFOS_ERR_UNAUTHORIZED
+  - MFOS_ERR_UNSUPPORTED
+  audit_obligations:
+  - AUTHZ_DECISION
+  - AUTHZ_HANDLE_BINDING_DENY
+  - AUTHZ_POLICY_BINDING_DENY
+  - AUTHZ_BREAK_GLASS
+  - AUTHZ_POLICY_LINT
+  positive_tests:
+  - TEST-MFOS-AUTH-SECURITY-DECISION-0101
+  - TEST-MFOS-AUTH-HANDLE-BINDING-0102
+  - TEST-MFOS-AUTH-POLICY-BINDING-0103
+  - TEST-MFOS-AUTH-EMERGENCY-0104
+  - TEST-MFOS-AUTH-POLICY-LINT-0105
+  negative_tests:
+  - NEG-MFOS-AUTH-BYPASS-0101
+  - NEG-MFOS-AUTH-HANDLE-WITHOUT-ALLOW-0102
+  - NEG-MFOS-AUTH-POLICY-VERSION-MISMATCH-0103
+  - NEG-MFOS-AUTH-EMERGENCY-NO-EXPIRY-0104
+  - NEG-MFOS-AUTH-POLICY-LINT-MISSING-0105
+  fuzz_targets:
+  - FUZZ-MFOS-POLICY-LANGUAGE-0001
+  spec_gaps:
+  - Executable specs and implementation are deferred to Phase 0.9 or later.
+  - Release evidence is draft-only and must not be treated as verified proof.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+    hosted_daemon: false
+    portable_semantic_core: false
+    executable_spec: false
+    specification_only: true
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-05
+  title: Authorization Model
+  purpose: Freeze Phase 0.8 Authorization Model semantics as specification, requirements, state machines, tests, evidence planning, and pack contract only.
+  depends_on:
+  - PACK-00
+  - PACK-01
+  - PACK-02
+  - PACK-03
+  - PACK-04
+  inputs:
+  - docs/design/specs/06-authorization.md
+  - docs/design/source-matrix/source-matrix.yml
+  - docs/design/registries/requirements.yaml
+  outputs:
+  - schemas/mfos/security-decision.schema.yml
+  - schemas/mfos/policy-binding.schema.yml
+  - formal/tla/authorization/state-machine.yml
+  - tests/catalog/phase-0-8-authorization-tests.yml
+  - requirements/by-domain/auth.yml
+  source_refs:
+  - EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001
+  - EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
+  - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  - EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
+  - EXTREF-IBM-Z-LPAR-INTRODUCTION-0001
+  - EXTREF-IBM-Z-DPM-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+  - EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+  requirements:
+  - MFOS-REQ-AUTH-0101
+  - MFOS-REQ-AUTH-0102
+  - MFOS-REQ-AUTH-0103
+  - MFOS-REQ-AUTH-0104
+  - MFOS-REQ-AUTH-0105
+- scope:
+  - Phase 0.8 design freeze
+  - machine-readable semantics
+  - negative-test planning
+  - audit-obligation planning
+  non_objectives:
+  - production implementation
+  - hosted daemon implementation
+  - portable semantic core implementation
+  - external product compatibility claims
+  object_model_refs:
+  - docs/design/specs/05-object-model.md
+  - schemas/mfos/audit-record.schema.yml
+  state_machine_refs:
+  - formal/tla/audit-append/state-machine.yml
+  failure_modes:
+  - MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+  - MFOS_ERR_INTERNAL_CORRUPTION
+  - MFOS_ERR_SPEC_GAP
+  - MFOS_ERR_UNAUTHORIZED
+  - MFOS_ERR_UNSUPPORTED
+  audit_obligations:
+  - AUDIT_RECORD_APPEND
+  - AUDIT_DENY_BEFORE_RETURN
+  - AUDIT_CHAIN_VERIFY
+  - AUDIT_SUBSTITUTE_DENY
+  - AUDIT_QUERY
+  positive_tests:
+  - TEST-MFOS-AUDIT-RECORD-SCHEMA-0101
+  - TEST-MFOS-AUDIT-DENY-BEFORE-RETURN-0102
+  - TEST-MFOS-AUDIT-HASH-CHAIN-0103
+  - TEST-MFOS-AUDIT-RECORD-ONLY-0104
+  - TEST-MFOS-AUDIT-QUERY-0105
+  negative_tests:
+  - NEG-MFOS-AUDIT-MISSING-CORRELATION-0101
+  - NEG-MFOS-AUDIT-DENY-NO-RECORD-0102
+  - NEG-MFOS-AUDIT-TAMPERED-HASH-0103
+  - NEG-MFOS-AUDIT-SPOOL-AS-EVIDENCE-0104
+  - NEG-MFOS-AUDIT-UNAUTHORIZED-QUERY-0105
+  fuzz_targets:
+  - FUZZ-MFOS-AUDIT-RECORD-0001
+  spec_gaps:
+  - Executable specs and implementation are deferred to Phase 0.9 or later.
+  - Release evidence is draft-only and must not be treated as verified proof.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+    hosted_daemon: false
+    portable_semantic_core: false
+    executable_spec: false
+    specification_only: true
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-06
+  title: Audit Schema
+  purpose: Freeze Phase 0.8 Audit Schema semantics as specification, requirements, state machines, tests, evidence planning, and pack contract only.
+  depends_on:
+  - PACK-00
+  - PACK-01
+  - PACK-02
+  - PACK-03
+  - PACK-04
+  - PACK-05
+  inputs:
+  - docs/design/specs/07-audit.md
+  - docs/design/source-matrix/source-matrix.yml
+  - docs/design/registries/requirements.yaml
+  outputs:
+  - schemas/mfos/audit-record.schema.yml
+  - formal/tla/audit-append/state-machine.yml
+  - tests/catalog/phase-0-8-audit-tests.yml
+  - requirements/by-domain/audit.yml
+  source_refs:
+  - EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
+  - EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001
+  - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  - EXTREF-IBM-ZOS-DFSMS-LIBRARY-0001
+  - EXTREF-IBM-Z-DPM-0001
+  - EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
+  - EXTREF-IBM-ZOS-JES-JOB-FLOW-0001
+  - EXTREF-IBM-ZOS-JES2-LIBRARY-0001
+  - EXTREF-IBM-Z-LPAR-INTRODUCTION-0001
+  - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+  - EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+  - EXTREF-IBM-ZOS-SMPE-SECINT-HOLDDATA-0001
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  requirements:
+  - MFOS-REQ-AUDIT-0101
+  - MFOS-REQ-AUDIT-0102
+  - MFOS-REQ-AUDIT-0103
+  - MFOS-REQ-AUDIT-0104
+  - MFOS-REQ-AUDIT-0105
+- scope:
+  - Phase 0.8 design freeze
+  - machine-readable semantics
+  - negative-test planning
+  - audit-obligation planning
+  non_objectives:
+  - production implementation
+  - hosted daemon implementation
+  - portable semantic core implementation
+  - external product compatibility claims
+  object_model_refs:
+  - docs/design/specs/05-object-model.md
+  - schemas/mfos/dataset.schema.yml
+  - schemas/mfos/catalog-entry.schema.yml
+  - schemas/mfos/dataset-handle.schema.yml
+  - schemas/mfos/object-generation-binding.schema.yml
+  state_machine_refs:
+  - formal/tla/dataset-open/state-machine.yml
+  - formal/tla/catalog-transaction/state-machine.yml
+  failure_modes:
+  - MFOS_ERR_CATALOG_NOT_FOUND
+  - MFOS_ERR_INTERNAL_CORRUPTION
+  - MFOS_ERR_POLICY_DENIED
+  - MFOS_ERR_SPEC_GAP
+  - MFOS_ERR_STALE_HANDLE
+  - MFOS_ERR_UNSUPPORTED
+  audit_obligations:
+  - CATALOG_RESOLVE_DENY
+  - CATALOG_RECOVERY_INCONSISTENCY
+  - DATASET_HANDLE_DENY
+  - DATASET_MODEL_CONFUSION_DENY
+  - DATASET_RETENTION_DENY
+  positive_tests:
+  - TEST-MFOS-CATALOG-COMMITTED-0101
+  - TEST-MFOS-CATALOG-RECOVERY-0102
+  - TEST-MFOS-DATASET-HANDLE-BINDING-0101
+  - TEST-MFOS-DATASET-MANAGED-0102
+  - TEST-MFOS-DATASET-RETENTION-0103
+  negative_tests:
+  - NEG-MFOS-CATALOG-UNCOMMITTED-0101
+  - NEG-MFOS-CATALOG-CRASH-MID-COMMIT-0102
+  - NEG-MFOS-DATASET-STALE-HANDLE-0101
+  - NEG-MFOS-DATASET-POSIX-CONFUSION-0102
+  - NEG-MFOS-DATASET-DELETE-BEFORE-RETENTION-0103
+  fuzz_targets:
+  - FUZZ-MFOS-DSN-0001
+  - FUZZ-MFOS-DATASET-HANDLE-0001
+  spec_gaps:
+  - Executable specs and implementation are deferred to Phase 0.9 or later.
+  - Release evidence is draft-only and must not be treated as verified proof.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+    hosted_daemon: false
+    portable_semantic_core: false
+    executable_spec: false
+    specification_only: true
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-07
+  title: Dataset/Catalog
+  purpose: Freeze Phase 0.8 Dataset/Catalog semantics as specification, requirements, state machines, tests, evidence planning, and pack contract only.
+  depends_on:
+  - PACK-00
+  - PACK-01
+  - PACK-02
+  - PACK-03
+  - PACK-04
+  - PACK-05
+  - PACK-06
+  inputs:
+  - docs/design/specs/08-dataset-catalog.md
+  - docs/design/source-matrix/source-matrix.yml
+  - docs/design/registries/requirements.yaml
+  outputs:
+  - schemas/mfos/dataset.schema.yml
+  - schemas/mfos/catalog-entry.schema.yml
+  - schemas/mfos/dataset-handle.schema.yml
+  - schemas/mfos/object-generation-binding.schema.yml
+  - formal/tla/dataset-open/state-machine.yml
+  - formal/tla/catalog-transaction/state-machine.yml
+  - tests/catalog/phase-0-8-dataset-catalog-tests.yml
+  - requirements/by-domain/catalog.yml
+  - requirements/by-domain/dataset.yml
+  source_refs:
+  - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  - EXTREF-IBM-ZOS-DFSMS-LIBRARY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+  - EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+  requirements:
+  - MFOS-REQ-CATALOG-0101
+  - MFOS-REQ-CATALOG-0102
+  - MFOS-REQ-DATASET-0101
+  - MFOS-REQ-DATASET-0102
+  - MFOS-REQ-DATASET-0103
+- scope:
+  - Phase 0.8 design freeze
+  - machine-readable semantics
+  - negative-test planning
+  - audit-obligation planning
+  non_objectives:
+  - production implementation
+  - hosted daemon implementation
+  - portable semantic core implementation
+  - external product compatibility claims
+  object_model_refs:
+  - docs/design/specs/05-object-model.md
+  - schemas/mfos/job.schema.yml
+  - schemas/mfos/job-step.schema.yml
+  - schemas/mfos/dd.schema.yml
+  - schemas/mfos/spool-entry.schema.yml
+  state_machine_refs:
+  - formal/tla/job-lifecycle/state-machine.yml
+  - formal/tla/spool-access/state-machine.yml
+  failure_modes:
+  - MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+  - MFOS_ERR_POLICY_DENIED
+  - MFOS_ERR_SPEC_GAP
+  - MFOS_ERR_UNAUTHORIZED
+  - MFOS_ERR_UNSUPPORTED
+  audit_obligations:
+  - JOB_SUBMIT_DENY
+  - JOB_DD_RESOLVE_DENY
+  - JOB_AUTHZ_BYPASS_DENY
+  - SPOOL_ACCESS_DENY
+  - SPOOL_EXPORT_DENY
+  positive_tests:
+  - TEST-MFOS-JOB-PRINCIPAL-0101
+  - TEST-MFOS-JOB-DD-RESOLVE-0102
+  - TEST-MFOS-JOB-AUTH-ENFORCE-0103
+  - TEST-MFOS-SPOOL-PROTECTED-0101
+  - TEST-MFOS-SPOOL-EXPORT-0102
+  negative_tests:
+  - NEG-MFOS-JOB-NO-PRINCIPAL-0101
+  - NEG-MFOS-JOB-DD-BYPASS-0102
+  - NEG-MFOS-JOB-AUTH-BYPASS-0103
+  - NEG-MFOS-SPOOL-BROWSE-NONOWNER-0101
+  - NEG-MFOS-SPOOL-EXPORT-NO-AUDIT-0102
+  fuzz_targets:
+  - FUZZ-MFOS-JCL-LITE-0001
+  - FUZZ-MFOS-JOB-FIXTURE-0001
+  - FUZZ-MFOS-SPOOL-FIXTURE-0001
+  spec_gaps:
+  - Executable specs and implementation are deferred to Phase 0.9 or later.
+  - Release evidence is draft-only and must not be treated as verified proof.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+    hosted_daemon: false
+    portable_semantic_core: false
+    executable_spec: false
+    specification_only: true
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-08
+  title: Job/Spool
+  purpose: Freeze Phase 0.8 Job/Spool semantics as specification, requirements, state machines, tests, evidence planning, and pack contract only.
+  depends_on:
+  - PACK-00
+  - PACK-01
+  - PACK-02
+  - PACK-03
+  - PACK-04
+  - PACK-05
+  - PACK-06
+  - PACK-07
+  inputs:
+  - docs/design/specs/09-job-spool.md
+  - docs/design/source-matrix/source-matrix.yml
+  - docs/design/registries/requirements.yaml
+  outputs:
+  - schemas/mfos/job.schema.yml
+  - schemas/mfos/job-step.schema.yml
+  - schemas/mfos/dd.schema.yml
+  - schemas/mfos/spool-entry.schema.yml
+  - formal/tla/job-lifecycle/state-machine.yml
+  - formal/tla/spool-access/state-machine.yml
+  - tests/catalog/phase-0-8-job-spool-tests.yml
+  - requirements/by-domain/job.yml
+  - requirements/by-domain/spool.yml
+  source_refs:
+  - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  - EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
+  - EXTREF-IBM-ZOS-JES-JOB-FLOW-0001
+  - EXTREF-IBM-ZOS-JES2-LIBRARY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+  - EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+  requirements:
+  - MFOS-REQ-JOB-0101
+  - MFOS-REQ-JOB-0102
+  - MFOS-REQ-JOB-0103
+  - MFOS-REQ-SPOOL-0101
+  - MFOS-REQ-SPOOL-0102
+- scope:
+  - Phase 0.8 design freeze
+  - machine-readable semantics
+  - negative-test planning
+  - audit-obligation planning
+  non_objectives:
+  - production implementation
+  - hosted daemon implementation
+  - portable semantic core implementation
+  - external product compatibility claims
+  object_model_refs:
+  - docs/design/specs/05-object-model.md
+  - schemas/mfos/operator-command.schema.yml
+  state_machine_refs:
+  - formal/tla/operator-command/state-machine.yml
+  failure_modes:
+  - MFOS_ERR_OPERATOR_CONFIRMATION_REQUIRED
+  - MFOS_ERR_SPEC_GAP
+  - MFOS_ERR_UNAUTHORIZED
+  - MFOS_ERR_UNSUPPORTED
+  audit_obligations:
+  - OPERATOR_COMMAND_DENY
+  - OPERATOR_INTERFACE_DENY
+  - OPERATOR_CONFIRMATION_DENY
+  - OPERATOR_AUTOMATION_DENY
+  positive_tests:
+  - TEST-MFOS-OPER-COMMAND-0101
+  - TEST-MFOS-OPER-GOVERNED-0102
+  - TEST-MFOS-OPER-CONFIRM-0103
+  - TEST-MFOS-OPER-AUTOMATION-0104
+  negative_tests:
+  - NEG-MFOS-OPER-COMMAND-NO-AUTH-0101
+  - NEG-MFOS-OPER-ROOT-SHELL-0102
+  - NEG-MFOS-OPER-DESTRUCTIVE-NO-CONFIRM-0103
+  - NEG-MFOS-OPER-AUTOMATION-BYPASS-0104
+  fuzz_targets:
+  - FUZZ-MFOS-OPER-COMMAND-0001
+  spec_gaps:
+  - Executable specs and implementation are deferred to Phase 0.9 or later.
+  - Release evidence is draft-only and must not be treated as verified proof.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+    hosted_daemon: false
+    portable_semantic_core: false
+    executable_spec: false
+    specification_only: true
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-09
+  title: Operator Console
+  purpose: Freeze Phase 0.8 Operator Console semantics as specification, requirements, state machines, tests, evidence planning, and pack contract only.
+  depends_on:
+  - PACK-00
+  - PACK-01
+  - PACK-02
+  - PACK-03
+  - PACK-04
+  - PACK-05
+  - PACK-06
+  inputs:
+  - docs/design/specs/10-operator-console.md
+  - docs/design/source-matrix/source-matrix.yml
+  - docs/design/registries/requirements.yaml
+  outputs:
+  - schemas/mfos/operator-command.schema.yml
+  - formal/tla/operator-command/state-machine.yml
+  - tests/catalog/phase-0-8-operator-console-tests.yml
+  - requirements/by-domain/operator.yml
+  source_refs:
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+  - EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+  - EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
+  - EXTREF-IBM-ZOS-JES2-LIBRARY-0001
+  - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  - EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001
+  requirements:
+  - MFOS-REQ-OPER-0101
+  - MFOS-REQ-OPER-0102
+  - MFOS-REQ-OPER-0103
+  - MFOS-REQ-OPER-0104
+- scope:
+  - design and validation
+  non_objectives:
+  - production implementation
+  - compatibility claims
+  object_model_refs: []
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  audit_obligations: []
+  positive_tests: []
+  negative_tests: []
+  fuzz_targets: []
+  spec_gaps:
+  - Phase 0.6 pack contract requires later deepening before implementation.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-10
+  title: Workload Policy
+  purpose: Govern external-workload-management-informed workload classes and goals.
+  depends_on:
+  - PACK-00
+  - PACK-01
+  - PACK-02
+  - PACK-03
+  - PACK-04
+  - PACK-05
+  - PACK-06
+  - PACK-08
+  inputs:
+  - docs/design/specs/11-workload-policy.md
+  outputs:
+  - implementation/prototypes/hosted-semantic/services/workpolicyd
+  source_refs:
+  - EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001
+  requirements:
+  - MFOS-REQ-WPOL-*
+- scope:
+  - design and validation
+  non_objectives:
+  - production implementation
+  - compatibility claims
+  object_model_refs: []
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  audit_obligations: []
+  positive_tests: []
+  negative_tests:
+  - NEG-MFOS-AMF-LOAD-DISABLED-0021
+  fuzz_targets: []
+  spec_gaps:
+  - Phase 0.6 pack contract requires later deepening before implementation.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-11
+  title: AMF
+  purpose: Specify AMF while keeping early production load disabled.
+  depends_on:
+  - PACK-00
+  - PACK-01
+  - PACK-02
+  - PACK-03
+  - PACK-04
+  - PACK-05
+  - PACK-06
+  - PACK-12
+  - PACK-13
+  - PACK-15
+  inputs:
+  - docs/design/specs/12-amf.md
+  outputs:
+  - reports/pack-audit.md
+  source_refs:
+  - EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001
+  - EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  requirements:
+  - MFOS-REQ-AMF-0021
+- scope:
+  - design and validation
+  non_objectives:
+  - production implementation
+  - compatibility claims
+  object_model_refs: []
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  audit_obligations: []
+  positive_tests: []
+  negative_tests:
+  - NEG-MFOS-UPDATE-ROLLBACK-0004
+  - NEG-MFOS-UPDATE-FREEZE-0005
+  - NEG-MFOS-UPDATE-MIXMATCH-0006
+  fuzz_targets: []
+  spec_gaps:
+  - Phase 0.6 pack contract requires later deepening before implementation.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-12
+  title: Update Verification
+  purpose: Govern update verification and anti-rollback semantics.
+  depends_on:
+  - PACK-00
+  - PACK-01
+  - PACK-02
+  - PACK-03
+  - PACK-04
+  - PACK-05
+  - PACK-06
+  inputs:
+  - docs/design/specs/13-update.md
+  outputs:
+  - implementation/prototypes/hosted-semantic/services/uvsd
+  source_refs:
+  - TUF-001
+  - SLSA-001
+  - NIST-218-001
+  - EXTREF-IBM-ZOS-SMPE-SECINT-HOLDDATA-0001
+  requirements:
+  - MFOS-REQ-UPDATE-0004
+  - MFOS-REQ-UPDATE-0005
+  - MFOS-REQ-UPDATE-0006
+- scope:
+  - design and validation
+  non_objectives:
+  - production implementation
+  - compatibility claims
+  object_model_refs: []
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  audit_obligations: []
+  positive_tests: []
+  negative_tests: []
+  fuzz_targets: []
+  spec_gaps:
+  - Phase 0.6 pack contract requires later deepening before implementation.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-13
+  title: Nucleus and SVC/PCALL
+  purpose: Govern nucleus and service call ABI design only.
+  depends_on:
+  - PACK-00
+  - PACK-01
+  - PACK-02
+  - PACK-03
+  - PACK-04
+  - PACK-06
+  inputs:
+  - docs/design/specs/14-nucleus.md
+  - docs/design/specs/15-svc-pcall.md
+  outputs:
+  - implementation/nucleus
+  - implementation/runtime/abi
+  source_refs:
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
+  - EXTREF-IBM-ZOS-CROSS-MEMORY-SYNCHRONOUS-0001
+  - X64-INTEL-001
+  - X64-AMD-001
+  requirements:
+  - MFOS-REQ-NUCLEUS-0008
+  - MFOS-REQ-SVC-*
+  - MFOS-REQ-PCALL-*
+- scope:
+  - design and validation
+  non_objectives:
+  - production implementation
+  - compatibility claims
+  object_model_refs: []
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  audit_obligations: []
+  positive_tests: []
+  negative_tests:
+  - NEG-MFOS-PARTITION-DEVICE-TEARDOWN-0006
+  fuzz_targets: []
+  spec_gaps:
+  - Phase 0.6 pack contract requires later deepening before implementation.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-14
+  title: PXM
+  purpose: Govern partition isolation without MFOS enterprise semantics.
+  depends_on:
+  - PACK-00
+  - PACK-01
+  - PACK-02
+  - PACK-03
+  - PACK-04
+  - PACK-13
+  inputs:
+  - docs/design/specs/16-pxm.md
+  outputs:
+  - implementation/pxm
+  source_refs:
+  - EXTREF-IBM-Z-LPAR-INTRODUCTION-0001
+  - EXTREF-IBM-Z-DPM-0001
+  - X64-INTEL-001
+  - X64-AMD-001
+  requirements:
+  - MFOS-REQ-PARTITION-0005
+  - MFOS-REQ-PARTITION-0006
+  - MFOS-REQ-PARTITION-0016
+  - MFOS-REQ-PARTITION-0017
+- scope:
+  - design and validation
+  non_objectives:
+  - production implementation
+  - compatibility claims
+  object_model_refs: []
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  audit_obligations: []
+  positive_tests: []
+  negative_tests: []
+  fuzz_targets: []
+  spec_gaps:
+  - Phase 0.6 pack contract requires later deepening before implementation.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-15
+  title: PXM Guard
+  purpose: Govern selected High-Assurance root object protection.
+  depends_on:
+  - PACK-00
+  - PACK-01
+  - PACK-02
+  - PACK-03
+  - PACK-04
+  - PACK-06
+  - PACK-11
+  - PACK-12
+  - PACK-14
+  inputs:
+  - docs/design/specs/17-guard.md
+  outputs:
+  - implementation/guard
+  source_refs:
+  - MS-VBS-001
+  - MS-VSM-001
+  - TCG-001
+  - FBVBS-001
+  requirements:
+  - MFOS-REQ-GUARD-*
+- scope:
+  - design and validation
+  non_objectives:
+  - production implementation
+  - compatibility claims
+  object_model_refs: []
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  audit_obligations: []
+  positive_tests: []
+  negative_tests: []
+  fuzz_targets: []
+  spec_gaps:
+  - Phase 0.6 pack contract requires later deepening before implementation.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-16
+  title: Linux/Desktop Gateway
+  purpose: Govern side partition gateway boundaries.
+  depends_on:
+  - PACK-00
+  - PACK-01
+  - PACK-02
+  - PACK-03
+  - PACK-04
+  - PACK-05
+  - PACK-06
+  - PACK-14
+  inputs:
+  - docs/design/specs/18-linux-gateway.md
+  outputs:
+  - implementation/interfaces/linux-gateway
+  - implementation/sidecars/linux-desktop-partition
+  source_refs:
+  - EXTREF-IBM-Z-LPAR-INTRODUCTION-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+  requirements:
+  - MFOS-REQ-LINUX-GATEWAY-*
+- scope:
+  - design and validation
+  non_objectives:
+  - production implementation
+  - compatibility claims
+  object_model_refs: []
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  audit_obligations: []
+  positive_tests: []
+  negative_tests: []
+  fuzz_targets: []
+  spec_gaps:
+  - Phase 0.6 pack contract requires later deepening before implementation.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-17
+  title: Assurance and Conformance
+  purpose: Govern claim trees and conformance boundaries.
+  depends_on:
+  - PACK-00
+  - PACK-01
+  - PACK-02
+  - PACK-03
+  - PACK-04
+  inputs:
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/20-conformance.md
+  outputs:
+  - docs/design/assurance/claim-tree.yml
+  - claims
+  source_refs:
+  - NIST-160-001
+  - FBVBS-001
+  - SEL4-001
+  requirements:
+  - MFOS-REQ-PROFILE-*
+- scope:
+  - design and validation
+  non_objectives:
+  - production implementation
+  - compatibility claims
+  object_model_refs: []
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  audit_obligations: []
+  positive_tests: []
+  negative_tests: []
+  fuzz_targets: []
+  spec_gaps:
+  - Phase 0.6 pack contract requires later deepening before implementation.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-18
+  title: Prompts
+  purpose: Maintain AI prompt library.
+  depends_on:
+  - PACK-00
+  - PACK-01
+  - PACK-02
+  inputs:
+  - docs/design/prompts/ai-prompts.md
+  outputs:
+  - prompts/canonical
+  - ai/prompt-library
+  source_refs:
+  - FBVBS-001
+  requirements:
+  - MFOS-REQ-AI-*
+- scope:
+  - design and validation
+  non_objectives:
+  - production implementation
+  - compatibility claims
+  object_model_refs: []
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  audit_obligations: []
+  positive_tests: []
+  negative_tests: []
+  fuzz_targets: []
+  spec_gaps:
+  - Phase 0.6 pack contract requires later deepening before implementation.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-19
+  title: Roadmap and Task IDs
+  purpose: Maintain task and roadmap registry.
+  depends_on:
+  - PACK-00
+  inputs:
+  - docs/design/tasks/work-breakdown.md
+  outputs:
+  - tasks
+  source_refs:
+  - FBVBS-001
+  requirements:
+  - MFOS-REQ-AI-*
+- scope:
+  - design and validation
+  non_objectives:
+  - production implementation
+  - compatibility claims
+  object_model_refs: []
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  audit_obligations: []
+  positive_tests: []
+  negative_tests: []
+  fuzz_targets: []
+  spec_gaps:
+  - Phase 0.6 pack contract requires later deepening before implementation.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-20
+  title: AI Contract and Production Readiness
+  purpose: Govern AI-safe implementation and production gates.
+  depends_on:
+  - PACK-00
+  - PACK-01
+  - PACK-02
+  - PACK-17
+  inputs:
+  - docs/design/specs/21-ai-implementation-contract.md
+  - docs/design/specs/22-production-readiness.md
+  outputs:
+  - ai/contracts/ai-implementation-contract.md
+  source_refs:
+  - FBVBS-001
+  - NIST-218-001
+  - SLSA-001
+  requirements:
+  - MFOS-REQ-AI-*
+  - MFOS-REQ-PROD-*
+- scope:
+  - design and validation
+  non_objectives:
+  - production implementation
+  - compatibility claims
+  object_model_refs: []
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  audit_obligations: []
+  positive_tests: []
+  negative_tests: []
+  fuzz_targets: []
+  spec_gaps:
+  - Phase 0.6 pack contract requires later deepening before implementation.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-21
+  title: Requirements and Roadmap
+  purpose: Maintain requirements catalog and roadmap linkage.
+  depends_on:
+  - PACK-00
+  - PACK-01
+  - PACK-02
+  inputs:
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/registries/requirements.yaml
+  outputs:
+  - requirements/catalog.yml
+  source_refs:
+  - FBVBS-001
+  requirements:
+  - MFOS-REQ-*
+- scope:
+  - design and validation
+  non_objectives:
+  - production implementation
+  - compatibility claims
+  object_model_refs: []
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  audit_obligations: []
+  positive_tests: []
+  negative_tests: []
+  fuzz_targets: []
+  spec_gaps:
+  - Phase 0.6 pack contract requires later deepening before implementation.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-22
+  title: Formal Methods
+  purpose: Plan formal models for high-risk semantics.
+  depends_on:
+  - PACK-03
+  - PACK-04
+  - PACK-05
+  - PACK-06
+  - PACK-07
+  - PACK-08
+  - PACK-09
+  - PACK-11
+  - PACK-12
+  - PACK-14
+  - PACK-15
+  inputs:
+  - docs/design/specs/24-formal-methods.md
+  outputs:
+  - formal/tla
+  source_refs:
+  - SEL4-001
+  - NIST-160-001
+  - FBVBS-001
+  requirements:
+  - MFOS-REQ-QUALITY-*
+- scope:
+  - design and validation
+  non_objectives:
+  - production implementation
+  - compatibility claims
+  object_model_refs: []
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  audit_obligations: []
+  positive_tests: []
+  negative_tests: []
+  fuzz_targets: []
+  spec_gaps:
+  - Phase 0.6 pack contract requires later deepening before implementation.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-23
+  title: Operations and Recovery
+  purpose: Govern runbooks and recovery procedures.
+  depends_on:
+  - PACK-03
+  - PACK-05
+  - PACK-06
+  - PACK-07
+  - PACK-08
+  - PACK-09
+  - PACK-12
+  - PACK-14
+  - PACK-15
+  inputs:
+  - docs/design/specs/25-operations-recovery.md
+  outputs:
+  - evidence/reviews
+  source_refs:
+  - NIST-193-001
+  - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+  requirements:
+  - MFOS-REQ-OPER-*
+- scope:
+  - design and validation
+  non_objectives:
+  - production implementation
+  - compatibility claims
+  object_model_refs: []
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  audit_obligations: []
+  positive_tests: []
+  negative_tests: []
+  fuzz_targets: []
+  spec_gaps:
+  - Phase 0.6 pack contract requires later deepening before implementation.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-24
+  title: Hardware Profile and Attestation
+  purpose: Govern x64 platform profile and measured boot evidence.
+  depends_on:
+  - PACK-03
+  - PACK-13
+  - PACK-14
+  - PACK-15
+  inputs:
+  - docs/design/specs/26-hardware-profile.md
+  - docs/design/specs/30-attestation-measured-boot.md
+  outputs:
+  - build/profiles
+  - evidence/attestations
+  source_refs:
+  - X64-INTEL-001
+  - X64-AMD-001
+  - TCG-001
+  requirements:
+  - MFOS-REQ-NUCLEUS-0008
+- scope:
+  - design and validation
+  non_objectives:
+  - production implementation
+  - compatibility claims
+  object_model_refs: []
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  audit_obligations: []
+  positive_tests: []
+  negative_tests: []
+  fuzz_targets: []
+  spec_gaps:
+  - Phase 0.6 pack contract requires later deepening before implementation.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-25
+  title: Spec and Registry Schemas
+  purpose: Maintain schemas and registry validation.
+  depends_on:
+  - PACK-00
+  - PACK-01
+  - PACK-02
+  - PACK-21
+  inputs:
+  - docs/design/specs/27-spec-front-matter.md
+  - docs/design/specs/28-machine-readable-registries.md
+  outputs:
+  - schemas
+  - scripts
+  source_refs:
+  - FBVBS-001
+  - NIST-218-001
+  requirements:
+  - MFOS-REQ-QUALITY-*
+- scope:
+  - design and validation
+  non_objectives:
+  - production implementation
+  - compatibility claims
+  object_model_refs: []
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  audit_obligations: []
+  positive_tests: []
+  negative_tests: []
+  fuzz_targets: []
+  spec_gaps:
+  - Phase 0.6 pack contract requires later deepening before implementation.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-26
+  title: Test Strategy
+  purpose: Govern test taxonomy and required evidence.
+  depends_on:
+  - PACK-03
+  - PACK-04
+  - PACK-05
+  - PACK-06
+  - PACK-17
+  - PACK-20
+  - PACK-21
+  inputs:
+  - docs/design/specs/29-test-strategy.md
+  outputs:
+  - tests
+  - fuzz
+  source_refs:
+  - EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
+  - FBVBS-001
+  requirements:
+  - MFOS-REQ-QUALITY-*
+- scope:
+  - design and validation
+  non_objectives:
+  - production implementation
+  - compatibility claims
+  object_model_refs: []
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  audit_obligations: []
+  positive_tests: []
+  negative_tests: []
+  fuzz_targets: []
+  spec_gaps:
+  - Phase 0.6 pack contract requires later deepening before implementation.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-27
+  title: Release Workflow
+  purpose: Govern release distribution, rollback, and evidence gates.
+  depends_on:
+  - PACK-12
+  - PACK-17
+  - PACK-20
+  - PACK-23
+  - PACK-24
+  inputs:
+  - docs/design/specs/31-release-distribution-rollback.md
+  outputs:
+  - supply-chain/releases
+  source_refs:
+  - TUF-001
+  - SLSA-001
+  - NIST-218-001
+  requirements:
+  - MFOS-REQ-UPDATE-*
+  - MFOS-REQ-PROD-*
+- scope:
+  - design and validation
+  non_objectives:
+  - production implementation
+  - compatibility claims
+  object_model_refs: []
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  audit_obligations: []
+  positive_tests: []
+  negative_tests: []
+  fuzz_targets: []
+  spec_gaps:
+  - Phase 0.6 pack contract requires later deepening before implementation.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-28
+  title: Source Lint and Traceability Automation
+  purpose: Maintain source lint and traceability generation.
+  depends_on:
+  - PACK-01
+  - PACK-21
+  - PACK-25
+  inputs:
+  - docs/design/source-matrix/source-lint-spec.md
+  - docs/design/source-matrix/traceability-index.md
+  outputs:
+  - evidence/traceability
+  - scripts/generate-traceability.py
+  source_refs:
+  - FBVBS-001
+  requirements:
+  - MFOS-REQ-SOURCE-*
+  - MFOS-REQ-QUALITY-*
+- scope:
+  - design and validation
+  non_objectives:
+  - production implementation
+  - compatibility claims
+  object_model_refs: []
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  audit_obligations: []
+  positive_tests: []
+  negative_tests: []
+  fuzz_targets: []
+  spec_gaps:
+  - Phase 0.6 pack contract requires later deepening before implementation.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-29
+  title: Language and Japanese Sync
+  purpose: Govern English canonical and Japanese explanatory mirror sync.
+  depends_on:
+  - PACK-00
+  - PACK-01
+  - PACK-02
+  - PACK-25
+  inputs:
+  - docs/design/specs/32-language-localization.md
+  - docs/design/ja/SYNC-POLICY.md
+  outputs:
+  - docs/design/ja/translation-units.yaml
+  - docs/design/ja/sync-status.yaml
+  source_refs:
+  - FBVBS-001
+  - NIST-218-001
+  requirements:
+  - MFOS-REQ-LANG-*
+- scope:
+  - design and validation
+  non_objectives:
+  - production implementation
+  - compatibility claims
+  object_model_refs: []
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  audit_obligations: []
+  positive_tests: []
+  negative_tests: []
+  fuzz_targets: []
+  spec_gaps:
+  - Phase 0.6 pack contract requires later deepening before implementation.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-30
+  title: Policy Lint
+  purpose: Govern policy lint as first-class security control.
+  depends_on:
+  - PACK-04
+  - PACK-05
+  - PACK-06
+  - PACK-20
+  - PACK-21
+  inputs:
+  - docs/design/specs/33-policy-lint.md
+  outputs:
+  - ci/linters
+  source_refs:
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+  - FBVBS-001
+  requirements:
+  - MFOS-REQ-POLICY-LINT-*
