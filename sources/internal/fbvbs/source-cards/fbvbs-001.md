@@ -19,7 +19,7 @@ retrieval_metadata:
   public_url: https://github.com/minto-dane/fbvbs
   source_version: repository archive captured in ignored local cache
   section_scope: assurance discipline, state-machine discipline, update-manifest discipline, proof/evidence structure
-  local_cache_manifest: sources/_cache/retrieval-manifest.local.yml
+  local_cache_manifest: not_committed; see sources/_cache/README.md
 cache_disposition: temporary_ignored_cache
 reference_purpose:
   - internal assurance discipline transfer

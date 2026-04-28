@@ -1,6 +1,6 @@
 # Naming-Safety Refactor Report
 
-Status: draft  
+Status: draft
 Date: 2026-04-27
 
 ## 1. Summary

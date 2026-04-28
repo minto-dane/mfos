@@ -14,4 +14,3 @@ This directory contains public-safe MFOS grounding notes for IBM z/OS Workload M
 - Use IBM-owned public documentation as the external reference.
 - Do not store command syntax, service definitions, report formats, SMF layouts, or callable service signatures.
 - Keep MFOS scheduling and prioritization semantics independent from WLM goals.
-

@@ -61,7 +61,7 @@ review_status: draft
 
 # EXTREF-IBM-ZOS-SDSF-SECURITY-0001 - SDSF Security Boundary
 
-Sources: IBM Documentation  
+Sources: IBM Documentation
 URLs:
 
 - https://www.ibm.com/docs/en/zos/3.2.0?topic=time-set-up-sdsf-server-security
@@ -88,4 +88,3 @@ An SDSF function can require authority to multiple external resources. MFOS shou
 - RACF examples.
 - Access-level matrices.
 - Security trace command forms.
-

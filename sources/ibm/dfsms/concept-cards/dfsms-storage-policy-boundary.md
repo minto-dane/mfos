@@ -41,7 +41,6 @@ Use cautious language:
 
 Avoid saying:
 
-- "MFOS is compatible with SMS allocation."
-- "MFOS implements DFSMS policy."
-- "MFOS predicts DFSMShsm outcomes."
-
+- "Forbidden claim: MFOS is compatible with SMS allocation."
+- "Forbidden claim: MFOS implements DFSMS policy."
+- "Forbidden claim: MFOS predicts DFSMShsm outcomes."

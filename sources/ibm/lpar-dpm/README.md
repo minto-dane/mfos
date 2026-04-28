@@ -14,4 +14,3 @@ This directory contains public-safe MFOS grounding notes for IBM Dynamic Partiti
 - Use IBM-owned public documentation as the external reference.
 - Do not store HMC API schemas, request examples, authorization tables, or task-by-task operational procedures.
 - Keep MFOS partition, resource, and topology semantics independent from DPM implementation details.
-

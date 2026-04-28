@@ -14,4 +14,3 @@ This directory contains public-safe MFOS grounding notes for IBM SMP/E.
 - Use IBM-owned public documentation as the external reference.
 - Do not store SMP/E command syntax, MCS statement syntax, reports, messages, or CSI record details.
 - Keep MFOS software inventory semantics independent from SMP/E zones and installed software state.
-

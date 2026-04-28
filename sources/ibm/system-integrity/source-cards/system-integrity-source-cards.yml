@@ -17,7 +17,7 @@ legal_controls:
   substitute_for_source: false
   no_message_tables_copied: true
 source_cards:
-- card_id: SRC-CARD-IBM-SYSINT-SYSTEM-INTEGRITY-0001
+- card_id: SRC-CARD-EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
   source_id: EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
   canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001.yml
   vendor: IBM
@@ -53,9 +53,9 @@ source_cards:
     and auditd.
   - MFOS Baseline does not claim resilience after nucleus or authorized-module compromise.
   prohibited_inference:
-  - MFOS is z/OS-compatible.
-  - MFOS provides z/OS system-integrity compatibility.
-  - IBM product behavior is MFOS behavior.
+  - Forbidden claim: MFOS is z/OS-compatible.
+  - Forbidden claim: MFOS provides z/OS system-integrity compatibility.
+  - Forbidden claim: IBM product behavior is MFOS behavior.
   requirements:
   - Define a public MFOS system-integrity statement in MFOS-native terms.
   - Treat all authority transitions as explicit, auditable interface decisions.
@@ -65,7 +65,7 @@ source_cards:
   - TEST-DATA-DENY-001
   - TEST-AMF-UNAUTHORIZED-TRANSITION-001
   status: draft
-- card_id: SRC-CARD-IBM-SYSINT-AUTHORIZED-PROGRAMS-0001
+- card_id: SRC-CARD-EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001
   source_id: EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001
   canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001.yml
   vendor: IBM
@@ -101,9 +101,9 @@ source_cards:
     Guard-approved.
   - AMF is not administrator privilege and is not APF compatibility.
   prohibited_inference:
-  - AMF is APF-compatible.
-  - AMF grants root or administrator privilege.
-  - MFOS supports z/OS authorized-program behavior.
+  - Forbidden claim: AMF is APF-compatible.
+  - Forbidden claim: AMF grants root or administrator privilege.
+  - Forbidden claim: MFOS supports z/OS authorized-program behavior.
   requirements:
   - Authorized-module metadata must bind code identity, authority class, ABI scope,
     and revocation state.
@@ -113,7 +113,7 @@ source_cards:
   - TEST-AMF-UNSIGNED-LOAD-001
   - TEST-AMF-AUDIT-DISABLE-DENY-001
   status: draft
-- card_id: SRC-CARD-IBM-SYSINT-STORAGE-PROTECTION-0001
+- card_id: SRC-CARD-EXTREF-IBM-ZOS-STORAGE-PROTECTION-SUMMARY-0001
   source_id: EXTREF-IBM-ZOS-STORAGE-PROTECTION-SUMMARY-0001
   canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-STORAGE-PROTECTION-SUMMARY-0001.yml
   vendor: IBM
@@ -148,9 +148,9 @@ source_cards:
     isolation.
   - MFOS storage domains are not z/OS storage keys and do not claim binary compatibility.
   prohibited_inference:
-  - MFOS storage domains are z/OS storage keys.
-  - MFOS implements IBM storage-key semantics.
-  - IBM hardware bit layouts can be copied into MFOS docs.
+  - Forbidden claim: MFOS storage domains are z/OS storage keys.
+  - Forbidden claim: MFOS implements IBM storage-key semantics.
+  - Forbidden claim: IBM hardware bit layouts can be copied into MFOS docs.
   requirements:
   - Publish a divergence table before using IBM storage-protection terms in MFOS specs.
   - Keep protection tests framed as MFOS behavior, not IBM compatibility.
@@ -158,7 +158,7 @@ source_cards:
   - TEST-STG-PKU-STORAGE-KEY-CLAIM-LINT-001
   - TEST-STG-FETCH-PROTECTION-MISMAPPING-001
   status: draft
-- card_id: SRC-CARD-IBM-SYSINT-CROSS-MEMORY-0001
+- card_id: SRC-CARD-EXTREF-IBM-ZOS-CROSS-MEMORY-SYNCHRONOUS-0001
   source_id: EXTREF-IBM-ZOS-CROSS-MEMORY-SYNCHRONOUS-0001
   canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-CROSS-MEMORY-SYNCHRONOUS-0001.yml
   vendor: IBM
@@ -193,9 +193,9 @@ source_cards:
     and sealed buffers.
   - PCALL is not IBM PC instruction or z/OS cross-memory compatibility.
   prohibited_inference:
-  - PCALL implements z/OS PC instruction compatibility.
-  - MFOS supports z/OS cross-memory interfaces.
-  - IBM macro or instruction syntax may be reproduced.
+  - Forbidden claim: PCALL implements z/OS PC instruction compatibility.
+  - Forbidden claim: MFOS supports z/OS cross-memory interfaces.
+  - Forbidden claim: IBM macro or instruction syntax may be reproduced.
   requirements:
   - PCALL endpoint registration must include authority, object scope, input size limits,
     and audit policy.
@@ -204,7 +204,7 @@ source_cards:
   - TEST-PCALL-FOREIGN-POINTER-DENY-001
   - TEST-PCALL-UNAUTHORIZED-ENDPOINT-DENY-001
   status: draft
-- card_id: SRC-CARD-IBM-SYSINT-ZACS-0001
+- card_id: SRC-CARD-EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
   source_id: EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
   canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001.yml
   vendor: IBM
@@ -239,9 +239,9 @@ source_cards:
   - Production monitoring must avoid disruptive active probes unless an explicit test
     profile permits them.
   prohibited_inference:
-  - MFOS includes zACS.
-  - MFOS can reproduce IBM scanner algorithms, inputs, or findings.
-  - Scanner output can be stored in public artifacts.
+  - Forbidden claim: MFOS includes zACS.
+  - Forbidden claim: MFOS can reproduce IBM scanner algorithms, inputs, or findings.
+  - Forbidden claim: Scanner output can be stored in public artifacts.
   requirements:
   - Boundary tests must distinguish active destructive tests from passive monitoring.
   - Public artifacts must summarize only test intent, not exploit mechanics or proprietary

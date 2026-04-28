@@ -25,4 +25,3 @@ the existence and review scope of security-event auditing.
 - Retention and query-authorization policy need a normative spec.
 - Reason-code taxonomy is not normalized across securityd, jobd, datasetd, spoold, and operatord.
 - Human review must ensure no IBM record-layout fields or event-code tables are imported later.
-

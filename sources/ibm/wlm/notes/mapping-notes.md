@@ -23,4 +23,3 @@
 - Add source cards for z/OSMF WLM task administration.
 - Add source cards for WLM status observation and policy activation.
 - Add cross-domain notes for WLM interactions with UNIX processes and JES batch work.
-

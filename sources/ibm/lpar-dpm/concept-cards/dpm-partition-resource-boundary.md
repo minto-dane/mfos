@@ -39,7 +39,6 @@ Use cautious language:
 
 Avoid saying:
 
-- "MFOS implements DPM."
-- "MFOS can guarantee partition activation."
-- "MFOS resource counts are authoritative for the CPC."
-
+- "Forbidden claim: MFOS implements DPM."
+- "Forbidden claim: MFOS can guarantee partition activation."
+- "Forbidden claim: MFOS resource counts are authoritative for the CPC."

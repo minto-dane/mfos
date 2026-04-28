@@ -317,4 +317,3 @@ $defs:
         const: disabled
       host_filesystem:
         const: declared_artifacts_only
-

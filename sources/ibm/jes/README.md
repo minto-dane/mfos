@@ -14,4 +14,3 @@ This directory contains public-safe MFOS grounding notes for IBM JES.
 - Use IBM-owned public documentation as the external reference.
 - Do not store JCL, JECL, JES command syntax, message tables, or spool record details.
 - Keep MFOS job semantics independent from JES2, JES3, and installation-specific exits.
-

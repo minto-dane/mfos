@@ -59,8 +59,8 @@ mfos_mapping:
 mfos_divergence:
 - MFOS auditd uses schema validation, hash chains, profile-specific failure policy, remote export, and optional Guard-sealed roots.
 prohibited_inference:
-- auditd is SMF-compatible.
-- auditd is ordinary logging.
+- Forbidden claim: auditd is SMF-compatible.
+- Forbidden claim: auditd is ordinary logging.
 - Do not claim z/OS compatibility.
 - Do not treat IBM product behavior as MFOS compatibility.
 legal_controls:

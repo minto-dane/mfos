@@ -61,8 +61,8 @@ mfos_mapping:
 mfos_divergence:
 - PXM is x64-native and partition-aware; it does not implement PR/SM and must not carry MFOS enterprise semantics.
 prohibited_inference:
-- PXM implements PR/SM.
-- PXM is LPAR-compatible.
+- Forbidden claim: PXM implements PR/SM.
+- Forbidden claim: PXM is LPAR-compatible.
 - Do not claim z/OS compatibility.
 - Do not treat IBM product behavior as MFOS compatibility.
 legal_controls:

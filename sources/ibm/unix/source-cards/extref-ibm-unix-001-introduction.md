@@ -60,8 +60,8 @@ review_status: draft
 
 # EXTREF-IBM-ZOS-UNIX-INTRODUCTION-0001 - z/OS UNIX Introduction
 
-Source: IBM Documentation  
-URL: https://www.ibm.com/docs/en/zos/3.2.0?topic=planning-introduction-zos-unix  
+Source: IBM Documentation
+URL: https://www.ibm.com/docs/en/zos/3.2.0?topic=planning-introduction-zos-unix
 Accessed: 2026-04-28
 
 ## Public-Safe Summary
@@ -79,4 +79,3 @@ IBM describes z/OS UNIX as a UNIX operating environment implemented within z/OS.
 - Shell command syntax.
 - Security setup commands.
 - Error-code tables.
-

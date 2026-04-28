@@ -19,4 +19,3 @@ Blocked:
 The main blocker is not missing files. It is traceability depth: requirements,
 pack manifests, executable-spec catalogs, fixtures, and golden/oracle vectors
 do not yet share exact source/test/evidence linkage.
-

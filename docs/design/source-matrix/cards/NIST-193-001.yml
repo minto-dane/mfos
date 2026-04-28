@@ -51,7 +51,7 @@ mfos_mapping:
 mfos_divergence:
 - MFOS uses this as a resilience model for firmware, boot, update, and recovery planning, not as a firmware implementation.
 prohibited_inference:
-- MFOS controls all platform firmware.
+- Forbidden claim: MFOS controls all platform firmware.
 - Do not claim z/OS compatibility.
 legal_controls:
   public_safe: true

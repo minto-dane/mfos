@@ -63,7 +63,7 @@ review_status: draft
 
 # EXTREF-IBM-ZOS-JES-JOB-CONTROL-0001 - JCL And JECL Boundary
 
-Sources: IBM Documentation  
+Sources: IBM Documentation
 URLs:
 
 - https://www.ibm.com/docs/en/zos/3.2.0?topic=statements-jcl
@@ -91,4 +91,3 @@ Say that real JES interpretation depends on IBM z/OS level, JES type, installati
 - Parameter syntax.
 - Examples.
 - JES2 or JES3 command forms.
-

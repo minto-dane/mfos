@@ -17,7 +17,7 @@ legal_controls:
   substitute_for_source: false
   no_message_tables_copied: true
 source_cards:
-- card_id: SRC-CARD-IBM-SMF-INTRODUCTION-0001
+- card_id: SRC-CARD-EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
   source_id: EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
   canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001.yml
   vendor: IBM
@@ -53,9 +53,9 @@ source_cards:
     remote export, and optional Guard-sealed roots.
   - auditd is not SMF-compatible and does not emit IBM record formats.
   prohibited_inference:
-  - auditd is SMF-compatible.
-  - auditd is ordinary logging.
-  - IBM SMF record formats may be copied.
+  - Forbidden claim: auditd is SMF-compatible.
+  - Forbidden claim: auditd is ordinary logging.
+  - Forbidden claim: IBM SMF record formats may be copied.
   requirements:
   - Define audit record encoding, retention policy, query authorization, failure policy,
     and export semantics.
@@ -63,7 +63,7 @@ source_cards:
   - TEST-AUD-TAMPER-CHAIN-001
   - TEST-AUD-UNAVAILABLE-FAIL-CLOSED-001
   status: draft
-- card_id: SRC-CARD-IBM-SMF-RACF-TYPE-80-0001
+- card_id: SRC-CARD-EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
   source_id: EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
   canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001.yml
   vendor: IBM
@@ -98,9 +98,9 @@ source_cards:
     policy_version, hashes, and optional signatures.
   - MFOS does not emit RACF type 80 compatible records.
   prohibited_inference:
-  - MFOS emits RACF type 80 compatible records.
-  - IBM event codes, field names, relocate sections, or tables may be copied.
-  - Macro request names or syntax can be reproduced in public MFOS artifacts.
+  - Forbidden claim: MFOS emits RACF type 80 compatible records.
+  - Forbidden claim: IBM event codes, field names, relocate sections, or tables may be copied.
+  - Forbidden claim: Macro request names or syntax can be reproduced in public MFOS artifacts.
   requirements:
   - Normalize reason_code taxonomy across securityd, jobd, datasetd, spoold, and operatord.
   - DENY decisions must be durably submitted to auditd before returning where profile

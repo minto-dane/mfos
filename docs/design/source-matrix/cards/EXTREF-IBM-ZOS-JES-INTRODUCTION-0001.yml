@@ -63,8 +63,8 @@ mfos_mapping:
 mfos_divergence:
 - MFOS implements jobd and spoold as source-grounded subsets and does not claim JES or JCL compatibility.
 prohibited_inference:
-- jobd is JES-compatible.
-- MFOS supports JES commands.
+- Forbidden claim: jobd is JES-compatible.
+- Forbidden claim: MFOS supports JES commands.
 - Do not claim z/OS compatibility.
 - Do not treat IBM product behavior as MFOS compatibility.
 legal_controls:

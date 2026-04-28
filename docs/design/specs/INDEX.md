@@ -17,8 +17,8 @@ spec_gap_policy: "implementation_must_not_infer_or_fill_gaps"
 ---
 # MFOS Split Specification Index v0.1
 
-Status: Draft index  
-Owner: MFOS architecture  
+Status: Draft index
+Owner: MFOS architecture
 Scope: `docs/design/specs/*.md`
 
 This index lists the current MFOS split specifications and routes implementation agents to the correct source material. It covers the numbered specs from `00` through `35`, including Phase 0.9 executable-spec artifacts.

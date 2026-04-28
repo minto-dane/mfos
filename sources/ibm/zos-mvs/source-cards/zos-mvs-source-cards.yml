@@ -17,7 +17,7 @@ legal_controls:
   substitute_for_source: false
   no_message_tables_copied: true
 source_cards:
-- card_id: SRC-CARD-IBM-ZOS-MVS-JES-INTRO-0001
+- card_id: SRC-CARD-EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
   source_id: EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
   canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-JES-INTRODUCTION-0001.yml
   vendor: IBM
@@ -55,9 +55,9 @@ source_cards:
   - MFOS implements jobd and spoold as source-grounded subsets.
   - MFOS does not claim JES, JES2, JES3, JCL, or spool-format compatibility.
   prohibited_inference:
-  - jobd is JES-compatible.
-  - MFOS supports JES commands or JCL syntax.
-  - IBM spool internals may be reproduced.
+  - Forbidden claim: jobd is JES-compatible.
+  - Forbidden claim: MFOS supports JES commands or JCL syntax.
+  - Forbidden claim: IBM spool internals may be reproduced.
   requirements:
   - Define an MFOS-native submission model, queue model, initiator contract, and spool
     authorization model.
@@ -65,7 +65,7 @@ source_cards:
   - TEST-JOB-SUBMIT-UNAUTHORIZED-001
   - TEST-SPL-BROWSE-DENY-001
   status: draft
-- card_id: SRC-CARD-IBM-ZOS-MVS-JOB-FLOW-0001
+- card_id: SRC-CARD-EXTREF-IBM-ZOS-JES-JOB-FLOW-0001
   source_id: EXTREF-IBM-ZOS-JES-JOB-FLOW-0001
   canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-JES-JOB-FLOW-0001.yml
   vendor: IBM
@@ -99,8 +99,8 @@ source_cards:
     executing, output, purge-pending, and purged.
   - MFOS state names and transitions are not z/OS compatibility claims.
   prohibited_inference:
-  - MFOS implements z/OS job lifecycle compatibility.
-  - IBM lifecycle diagrams or control statements may be copied.
+  - Forbidden claim: MFOS implements z/OS job lifecycle compatibility.
+  - Forbidden claim: IBM lifecycle diagrams or control statements may be copied.
   requirements:
   - Define allowed state transitions and retention rules before jobd is considered
     stable.
@@ -108,7 +108,7 @@ source_cards:
   - TEST-JOB-INVALID-TRANSITION-001
   - TEST-JOB-PURGE-RETENTION-DENY-001
   status: draft
-- card_id: SRC-CARD-IBM-ZOS-MVS-DFSMS-CATALOGS-0001
+- card_id: SRC-CARD-EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
   source_id: EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
   canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001.yml
   vendor: IBM
@@ -145,8 +145,8 @@ source_cards:
     immutable/system flags, and integrity tag.
   - catalogd is not DFSMS-compatible and does not implement IBM catalog formats.
   prohibited_inference:
-  - catalogd is DFSMS-compatible.
-  - MFOS supports IBM catalog utilities, syntax, or data structures.
+  - Forbidden claim: catalogd is DFSMS-compatible.
+  - Forbidden claim: MFOS supports IBM catalog utilities, syntax, or data structures.
   requirements:
   - Define catalog entry schema, transaction journal, rollback behavior, and integrity-tag
     checks.

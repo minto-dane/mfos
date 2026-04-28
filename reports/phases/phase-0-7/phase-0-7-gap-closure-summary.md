@@ -1,7 +1,7 @@
 # Phase 0.7 Gap Closure Summary
 
-Date: 2026-04-27  
-Scope: Machine-checkable design scaffold gaps raised during the Phase 0.7 pass.  
+Date: 2026-04-27
+Scope: Machine-checkable design scaffold gaps raised during the Phase 0.7 pass.
 Production implementation: not started.
 
 ## Closed Gaps

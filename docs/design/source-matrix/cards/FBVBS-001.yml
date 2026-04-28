@@ -58,7 +58,7 @@ mfos_mapping:
 mfos_divergence:
 - FBVBS cannot invent IBM semantics. It only transfers assurance structure and verification discipline into MFOS.
 prohibited_inference:
-- FBVBS defines z/OS semantics for MFOS.
+- Forbidden claim: FBVBS defines z/OS semantics for MFOS.
 - Do not claim z/OS compatibility.
 legal_controls:
   public_safe: true

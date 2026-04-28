@@ -14,4 +14,3 @@ This directory contains public-safe MFOS grounding notes for z/OS UNIX System Se
 - Use IBM-owned public documentation as the external reference.
 - Do not store command syntax, callable service signatures, errno tables, message tables, or API layouts.
 - Keep MFOS process and file semantics independent from z/OS UNIX implementation details.
-

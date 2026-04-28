@@ -58,8 +58,8 @@ review_status: draft
 
 # EXTREF-IBM-ZOS-MANAGEMENT-FACILITY-TASKS-0001 - z/OSMF Tasks
 
-Source: IBM Documentation  
-URL: https://www.ibm.com/docs/en/zos/3.2.0?topic=welcome-zosmf-tasks-glance  
+Source: IBM Documentation
+URL: https://www.ibm.com/docs/en/zos/3.2.0?topic=welcome-zosmf-tasks-glance
 Accessed: 2026-04-28
 
 ## Public-Safe Summary
@@ -77,4 +77,3 @@ IBM documents z/OSMF as a task-oriented web management facility for z/OS with ta
 - Security profile details.
 - Workflow definitions.
 - UI field lists.
-

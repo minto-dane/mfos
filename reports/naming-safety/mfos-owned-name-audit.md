@@ -198,4 +198,3 @@ Recommended rename/update:
 - No prohibited IBM-related token was found in schema file names under
   `schemas/`.
 - No claim ID family using prohibited IBM-related tokens was found.
-

@@ -40,7 +40,6 @@ Use cautious language:
 
 Avoid saying:
 
-- "MFOS implements WLM."
-- "MFOS guarantees WLM goal achievement."
-- "MFOS report classes are equivalent to IBM report classes."
-
+- "Forbidden claim: MFOS implements WLM."
+- "Forbidden claim: MFOS guarantees WLM goal achievement."
+- "Forbidden claim: MFOS report classes are equivalent to IBM report classes."

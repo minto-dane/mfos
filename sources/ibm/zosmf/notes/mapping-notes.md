@@ -23,4 +23,3 @@
 - Add source cards for Workflows and Software Management tasks.
 - Add cross-domain notes for z/OSMF jobs REST with JES and z/OSMF data set/file REST with DFSMS and UNIX.
 - Add source cards for z/OSMF security configuration at a conceptual level.
-

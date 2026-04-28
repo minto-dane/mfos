@@ -23,4 +23,3 @@
 - Add source cards for SYSMOD concepts without MCS syntax.
 - Add source cards for z/OSMF Software Management use of SMP/E-packaged software.
 - Add mapping notes for ServerPac and CBPDO installation-package concepts.
-

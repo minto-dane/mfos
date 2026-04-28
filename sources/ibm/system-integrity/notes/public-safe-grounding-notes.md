@@ -26,4 +26,3 @@ review, not embedded source substitutes.
 - MFOS still needs a public system-integrity statement written entirely in MFOS-native terms.
 - Storage-protection terminology needs a reviewed divergence table before broader use.
 - Scanner-style testing needs a safe-public reporting format that excludes exploit mechanics and sensitive output.
-

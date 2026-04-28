@@ -10,6 +10,7 @@ All Phase 0.9 validation commands passed locally.
 ./scripts/validate-naming-safety.sh release
 python3 -m py_compile $(find scripts -name '*.py' -print)
 git diff --check
+git diff --check phase/0.9-executable-specs
 ```
 
 ## Results
@@ -26,6 +27,7 @@ Phase 0.9 traceability generated
 
 The full design validator also passed with zero warnings in draft mode.
 Naming-safety release validation passed with zero warnings.
+The PR diff against `phase/0.9-executable-specs` also passed whitespace checks.
 
 ## Validator Scope
 

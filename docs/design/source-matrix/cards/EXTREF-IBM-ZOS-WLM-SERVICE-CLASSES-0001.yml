@@ -62,7 +62,7 @@ mfos_mapping:
 mfos_divergence:
 - MFOS starts with job class, priority, max concurrency, resource caps, and dispatch hints before implementing advanced service goals.
 prohibited_inference:
-- wlmd is z/OS WLM-compatible.
+- Forbidden claim: wlmd is z/OS WLM-compatible.
 - Do not claim z/OS compatibility.
 - Do not treat IBM product behavior as MFOS compatibility.
 legal_controls:

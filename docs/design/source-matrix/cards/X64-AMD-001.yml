@@ -57,7 +57,7 @@ mfos_mapping:
 mfos_divergence:
 - AMD64 mechanisms are enforcement aids and must be tied to MFOS abstractions and profile requirements.
 prohibited_inference:
-- AMD64 features provide z/OS semantic compatibility.
+- Forbidden claim: AMD64 features provide z/OS semantic compatibility.
 - Do not claim z/OS compatibility.
 legal_controls:
   public_safe: true

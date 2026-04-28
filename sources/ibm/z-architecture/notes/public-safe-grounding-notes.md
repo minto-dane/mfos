@@ -25,4 +25,3 @@ excerpted.
 - DPM URL is machine-scope pinned but not pinned to a stable guide order number.
 - MFOS still needs the actual PXM object schema and partition state table.
 - Architecture glossary needs human review before terms are reused in normative MFOS specs.
-

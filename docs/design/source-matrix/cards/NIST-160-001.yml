@@ -52,7 +52,7 @@ mfos_mapping:
 mfos_divergence:
 - MFOS maps this into staged profiles, requirements traceability, evidence, review, and production readiness gates.
 prohibited_inference:
-- A design document alone establishes high assurance.
+- Forbidden claim: A design document alone establishes high assurance.
 - Do not claim z/OS compatibility.
 legal_controls:
   public_safe: true

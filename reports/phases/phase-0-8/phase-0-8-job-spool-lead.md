@@ -1,8 +1,8 @@
 # Phase 0.8 Job/Spool Lead Report
 
-Status: Draft semantic freeze  
-Date: 2026-04-27  
-Lead area: job/spool semantics only  
+Status: Draft semantic freeze
+Date: 2026-04-27
+Lead area: job/spool semantics only
 Production implementation: not started and not authorized
 
 ## Summary

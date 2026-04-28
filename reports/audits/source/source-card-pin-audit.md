@@ -89,4 +89,3 @@ Result:
 ```text
 Source Card validation OK: 37 cards
 ```
-

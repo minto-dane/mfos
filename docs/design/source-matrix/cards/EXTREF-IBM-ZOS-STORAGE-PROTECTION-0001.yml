@@ -62,8 +62,8 @@ mfos_divergence:
 - MFOS does not reproduce z/Architecture storage keys on x64.
 - MFOS maps the concept into ExecutionState, StorageDomain, typed handles, page-table protections, and optional hardware helpers.
 prohibited_inference:
-- MFOS implements z/OS storage keys.
-- x64 pkeys provide z/OS storage-key compatibility.
+- Forbidden claim: MFOS implements z/OS storage keys.
+- Forbidden claim: x64 pkeys provide z/OS storage-key compatibility.
 - Do not claim z/OS compatibility.
 - Do not treat IBM product behavior as MFOS compatibility.
 legal_controls:

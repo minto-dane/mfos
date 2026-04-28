@@ -60,8 +60,8 @@ review_status: draft
 
 # EXTREF-IBM-ZOS-UNIX-FILE-SYSTEMS-0001 - zFS File Systems
 
-Source: IBM Documentation  
-URL: https://www.ibm.com/docs/en/zos/3.2.0?topic=zos-file-system-zfs  
+Source: IBM Documentation
+URL: https://www.ibm.com/docs/en/zos/3.2.0?topic=zos-file-system-zfs
 Accessed: 2026-04-28
 
 ## Public-Safe Summary
@@ -83,4 +83,3 @@ MFOS path semantics should not assume that zFS mount topology, encoding behavior
 - Administration command options.
 - Message identifiers or message text.
 - Internal aggregate structures.
-

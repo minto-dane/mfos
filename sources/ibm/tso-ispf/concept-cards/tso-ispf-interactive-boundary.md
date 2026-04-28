@@ -42,7 +42,6 @@ Use cautious language:
 
 Avoid saying:
 
-- "MFOS implements TSO/E."
-- "MFOS commands are ISPF commands."
-- "MFOS sessions are equivalent to TSO/E sessions."
-
+- "Forbidden claim: MFOS implements TSO/E."
+- "Forbidden claim: MFOS commands are ISPF commands."
+- "Forbidden claim: MFOS sessions are equivalent to TSO/E sessions."

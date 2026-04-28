@@ -1,9 +1,9 @@
 # Phase 0.8 Cross-Domain Lead Report
 
-Status: Draft  
-Date: 2026-04-27  
-Lead role: MFOS Phase 0.8 Cross-Domain Integration Lead  
-Scope: First vertical slice semantic contract only.  
+Status: Draft
+Date: 2026-04-27
+Lead role: MFOS Phase 0.8 Cross-Domain Integration Lead
+Scope: First vertical slice semantic contract only.
 Production implementation: not started and not authorized.
 
 ## Summary

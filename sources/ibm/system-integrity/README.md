@@ -12,4 +12,3 @@ HTML mirrors, or long quotations.
 - `source-cards/system-integrity-source-cards.yml` - verified IBM source pointers and MFOS mappings.
 - `concept-cards/system-integrity-concepts.yml` - MFOS concept cards grounded by those source pointers.
 - `notes/public-safe-grounding-notes.md` - review notes, gaps, and negative tests.
-

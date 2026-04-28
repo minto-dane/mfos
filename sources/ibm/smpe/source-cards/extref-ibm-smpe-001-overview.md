@@ -59,8 +59,8 @@ review_status: draft
 
 # EXTREF-IBM-ZOS-SMPE-OVERVIEW-0001 - SMP/E Overview
 
-Source: IBM Documentation  
-URL: https://www.ibm.com/docs/en/zos/3.2.0?topic=zos-smpe  
+Source: IBM Documentation
+URL: https://www.ibm.com/docs/en/zos/3.2.0?topic=zos-smpe
 Accessed: 2026-04-28
 
 ## Public-Safe Summary
@@ -78,4 +78,3 @@ IBM describes z/OS SMP/E as a tool for installing and maintaining software and m
 - Reports or return-code tables.
 - Messages.
 - MCS statement details.
-

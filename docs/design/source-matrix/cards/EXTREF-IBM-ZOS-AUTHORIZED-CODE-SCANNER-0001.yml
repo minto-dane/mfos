@@ -64,8 +64,8 @@ mfos_divergence:
 - MFOS uses zACS-like review discipline, not the IBM scanner implementation.
 - MFOS applies the discipline to x64-native service ABIs, typed handles, and copy-in/copy-out.
 prohibited_inference:
-- MFOS implements z/OS Authorized Code Scanner.
-- zACS compatibility.
+- Forbidden claim: MFOS implements z/OS Authorized Code Scanner.
+- Forbidden claim: zACS compatibility.
 - Do not claim z/OS compatibility.
 - Do not treat IBM product behavior as MFOS compatibility.
 legal_controls:

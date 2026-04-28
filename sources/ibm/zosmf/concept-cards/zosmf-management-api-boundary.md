@@ -39,7 +39,6 @@ Use cautious language:
 
 Avoid saying:
 
-- "MFOS implements z/OSMF."
-- "MFOS guarantees z/OSMF operation availability."
-- "MFOS stores z/OSMF API schemas as source grounding."
-
+- "Forbidden claim: MFOS implements z/OSMF."
+- "Forbidden claim: MFOS guarantees z/OSMF operation availability."
+- "Forbidden claim: MFOS stores z/OSMF API schemas as source grounding."

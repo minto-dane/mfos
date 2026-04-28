@@ -54,7 +54,7 @@ mfos_mapping:
 mfos_divergence:
 - MFOS uses the vocabulary for mapping and divergence analysis only; it does not promise binary or hardware compatibility.
 prohibited_inference:
-- MFOS storage domains are z/OS storage keys.
+- Forbidden claim: MFOS storage domains are z/OS storage keys.
 - Do not claim z/OS compatibility.
 - Do not treat IBM product behavior as MFOS compatibility.
 legal_controls:

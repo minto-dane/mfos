@@ -207,4 +207,3 @@ $defs:
         maxLength: 240
       required:
         type: boolean
-

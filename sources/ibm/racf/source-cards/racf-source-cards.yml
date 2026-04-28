@@ -17,7 +17,7 @@ legal_controls:
   substitute_for_source: false
   no_message_tables_copied: true
 source_cards:
-- card_id: SRC-CARD-IBM-RACF-SECURITY-SERVER-0001
+- card_id: SRC-CARD-EXTREF-IBM-ZOS-SECURITY-SERVER-0001
   source_id: EXTREF-IBM-ZOS-SECURITY-SERVER-0001
   canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-SECURITY-SERVER-0001.yml
   vendor: IBM
@@ -53,9 +53,9 @@ source_cards:
     and policy-version binding.
   - securityd is RACF-inspired but not RACF-compatible.
   prohibited_inference:
-  - securityd is RACF-compatible.
-  - MFOS implements RACF commands, macros, databases, or messages.
-  - IBM interface syntax may be copied.
+  - Forbidden claim: securityd is RACF-compatible.
+  - Forbidden claim: MFOS implements RACF commands, macros, databases, or messages.
+  - Forbidden claim: IBM interface syntax may be copied.
   requirements:
   - Define securityd profile language, administrative operations, transaction semantics,
     and audit obligations.
@@ -63,7 +63,7 @@ source_cards:
   - TEST-SEC-BYPASS-DENY-001
   - TEST-SEC-POLICY-ROLLBACK-AUDIT-001
   status: draft
-- card_id: SRC-CARD-IBM-RACF-RESOURCE-AUTHORIZATION-0001
+- card_id: SRC-CARD-EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
   source_id: EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
   canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001.yml
   vendor: IBM
@@ -101,9 +101,9 @@ source_cards:
     Guard approval, operator confirmation, unsupported, and spec-gap outcomes.
   - MFOS access authorities are native and must not copy RACF taxonomies by default.
   prohibited_inference:
-  - MFOS resource profiles are RACF profiles.
-  - MFOS supports RACF profile syntax or command behavior.
-  - IBM default access semantics are MFOS semantics.
+  - Forbidden claim: MFOS resource profiles are RACF profiles.
+  - Forbidden claim: MFOS supports RACF profile syntax or command behavior.
+  - Forbidden claim: IBM default access semantics are MFOS semantics.
   requirements:
   - Define access-authority taxonomy for DATASET, SPOOL, JOB, PROGRAM, OPERATOR_COMMAND,
     PARTITION, and UPDATE_ARTIFACT.

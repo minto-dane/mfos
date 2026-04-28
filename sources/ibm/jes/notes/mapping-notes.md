@@ -23,4 +23,3 @@
 - Add source cards for JES multi-access spool concepts.
 - Add source cards for JES2 versus JES3 support distinctions that affect z/OSMF jobs REST behavior.
 - Add mapping notes for SDSF and z/OSMF job views over JES-owned state.
-

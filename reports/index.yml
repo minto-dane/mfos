@@ -45,6 +45,10 @@ current:
   purpose: Machine-readable sources/ workbench population audit.
 - path: reports/current/source-population-red-team-review.md
   purpose: Red-team review for populated sources/ workbench.
+- path: reports/current/source-name-legal-safe-harbor-audit.md
+  purpose: Source workbench and IBM/external naming legal-risk engineering audit.
+- path: reports/current/source-name-legal-safe-harbor-audit.yml
+  purpose: Machine-readable source naming legal-risk engineering audit.
 - path: reports/current/docs-spec-scaffold-audit.md
   purpose: Docs/spec scaffold audit.
 - path: reports/current/implementation-scaffold-audit.md

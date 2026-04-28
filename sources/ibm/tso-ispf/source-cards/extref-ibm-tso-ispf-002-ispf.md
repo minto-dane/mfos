@@ -61,8 +61,8 @@ review_status: draft
 
 # EXTREF-IBM-ZOS-ISPF-INTRODUCTION-0001 - ISPF Overview
 
-Source: IBM Documentation  
-URL: https://www.ibm.com/docs/en/zos/3.2.0?topic=zbed-ispf  
+Source: IBM Documentation
+URL: https://www.ibm.com/docs/en/zos/3.2.0?topic=zbed-ispf
 Accessed: 2026-04-28
 
 ## Public-Safe Summary
@@ -84,4 +84,3 @@ ISPF behavior can depend on panel attributes, user profile, allocations, and ins
 - Dialog service formats.
 - Command examples.
 - Edit macro or service syntax.
-

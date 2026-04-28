@@ -90,4 +90,3 @@ production_implementation_allowed: false
 hosted_semantic_prototype_allowed: only_for_packs_that_pass_pre_implementation_gate
 reserved_requirements_implementation_allowed: false
 ```
-

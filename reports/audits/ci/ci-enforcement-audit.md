@@ -1,7 +1,7 @@
 # CI Enforcement Audit: Evidence Status and Design Validation
 
-Date: 2026-04-27  
-Scope: local validation and CI connection only.  
+Date: 2026-04-27
+Scope: local validation and CI connection only.
 Production implementation: not started.
 
 ## Summary

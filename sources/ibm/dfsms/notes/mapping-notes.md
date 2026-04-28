@@ -23,4 +23,3 @@
 - Add source cards for DFSMShsm backup, migration, and recovery concepts.
 - Add source cards for DFSMSdss copy, dump, restore, and volume-management concepts.
 - Add a cross-domain note for DFSMS interactions with z/OSMF data set and file REST services.
-

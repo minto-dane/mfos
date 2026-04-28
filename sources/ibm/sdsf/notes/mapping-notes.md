@@ -23,4 +23,3 @@
 - Add source cards for SDSF programming interfaces at a conceptual level.
 - Add cross-domain notes for SDSF views over JES and WLM state.
 - Add source cards for sysplex operational views without panel details.
-
