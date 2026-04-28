@@ -155,7 +155,7 @@ Phase 0.9 outputs:
 | PACK-08 | `tests/catalog/job-spool.yml`, `tests/fixtures/job/`, `tests/golden/job/` |
 | PACK-09 | `tests/catalog/operator-console.yml`, `tests/fixtures/oper/`, `tests/golden/oper/` |
 | Cross-domain | `tests/catalog/first-vertical-slice.yml`, `tests/fixtures/first-vertical-slice/`, `tests/golden/first-vertical-slice/` |
-| Fuzz planning | `fuzz/targets/phase-0-9-fuzz-target-plan.yml`, `fuzz/corpora/*/seed-plan.yml` |
+| Fuzz planning | `fuzz/targets/fuzz-target-plan.yml`, `fuzz/corpora/*/seed-plan.yml` |
 
 The runner contract is defined in
 `docs/design/specs/33-semantic-runner-contract.md`. This contract names future

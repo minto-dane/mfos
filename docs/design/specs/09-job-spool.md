@@ -9,7 +9,7 @@ last_reviewed: "2026-04-27"
 source_refs: ["EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001", "EXTREF-IBM-ZOS-JES-INTRODUCTION-0001", "EXTREF-IBM-ZOS-JES-JOB-FLOW-0001", "EXTREF-IBM-ZOS-JES2-LIBRARY-0001", "EXTREF-IBM-ZOS-SECURITY-SERVER-0001", "EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001", "EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001", "EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001"]
 requirement_refs: ["MFOS-REQ-JOB-*", "MFOS-REQ-SPOOL-*"]
 claim_refs: []
-test_refs: ["tests/catalog/archive/phase-0-8/job-spool-tests.yml"]
+test_refs: ["tests/catalog/job-spool.yml"]
 evidence_refs: ["reports/phases/phase-0-8/phase-0-8-job-spool-lead.md"]
 implementation_allowed: false
 downstream_packs: []
@@ -17,7 +17,9 @@ spec_gap_policy: "implementation_must_not_infer_or_fill_gaps"
 ---
 # MFOS Job and Spool Specification v0.8
 
-Status: Phase 0.8 semantic freeze draft. Production implementation is not authorized by this file.
+Status: structural draft with conditional semantic freeze. Production implementation, hosted daemon work, semantic runner work, Portable Semantic Core behavior, and semantic evaluator work are not authorized by this file.
+
+Source-grounding warning: Phase 0.9.7/0.9.8 review keeps this specification blocked for semantic evaluator work until the MFOS-native job-control grammar and DD-shaped identifiers are either refactored or explicitly re-bound by a legal/source-grounding review. The grammar below is a design artifact, not an implementation license and not an external job-control-language compatibility claim.
 
 Owned components: `jobd`, `spoold`
 
@@ -32,7 +34,7 @@ Primary formal and test artifacts:
 
 - `formal/tla/job-lifecycle/JobLifecycle.tla`
 - `formal/tla/spool-access/SpoolAccess.tla`
-- `tests/catalog/archive/phase-0-8/job-spool-tests.yml`
+- `tests/catalog/job-spool.yml`
 
 ## 1. Purpose
 
@@ -943,7 +945,7 @@ INV-SPL-004:
 
 ## 17. Test and Fuzz Freeze
 
-The draft test catalog is `tests/catalog/archive/phase-0-8/job-spool-tests.yml`.
+The draft test catalog is `tests/catalog/job-spool.yml`.
 
 Required positive coverage:
 
@@ -1036,7 +1038,7 @@ Use spec MFOS-SPEC-09-JOB-SPOOL v0.8 and these artifacts:
 - schemas/mfos/spool-entry.schema.yml
 - formal/tla/job-lifecycle/JobLifecycle.tla
 - formal/tla/spool-access/SpoolAccess.tla
-- tests/catalog/archive/phase-0-8/job-spool-tests.yml
+- tests/catalog/job-spool.yml
 
 Rules:
 - Do not claim z/OS, JES, JES2, JCL, RACF, DFSMS, or SMF compatibility.

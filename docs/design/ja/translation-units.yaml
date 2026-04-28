@@ -703,9 +703,9 @@ units:
     translation_scope: document_level_placeholder
     notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
   - unit_id: TU-DOC-0057-TASKS-PHASE-0-7-SYSTEM-INTEGRITY-DEEP-SPEC
-    canonical_path: docs/design/tasks/phase-0-7-system-integrity-deep-spec.md
-    canonical_hash: sha256:a6e5051271793ddc0073749803aeb074953f8d2fc9abd2a8dd353dac2dd412c5
-    japanese_path: docs/design/ja/tasks/phase-0-7-system-integrity-deep-spec.md
+    canonical_path: docs/design/tasks/archive/phase-0-7/system-integrity-deep-spec.md
+    canonical_hash: sha256:2480d87259fc7a43f18c817d89096b089b3e0600a01098040fa17d89c1b0dd96
+    japanese_path: docs/design/ja/tasks/archive/phase-0-7/system-integrity-deep-spec.md
     existing_japanese_paths: []
     mirror_role: structural_mirror_target
     sync_status: missing

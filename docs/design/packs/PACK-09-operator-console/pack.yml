@@ -26,7 +26,7 @@ inputs:
 outputs:
 - schemas/mfos/operator-command.schema.yml
 - formal/tla/operator-command/state-machine.yml
-- tests/catalog/archive/phase-0-8/operator-console-tests.yml
+- tests/catalog/operator-console.yml
 - requirements/by-domain/operator.yml
 source_refs:
 - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001

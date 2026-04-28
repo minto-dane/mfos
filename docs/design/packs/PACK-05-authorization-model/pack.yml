@@ -25,7 +25,7 @@ outputs:
 - schemas/mfos/security-decision.schema.yml
 - schemas/mfos/policy-binding.schema.yml
 - formal/tla/authorization/state-machine.yml
-- tests/catalog/archive/phase-0-8/authorization-tests.yml
+- tests/catalog/authorization.yml
 - requirements/by-domain/auth.yml
 source_refs:
 - EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001
@@ -76,7 +76,7 @@ negative_tests:
 - NEG-MFOS-AUTH-EMERGENCY-NO-EXPIRY-0104
 - NEG-MFOS-AUTH-POLICY-LINT-MISSING-0105
 fuzz_targets:
-- FUZZ-MFOS-POLICY-LANGUAGE-0001
+- FUZZ-MFOS-AUTH-POLICY-0001
 spec_gaps:
 - Executable specs and implementation are deferred to Phase 0.9 or later.
 - Release evidence is draft-only and must not be treated as verified proof.
