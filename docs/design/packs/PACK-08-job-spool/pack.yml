@@ -31,7 +31,7 @@ outputs:
 - schemas/mfos/spool-entry.schema.yml
 - formal/tla/job-lifecycle/state-machine.yml
 - formal/tla/spool-access/state-machine.yml
-- tests/catalog/phase-0-8-job-spool-tests.yml
+- tests/catalog/archive/phase-0-8/job-spool-tests.yml
 - requirements/by-domain/job.yml
 - requirements/by-domain/spool.yml
 source_refs:

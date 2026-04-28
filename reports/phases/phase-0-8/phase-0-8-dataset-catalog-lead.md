@@ -15,7 +15,7 @@ Owned artifacts updated or added:
 - `schemas/mfos/object-generation-binding.schema.yml`
 - `formal/tla/dataset-open/`
 - `formal/tla/catalog-transaction/`
-- `tests/catalog/phase-0-8-dataset-catalog-tests.yml`
+- `tests/catalog/archive/phase-0-8/dataset-catalog-tests.yml`
 - `reports/phases/phase-0-8/phase-0-8-dataset-catalog-lead.md`
 
 No production code was written.
@@ -68,7 +68,7 @@ These are design artifacts. Model-check output or reviewed transition traces are
 
 ## Test Coverage
 
-`tests/catalog/phase-0-8-dataset-catalog-tests.yml` covers:
+`tests/catalog/archive/phase-0-8/dataset-catalog-tests.yml` covers:
 
 - DSN positive and negative grammar cases
 - committed-entry resolve

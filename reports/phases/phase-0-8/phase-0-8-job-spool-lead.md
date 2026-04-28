@@ -39,7 +39,7 @@ The freeze defines:
 - `formal/tla/spool-access/SpoolAccess.tla`
 - `formal/tla/spool-access/SpoolAccess.cfg`
 - `formal/tla/spool-access/state-machine.yml`
-- `tests/catalog/phase-0-8-job-spool-tests.yml`
+- `tests/catalog/archive/phase-0-8/job-spool-tests.yml`
 - `reports/phases/phase-0-8/phase-0-8-job-spool-lead.md`
 
 ## Source Grounding
@@ -108,7 +108,7 @@ Path('schemas/mfos/dd.schema.yml'),
 Path('schemas/mfos/spool-entry.schema.yml'),
 Path('formal/tla/job-lifecycle/state-machine.yml'),
 Path('formal/tla/spool-access/state-machine.yml'),
-Path('tests/catalog/phase-0-8-job-spool-tests.yml'),
+Path('tests/catalog/archive/phase-0-8/job-spool-tests.yml'),
 ]:
     yaml.safe_load(p.read_text(encoding='utf-8'))
 print('PHASE_0_8_YAML_PARSE_OK')

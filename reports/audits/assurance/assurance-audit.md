@@ -6,7 +6,7 @@ Scope:
 
 - `schemas/claim.schema.json`
 - `docs/design/assurance/claim-tree.yml`
-- `evidence/traceability/claim-to-requirement.yml`
+- `evidence/traceability/current/claim-to-requirement.yml`
 - `reports/audits/assurance/assurance-audit.md`
 
 This audit did not start implementation work and did not modify implementation code.

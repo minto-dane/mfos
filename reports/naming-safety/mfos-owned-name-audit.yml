@@ -202,10 +202,10 @@ findings:
         - path: "packs/pack-index.yml"
           line: 159
           identifier: "Nucleus and SVC/PCALL"
-        - path: "evidence/traceability/pack-to-artifacts.yml"
+        - path: "evidence/traceability/current/pack-to-artifacts.yml"
           line: 138
           identifier: "MFOS-REQ-SVC-*"
-        - path: "evidence/traceability/pack-to-artifacts.yml"
+        - path: "evidence/traceability/current/pack-to-artifacts.yml"
           line: 139
           identifier: "MFOS-REQ-PCALL-*"
     impact: "The ABI namespaces are MFOS-owned names, not source citations. SVC is strongly z/OS-associated, and PCALL is the owned name for an IBM cross-memory inspired concept."

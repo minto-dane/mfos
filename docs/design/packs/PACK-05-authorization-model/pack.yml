@@ -25,7 +25,7 @@ outputs:
 - schemas/mfos/security-decision.schema.yml
 - schemas/mfos/policy-binding.schema.yml
 - formal/tla/authorization/state-machine.yml
-- tests/catalog/phase-0-8-authorization-tests.yml
+- tests/catalog/archive/phase-0-8/authorization-tests.yml
 - requirements/by-domain/auth.yml
 source_refs:
 - EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001

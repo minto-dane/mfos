@@ -1,5 +1,7 @@
+artifact_id: ARTIFACT-MFOS-ARCHIVE-PHASE-0-8-FIRST-VERTICAL-SLICE-TESTS
+artifact_type: test_catalog_archive
 catalog_kind: phase_0_8_first_vertical_slice_tests
-status: draft
+status: historical
 implementation_allowed: false
 entries:
 - test_id: TEST-MFOS-VSLICE-HELLO-0001
@@ -86,15 +88,23 @@ entries:
   - H20
   - H21
   - H22
-  expected_result: HELLO completes RC=0 after typed operator submit, securityd allow decisions, committed catalog resolution, bound dataset handle, protected OUTPUT_STREAM, and audit evidence.
+  expected_result: HELLO completes RC=0 after typed operator submit, securityd allow
+    decisions, committed catalog resolution, bound dataset handle, protected OUTPUT_STREAM,
+    and audit evidence.
   domain_obligations:
-    operator_command: SUBMIT INLINE is parsed, target-resolved, authorized, audited, and displayed through operatord.
-    authorization_decision: securityd allows submit, submit-as when required, ALICE READ, program execute, spool create, and display.
-    catalog_resolution: USER.ALICE.INPUT resolves only from a committed catalog entry and supplies generation metadata.
-    dataset_handle: datasetd creates one active READ handle bound to ALICE, policy version, generations, expiry, and correlation ID.
-    job_lifecycle: jobd establishes effective principal before resource open and completes RC=0.
+    operator_command: SUBMIT INLINE is parsed, target-resolved, authorized, audited,
+      and displayed through operatord.
+    authorization_decision: securityd allows submit, submit-as when required, ALICE
+      READ, program execute, spool create, and display.
+    catalog_resolution: USER.ALICE.INPUT resolves only from a committed catalog entry
+      and supplies generation metadata.
+    dataset_handle: datasetd creates one active READ handle bound to ALICE, policy
+      version, generations, expiry, and correlation ID.
+    job_lifecycle: jobd establishes effective principal before resource open and completes
+      RC=0.
     spool: spoold creates, writes, closes, and protects HELLO OUTPUT_STREAM.
-    audit_evidence: auditd evidence exists for command, decision, dataset open, job, spool, and completion events.
+    audit_evidence: auditd evidence exists for command, decision, dataset open, job,
+      spool, and completion events.
   side_effect_assertions:
   - no dataset handle exists before securityd allow and audit obligation establishment
   - ECHO does not execute before input handle and OUTPUT_STREAM target are ready
@@ -134,15 +144,24 @@ entries:
   - B16
   - B17
   - B18
-  expected_result: BAD fails with POLICY_DENIED after BOB READ denial; no dataset handle exists; deny audit durable append precedes final denied result and operator display.
+  expected_result: BAD fails with POLICY_DENIED after BOB READ denial; no dataset
+    handle exists; deny audit durable append precedes final denied result and operator
+    display.
   domain_obligations:
-    operator_command: DEFINE USER BOB and SUBMIT INLINE are typed, authorized, and audited.
-    authorization_decision: securityd allows submit as BOB when fixture policy permits and denies BOB READ on USER.ALICE.INPUT.
-    catalog_resolution: catalogd resolves USER.ALICE.INPUT for decision context but does not grant access.
-    dataset_handle: datasetd creates no active, cached, deferred, placeholder, closing, or reusable handle.
-    job_lifecycle: jobd binds effective principal BOB, fails the step at DD open, and does not execute ECHO against protected content.
-    spool: spoold captures a protected failure summary only when authorized and without protected dataset content.
-    audit_evidence: DATASET_OPEN_DENY or equivalent deny record is durable before final denial.
+    operator_command: DEFINE USER BOB and SUBMIT INLINE are typed, authorized, and
+      audited.
+    authorization_decision: securityd allows submit as BOB when fixture policy permits
+      and denies BOB READ on USER.ALICE.INPUT.
+    catalog_resolution: catalogd resolves USER.ALICE.INPUT for decision context but
+      does not grant access.
+    dataset_handle: datasetd creates no active, cached, deferred, placeholder, closing,
+      or reusable handle.
+    job_lifecycle: jobd binds effective principal BOB, fails the step at DD open,
+      and does not execute ECHO against protected content.
+    spool: spoold captures a protected failure summary only when authorized and without
+      protected dataset content.
+    audit_evidence: DATASET_OPEN_DENY or equivalent deny record is durable before
+      final denial.
   side_effect_assertions:
   - no DATASET_OPEN_ALLOW record for BOB reading USER.ALICE.INPUT
   - no DATASET_CLOSE record for a nonexistent BOB handle
@@ -163,10 +182,12 @@ entries:
   - B12
   - B13
   - B18
-  expected_result: Required deny audit reaches durable append before datasetd returns final denied open to jobd and before operatord displays the final failed job result.
+  expected_result: Required deny audit reaches durable append before datasetd returns
+    final denied open to jobd and before operatord displays the final failed job result.
   side_effect_assertions:
   - denied result is not caller-visible without deny audit evidence
-  - failed required deny audit returns audit-unavailable or profile fail-closed result, not ordinary denial success
+  - failed required deny audit returns audit-unavailable or profile fail-closed result,
+    not ordinary denial success
   evidence_required:
   - EV-MFOS-FVS-AUDIT-ORDER-0001
   phase_to_implement: Phase 0.9 or later
@@ -182,7 +203,8 @@ entries:
   - B11
   - B12
   - B13
-  expected_result: Denied BOB open cannot create any active, closing, cached, deferred, placeholder, or reusable dataset handle.
+  expected_result: Denied BOB open cannot create any active, closing, cached, deferred,
+    placeholder, or reusable dataset handle.
   side_effect_assertions:
   - no handle ID is returned to jobd
   - no stale handle can later be used by BAD or another BOB job
@@ -202,7 +224,9 @@ entries:
   - B15
   - B16
   - B17
-  expected_result: BAD failure summary is written to a protected spool entry after dataset deny, contains no protected dataset content, and is not treated as audit evidence.
+  expected_result: BAD failure summary is written to a protected spool entry after
+    dataset deny, contains no protected dataset content, and is not treated as audit
+    evidence.
   side_effect_assertions:
   - failure summary includes reason metadata only
   - failure summary does not satisfy DATASET_OPEN_DENY evidence requirement
@@ -216,10 +240,13 @@ entries:
   target_requirements:
   - MFOS-REQ-AUDIT-0104
   - MFOS-REQ-SPOOL-0101
-  expected_result: Spool output, console output, and ordinary diagnostic logs cannot satisfy required audit evidence for protected decisions.
+  expected_result: Spool output, console output, and ordinary diagnostic logs cannot
+    satisfy required audit evidence for protected decisions.
   side_effect_assertions:
   - removing audit evidence while preserving spool content keeps the test failed
   - console display without audit evidence keeps the test failed
   evidence_required:
   - EV-MFOS-FVS-SPOOL-NOT-AUDIT-0001
   phase_to_implement: Phase 0.9 or later
+origin_phase: phase-0-8
+superseded_by: tests/catalog/first-vertical-slice.yml

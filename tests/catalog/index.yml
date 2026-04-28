@@ -1,0 +1,67 @@
+schema_version: 1
+artifact_index_kind: mfos_test_catalog_inventory
+status: current
+
+current:
+  authorization:
+    path: tests/catalog/authorization.yml
+    artifact_type: test_catalog
+    status: current
+    origin_phase: phase-0-9
+  audit:
+    path: tests/catalog/audit.yml
+    artifact_type: test_catalog
+    status: current
+    origin_phase: phase-0-9
+  dataset_catalog:
+    path: tests/catalog/dataset-catalog.yml
+    artifact_type: test_catalog
+    status: current
+    origin_phase: phase-0-9
+  job_spool:
+    path: tests/catalog/job-spool.yml
+    artifact_type: test_catalog
+    status: current
+    origin_phase: phase-0-9
+  operator_console:
+    path: tests/catalog/operator-console.yml
+    artifact_type: test_catalog
+    status: current
+    origin_phase: phase-0-9
+  first_vertical_slice:
+    path: tests/catalog/first-vertical-slice.yml
+    artifact_type: test_catalog
+    status: current
+    origin_phase: phase-0-9
+  negative:
+    path: tests/catalog/negative.yml
+    artifact_type: test_catalog
+    status: current
+    origin_phase: phase-0-9
+  failure_modes:
+    path: tests/catalog/failure-modes.yml
+    artifact_type: test_catalog
+    status: current
+    origin_phase: phase-0-9
+  conformance_index:
+    path: tests/catalog/conformance-index.yml
+    artifact_type: test_catalog
+    status: current
+    origin_phase: phase-0-9
+
+archive:
+  phase_0_8:
+    path: tests/catalog/archive/phase-0-8/
+    status: historical
+    superseded_by:
+      - tests/catalog/authorization.yml
+      - tests/catalog/audit.yml
+      - tests/catalog/dataset-catalog.yml
+      - tests/catalog/job-spool.yml
+      - tests/catalog/operator-console.yml
+      - tests/catalog/first-vertical-slice.yml
+
+policy:
+  phase_specific_filenames_allowed_in_root: false
+  root_current_only: true
+  implementation_allowed: false

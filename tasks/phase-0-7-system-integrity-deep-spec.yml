@@ -95,7 +95,7 @@ objectives:
   status: complete_for_draft_registry
   outputs:
   - docs/design/registries/evidence.yaml
-  - evidence/traceability/gap-report.yml
+  - evidence/traceability/current/gap-report.yml
   constraints:
   - Draft evidence IDs must not be treated as proof.
   - Release-mode lint must reject verified-claim language without verified evidence.

@@ -8,7 +8,7 @@ Scope:
 
 - `docs/design/registries/requirements.yaml`
 - `requirements/by-domain/*.yml`
-- `evidence/traceability/phase-0-8-*.yml`
+- `evidence/traceability/archive/phase-0-8/*.yml`
 - PACK-05 through PACK-09 pack contracts and pack index links
 - Phase 0.8 test catalogs and owned spec front-matter links, reviewed for traceability only
 
@@ -42,15 +42,15 @@ Confirmed:
 ## Cleanup Applied
 
 - Removed the internal `FBVBS-001` source ID from
-  `evidence/traceability/phase-0-8-first-vertical-slice.yml` so the Phase 0.8
+  `evidence/traceability/archive/phase-0-8/first-vertical-slice.yml` so the Phase 0.8
   first-vertical-slice source list is `EXTREF-*` only.
 - Added explicit `phase_0_8_requirement_coverage` for the 10 first-vertical-slice
   010x requirements.
 - Aligned first-vertical-slice `test_to_evidence` and coverage links with the 8
   test IDs actually present in
-  `tests/catalog/phase-0-8-first-vertical-slice-tests.yml`.
+  `tests/catalog/archive/phase-0-8/first-vertical-slice-tests.yml`.
 - Recorded remaining nonblocking traceability gaps in
-  `evidence/traceability/phase-0-8-gap-report.yml`.
+  `evidence/traceability/archive/phase-0-8/gap-report.yml`.
 
 ## Open Gaps
 
@@ -64,11 +64,11 @@ Post-review corrections:
   requirement-to-test links.
 - The first vertical slice contract front matter now includes
   `MFOS-REQ-AUDIT-0104`.
-- `tests/catalog/phase-0-8-audit-tests.yml` now explicitly carries
+- `tests/catalog/archive/phase-0-8/audit-tests.yml` now explicitly carries
   `implementation_allowed: false`.
 
 Implementation-blocking first vertical slice gaps remain tracked in
-`evidence/traceability/phase-0-8-gap-report.yml`.
+`evidence/traceability/archive/phase-0-8/gap-report.yml`.
 
 ## Gate Judgment
 

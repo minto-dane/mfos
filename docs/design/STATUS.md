@@ -359,6 +359,16 @@ Status: reviewed for merge readiness on 2026-04-28.
 Reports are indexed in `reports/index.yml`. The root `reports/` directory now
 contains only index/policy files and categorized report families.
 
+Artifact inventories are maintained in:
+
+- `reports/index.yml`
+- `tests/catalog/index.yml`
+- `tests/fixtures/index.yml`
+- `tests/golden/index.yml`
+- `evidence/traceability/index.yml`
+- `docs/design/specs/INDEX.md`
+- `docs/design/packs/PACKS.md`
+
 Current PR and readiness reports:
 
 - `reports/current/pr-5-review-report.md`

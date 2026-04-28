@@ -1,6 +1,8 @@
+artifact_id: ARTIFACT-MFOS-ARCHIVE-PHASE-0-8-AUDIT-TESTS
+artifact_type: test_catalog_archive
 catalog_id: MFOS-TEST-CATALOG-AUDIT-PHASE-0-8
 phase: '0.8'
-status: design_freeze
+status: historical
 owner: MFOS Phase 0.8 Audit Lead
 design_only: true
 spec_refs:
@@ -59,7 +61,8 @@ positive_tests:
   requirement_ids:
   - MFOS-REQ-AUDIT-0001
   - MFOS-REQ-AUDIT-0003
-  expected_result: Valid SECURITY_DECISION AuditRecord validates, appends durably, and returns AuditRecordRef.
+  expected_result: Valid SECURITY_DECISION AuditRecord validates, appends durably,
+    and returns AuditRecordRef.
   evidence_required:
   - schema_validation
   - durable_append_trace
@@ -70,7 +73,8 @@ positive_tests:
   requirement_ids:
   - MFOS-REQ-AUDIT-0002
   - MFOS-REQ-AUDIT-0005
-  expected_result: Protected-resource DENY returns to caller only after durable SECURITY_DENY record.
+  expected_result: Protected-resource DENY returns to caller only after durable SECURITY_DENY
+    record.
   evidence_required:
   - ordering_trace
   - correlation_id_trace
@@ -81,7 +85,8 @@ positive_tests:
   requirement_ids:
   - MFOS-REQ-AUDIT-0004
   - MFOS-REQ-AUDIT-0011
-  expected_result: Hash chain verifies over multiple records using previous_hash and canonical_record_hash.
+  expected_result: Hash chain verifies over multiple records using previous_hash and
+    canonical_record_hash.
   evidence_required:
   - hash_chain_verification
   status: planned_design
@@ -90,7 +95,8 @@ positive_tests:
   requirement_ids:
   - MFOS-REQ-AUDIT-0003
   - MFOS-REQ-AUDIT-0012
-  expected_result: Dataset access record includes subject, object, operation, reason_code, policy_version, correlation_id, and generation metadata.
+  expected_result: Dataset access record includes subject, object, operation, reason_code,
+    policy_version, correlation_id, and generation metadata.
   evidence_required:
   - schema_validation
   - payload_fixture
@@ -99,7 +105,8 @@ positive_tests:
   test_type: integration
   requirement_ids:
   - MFOS-REQ-AUDIT-0003
-  expected_result: Job submit and complete records share correlation_id and preserve job identity.
+  expected_result: Job submit and complete records share correlation_id and preserve
+    job identity.
   evidence_required:
   - correlation_id_trace
   - payload_fixture
@@ -109,7 +116,8 @@ positive_tests:
   requirement_ids:
   - MFOS-REQ-AUDIT-0001
   - MFOS-REQ-AUDIT-0003
-  expected_result: Operator command record captures authority class, confirmation state, dual-control state, decision, and reason_code.
+  expected_result: Operator command record captures authority class, confirmation
+    state, dual-control state, decision, and reason_code.
   evidence_required:
   - payload_fixture
   - authorization_trace
@@ -119,7 +127,8 @@ positive_tests:
   requirement_ids:
   - MFOS-REQ-AUDIT-0009
   - MFOS-REQ-AUDIT-0010
-  expected_result: Authorized audit query returns redacted view without mutating committed records.
+  expected_result: Authorized audit query returns redacted view without mutating committed
+    records.
   evidence_required:
   - securityd_authorization_trace
   - redaction_view
@@ -130,7 +139,8 @@ positive_tests:
   requirement_ids:
   - MFOS-REQ-AUDIT-0006
   - MFOS-REQ-AUDIT-0011
-  expected_result: Exported range includes stream metadata sufficient to verify sequence and hash continuity.
+  expected_result: Exported range includes stream metadata sufficient to verify sequence
+    and hash continuity.
   evidence_required:
   - export_manifest
   - hash_chain_verification
@@ -140,7 +150,8 @@ positive_tests:
   requirement_ids:
   - MFOS-REQ-AUDIT-0013
   - MFOS-REQ-AUDIT-0014
-  expected_result: Stream rollover preserves chain continuity and recovery does not rewrite committed records.
+  expected_result: Stream rollover preserves chain continuity and recovery does not
+    rewrite committed records.
   evidence_required:
   - rollover_record
   - recovery_trace
@@ -151,7 +162,8 @@ positive_tests:
   requirement_ids:
   - MFOS-REQ-AUDIT-0007
   - MFOS-REQ-AUDIT-0015
-  expected_result: High-Assurance design model allows AUD-L4 claim only after Guard audit-root seal.
+  expected_result: High-Assurance design model allows AUD-L4 claim only after Guard
+    audit-root seal.
   evidence_required:
   - formal_model_result
   - guard_root_payload_fixture
@@ -162,7 +174,8 @@ negative_tests:
   requirement_ids:
   - MFOS-REQ-AUDIT-0002
   - MFOS-REQ-AUDIT-0005
-  expected_result: Required deny append failure returns audit-unavailable or profile recovery result; caller does not receive ordinary denial success.
+  expected_result: Required deny append failure returns audit-unavailable or profile
+    recovery result; caller does not receive ordinary denial success.
   side_effect_assertions:
   - no_handle_created
   - no_state_mutation
@@ -173,7 +186,8 @@ negative_tests:
   requirement_ids:
   - MFOS-REQ-AUDIT-0004
   - MFOS-REQ-AUDIT-0011
-  expected_result: Caller-supplied record_hash is ignored or rejected; auditd recomputes authoritative hash.
+  expected_result: Caller-supplied record_hash is ignored or rejected; auditd recomputes
+    authoritative hash.
   side_effect_assertions:
   - no_forged_record_committed
   status: planned_design
@@ -207,7 +221,8 @@ negative_tests:
   test_type: negative
   requirement_ids:
   - MFOS-REQ-AUDIT-0008
-  expected_result: Diagnostic log or console line cannot satisfy an audit evidence obligation.
+  expected_result: Diagnostic log or console line cannot satisfy an audit evidence
+    obligation.
   side_effect_assertions:
   - audit_obligation_unsatisfied
   - no_evidence_ref_created
@@ -216,7 +231,8 @@ negative_tests:
   test_type: negative
   requirement_ids:
   - MFOS-REQ-AUDIT-0009
-  expected_result: Audit query without securityd authorization returns denial before any protected content.
+  expected_result: Audit query without securityd authorization returns denial before
+    any protected content.
   side_effect_assertions:
   - no_records_returned
   status: planned_design
@@ -234,7 +250,8 @@ negative_tests:
   requirement_ids:
   - MFOS-REQ-AUDIT-0004
   - MFOS-REQ-AUDIT-0011
-  expected_result: Middle-record mutation is detected by chain verification and marks stream degraded.
+  expected_result: Middle-record mutation is detected by chain verification and marks
+    stream degraded.
   side_effect_assertions:
   - no_aud_l4_claim
   - no_hidden_corruption
@@ -243,7 +260,8 @@ negative_tests:
   test_type: negative
   requirement_ids:
   - MFOS-REQ-AUDIT-0011
-  expected_result: Removed record creates sequence gap and recovery identifies last good record.
+  expected_result: Removed record creates sequence gap and recovery identifies last
+    good record.
   side_effect_assertions:
   - no_gap_hidden
   status: planned_design
@@ -252,7 +270,8 @@ negative_tests:
   requirement_ids:
   - MFOS-REQ-AUDIT-0005
   - MFOS-REQ-AUDIT-0006
-  expected_result: Remote export failure queues, alerts, or fails selected operations according to profile policy.
+  expected_result: Remote export failure queues, alerts, or fails selected operations
+    according to profile policy.
   side_effect_assertions:
   - no_remote_receipt_claim_without_verified_range
   status: planned_design
@@ -261,7 +280,8 @@ negative_tests:
   requirement_ids:
   - MFOS-REQ-AUDIT-0007
   - MFOS-REQ-AUDIT-0015
-  expected_result: High-Assurance Guard audit-root operation fails closed when Guard seal is unavailable.
+  expected_result: High-Assurance Guard audit-root operation fails closed when Guard
+    seal is unavailable.
   side_effect_assertions:
   - no_aud_l4_claim
   status: planned_design
@@ -270,7 +290,8 @@ negative_tests:
   requirement_ids:
   - MFOS-REQ-AUDIT-0009
   - MFOS-REQ-AUDIT-0010
-  expected_result: Retention purge before expiry or without required dual control is denied and audited when possible.
+  expected_result: Retention purge before expiry or without required dual control
+    is denied and audited when possible.
   side_effect_assertions:
   - no_record_purged
   status: planned_design
@@ -279,7 +300,8 @@ negative_tests:
   requirement_ids:
   - MFOS-REQ-AUDIT-0003
   - MFOS-REQ-AUDIT-0012
-  expected_result: Unknown record_type is schema-invalid; unknown event class returns spec-gap behavior where schema dispatch cannot classify it.
+  expected_result: Unknown record_type is schema-invalid; unknown event class returns
+    spec-gap behavior where schema dispatch cannot classify it.
   side_effect_assertions:
   - no_partial_record
   status: planned_design
@@ -297,7 +319,8 @@ negative_tests:
   - MFOS-REQ-AUDIT-0002
   - MFOS-REQ-AUDIT-0005
   - MFOS-REQ-AUDIT-0009
-  expected_result: Invalid append, Guard, query, export, redaction, and sealed-stream transitions are rejected or fail closed.
+  expected_result: Invalid append, Guard, query, export, redaction, and sealed-stream
+    transitions are rejected or fail closed.
   side_effect_assertions:
   - no_result_before_durable_append
   - no_query_before_authorization
@@ -309,14 +332,16 @@ fuzz_tests:
   requirement_ids:
   - MFOS-REQ-AUDIT-0012
   target: audit_record_parser_and_canonicalizer
-  expected_result: Malformed, duplicate, oversized, and invalid-enum AuditRecord inputs are rejected without partial evidence.
+  expected_result: Malformed, duplicate, oversized, and invalid-enum AuditRecord inputs
+    are rejected without partial evidence.
   status: planned_design
 - test_id: TEST-MFOS-AUDIT-FUZZ-0002
   test_type: fuzz
   requirement_ids:
   - MFOS-REQ-AUDIT-0012
   target: query_filter_and_redaction_policy_parser
-  expected_result: Malformed query filters and redaction policies fail closed without returning protected audit content.
+  expected_result: Malformed query filters and redaction policies fail closed without
+    returning protected audit content.
   status: planned_design
 - test_id: TEST-MFOS-AUDIT-FUZZ-0003
   test_type: fuzz
@@ -324,7 +349,8 @@ fuzz_tests:
   - MFOS-REQ-AUDIT-0004
   - MFOS-REQ-AUDIT-0011
   target: stream_metadata_rollover_and_chain_verifier
-  expected_result: Malformed stream metadata, rollover records, and chain links do not produce verified evidence.
+  expected_result: Malformed stream metadata, rollover records, and chain links do
+    not produce verified evidence.
   status: planned_design
 evidence_requirements:
 - evidence_id: EV-MFOS-AUDIT-SCHEMA-0001
@@ -335,7 +361,8 @@ evidence_requirements:
   - fixture_path
   - validation_result
 - evidence_id: EV-MFOS-AUDIT-ORDERING-0002
-  description: Deny-before-return trace with durable append before caller-visible result.
+  description: Deny-before-return trace with durable append before caller-visible
+    result.
   must_include:
   - correlation_id
   - stream_id
@@ -343,7 +370,8 @@ evidence_requirements:
   - record_hash
   - caller_result_time
 - evidence_id: EV-MFOS-AUDIT-HASHCHAIN-0003
-  description: Hash-chain verification over valid, tampered, missing-record, and rollover cases.
+  description: Hash-chain verification over valid, tampered, missing-record, and rollover
+    cases.
   must_include:
   - stream_id
   - sequence_range
@@ -351,14 +379,16 @@ evidence_requirements:
   - canonical_record_hash
   - record_hash
 - evidence_id: EV-MFOS-AUDIT-FAILURE-POLICY-0004
-  description: Profile-specific audit failure behavior under unavailable auditd, full store, export failure, and Guard failure.
+  description: Profile-specific audit failure behavior under unavailable auditd, full
+    store, export failure, and Guard failure.
   must_include:
   - profile
   - failure_mode
   - expected_result
   - observed_result
 - evidence_id: EV-MFOS-AUDIT-QUERY-REDACTION-0005
-  description: Authorized query, unauthorized query, redacted export, and immutable committed record evidence.
+  description: Authorized query, unauthorized query, redacted export, and immutable
+    committed record evidence.
   must_include:
   - securityd_decision_id
   - redaction_policy
@@ -396,9 +426,12 @@ entries:
   preconditions:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
-  input: AuditRecord contains schema_version, record_id, timestamp_utc, partition_id, component_id, correlation_id, subject, object, operation, decision, reason_code, policy_version, previous_hash, payload_hash, and record_hash.
+  input: AuditRecord contains schema_version, record_id, timestamp_utc, partition_id,
+    component_id, correlation_id, subject, object, operation, decision, reason_code,
+    policy_version, previous_hash, payload_hash, and record_hash.
   expected_decision: schema-valid record is accepted for planned append review.
-  expected_audit: audit obligation is present where the target requirement declares one
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: none_for_positive_case
   evidence_required:
   - test_result
@@ -421,7 +454,8 @@ entries:
   - No production or hosted daemon implementation is started.
   input: Security decision AuditRecord omits correlation_id or uses an empty correlation_id.
   expected_decision: schema invalid; no record is committed as audit evidence.
-  expected_audit: audit obligation is present where the target requirement declares one
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: specified_error_without_side_effect_or_fake_success
   evidence_required:
   - test_result
@@ -442,9 +476,11 @@ entries:
   preconditions:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
-  input: BOB READ denial on USER.ALICE.INPUT has audit obligation before datasetd/jobd receives final result.
+  input: BOB READ denial on USER.ALICE.INPUT has audit obligation before datasetd/jobd
+    receives final result.
   expected_decision: OPEN_DENY audit append accepted before final policy denied result.
-  expected_audit: audit obligation is present where the target requirement declares one
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: none_for_positive_case
   evidence_required:
   - test_result
@@ -465,16 +501,20 @@ entries:
   preconditions:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
-  input: Securityd denies protected dataset access while auditd append is unavailable or skipped.
-  expected_decision: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE or recovery-mode denial; no ordinary success or handle.
-  expected_audit: audit obligation is present where the target requirement declares one
+  input: Securityd denies protected dataset access while auditd append is unavailable
+    or skipped.
+  expected_decision: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE or recovery-mode denial;
+    no ordinary success or handle.
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: specified_error_without_side_effect_or_fake_success
   evidence_required:
   - test_result
   - traceability_link
   - red_team_review_record
   phase_to_implement: Phase 0.9 or later
-  expected_result: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE or recovery-mode denial; no ordinary success or handle.
+  expected_result: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE or recovery-mode denial;
+    no ordinary success or handle.
   coverage_note: Concrete Phase 0.8 planned semantic test.
 - test_id: TEST-MFOS-AUDIT-HASH-CHAIN-0103
   title: Audit hash chain links consecutive records
@@ -490,7 +530,8 @@ entries:
   - No production or hosted daemon implementation is started.
   input: Three AuditRecords are appended with previous_hash and record_hash continuity.
   expected_decision: chain verification succeeds across all records.
-  expected_audit: audit obligation is present where the target requirement declares one
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: none_for_positive_case
   evidence_required:
   - test_result
@@ -513,7 +554,8 @@ entries:
   - No production or hosted daemon implementation is started.
   input: Middle AuditRecord payload_hash or previous_hash is modified after append.
   expected_decision: chain verification fails and no release evidence claim is allowed.
-  expected_audit: audit obligation is present where the target requirement declares one
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: specified_error_without_side_effect_or_fake_success
   evidence_required:
   - test_result
@@ -535,15 +577,18 @@ entries:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
   input: Security decision evidence points to an AuditRecordRef from auditd stream.
-  expected_decision: evidence obligation is satisfied only by schema-valid audit record reference.
-  expected_audit: audit obligation is present where the target requirement declares one
+  expected_decision: evidence obligation is satisfied only by schema-valid audit record
+    reference.
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: none_for_positive_case
   evidence_required:
   - test_result
   - traceability_link
   - red_team_review_record
   phase_to_implement: Phase 0.9 or later
-  expected_result: evidence obligation is satisfied only by schema-valid audit record reference.
+  expected_result: evidence obligation is satisfied only by schema-valid audit record
+    reference.
   coverage_note: Concrete Phase 0.8 planned semantic test.
 - test_id: NEG-MFOS-AUDIT-SPOOL-AS-EVIDENCE-0104
   title: Spool output cannot satisfy audit evidence
@@ -557,16 +602,20 @@ entries:
   preconditions:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
-  input: Caller attempts to use OUTPUT_STREAM, console display, diagnostic log, or spool failure summary as audit evidence.
-  expected_decision: audit obligation remains unsatisfied; operation fails closed where audit is mandatory.
-  expected_audit: audit obligation is present where the target requirement declares one
+  input: Caller attempts to use OUTPUT_STREAM, console display, diagnostic log, or
+    spool failure summary as audit evidence.
+  expected_decision: audit obligation remains unsatisfied; operation fails closed
+    where audit is mandatory.
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: specified_error_without_side_effect_or_fake_success
   evidence_required:
   - test_result
   - traceability_link
   - red_team_review_record
   phase_to_implement: Phase 0.9 or later
-  expected_result: audit obligation remains unsatisfied; operation fails closed where audit is mandatory.
+  expected_result: audit obligation remains unsatisfied; operation fails closed where
+    audit is mandatory.
   coverage_note: Concrete Phase 0.8 planned semantic test.
 - test_id: TEST-MFOS-AUDIT-QUERY-0105
   title: Authorized audit query returns redacted view without mutation
@@ -581,15 +630,18 @@ entries:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
   input: Authorized auditor queries bounded audit stream with redaction policy.
-  expected_decision: query result is redacted, audited, and does not mutate committed records.
-  expected_audit: audit obligation is present where the target requirement declares one
+  expected_decision: query result is redacted, audited, and does not mutate committed
+    records.
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: none_for_positive_case
   evidence_required:
   - test_result
   - traceability_link
   - red_team_review_record
   phase_to_implement: Phase 0.9 or later
-  expected_result: query result is redacted, audited, and does not mutate committed records.
+  expected_result: query result is redacted, audited, and does not mutate committed
+    records.
   coverage_note: Concrete Phase 0.8 planned semantic test.
 - test_id: NEG-MFOS-AUDIT-UNAUTHORIZED-QUERY-0105
   title: Unauthorized audit query returns no protected records
@@ -605,7 +657,8 @@ entries:
   - No production or hosted daemon implementation is started.
   input: Principal without AUDIT_STREAM QUERY requests security decision records.
   expected_decision: MFOS_ERR_POLICY_DENIED and no protected audit content returned.
-  expected_audit: audit obligation is present where the target requirement declares one
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: specified_error_without_side_effect_or_fake_success
   evidence_required:
   - test_result
@@ -614,3 +667,5 @@ entries:
   phase_to_implement: Phase 0.9 or later
   expected_result: MFOS_ERR_POLICY_DENIED and no protected audit content returned.
   coverage_note: Concrete Phase 0.8 planned semantic test.
+origin_phase: phase-0-8
+superseded_by: tests/catalog/audit.yml

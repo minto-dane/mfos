@@ -1,7 +1,9 @@
+artifact_id: ARTIFACT-MFOS-TEST-CATALOG-CONFORMANCE-INDEX
+artifact_type: test_catalog
 catalog_id: MFOS-TEST-CATALOG-CONFORMANCE_INDEX
 schema_version: 1
 phase: '0.9'
-status: draft
+status: current
 implementation_allowed: false
 runner_implementation_allowed: false
 entries:
@@ -916,3 +918,5 @@ entries:
   evidence_required:
   - EV-MFOS-FVS-HELLO-JOB-9001
   status: draft
+origin_phase: phase-0-9
+current_since: phase-0-9

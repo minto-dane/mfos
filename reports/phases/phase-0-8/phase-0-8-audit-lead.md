@@ -7,7 +7,7 @@ Scope:
 - `docs/design/specs/07-audit.md`
 - `schemas/mfos/audit-record.schema.yml`
 - `formal/tla/audit-append/`
-- `tests/catalog/phase-0-8-audit-tests.yml`
+- `tests/catalog/archive/phase-0-8/audit-tests.yml`
 - `reports/phases/phase-0-8/phase-0-8-audit-lead.md`
 
 No production code was added or modified.
@@ -33,7 +33,7 @@ Diagnostic log lines, console lines, spool entries, spool output, and unverified
 - `formal/tla/audit-append/AuditAppend.tla`: abstract state machine for append, export, Guard seal, query authorization, recovery, and invariants.
 - `formal/tla/audit-append/README.md`: state-machine scope and invariant summary.
 - `formal/tla/audit-append/state-machine.yml`: pre-existing Phase 0.8 state-machine scaffold preserved; the TLA artifact is the fuller audit append model.
-- `tests/catalog/phase-0-8-audit-tests.yml`: Phase 0.8 positive, negative, fuzz, invalid-transition, and evidence test catalog.
+- `tests/catalog/archive/phase-0-8/audit-tests.yml`: Phase 0.8 positive, negative, fuzz, invalid-transition, and evidence test catalog.
 
 ## Spec Gaps
 

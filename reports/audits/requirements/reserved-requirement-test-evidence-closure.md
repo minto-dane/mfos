@@ -68,7 +68,7 @@ reserved requirements missing evidence: 0
 
 ## Remaining Traceability Gaps
 
-From `evidence/traceability/gap-report.yml` after regeneration:
+From `evidence/traceability/current/gap-report.yml` after regeneration:
 
 ```yaml
 summary:

@@ -36,14 +36,14 @@ HOST_SEMANTICS = re.compile(
 WALL_CLOCK = re.compile(r"\b20\d{2}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}")
 
 PHASE09_CATALOGS = [
-    "authorization-tests.yml",
-    "audit-tests.yml",
-    "dataset-catalog-tests.yml",
-    "job-spool-tests.yml",
-    "operator-console-tests.yml",
-    "first-vertical-slice-tests.yml",
-    "negative-tests.yml",
-    "failure-mode-tests.yml",
+    "authorization.yml",
+    "audit.yml",
+    "dataset-catalog.yml",
+    "job-spool.yml",
+    "operator-console.yml",
+    "first-vertical-slice.yml",
+    "negative.yml",
+    "failure-modes.yml",
     "conformance-index.yml",
 ]
 
@@ -86,7 +86,11 @@ def all_catalog_entries(paths: Iterable[Path] | None = None) -> list[tuple[Path,
 def yaml_files(root: Path) -> list[Path]:
     if not root.exists():
         return []
-    return sorted(path for path in root.rglob("*.yml") if path.is_file())
+    return sorted(
+        path
+        for path in root.rglob("*.yml")
+        if path.is_file() and path.name != "index.yml" and "archive" not in path.parts
+    )
 
 
 def as_list(value: Any) -> list[Any]:

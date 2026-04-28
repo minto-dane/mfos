@@ -35,5 +35,5 @@ Status: no Critical or Major gaps remain for the Phase 0.9 artifact freeze.
 Machine-readable gap output:
 
 ```text
-evidence/traceability/phase-0-9-gap-report.yml
+evidence/traceability/generated/phase-0-9/gap-report.yml
 ```

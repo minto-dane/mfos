@@ -23,14 +23,14 @@ the Portable Semantic Core, a semantic evaluator, or a runner.
   - `schemas/expected-failure.schema.yml`
   - `schemas/conformance-suite.schema.yml`
 - Test catalogs:
-  - `tests/catalog/authorization-tests.yml`
-  - `tests/catalog/audit-tests.yml`
-  - `tests/catalog/dataset-catalog-tests.yml`
-  - `tests/catalog/job-spool-tests.yml`
-  - `tests/catalog/operator-console-tests.yml`
-  - `tests/catalog/first-vertical-slice-tests.yml`
-  - `tests/catalog/negative-tests.yml`
-  - `tests/catalog/failure-mode-tests.yml`
+  - `tests/catalog/authorization.yml`
+  - `tests/catalog/audit.yml`
+  - `tests/catalog/dataset-catalog.yml`
+  - `tests/catalog/job-spool.yml`
+  - `tests/catalog/operator-console.yml`
+  - `tests/catalog/first-vertical-slice.yml`
+  - `tests/catalog/negative.yml`
+  - `tests/catalog/failure-modes.yml`
   - `tests/catalog/conformance-index.yml`
 - Fixtures and golden vectors:
   - `tests/fixtures/`

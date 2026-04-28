@@ -1,14 +1,17 @@
+artifact_id: ARTIFACT-MFOS-ARCHIVE-PHASE-0-8-JOB-SPOOL-TESTS
+artifact_type: test_catalog_archive
 registry_kind: phase_0_8_job_spool_tests
 schema_version: 1
 registry_id: MFOS-REG-PHASE-0-8-JOB-SPOOL-TESTS-0001
-status: draft
+status: historical
 updated_at_utc: '2026-04-27T00:00:00Z'
 updated_by: MFOS Phase 0.8 Job/Spool Lead
 owning_spec:
   path: docs/design/specs/09-job-spool.md
   spec_id: MFOS-SPEC-09-JOB-SPOOL
 implementation_allowed: false
-non_compatibility_statement: MFOS is z/OS-inspired and does not claim z/OS, JES, JES2, JCL, RACF, DFSMS, or SMF compatibility.
+non_compatibility_statement: MFOS is z/OS-inspired and does not claim z/OS, JES, JES2,
+  JCL, RACF, DFSMS, or SMF compatibility.
 source_matrix_ids:
 - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
 - EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
@@ -45,7 +48,8 @@ evidence_expectations:
   - reports/phases/phase-0-8/phase-0-8-job-spool-lead.md
 entries:
 - test_id: TEST-MFOS-JOB-0001
-  title: Authorized MFOS job-control stream job reads dataset, writes OUTPUT_STREAM, and completes RC 0
+  title: Authorized MFOS job-control stream job reads dataset, writes OUTPUT_STREAM,
+    and completes RC 0
   test_type: integration
   status: draft
   requirement_ids:
@@ -68,12 +72,14 @@ entries:
   - Program ECHO is available as a normal-authority test program.
   - MSGCLASS A is valid.
   steps:
-  - Submit a MFOS job-control stream job with one EXEC PGM=ECHO, one dataset DD, and one OUTPUT_STREAM DD.
+  - Submit a MFOS job-control stream job with one EXEC PGM=ECHO, one dataset DD, and
+    one OUTPUT_STREAM DD.
   - Establish effective principal ALICE.
   - Resolve dataset DD through catalogd, securityd, auditd, and datasetd.
   - Create OUTPUT_STREAM through securityd, auditd, and spoold.
   - Complete the step with return_code 0.
-  expected_result: Job reaches COMPLETE with job_return_code 0 and one closed OUTPUT_STREAM SpoolEntry.
+  expected_result: Job reaches COMPLETE with job_return_code 0 and one closed OUTPUT_STREAM
+    SpoolEntry.
   expected_absence:
   - no dataset handle before effective_principal
   - no OUTPUT_STREAM content visible before browse authorization
@@ -88,7 +94,8 @@ entries:
   evidence_ids:
   - EV-MFOS-JOB-SPOOL-LEAD-0001
 - test_id: TEST-MFOS-JOB-0002
-  title: MFOS job-control stream conversion preserves source locations and ordered job graph
+  title: MFOS job-control stream conversion preserves source locations and ordered
+    job graph
   test_type: unit
   status: draft
   requirement_ids:
@@ -102,9 +109,11 @@ entries:
   preconditions:
   - MFOS job-control stream parser exists in a non-production semantic test harness.
   steps:
-  - Parse one JOB card, two EXEC cards, comments, a dataset DD, inline INPUT_STREAM, and OUTPUT_STREAM.
+  - Parse one JOB card, two EXEC cards, comments, a dataset DD, inline INPUT_STREAM,
+    and OUTPUT_STREAM.
   - Inspect parser diagnostics and internal graph.
-  expected_result: Parser emits one Job, two ordered JobSteps, source locations, and DD bindings to nearest preceding step.
+  expected_result: Parser emits one Job, two ordered JobSteps, source locations, and
+    DD bindings to nearest preceding step.
   expected_absence:
   - no security decision in parser output
   - no dataset handle in parser output
@@ -158,12 +167,14 @@ entries:
   steps:
   - Submit the job as OPER1.
   - Request submit-as authorization from securityd.
-  expected_result: Job reaches VALIDATED with submitter_principal OPER1 and effective_principal ALICE.
+  expected_result: Job reaches VALIDATED with submitter_principal OPER1 and effective_principal
+    ALICE.
   expected_absence:
   - no dataset or spool handle before submit-as authorization
   expected_error_code: null
   audit_expectations:
-  - JOB_SUBMIT_ALLOW records submitter, requested_principal, effective_principal, policy_version, and decision_id.
+  - JOB_SUBMIT_ALLOW records submitter, requested_principal, effective_principal,
+    policy_version, and decision_id.
   evidence_ids:
   - EV-MFOS-JOB-SCHEMA-0001
 - test_id: TEST-MFOS-SPOOL-0001
@@ -186,8 +197,10 @@ entries:
   - securityd policy allows ALICE SPOOL BROWSE.
   steps:
   - ALICE requests browse.
-  - spoold rejects stale state, requests securityd authorization, satisfies audit, and returns records.
-  expected_result: Browse session returns OUTPUT_STREAM records only after SPOOL_BROWSE_ALLOW audit obligation completes.
+  - spoold rejects stale state, requests securityd authorization, satisfies audit,
+    and returns records.
+  expected_result: Browse session returns OUTPUT_STREAM records only after SPOOL_BROWSE_ALLOW
+    audit obligation completes.
   expected_absence:
   - no content before authorization
   - no spool content used as audit evidence
@@ -217,7 +230,8 @@ entries:
   - Request purge.
   - Verify retention eligibility, authorization, audit, PURGE_PENDING, and PURGED.
   - Attempt browse using the old spool_id.
-  expected_result: Purge reaches PURGED; later browse returns MFOS_ERR_STALE_SPOOL_REF with no content.
+  expected_result: Purge reaches PURGED; later browse returns MFOS_ERR_STALE_SPOOL_REF
+    with no content.
   expected_absence:
   - no purge before audit obligation
   - no content returned after purge
@@ -308,7 +322,8 @@ entries:
   evidence_ids:
   - EV-MFOS-JOB-SCHEMA-0001
 - test_id: NEG-MFOS-JOB-0004
-  title: Unsupported MFOS job-control stream feature returns unsupported with no side effects
+  title: Unsupported MFOS job-control stream feature returns unsupported with no side
+    effects
   test_type: negative
   status: draft
   requirement_ids:
@@ -405,7 +420,8 @@ entries:
   - Job is in CONVERTING.
   steps:
   - Attempt transition directly to QUEUED without VALIDATED.
-  expected_result: MFOS_ERR_INVALID_TRANSITION and job remains CONVERTING or terminal failure from the original operation.
+  expected_result: MFOS_ERR_INVALID_TRANSITION and job remains CONVERTING or terminal
+    failure from the original operation.
   expected_absence:
   - no QUEUED state caused by invalid transition
   - no initiator selection
@@ -568,7 +584,8 @@ entries:
   steps:
   - Attempt submit denial path.
   - Attempt spool browse denial path.
-  expected_result: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE and protected effects fail closed.
+  expected_result: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE and protected effects fail
+    closed.
   expected_absence:
   - no QUEUED state
   - no browse content
@@ -581,7 +598,8 @@ entries:
   - EV-MFOS-JOB-FORMAL-0001
   - EV-MFOS-SPOOL-FORMAL-0001
 - test_id: TEST-MFOS-JOB-FUZZ-0001
-  title: MFOS job-control stream parser fuzz rejects malformed and unsupported input without side effects
+  title: MFOS job-control stream parser fuzz rejects malformed and unsupported input
+    without side effects
   test_type: fuzz
   status: draft
   requirement_ids:
@@ -594,7 +612,8 @@ entries:
   preconditions:
   - Non-production parser fuzz harness exists.
   steps:
-  - Generate malformed cards, duplicate attributes, overlong names, nested inline payloads, and unsupported grammar.
+  - Generate malformed cards, duplicate attributes, overlong names, nested inline
+    payloads, and unsupported grammar.
   expected_result: Parser returns typed diagnostics and never panics.
   expected_absence:
   - no QUEUED state
@@ -624,7 +643,8 @@ entries:
   preconditions:
   - Non-production DD resolution fuzz harness exists.
   steps:
-  - Generate invalid DSNs, raw paths, raw volumes, stale catalog generations, conflicting OUTPUT_STREAM and DSN fields, and unauthorized principals.
+  - Generate invalid DSNs, raw paths, raw volumes, stale catalog generations, conflicting
+    OUTPUT_STREAM and DSN fields, and unauthorized principals.
   expected_result: Invalid or unauthorized DDs return typed errors without handles.
   expected_absence:
   - no dataset handle after DENY
@@ -641,7 +661,8 @@ entries:
   evidence_ids:
   - EV-MFOS-JOB-SPOOL-LEAD-0001
 - test_id: TEST-MFOS-SPOOL-FUZZ-0001
-  title: Spool access fuzz never returns content on deny, stale ref, unsupported, or spec gap
+  title: Spool access fuzz never returns content on deny, stale ref, unsupported,
+    or spec gap
   test_type: fuzz
   status: draft
   requirement_ids:
@@ -656,8 +677,10 @@ entries:
   preconditions:
   - Non-production spool access fuzz harness exists.
   steps:
-  - Generate browse, purge, export, stale-reference, invalid-transition, and malformed sequence requests.
-  expected_result: Authorized requests follow state machine; denied or invalid requests return no content and no purge.
+  - Generate browse, purge, export, stale-reference, invalid-transition, and malformed
+    sequence requests.
+  expected_result: Authorized requests follow state machine; denied or invalid requests
+    return no content and no purge.
   expected_absence:
   - no content on DENY
   - no content on stale ref
@@ -688,7 +711,8 @@ entries:
   - TLA+ model checker or reviewed manual trace process is available.
   steps:
   - Check formal/tla/job-lifecycle/JobLifecycle.tla against JobLifecycle.cfg.
-  expected_result: Invariants TypeOK, NoQueuedWithoutAuthorization, NoOpenBeforeEffectivePrincipal, TerminalJobDoesNotExecute, and FailureResultNotComplete hold.
+  expected_result: Invariants TypeOK, NoQueuedWithoutAuthorization, NoOpenBeforeEffectivePrincipal,
+    TerminalJobDoesNotExecute, and FailureResultNotComplete hold.
   expected_absence:
   - no QUEUED without authorization and audit
   - no resource open before effective principal
@@ -714,7 +738,8 @@ entries:
   - TLA+ model checker or reviewed manual trace process is available.
   steps:
   - Check formal/tla/spool-access/SpoolAccess.tla against SpoolAccess.cfg.
-  expected_result: Invariants TypeOK, ContentRequiresAuthorizationAndAudit, PurgedHasNoContent, PurgeRequiresRetentionAuthorizationAndAudit, and DenyReturnsNoContent hold.
+  expected_result: Invariants TypeOK, ContentRequiresAuthorizationAndAudit, PurgedHasNoContent,
+    PurgeRequiresRetentionAuthorizationAndAudit, and DenyReturnsNoContent hold.
   expected_absence:
   - no content on deny
   - no purge before retention and authorization
@@ -735,16 +760,20 @@ entries:
   preconditions:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
-  input: HELLO job submit establishes effective principal ALICE before dataset, program, or spool resource open.
-  expected_decision: job lifecycle records principal binding before DD resolution and execution.
-  expected_audit: audit obligation is present where the target requirement declares one
+  input: HELLO job submit establishes effective principal ALICE before dataset, program,
+    or spool resource open.
+  expected_decision: job lifecycle records principal binding before DD resolution
+    and execution.
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: none_for_positive_case
   evidence_required:
   - test_result
   - traceability_link
   - red_team_review_record
   phase_to_implement: Phase 0.9 or later
-  expected_result: job lifecycle records principal binding before DD resolution and execution.
+  expected_result: job lifecycle records principal binding before DD resolution and
+    execution.
   coverage_note: Concrete Phase 0.8 planned semantic test.
 - test_id: NEG-MFOS-JOB-NO-PRINCIPAL-0101
   title: Job without effective principal cannot open resources
@@ -758,16 +787,20 @@ entries:
   preconditions:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
-  input: jobd attempts DD resolution or program execution before effective principal is established.
-  expected_decision: MFOS_ERR_SPEC_GAP or MFOS_ERR_UNAUTHORIZED; no dataset/program/spool open.
-  expected_audit: audit obligation is present where the target requirement declares one
+  input: jobd attempts DD resolution or program execution before effective principal
+    is established.
+  expected_decision: MFOS_ERR_SPEC_GAP or MFOS_ERR_UNAUTHORIZED; no dataset/program/spool
+    open.
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: specified_error_without_side_effect_or_fake_success
   evidence_required:
   - test_result
   - traceability_link
   - red_team_review_record
   phase_to_implement: Phase 0.9 or later
-  expected_result: MFOS_ERR_SPEC_GAP or MFOS_ERR_UNAUTHORIZED; no dataset/program/spool open.
+  expected_result: MFOS_ERR_SPEC_GAP or MFOS_ERR_UNAUTHORIZED; no dataset/program/spool
+    open.
   coverage_note: Concrete Phase 0.8 planned semantic test.
 - test_id: TEST-MFOS-JOB-DD-RESOLVE-0102
   title: DD resolution goes through catalogd and securityd
@@ -782,15 +815,18 @@ entries:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
   input: IN DD DSN=USER.ALICE.INPUT DISP=SHR is resolved for ALICE READ.
-  expected_decision: catalog generation and SecurityDecision are present before dataset handle creation.
-  expected_audit: audit obligation is present where the target requirement declares one
+  expected_decision: catalog generation and SecurityDecision are present before dataset
+    handle creation.
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: none_for_positive_case
   evidence_required:
   - test_result
   - traceability_link
   - red_team_review_record
   phase_to_implement: Phase 0.9 or later
-  expected_result: catalog generation and SecurityDecision are present before dataset handle creation.
+  expected_result: catalog generation and SecurityDecision are present before dataset
+    handle creation.
   coverage_note: Concrete Phase 0.8 planned semantic test.
 - test_id: NEG-MFOS-JOB-DD-BYPASS-0102
   title: DD resolution bypassing catalogd or securityd fails
@@ -804,9 +840,11 @@ entries:
   preconditions:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
-  input: jobd attempts to pass DSN directly to dataset storage or reuse cached path without authorization.
+  input: jobd attempts to pass DSN directly to dataset storage or reuse cached path
+    without authorization.
   expected_decision: MFOS_ERR_SPEC_GAP or MFOS_ERR_UNAUTHORIZED; no handle.
-  expected_audit: audit obligation is present where the target requirement declares one
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: specified_error_without_side_effect_or_fake_success
   evidence_required:
   - test_result
@@ -829,7 +867,8 @@ entries:
   - No production or hosted daemon implementation is started.
   input: jobd receives securityd allow/deny decisions for dataset and spool resources.
   expected_decision: jobd acts only on securityd decision and records audit correlation.
-  expected_audit: audit obligation is present where the target requirement declares one
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: none_for_positive_case
   evidence_required:
   - test_result
@@ -852,7 +891,8 @@ entries:
   - No production or hosted daemon implementation is started.
   input: jobd attempts to mark dataset READ allowed without securityd decision.
   expected_decision: MFOS_ERR_UNAUTHORIZED and job step fails closed.
-  expected_audit: audit obligation is present where the target requirement declares one
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: specified_error_without_side_effect_or_fake_success
   evidence_required:
   - test_result
@@ -873,9 +913,11 @@ entries:
   preconditions:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
-  input: HELLO OUTPUT_STREAM entry is created with owner, job_id, class, retention, generation, and security profile.
+  input: HELLO OUTPUT_STREAM entry is created with owner, job_id, class, retention,
+    generation, and security profile.
   expected_decision: spool entry requires securityd authorization for browse/purge/export.
-  expected_audit: audit obligation is present where the target requirement declares one
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: none_for_positive_case
   evidence_required:
   - test_result
@@ -896,9 +938,11 @@ entries:
   preconditions:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
-  input: BOB or unrelated operator browses ALICE job OUTPUT_STREAM without browse authority.
+  input: BOB or unrelated operator browses ALICE job OUTPUT_STREAM without browse
+    authority.
   expected_decision: MFOS_ERR_POLICY_DENIED and protected content not returned.
-  expected_audit: audit obligation is present where the target requirement declares one
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: specified_error_without_side_effect_or_fake_success
   evidence_required:
   - test_result
@@ -920,15 +964,18 @@ entries:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
   input: Authorized export request includes redaction policy and audit obligation.
-  expected_decision: export planning succeeds only after securityd allow and audit obligation resolution.
-  expected_audit: audit obligation is present where the target requirement declares one
+  expected_decision: export planning succeeds only after securityd allow and audit
+    obligation resolution.
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: none_for_positive_case
   evidence_required:
   - test_result
   - traceability_link
   - red_team_review_record
   phase_to_implement: Phase 0.9 or later
-  expected_result: export planning succeeds only after securityd allow and audit obligation resolution.
+  expected_result: export planning succeeds only after securityd allow and audit obligation
+    resolution.
   coverage_note: Concrete Phase 0.8 planned semantic test.
 - test_id: NEG-MFOS-SPOOL-EXPORT-NO-AUDIT-0102
   title: Spool export without audit fails closed
@@ -943,23 +990,28 @@ entries:
   - Phase 0.8 semantics freeze artifacts are available.
   - No production or hosted daemon implementation is started.
   input: Spool export policy lacks audit obligation or auditd is unavailable.
-  expected_decision: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE or policy denial; no export artifact.
-  expected_audit: audit obligation is present where the target requirement declares one
+  expected_decision: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE or policy denial; no
+    export artifact.
+  expected_audit: audit obligation is present where the target requirement declares
+    one
   expected_failure_mode: specified_error_without_side_effect_or_fake_success
   evidence_required:
   - test_result
   - traceability_link
   - red_team_review_record
   phase_to_implement: Phase 0.9 or later
-  expected_result: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE or policy denial; no export artifact.
+  expected_result: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE or policy denial; no export
+    artifact.
   coverage_note: Concrete Phase 0.8 planned semantic test.
 spec_gaps:
 - gap_id: SPEC-GAP-JOB-0001
   summary: Final production program loader contract and module dataset schema.
-  required_test_response: Undefined program namespaces return MFOS_ERR_SPEC_GAP with no execution.
+  required_test_response: Undefined program namespaces return MFOS_ERR_SPEC_GAP with
+    no execution.
 - gap_id: SPEC-GAP-JOB-0002
   summary: Temporary dataset lifetime for DISP=TEMP.
-  required_test_response: DISP=TEMP returns MFOS_ERR_UNSUPPORTED until lifetime is specified.
+  required_test_response: DISP=TEMP returns MFOS_ERR_UNSUPPORTED until lifetime is
+    specified.
 - gap_id: SPEC-GAP-JOB-0003
   summary: Restart metadata and restart safety rules.
   required_test_response: Restart requests return MFOS_ERR_SPEC_GAP.
@@ -975,3 +1027,5 @@ spec_gaps:
 - gap_id: SPEC-GAP-SPOOL-0003
   summary: External print/export gateway.
   required_test_response: Raw destinations return MFOS_ERR_SPEC_GAP.
+origin_phase: phase-0-8
+superseded_by: tests/catalog/job-spool.yml

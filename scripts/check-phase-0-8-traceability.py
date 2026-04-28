@@ -16,10 +16,10 @@ import yaml
 
 
 ROOT = Path(__file__).resolve().parents[1]
-TRACE = ROOT / "evidence/traceability/phase-0-8-requirement-to-test.yml"
+TRACE = ROOT / "evidence/traceability/archive/phase-0-8/requirement-to-test.yml"
 CATALOG_DIR = ROOT / "tests/catalog"
 FVS_SPEC = ROOT / "docs/design/specs/30-first-vertical-slice-contract.md"
-GAP_REPORT = ROOT / "evidence/traceability/phase-0-8-gap-report.yml"
+GAP_REPORT = ROOT / "evidence/traceability/archive/phase-0-8/gap-report.yml"
 
 PACK_SPEC_MAP = {
     "PACK-05": ROOT / "docs/design/specs/06-authorization.md",
@@ -82,7 +82,7 @@ def main() -> int:
                 required_tests.add(test_id)
 
     catalog_tests: dict[str, dict[str, Any]] = {}
-    for catalog in sorted(CATALOG_DIR.glob("phase-0-8-*.yml")):
+    for catalog in sorted((CATALOG_DIR / "archive/phase-0-8").glob("*.yml")):
         data = load_yaml(catalog)
         collect_tests(data, catalog_tests)
         if data.get("implementation_allowed") is not False:

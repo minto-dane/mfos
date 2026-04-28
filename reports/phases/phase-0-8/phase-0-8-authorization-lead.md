@@ -13,7 +13,7 @@ authorized by this report.
 - Added `schemas/mfos/security-decision.schema.yml`.
 - Added `schemas/mfos/policy-binding.schema.yml`.
 - Added `formal/tla/authorization/MFOSAuthorization.tla`.
-- Added `tests/catalog/phase-0-8-authorization-tests.yml`.
+- Added `tests/catalog/archive/phase-0-8/authorization-tests.yml`.
 
 ## Semantics Frozen
 

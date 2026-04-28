@@ -37,8 +37,8 @@ Risk areas: fake success, missing negative tests, missing audit obligations, aut
 
 Evidence:
 
-- [phase-0-8-requirement-to-test.yml](/home/nia/mfos/evidence/traceability/phase-0-8-requirement-to-test.yml:3) maps Phase 0.8 requirements to `010x`-style test IDs such as `TEST-MFOS-AUTH-SECURITY-DECISION-0101`, `NEG-MFOS-AUTH-BYPASS-0101`, `TEST-MFOS-AUDIT-DENY-BEFORE-RETURN-0102`, and `NEG-MFOS-CATALOG-UNCOMMITTED-0101`.
-- [phase-0-8-authorization-tests.yml](/home/nia/mfos/tests/catalog/phase-0-8-authorization-tests.yml:22) and sibling catalogs define `000x`-style test IDs such as `TEST-MFOS-AUTH-POS-0001`.
+- [phase-0-8-requirement-to-test.yml](/home/nia/mfos/evidence/traceability/archive/phase-0-8/requirement-to-test.yml:3) maps Phase 0.8 requirements to `010x`-style test IDs such as `TEST-MFOS-AUTH-SECURITY-DECISION-0101`, `NEG-MFOS-AUTH-BYPASS-0101`, `TEST-MFOS-AUDIT-DENY-BEFORE-RETURN-0102`, and `NEG-MFOS-CATALOG-UNCOMMITTED-0101`.
+- [phase-0-8-authorization-tests.yml](/home/nia/mfos/tests/catalog/archive/phase-0-8/authorization-tests.yml:22) and sibling catalogs define `000x`-style test IDs such as `TEST-MFOS-AUTH-POS-0001`.
 - A local consistency check found 48 traceability references to test IDs that do not exist in the Phase 0.8 test catalogs.
 
 Impact:
