@@ -1,0 +1,320 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "https://mfos.local/schemas/test-case.schema.yml"
+title: "MFOS Executable-Spec Test Case Schema"
+description: "Design-only schema for deterministic executable-spec test case artifacts. This schema does not implement a runner or semantic evaluator."
+type: object
+additionalProperties: false
+x-mfos:
+  phase: "0.9"
+  design_only: true
+  implementation_allowed: false
+  owning_spec: "MFOS-SPEC-31-EXECUTABLE-SPEC-TEST-HARNESS"
+  requirement_refs:
+    - MFOS-REQ-EXECSPEC-0001
+    - MFOS-REQ-EXECSPEC-0002
+    - MFOS-REQ-EXECSPEC-0003
+    - MFOS-REQ-EXECSPEC-0004
+    - MFOS-REQ-EXECSPEC-0005
+  source_refs:
+    - EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
+    - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+    - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+    - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+required:
+  - artifact_kind
+  - schema_version
+  - test_id
+  - title
+  - status
+  - test_type
+  - profile
+  - owning_spec
+  - requirement_ids
+  - source_refs
+  - fixture_ref
+  - oracle_ref
+  - determinism
+  - execution_contract
+  - expected_evidence
+properties:
+  artifact_kind:
+    const: test_case
+  schema_version:
+    const: 1
+  schema_metadata:
+    $ref: "#/$defs/schema_metadata"
+  test_id:
+    $ref: "#/$defs/test_id"
+  legacy_ids:
+    type: array
+    items:
+      $ref: "#/$defs/legacy_id"
+    uniqueItems: true
+  title:
+    type: string
+    minLength: 1
+    maxLength: 160
+  status:
+    $ref: "#/$defs/artifact_status"
+  test_type:
+    enum:
+      - unit
+      - integration
+      - negative
+      - fuzz
+      - conformance
+      - crash_recovery
+      - fault_injection
+      - supply_chain
+      - formal_model
+      - release_gate
+  profile:
+    $ref: "#/$defs/profile"
+  owning_spec:
+    $ref: "#/$defs/spec_ref"
+  requirement_ids:
+    type: array
+    minItems: 1
+    uniqueItems: true
+    items:
+      $ref: "#/$defs/requirement_id"
+  source_refs:
+    type: array
+    minItems: 1
+    uniqueItems: true
+    items:
+      $ref: "#/$defs/extref_id"
+  fixture_ref:
+    $ref: "#/$defs/fixture_ref"
+  oracle_ref:
+    $ref: "#/$defs/oracle_ref"
+  suite_refs:
+    type: array
+    items:
+      $ref: "#/$defs/suite_id"
+    uniqueItems: true
+  determinism:
+    $ref: "#/$defs/determinism"
+  execution_contract:
+    type: object
+    additionalProperties: false
+    required:
+      - contract_kind
+      - implementation_allowed
+      - runner_required_for_execution
+      - semantic_evaluator_embedded
+      - input_order
+    properties:
+      contract_kind:
+        const: declarative_semantic_contract
+      implementation_allowed:
+        const: false
+      runner_required_for_execution:
+        type: boolean
+      semantic_evaluator_embedded:
+        const: false
+      input_order:
+        enum:
+          - fixture_declaration_order
+          - explicit_happens_before
+      max_steps:
+        type: integer
+        minimum: 1
+        maximum: 10000
+  expected_outcome:
+    $ref: "#/$defs/outcome"
+  negative_case:
+    type: boolean
+  expected_evidence:
+    type: array
+    minItems: 1
+    items:
+      type: object
+      additionalProperties: false
+      required:
+        - evidence_id
+        - evidence_kind
+        - required
+      properties:
+        evidence_id:
+          $ref: "#/$defs/evidence_id"
+        evidence_kind:
+          enum:
+            - schema_validation
+            - semantic_observation
+            - audit_record_ref
+            - state_digest
+            - conformance_result
+            - review_record
+        required:
+          type: boolean
+        notes:
+          type: string
+          maxLength: 400
+  spec_gap_ids:
+    type: array
+    items:
+      $ref: "#/$defs/spec_gap_id"
+    uniqueItems: true
+  notes:
+    type: string
+    maxLength: 1000
+$defs:
+  forbidden_mfos_owned_token:
+    pattern: "(IBM|ZOS|Z-OS|Z_OS|MVS|RACF|JES|JES2|DFSMS|SMF|APF|PRSM|PR-SM|LPAR|ZARCHITECTURE|Z-ARCHITECTURE|ZARCH|ZVM|Z-VM|SDSF|ISPF|TSOE|TSO-E|TSO|ZOSMF|ZOS-MF)"
+  schema_metadata:
+    type: object
+    additionalProperties: false
+    required:
+      - schema_id
+      - design_only
+      - source_refs
+    properties:
+      schema_id:
+        allOf:
+          - type: string
+            pattern: "^MFOS-SCHEMA-EXECSPEC-TEST-CASE-[0-9]{4}$"
+          - not:
+              $ref: "#/$defs/forbidden_mfos_owned_token"
+      design_only:
+        const: true
+      source_refs:
+        type: array
+        minItems: 1
+        uniqueItems: true
+        items:
+          $ref: "#/$defs/extref_id"
+  artifact_status:
+    enum:
+      - draft
+      - ready_for_review
+      - reviewed
+      - frozen
+      - deprecated
+      - superseded
+  profile:
+    enum:
+      - BASELINE
+      - ENTERPRISE_STANDALONE
+      - ENTERPRISE_PXM
+      - HIGH_ASSURANCE
+      - DEV
+  outcome:
+    enum:
+      - PASS
+      - FAIL
+      - BLOCKED
+      - UNSUPPORTED
+      - SPEC_GAP
+      - INVALID_ARTIFACT
+  extref_id:
+    type: string
+    pattern: "^EXTREF-[A-Z0-9-]+-[0-9]{4}$"
+  requirement_id:
+    allOf:
+      - type: string
+        pattern: "^MFOS-REQ-[A-Z0-9]+-[0-9]{4}$"
+      - not:
+          $ref: "#/$defs/forbidden_mfos_owned_token"
+  test_id:
+    allOf:
+      - type: string
+        pattern: "^(TEST|NEG)-MFOS-[A-Z0-9]+-[A-Z0-9-]*[0-9]{4}$"
+      - not:
+          $ref: "#/$defs/forbidden_mfos_owned_token"
+  fixture_ref:
+    allOf:
+      - type: string
+        pattern: "^FIX-MFOS-[A-Z0-9]+-[A-Z0-9-]*[0-9]{4}$"
+      - not:
+          $ref: "#/$defs/forbidden_mfos_owned_token"
+  oracle_ref:
+    allOf:
+      - type: string
+        pattern: "^ORACLE-MFOS-[A-Z0-9]+-[A-Z0-9-]*[0-9]{4}$"
+      - not:
+          $ref: "#/$defs/forbidden_mfos_owned_token"
+  suite_id:
+    allOf:
+      - type: string
+        pattern: "^SUITE-MFOS-[A-Z0-9]+-[A-Z0-9-]*[0-9]{4}$"
+      - not:
+          $ref: "#/$defs/forbidden_mfos_owned_token"
+  evidence_id:
+    allOf:
+      - type: string
+        pattern: "^EV-MFOS-[A-Z0-9]+-[A-Z0-9-]*[0-9]{4}$"
+      - not:
+          $ref: "#/$defs/forbidden_mfos_owned_token"
+  spec_gap_id:
+    allOf:
+      - type: string
+        pattern: "^(SPEC-GAP|[A-Z0-9]+-GAP)-[A-Z0-9-]*[0-9]{4}$"
+      - not:
+          $ref: "#/$defs/forbidden_mfos_owned_token"
+  legacy_id:
+    type: string
+    minLength: 1
+    maxLength: 128
+  spec_ref:
+    type: object
+    additionalProperties: false
+    required:
+      - spec_id
+      - path
+    properties:
+      spec_id:
+        allOf:
+          - type: string
+            pattern: "^MFOS-SPEC-[A-Z0-9-]+$"
+          - not:
+              $ref: "#/$defs/forbidden_mfos_owned_token"
+      path:
+        type: string
+        pattern: "^docs/design/specs/[0-9]{2}-[a-z0-9-]+\\.md$"
+      section:
+        type: string
+        minLength: 1
+        maxLength: 160
+  determinism:
+    type: object
+    additionalProperties: false
+    required:
+      - clock_utc
+      - security_epoch
+      - policy_version
+      - ordering
+      - randomness
+      - network
+      - host_filesystem
+    properties:
+      clock_utc:
+        type: string
+        format: date-time
+      security_epoch:
+        type: integer
+        minimum: 0
+      policy_version:
+        type: integer
+        minimum: 0
+      ordering:
+        enum:
+          - declaration_order
+          - explicit_happens_before
+      randomness:
+        type: object
+        additionalProperties: false
+        required:
+          - allowed
+        properties:
+          allowed:
+            type: boolean
+          seed:
+            type: string
+            minLength: 1
+            maxLength: 128
+      network:
+        const: disabled
+      host_filesystem:
+        const: declared_artifacts_only
+
