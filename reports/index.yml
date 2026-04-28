@@ -2,51 +2,75 @@ schema_version: 1
 report_index_kind: mfos_report_inventory
 status: draft
 canonical_report_root: reports
-
 current:
-  - path: reports/current/pr-5-review-report.md
-    purpose: PR 5 review findings and merge recommendation.
-  - path: reports/current/pr-5-post-gap-validation.md
-    purpose: Post-gap validation command results for PR 5.
-  - path: reports/current/policy-denial-error-taxonomy.md
-    purpose: Phase 0.9 policy-denial error mapping decision.
-  - path: reports/current/phase-1-readiness-report.md
-    purpose: Phase 1 readiness judgement.
-  - path: reports/current/phase-1-open-issues.md
-    purpose: Phase 1 nonblocking follow-up issues.
-  - path: reports/current/artifact-hygiene-audit.md
-    purpose: Repository artifact hygiene audit.
-  - path: reports/current/artifact-hygiene-audit.yml
-    purpose: Machine-readable repository artifact hygiene audit.
-  - path: reports/current/artifact-hygiene-red-team-review.md
-    purpose: Repository artifact hygiene red-team review.
-  - path: reports/current/artifact-hygiene-open-issues.md
-    purpose: Nonblocking artifact hygiene follow-up issues.
-
+- path: reports/current/pr-5-review-report.md
+  purpose: PR 5 review findings and merge recommendation.
+- path: reports/current/pr-5-post-gap-validation.md
+  purpose: Post-gap validation command results for PR 5.
+- path: reports/current/policy-denial-error-taxonomy.md
+  purpose: Phase 0.9 policy-denial error mapping decision.
+- path: reports/current/phase-1-readiness-report.md
+  purpose: Phase 1 readiness judgement.
+- path: reports/current/phase-1-open-issues.md
+  purpose: Phase 1 nonblocking follow-up issues.
+- path: reports/current/artifact-hygiene-audit.md
+  purpose: Repository artifact hygiene audit.
+- path: reports/current/artifact-hygiene-audit.yml
+  purpose: Machine-readable repository artifact hygiene audit.
+- path: reports/current/artifact-hygiene-red-team-review.md
+  purpose: Repository artifact hygiene red-team review.
+- path: reports/current/artifact-hygiene-open-issues.md
+  purpose: Nonblocking artifact hygiene follow-up issues.
+- path: reports/current/repository-scaffold-audit.md
+  purpose: Human repository scaffold completeness audit.
+- path: reports/current/repository-scaffold-audit.yml
+  purpose: Machine-readable repository scaffold completeness audit.
+- path: reports/current/empty-directory-inventory.yml
+  purpose: Machine-readable empty directory inventory.
+- path: reports/current/directory-maturity-matrix.yml
+  purpose: Directory role and maturity matrix.
+- path: reports/current/repository-scaffold-risk-matrix.yml
+  purpose: Repository scaffold risk matrix.
+- path: reports/current/repository-scaffold-open-issues.md
+  purpose: Open scaffold issues and nonblocking follow-ups.
+- path: reports/current/repository-scaffold-next-actions.yml
+  purpose: Recommended scaffold follow-up tasks.
+- path: reports/current/repository-scaffold-red-team-review.md
+  purpose: Repository scaffold red-team review.
+- path: reports/current/source-scaffold-audit.md
+  purpose: Source/source-matrix scaffold audit.
+- path: reports/current/docs-spec-scaffold-audit.md
+  purpose: Docs/spec scaffold audit.
+- path: reports/current/implementation-scaffold-audit.md
+  purpose: Implementation scaffold audit.
+- path: reports/current/test-evidence-scaffold-audit.md
+  purpose: Test/fuzz/evidence scaffold audit.
+- path: reports/current/scripts-ci-scaffold-audit.md
+  purpose: Scripts and CI scaffold audit.
+- path: reports/current/ai-pack-scaffold-audit.md
+  purpose: AI/packs/prompts scaffold audit.
 sections:
-  - path: reports/phases/phase-0-6/
-    purpose: Phase 0.6 canonicalization and enforcement closure.
-  - path: reports/phases/phase-0-7/
-    purpose: Phase 0.7 system integrity deep-spec work.
-  - path: reports/phases/phase-0-8/
-    purpose: Phase 0.8 core semantics freeze reports.
-  - path: reports/phases/phase-0-9/
-    purpose: Phase 0.9 executable-spec freeze reports.
-  - path: reports/audits/
-    purpose: Cross-phase audits grouped by audit subject.
-  - path: reports/naming-safety/
-    purpose: Naming-safety, external-reference migration, and legal-risk reports.
-  - path: reports/generated/
-    purpose: Deterministic script-generated reports.
-  - path: reports/archive/superseded/
-    purpose: Superseded reports retained for traceability.
-
+- path: reports/phases/phase-0-6/
+  purpose: Phase 0.6 canonicalization and enforcement closure.
+- path: reports/phases/phase-0-7/
+  purpose: Phase 0.7 system integrity deep-spec work.
+- path: reports/phases/phase-0-8/
+  purpose: Phase 0.8 core semantics freeze reports.
+- path: reports/phases/phase-0-9/
+  purpose: Phase 0.9 executable-spec freeze reports.
+- path: reports/audits/
+  purpose: Cross-phase audits grouped by audit subject.
+- path: reports/naming-safety/
+  purpose: Naming-safety, external-reference migration, and legal-risk reports.
+- path: reports/generated/
+  purpose: Deterministic script-generated reports.
+- path: reports/archive/superseded/
+  purpose: Superseded reports retained for traceability.
 generated_reports:
-  - path: reports/generated/traceability.md
-    generator: scripts/generate-traceability.py
-  - path: reports/generated/registry-link-audit.md
-    generator: scripts/check-registry-links.py
-
+- path: reports/generated/traceability.md
+  generator: scripts/generate-traceability.py
+- path: reports/generated/registry-link-audit.md
+  generator: scripts/check-registry-links.py
 policy:
   new_reports_default_location: reports/current/
   generated_reports_location: reports/generated/

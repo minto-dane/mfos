@@ -1,0 +1,49 @@
+schema_version: 1
+report_id: REPORT-MFOS-REPOSITORY-SCAFFOLD-NEXT-ACTIONS-0001
+status: current
+phase_1_blockers_found: false
+actions:
+- task_id: SCAF-NEXT-0001
+  priority: P1 before Phase 1
+  recommended_action: add_readme_only
+  title: Add component-level implementation scaffold metadata before assigning Phase
+    1 work
+  paths:
+  - implementation/prototypes/hosted-semantic/
+  - implementation/runtime/
+  - implementation/services/
+  reason: Root README warns against production readiness, but empty leaf directories
+    still look ready to agents.
+  phase_1_blocker: false
+- task_id: SCAF-NEXT-0002
+  priority: P2 before production implementation
+  recommended_action: create_source_card_task
+  title: Decide whether top-level sources/ tree should stay as planned scaffold or
+    be replaced by source-matrix cards
+  paths:
+  - sources/
+  - docs/design/source-matrix/
+  reason: Canonical source cards are in docs/design/source-matrix; sources/ is a mostly
+    empty future structure.
+  phase_1_blocker: false
+- task_id: SCAF-NEXT-0003
+  priority: P3 hygiene
+  recommended_action: merge_with_existing_directory
+  title: Merge or index empty ci/linters placeholders against scripts/
+  paths:
+  - ci/linters/
+  - scripts/
+  reason: Validation currently lives in scripts/ and CI invokes validate-all.
+  phase_1_blocker: false
+- task_id: SCAF-NEXT-0004
+  priority: P3 hygiene
+  recommended_action: add_index_only
+  title: Add scaffold index for planned tests/fuzz/evidence leaf directories if agents
+    will target them
+  paths:
+  - tests/
+  - fuzz/
+  - evidence/
+  reason: Many future leaf directories are empty by design; an index would reduce
+    assignment ambiguity.
+  phase_1_blocker: false
