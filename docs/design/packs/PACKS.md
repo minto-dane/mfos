@@ -127,3 +127,36 @@ specification_only: true
 ```
 
 No Phase 0.8 pack authorizes Phase 1 implementation.
+
+## Phase 0.9 Executable-Spec Pack Freeze
+
+Phase 0.9 adds executable-spec artifacts for PACK-05 through PACK-09 without
+starting implementation. The Phase 0.9 artifacts are test catalogs, fixtures,
+golden vectors, oracle definitions, fuzz corpus plans, runner contracts, and
+traceability matrices.
+
+Implementation authorization remains:
+
+```yaml
+production: false
+hosted_daemon: false
+portable_semantic_core: false
+semantic_runner: false
+specification_only: true
+```
+
+Phase 0.9 outputs:
+
+| Pack | Phase 0.9 artifacts |
+| --- | --- |
+| PACK-05 | `tests/catalog/authorization-tests.yml`, `tests/fixtures/auth/`, `tests/golden/auth/` |
+| PACK-06 | `tests/catalog/audit-tests.yml`, `tests/fixtures/audit/`, `tests/golden/audit/` |
+| PACK-07 | `tests/catalog/dataset-catalog-tests.yml`, `tests/fixtures/dataset/`, `tests/golden/dataset/` |
+| PACK-08 | `tests/catalog/job-spool-tests.yml`, `tests/fixtures/job/`, `tests/golden/job/` |
+| PACK-09 | `tests/catalog/operator-console-tests.yml`, `tests/fixtures/oper/`, `tests/golden/oper/` |
+| Cross-domain | `tests/catalog/first-vertical-slice-tests.yml`, `tests/fixtures/fvs/`, `tests/golden/fvs/` |
+| Fuzz planning | `fuzz/targets/phase-0-9-fuzz-target-plan.yml`, `fuzz/corpora/*/seed-plan.yml` |
+
+The runner contract is defined in
+`docs/design/specs/33-semantic-runner-contract.md`. This contract names future
+commands but explicitly prohibits a Phase 0.9 runner implementation.

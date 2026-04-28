@@ -6,7 +6,7 @@ Git status: initialized locally on branch `main`; remote repository setup is pri
 
 ## Current Phase
 
-Phase 0.8: Core Semantics Freeze
+Phase 0.9: Executable Specs / Test Harness Freeze
 
 Final judgment:
 
@@ -16,18 +16,22 @@ phase_0_7_status: in_progress_registry_coverage_closed
 phase_0_7_gap_closure_status: complete_for_machine_checkable_scaffold
 naming_safety_refactor_status: complete_for_private_internal_review
 phase_0_8_status: complete_for_design_level_core_semantics_freeze
+phase_0_9_status: complete_for_executable_spec_artifact_freeze
+phase_1_portable_semantic_core_allowed: true
 production_implementation_allowed: false
 hosted_daemon_implementation_allowed: false
 portable_semantic_core_implementation_allowed: false
+semantic_runner_implementation_allowed: false_for_phase_0_9_true_for_phase_1_only
 hosted_semantic_prototype_allowed: false
 public_release_allowed: false
 private_internal_use_allowed: true
 requires_ip_attorney_review_before_public_release: true
-next_phase: Phase 0.9 Executable Specs / Test Harness Freeze
+next_phase: Phase 1 Portable Semantic Core + Conformance Harness
 ```
 
 No production nucleus, service, PXM, Guard, or other OS-body implementation was
-started in Phase 0.6, Phase 0.7, naming-safety refactor, or Phase 0.8.
+started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
+0.9.
 
 ## Completed In Phase 0.6
 
@@ -204,6 +208,33 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, or Phase 0.8.
   semantic core implementation, nucleus, PXM, Guard, or service logic was
   started.
 
+## Completed In Phase 0.9 Executable Specs / Test Harness Freeze
+
+- Added Phase 0.9 executable-spec specs:
+  `31-executable-spec-test-harness.md`,
+  `32-conformance-fixture-format.md`,
+  `33-semantic-runner-contract.md`,
+  `34-oracle-definition-format.md`, and
+  `35-fuzz-corpus-plan.md`.
+- Added Phase 0.9 schemas for test cases, fixtures, oracles, expected audit
+  records, expected state transitions, expected failures, and conformance
+  suites.
+- Added 154 Phase 0.9 test catalog entries across authorization, audit,
+  dataset/catalog, job/spool, operator console, first vertical slice, negative
+  tests, failure modes, and conformance index catalogs.
+- Added 74 deterministic fixtures and 74 golden vectors with embedded oracles.
+- Added Phase 0.9 fuzz corpus planning for dataset names, job-control streams,
+  operator commands, policy language, audit records, dataset handles, job
+  fixtures, spool fixtures, and semantic fixtures.
+- Added Phase 0.9 validation scripts and wired
+  `./scripts/validate-phase-0-9.sh` into `./scripts/validate-all.sh`.
+- Generated Phase 0.9 traceability matrices under `evidence/traceability/`.
+- Added Phase 0.9 freeze, validation, gap, red-team, open-issue, and Phase 1
+  readiness reports.
+- Confirmed no production implementation, hosted daemon implementation,
+  Portable Semantic Core implementation, semantic evaluator implementation, or
+  semantic runner implementation was started in Phase 0.9.
+
 ## Validation Commands
 
 ```bash
@@ -218,6 +249,7 @@ python3 scripts/check-source-grounding.py
 python3 scripts/check-audit-obligations.py
 python3 scripts/check-spec-gap-misuse.py
 python3 scripts/check-phase-0-8-traceability.py --mode release
+./scripts/validate-phase-0-9.sh
 python3 scripts/generate-traceability.py
 ./scripts/validate-all.sh
 python3 -m py_compile scripts/*.py
@@ -242,6 +274,8 @@ warnings for current opt-in statement-level grounding.
 
 `python3 scripts/check-phase-0-8-traceability.py --mode release` passes.
 
+`./scripts/validate-phase-0-9.sh` passes and generates Phase 0.9 traceability.
+
 `./scripts/validate-naming-safety.sh release` passes with 0 warnings.
 
 `python3 -m py_compile scripts/*.py` passed. YAML and JSON parse checks passed.
@@ -265,6 +299,10 @@ release_evidence_errors: 18
 release_evidence_warnings: 20
 naming_safety_release_warnings: 0
 extref_ibm_source_cards: 23
+phase_0_9_test_catalog_entries: 154
+phase_0_9_fixtures: 74
+phase_0_9_golden_vectors: 74
+phase_0_9_fuzz_targets: 9
 ```
 
 ## Remaining Gaps
@@ -277,9 +315,10 @@ extref_ibm_source_cards: 23
   implementation-ready requirements. Deep specs, final tests, evidence, and
   red-team review are still required before any implementation packet can use
   them.
-- The system-integrity body has a stronger registry surface, but Phase 0.7 is
-  still blocked from implementation by source-card pin limits, reserved
-  requirements, and draft-only evidence.
+- Source-card pin limits, reserved requirements, and draft-only evidence still
+  block production or release claims. They do not block Phase 1 Portable
+  Semantic Core work that is constrained to the Phase 0.9 executable-spec
+  artifact set.
 - Release-mode evidence checking intentionally blocks claims until verified
   evidence artifacts, digests, verifiers, and verification timestamps exist.
 - CI design validation is wired, but release-mode evidence gates still require
@@ -288,13 +327,11 @@ extref_ibm_source_cards: 23
   incomplete and nonblocking while English remains canonical.
 - Public release remains blocked pending human legal/IP review, even though the
   naming-safety lint passes locally.
-- Phase 0.8 first vertical slice conflicts are implementation-blocking until
-  Phase 0.9 closes dataset staging, ECHO program identity, queue/select/workload
-  executable semantics, failure-summary spool ownership/redaction, catalog
-  transaction fixture boundaries, and spec numbering cleanup.
-- Phase 0.8 minor red-team issues remain tracked in
-  `reports/phase-0-8-open-issues.md`; they do not block the design-level freeze
-  but block formal-evidence or implementation use where applicable.
+- The first vertical slice now has Phase 0.9 fixtures and golden vectors. The
+  user-facing policy-denial error mapping remains a deliberate `SPEC_GAP` until
+  Phase 1 resolves it without weakening fail-closed behavior.
+- Phase 0.9 does not provide verified execution evidence; it provides the
+  executable-spec artifacts that Phase 1 must implement against.
 
 ## Reports
 
@@ -342,17 +379,22 @@ extref_ibm_source_cards: 23
 - `reports/phase-0-8-operator-console-lead.md`
 - `reports/phase-0-8-cross-domain-lead.md`
 - `reports/phase-0-9-readiness.md`
+- `reports/phase-0-9-executable-spec-freeze-report.md`
+- `reports/phase-0-9-validation-report.md`
+- `reports/phase-0-9-gap-report.md`
+- `reports/phase-0-9-red-team-review.md`
+- `reports/phase-0-9-open-issues.md`
+- `reports/phase-1-readiness-report.md`
 
 ## Next Recommended Work
 
-Proceed to Phase 0.9 Executable Specs / Test Harness Freeze:
+Proceed to Phase 1 Portable Semantic Core + Conformance Harness:
 
-1. Convert the Phase 0.8 planned test catalogs into executable-spec/test-harness
-   contracts without starting production service or daemon implementation.
-2. Close first-vertical-slice implementation blockers: dataset staging, program
-   identity, queue/select semantics, failure-summary spool policy, catalog
-   fixture boundaries, and duplicate spec numbering.
-3. Preserve the Phase 0.8 closure fixes: authorization formal reachability
-   predicates, inactive future prompt gates, MFOS-native job-control stream
-   identifiers, and workload-policy naming.
-4. Run Red Team review again before any implementation packet is authorized.
+1. Implement only the Portable Semantic Core and conformance harness needed to
+   load Phase 0.9 fixtures and compare golden vectors.
+2. Implement `mfos-semantic-runner` only as a Phase 1 tool under the runner
+   contract; do not implement production daemons or OS services.
+3. Preserve deterministic output, fail-closed `SPEC_GAP` and `UNSUPPORTED`
+   handling, naming-safety validation, and no external compatibility claims.
+4. Keep production implementation, hosted daemon implementation, and hardware
+   enforcement claims blocked.
