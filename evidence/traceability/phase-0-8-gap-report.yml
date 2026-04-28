@@ -1,0 +1,31 @@
+report_kind: phase_0_8_gap_report
+status: red_team_remediated_design_freeze
+blocking_gaps:
+- category: implementation_blocking
+  gap: Executable specs and test harness are deferred to Phase 0.9.
+- category: implementation_blocking
+  gap: First vertical slice dataset staging and content fixture encoding are deferred to Phase 0.9.
+- category: implementation_blocking
+  gap: ECHO program identity and program catalog semantics are deferred to Phase 0.9.
+- category: implementation_blocking
+  gap: Queue/select/workload policy executable semantics are deferred to Phase 0.9.
+- category: implementation_blocking
+  gap: Failure-summary spool owner, security, and redaction executable semantics are deferred to Phase 0.9.
+- category: implementation_blocking
+  gap: Catalog transaction fixture boundaries are deferred to Phase 0.9.
+- category: implementation_blocking
+  gap: Duplicate spec numbering and generated index cleanup remain documentation tasks before implementation input packaging.
+nonblocking_gaps:
+- Evidence artifacts are draft traceability records, not verified release evidence.
+- Source Card exact section/version pins remain future review work.
+- Japanese mirror parity remains incomplete; English remains canonical.
+- AMF, PXM, SVC, and PCALL naming remains deferred legal/architecture review from naming-safety pass. WLM-owned names were remediated to workload-policy names; EXTREF-IBM-ZOS-WLM-* remains external source-reference ID space only.
+implementation_blocking_gaps:
+- Executable specs and test harness are deferred to Phase 0.9.
+- First vertical slice dataset staging and content fixture encoding are deferred to Phase 0.9.
+- ECHO program identity and program catalog semantics are deferred to Phase 0.9.
+- Queue/select/workload policy executable semantics are deferred to Phase 0.9.
+- Failure-summary spool owner, security, and redaction executable semantics are deferred to Phase 0.9.
+- Catalog transaction fixture boundaries are deferred to Phase 0.9.
+- Duplicate spec numbering and generated index cleanup remain documentation tasks before implementation input packaging.
+design_freeze_blocking_gaps: []

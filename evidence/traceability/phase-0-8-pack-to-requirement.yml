@@ -1,0 +1,36 @@
+matrix_kind: phase_0_8_pack_to_requirement
+entries:
+- pack_id: PACK-05
+  requirements:
+  - MFOS-REQ-AUTH-0101
+  - MFOS-REQ-AUTH-0102
+  - MFOS-REQ-AUTH-0103
+  - MFOS-REQ-AUTH-0104
+  - MFOS-REQ-AUTH-0105
+- pack_id: PACK-06
+  requirements:
+  - MFOS-REQ-AUDIT-0101
+  - MFOS-REQ-AUDIT-0102
+  - MFOS-REQ-AUDIT-0103
+  - MFOS-REQ-AUDIT-0104
+  - MFOS-REQ-AUDIT-0105
+- pack_id: PACK-07
+  requirements:
+  - MFOS-REQ-CATALOG-0101
+  - MFOS-REQ-CATALOG-0102
+  - MFOS-REQ-DATASET-0101
+  - MFOS-REQ-DATASET-0102
+  - MFOS-REQ-DATASET-0103
+- pack_id: PACK-08
+  requirements:
+  - MFOS-REQ-JOB-0101
+  - MFOS-REQ-JOB-0102
+  - MFOS-REQ-JOB-0103
+  - MFOS-REQ-SPOOL-0101
+  - MFOS-REQ-SPOOL-0102
+- pack_id: PACK-09
+  requirements:
+  - MFOS-REQ-OPER-0101
+  - MFOS-REQ-OPER-0102
+  - MFOS-REQ-OPER-0103
+  - MFOS-REQ-OPER-0104

@@ -1,0 +1,74 @@
+matrix_kind: phase_0_8_requirement_to_evidence
+entries:
+- requirement_id: MFOS-REQ-AUTH-0101
+  evidence:
+  - EV-MFOS-AUTH-0101
+- requirement_id: MFOS-REQ-AUTH-0102
+  evidence:
+  - EV-MFOS-AUTH-0102
+- requirement_id: MFOS-REQ-AUTH-0103
+  evidence:
+  - EV-MFOS-AUTH-0103
+- requirement_id: MFOS-REQ-AUTH-0104
+  evidence:
+  - EV-MFOS-AUTH-0104
+- requirement_id: MFOS-REQ-AUTH-0105
+  evidence:
+  - EV-MFOS-AUTH-0105
+- requirement_id: MFOS-REQ-AUDIT-0101
+  evidence:
+  - EV-MFOS-AUDIT-0101
+- requirement_id: MFOS-REQ-AUDIT-0102
+  evidence:
+  - EV-MFOS-AUDIT-0102
+- requirement_id: MFOS-REQ-AUDIT-0103
+  evidence:
+  - EV-MFOS-AUDIT-0103
+- requirement_id: MFOS-REQ-AUDIT-0104
+  evidence:
+  - EV-MFOS-AUDIT-0104
+- requirement_id: MFOS-REQ-AUDIT-0105
+  evidence:
+  - EV-MFOS-AUDIT-0105
+- requirement_id: MFOS-REQ-CATALOG-0101
+  evidence:
+  - EV-MFOS-CATALOG-0101
+- requirement_id: MFOS-REQ-CATALOG-0102
+  evidence:
+  - EV-MFOS-CATALOG-0102
+- requirement_id: MFOS-REQ-DATASET-0101
+  evidence:
+  - EV-MFOS-DATASET-0101
+- requirement_id: MFOS-REQ-DATASET-0102
+  evidence:
+  - EV-MFOS-DATASET-0102
+- requirement_id: MFOS-REQ-DATASET-0103
+  evidence:
+  - EV-MFOS-DATASET-0103
+- requirement_id: MFOS-REQ-JOB-0101
+  evidence:
+  - EV-MFOS-JOB-0101
+- requirement_id: MFOS-REQ-JOB-0102
+  evidence:
+  - EV-MFOS-JOB-0102
+- requirement_id: MFOS-REQ-JOB-0103
+  evidence:
+  - EV-MFOS-JOB-0103
+- requirement_id: MFOS-REQ-SPOOL-0101
+  evidence:
+  - EV-MFOS-SPOOL-0101
+- requirement_id: MFOS-REQ-SPOOL-0102
+  evidence:
+  - EV-MFOS-SPOOL-0102
+- requirement_id: MFOS-REQ-OPER-0101
+  evidence:
+  - EV-MFOS-OPER-0101
+- requirement_id: MFOS-REQ-OPER-0102
+  evidence:
+  - EV-MFOS-OPER-0102
+- requirement_id: MFOS-REQ-OPER-0103
+  evidence:
+  - EV-MFOS-OPER-0103
+- requirement_id: MFOS-REQ-OPER-0104
+  evidence:
+  - EV-MFOS-OPER-0104

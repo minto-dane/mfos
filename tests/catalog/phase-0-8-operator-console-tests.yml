@@ -1,0 +1,606 @@
+schema_version: 1
+catalog_id: MFOS-PHASE-0-8-OPERATOR-CONSOLE-TESTS
+title: Phase 0.8 Operator Console Semantics Test Catalog
+status: planned
+owner: MFOS Phase 0.8 Operator Console Lead
+implementation_allowed: false
+spec_refs:
+- docs/design/specs/10-operator-console.md
+schema_refs:
+- schemas/mfos/operator-command.schema.yml
+formal_refs:
+- formal/tla/operator-command/OperatorCommand.tla
+source_refs:
+- EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+- EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
+- EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+- EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+- EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+- EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+- EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
+- EXTREF-IBM-ZOS-JES2-LIBRARY-0001
+- EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+- EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001
+evidence_requirements:
+- grammar-review-record
+- operator-command-schema-validation-report
+- formal-state-machine-review
+- positive-test-results
+- negative-test-results
+- fuzz-corpus-manifest
+- audit-ordering-report
+- no-root-shell-boot-report
+- spec-gap-ledger
+tests:
+- test_id: TEST-MFOS-OPER-BOOT-0001
+  test_type: conformance
+  requirement_ids:
+  - MFOS-REQ-OPER-0001
+  title: Boot reaches operator console, not root shell
+  expected_result: First interactive surface is operatord console; no root shell prompt is available.
+  status: planned
+  evidence: no-root-shell-boot-report
+- test_id: TEST-MFOS-OPER-PARSE-0001
+  test_type: unit
+  requirement_ids:
+  - MFOS-REQ-OPER-0002
+  - MFOS-REQ-OPER-0009
+  title: Valid grammar creates typed OperatorCommand
+  expected_result: Each valid Phase 0.8 command parses into an OperatorCommand with command_id, raw_text_hash, parsed_name, authority_class, risk_class, and typed command_args.
+  status: planned
+  evidence: grammar-review-record
+- test_id: TEST-MFOS-OPER-SCHEMA-0001
+  test_type: conformance
+  requirement_ids:
+  - MFOS-REQ-OPER-0003
+  title: OperatorCommand schema accepts valid commands
+  expected_result: Valid command, command result, display frame, and dual-control examples conform to schemas/mfos/operator-command.schema.yml.
+  status: planned
+  evidence: operator-command-schema-validation-report
+- test_id: TEST-MFOS-OPER-DISPLAY-0001
+  test_type: integration
+  requirement_ids:
+  - MFOS-REQ-OPER-0003
+  - MFOS-REQ-OPER-0005
+  - MFOS-REQ-OPER-0007
+  title: DISPLAY SYSTEM authorized and audited
+  expected_result: Authenticated operator receives typed display frame only after command authorization and required audit.
+  status: planned
+  evidence: positive-test-results
+- test_id: TEST-MFOS-OPER-DISPLAY-0002
+  test_type: integration
+  requirement_ids:
+  - MFOS-REQ-OPER-0005
+  title: Display frame includes redaction policy and audit ref
+  expected_result: ConsoleDisplayFrame includes status, reason_code, redaction_policy, next_action, and audit_record_ref.
+  status: planned
+  evidence: positive-test-results
+- test_id: TEST-MFOS-OPER-DATASET-0001
+  test_type: integration
+  requirement_ids:
+  - MFOS-REQ-OPER-0002
+  - MFOS-REQ-OPER-0003
+  - MFOS-REQ-OPER-0005
+  title: DEFINE DATASET routes as typed workflow
+  expected_result: Dataset define command resolves catalog target, authorizes, audits before effect, and routes a typed request to dataset/catalog workflow.
+  status: planned
+  evidence: positive-test-results
+- test_id: TEST-MFOS-OPER-SUBMIT-0001
+  test_type: integration
+  requirement_ids:
+  - MFOS-REQ-OPER-0002
+  - MFOS-REQ-OPER-0005
+  title: SUBMIT INLINE routes payload as job data
+  expected_result: Inline payload is bounded data, not shell text; jobd receives typed submit request with audit correlation ID.
+  status: planned
+  evidence: positive-test-results
+- test_id: TEST-MFOS-OPER-SPOOL-0001
+  test_type: integration
+  requirement_ids:
+  - MFOS-REQ-OPER-0003
+  - MFOS-REQ-OPER-0005
+  title: BROWSE SPOOL applies target authorization and redaction
+  expected_result: Authorized spool browse returns redacted display frame and audit record.
+  status: planned
+  evidence: positive-test-results
+- test_id: TEST-MFOS-OPER-CANCEL-0001
+  test_type: integration
+  requirement_ids:
+  - MFOS-REQ-OPER-0003
+  - MFOS-REQ-OPER-0005
+  title: CANCEL JOB requires reason and audit
+  expected_result: Queued job cancel with valid authority records reason and audit before effect.
+  status: planned
+  evidence: positive-test-results
+- test_id: TEST-MFOS-OPER-PURGE-0001
+  test_type: integration
+  requirement_ids:
+  - MFOS-REQ-OPER-0004
+  - MFOS-REQ-OPER-0005
+  title: PURGE SPOOL succeeds after confirmation and retention authorization
+  expected_result: Purge executes only after confirmation, retention policy authorization, pre-effect audit, and result audit.
+  status: planned
+  evidence: positive-test-results
+- test_id: TEST-MFOS-OPER-DUAL-0001
+  test_type: integration
+  requirement_ids:
+  - MFOS-REQ-OPER-0004
+  title: Critical command executes after distinct approval
+  expected_result: DEFINE USER or SET WORKLOAD POLICY remains pending until a distinct authorized approver approves the exact target digest.
+  status: planned
+  evidence: positive-test-results
+- test_id: TEST-MFOS-OPER-EMERGENCY-0001
+  test_type: integration
+  requirement_ids:
+  - MFOS-REQ-OPER-0008
+  title: Emergency enter and exit produce audit and expiry
+  expected_result: ENTER EMERGENCY requires reason, identity, expiry, authorization, and audit before active; EXIT EMERGENCY audits closure.
+  status: planned
+  evidence: positive-test-results
+- test_id: TEST-MFOS-OPER-AUTOMATION-0001
+  test_type: integration
+  requirement_ids:
+  - MFOS-REQ-OPER-0006
+  title: Automation DISPLAY JOB uses normal lifecycle
+  expected_result: Automation principal submits DISPLAY JOB through parser, target resolver, authorization, audit, and typed result path.
+  status: planned
+  evidence: positive-test-results
+- test_id: TEST-MFOS-OPER-FORMAL-0001
+  test_type: conformance
+  requirement_ids:
+  - MFOS-REQ-OPER-0003
+  - MFOS-REQ-OPER-0004
+  - MFOS-REQ-OPER-0006
+  - MFOS-REQ-OPER-0008
+  title: Formal state-machine invariants reviewed
+  expected_result: OperatorCommand.tla invariants cover authority, confirmation, dual control, automation, emergency, terminal no-effect, and root-shell rejection.
+  status: planned
+  evidence: formal-state-machine-review
+- test_id: NEG-MFOS-OPER-AUTH-0001
+  test_type: negative
+  requirement_ids:
+  - MFOS-REQ-OPER-0003
+  title: Unauthenticated DEFINE USER denied
+  expected_result: No user is created; command is denied or failed closed and audit is written when possible.
+  status: planned
+  evidence: negative-test-results
+- test_id: NEG-MFOS-OPER-AUTH-0002
+  test_type: negative
+  requirement_ids:
+  - MFOS-REQ-OPER-0003
+  - MFOS-REQ-OPER-0007
+  title: Unauthorized DEFINE USER audits denial before display
+  expected_result: securityd denial prevents side effects and OPER_COMMAND_DENY precedes denial display.
+  status: planned
+  evidence: audit-ordering-report
+- test_id: NEG-MFOS-OPER-PARSE-0001
+  test_type: negative
+  requirement_ids:
+  - MFOS-REQ-OPER-0002
+  - MFOS-REQ-OPER-0010
+  title: Unknown command fails closed
+  expected_result: Unknown or undefined command returns UNSUPPORTED or SPEC_GAP with no side effect.
+  status: planned
+  evidence: negative-test-results
+- test_id: NEG-MFOS-OPER-PARSE-0002
+  test_type: negative
+  requirement_ids:
+  - MFOS-REQ-OPER-0009
+  title: Shell metacharacters are never executed
+  expected_result: Input containing shell syntax outside typed text fields is rejected as invalid parameter and no shell process is invoked.
+  status: planned
+  evidence: negative-test-results
+- test_id: NEG-MFOS-OPER-CONFIRM-0001
+  test_type: negative
+  requirement_ids:
+  - MFOS-REQ-OPER-0004
+  title: PURGE SPOOL without confirmation has no effect
+  expected_result: Command remains pending or denied; spool entry is not purged.
+  status: planned
+  evidence: negative-test-results
+- test_id: NEG-MFOS-OPER-DUAL-0001
+  test_type: negative
+  requirement_ids:
+  - MFOS-REQ-OPER-0004
+  title: Same-actor dual control denied
+  expected_result: Approval by requester is rejected even when requester has multiple roles.
+  status: planned
+  evidence: negative-test-results
+- test_id: NEG-MFOS-OPER-DUAL-0002
+  test_type: negative
+  requirement_ids:
+  - MFOS-REQ-OPER-0004
+  title: Stale target digest invalidates approval
+  expected_result: Command with changed target digest requires re-resolution and reauthorization or fails closed.
+  status: planned
+  evidence: negative-test-results
+- test_id: NEG-MFOS-OPER-EMERGENCY-0001
+  test_type: negative
+  requirement_ids:
+  - MFOS-REQ-OPER-0008
+  title: Emergency without reason or expiry denied
+  expected_result: Emergency state is not activated and denial is audited when possible.
+  status: planned
+  evidence: negative-test-results
+- test_id: NEG-MFOS-OPER-EMERGENCY-0002
+  test_type: negative
+  requirement_ids:
+  - MFOS-REQ-OPER-0008
+  title: Emergency cannot disable auditd
+  expected_result: Attempt to disable auditd through emergency context is denied and has no side effect.
+  status: planned
+  evidence: negative-test-results
+- test_id: NEG-MFOS-OPER-AUTOMATION-0001
+  test_type: negative
+  requirement_ids:
+  - MFOS-REQ-OPER-0006
+  title: Automation direct service bypass denied
+  expected_result: Automation attempt to call internal dataset define path directly is rejected as bypass; no dataset is created.
+  status: planned
+  evidence: negative-test-results
+- test_id: NEG-MFOS-OPER-AUTOMATION-0002
+  test_type: negative
+  requirement_ids:
+  - MFOS-REQ-OPER-0006
+  title: Automation cannot self-approve
+  expected_result: Automation requester cannot satisfy confirmation or dual-control approval for its own command in production profile.
+  status: planned
+  evidence: negative-test-results
+- test_id: NEG-MFOS-OPER-STALE-0001
+  test_type: negative
+  requirement_ids:
+  - MFOS-REQ-OPER-0003
+  title: Stale target fails closed
+  expected_result: Target generation change between resolution and effect returns MFOS_ERR_STALE_HANDLE or triggers full reauthorization before any effect.
+  status: planned
+  evidence: negative-test-results
+- test_id: NEG-MFOS-OPER-AUDIT-0001
+  test_type: fault_injection
+  requirement_ids:
+  - MFOS-REQ-OPER-0005
+  - MFOS-REQ-OPER-0007
+  title: Required audit unavailable fails closed
+  expected_result: Destructive command with unavailable pre-effect audit returns MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE and has no side effect.
+  status: planned
+  evidence: audit-ordering-report
+- test_id: NEG-MFOS-OPER-STATE-0001
+  test_type: negative
+  requirement_ids:
+  - MFOS-REQ-OPER-0003
+  title: Invalid lifecycle transition rejected
+  expected_result: Forced PARSED to EXECUTING transition returns MFOS_ERR_INVALID_STATE or SPEC_GAP and produces no side effect.
+  status: planned
+  evidence: negative-test-results
+- test_id: NEG-MFOS-OPER-POLICY-0001
+  test_type: negative
+  requirement_ids:
+  - MFOS-REQ-OPER-0003
+  - MFOS-REQ-OPER-0004
+  title: Policy version change invalidates pending approval
+  expected_result: Pending command cannot execute with stale policy version; it must reauthorize or cancel.
+  status: planned
+  evidence: negative-test-results
+- test_id: NEG-MFOS-OPER-DISPLAY-0001
+  test_type: negative
+  requirement_ids:
+  - MFOS-REQ-OPER-0005
+  title: Unredacted display frame rejected
+  expected_result: Display output containing protected unredacted fields is rejected before presentation.
+  status: planned
+  evidence: negative-test-results
+- test_id: TEST-MFOS-OPER-FUZZ-PARSER-0001
+  test_type: fuzz
+  requirement_ids:
+  - MFOS-REQ-OPER-0002
+  - MFOS-REQ-OPER-0009
+  title: Fuzz parser grammar boundaries
+  expected_result: Malformed commands, overlong tokens, invalid escapes, shell metacharacters, and duplicate operands do not panic and do not execute.
+  status: planned
+  evidence: fuzz-corpus-manifest
+- test_id: TEST-MFOS-OPER-FUZZ-INLINE-0001
+  test_type: fuzz
+  requirement_ids:
+  - MFOS-REQ-OPER-0002
+  - MFOS-REQ-OPER-0009
+  title: Fuzz SUBMIT INLINE payload handling
+  expected_result: Nested inline submit, missing ENDSUBMIT, invalid line endings, and payload limit cases keep payload as data and never invoke shell behavior.
+  status: planned
+  evidence: fuzz-corpus-manifest
+- test_id: TEST-MFOS-OPER-FUZZ-TARGET-0001
+  test_type: fuzz
+  requirement_ids:
+  - MFOS-REQ-OPER-0003
+  title: Fuzz target resolution
+  expected_result: Invalid DSN, invalid job IDs, stale spool IDs, and ambiguous names fail closed or reauthorize without side effects.
+  status: planned
+  evidence: fuzz-corpus-manifest
+- test_id: TEST-MFOS-OPER-FUZZ-CONFIRM-0001
+  test_type: fuzz
+  requirement_ids:
+  - MFOS-REQ-OPER-0004
+  title: Fuzz confirmation flow
+  expected_result: Repeated, expired, wrong-requester, and target-changed confirmations cannot create authority or execute modified commands.
+  status: planned
+  evidence: fuzz-corpus-manifest
+- test_id: TEST-MFOS-OPER-FUZZ-DUAL-0001
+  test_type: fuzz
+  requirement_ids:
+  - MFOS-REQ-OPER-0004
+  title: Fuzz dual-control approval flow
+  expected_result: Same actor, expired approval, wrong authority, and replayed approval never satisfy dual control.
+  status: planned
+  evidence: fuzz-corpus-manifest
+- test_id: TEST-MFOS-OPER-FUZZ-EMERGENCY-0001
+  test_type: fuzz
+  requirement_ids:
+  - MFOS-REQ-OPER-0008
+  title: Fuzz emergency lifecycle
+  expected_result: Missing reason, invalid expiry, concurrent enter/exit, and expired context never bypass securityd or auditd.
+  status: planned
+  evidence: fuzz-corpus-manifest
+- test_id: TEST-MFOS-OPER-FUZZ-AUTOMATION-0001
+  test_type: fuzz
+  requirement_ids:
+  - MFOS-REQ-OPER-0006
+  title: Fuzz automation ingress
+  expected_result: Burst commands, malformed identity context, and replayed idempotency keys are rate-limited, replay-protected, and audited.
+  status: planned
+  evidence: fuzz-corpus-manifest
+- test_id: TEST-MFOS-OPER-FUZZ-DISPLAY-0001
+  test_type: fuzz
+  requirement_ids:
+  - MFOS-REQ-OPER-0005
+  title: Fuzz display frame boundaries
+  expected_result: Oversized rows, invalid status, hidden command text, and secret-looking fields are rejected or redacted before display.
+  status: planned
+  evidence: fuzz-corpus-manifest
+entries:
+- test_id: TEST-MFOS-OPER-COMMAND-0101
+  title: Operator command executes only through typed authorized lifecycle
+  test_type: design_positive
+  status: planned_design
+  target_spec: docs/design/specs/10-operator-console.md
+  target_requirements:
+  - MFOS-REQ-OPER-0101
+  requirement_ids:
+  - MFOS-REQ-OPER-0101
+  preconditions:
+  - Phase 0.8 semantics freeze artifacts are available.
+  - No production or hosted daemon implementation is started.
+  input: DISPLAY SYSTEM parses, resolves target, requests securityd decision, satisfies audit, and displays result.
+  expected_decision: command reaches COMPLETE only after authorization and audit barriers.
+  expected_audit: audit obligation is present where the target requirement declares one
+  expected_failure_mode: none_for_positive_case
+  evidence_required:
+  - test_result
+  - traceability_link
+  - red_team_review_record
+  phase_to_implement: Phase 0.9 or later
+  expected_result: command reaches COMPLETE only after authorization and audit barriers.
+  coverage_note: Concrete Phase 0.8 planned semantic test.
+- test_id: NEG-MFOS-OPER-COMMAND-NO-AUTH-0101
+  title: Operator command without authorization cannot execute
+  test_type: design_negative
+  status: planned_design
+  target_spec: docs/design/specs/10-operator-console.md
+  target_requirements:
+  - MFOS-REQ-OPER-0101
+  requirement_ids:
+  - MFOS-REQ-OPER-0101
+  preconditions:
+  - Phase 0.8 semantics freeze artifacts are available.
+  - No production or hosted daemon implementation is started.
+  input: Typed command attempts EXECUTE_TYPED_SERVICE_CALL before securityd allow decision.
+  expected_decision: MFOS_ERR_UNAUTHORIZED; no target service call.
+  expected_audit: audit obligation is present where the target requirement declares one
+  expected_failure_mode: specified_error_without_side_effect_or_fake_success
+  evidence_required:
+  - test_result
+  - traceability_link
+  - red_team_review_record
+  phase_to_implement: Phase 0.9 or later
+  expected_result: MFOS_ERR_UNAUTHORIZED; no target service call.
+  coverage_note: Concrete Phase 0.8 planned semantic test.
+- test_id: TEST-MFOS-OPER-GOVERNED-0102
+  title: Operator console is governed privileged UI
+  test_type: design_positive
+  status: planned_design
+  target_spec: docs/design/specs/10-operator-console.md
+  target_requirements:
+  - MFOS-REQ-OPER-0102
+  requirement_ids:
+  - MFOS-REQ-OPER-0102
+  preconditions:
+  - Phase 0.8 semantics freeze artifacts are available.
+  - No production or hosted daemon implementation is started.
+  input: First privileged UI exposes typed commands with command_id, subject, target, decision, and audit refs.
+  expected_decision: no shell execution path is used for privileged operations.
+  expected_audit: audit obligation is present where the target requirement declares one
+  expected_failure_mode: none_for_positive_case
+  evidence_required:
+  - test_result
+  - traceability_link
+  - red_team_review_record
+  phase_to_implement: Phase 0.9 or later
+  expected_result: no shell execution path is used for privileged operations.
+  coverage_note: Concrete Phase 0.8 planned semantic test.
+- test_id: NEG-MFOS-OPER-ROOT-SHELL-0102
+  title: Root shell is not accepted as first privileged UI
+  test_type: design_negative
+  status: planned_design
+  target_spec: docs/design/specs/10-operator-console.md
+  target_requirements:
+  - MFOS-REQ-OPER-0102
+  requirement_ids:
+  - MFOS-REQ-OPER-0102
+  preconditions:
+  - Phase 0.8 semantics freeze artifacts are available.
+  - No production or hosted daemon implementation is started.
+  input: Boot or recovery path offers raw shell as first privileged administrative interface.
+  expected_decision: configuration fails design gate; operator console remains required.
+  expected_audit: audit obligation is present where the target requirement declares one
+  expected_failure_mode: specified_error_without_side_effect_or_fake_success
+  evidence_required:
+  - test_result
+  - traceability_link
+  - red_team_review_record
+  phase_to_implement: Phase 0.9 or later
+  expected_result: configuration fails design gate; operator console remains required.
+  coverage_note: Concrete Phase 0.8 planned semantic test.
+- test_id: TEST-MFOS-OPER-CONFIRM-0103
+  title: Destructive operator command requires confirmation and dual-control when required
+  test_type: design_positive
+  status: planned_design
+  target_spec: docs/design/specs/10-operator-console.md
+  target_requirements:
+  - MFOS-REQ-OPER-0103
+  requirement_ids:
+  - MFOS-REQ-OPER-0103
+  preconditions:
+  - Phase 0.8 semantics freeze artifacts are available.
+  - No production or hosted daemon implementation is started.
+  input: PURGE SPOOL or SET workload policy command requests confirmation and approval tokens before effect.
+  expected_decision: command remains pending until required controls are satisfied and audited.
+  expected_audit: audit obligation is present where the target requirement declares one
+  expected_failure_mode: none_for_positive_case
+  evidence_required:
+  - test_result
+  - traceability_link
+  - red_team_review_record
+  phase_to_implement: Phase 0.9 or later
+  expected_result: command remains pending until required controls are satisfied and audited.
+  coverage_note: Concrete Phase 0.8 planned semantic test.
+- test_id: NEG-MFOS-OPER-DESTRUCTIVE-NO-CONFIRM-0103
+  title: Destructive command without confirmation does not execute
+  test_type: design_negative
+  status: planned_design
+  target_spec: docs/design/specs/10-operator-console.md
+  target_requirements:
+  - MFOS-REQ-OPER-0103
+  requirement_ids:
+  - MFOS-REQ-OPER-0103
+  preconditions:
+  - Phase 0.8 semantics freeze artifacts are available.
+  - No production or hosted daemon implementation is started.
+  input: PURGE SPOOL reaches execution without required confirmation token.
+  expected_decision: MFOS_ERR_CONFIRMATION_REQUIRED; no purge side effect.
+  expected_audit: audit obligation is present where the target requirement declares one
+  expected_failure_mode: specified_error_without_side_effect_or_fake_success
+  evidence_required:
+  - test_result
+  - traceability_link
+  - red_team_review_record
+  phase_to_implement: Phase 0.9 or later
+  expected_result: MFOS_ERR_CONFIRMATION_REQUIRED; no purge side effect.
+  coverage_note: Concrete Phase 0.8 planned semantic test.
+- test_id: TEST-MFOS-OPER-AUTOMATION-0104
+  title: Automation hook follows same authorization and audit lifecycle
+  test_type: design_positive
+  status: planned_design
+  target_spec: docs/design/specs/10-operator-console.md
+  target_requirements:
+  - MFOS-REQ-OPER-0104
+  requirement_ids:
+  - MFOS-REQ-OPER-0104
+  preconditions:
+  - Phase 0.8 semantics freeze artifacts are available.
+  - No production or hosted daemon implementation is started.
+  input: Automation submits bounded operator command with automation principal and idempotency key.
+  expected_decision: same target resolution, securityd decision, and audit barriers as human command.
+  expected_audit: audit obligation is present where the target requirement declares one
+  expected_failure_mode: none_for_positive_case
+  evidence_required:
+  - test_result
+  - traceability_link
+  - red_team_review_record
+  phase_to_implement: Phase 0.9 or later
+  expected_result: same target resolution, securityd decision, and audit barriers as human command.
+  coverage_note: Concrete Phase 0.8 planned semantic test.
+- test_id: NEG-MFOS-OPER-AUTOMATION-BYPASS-0104
+  title: Automation hook cannot bypass authorization or audit
+  test_type: design_negative
+  status: planned_design
+  target_spec: docs/design/specs/10-operator-console.md
+  target_requirements:
+  - MFOS-REQ-OPER-0104
+  requirement_ids:
+  - MFOS-REQ-OPER-0104
+  preconditions:
+  - Phase 0.8 semantics freeze artifacts are available.
+  - No production or hosted daemon implementation is started.
+  input: Automation directly invokes target service or omits audit obligation.
+  expected_decision: MFOS_ERR_UNAUTHORIZED or MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE; no side effect.
+  expected_audit: audit obligation is present where the target requirement declares one
+  expected_failure_mode: specified_error_without_side_effect_or_fake_success
+  evidence_required:
+  - test_result
+  - traceability_link
+  - red_team_review_record
+  phase_to_implement: Phase 0.9 or later
+  expected_result: MFOS_ERR_UNAUTHORIZED or MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE; no side effect.
+  coverage_note: Concrete Phase 0.8 planned semantic test.
+- test_id: NEG-MFOS-OPER-EMERGENCY-DURATION-OVERLIMIT-0104
+  title: Operator emergency duration over 60 minutes is rejected before authorization
+  test_type: design_negative
+  status: planned_design
+  target_spec: docs/design/specs/10-operator-console.md
+  target_requirements:
+  - MFOS-REQ-OPER-0101
+  - MFOS-REQ-AUTH-0104
+  requirement_ids:
+  - MFOS-REQ-OPER-0101
+  - MFOS-REQ-AUTH-0104
+  preconditions: &id001
+  - Phase 0.8 design catalog is used only for planning.
+  - No production or hosted daemon implementation is started.
+  input: ENTER EMERGENCY REASON(repair) EXPIRES(2H)
+  expected_decision: no command execution; over-limit duration fails closed
+  expected_audit: operator command denial is audited when audit is available
+  expected_failure_mode: MFOS_ERR_SPEC_GAP without emergency activation
+  evidence_required:
+  - test_result
+  - audit_record_sample
+  - traceability_link
+  phase_to_implement: Phase 0.9 or later
+- test_id: NEG-MFOS-OPER-UNREGISTERED-RESOURCE-0101
+  title: Unregistered operator target resource type is rejected before execution
+  test_type: design_negative
+  status: planned_design
+  target_spec: docs/design/specs/10-operator-console.md
+  target_requirements:
+  - MFOS-REQ-OPER-0101
+  - MFOS-REQ-AUTH-0101
+  requirement_ids:
+  - MFOS-REQ-OPER-0101
+  - MFOS-REQ-AUTH-0101
+  preconditions: *id001
+  input: OperatorCommand target resource_type outside the registered authorization resource classes.
+  expected_decision: schema invalid or MFOS_ERR_SPEC_GAP; no typed service call
+  expected_audit: operator denial is audited when audit is available
+  expected_failure_mode: MFOS_ERR_SPEC_GAP without side effect
+  evidence_required:
+  - test_result
+  - schema_validation
+  - traceability_link
+  phase_to_implement: Phase 0.9 or later
+- test_id: NEG-MFOS-OPER-DSN-GRAMMAR-0101
+  title: Operator DSN grammar rejects catalog-incompatible names
+  test_type: design_negative
+  status: planned_design
+  target_spec: docs/design/specs/10-operator-console.md
+  target_requirements:
+  - MFOS-REQ-OPER-0101
+  - MFOS-REQ-CATALOG-0101
+  requirement_ids:
+  - MFOS-REQ-OPER-0101
+  - MFOS-REQ-CATALOG-0101
+  preconditions: *id001
+  input: DISPLAY DATASET 1BAD.$BAD.TOOLONGQUALIFIER
+  expected_decision: parse rejection before authorization and no catalog call
+  expected_audit: operator parse rejection is audited when policy requires
+  expected_failure_mode: MFOS_ERR_INVALID_PARAMETER without side effect
+  evidence_required:
+  - test_result
+  - parser_fixture
+  - traceability_link
+  phase_to_implement: Phase 0.9 or later

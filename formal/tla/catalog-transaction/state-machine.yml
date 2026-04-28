@@ -1,0 +1,71 @@
+state_machine_id: MFOS-SM-CATALOG-TRANSACTION-PHASE-0-8
+status: draft
+phase: Phase 0.8 Core Semantics Freeze
+implementation_allowed: false
+source_refs:
+- EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+- EXTREF-IBM-ZOS-DFSMS-LIBRARY-0001
+- EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+states:
+- BEGIN_TX
+- VALIDATE_DSN
+- AUTHORIZE_CATALOG_UPDATE
+- PREPARE_ENTRY
+- WRITE_JOURNAL
+- COMMIT_ENTRY
+- WRITE_AUDIT
+- COMPLETE
+- RECOVER_SCAN_JOURNAL
+- ROLLBACK_INCOMPLETE
+- VERIFY_COMMITTED
+- REPAIR_ORPHAN_EXTENTS
+- AUDIT_RECOVERY
+- RECOVERY_COMPLETE
+- INVALID_DSN
+- POLICY_DENIED
+- IMMUTABLE_DENIED
+- JOURNAL_WRITE_FAILED
+- AUDIT_REQUIRED_BUT_UNAVAILABLE
+- CATALOG_CORRUPT
+- ROLLBACK_REQUIRED
+- SPEC_GAP
+transitions:
+- BEGIN_TX -> VALIDATE_DSN
+- VALIDATE_DSN -> AUTHORIZE_CATALOG_UPDATE
+- AUTHORIZE_CATALOG_UPDATE -> PREPARE_ENTRY
+- PREPARE_ENTRY -> WRITE_JOURNAL
+- WRITE_JOURNAL -> COMMIT_ENTRY
+- COMMIT_ENTRY -> WRITE_AUDIT
+- WRITE_AUDIT -> COMPLETE
+- RECOVER_SCAN_JOURNAL -> ROLLBACK_INCOMPLETE
+- RECOVER_SCAN_JOURNAL -> VERIFY_COMMITTED
+- VERIFY_COMMITTED -> REPAIR_ORPHAN_EXTENTS
+- REPAIR_ORPHAN_EXTENTS -> AUDIT_RECOVERY
+- AUDIT_RECOVERY -> RECOVERY_COMPLETE
+invalid:
+- PREPARE_ENTRY without VALIDATE_DSN
+- PREPARE_ENTRY without AUTHORIZE_CATALOG_UPDATE
+- COMMIT_ENTRY without WRITE_JOURNAL
+- COMPLETE without COMMIT_ENTRY
+- COMPLETE without required audit for protected catalog update
+- resolve PREPARED entry
+- resolve rolled-back entry
+- resolve partial journal entry
+- resolve orphan extent entry
+- resolve integrity_tag mismatch
+- rollback after exposed handle
+invariants:
+- No fake success.
+- Undefined transition returns MFOS_ERR_SPEC_GAP.
+- Specified but unimplemented transition returns MFOS_ERR_UNSUPPORTED.
+- MFOS-REQ-CATALOG-0002: catalogd resolves only committed catalog entries.
+- Uncommitted entries never resolve.
+- Rolled-back entries never resolve.
+- Partially journaled entries never resolve.
+- Integrity-failed entries never resolve.
+- Recovery leaves old committed entry, new fully committed entry, or no entry.
+evidence_required:
+- formal/tla/catalog-transaction/CatalogTransaction.tla model-check output or reviewed trace
+- catalog transaction test report
+- crash recovery report
+- catalog recovery audit samples

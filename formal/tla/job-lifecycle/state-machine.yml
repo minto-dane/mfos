@@ -1,0 +1,185 @@
+state_machine_id: MFOS-SM-JOB-LIFECYCLE-PHASE-0-8
+status: draft
+phase: Phase 0.8 Job/Spool Semantic Freeze
+implementation_allowed: false
+owning_spec:
+  path: docs/design/specs/09-job-spool.md
+  spec_id: MFOS-SPEC-09-JOB-SPOOL
+source_refs:
+  - EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
+  - EXTREF-IBM-ZOS-JES-JOB-FLOW-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+  - EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+model_artifacts:
+  - formal/tla/job-lifecycle/JobLifecycle.tla
+  - formal/tla/job-lifecycle/JobLifecycle.cfg
+states:
+  - RECEIVED
+  - INPUT
+  - CONVERTING
+  - JOB_CONTROL_STREAM_ERROR
+  - VALIDATED
+  - SECURITY_DENIED
+  - QUEUED
+  - SELECTED
+  - EXECUTING
+  - OUTPUT
+  - COMPLETE
+  - FAILED
+  - ABENDED
+  - CANCELING
+  - CANCELED
+  - HELD
+  - PURGE_PENDING
+  - PURGED
+  - SPEC_GAP
+  - UNSUPPORTED
+  - AUDIT_REQUIRED_BUT_UNAVAILABLE
+terminal_states:
+  - JOB_CONTROL_STREAM_ERROR
+  - SECURITY_DENIED
+  - COMPLETE
+  - FAILED
+  - ABENDED
+  - CANCELED
+  - PURGED
+  - SPEC_GAP
+  - UNSUPPORTED
+  - AUDIT_REQUIRED_BUT_UNAVAILABLE
+transitions:
+  - from: RECEIVED
+    to: INPUT
+    guard: request_shape_accepted
+  - from: INPUT
+    to: CONVERTING
+    guard: parser_started
+  - from: INPUT
+    to: JOB_CONTROL_STREAM_ERROR
+    guard: parser_rejects_input
+  - from: CONVERTING
+    to: JOB_CONTROL_STREAM_ERROR
+    guard: conversion_rejects_input
+  - from: CONVERTING
+    to: SECURITY_DENIED
+    guard: submit_or_submit_as_denied_and_deny_audit_complete
+  - from: CONVERTING
+    to: VALIDATED
+    guard: syntax_submit_authorization_effective_principal_and_audit_complete
+  - from: VALIDATED
+    to: QUEUED
+    guard: effective_principal_and_job_graph_exist
+  - from: QUEUED
+    to: SELECTED
+    guard: initiator_and_wlm_selection_accept
+  - from: QUEUED
+    to: CANCELING
+    guard: authorized_cancel_request
+  - from: SELECTED
+    to: EXECUTING
+    guard: initiator_starts_first_runnable_step
+  - from: EXECUTING
+    to: OUTPUT
+    guard: all_required_steps_terminal
+  - from: EXECUTING
+    to: FAILED
+    guard: step_failure_is_job_terminal
+  - from: EXECUTING
+    to: ABENDED
+    guard: abend_like_failure_is_job_terminal
+  - from: EXECUTING
+    to: CANCELING
+    guard: authorized_cancel_request
+  - from: OUTPUT
+    to: COMPLETE
+    guard: output_close_and_accounting_audit_complete
+  - from: OUTPUT
+    to: FAILED
+    guard: required_output_close_or_accounting_audit_failed
+  - from: COMPLETE
+    to: PURGE_PENDING
+    guard: retention_and_authorization_allow_purge
+  - from: FAILED
+    to: PURGE_PENDING
+    guard: retention_and_authorization_allow_purge
+  - from: ABENDED
+    to: PURGE_PENDING
+    guard: retention_and_authorization_allow_purge
+  - from: CANCELED
+    to: PURGE_PENDING
+    guard: retention_and_authorization_allow_purge
+  - from: HELD
+    to: QUEUED
+    guard: authorized_release_before_execution
+  - from: HELD
+    to: PURGE_PENDING
+    guard: authorized_purge_of_terminal_output
+  - from: CANCELING
+    to: CANCELED
+    guard: resources_closed_or_revoked_and_audit_complete
+  - from: PURGE_PENDING
+    to: PURGED
+    guard: spool_entries_purged_and_stale_refs_recorded
+global_transitions:
+  - from: any_non_terminal
+    to: HELD
+    guard: authorized_hold_request
+  - from: any_non_terminal
+    to: SPEC_GAP
+    guard: undefined_requested_behavior
+    error: MFOS_ERR_SPEC_GAP
+  - from: any_non_terminal
+    to: UNSUPPORTED
+    guard: defined_unsupported_requested_behavior
+    error: MFOS_ERR_UNSUPPORTED
+  - from: any_non_terminal
+    to: AUDIT_REQUIRED_BUT_UNAVAILABLE
+    guard: required_audit_unavailable
+    error: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+invalid_transitions:
+  - from: RECEIVED
+    to: QUEUED
+  - from: INPUT
+    to: EXECUTING
+  - from: CONVERTING
+    to: QUEUED
+    missing_guard: VALIDATED
+  - from: JOB_CONTROL_STREAM_ERROR
+    to: QUEUED
+  - from: SECURITY_DENIED
+    to: QUEUED
+  - from: QUEUED
+    to: COMPLETE
+  - from: SELECTED
+    to: COMPLETE
+  - from: EXECUTING
+    to: PURGED
+  - from: COMPLETE
+    to: EXECUTING
+  - from: FAILED
+    to: EXECUTING
+  - from: CANCELED
+    to: EXECUTING
+  - from: PURGED
+    to: any
+invalid_transition_behavior:
+  error: MFOS_ERR_INVALID_TRANSITION
+  state_mutation_allowed: false
+  protected_side_effect_allowed: false
+  audit_when_security_sensitive: true
+invariants:
+  - invariant_id: INV-JOB-001
+    text: Job cannot enter QUEUED without syntax validation, submit authorization, effective principal establishment, and required audit completion.
+  - invariant_id: INV-JOB-002
+    text: No dataset, program, input stream, or output stream handle can open before effective_principal is established.
+  - invariant_id: INV-JOB-003
+    text: Dataset DD resolution cannot produce a handle unless catalogd resolved the DSN and securityd authorized the operation.
+  - invariant_id: INV-JOB-004
+    text: Terminal failed, canceled, abended, unsupported, spec-gap, and purged jobs cannot re-enter EXECUTING.
+  - invariant_id: INV-JOB-005
+    text: Unsupported and spec-gap behavior cannot produce protected side effects or successful operation results.
+evidence_required:
+  - formal/tla/job-lifecycle/JobLifecycle.tla model-check output or reviewed trace
+  - TEST-MFOS-JOB-FORMAL-0001 result
+  - invalid-transition negative test report

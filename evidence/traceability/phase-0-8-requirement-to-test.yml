@@ -1,0 +1,122 @@
+matrix_kind: phase_0_8_requirement_to_test
+entries:
+- requirement_id: MFOS-REQ-AUTH-0101
+  positive_tests:
+  - TEST-MFOS-AUTH-SECURITY-DECISION-0101
+  negative_tests:
+  - NEG-MFOS-AUTH-BYPASS-0101
+- requirement_id: MFOS-REQ-AUTH-0102
+  positive_tests:
+  - TEST-MFOS-AUTH-HANDLE-BINDING-0102
+  negative_tests:
+  - NEG-MFOS-AUTH-HANDLE-WITHOUT-ALLOW-0102
+- requirement_id: MFOS-REQ-AUTH-0103
+  positive_tests:
+  - TEST-MFOS-AUTH-POLICY-BINDING-0103
+  negative_tests:
+  - NEG-MFOS-AUTH-POLICY-VERSION-MISMATCH-0103
+- requirement_id: MFOS-REQ-AUTH-0104
+  positive_tests:
+  - TEST-MFOS-AUTH-EMERGENCY-0104
+  negative_tests:
+  - NEG-MFOS-AUTH-EMERGENCY-NO-EXPIRY-0104
+- requirement_id: MFOS-REQ-AUTH-0105
+  positive_tests:
+  - TEST-MFOS-AUTH-POLICY-LINT-0105
+  negative_tests:
+  - NEG-MFOS-AUTH-POLICY-LINT-MISSING-0105
+- requirement_id: MFOS-REQ-AUDIT-0101
+  positive_tests:
+  - TEST-MFOS-AUDIT-RECORD-SCHEMA-0101
+  negative_tests:
+  - NEG-MFOS-AUDIT-MISSING-CORRELATION-0101
+- requirement_id: MFOS-REQ-AUDIT-0102
+  positive_tests:
+  - TEST-MFOS-AUDIT-DENY-BEFORE-RETURN-0102
+  negative_tests:
+  - NEG-MFOS-AUDIT-DENY-NO-RECORD-0102
+- requirement_id: MFOS-REQ-AUDIT-0103
+  positive_tests:
+  - TEST-MFOS-AUDIT-HASH-CHAIN-0103
+  negative_tests:
+  - NEG-MFOS-AUDIT-TAMPERED-HASH-0103
+- requirement_id: MFOS-REQ-AUDIT-0104
+  positive_tests:
+  - TEST-MFOS-AUDIT-RECORD-ONLY-0104
+  negative_tests:
+  - NEG-MFOS-AUDIT-SPOOL-AS-EVIDENCE-0104
+- requirement_id: MFOS-REQ-AUDIT-0105
+  positive_tests:
+  - TEST-MFOS-AUDIT-QUERY-0105
+  negative_tests:
+  - NEG-MFOS-AUDIT-UNAUTHORIZED-QUERY-0105
+- requirement_id: MFOS-REQ-CATALOG-0101
+  positive_tests:
+  - TEST-MFOS-CATALOG-COMMITTED-0101
+  negative_tests:
+  - NEG-MFOS-CATALOG-UNCOMMITTED-0101
+- requirement_id: MFOS-REQ-CATALOG-0102
+  positive_tests:
+  - TEST-MFOS-CATALOG-RECOVERY-0102
+  negative_tests:
+  - NEG-MFOS-CATALOG-CRASH-MID-COMMIT-0102
+- requirement_id: MFOS-REQ-DATASET-0101
+  positive_tests:
+  - TEST-MFOS-DATASET-HANDLE-BINDING-0101
+  negative_tests:
+  - NEG-MFOS-DATASET-STALE-HANDLE-0101
+- requirement_id: MFOS-REQ-DATASET-0102
+  positive_tests:
+  - TEST-MFOS-DATASET-MANAGED-0102
+  negative_tests:
+  - NEG-MFOS-DATASET-POSIX-CONFUSION-0102
+- requirement_id: MFOS-REQ-DATASET-0103
+  positive_tests:
+  - TEST-MFOS-DATASET-RETENTION-0103
+  negative_tests:
+  - NEG-MFOS-DATASET-DELETE-BEFORE-RETENTION-0103
+- requirement_id: MFOS-REQ-JOB-0101
+  positive_tests:
+  - TEST-MFOS-JOB-PRINCIPAL-0101
+  negative_tests:
+  - NEG-MFOS-JOB-NO-PRINCIPAL-0101
+- requirement_id: MFOS-REQ-JOB-0102
+  positive_tests:
+  - TEST-MFOS-JOB-DD-RESOLVE-0102
+  negative_tests:
+  - NEG-MFOS-JOB-DD-BYPASS-0102
+- requirement_id: MFOS-REQ-JOB-0103
+  positive_tests:
+  - TEST-MFOS-JOB-AUTH-ENFORCE-0103
+  negative_tests:
+  - NEG-MFOS-JOB-AUTH-BYPASS-0103
+- requirement_id: MFOS-REQ-SPOOL-0101
+  positive_tests:
+  - TEST-MFOS-SPOOL-PROTECTED-0101
+  negative_tests:
+  - NEG-MFOS-SPOOL-BROWSE-NONOWNER-0101
+- requirement_id: MFOS-REQ-SPOOL-0102
+  positive_tests:
+  - TEST-MFOS-SPOOL-EXPORT-0102
+  negative_tests:
+  - NEG-MFOS-SPOOL-EXPORT-NO-AUDIT-0102
+- requirement_id: MFOS-REQ-OPER-0101
+  positive_tests:
+  - TEST-MFOS-OPER-COMMAND-0101
+  negative_tests:
+  - NEG-MFOS-OPER-COMMAND-NO-AUTH-0101
+- requirement_id: MFOS-REQ-OPER-0102
+  positive_tests:
+  - TEST-MFOS-OPER-GOVERNED-0102
+  negative_tests:
+  - NEG-MFOS-OPER-ROOT-SHELL-0102
+- requirement_id: MFOS-REQ-OPER-0103
+  positive_tests:
+  - TEST-MFOS-OPER-CONFIRM-0103
+  negative_tests:
+  - NEG-MFOS-OPER-DESTRUCTIVE-NO-CONFIRM-0103
+- requirement_id: MFOS-REQ-OPER-0104
+  positive_tests:
+  - TEST-MFOS-OPER-AUTOMATION-0104
+  negative_tests:
+  - NEG-MFOS-OPER-AUTOMATION-BYPASS-0104

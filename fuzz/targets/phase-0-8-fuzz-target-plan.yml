@@ -1,0 +1,36 @@
+plan_kind: phase_0_8_fuzz_target_plan
+status: draft
+implementation_allowed: false
+targets:
+- target_id: FUZZ-MFOS-POLICY-LANGUAGE-0001
+  parser: policy language parser
+  phase_to_implement: Phase 0.9 or later
+  owning_spec: docs/design/specs/06-authorization.md
+- target_id: FUZZ-MFOS-AUDIT-RECORD-0001
+  parser: audit record decoder
+  phase_to_implement: Phase 0.9 or later
+  owning_spec: docs/design/specs/07-audit.md
+- target_id: FUZZ-MFOS-DSN-0001
+  parser: DSN parser
+  phase_to_implement: Phase 0.9 or later
+  owning_spec: docs/design/specs/08-dataset-catalog.md
+- target_id: FUZZ-MFOS-DATASET-HANDLE-0001
+  parser: dataset handle decoder
+  phase_to_implement: Phase 0.9 or later
+  owning_spec: docs/design/specs/08-dataset-catalog.md
+- target_id: FUZZ-MFOS-JOB-CONTROL-STREAM-0001
+  parser: MFOS job-control stream parser
+  phase_to_implement: Phase 0.9 or later
+  owning_spec: docs/design/specs/09-job-spool.md
+- target_id: FUZZ-MFOS-JOB-FIXTURE-0001
+  parser: job fixture parser
+  phase_to_implement: Phase 0.9 or later
+  owning_spec: docs/design/specs/09-job-spool.md
+- target_id: FUZZ-MFOS-SPOOL-FIXTURE-0001
+  parser: spool fixture parser
+  phase_to_implement: Phase 0.9 or later
+  owning_spec: docs/design/specs/09-job-spool.md
+- target_id: FUZZ-MFOS-OPER-COMMAND-0001
+  parser: operator command parser
+  phase_to_implement: Phase 0.9 or later
+  owning_spec: docs/design/specs/10-operator-console.md

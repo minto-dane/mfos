@@ -1,0 +1,162 @@
+state_machine_id: MFOS-SM-OPERATOR-COMMAND-PHASE-0-8
+status: phase-0-8-semantics-frozen
+phase: Phase 0.8 Operator Console Semantics Freeze
+implementation_allowed: false
+spec_ref: docs/design/specs/10-operator-console.md
+schema_ref: schemas/mfos/operator-command.schema.yml
+formal_ref: formal/tla/operator-command/OperatorCommand.tla
+source_refs:
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+
+states:
+  - RECEIVED
+  - PARSE_FAILED
+  - PARSED
+  - TARGET_RESOLVED
+  - AUTHZ_REQUESTED
+  - AUTHZ_DENIED
+  - OBLIGATION_PENDING
+  - CONFIRMATION_PENDING
+  - DUAL_CONTROL_PENDING
+  - AUDIT_PENDING
+  - EXECUTING
+  - COMPLETE
+  - DENIED
+  - FAILED_CLOSED
+  - UNSUPPORTED
+  - SPEC_GAP
+  - CANCELED
+  - EXPIRED
+
+terminal_states:
+  - COMPLETE
+  - DENIED
+  - FAILED_CLOSED
+  - UNSUPPORTED
+  - SPEC_GAP
+  - CANCELED
+  - EXPIRED
+
+normal_flow:
+  - from: RECEIVED
+    to: PARSED
+    action: HASH_RAW_TEXT_AND_PARSE_TYPED_COMMAND
+  - from: PARSED
+    to: TARGET_RESOLVED
+    action: RESOLVE_CANONICAL_TARGETS
+  - from: TARGET_RESOLVED
+    to: AUTHZ_REQUESTED
+    action: CLASSIFY_RISK_AND_REQUEST_AUTHORIZATION
+  - from: AUTHZ_REQUESTED
+    to: OBLIGATION_PENDING
+    action: RECEIVE_REQUIRE_OBLIGATION_DECISION
+  - from: AUTHZ_REQUESTED
+    to: AUDIT_PENDING
+    action: RECEIVE_ALLOW_DECISION
+  - from: OBLIGATION_PENDING
+    to: CONFIRMATION_PENDING
+    action: REQUEST_CONFIRMATION
+  - from: OBLIGATION_PENDING
+    to: DUAL_CONTROL_PENDING
+    action: REQUEST_DUAL_CONTROL
+  - from: CONFIRMATION_PENDING
+    to: AUDIT_PENDING
+    action: CONFIRM_COMMAND
+  - from: DUAL_CONTROL_PENDING
+    to: AUDIT_PENDING
+    action: APPROVE_COMMAND_BY_DISTINCT_PRINCIPAL
+  - from: AUDIT_PENDING
+    to: EXECUTING
+    action: WRITE_PRE_EFFECT_AUDIT_AND_EXECUTE_TYPED_CALL
+  - from: EXECUTING
+    to: COMPLETE
+    action: WRITE_RESULT_AUDIT_AND_DISPLAY_RESULT
+
+failure_flow:
+  - from: RECEIVED
+    to: PARSE_FAILED
+    action: REJECT_MALFORMED_INPUT
+  - from: PARSE_FAILED
+    to: FAILED_CLOSED
+    action: DISPLAY_INVALID_PARAMETER
+  - from: PARSED
+    to: UNSUPPORTED
+    action: COMMAND_SPECIFIED_BUT_UNIMPLEMENTED
+  - from: PARSED
+    to: SPEC_GAP
+    action: COMMAND_BEHAVIOR_UNSPECIFIED
+  - from: TARGET_RESOLVED
+    to: FAILED_CLOSED
+    action: STALE_OR_AMBIGUOUS_TARGET_FAIL_CLOSED
+  - from: AUTHZ_REQUESTED
+    to: AUTHZ_DENIED
+    action: RECEIVE_DENY_DECISION
+  - from: AUTHZ_DENIED
+    to: DENIED
+    action: AUDIT_DENY_BEFORE_DISPLAY
+  - from: CONFIRMATION_PENDING
+    to: EXPIRED
+    action: CONFIRMATION_EXPIRES
+  - from: DUAL_CONTROL_PENDING
+    to: EXPIRED
+    action: APPROVAL_EXPIRES
+  - from: AUDIT_PENDING
+    to: FAILED_CLOSED
+    action: REQUIRED_PRE_EFFECT_AUDIT_UNAVAILABLE
+
+invalid_transitions:
+  - transition: RECEIVED_TO_EXECUTING
+    result: MFOS_ERR_SPEC_GAP
+    side_effect_allowed: false
+  - transition: PARSE_FAILED_TO_NON_TERMINAL
+    result: MFOS_ERR_INVALID_PARAMETER
+    side_effect_allowed: false
+  - transition: PARSED_TO_EXECUTING_WITHOUT_TARGET
+    result: MFOS_ERR_SPEC_GAP
+    side_effect_allowed: false
+  - transition: TARGET_RESOLVED_TO_EXECUTING_WITHOUT_ALLOW
+    result: MFOS_ERR_UNAUTHORIZED
+    side_effect_allowed: false
+  - transition: AUTHZ_DENIED_TO_EXECUTING
+    result: MFOS_ERR_UNAUTHORIZED
+    side_effect_allowed: false
+  - transition: CONFIRMATION_PENDING_TO_EXECUTING_WITHOUT_TOKEN
+    result: MFOS_ERR_CONFIRMATION_REQUIRED
+    side_effect_allowed: false
+  - transition: DUAL_CONTROL_PENDING_TO_EXECUTING_WITHOUT_DISTINCT_APPROVER
+    result: MFOS_ERR_DUAL_CONTROL_REQUIRED
+    side_effect_allowed: false
+  - transition: AUDIT_PENDING_TO_EXECUTING_AFTER_AUDIT_FAILURE
+    result: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+    side_effect_allowed: false
+  - transition: TERMINAL_TO_EXECUTING
+    result: MFOS_ERR_INVALID_STATE
+    side_effect_allowed: false
+  - transition: PENDING_TO_EXECUTING_AFTER_POLICY_CHANGE
+    result: MFOS_ERR_POLICY_VERSION_MISMATCH
+    side_effect_allowed: false
+  - transition: PENDING_TO_EXECUTING_AFTER_TARGET_CHANGE
+    result: MFOS_ERR_STALE_HANDLE
+    side_effect_allowed: false
+
+invariants:
+  - id: INV-OPER-001
+    text: No operator command executes without command_id, subject, target_refs, resolved authority class, authorization decision, and required audit obligation.
+  - id: INV-OPER-002
+    text: Raw command text cannot cross from operatord into a privileged service without typed parsing and target resolution.
+  - id: INV-OPER-003
+    text: Destructive commands cannot reach EXECUTING unless required confirmation and dual-control obligations are satisfied.
+  - id: INV-OPER-004
+    text: Automation cannot receive more authority than the automation principal has under the current policy version.
+  - id: INV-OPER-005
+    text: Emergency mode cannot disable auditd or bypass securityd.
+  - id: INV-OPER-006
+    text: Same-actor dual control cannot execute the requested command.
+  - id: INV-OPER-007
+    text: Unsupported, spec-gap, denied, expired, canceled, and failed-closed commands produce no target side effects.
+  - id: INV-OPER-008
+    text: No root shell command text is a successful operator command path.

@@ -1,0 +1,156 @@
+state_machine_id: MFOS-SM-SPOOL-ACCESS-PHASE-0-8
+status: draft
+phase: Phase 0.8 Job/Spool Semantic Freeze
+implementation_allowed: false
+owning_spec:
+  path: docs/design/specs/09-job-spool.md
+  spec_id: MFOS-SPEC-09-JOB-SPOOL
+source_refs:
+  - EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
+  - EXTREF-IBM-ZOS-JES-JOB-FLOW-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+  - EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+model_artifacts:
+  - formal/tla/spool-access/SpoolAccess.tla
+  - formal/tla/spool-access/SpoolAccess.cfg
+states:
+  - CREATE_REQUESTED
+  - AUTHORIZING_CREATE
+  - OPEN
+  - WRITING
+  - CLOSED
+  - HELD
+  - BROWSE_ACTIVE
+  - EXPORTING
+  - PURGE_PENDING
+  - PURGED
+  - FAILED
+  - SPEC_GAP
+  - UNSUPPORTED
+  - AUDIT_REQUIRED_BUT_UNAVAILABLE
+terminal_states:
+  - PURGED
+  - FAILED
+  - SPEC_GAP
+  - UNSUPPORTED
+  - AUDIT_REQUIRED_BUT_UNAVAILABLE
+transitions:
+  - from: CREATE_REQUESTED
+    to: AUTHORIZING_CREATE
+    guard: create_request_accepted
+  - from: AUTHORIZING_CREATE
+    to: OPEN
+    guard: create_authorized_and_audit_complete
+  - from: AUTHORIZING_CREATE
+    to: FAILED
+    guard: create_denied_or_required_audit_failed
+  - from: OPEN
+    to: WRITING
+    guard: first_record_accepted
+  - from: OPEN
+    to: CLOSED
+    guard: empty_entry_close_allowed_by_policy
+  - from: WRITING
+    to: WRITING
+    guard: next_sequence_accepted
+  - from: WRITING
+    to: CLOSED
+    guard: close_accepted
+  - from: CLOSED
+    to: HELD
+    guard: hold_policy_or_authorized_hold_request
+  - from: HELD
+    to: CLOSED
+    guard: authorized_release
+  - from: CLOSED
+    to: BROWSE_ACTIVE
+    guard: browse_authorized_and_audit_complete
+  - from: HELD
+    to: BROWSE_ACTIVE
+    guard: held_output_browse_authorized_and_audit_complete
+  - from: BROWSE_ACTIVE
+    to: CLOSED
+    guard: browse_session_closed_for_unheld_output
+  - from: BROWSE_ACTIVE
+    to: HELD
+    guard: browse_session_closed_for_held_output
+  - from: CLOSED
+    to: EXPORTING
+    guard: export_authorized_and_audit_complete
+  - from: HELD
+    to: EXPORTING
+    guard: held_output_export_authorized_and_audit_complete
+  - from: EXPORTING
+    to: CLOSED
+    guard: export_complete_for_unheld_output
+  - from: EXPORTING
+    to: HELD
+    guard: export_complete_for_held_output
+  - from: CLOSED
+    to: PURGE_PENDING
+    guard: retention_and_authorization_allow_purge
+  - from: HELD
+    to: PURGE_PENDING
+    guard: retention_and_authorization_allow_purge
+  - from: PURGE_PENDING
+    to: PURGED
+    guard: content_removed_and_stale_ref_recorded
+global_transitions:
+  - from: any_non_terminal
+    to: SPEC_GAP
+    guard: undefined_requested_behavior
+    error: MFOS_ERR_SPEC_GAP
+  - from: any_non_terminal
+    to: UNSUPPORTED
+    guard: defined_unsupported_requested_behavior
+    error: MFOS_ERR_UNSUPPORTED
+  - from: any_non_terminal
+    to: AUDIT_REQUIRED_BUT_UNAVAILABLE
+    guard: required_audit_unavailable
+    error: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+invalid_transitions:
+  - from: CREATE_REQUESTED
+    to: WRITING
+  - from: AUTHORIZING_CREATE
+    to: CLOSED
+  - from: OPEN
+    to: BROWSE_ACTIVE
+  - from: OPEN
+    to: EXPORTING
+  - from: WRITING
+    to: BROWSE_ACTIVE
+  - from: WRITING
+    to: PURGE_PENDING
+  - from: CLOSED
+    to: PURGED
+  - from: PURGE_PENDING
+    to: BROWSE_ACTIVE
+  - from: PURGED
+    to: BROWSE_ACTIVE
+  - from: PURGED
+    to: EXPORTING
+  - from: PURGED
+    to: OPEN
+  - from: PURGED
+    to: WRITING
+invalid_transition_behavior:
+  error: MFOS_ERR_INVALID_TRANSITION
+  state_mutation_allowed: false
+  content_return_allowed: false
+  purge_allowed: false
+  audit_when_security_sensitive: true
+invariants:
+  - invariant_id: INV-SPL-001
+    text: Spool content cannot be browsed or exported unless securityd allowed the operation and required audit obligations completed.
+  - invariant_id: INV-SPL-002
+    text: Purge cannot proceed unless retention eligibility and securityd purge authorization both hold.
+  - invariant_id: INV-SPL-003
+    text: Purged spool references are stale and cannot return content.
+  - invariant_id: INV-SPL-004
+    text: Spool output cannot substitute for auditd evidence.
+evidence_required:
+  - formal/tla/spool-access/SpoolAccess.tla model-check output or reviewed trace
+  - TEST-MFOS-SPOOL-FORMAL-0001 result
+  - browse-deny and purge-retention negative test reports

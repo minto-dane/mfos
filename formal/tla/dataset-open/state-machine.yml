@@ -1,0 +1,72 @@
+state_machine_id: MFOS-SM-DATASET-OPEN-PHASE-0-8
+status: draft
+phase: Phase 0.8 Core Semantics Freeze
+implementation_allowed: false
+source_refs:
+- EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+- EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+- EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+- EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+states:
+- REQUEST_OPEN
+- VALIDATE_DSN
+- RESOLVE_CATALOG
+- AUTHORIZE
+- ESTABLISH_AUDIT_OBLIGATION
+- VERIFY_GENERATION
+- VERIFY_INTEGRITY_TAG
+- BIND_OBJECT_GENERATION
+- CREATE_HANDLE
+- OPEN_ACTIVE
+- CLOSE_REQUESTED
+- HANDLE_REVOKED
+- CLOSED
+- INVALID_DSN
+- CATALOG_NOT_FOUND
+- POLICY_DENIED
+- POLICY_VERSION_MISMATCH
+- AUDIT_REQUIRED_BUT_UNAVAILABLE
+- STALE_HANDLE
+- INTEGRITY_TAG_MISMATCH
+- SPEC_GAP
+transitions:
+- REQUEST_OPEN -> VALIDATE_DSN
+- VALIDATE_DSN -> RESOLVE_CATALOG
+- RESOLVE_CATALOG -> AUTHORIZE
+- AUTHORIZE -> ESTABLISH_AUDIT_OBLIGATION
+- ESTABLISH_AUDIT_OBLIGATION -> VERIFY_GENERATION
+- VERIFY_GENERATION -> VERIFY_INTEGRITY_TAG
+- VERIFY_INTEGRITY_TAG -> BIND_OBJECT_GENERATION
+- BIND_OBJECT_GENERATION -> CREATE_HANDLE
+- CREATE_HANDLE -> OPEN_ACTIVE
+- OPEN_ACTIVE -> CLOSE_REQUESTED
+- OPEN_ACTIVE -> HANDLE_REVOKED
+- CLOSE_REQUESTED -> CLOSED
+- HANDLE_REVOKED -> CLOSED
+invalid:
+- CREATE_HANDLE before RESOLVE_CATALOG
+- CREATE_HANDLE before AUTHORIZE
+- CREATE_HANDLE before ESTABLISH_AUDIT_OBLIGATION
+- CREATE_HANDLE before VERIFY_INTEGRITY_TAG
+- CREATE_HANDLE before BIND_OBJECT_GENERATION
+- OPEN_ACTIVE after POLICY_DENIED
+- RESOLVE_CATALOG success for uncommitted catalog entry
+- RESOLVE_CATALOG success for rolled-back catalog entry
+- RESOLVE_CATALOG success for partial journal entry
+- RESOLVE_CATALOG success for integrity-failed catalog entry
+- open by POSIX path, inode, mount, or raw volume identity
+invariants:
+- No fake success.
+- Undefined transition returns MFOS_ERR_SPEC_GAP.
+- Specified but unimplemented transition returns MFOS_ERR_UNSUPPORTED.
+- No ACTIVE handle without committed CatalogEntry.
+- No ACTIVE handle without securityd ALLOW or ALLOW_WITH_AUDIT.
+- No ACTIVE handle without required audit obligation.
+- No ACTIVE handle without ObjectGenerationBinding.
+- Deny and fail-closed paths create no handle.
+- Stale generation binding rejects handle use.
+evidence_required:
+- formal/tla/dataset-open/DatasetOpen.tla model-check output or reviewed trace
+- dataset handle binding test report
+- deny-no-handle negative test report
+- audit-ordering test report

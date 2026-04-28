@@ -1,0 +1,23 @@
+state_machine_id: MFOS-SM-AUTHORIZATION-PHASE-0-8
+status: draft
+phase: Phase 0.8 Core Semantics Freeze
+implementation_allowed: false
+states:
+- REQUESTED
+- CONTEXT_VALIDATED
+- POLICY_SELECTED
+- DECIDED
+- OBLIGATIONS_BOUND
+- AUDIT_PENDING
+- COMPLETE
+- DENIED
+- UNSUPPORTED
+- SPEC_GAP
+invalid:
+- COMPLETE without DECIDED
+- OBLIGATIONS_BOUND for DENY
+- handle creation before ALLOW
+invariants:
+- No fake success.
+- Undefined transition returns MFOS_ERR_SPEC_GAP.
+- Specified but unimplemented transition returns MFOS_ERR_UNSUPPORTED.

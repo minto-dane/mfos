@@ -1,0 +1,678 @@
+schema_version: 1
+status: draft
+generated_at: '2026-04-27'
+generated_by: scripts/generate-traceability.py
+non_compatibility_statement: MFOS is z/OS-inspired and does not claim z/OS compatibility
+  or IBM product compatibility.
+entries:
+- requirement_id: MFOS-REQ-AI-0001
+  specs:
+  - docs/design/specs/00-normative-language.md
+  - docs/design/specs/21-ai-implementation-contract.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-AI-0005
+  specs:
+  - docs/design/specs/00-normative-language.md
+  - docs/design/specs/21-ai-implementation-contract.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-AMF-0001
+  specs:
+  - docs/design/specs/12-amf.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-AMF-0003
+  specs:
+  - docs/design/specs/12-amf.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-AMF-0004
+  specs:
+  - docs/design/specs/12-amf.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-AMF-0007
+  specs:
+  - docs/design/specs/12-amf.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-AMF-0008
+  specs:
+  - docs/design/specs/12-amf.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-AMF-0021
+  specs:
+  - docs/design/specs/12-amf.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-AUDIT-0001
+  specs:
+  - docs/design/specs/07-audit.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-AUDIT-0002
+  specs:
+  - docs/design/specs/07-audit.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-AUDIT-0003
+  specs:
+  - docs/design/specs/07-audit.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-AUDIT-0004
+  specs:
+  - docs/design/specs/07-audit.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-AUDIT-0005
+  specs:
+  - docs/design/specs/07-audit.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-AUDIT-0101
+  specs:
+  - docs/design/specs/07-audit.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-AUDIT-0102
+  specs:
+  - docs/design/specs/07-audit.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/30-first-vertical-slice-contract.md
+- requirement_id: MFOS-REQ-AUDIT-0103
+  specs:
+  - docs/design/specs/07-audit.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-AUDIT-0104
+  specs:
+  - docs/design/specs/07-audit.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-AUDIT-0105
+  specs:
+  - docs/design/specs/07-audit.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-AUTH-0001
+  specs:
+  - docs/design/specs/06-authorization.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-AUTH-0002
+  specs:
+  - docs/design/specs/06-authorization.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-AUTH-0003
+  specs:
+  - docs/design/specs/06-authorization.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-AUTH-0004
+  specs:
+  - docs/design/specs/06-authorization.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-AUTH-0005
+  specs:
+  - docs/design/specs/06-authorization.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-AUTH-0006
+  specs:
+  - docs/design/specs/06-authorization.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-AUTH-0008
+  specs:
+  - docs/design/specs/06-authorization.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-AUTH-0009
+  specs:
+  - docs/design/specs/06-authorization.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-AUTH-0101
+  specs:
+  - docs/design/specs/06-authorization.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/30-first-vertical-slice-contract.md
+- requirement_id: MFOS-REQ-AUTH-0102
+  specs:
+  - docs/design/specs/06-authorization.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/30-first-vertical-slice-contract.md
+- requirement_id: MFOS-REQ-AUTH-0103
+  specs:
+  - docs/design/specs/06-authorization.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-AUTH-0104
+  specs:
+  - docs/design/specs/06-authorization.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-AUTH-0105
+  specs:
+  - docs/design/specs/06-authorization.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-CATALOG-0002
+  specs:
+  - docs/design/specs/08-dataset-catalog.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-CATALOG-0003
+  specs:
+  - docs/design/specs/08-dataset-catalog.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-CATALOG-0004
+  specs:
+  - docs/design/specs/08-dataset-catalog.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-CATALOG-0101
+  specs:
+  - docs/design/specs/08-dataset-catalog.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/30-first-vertical-slice-contract.md
+- requirement_id: MFOS-REQ-CATALOG-0102
+  specs:
+  - docs/design/specs/08-dataset-catalog.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-DATASET-0001
+  specs:
+  - docs/design/specs/08-dataset-catalog.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-DATASET-0002
+  specs:
+  - docs/design/specs/08-dataset-catalog.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-DATASET-0003
+  specs:
+  - docs/design/specs/08-dataset-catalog.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-DATASET-0004
+  specs:
+  - docs/design/specs/08-dataset-catalog.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-DATASET-0005
+  specs:
+  - docs/design/specs/08-dataset-catalog.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-DATASET-0006
+  specs:
+  - docs/design/specs/08-dataset-catalog.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-DATASET-0101
+  specs:
+  - docs/design/specs/08-dataset-catalog.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+  - docs/design/specs/30-first-vertical-slice-contract.md
+- requirement_id: MFOS-REQ-DATASET-0102
+  specs:
+  - docs/design/specs/08-dataset-catalog.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-DATASET-0103
+  specs:
+  - docs/design/specs/08-dataset-catalog.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-GUARD-0001
+  specs:
+  - docs/design/specs/17-guard.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-GUARD-0002
+  specs:
+  - docs/design/specs/17-guard.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-GUARD-0003
+  specs:
+  - docs/design/specs/17-guard.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-GUARD-0004
+  specs:
+  - docs/design/specs/17-guard.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-GUARD-0005
+  specs:
+  - docs/design/specs/17-guard.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-GUARD-0008
+  specs:
+  - docs/design/specs/17-guard.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-JOB-0001
+  specs:
+  - docs/design/specs/09-job-spool.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-JOB-0002
+  specs:
+  - docs/design/specs/09-job-spool.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-JOB-0003
+  specs:
+  - docs/design/specs/09-job-spool.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-JOB-0005
+  specs:
+  - docs/design/specs/09-job-spool.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-JOB-0101
+  specs:
+  - docs/design/specs/09-job-spool.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/30-first-vertical-slice-contract.md
+- requirement_id: MFOS-REQ-JOB-0102
+  specs:
+  - docs/design/specs/09-job-spool.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/30-first-vertical-slice-contract.md
+- requirement_id: MFOS-REQ-JOB-0103
+  specs:
+  - docs/design/specs/09-job-spool.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-NUCLEUS-0005
+  specs:
+  - docs/design/specs/14-nucleus.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-NUCLEUS-0007
+  specs:
+  - docs/design/specs/14-nucleus.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-NUCLEUS-0008
+  specs:
+  - docs/design/specs/14-nucleus.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-OPER-0002
+  specs:
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-OPER-0003
+  specs:
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-OPER-0101
+  specs:
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/30-first-vertical-slice-contract.md
+- requirement_id: MFOS-REQ-OPER-0102
+  specs:
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-OPER-0103
+  specs:
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-OPER-0104
+  specs:
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-PARTITION-0001
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-PARTITION-0002
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-PARTITION-0003
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-PARTITION-0004
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-PARTITION-0005
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-PARTITION-0006
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-PARTITION-0007
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-PARTITION-0008
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-PARTITION-0016
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-PARTITION-0017
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-PROFILE-0001
+  specs:
+  - docs/design/specs/00-normative-language.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-QUALITY-0001
+  specs:
+  - docs/design/specs/00-normative-language.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-QUALITY-0002
+  specs:
+  - docs/design/specs/00-normative-language.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-QUALITY-0003
+  specs:
+  - docs/design/specs/00-normative-language.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-QUALITY-0004
+  specs:
+  - docs/design/specs/00-normative-language.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-QUALITY-0005
+  specs:
+  - docs/design/specs/00-normative-language.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-QUALITY-0006
+  specs:
+  - docs/design/specs/00-normative-language.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-QUALITY-0007
+  specs:
+  - docs/design/specs/00-normative-language.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-QUALITY-0008
+  specs:
+  - docs/design/specs/00-normative-language.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-QUALITY-0009
+  specs:
+  - docs/design/specs/00-normative-language.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-QUALITY-0010
+  specs:
+  - docs/design/specs/00-normative-language.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-SOURCE-0001
+  specs:
+  - docs/design/specs/00-normative-language.md
+  - docs/design/specs/02-source-matrix.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-SOURCE-0002
+  specs:
+  - docs/design/specs/00-normative-language.md
+  - docs/design/specs/02-source-matrix.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-SOURCE-0003
+  specs:
+  - docs/design/specs/00-normative-language.md
+  - docs/design/specs/02-source-matrix.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-SOURCE-0004
+  specs:
+  - docs/design/specs/00-normative-language.md
+  - docs/design/specs/02-source-matrix.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-SPOOL-0001
+  specs:
+  - docs/design/specs/09-job-spool.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-SPOOL-0003
+  specs:
+  - docs/design/specs/09-job-spool.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-SPOOL-0004
+  specs:
+  - docs/design/specs/09-job-spool.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-SPOOL-0101
+  specs:
+  - docs/design/specs/09-job-spool.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/30-first-vertical-slice-contract.md
+- requirement_id: MFOS-REQ-SPOOL-0102
+  specs:
+  - docs/design/specs/09-job-spool.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-SYSINT-0001
+  specs:
+  - docs/design/specs/03-system-integrity.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-SYSINT-0002
+  specs:
+  - docs/design/specs/03-system-integrity.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-SYSINT-0003
+  specs:
+  - docs/design/specs/03-system-integrity.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-SYSINT-0004
+  specs:
+  - docs/design/specs/03-system-integrity.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-SYSINT-0005
+  specs:
+  - docs/design/specs/03-system-integrity.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-SYSINT-0006
+  specs:
+  - docs/design/specs/03-system-integrity.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-SYSINT-0007
+  specs:
+  - docs/design/specs/03-system-integrity.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-SYSINT-0008
+  specs:
+  - docs/design/specs/03-system-integrity.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-SYSINT-0009
+  specs:
+  - docs/design/specs/03-system-integrity.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-SYSINT-0010
+  specs:
+  - docs/design/specs/03-system-integrity.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-SYSINT-0011
+  specs:
+  - docs/design/specs/03-system-integrity.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-SYSINT-0012
+  specs:
+  - docs/design/specs/03-system-integrity.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-SYSINT-0013
+  specs:
+  - docs/design/specs/03-system-integrity.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-SYSINT-0014
+  specs:
+  - docs/design/specs/03-system-integrity.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-SYSINT-0015
+  specs:
+  - docs/design/specs/03-system-integrity.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-SYSINT-0016
+  specs:
+  - docs/design/specs/03-system-integrity.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-SYSINT-0017
+  specs:
+  - docs/design/specs/03-system-integrity.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-SYSINT-0018
+  specs:
+  - docs/design/specs/03-system-integrity.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-SYSINT-0019
+  specs:
+  - docs/design/specs/03-system-integrity.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-SYSINT-0020
+  specs:
+  - docs/design/specs/03-system-integrity.md
+  - docs/design/specs/10-operator-console.md
+  - docs/design/specs/19-assurance-case.md
+  - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-UPDATE-0001
+  specs:
+  - docs/design/specs/13-update.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-UPDATE-0003
+  specs:
+  - docs/design/specs/13-update.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-UPDATE-0004
+  specs:
+  - docs/design/specs/13-update.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-UPDATE-0005
+  specs:
+  - docs/design/specs/13-update.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-UPDATE-0006
+  specs:
+  - docs/design/specs/13-update.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-UPDATE-0007
+  specs:
+  - docs/design/specs/13-update.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-UPDATE-0008
+  specs:
+  - docs/design/specs/13-update.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-UPDATE-0012
+  specs:
+  - docs/design/specs/13-update.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-WPOL-0001
+  specs:
+  - docs/design/specs/11-workload-policy.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-WPOL-0002
+  specs:
+  - docs/design/specs/11-workload-policy.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-WPOL-0006
+  specs:
+  - docs/design/specs/11-workload-policy.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-WPOL-0009
+  specs:
+  - docs/design/specs/11-workload-policy.md
+  - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-WPOL-0010
+  specs:
+  - docs/design/specs/11-workload-policy.md
+  - docs/design/specs/23-requirements-catalog.md

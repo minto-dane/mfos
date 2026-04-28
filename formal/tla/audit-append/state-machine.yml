@@ -1,0 +1,21 @@
+state_machine_id: MFOS-SM-AUDIT-APPEND-PHASE-0-8
+status: draft
+phase: Phase 0.8 Core Semantics Freeze
+implementation_allowed: false
+states:
+- RECEIVED
+- VALIDATED
+- CANONICALIZED
+- HASH_LINKED
+- DURABLE
+- ACKED
+- FAILED_CLOSED
+- RECOVERY_MODE
+invalid:
+- ACKED before DURABLE
+- DURABLE without correlation_id
+- hash gap ignored
+invariants:
+- No fake success.
+- Undefined transition returns MFOS_ERR_SPEC_GAP.
+- Specified but unimplemented transition returns MFOS_ERR_UNSUPPORTED.
