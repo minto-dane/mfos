@@ -89,7 +89,9 @@ def yaml_files(root: Path) -> list[Path]:
     return sorted(
         path
         for path in root.rglob("*.yml")
-        if path.is_file() and path.name != "index.yml" and "archive" not in path.parts
+        if path.is_file()
+        and path.name not in {"index.yml", ".mfos-dir.yml"}
+        and "archive" not in path.parts
     )
 
 

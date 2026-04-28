@@ -29,3 +29,6 @@ jobs:
 
       - name: Run draft check-mode design validation
         run: ./scripts/validate-all.sh --check
+
+      - name: Run component scaffold metadata validation
+        run: ./scripts/validate-component-scaffold.sh
