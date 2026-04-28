@@ -10,7 +10,7 @@ source_refs: ["EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001", "EXTREF-IBM-ZOS-JES-INTRODUC
 requirement_refs: ["MFOS-REQ-JOB-*", "MFOS-REQ-SPOOL-*"]
 claim_refs: []
 test_refs: ["tests/catalog/phase-0-8-job-spool-tests.yml"]
-evidence_refs: ["reports/phase-0-8-job-spool-lead.md"]
+evidence_refs: ["reports/phases/phase-0-8/phase-0-8-job-spool-lead.md"]
 implementation_allowed: false
 downstream_packs: []
 spec_gap_policy: "implementation_must_not_infer_or_fill_gaps"
@@ -1005,7 +1005,7 @@ Expected evidence artifacts:
 
 Current evidence placeholder:
 
-- `reports/phase-0-8-job-spool-lead.md`
+- `reports/phases/phase-0-8/phase-0-8-job-spool-lead.md`
 
 ## 19. Spec Gaps
 

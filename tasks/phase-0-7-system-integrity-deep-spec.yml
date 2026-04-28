@@ -104,7 +104,7 @@ objectives:
   status: partial
   outputs:
   - docs/design/source-matrix/cards/*.yml
-  - reports/source-card-audit.md
+  - reports/audits/source/source-card-audit.md
   constraints:
   - Do not copy IBM document text into the repository.
   - Do not invent publication numbers or section names.

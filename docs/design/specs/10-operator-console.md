@@ -48,7 +48,7 @@ Related artifacts:
 - `schemas/mfos/operator-command.schema.yml`
 - `formal/tla/operator-command/`
 - `tests/catalog/phase-0-8-operator-console-tests.yml`
-- `reports/phase-0-8-operator-console-lead.md`
+- `reports/phases/phase-0-8/phase-0-8-operator-console-lead.md`
 
 ## 1. Purpose
 

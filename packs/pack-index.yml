@@ -55,7 +55,7 @@ entries:
   inputs:
   - docs/design/specs/00-normative-language.md
   outputs:
-  - reports/pack-audit.md
+  - reports/audits/packs/pack-audit.md
   source_refs:
   - FBVBS-001
   - NIST-160-001
@@ -130,7 +130,7 @@ entries:
   inputs:
   - docs/design/specs/01-glossary.md
   outputs:
-  - reports/pack-audit.md
+  - reports/audits/packs/pack-audit.md
   source_refs:
   - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
   requirements:
@@ -771,7 +771,7 @@ entries:
   inputs:
   - docs/design/specs/12-amf.md
   outputs:
-  - reports/pack-audit.md
+  - reports/audits/packs/pack-audit.md
   source_refs:
   - EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001
   - EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001

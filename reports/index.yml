@@ -1,0 +1,45 @@
+schema_version: 1
+report_index_kind: mfos_report_inventory
+status: draft
+canonical_report_root: reports
+
+current:
+  - path: reports/current/pr-5-review-report.md
+    purpose: PR 5 review findings and merge recommendation.
+  - path: reports/current/pr-5-post-gap-validation.md
+    purpose: Post-gap validation command results for PR 5.
+  - path: reports/current/policy-denial-error-taxonomy.md
+    purpose: Phase 0.9 policy-denial error mapping decision.
+  - path: reports/current/phase-1-readiness-report.md
+    purpose: Phase 1 readiness judgement.
+  - path: reports/current/phase-1-open-issues.md
+    purpose: Phase 1 nonblocking follow-up issues.
+
+sections:
+  - path: reports/phases/phase-0-6/
+    purpose: Phase 0.6 canonicalization and enforcement closure.
+  - path: reports/phases/phase-0-7/
+    purpose: Phase 0.7 system integrity deep-spec work.
+  - path: reports/phases/phase-0-8/
+    purpose: Phase 0.8 core semantics freeze reports.
+  - path: reports/phases/phase-0-9/
+    purpose: Phase 0.9 executable-spec freeze reports.
+  - path: reports/audits/
+    purpose: Cross-phase audits grouped by audit subject.
+  - path: reports/naming-safety/
+    purpose: Naming-safety, external-reference migration, and legal-risk reports.
+  - path: reports/generated/
+    purpose: Deterministic script-generated reports.
+  - path: reports/archive/superseded/
+    purpose: Superseded reports retained for traceability.
+
+generated_reports:
+  - path: reports/generated/traceability.md
+    generator: scripts/generate-traceability.py
+  - path: reports/generated/registry-link-audit.md
+    generator: scripts/check-registry-links.py
+
+policy:
+  new_reports_default_location: reports/current/
+  generated_reports_location: reports/generated/
+  no_new_root_level_reports: true

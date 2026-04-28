@@ -42,7 +42,7 @@ evidence_expectations:
 - evidence_id: EV-MFOS-JOB-SPOOL-LEAD-0001
   evidence_type: phase_report
   artifact_paths:
-  - reports/phase-0-8-job-spool-lead.md
+  - reports/phases/phase-0-8/phase-0-8-job-spool-lead.md
 entries:
 - test_id: TEST-MFOS-JOB-0001
   title: Authorized MFOS job-control stream job reads dataset, writes OUTPUT_STREAM, and completes RC 0
