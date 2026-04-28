@@ -1,12 +1,14 @@
 # MFOS Design Work Status
 
-Status date: 2026-04-27  
-Workspace: `/home/nia/mfos`  
-Git status: initialized locally on branch `main`; remote repository setup is private-only pending public legal/IP review.
+Status date: 2026-04-28
+Workspace: `/home/nia/mfos`
+Git status: working branch `phase/0.9-executable-spec-freeze-artifacts` tracks
+`origin/phase/0.9-executable-spec-freeze-artifacts`; remote repository remains
+private pending public legal/IP review.
 
 ## Current Phase
 
-Phase 0.9: Executable Specs / Test Harness Freeze
+Phase 0.9.9: Repository Closure, Artifact Hygiene, And Source Workbench Parity
 
 Final judgment:
 
@@ -17,21 +19,43 @@ phase_0_7_gap_closure_status: complete_for_machine_checkable_scaffold
 naming_safety_refactor_status: complete_for_private_internal_review
 phase_0_8_status: complete_for_design_level_core_semantics_freeze
 phase_0_9_status: complete_for_executable_spec_artifact_freeze
-phase_1_portable_semantic_core_allowed: true
+phase_0_9_7_source_grounding_status: semantic_freeze_conditional
+structural_freeze_remains_valid: true
+semantic_freeze_fully_valid: false
+phase_1_loader_allowed: true
+phase_1_portable_semantic_core_allowed: false
+phase_1_semantic_evaluator_allowed_domains: []
 production_implementation_allowed: false
 hosted_daemon_implementation_allowed: false
 portable_semantic_core_implementation_allowed: false
-semantic_runner_implementation_allowed: false_for_phase_0_9_true_for_phase_1_only
+semantic_runner_implementation_allowed: false
 hosted_semantic_prototype_allowed: false
 public_release_allowed: false
 private_internal_use_allowed: true
 requires_ip_attorney_review_before_public_release: true
-next_phase: Phase 1 Portable Semantic Core + Conformance Harness
+next_phase: Phase 1 Loader-Only Artifact Loading And Traceability Repair
 ```
 
 No production nucleus, service, PXM, Guard, or other OS-body implementation was
 started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
 0.9.
+
+## Completed In Phase 0.9.9
+
+- Closed artifact-hygiene validator gaps for Phase 1+ filenames, check-mode
+  mutation, planned empty parser-target directories, and script/task indexes.
+- Moved the Phase 1 pack-readiness recheck out of `reports/current/` and into
+  `reports/phases/phase-1/`.
+- Synchronized pack failure-mode and fuzz-target IDs with the current Phase 0.9
+  fuzz target plan and policy-denial taxonomy.
+- Added public-safe workbench cards for the remaining canonical Source Matrix
+  IDs that lacked `sources/` candidates.
+- Added `sources/source-matrix-parity.yml` and populated retrieval metadata for
+  the new workbench source cards.
+- Kept `sources/` noncanonical; `docs/design/source-matrix/` remains the
+  source authority until an ADR-backed migration.
+- Confirmed `./scripts/validate-all.sh --check` does not mutate the generated
+  registry-link audit report.
 
 ## Completed In Phase 0.6
 
@@ -55,7 +79,7 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
   `docs/design/specs/28-machine-readable-registries.md`, and
   `ai/contracts/ai-implementation-contract.md`.
 - Added Phase 0.7 task plan:
-  `tasks/phase-0-7-system-integrity-deep-spec.yml`.
+  `tasks/archive/phase-0-7/system-integrity-deep-spec.yml`.
 
 ## Corrections Preserved
 
@@ -188,7 +212,7 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
   `formal/tla/job-lifecycle`, `formal/tla/spool-access`, and
   `formal/tla/operator-command`.
 - Added Phase 0.8 planned test catalogs under `tests/catalog/` and a fuzz target
-  plan under `fuzz/targets/phase-0-8-fuzz-target-plan.yml`.
+  plan under `fuzz/targets/archive/phase-0-8/fuzz-target-plan.yml`.
 - Added Phase 0.8 traceability matrices under `evidence/traceability/`.
 - Updated PACK-05 through PACK-09 machine-readable pack contracts with
   `implementation_allowed.production: false`,
@@ -196,7 +220,7 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
   `implementation_allowed.portable_semantic_core: false`,
   `implementation_allowed.executable_spec: false`, and
   `implementation_allowed.specification_only: true`.
-- Added `scripts/check-phase-0-8-traceability.py` and wired it into
+- Added `scripts/phases/phase-0-8/check-traceability.py` and wired it into
   `./scripts/validate-all.sh`.
 - Closed red-team Critical/Major issues by materializing `010x` planned semantic tests,
   removing hosted-prototype readiness language, aligning emergency duration and
@@ -227,7 +251,7 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
   operator commands, policy language, audit records, dataset handles, job
   fixtures, spool fixtures, and semantic fixtures.
 - Added Phase 0.9 validation scripts and wired
-  `./scripts/validate-phase-0-9.sh` into `./scripts/validate-all.sh`.
+  `./scripts/phases/phase-0-9/validate.sh` into `./scripts/validate-all.sh`.
 - Generated Phase 0.9 traceability matrices under `evidence/traceability/`.
 - Added Phase 0.9 freeze, validation, gap, red-team, open-issue, and Phase 1
   readiness reports.
@@ -238,24 +262,25 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
 ## Validation Commands
 
 ```bash
-python3 scripts/validate-source-cards.py
-python3 scripts/validate-requirements.py
-python3 scripts/validate-claims.py
-python3 scripts/validate-spec-front-matter.py
-python3 scripts/validate-packs.py
-python3 scripts/check-prohibited-terms.py
-python3 scripts/check-no-fake-success.py
-python3 scripts/check-source-grounding.py
-python3 scripts/check-audit-obligations.py
-python3 scripts/check-spec-gap-misuse.py
-python3 scripts/check-phase-0-8-traceability.py --mode release
-./scripts/validate-phase-0-9.sh
-python3 scripts/generate-traceability.py
+python3 scripts/validators/validate-source-cards.py
+python3 scripts/validators/validate-requirements.py
+python3 scripts/validators/validate-claims.py
+python3 scripts/validators/validate-spec-front-matter.py
+python3 scripts/validators/validate-packs.py
+python3 scripts/checks/check-prohibited-terms.py
+python3 scripts/checks/check-no-fake-success.py
+python3 scripts/checks/check-source-grounding.py
+python3 scripts/checks/check-audit-obligations.py
+python3 scripts/checks/check-spec-gap-misuse.py
+python3 scripts/phases/phase-0-8/check-traceability.py --mode release
+./scripts/phases/phase-0-9/validate.sh
+python3 scripts/generators/generate-traceability.py
 ./scripts/validate-all.sh
-python3 -m py_compile scripts/*.py
-python3 scripts/check-evidence-status.py --mode release
-python3 scripts/check-source-grounding.py --mode release
+python3 -m py_compile $(find scripts -name '*.py' -print)
+python3 scripts/checks/check-evidence-status.py --mode release
+python3 scripts/checks/check-source-grounding.py --mode release
 ./scripts/validate-naming-safety.sh release
+./scripts/validate-artifact-hygiene.sh
 ```
 
 ## Current Validation Results
@@ -265,20 +290,21 @@ traceability.
 
 Observed draft warnings: none.
 
-`python3 scripts/check-evidence-status.py --mode release` fails closed as
+`python3 scripts/checks/check-evidence-status.py --mode release` fails closed as
 expected with 18 errors and 20 warnings because release claims require
 verified or archived evidence with review metadata.
 
-`python3 scripts/check-source-grounding.py --mode release` passes with 0
+`python3 scripts/checks/check-source-grounding.py --mode release` passes with 0
 warnings for current opt-in statement-level grounding.
 
-`python3 scripts/check-phase-0-8-traceability.py --mode release` passes.
+`python3 scripts/phases/phase-0-8/check-traceability.py --mode release` passes.
 
-`./scripts/validate-phase-0-9.sh` passes and generates Phase 0.9 traceability.
+`./scripts/phases/phase-0-9/validate.sh` passes and generates Phase 0.9 traceability.
 
 `./scripts/validate-naming-safety.sh release` passes with 0 warnings.
 
-`python3 -m py_compile scripts/*.py` passed. YAML and JSON parse checks passed.
+`python3 -m py_compile $(find scripts -name '*.py' -print)` passed. YAML and
+JSON parse checks passed.
 
 Current registry counts:
 
@@ -335,24 +361,61 @@ Status: reviewed for merge readiness on 2026-04-28.
   implementation-ready requirements. Deep specs, final tests, evidence, and
   red-team review are still required before any implementation packet can use
   them.
-- Source-card pin limits, reserved requirements, and draft-only evidence still
-  block production or release claims. They do not block Phase 1 Portable
-  Semantic Core work that is constrained to the Phase 0.9 executable-spec
-  artifact set.
+- Source-card pin limits, reserved requirements, draft-only evidence, and
+  populated noncanonical `sources/` workbench drift still block production,
+  release, Portable Semantic Core behavior, semantic evaluator, and semantic
+  runner claims. They do not block Phase 1 loader-only validation of the Phase
+  0.9 executable-spec artifact set.
 - Release-mode evidence checking intentionally blocks claims until verified
   evidence artifacts, digests, verifiers, and verification timestamps exist.
 - CI design validation is wired, but release-mode evidence gates still require
   future verified evidence archive work.
 - Japanese mirror mechanics are incomplete; `japanese_mirror_status` remains
   incomplete and nonblocking while English remains canonical.
-- Public release remains blocked pending human legal/IP review, even though the
-  naming-safety lint passes locally.
+- Public release remains blocked pending human legal/IP review. Naming-safety
+  now includes a `sources/` workbench public-safety check and must continue to
+  pass before any public release discussion.
 - The first vertical slice now has Phase 0.9 fixtures and golden vectors. The
   user-facing policy-denial error mapping is resolved for Phase 1 as
   `MFOS_ERR_POLICY_DENIED` with audit `reason_code:
   DATASET_READ_NOT_PERMITTED`.
-- Phase 0.9 does not provide verified execution evidence; it provides the
-  executable-spec artifacts that Phase 1 must implement against.
+- Phase 0.9 does not provide verified execution evidence; it provides
+  executable-spec artifacts that may be loaded and validated, but semantic
+  evaluator implementation remains blocked until Phase 0.9.7 source-grounding
+  gaps are closed.
+
+## Completed In Phase 0.9.7 Source Grounding Adequacy Audit
+
+- Audited the 37 canonical Source Cards under
+  `docs/design/source-matrix/cards/`.
+- Confirmed Source Cards are public-safe and do not contain copied external
+  documentation fields, record layouts, command syntax, or macro signatures.
+- Confirmed no Source Card reaches SG6/SG7 because all remain draft and direct
+  card-local spec/test links are missing.
+- Rechecked PACK-05 through PACK-09 for loader-only versus semantic evaluator
+  readiness.
+- Downgraded Phase 1 permission to loader-only artifact validation and
+  traceability repair.
+- Blocked Portable Semantic Core behavior, semantic evaluator, and semantic
+  runner command implementation until source-grounding trace gaps close.
+- Recorded conditional refreeze outputs under
+  `reports/current/source-grounding/`.
+
+## Completed In Phase 0.9.8 Source Workbench Population
+
+- Populated `sources/` as a public-safe, noncanonical source-grounding
+  workbench with IBM, x64, security-assurance, and internal FBVBS source cards,
+  concept cards, indexes, and mapping notes.
+- Kept `docs/design/source-matrix/source-matrix.yml` and
+  `docs/design/source-matrix/cards/` as canonical source authority until an
+  ADR-backed migration updates validators, traceability, packs, docs, and
+  indexes together.
+- Did not commit IBM PDFs, HTML mirrors, screenshots, copied manuals, record
+  layouts, command syntax, macro signatures, message catalogs, or external
+  source-substitute material.
+- Added `sources/` workbench public-safety validation to naming-safety checks.
+- Confirmed source population improves review depth but does not upgrade
+  semantic freeze from conditional to full.
 
 ## Reports
 
@@ -366,16 +429,22 @@ Artifact inventories are maintained in:
 - `tests/fixtures/index.yml`
 - `tests/golden/index.yml`
 - `evidence/traceability/index.yml`
+- `scripts/index.yml`
+- `fuzz/targets/index.yml`
+- `tasks/index.yml`
+- `docs/design/tasks/index.yml`
 - `docs/design/specs/INDEX.md`
 - `docs/design/packs/PACKS.md`
 
 Current PR and readiness reports:
 
-- `reports/current/pr-5-review-report.md`
-- `reports/current/pr-5-post-gap-validation.md`
+- `reports/phases/phase-0-9/pr-5-review-report.md`
+- `reports/phases/phase-0-9/pr-5-post-gap-validation.md`
 - `reports/current/policy-denial-error-taxonomy.md`
-- `reports/current/phase-1-readiness-report.md`
-- `reports/current/phase-1-open-issues.md`
+- `reports/phases/phase-1/readiness-report.md`
+- `reports/phases/phase-1/open-issues.md`
+- `reports/current/source-grounding/conditional-refreeze-plan.md`
+- `reports/phases/phase-1/pack-readiness-recheck.md`
 
 Historical phase reports are under `reports/phases/`. Cross-phase audits are
 under `reports/audits/`. Naming-safety reports are under
@@ -385,13 +454,15 @@ under `reports/audits/`. Naming-safety reports are under
 
 ## Next Recommended Work
 
-Proceed to Phase 1 Portable Semantic Core + Conformance Harness:
+Proceed to Phase 0.9.8 Source-Grounding Trace Closure:
 
-1. Implement only the Portable Semantic Core and conformance harness needed to
-   load Phase 0.9 fixtures and compare golden vectors.
-2. Implement `mfos-semantic-runner` only as a Phase 1 tool under the runner
-   contract; do not implement production daemons or OS services.
-3. Preserve deterministic output, fail-closed `SPEC_GAP` and `UNSUPPORTED`
-   handling, naming-safety validation, and no external compatibility claims.
-4. Keep production implementation, hosted daemon implementation, and hardware
-   enforcement claims blocked.
+1. Propagate `source_refs` into current fixtures.
+2. Propagate `source_refs` and `target_requirements` into current
+   golden/oracle vectors.
+3. Reconcile planned `010x` requirement tests with current `09xx`
+   executable-spec artifacts, or add a machine-readable alias map.
+4. Refactor or explicitly re-bound job/spool control-stream syntax and
+   JCL/DD-style MFOS-owned identifiers.
+5. Keep production implementation, hosted daemon implementation, Portable
+   Semantic Core behavior, semantic evaluator logic, semantic runner commands,
+   and hardware enforcement claims blocked.

@@ -11,7 +11,7 @@ hosted daemon work, portable semantic core work, or production code.
 
 | ID | Prior severity | Resolution |
 | --- | --- | --- |
-| RT-0.8-001 | Critical | Phase 0.8 `010x` tests were materialized as concrete planned semantic tests in domain catalogs and `scripts/check-phase-0-8-traceability.py` now fails unresolved links or generic alias placeholders. |
+| RT-0.8-001 | Critical | Phase 0.8 `010x` tests were materialized as concrete planned semantic tests in domain catalogs and `scripts/phases/phase-0-8/check-traceability.py` now fails unresolved links or generic alias placeholders. |
 | RT-0.8-002 | Major | `docs/design/specs/INDEX.md` now describes Phase 0.8 domains as specification-only, not hosted-prototype ready. |
 | RT-0.8-003 | Major | Emergency duration is aligned to a 60-minute maximum; longer durations fail closed as `MFOS_ERR_SPEC_GAP`; operator/securityd prose, schema, and formal model use the `MFOS_AUTH_*` enum; audit projection is documented separately; negative tests were added. |
 | RT-0.8-004 | Major | `MFOS_RESOURCE_SYSTEM` and `MFOS_RESOURCE_SERVICE` are registered in the authorization spec and SecurityDecision schema; operator target mapping now references those classes. |

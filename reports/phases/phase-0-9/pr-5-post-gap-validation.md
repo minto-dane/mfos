@@ -10,7 +10,7 @@ normalizing first-vertical-slice artifact paths.
 ```bash
 ./scripts/validate-all.sh --check
 ./scripts/validate-naming-safety.sh release
-python3 -m py_compile scripts/*.py
+python3 -m py_compile $(find scripts -name '*.py' -print)
 git diff --check
 ```
 
@@ -43,7 +43,7 @@ Requirement namespace check OK: 0 warnings
 MFOS-owned name check OK: 0 warnings
 Compatibility-claim check OK: 0 warnings
 External-doc copy guard OK: 0 warnings
-python3 -m py_compile scripts/*.py: passed
+python3 -m py_compile $(find scripts -name '*.py' -print): passed
 git diff --check: passed
 ```
 
@@ -52,7 +52,8 @@ git diff --check: passed
 ```yaml
 phase_0_9_complete: true
 policy_denial_error_mapping_resolved: true
-phase_1_portable_semantic_core_allowed: true
+phase_1_loader_allowed: true
+phase_1_portable_semantic_core_allowed: false
 production_implementation_allowed: false
 hosted_daemon_implementation_allowed: false
 public_release_allowed: false

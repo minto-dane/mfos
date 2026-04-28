@@ -18,6 +18,13 @@ from looking like canonical current artifacts.
   `generated/phase-0-9/`.
 - Artifact inventories were added for reports, catalogs, fixtures, golden
   vectors, and traceability.
+- `scripts/` was reorganized into root entrypoints plus categorized
+  `validators/`, `checks/`, `generators/`, `phases/`, `lib/`, and `bootstrap/`
+  directories.
+- Phase-specific fuzz target plans and task plans were moved under stable
+  current paths or archive directories.
+- PR-specific and Phase 1-specific reports were moved out of `reports/current/`
+  into phase report directories.
 - Artifact hygiene lint scripts were added and wired into `validate-all`.
 
 ## Boundaries

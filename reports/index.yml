@@ -3,16 +3,8 @@ report_index_kind: mfos_report_inventory
 status: draft
 canonical_report_root: reports
 current:
-- path: reports/current/pr-5-review-report.md
-  purpose: PR 5 review findings and merge recommendation.
-- path: reports/current/pr-5-post-gap-validation.md
-  purpose: Post-gap validation command results for PR 5.
 - path: reports/current/policy-denial-error-taxonomy.md
   purpose: Phase 0.9 policy-denial error mapping decision.
-- path: reports/current/phase-1-readiness-report.md
-  purpose: Phase 1 readiness judgement.
-- path: reports/current/phase-1-open-issues.md
-  purpose: Phase 1 nonblocking follow-up issues.
 - path: reports/current/artifact-hygiene-audit.md
   purpose: Repository artifact hygiene audit.
 - path: reports/current/artifact-hygiene-audit.yml
@@ -21,6 +13,8 @@ current:
   purpose: Repository artifact hygiene red-team review.
 - path: reports/current/artifact-hygiene-open-issues.md
   purpose: Nonblocking artifact hygiene follow-up issues.
+- path: reports/current/artifact-hygiene-followup-report.md
+  purpose: Follow-up closure for scripts, fuzz plan, task, and report hygiene.
 - path: reports/current/repository-scaffold-audit.md
   purpose: Human repository scaffold completeness audit.
 - path: reports/current/repository-scaffold-audit.yml
@@ -39,6 +33,18 @@ current:
   purpose: Repository scaffold red-team review.
 - path: reports/current/source-scaffold-audit.md
   purpose: Source/source-matrix scaffold audit.
+- path: reports/current/source-grounding/
+  purpose: Phase 0.9.7 source-grounding adequacy audit package.
+- path: reports/current/source-grounding/conditional-refreeze-plan.md
+  purpose: Conditional semantic-refreeze and Phase 1 permission boundary.
+- path: reports/current/source-grounding/source-grounding-red-team-review.md
+  purpose: Source-grounding red-team findings.
+- path: reports/current/source-population-audit.md
+  purpose: Public-safe sources/ workbench population audit.
+- path: reports/current/source-population-audit.yml
+  purpose: Machine-readable sources/ workbench population audit.
+- path: reports/current/source-population-red-team-review.md
+  purpose: Red-team review for populated sources/ workbench.
 - path: reports/current/docs-spec-scaffold-audit.md
   purpose: Docs/spec scaffold audit.
 - path: reports/current/implementation-scaffold-audit.md
@@ -58,6 +64,8 @@ sections:
   purpose: Phase 0.8 core semantics freeze reports.
 - path: reports/phases/phase-0-9/
   purpose: Phase 0.9 executable-spec freeze reports.
+- path: reports/phases/phase-1/
+  purpose: Phase 1 readiness and nonblocking follow-up reports.
 - path: reports/audits/
   purpose: Cross-phase audits grouped by audit subject.
 - path: reports/naming-safety/
@@ -68,9 +76,22 @@ sections:
   purpose: Superseded reports retained for traceability.
 generated_reports:
 - path: reports/generated/traceability.md
-  generator: scripts/generate-traceability.py
+  generator: scripts/generators/generate-traceability.py
 - path: reports/generated/registry-link-audit.md
-  generator: scripts/check-registry-links.py
+  generator: scripts/checks/check-registry-links.py
+phase_reports:
+- path: reports/phases/phase-0-9/pr-5-review-report.md
+  purpose: PR 5 review findings and merge recommendation.
+- path: reports/phases/phase-0-9/pr-5-post-gap-validation.md
+  purpose: Post-gap validation command results for PR 5.
+- path: reports/phases/phase-1/readiness-report.md
+  purpose: Phase 1 readiness judgement.
+- path: reports/phases/phase-1/open-issues.md
+  purpose: Phase 1 nonblocking follow-up issues.
+- path: reports/phases/phase-1/pack-readiness-recheck.md
+  purpose: Pack-level loader-only versus semantic-evaluator readiness recheck.
+- path: reports/phases/phase-1/pack-readiness-recheck.yml
+  purpose: Machine-readable pack-level loader-only readiness recheck.
 policy:
   new_reports_default_location: reports/current/
   generated_reports_location: reports/generated/

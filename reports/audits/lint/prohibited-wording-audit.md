@@ -2,7 +2,7 @@
 
 Date: 2026-04-27
 
-Scope: `scripts/check-prohibited-terms.py` only, plus this audit report.
+Scope: `scripts/checks/check-prohibited-terms.py` only, plus this audit report.
 No implementation code was changed.
 
 ## Coverage Added
@@ -71,7 +71,7 @@ compatibility, or official status.
 Commands run:
 
 ```bash
-python3 scripts/check-prohibited-terms.py
+python3 scripts/checks/check-prohibited-terms.py
 ./scripts/validate-all.sh
 ```
 

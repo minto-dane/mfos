@@ -48,11 +48,11 @@ use its own internal `src/` directory when code is added.
 ## Local Checks
 
 ```bash
-python3 scripts/validate-source-cards.py
-python3 scripts/validate-requirements.py
+python3 scripts/validators/validate-source-cards.py
+python3 scripts/validators/validate-requirements.py
 ./scripts/validate-naming-safety.sh release
-python3 scripts/check-prohibited-terms.py
-python3 scripts/check-no-fake-success.py
+python3 scripts/checks/check-prohibited-terms.py
+python3 scripts/checks/check-no-fake-success.py
 ```
 
 These checks validate the current design artifacts and the naming-safety release

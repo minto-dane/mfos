@@ -300,7 +300,7 @@ Status after orchestrator correction pass on 2026-04-27:
 
 | Finding | Remediation |
 | --- | --- |
-| RT-0.8-001 | Added concrete Phase 0.8 `010x` planned semantic test entries to domain catalogs and added `scripts/check-phase-0-8-traceability.py`, including checks that required test IDs are not generic alias placeholders. |
+| RT-0.8-001 | Added concrete Phase 0.8 `010x` planned semantic test entries to domain catalogs and added `scripts/phases/phase-0-8/check-traceability.py`, including checks that required test IDs are not generic alias placeholders. |
 | RT-0.8-002 | Updated the split-spec index so PACK-05 through PACK-09 are specification-only and not hosted-prototype ready. |
 | RT-0.8-003 | Aligned emergency duration to 60 minutes, changed the authorization result enum to `MFOS_AUTH_REQUIRE_BREAK_GLASS`, updated operator text and formal operator model to use `MFOS_AUTH_*` securityd result names, documented the audit-record projection boundary, and added over-limit/unknown-result negative test planning. |
 | RT-0.8-004 | Registered `MFOS_RESOURCE_SYSTEM` and `MFOS_RESOURCE_SERVICE` in authorization prose and the SecurityDecision schema. |

@@ -20,10 +20,10 @@ Commands run locally:
 | --- | --- |
 | `./scripts/validate-naming-safety.sh release` | Passed: 0 warnings |
 | `./scripts/validate-all.sh --check` | Passed |
-| `python3 scripts/check-evidence-status.py --mode release` | Failed closed: 18 errors, 20 warnings |
-| `python3 scripts/check-prohibited-terms.py` | Passed |
-| `python3 scripts/check-source-card-public-safe.py --mode release` | Passed: 0 warnings |
-| `python3 -m py_compile scripts/*.py` | Passed |
+| `python3 scripts/checks/check-evidence-status.py --mode release` | Failed closed: 18 errors, 20 warnings |
+| `python3 scripts/checks/check-prohibited-terms.py` | Passed |
+| `python3 scripts/checks/naming-safety/check-source-card-public-safe.py --mode release` | Passed: 0 warnings |
+| `python3 -m py_compile $(find scripts -name '*.py' -print)` | Passed |
 
 Additional targeted scans checked legacy `IBM-*` IDs, prohibited-name paths, Source Card summary/copy-risk fields, NOTICE coverage, and validator coverage.
 
@@ -31,7 +31,7 @@ Additional targeted scans checked legacy `IBM-*` IDs, prohibited-name paths, Sou
 
 ### NSRT-CRIT-001 - Public Release Is Still Blocked
 
-`docs/design/STATUS.md:20-22` marks `public_release_allowed: false` and requires IP attorney review. `docs/design/STATUS.md:177-179` documents the expected release-mode evidence failure, and the local run confirmed `python3 scripts/check-evidence-status.py --mode release` fails with 18 errors and 20 warnings. `docs/design/STATUS.md:211-223` also states evidence entries are draft placeholders and source cards still need publication, section, and version pin work.
+`docs/design/STATUS.md:20-22` marks `public_release_allowed: false` and requires IP attorney review. `docs/design/STATUS.md:177-179` documents the expected release-mode evidence failure, and the local run confirmed `python3 scripts/checks/check-evidence-status.py --mode release` fails with 18 errors and 20 warnings. `docs/design/STATUS.md:211-223` also states evidence entries are draft placeholders and source cards still need publication, section, and version pin work.
 
 Impact: the repository can truthfully say naming-safety lint passes, but it cannot make public release, conformance, production, or verified-evidence claims.
 
@@ -54,7 +54,7 @@ MFOS-owned implementation directories still contain exact prohibited or high-ris
 - `implementation/nucleus/pcall`
 - `implementation/runtime/abi/pcall`
 
-`scripts/check-mf-owned-names.py:37-42` explicitly treats `ispf`, `tso`, and `zosmf` as forbidden tokens, but the script walks only text files via `text_files([Path(".")])` at `scripts/check-mf-owned-names.py:112`; empty or placeholder directories are not scanned. The same checker does not include `WLM`, `SVC`, or `PCALL` in its forbidden token list even though they are owned ABI/service namespaces here.
+`scripts/checks/naming-safety/check-mf-owned-names.py:37-42` explicitly treats `ispf`, `tso`, and `zosmf` as forbidden tokens, but the script walks only text files via `text_files([Path(".")])` at `scripts/checks/naming-safety/check-mf-owned-names.py:112`; empty or placeholder directories are not scanned. The same checker does not include `WLM`, `SVC`, or `PCALL` in its forbidden token list even though they are owned ABI/service namespaces here.
 
 Impact: current validation reports `MFOS-owned name check OK`, while release-visible owned paths can imply TSO, ISPF, z/OSMF, workload policy, SVC, or PCALL compatibility surfaces.
 
@@ -131,7 +131,7 @@ Recommended action: update contributor-facing check instructions before public r
 ## Non-Findings
 
 - No current canonical `source_id: IBM-*` value was found in the active source matrix/card ledger, registries, requirements, packs, claims, or implementation metadata scanned.
-- `python3 scripts/check-source-card-public-safe.py --mode release` passes for the current Source Card YAML files.
+- `python3 scripts/checks/naming-safety/check-source-card-public-safe.py --mode release` passes for the current Source Card YAML files.
 - No long Markdown block quotes were found by targeted long-quote scan.
 - `NOTICE.md` and `README.md` contain clear IBM non-affiliation and non-compatibility language.
 

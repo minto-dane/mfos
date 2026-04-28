@@ -109,13 +109,13 @@ Registry and pack files:
 
 Script and schema support:
 
-- `scripts/mfos_lint.py`: update `SOURCE_ID_RE` to recognize `EXTREF-*`; add canonical/alias resolution helpers instead of returning only raw `source_id` values.
-- `scripts/validate-source-cards.py`: allow `legacy_source_ids`, validate uniqueness across canonical and legacy IDs, and support renamed card files.
-- `scripts/validate-requirements.py`: resolve `source_refs[].source_id` through canonical IDs plus aliases.
-- `scripts/validate-spec-front-matter.py`: normalize source IDs before comparing body IDs with front matter IDs.
-- `scripts/check-source-grounding.py`: inherits the regex and known-source behavior from `mfos_lint.py`; verify after helper changes.
-- `scripts/generate-traceability.py`: normalize aliases to canonical IDs in generated matrices.
-- `scripts/validate-packs.py`: currently checks pack shape but not source-ref resolution; add validation or document that pack source refs are checked elsewhere.
+- `scripts/lib/mfos_lint.py`: update `SOURCE_ID_RE` to recognize `EXTREF-*`; add canonical/alias resolution helpers instead of returning only raw `source_id` values.
+- `scripts/validators/validate-source-cards.py`: allow `legacy_source_ids`, validate uniqueness across canonical and legacy IDs, and support renamed card files.
+- `scripts/validators/validate-requirements.py`: resolve `source_refs[].source_id` through canonical IDs plus aliases.
+- `scripts/validators/validate-spec-front-matter.py`: normalize source IDs before comparing body IDs with front matter IDs.
+- `scripts/checks/check-source-grounding.py`: inherits the regex and known-source behavior from `mfos_lint.py`; verify after helper changes.
+- `scripts/generators/generate-traceability.py`: normalize aliases to canonical IDs in generated matrices.
+- `scripts/validators/validate-packs.py`: currently checks pack shape but not source-ref resolution; add validation or document that pack source refs are checked elsewhere.
 
 Adjacent files outside the requested audit set are likely blockers for a full
 migration:

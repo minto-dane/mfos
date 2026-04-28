@@ -9,13 +9,15 @@ is recorded in:
 - `reports/phases/phase-0-9/phase-0-9-executable-spec-freeze-report.md`
 - `reports/phases/phase-0-9/phase-0-9-validation-report.md`
 - `reports/phases/phase-0-9/phase-0-9-red-team-review.md`
-- `reports/current/phase-1-readiness-report.md`
+- `reports/phases/phase-1/readiness-report.md`
 
 ## Current Judgment
 
 ```yaml
 phase_0_9_complete: true
-phase_1_portable_semantic_core_allowed: true
+phase_1_portable_semantic_core_allowed: false
+superseded_by: reports/phases/phase-1/readiness-report.md
+supersession_reason: Phase 0.9.7 source-grounding review narrowed Phase 1 to loader-only validation.
 production_implementation_allowed: false
 hosted_daemon_implementation_allowed: false
 semantic_runner_implementation_allowed: false_for_phase_0_9_true_for_phase_1_only

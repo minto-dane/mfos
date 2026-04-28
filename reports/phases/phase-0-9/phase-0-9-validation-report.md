@@ -5,10 +5,10 @@ All Phase 0.9 validation commands passed locally.
 ## Commands
 
 ```bash
-./scripts/validate-phase-0-9.sh
+./scripts/phases/phase-0-9/validate.sh
 ./scripts/validate-all.sh --check
 ./scripts/validate-naming-safety.sh release
-python3 -m py_compile scripts/*.py
+python3 -m py_compile $(find scripts -name '*.py' -print)
 git diff --check
 ```
 

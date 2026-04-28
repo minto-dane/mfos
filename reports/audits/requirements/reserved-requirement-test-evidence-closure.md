@@ -16,7 +16,7 @@ Edited files:
 - `docs/design/registries/evidence.yaml`
 - `reports/audits/requirements/reserved-requirement-test-evidence-closure.md`
 
-`scripts/generate-traceability.py` was run as required and regenerated the standard traceability outputs.
+`scripts/generators/generate-traceability.py` was run as required and regenerated the standard traceability outputs.
 
 ## Changes
 
@@ -45,8 +45,8 @@ Each added evidence placeholder is:
 Commands run:
 
 ```bash
-python3 scripts/check-audit-obligations.py
-python3 scripts/generate-traceability.py
+python3 scripts/checks/check-audit-obligations.py
+python3 scripts/generators/generate-traceability.py
 ```
 
 Results:

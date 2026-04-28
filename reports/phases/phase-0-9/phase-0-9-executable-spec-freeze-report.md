@@ -2,6 +2,11 @@
 
 Status: complete for design-level executable-spec artifacts.
 
+Supersession note: Phase 0.9.7 source-grounding review narrowed the Phase 1
+permission boundary. These artifacts support loader-only validation work. They
+do not authorize Portable Semantic Core behavior, a semantic evaluator, a
+semantic runner, hosted daemons, or production implementation.
+
 Phase 0.9 converted the Phase 0.8 core semantics into deterministic
 implementation-input artifacts without starting production code, hosted daemons,
 the Portable Semantic Core, a semantic evaluator, or a runner.
@@ -36,7 +41,7 @@ the Portable Semantic Core, a semantic evaluator, or a runner.
   - `tests/fixtures/`
   - `tests/golden/`
 - Fuzz planning:
-  - `fuzz/targets/phase-0-9-fuzz-target-plan.yml`
+  - `fuzz/targets/fuzz-target-plan.yml`
   - `fuzz/corpora/*/seed-plan.yml`
 
 ## Coverage Summary
@@ -70,9 +75,10 @@ documentation text.
 
 ```yaml
 phase_0_9_complete: true
-phase_1_portable_semantic_core_allowed: true
+phase_1_loader_allowed: true
+phase_1_portable_semantic_core_allowed: false
 production_implementation_allowed: false
 hosted_daemon_implementation_allowed: false
 semantic_runner_implementation_allowed: false
-next_phase_if_complete: Phase 1 Portable Semantic Core + Conformance Harness
+next_phase_if_complete: Phase 0.9.9 Source-Grounding Trace Closure
 ```

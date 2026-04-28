@@ -6,6 +6,7 @@ No blocking artifact hygiene issues remain.
 
 Nonblocking follow-up:
 
-- Consider migrating future phase-specific script names into a `scripts/phases/`
-  directory if script count grows. Current phase-specific scripts are validation
-  tooling, not canonical MFOS artifacts, and are intentionally left in place.
+- Current fixture and golden-vector filenames retain stable scenario sequence
+  suffixes such as `0901`. These are treated as deterministic scenario IDs,
+  not phase-specific filenames. If the project later wants human-only names,
+  perform a separate reference-preserving fixture/golden rename.

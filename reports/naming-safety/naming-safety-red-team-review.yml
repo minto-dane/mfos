@@ -48,16 +48,16 @@ validation:
     - command: ./scripts/validate-all.sh --check
       status: pass
       summary: "draft/check validation passed without traceability regeneration"
-    - command: python3 scripts/check-evidence-status.py --mode release
+    - command: python3 scripts/checks/check-evidence-status.py --mode release
       status: fail
       summary: "18 errors, 20 warnings; release claims require verified or archived evidence"
-    - command: python3 scripts/check-prohibited-terms.py
+    - command: python3 scripts/checks/check-prohibited-terms.py
       status: pass
       summary: "Prohibited wording check OK"
-    - command: python3 scripts/check-source-card-public-safe.py --mode release
+    - command: python3 scripts/checks/naming-safety/check-source-card-public-safe.py --mode release
       status: pass
       summary: "0 warnings"
-    - command: python3 -m py_compile scripts/*.py
+    - command: python3 -m py_compile $(find scripts -name '*.py' -print)
       status: pass
       summary: "scripts compile"
   targeted_scans:
@@ -84,7 +84,7 @@ findings:
       - path: docs/design/STATUS.md
         lines: "177-179"
         detail: "release evidence gate expected to fail closed"
-      - command: python3 scripts/check-evidence-status.py --mode release
+      - command: python3 scripts/checks/check-evidence-status.py --mode release
         result: "failed with 18 errors and 20 warnings"
     impact: "Naming-safety pass must not be presented as public release, production, conformance, or verified evidence readiness."
     required_action: "Keep public release blocked until legal review, verified evidence, and Source Card/source-pin release gates are complete."
@@ -104,7 +104,7 @@ findings:
       - path: implementation/guard/roots/svc-table
       - path: implementation/nucleus/pcall
       - path: implementation/runtime/abi/pcall
-      - path: scripts/check-mf-owned-names.py
+      - path: scripts/checks/naming-safety/check-mf-owned-names.py
         lines: "37-42,112"
         detail: "forbids ispf/tso/zosmf but walks text files, missing empty directories"
     impact: "Owned paths can imply compatibility surfaces while validator still passes."
@@ -140,7 +140,7 @@ findings:
       - path: reports/audits/source/source-card-pin-audit.md
         lines: "57-65"
         detail: "old IBM-* IDs appear in pin-review table"
-      - path: scripts/check-extref-namespace.py
+      - path: scripts/checks/naming-safety/check-extref-namespace.py
         lines: "64-83"
         detail: "reports/ is not scanned"
     impact: "Public report bundles can expose obsolete canonical-looking IBM IDs outside the stated alias context."
@@ -166,13 +166,13 @@ findings:
     severity: major
     title: Validator coverage is not release-grade
     evidence:
-      - path: scripts/check-mf-owned-names.py
+      - path: scripts/checks/naming-safety/check-mf-owned-names.py
         lines: "112"
         detail: "does not scan empty directories"
-      - path: scripts/check-extref-namespace.py
+      - path: scripts/checks/naming-safety/check-extref-namespace.py
         lines: "64-83"
         detail: "does not scan reports/"
-      - path: scripts/check-source-card-public-safe.py
+      - path: scripts/checks/naming-safety/check-source-card-public-safe.py
         lines: "11-67"
         detail: "checks only card YAML, not stale public guidance"
       - path: schemas/source-card.schema.json

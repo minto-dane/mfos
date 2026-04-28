@@ -85,7 +85,7 @@ Reservation semantics:
 - Audit obligation is conditional and conservative: attempted runtime/release/implementation reliance before deep specification uses `SPEC_GAP_REQUIREMENT_USE`.
 
 Validation:
-- `python3 scripts/validate-requirements.py`
+- `python3 scripts/validators/validate-requirements.py`
 - Result: `Requirement validation OK: 106 entries`
 - Non-writing source-gap check against the current `evidence/traceability/current/gap-report.yml`: `TRACE-SRC-0001 unregistered requirement IDs remaining: 0`
 
