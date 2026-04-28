@@ -1,7 +1,7 @@
 # Source Name Legal Safe-Harbor Audit
 
-Status: current  
-Date: 2026-04-28  
+Status: current
+Date: 2026-04-28
 Scope: `sources/`, `docs/design/source-matrix/cards/`, root notices, and public-facing naming policy.
 
 This is an engineering/legal-risk hygiene audit, not legal advice.
