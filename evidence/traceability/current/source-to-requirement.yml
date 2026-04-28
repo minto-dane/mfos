@@ -1,7 +1,7 @@
 schema_version: 1
 status: draft
 generated_at: '2026-04-27'
-generated_by: scripts/generate-traceability.py
+generated_by: scripts/generators/generate-traceability.py
 non_compatibility_statement: MFOS is z/OS-inspired and does not claim z/OS compatibility
   or IBM product compatibility.
 entries:
@@ -237,6 +237,11 @@ entries:
   - MFOS-REQ-SOURCE-0003
 - source_id: EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001
   requirements:
+  - MFOS-REQ-WLM-0001
+  - MFOS-REQ-WLM-0002
+  - MFOS-REQ-WLM-0006
+  - MFOS-REQ-WLM-0009
+  - MFOS-REQ-WLM-0010
   - MFOS-REQ-WPOL-0001
   - MFOS-REQ-WPOL-0002
   - MFOS-REQ-WPOL-0006

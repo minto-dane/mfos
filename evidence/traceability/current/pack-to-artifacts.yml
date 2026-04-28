@@ -1,7 +1,7 @@
 schema_version: 1
 status: draft
 generated_at: '2026-04-27'
-generated_by: scripts/generate-traceability.py
+generated_by: scripts/generators/generate-traceability.py
 non_compatibility_statement: MFOS is z/OS-inspired and does not claim z/OS compatibility
   or IBM product compatibility.
 entries:
@@ -64,7 +64,7 @@ entries:
   - schemas/mfos/security-decision.schema.yml
   - schemas/mfos/policy-binding.schema.yml
   - formal/tla/authorization/state-machine.yml
-  - tests/catalog/archive/phase-0-8/authorization-tests.yml
+  - tests/catalog/authorization.yml
   - requirements/by-domain/auth.yml
   tests:
   - TEST-MFOS-AUTH-SECURITY-DECISION-0101
@@ -91,7 +91,7 @@ entries:
   outputs:
   - schemas/mfos/audit-record.schema.yml
   - formal/tla/audit-append/state-machine.yml
-  - tests/catalog/archive/phase-0-8/audit-tests.yml
+  - tests/catalog/audit.yml
   - requirements/by-domain/audit.yml
   tests:
   - TEST-MFOS-AUDIT-RECORD-SCHEMA-0101
@@ -122,7 +122,7 @@ entries:
   - schemas/mfos/object-generation-binding.schema.yml
   - formal/tla/dataset-open/state-machine.yml
   - formal/tla/catalog-transaction/state-machine.yml
-  - tests/catalog/archive/phase-0-8/dataset-catalog-tests.yml
+  - tests/catalog/dataset-catalog.yml
   - requirements/by-domain/catalog.yml
   - requirements/by-domain/dataset.yml
   tests:
@@ -154,7 +154,7 @@ entries:
   - schemas/mfos/spool-entry.schema.yml
   - formal/tla/job-lifecycle/state-machine.yml
   - formal/tla/spool-access/state-machine.yml
-  - tests/catalog/archive/phase-0-8/job-spool-tests.yml
+  - tests/catalog/job-spool.yml
   - requirements/by-domain/job.yml
   - requirements/by-domain/spool.yml
   tests:
@@ -181,7 +181,7 @@ entries:
   outputs:
   - schemas/mfos/operator-command.schema.yml
   - formal/tla/operator-command/state-machine.yml
-  - tests/catalog/archive/phase-0-8/operator-console-tests.yml
+  - tests/catalog/operator-console.yml
   - requirements/by-domain/operator.yml
   tests:
   - TEST-MFOS-OPER-COMMAND-0101
@@ -372,7 +372,7 @@ entries:
   - docs/design/source-matrix/traceability-index.md
   outputs:
   - evidence/traceability
-  - scripts/generate-traceability.py
+  - scripts/generators/generate-traceability.py
   tests: []
 - pack_id: PACK-29
   requirements:

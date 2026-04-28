@@ -1,7 +1,7 @@
 schema_version: 1
 status: draft
 generated_at: '2026-04-27'
-generated_by: scripts/generate-traceability.py
+generated_by: scripts/generators/generate-traceability.py
 non_compatibility_statement: MFOS is z/OS-inspired and does not claim z/OS compatibility
   or IBM product compatibility.
 entries:

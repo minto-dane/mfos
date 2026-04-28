@@ -1038,9 +1038,9 @@ implementation or profile claims until the requirement registry is synchronized.
 
 - Pack contract: `docs/design/packs/PACK-06-*/pack.yml`
 - State machine: `formal/tla/audit-append/state-machine.yml`
-- Test catalog: `tests/catalog/archive/phase-0-8/*`
+- Test catalog: `tests/catalog/audit.yml`
 - Requirement mirror: `requirements/by-domain/`
-- Evidence traceability: `evidence/traceability/archive/phase-0-8/*`
+- Evidence traceability: `evidence/traceability/current/`
 
 ### Freeze Rules
 

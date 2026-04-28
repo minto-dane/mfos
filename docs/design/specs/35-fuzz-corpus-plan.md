@@ -66,7 +66,7 @@ clock timestamps, and copied external syntax are prohibited.
 The machine-readable plan is:
 
 ```text
-fuzz/targets/phase-0-9-fuzz-target-plan.yml
+fuzz/targets/fuzz-target-plan.yml
 ```
 
 Required target names:
@@ -102,7 +102,7 @@ Minimum categories:
 
 Phase 0.9 passes this area only when:
 
-- `scripts/validate-fuzz-corpus-plan.py` passes.
+- `scripts/validators/validate-fuzz-corpus-plan.py` passes.
 - Naming-safety validation passes.
 - No fuzzer implementation exists in Phase 0.9 outputs.
 - Traceability maps fuzz targets to requirements.
