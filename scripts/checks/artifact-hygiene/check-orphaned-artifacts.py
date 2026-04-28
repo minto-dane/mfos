@@ -56,6 +56,12 @@ def covered(path: Path, indexed: set[str]) -> bool:
     return rel in indexed or any(rel.startswith(prefix + "/") for prefix in indexed)
 
 
+def has_material(path: Path) -> bool:
+    if path.is_file():
+        return True
+    return any(child.is_file() for child in path.rglob("*"))
+
+
 def main() -> int:
     parser = mode_arg()
     args = parser.parse_args()
@@ -96,11 +102,15 @@ def main() -> int:
     for path in sorted((ROOT / "fuzz/targets").glob("*")):
         if path.name in {"README.md", "index.yml", "archive"}:
             continue
+        if path.is_dir() and not has_material(path):
+            continue
         if not covered(path, indexed):
             findings.append(Finding("ERROR", path, "current fuzz target artifact is not listed in fuzz/targets/index.yml"))
 
     for path in sorted((ROOT / "tasks").glob("*")):
         if path.name in {"README.md", "index.yml", "archive"}:
+            continue
+        if path.is_dir() and not has_material(path):
             continue
         if not covered(path, indexed):
             findings.append(Finding("ERROR", path, "current task artifact is not listed in tasks/index.yml"))
