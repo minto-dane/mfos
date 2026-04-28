@@ -1,0 +1,28 @@
+directory_id: MFOS-DIR-TEST-GOLDEN
+path: tests/golden
+role: test_current
+maturity: M5_VALIDATED
+status: current
+canonical: true
+description: Deterministic golden vectors and embedded oracle data for future comparison tooling.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+phase_allowed_from: phase-0
+depends_on:
+  - docs/design/specs/34-oracle-definition-format.md
+allowed_contents:
+  - golden vector YAML
+  - golden index
+forbidden_contents:
+  - runner output from production services
+  - nondeterministic identifiers
+  - external record layouts
+required_before_agent_assignment:
+  - oracle schema
+  - fixture ref
+  - deterministic output
+review_status: draft

@@ -1,0 +1,27 @@
+directory_id: MFOS-DIR-CLAIMS
+path: claims
+role: bridge
+maturity: M2_CLASSIFIED
+status: bridge
+canonical: false
+description: Top-level bridge for assurance claim files; canonical claim tree remains under docs/design/assurance.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+phase_allowed_from: phase-0
+depends_on:
+  - docs/design/assurance/claim-tree.yml
+allowed_contents:
+  - bridge claim indexes
+  - future claim-domain files
+forbidden_contents:
+  - release claims without evidence
+  - production readiness assertions
+required_before_agent_assignment:
+  - claim ID
+  - evidence refs
+  - not_claimed entries
+review_status: draft

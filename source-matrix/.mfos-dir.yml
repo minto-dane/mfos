@@ -1,0 +1,26 @@
+directory_id: MFOS-DIR-SOURCE-MATRIX-BRIDGE
+path: source-matrix
+role: bridge
+maturity: M2_CLASSIFIED
+status: bridge
+canonical: false
+description: Top-level bridge for source-matrix promotion. Current authority remains docs/design/source-matrix.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+phase_allowed_from: phase-0
+depends_on:
+  - docs/design/source-matrix
+allowed_contents:
+  - bridge README
+  - future promoted source matrix files
+forbidden_contents:
+  - copied external documents
+  - replacement source summaries
+required_before_agent_assignment:
+  - migration ADR
+  - parity check
+review_status: draft

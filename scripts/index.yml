@@ -3,12 +3,18 @@ artifact_index_kind: mfos_script_inventory
 status: current
 
 current:
+  metadata:
+    path: scripts/.mfos-dir.yml
+    status: current
   entrypoints:
     validate_all:
       path: scripts/validate-all.sh
       status: current
     validate_artifact_hygiene:
       path: scripts/validate-artifact-hygiene.sh
+      status: current
+    validate_component_scaffold:
+      path: scripts/validate-component-scaffold.sh
       status: current
     validate_naming_safety:
       path: scripts/validate-naming-safety.sh

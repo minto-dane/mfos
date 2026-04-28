@@ -1,0 +1,29 @@
+directory_id: MFOS-DIR-DESIGN-SOURCE-MATRIX
+path: docs/design/source-matrix
+role: canonical_registry
+maturity: M5_VALIDATED
+status: current
+canonical: true
+description: Canonical Source Matrix index and public-safe Source Cards until an ADR migrates authority.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+phase_allowed_from: phase-0
+depends_on:
+  - docs/design/specs/02-source-matrix.md
+allowed_contents:
+  - source matrix registry
+  - public-safe source cards
+  - source-card lint policy
+forbidden_contents:
+  - copied external documents
+  - long quotations
+  - compatibility claims
+required_before_agent_assignment:
+  - EXTREF source IDs
+  - prohibited inference
+  - legal controls
+review_status: draft

@@ -1,0 +1,28 @@
+directory_id: MFOS-DIR-REQUIREMENTS
+path: requirements
+role: bridge
+maturity: M4_POPULATED
+status: bridge
+canonical: false
+description: Top-level requirement bridge and by-domain view. Canonical registry remains docs/design/registries/requirements.yaml.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+phase_allowed_from: phase-0
+depends_on:
+  - docs/design/registries/requirements.yaml
+allowed_contents:
+  - requirement bridge files
+  - by-domain requirement views
+  - generated requirement indexes
+forbidden_contents:
+  - non-MFOS requirement IDs
+  - requirements without source refs
+required_before_agent_assignment:
+  - MFOS-REQ ID
+  - source refs
+  - negative tests
+review_status: draft

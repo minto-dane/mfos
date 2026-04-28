@@ -32,10 +32,12 @@ REQUIRED_INDEXED_DIRS = [
 CANONICAL_ROOT_FILES_ALLOWED = {
     Path("reports"): {"README.md", "index.yml"},
     Path("scripts"): {
+        ".mfos-dir.yml",
         "README.md",
         "index.yml",
         "validate-all.sh",
         "validate-artifact-hygiene.sh",
+        "validate-component-scaffold.sh",
         "validate-naming-safety.sh",
     },
     Path("tasks"): {"README.md", "index.yml"},

@@ -1,0 +1,27 @@
+directory_id: MFOS-DIR-PACKS
+path: packs
+role: bridge
+maturity: M3_CONTRACTED
+status: bridge
+canonical: false
+description: Top-level bridge for pack index; canonical pack contracts are under docs/design/packs.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+phase_allowed_from: phase-0
+depends_on:
+  - docs/design/packs
+allowed_contents:
+  - pack bridge index
+  - future promoted pack contracts
+forbidden_contents:
+  - implementation code
+  - production authorization
+required_before_agent_assignment:
+  - implementation_allowed block
+  - inputs
+  - outputs
+review_status: draft

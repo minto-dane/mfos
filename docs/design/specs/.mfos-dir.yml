@@ -1,0 +1,30 @@
+directory_id: MFOS-DIR-DESIGN-SPECS
+path: docs/design/specs
+role: canonical_current
+maturity: M5_VALIDATED
+status: conditional
+canonical: true
+description: Canonical split design specs; structural freeze is valid but semantic freeze is conditional on source review.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+phase_allowed_from: phase-0
+depends_on:
+  - docs/design/source-matrix
+  - docs/design/registries
+allowed_contents:
+  - split specifications
+  - front matter
+  - spec indexes
+forbidden_contents:
+  - production code
+  - runner implementation
+  - source text copies
+required_before_agent_assignment:
+  - front matter
+  - source refs
+  - requirement refs
+review_status: draft

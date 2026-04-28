@@ -1,0 +1,28 @@
+directory_id: MFOS-DIR-CI
+path: ci
+role: validation
+maturity: M2_CLASSIFIED
+status: planned
+canonical: false
+description: Planned CI mirror for local lint gates; active validators currently live under scripts.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+phase_allowed_from: phase-0
+depends_on:
+  - scripts
+allowed_contents:
+  - CI lint policy
+  - bridge README files
+  - workflow planning notes
+forbidden_contents:
+  - production code
+  - duplicate validator logic without scripts index entry
+  - fake pass stubs
+required_before_agent_assignment:
+  - scripts/index.yml entry for active checks
+  - validation command
+review_status: draft

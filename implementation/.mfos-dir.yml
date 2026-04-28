@@ -1,0 +1,34 @@
+directory_id: MFOS-DIR-IMPLEMENTATION
+path: implementation
+role: implementation_future
+maturity: M2_CLASSIFIED
+status: planned
+canonical: true
+description: Grouped OS-body implementation scaffold. Presence of directories does not authorize implementation.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+phase_allowed_from: phase-1-loader-only
+depends_on:
+  - docs/design/specs/21-ai-implementation-contract.md
+  - docs/design/specs/33-semantic-runner-contract.md
+allowed_contents:
+  - README files
+  - future component directories
+  - reviewed loader-only artifacts after gate approval
+forbidden_contents:
+  - implementation code
+  - production service logic
+  - hosted daemon code
+  - semantic runner implementation
+  - fake success stubs
+required_before_agent_assignment:
+  - pre-implementation gate
+  - pack contract
+  - source refs
+  - requirement refs
+  - negative tests
+review_status: draft
