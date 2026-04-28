@@ -1316,8 +1316,8 @@ updated_at_utc: "2026-04-27T00:00:00Z"
 
 | Gap ID | Gap | Blocking effect |
 | --- | --- | --- |
-| REG-GAP-0001 | Final JSON Schema or CUE schema files are not created. | Blocks automated structural validation beyond this prose spec. |
-| REG-GAP-0002 | Actual registry YAML file paths are recommended but not created. | Blocks CI from consuming canonical registries. |
+| REG-GAP-0001 | JSON Schema files exist, but CUE equivalents and release-grade schema signing are not created. | Blocks claiming complete multi-format registry validation. |
+| REG-GAP-0002 | Registry YAML paths exist for Phase 0.x design validation, but release freshness, waiver, and signing metadata are not finalized. | Blocks release-mode registry assurance. |
 | REG-GAP-0003 | Canonical conversion from legacy test IDs to `TEST-MFOS-*` IDs is not implemented. | Blocks uniform test traceability. |
 | REG-GAP-0004 | Requirement namespace registry is not fully synchronized with all split specs. | Blocks strict namespace lint. |
 | REG-GAP-0005 | Evidence artifact storage layout and retention policy are not final. | Blocks production evidence archival. |
