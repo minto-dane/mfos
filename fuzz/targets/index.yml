@@ -6,37 +6,6 @@ current:
   fuzz_target_plan:
     path: fuzz/targets/fuzz-target-plan.yml
     status: current
-planned_parser_targets:
-  activation_profile_parser:
-    path: fuzz/targets/activation-profile-parser/
-    status: planned_empty
-  amf_manifest_parser:
-    path: fuzz/targets/amf-manifest-parser/
-    status: planned_empty
-  audit_record_decoder:
-    path: fuzz/targets/audit-record-decoder/
-    status: planned_empty
-  dsn_parser:
-    path: fuzz/targets/dsn-parser/
-    status: planned_empty
-  guard_call_decoder:
-    path: fuzz/targets/guard-call-decoder/
-    status: planned_empty
-  jcl_lite_parser:
-    path: fuzz/targets/jcl-lite-parser/
-    status: planned_empty
-  operator_command_parser:
-    path: fuzz/targets/operator-command-parser/
-    status: planned_empty
-  policy_parser:
-    path: fuzz/targets/policy-parser/
-    status: planned_empty
-  svc_pcall_decoder:
-    path: fuzz/targets/svc-pcall-decoder/
-    status: planned_empty
-  update_manifest_parser:
-    path: fuzz/targets/update-manifest-parser/
-    status: planned_empty
 
 archive:
   phase_0_8:
@@ -47,4 +16,4 @@ archive:
 policy:
   phase_specific_filenames_allowed_in_root: false
   runner_or_fuzzer_implementation_allowed: false
-  planned_empty_dirs_are_scaffold_only: true
+  empty_parser_target_dirs_are_bootstrap_scaffold_only: true

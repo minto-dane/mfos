@@ -6,10 +6,6 @@ current:
   readme:
     path: tasks/README.md
     status: current
-planned:
-  backlog:
-    path: tasks/backlog/
-    status: planned_empty
 
 archive:
   phase_0_7:
