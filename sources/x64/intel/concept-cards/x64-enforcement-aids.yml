@@ -1,0 +1,50 @@
+concept_id: X64-CONCEPT-ENFORCEMENT-AIDS-001
+status: draft
+source_ids:
+  - X64-INTEL-001
+  - X64-LINUX-CET-001
+  - X64-LINUX-PKU-001
+source_terms:
+  - paging
+  - EPT
+  - VMX
+  - CET
+  - PKU
+  - PKS
+  - MSR
+summary: >
+  Intel x64 features can help enforce MFOS-owned memory, partition, and
+  control-flow constraints, but they are not MFOS policy roots and do not
+  independently satisfy authorization, audit, or assurance claims.
+mfos_terms:
+  - nucleus x64 backend
+  - PXM Intel backend
+  - Guard profile enforcement
+  - hardware feature matrix
+mfos_mapping:
+  semantic_overlap:
+    - page translation and access controls can support MFOS storage-domain enforcement
+    - virtualization controls can support partition isolation evidence
+    - control-flow features can support hardening tests
+  enforcement_boundary:
+    - feature detection must feed MFOS profile decisions
+    - absent features require explicit fallback or profile denial
+    - audit and authorization policy remain MFOS-defined
+mfos_divergence:
+  - MFOS does not expose Intel feature names as enterprise security policy.
+  - MFOS must test that hardware-aided isolation is only one layer in the assurance case.
+requirements:
+  - MFOS-REQ-NUCLEUS-0007
+  - MFOS-REQ-NUCLEUS-0008
+  - MFOS-REQ-PARTITION-0005
+  - MFOS-REQ-PARTITION-0007
+negative_tests:
+  - TEST-NUC-NX-REQUIRED-001
+  - TEST-NUC-WX-MAPPING-DENY-001
+  - TEST-PXM-EPT-POLICY-DENY-001
+  - TEST-CET-AUTHORIZATION-CLAIM-LINT-001
+  - TEST-PKU-INSTRUCTION-FETCH-CLAIM-LINT-001
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_external_compatibility_claims: true

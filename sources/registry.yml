@@ -1,15 +1,94 @@
 registry_kind: source_grounding_registry
-schema_version: 1
-status: bridge
+schema_version: 2
+status: bridge_public_safe_workbench
 canonical_current:
+  authority: docs_design_source_matrix
+  status: canonical_until_adr_migration
   source_card_index: docs/design/source-matrix/source-matrix.yml
   source_card_directory: docs/design/source-matrix/cards
   source_card_schema_note: docs/design/source-matrix/source-card-schema.md
+  change_control:
+    - Source-card authority remains in docs/design/source-matrix until an ADR
+      explicitly migrates it.
+    - Workbench records under sources/ must not be treated as canonical source
+      records before that ADR.
+    - Canonical migration requires parity checks against current Source Matrix
+      IDs, schema fields, legal controls, and traceability references.
 future_home:
+  authority: sources
+  status: proposed
   source_cards: sources/**/source-cards
   concept_cards: sources/**/concept-cards
+  retrieval_log: sources/retrieval-log.yml
+  source_grounding_index: sources/source-grounding-index.yml
+  migration_plan: sources/migration-plan.md
+workbench_scope:
+  allowed_public_safe_records:
+    - bibliographic metadata
+    - retrieval manifests
+    - short paraphrased MFOS mappings
+    - divergence notes
+    - prohibited inferences
+    - legal-control flags
+    - migration indexes
+  prohibited_records:
+    - copied_external_documents
+    - downloaded_pdfs
+    - html_mirrors
+    - long_quotations
+    - copied_tables
+    - copied_diagrams
+    - record_layout_substitutes
+    - command_or_macro_reference_substitutes
+cache_policy:
+  cache_directory: sources/_cache
+  git_status: ignored
+  allowed_committed_cache_files:
+    - sources/_cache/README.md
+    - sources/_cache/DO_NOT_COMMIT.md
+  allowed_uncommitted_cache_content:
+    - retrieval manifests
+    - checksum manifests
+    - temporary local review notes without copied source text
+  prohibited_cache_content:
+    - committed external PDFs
+    - committed HTML mirrors
+    - committed screenshots
+    - committed copied excerpts
+    - committed source archives
+retrieval_policy:
+  ibm_public_sources:
+    allowed:
+      - Record public URL, title, product or publication identity, retrieval
+        date, version or section scope, checksum when locally cached, and
+        review disposition.
+      - Cache temporary local downloads only in ignored paths and delete them
+        after review when no longer needed.
+      - Store only public-safe metadata and short paraphrased mappings in git.
+    prohibited:
+      - Commit IBM PDFs, generated PDF text, HTML mirrors, screenshots, copied
+        tables, copied diagrams, or source-substitute summaries.
+      - Represent MFOS as IBM-compatible, IBM-certified, IBM-affiliated, or a
+        reimplementation of IBM product documentation.
+  other_public_sources:
+    allowed:
+      - Use the same metadata-only and paraphrase-only rules as IBM sources.
+    prohibited:
+      - Commit copied source documents or material that replaces the external
+        source.
 rules:
   - IBM source documents must be represented as metadata, not copied wholesale.
   - Concept cards must cite source IDs.
   - MFOS mappings must document overlap, divergence, prohibited inference, and tests.
-
+  - Source IDs in sources/ are preparatory until ADR migration.
+  - Every external mark is used only for bibliographic reference and source
+    discovery unless a later legal review permits a narrower use.
+  - Normative MFOS requirements must cite requirement IDs and must not be hidden
+    inside source or concept cards.
+related_policy:
+  citation_policy: sources/citation-policy.md
+  copyright_policy: sources/copyright-policy.md
+  source_card_schema: sources/source-card.schema.yml
+  concept_card_schema: sources/concept-card.schema.yml
+  cache_readme: sources/_cache/README.md
+  cache_do_not_commit: sources/_cache/DO_NOT_COMMIT.md

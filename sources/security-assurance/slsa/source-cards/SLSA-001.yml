@@ -1,0 +1,86 @@
+schema_version: 1
+status: draft
+card_id: SRC-CARD-SLSA-001
+source_id: SLSA-001
+source_kind: bibliographic_reference
+source_type: external_reference
+semantic_role: design_background
+vendor: SLSA
+vendor_mark_used: true
+product_family: SLSA specification
+document_title: SLSA specification
+document_url:
+- https://slsa.dev/spec/v1.2/
+retrieved_at: '2026-04-28'
+version_or_release: SLSA specification v1.2; approved; announced 2025-11-24
+publication_number: null
+section_scope: build track, source track, provenance, verification summary attestations
+pin_quality: versioned_primary_spec_pinned
+reference_purpose:
+- source discovery
+- concept mapping
+- non-compatibility boundary definition
+- independent MFOS design traceability
+review_topics:
+- build provenance
+- source provenance
+- hosted build
+- hardened build
+- supply-chain integrity
+mfos_mapping:
+  mfos_components:
+  - SBOM/provenance policy
+  - release artifact integrity
+  - source control evidence
+  mfos_specs: []
+  mfos_requirements:
+  - MFOS-REQ-QUALITY-0006
+  - MFOS-REQ-QUALITY-0008
+  - MFOS-REQ-QUALITY-0009
+  mapping_notes:
+  - Ground build/source provenance, hosted build, hardened build, and supply-chain
+    integrity claims.
+  - Keep MFOS release gate acceptance criteria profile-specific.
+mfos_divergence:
+- MFOS maps SLSA into profile-specific provenance and production readiness gates.
+- SLSA level claims require continuous evidence and cannot be inferred from repository
+  configuration alone.
+prohibited_inference:
+- Unsigned local builds are production High-Assurance artifacts.
+- SLSA reference alone proves MFOS release integrity.
+- Do not treat this card as a substitute for the SLSA specification.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+  no_affiliation_claim: true
+  no_compatibility_claim: true
+  no_conformance_claim: true
+  no_certification_claim: true
+  no_source_substitution: true
+source_refs:
+- source_id: SLSA-001
+  source_type: external_reference
+  role: card_subject
+requirement_refs:
+- MFOS-REQ-QUALITY-0006
+- MFOS-REQ-QUALITY-0008
+- MFOS-REQ-QUALITY-0009
+review_status: draft
+gaps:
+- Select target SLSA level per MFOS profile.
+- Define source-track evidence expectations for protected branches and release tags.
+authority_status: preparatory_until_adr_migration
+citation_scope: metadata_only_public_reference
+cache_disposition: no_local_cache

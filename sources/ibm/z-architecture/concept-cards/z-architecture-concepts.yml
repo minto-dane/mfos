@@ -1,0 +1,58 @@
+schema_version: 1
+status: draft
+maturity: concept_grounding_worker_draft
+concept_cards:
+  - concept_id: MFOS-CONCEPT-ZARCH-DIVERGENCE-0001
+    title: Architecture Term Divergence
+    source_ids:
+      - EXTREF-IBM-Z-ARCHITECTURE-PRINCIPLES-0001
+    review_topics:
+      - terminology mapping
+      - non-emulation
+      - compatibility claim control
+    mfos_mapping:
+      components:
+        - glossary mapping
+        - compatibility lint
+      requirements:
+        - MFOS-REQ-SOURCE-0002
+        - MFOS-REQ-SOURCE-0004
+    divergence:
+      - IBM architecture terms are reference terms; MFOS remains x64-native.
+    prohibited_inference:
+      - Do not infer instruction, ABI, or hardware-state compatibility.
+    requirements:
+      - Any use of PSW, SVC, PC, or storage-key terminology requires a divergence note.
+    negative_tests:
+      - TEST-ZARCH-COMPAT-CLAIM-LINT-001
+    status: draft
+  - concept_id: MFOS-CONCEPT-PXM-PARTITION-0001
+    title: PXM Partition Lifecycle
+    source_ids:
+      - EXTREF-IBM-Z-LPAR-INTRODUCTION-0001
+      - EXTREF-IBM-Z-DPM-0001
+    review_topics:
+      - logical partition
+      - resource assignment
+      - activation profile
+      - management-plane audit
+    mfos_mapping:
+      components:
+        - PXM
+        - ActivationProfile
+        - device assignment records
+      requirements:
+        - MFOS-REQ-PARTITION-0001
+        - MFOS-REQ-PARTITION-0005
+        - MFOS-REQ-PARTITION-0008
+    divergence:
+      - PXM is MFOS-native and must not implement PR/SM or DPM semantics.
+    prohibited_inference:
+      - Do not claim LPAR, PR/SM, HMC, or DPM compatibility.
+    requirements:
+      - Partition lifecycle mutations must be state-checked, zeroing-aware, and audited.
+    negative_tests:
+      - TEST-PXM-INVALID-STATE-TRANSITION-001
+      - TEST-PXM-PARTITION-AUDIT-REQUIRED-001
+    status: draft
+

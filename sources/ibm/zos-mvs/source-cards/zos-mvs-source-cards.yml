@@ -1,0 +1,157 @@
+schema_version: 1
+status: draft
+maturity: source_grounding_worker_draft
+retrieved_at: '2026-04-28'
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  attribution_required: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+  no_message_tables_copied: true
+source_cards:
+- card_id: SRC-CARD-IBM-ZOS-MVS-JES-INTRO-0001
+  source_id: EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
+  canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-JES-INTRODUCTION-0001.yml
+  vendor: IBM
+  product_family: IBM z/OS
+  document_title: What is JES?
+  current_official_urls:
+  - https://www.ibm.com/docs/en/zos-basic-skills?topic=jobs-what-is-jes
+  - https://www.ibm.com/docs/en/zos/3.2.0?topic=zos-jes2
+  version_or_scope: Basic Skills topic plus z/OS 3.2 JES2 library page
+  pin_quality: official_topic_verified_library_page_release_pinned
+  review_topics:
+  - job entry subsystem
+  - job queue
+  - initiator
+  - SYSIN
+  - SYSOUT
+  - spool
+  mfos_mapping:
+    components:
+    - jobd
+    - spoold
+    - job submission
+    - SYSIN/SYSOUT
+    requirements:
+    - MFOS-REQ-JOB-0001
+    - MFOS-REQ-JOB-0003
+    - MFOS-REQ-SPOOL-0001
+    - MFOS-REQ-SPOOL-0003
+    notes:
+    - Grounds job submission, queues, initiators, input streams, output streams, and
+      spool as enterprise OS concepts.
+    - The z/OS 3.2 JES2 library page is used only as current bibliography, not as
+      a source of syntax or layouts.
+  divergence:
+  - MFOS implements jobd and spoold as source-grounded subsets.
+  - MFOS does not claim JES, JES2, JES3, JCL, or spool-format compatibility.
+  prohibited_inference:
+  - jobd is JES-compatible.
+  - MFOS supports JES commands or JCL syntax.
+  - IBM spool internals may be reproduced.
+  requirements:
+  - Define an MFOS-native submission model, queue model, initiator contract, and spool
+    authorization model.
+  negative_tests:
+  - TEST-JOB-SUBMIT-UNAUTHORIZED-001
+  - TEST-SPL-BROWSE-DENY-001
+  status: draft
+- card_id: SRC-CARD-IBM-ZOS-MVS-JOB-FLOW-0001
+  source_id: EXTREF-IBM-ZOS-JES-JOB-FLOW-0001
+  canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-JES-JOB-FLOW-0001.yml
+  vendor: IBM
+  product_family: IBM z/OS
+  document_title: Job flow through the system
+  current_official_urls:
+  - https://www.ibm.com/docs/en/zos-basic-skills?topic=jobs-job-flow-through-system
+  version_or_scope: z/OS Basic Skills path; release not pinned in URL
+  pin_quality: official_topic_verified_release_unpinned_needs_review
+  review_topics:
+  - job input
+  - conversion
+  - processing
+  - output
+  - print/punch
+  - purge
+  mfos_mapping:
+    components:
+    - Job lifecycle state machine
+    - spool retention
+    - job failure states
+    requirements:
+    - MFOS-REQ-JOB-0001
+    - MFOS-REQ-JOB-0005
+    - MFOS-REQ-SPOOL-0004
+    notes:
+    - Grounds the existence of distinct job lifecycle phases.
+    - Supports a state-machine spec with explicit failure and purge behavior.
+  divergence:
+  - MFOS maps the lifecycle into native states such as submitted, validated, queued,
+    executing, output, purge-pending, and purged.
+  - MFOS state names and transitions are not z/OS compatibility claims.
+  prohibited_inference:
+  - MFOS implements z/OS job lifecycle compatibility.
+  - IBM lifecycle diagrams or control statements may be copied.
+  requirements:
+  - Define allowed state transitions and retention rules before jobd is considered
+    stable.
+  negative_tests:
+  - TEST-JOB-INVALID-TRANSITION-001
+  - TEST-JOB-PURGE-RETENTION-DENY-001
+  status: draft
+- card_id: SRC-CARD-IBM-ZOS-MVS-DFSMS-CATALOGS-0001
+  source_id: EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001.yml
+  vendor: IBM
+  product_family: IBM z/OS
+  document_title: DFSMSdfp Catalogs
+  current_official_urls:
+  - https://www.ibm.com/docs/en/zos/3.2.0?topic=dfsmsdfp-catalogs
+  - https://www.ibm.com/docs/en/zos/3.2.0?topic=zos-dfsms
+  version_or_scope: z/OS 3.2.0 topic and DFSMS library page
+  pin_quality: release_and_topic_pinned_from_url
+  review_topics:
+  - catalog
+  - dataset attributes
+  - dataset location
+  - master catalog
+  - user catalog
+  - data-management library scope
+  mfos_mapping:
+    components:
+    - catalogd
+    - CatalogEntry
+    - DSN resolution
+    requirements:
+    - MFOS-REQ-CATALOG-0002
+    - MFOS-REQ-CATALOG-0003
+    - MFOS-REQ-CATALOG-0004
+    - MFOS-REQ-DATASET-0001
+    notes:
+    - Grounds catalogs as metadata for dataset attributes and placement.
+    - Supports MFOS-native catalog resolution without exposing raw storage placement
+      to ordinary callers.
+  divergence:
+  - MFOS catalog entries include owner, attributes, location, security profile, generation,
+    immutable/system flags, and integrity tag.
+  - catalogd is not DFSMS-compatible and does not implement IBM catalog formats.
+  prohibited_inference:
+  - catalogd is DFSMS-compatible.
+  - MFOS supports IBM catalog utilities, syntax, or data structures.
+  requirements:
+  - Define catalog entry schema, transaction journal, rollback behavior, and integrity-tag
+    checks.
+  negative_tests:
+  - TEST-CAT-RESOLVE-UNCOMMITTED-001
+  - TEST-CAT-RESOLVE-ROLLED-BACK-001
+  - TEST-CAT-INTEGRITY-TAG-MISMATCH-001
+  status: draft

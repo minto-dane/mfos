@@ -1,0 +1,89 @@
+schema_version: 1
+status: draft
+maturity: concept_grounding_worker_draft
+concept_cards:
+  - concept_id: MFOS-CONCEPT-SYSINT-BOUNDARY-0001
+    title: System Interface As Security Boundary
+    source_ids:
+      - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+      - EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001
+    review_topics:
+      - unauthorized program
+      - system interface
+      - authorized state
+    mfos_mapping:
+      components:
+        - SystemInterface
+        - ExecutionState
+        - AuthorityClass
+      requirements:
+        - MFOS-REQ-SYSINT-0001
+        - MFOS-REQ-SYSINT-0002
+        - MFOS-REQ-SYSINT-0003
+    divergence:
+      - MFOS expresses the boundary through native kernel, service, and daemon interfaces.
+    prohibited_inference:
+      - Do not infer z/OS ABI, APF, SVC, or PC compatibility.
+    requirements:
+      - Every privileged entry point has an explicit authorization and audit rule.
+    negative_tests:
+      - TEST-SI-UNAUTHORIZED-SVC-001
+      - TEST-AMF-UNAUTHORIZED-TRANSITION-001
+    status: draft
+  - concept_id: MFOS-CONCEPT-AMF-AUTHORITY-0001
+    title: Authorized Module Facility Authority
+    source_ids:
+      - EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001
+      - EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
+    review_topics:
+      - authorized module
+      - restricted service path
+      - scanner-driven boundary tests
+    mfos_mapping:
+      components:
+        - AMF
+        - signed module manifest
+        - revocation policy
+      requirements:
+        - MFOS-REQ-AMF-0001
+        - MFOS-REQ-AMF-0003
+        - MFOS-REQ-AMF-0004
+        - MFOS-REQ-AMF-0007
+    divergence:
+      - AMF is signed and measured; it is not an APF clone.
+    prohibited_inference:
+      - Do not equate AMF authority with administrator or root authority.
+    requirements:
+      - Module authority must be separable, revocable, and testable.
+    negative_tests:
+      - TEST-AMF-ADMIN-CONFUSION-001
+      - TEST-AMF-UNSIGNED-LOAD-001
+    status: draft
+  - concept_id: MFOS-CONCEPT-PCALL-SEALED-BUFFER-0001
+    title: Controlled Cross-Domain Call
+    source_ids:
+      - EXTREF-IBM-ZOS-CROSS-MEMORY-SYNCHRONOUS-0001
+    review_topics:
+      - address-space crossing
+      - typed endpoint
+      - untrusted parameter boundary
+    mfos_mapping:
+      components:
+        - PCALL ABI
+        - sealed buffers
+        - endpoint registry
+      requirements:
+        - MFOS-REQ-SYSINT-0008
+        - MFOS-REQ-SYSINT-0009
+        - MFOS-REQ-NUCLEUS-0005
+    divergence:
+      - MFOS uses sealed buffers and typed endpoints, not IBM PC instruction semantics.
+    prohibited_inference:
+      - Do not copy IBM cross-memory interface syntax or macro signatures.
+    requirements:
+      - Reject foreign pointers and unauthorized endpoints before service execution.
+    negative_tests:
+      - TEST-PCALL-FOREIGN-POINTER-DENY-001
+      - TEST-PCALL-UNAUTHORIZED-ENDPOINT-DENY-001
+    status: draft
+

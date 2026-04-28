@@ -1,0 +1,162 @@
+parity_kind: sources_workbench_to_canonical_source_matrix
+schema_version: 1
+status: current_public_safe_workbench
+authority_status: preparatory_until_adr_migration
+generated_manually_from:
+  canonical_source_cards: docs/design/source-matrix/cards
+  workbench_root: sources
+summary:
+  canonical_source_cards: 37
+  canonical_source_ids_with_workbench_candidate: 37
+  missing_workbench_candidates: 0
+  duplicate_source_ids_requiring_normalization: []
+  note: Presence in sources/ does not make sources/ canonical; docs/design/source-matrix remains authority until ADR migration.
+entries:
+  - source_id: EXTREF-IBM-Z-ARCHITECTURE-PRINCIPLES-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-Z-ARCHITECTURE-PRINCIPLES-0001.yml
+    primary_workbench_path: sources/ibm/z-architecture/source-cards/z-architecture-source-cards.yml
+    parity_status: present
+  - source_id: EXTREF-IBM-Z-DPM-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-Z-DPM-0001.yml
+    primary_workbench_path: sources/ibm/z-architecture/source-cards/z-architecture-source-cards.yml
+    parity_status: present
+  - source_id: EXTREF-IBM-Z-LPAR-INTRODUCTION-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-Z-LPAR-INTRODUCTION-0001.yml
+    primary_workbench_path: sources/ibm/z-architecture/source-cards/z-architecture-source-cards.yml
+    parity_status: present
+  - source_id: EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001.yml
+    primary_workbench_path: sources/ibm/system-integrity/source-cards/system-integrity-source-cards.yml
+    parity_status: present
+  - source_id: EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001.yml
+    primary_workbench_path: sources/ibm/system-integrity/source-cards/system-integrity-source-cards.yml
+    parity_status: present
+  - source_id: EXTREF-IBM-ZOS-CROSS-MEMORY-CONTROL-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-CROSS-MEMORY-CONTROL-0001.yml
+    primary_workbench_path: sources/ibm/zos-mvs/source-cards/extref-ibm-zos-cross-memory-control.md
+    parity_status: present
+  - source_id: EXTREF-IBM-ZOS-CROSS-MEMORY-SYNCHRONOUS-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-CROSS-MEMORY-SYNCHRONOUS-0001.yml
+    primary_workbench_path: sources/ibm/system-integrity/source-cards/system-integrity-source-cards.yml
+    parity_status: present
+  - source_id: EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001.yml
+    primary_workbench_path: sources/ibm/zos-mvs/source-cards/zos-mvs-source-cards.yml
+    parity_status: present
+  - source_id: EXTREF-IBM-ZOS-DFSMS-LIBRARY-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-DFSMS-LIBRARY-0001.yml
+    primary_workbench_path: sources/ibm/dfsms/source-cards/extref-ibm-zos-dfsms-library.md
+    parity_status: present
+  - source_id: EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-JES-INTRODUCTION-0001.yml
+    primary_workbench_path: sources/ibm/zos-mvs/source-cards/zos-mvs-source-cards.yml
+    parity_status: present
+  - source_id: EXTREF-IBM-ZOS-JES-JOB-FLOW-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-JES-JOB-FLOW-0001.yml
+    primary_workbench_path: sources/ibm/zos-mvs/source-cards/zos-mvs-source-cards.yml
+    parity_status: present
+  - source_id: EXTREF-IBM-ZOS-JES2-LIBRARY-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-JES2-LIBRARY-0001.yml
+    primary_workbench_path: sources/ibm/jes/source-cards/extref-ibm-zos-jes2-library.md
+    parity_status: present
+  - source_id: EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001.yml
+    primary_workbench_path: sources/ibm/racf/source-cards/racf-source-cards.yml
+    parity_status: present
+  - source_id: EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-SECURITY-SERVER-0001.yml
+    primary_workbench_path: sources/ibm/racf/source-cards/racf-source-cards.yml
+    parity_status: present
+  - source_id: EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001.yml
+    primary_workbench_path: sources/ibm/smf/source-cards/smf-source-cards.yml
+    parity_status: present
+  - source_id: EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001.yml
+    primary_workbench_path: sources/ibm/smf/source-cards/smf-source-cards.yml
+    parity_status: present
+  - source_id: EXTREF-IBM-ZOS-SMPE-SECINT-HOLDDATA-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-SMPE-SECINT-HOLDDATA-0001.yml
+    primary_workbench_path: sources/ibm/smpe/source-cards/extref-ibm-zos-smpe-secint-holddata.md
+    parity_status: present
+  - source_id: EXTREF-IBM-ZOS-STORAGE-PROTECTION-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-STORAGE-PROTECTION-0001.yml
+    primary_workbench_path: sources/ibm/system-integrity/source-cards/extref-ibm-zos-storage-protection.md
+    parity_status: present
+  - source_id: EXTREF-IBM-ZOS-STORAGE-PROTECTION-SUMMARY-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-STORAGE-PROTECTION-SUMMARY-0001.yml
+    primary_workbench_path: sources/ibm/system-integrity/source-cards/system-integrity-source-cards.yml
+    parity_status: present
+  - source_id: EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001.yml
+    primary_workbench_path: sources/ibm/system-integrity/source-cards/system-integrity-source-cards.yml
+    parity_status: present
+  - source_id: EXTREF-IBM-ZOS-UNIX-INTRODUCTION-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-UNIX-INTRODUCTION-0001.yml
+    primary_workbench_path: sources/ibm/unix/source-cards/extref-ibm-unix-001-introduction.md
+    parity_status: present
+  - source_id: EXTREF-IBM-ZOS-UNIX-SERVICES-LIBRARY-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-UNIX-SERVICES-LIBRARY-0001.yml
+    primary_workbench_path: sources/ibm/unix/source-cards/extref-ibm-zos-unix-services-library.md
+    parity_status: present
+  - source_id: EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001.yml
+    primary_workbench_path: sources/ibm/wlm/source-cards/extref-ibm-wlm-002-service-classes.md
+    parity_status: present
+  - source_id: FBVBS-001
+    canonical_card: docs/design/source-matrix/cards/FBVBS-001.yml
+    primary_workbench_path: sources/internal/fbvbs/source-cards/fbvbs-001.md
+    parity_status: present
+  - source_id: MS-VBS-001
+    canonical_card: docs/design/source-matrix/cards/MS-VBS-001.yml
+    primary_workbench_path: sources/security-assurance/microsoft/source-cards/MS-VBS-001.yml
+    parity_status: present
+  - source_id: MS-VSM-001
+    canonical_card: docs/design/source-matrix/cards/MS-VSM-001.yml
+    primary_workbench_path: sources/security-assurance/microsoft/source-cards/MS-VSM-001.yml
+    parity_status: present
+  - source_id: NIST-160-001
+    canonical_card: docs/design/source-matrix/cards/NIST-160-001.yml
+    primary_workbench_path: sources/security-assurance/nist/source-cards/NIST-160-001.yml
+    parity_status: present
+  - source_id: NIST-193-001
+    canonical_card: docs/design/source-matrix/cards/NIST-193-001.yml
+    primary_workbench_path: sources/security-assurance/nist/source-cards/NIST-193-001.yml
+    parity_status: present
+  - source_id: NIST-218-001
+    canonical_card: docs/design/source-matrix/cards/NIST-218-001.yml
+    primary_workbench_path: sources/security-assurance/nist/source-cards/NIST-218-001.yml
+    parity_status: present
+  - source_id: SEL4-001
+    canonical_card: docs/design/source-matrix/cards/SEL4-001.yml
+    primary_workbench_path: sources/security-assurance/sel4/source-cards/SEL4-001.yml
+    parity_status: present
+  - source_id: SLSA-001
+    canonical_card: docs/design/source-matrix/cards/SLSA-001.yml
+    primary_workbench_path: sources/security-assurance/slsa/source-cards/SLSA-001.yml
+    parity_status: present
+  - source_id: TCG-001
+    canonical_card: docs/design/source-matrix/cards/TCG-001.yml
+    primary_workbench_path: sources/security-assurance/tpm-tcg/source-cards/TCG-001.yml
+    parity_status: present
+  - source_id: TUF-001
+    canonical_card: docs/design/source-matrix/cards/TUF-001.yml
+    primary_workbench_path: sources/security-assurance/tuf/source-cards/TUF-001.yml
+    parity_status: present
+  - source_id: X64-AMD-001
+    canonical_card: docs/design/source-matrix/cards/X64-AMD-001.yml
+    primary_workbench_path: sources/x64/amd/source-cards/X64-AMD-001.yml
+    parity_status: present
+  - source_id: X64-INTEL-001
+    canonical_card: docs/design/source-matrix/cards/X64-INTEL-001.yml
+    primary_workbench_path: sources/x64/intel/source-cards/X64-INTEL-001.yml
+    parity_status: present
+  - source_id: X64-LINUX-CET-001
+    canonical_card: docs/design/source-matrix/cards/X64-LINUX-CET-001.yml
+    primary_workbench_path: sources/x64/linux-informative/source-cards/X64-LINUX-CET-001.yml
+    parity_status: present
+  - source_id: X64-LINUX-PKU-001
+    canonical_card: docs/design/source-matrix/cards/X64-LINUX-PKU-001.yml
+    primary_workbench_path: sources/x64/linux-informative/source-cards/X64-LINUX-PKU-001.yml
+    parity_status: present

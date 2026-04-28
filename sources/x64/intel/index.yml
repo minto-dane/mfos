@@ -1,0 +1,31 @@
+index_kind: source_domain_index
+schema_version: 1
+status: populated_workbench_public_safe
+authority_status: preparatory_until_adr_migration
+path: sources/x64/intel
+canonical_current: docs/design/source-matrix
+source_cards:
+- path: sources/x64/intel/source-cards/X64-INTEL-001.yml
+  source_id: X64-INTEL-001
+  status: workbench_draft
+concept_cards:
+- path: sources/x64/intel/concept-cards/x64-enforcement-aids.yml
+  status: workbench_draft
+notes: []
+public_safe_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+migration_rule: Do not promote this directory to canonical source authority without
+  an accepted ADR and regenerated validators/traceability.

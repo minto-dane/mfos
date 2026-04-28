@@ -1,0 +1,111 @@
+schema_version: 1
+status: draft
+maturity: source_grounding_worker_draft
+retrieved_at: '2026-04-28'
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  attribution_required: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+  no_message_tables_copied: true
+source_cards:
+- card_id: SRC-CARD-IBM-SMF-INTRODUCTION-0001
+  source_id: EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+  canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001.yml
+  vendor: IBM
+  product_family: IBM z/OS
+  document_title: Introduction to SMF
+  current_official_urls:
+  - https://www.ibm.com/docs/en/zos/3.2.0?topic=smf-introduction
+  version_or_scope: z/OS 3.2.0 topic
+  pin_quality: release_and_topic_pinned_from_url
+  review_topics:
+  - system management facility
+  - job accounting
+  - dataset activity evidence
+  - resource profiling
+  - security maintenance
+  - audit data collection
+  mfos_mapping:
+    components:
+    - auditd
+    - AuditRecord
+    - hash-chained evidence
+    requirements:
+    - MFOS-REQ-AUDIT-0001
+    - MFOS-REQ-AUDIT-0003
+    - MFOS-REQ-AUDIT-0004
+    - MFOS-REQ-AUDIT-0005
+    notes:
+    - Grounds collection of system, job, dataset, resource, configuration, reliability,
+      accounting, and security evidence.
+    - Supports separating collection, durable storage, export, and analysis concerns.
+  divergence:
+  - MFOS auditd uses schema validation, hash chains, profile-specific failure policy,
+    remote export, and optional Guard-sealed roots.
+  - auditd is not SMF-compatible and does not emit IBM record formats.
+  prohibited_inference:
+  - auditd is SMF-compatible.
+  - auditd is ordinary logging.
+  - IBM SMF record formats may be copied.
+  requirements:
+  - Define audit record encoding, retention policy, query authorization, failure policy,
+    and export semantics.
+  negative_tests:
+  - TEST-AUD-TAMPER-CHAIN-001
+  - TEST-AUD-UNAVAILABLE-FAIL-CLOSED-001
+  status: draft
+- card_id: SRC-CARD-IBM-SMF-RACF-TYPE-80-0001
+  source_id: EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+  canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001.yml
+  vendor: IBM
+  product_family: IBM z/OS
+  document_title: 'Record type 80: RACF processing record'
+  current_official_urls:
+  - https://www.ibm.com/docs/en/zos/3.2.0?topic=records-record-type-80-racf-processing-record
+  version_or_scope: z/OS 3.2.0 topic
+  pin_quality: release_and_topic_pinned_from_url_record_layout_not_copied
+  review_topics:
+  - security event record
+  - unauthorized attempt
+  - signon and signoff event
+  - protected-resource access event
+  - authorities used
+  - audit reason
+  mfos_mapping:
+    components:
+    - security audit records
+    - DENY-before-return audit obligation
+    - reason_code taxonomy
+    requirements:
+    - MFOS-REQ-AUDIT-0001
+    - MFOS-REQ-AUDIT-0002
+    - MFOS-REQ-AUDIT-0003
+    notes:
+    - Grounds the need for security events around authentication, authorization, profile
+      change, authorities used, and audit reasons.
+    - Intentionally excludes record layout, field order, tables, event codes, and macro references.
+  divergence:
+  - MFOS security audit records use native subject, object, operation, decision, reason_code,
+    policy_version, hashes, and optional signatures.
+  - MFOS does not emit RACF type 80 compatible records.
+  prohibited_inference:
+  - MFOS emits RACF type 80 compatible records.
+  - IBM event codes, field names, relocate sections, or tables may be copied.
+  - Macro request names or syntax can be reproduced in public MFOS artifacts.
+  requirements:
+  - Normalize reason_code taxonomy across securityd, jobd, datasetd, spoold, and operatord.
+  - DENY decisions must be durably submitted to auditd before returning where profile
+    policy requires it.
+  negative_tests:
+  - TEST-AUD-DENY-BEFORE-RETURN-001
+  - TEST-AUD-REASON-CODE-REQUIRED-001
+  status: draft

@@ -1,0 +1,95 @@
+schema_version: 1
+status: draft
+maturity: concept_grounding_worker_draft
+concept_cards:
+  - concept_id: MFOS-CONCEPT-JOBD-SPOOLD-0001
+    title: Job Submission And Spool Control
+    source_ids:
+      - EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
+      - EXTREF-IBM-ZOS-JES-JOB-FLOW-0001
+    review_topics:
+      - job queue
+      - initiator
+      - SYSIN
+      - SYSOUT
+      - spool
+      - purge
+    mfos_mapping:
+      components:
+        - jobd
+        - spoold
+        - Job lifecycle state machine
+      requirements:
+        - MFOS-REQ-JOB-0001
+        - MFOS-REQ-JOB-0003
+        - MFOS-REQ-JOB-0005
+        - MFOS-REQ-SPOOL-0001
+        - MFOS-REQ-SPOOL-0004
+    divergence:
+      - MFOS jobd/spoold use native formats and state names.
+    prohibited_inference:
+      - Do not claim JES, JCL, or spool-format compatibility.
+    requirements:
+      - Submission, browse, output retention, and purge need explicit authorization checks.
+    negative_tests:
+      - TEST-JOB-SUBMIT-UNAUTHORIZED-001
+      - TEST-SPL-BROWSE-DENY-001
+      - TEST-JOB-PURGE-RETENTION-DENY-001
+    status: draft
+  - concept_id: MFOS-CONCEPT-CATALOGD-0001
+    title: Cataloged Dataset Resolution
+    source_ids:
+      - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+      - EXTREF-IBM-ZOS-DFSMS-LIBRARY-0001
+    review_topics:
+      - dataset attribute metadata
+      - dataset location metadata
+      - catalog resolution
+    mfos_mapping:
+      components:
+        - catalogd
+        - CatalogEntry
+        - datasetd
+      requirements:
+        - MFOS-REQ-CATALOG-0002
+        - MFOS-REQ-CATALOG-0003
+        - MFOS-REQ-CATALOG-0004
+        - MFOS-REQ-DATASET-0001
+    divergence:
+      - catalogd is MFOS-native and does not implement DFSMS catalog formats.
+    prohibited_inference:
+      - Do not use IBM catalog command syntax, formats, or internal structures.
+    requirements:
+      - Resolution must be transactionally consistent and integrity-tag checked.
+    negative_tests:
+      - TEST-CAT-RESOLVE-UNCOMMITTED-001
+      - TEST-CAT-INTEGRITY-TAG-MISMATCH-001
+    status: draft
+  - concept_id: MFOS-CONCEPT-WLMD-SERVICE-CLASS-0001
+    title: Workload Class And Dispatch Policy
+    source_ids:
+      - EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001
+    review_topics:
+      - service class
+      - goal
+      - importance
+      - resource cap
+    mfos_mapping:
+      components:
+        - wlmd
+        - JobClass
+        - ServiceClass
+      requirements:
+        - MFOS-REQ-WLM-0001
+        - MFOS-REQ-WLM-0002
+        - MFOS-REQ-WLM-0009
+    divergence:
+      - MFOS starts with simple classes and caps; advanced goals are not yet claimed.
+    prohibited_inference:
+      - Do not claim z/OS WLM compatibility.
+    requirements:
+      - Policy updates must be authorized, versioned, and audited.
+    negative_tests:
+      - TEST-WLM-UNAUTHORIZED-POLICY-UPDATE-001
+    status: draft
+
