@@ -55,6 +55,7 @@ ALLOWED_PATH_PARTS = {
 }
 ALLOWED_PREFIXES = (
     "reports/naming-",
+    "reports/naming-safety/",
     "docs/design/source-matrix/",
     "sources/",
     "governance/",

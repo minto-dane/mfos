@@ -12,7 +12,7 @@ from mfos_lint import EVIDENCE, REQUIREMENTS, ROOT, SOURCE_INDEX, SPECS_DIR, TES
 
 
 OUT = ROOT / "evidence/traceability"
-REPORT = ROOT / "reports/traceability.md"
+REPORT = ROOT / "reports/generated/traceability.md"
 CLAIMS = ROOT / "docs/design/assurance/claim-tree.yml"
 PACKS = ROOT / "packs/pack-index.yml"
 
@@ -30,7 +30,7 @@ def req_matches(pattern: str, rid: str) -> bool:
 
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
-    (ROOT / "reports").mkdir(exist_ok=True)
+    REPORT.parent.mkdir(parents=True, exist_ok=True)
 
     source_index = load_yaml(SOURCE_INDEX)
     req_catalog = load_yaml(REQUIREMENTS)

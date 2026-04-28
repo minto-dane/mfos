@@ -19,6 +19,7 @@ from mfos_lint import Finding, ROOT, emit, load_yaml, mode_arg, source_ids, text
 OLD_IBM_ID_RE = re.compile(r"\bIBM-[A-Z0-9]+(?:-[A-Z0-9]+)*-\d{3}\b")
 ALLOWED_OLD_ID_FILES = (
     "reports/naming-",
+    "reports/naming-safety/",
     "docs/design/source-matrix/cards/",
     "docs/design/source-matrix/source-matrix.yml",
     "docs/design/source-matrix/source-matrix.yaml",
@@ -26,7 +27,7 @@ ALLOWED_OLD_ID_FILES = (
 
 def allowed_old_id_context(path: Path, line: str) -> bool:
     rel = str(path.relative_to(ROOT))
-    if rel.startswith("reports/naming-"):
+    if rel.startswith(("reports/naming-", "reports/naming-safety/")):
         return True
     if any(rel.startswith(prefix) for prefix in ALLOWED_OLD_ID_FILES):
         return "legacy_source_ids" in line

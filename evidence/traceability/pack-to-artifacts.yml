@@ -12,7 +12,7 @@ entries:
   inputs:
   - docs/design/specs/00-normative-language.md
   outputs:
-  - reports/pack-audit.md
+  - reports/audits/packs/pack-audit.md
   tests: []
 - pack_id: PACK-01
   requirements:
@@ -29,7 +29,7 @@ entries:
   inputs:
   - docs/design/specs/01-glossary.md
   outputs:
-  - reports/pack-audit.md
+  - reports/audits/packs/pack-audit.md
   tests: []
 - pack_id: PACK-03
   requirements:
@@ -206,7 +206,7 @@ entries:
   inputs:
   - docs/design/specs/12-amf.md
   outputs:
-  - reports/pack-audit.md
+  - reports/audits/packs/pack-audit.md
   tests:
   - NEG-MFOS-AMF-LOAD-DISABLED-0021
 - pack_id: PACK-12

@@ -22,7 +22,7 @@ from mfos_lint import (
 
 
 CLAIM_TREE = ROOT / "docs/design/assurance/claim-tree.yml"
-REPORT = ROOT / "reports/registry-link-audit.md"
+REPORT = ROOT / "reports/generated/registry-link-audit.md"
 
 
 def collect_matching_ids(value: object, pattern) -> list[str]:

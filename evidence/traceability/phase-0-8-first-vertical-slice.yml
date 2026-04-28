@@ -13,10 +13,10 @@ test_catalog:
   evidence_id: EV-MFOS-FVS-TESTCAT-0001
 reports:
   readiness:
-    path: reports/phase-0-9-readiness.md
+    path: reports/archive/superseded/phase-0-9-readiness.md
     evidence_id: EV-MFOS-FVS-READINESS-0001
   cross_domain_lead:
-    path: reports/phase-0-8-cross-domain-lead.md
+    path: reports/phases/phase-0-8/phase-0-8-cross-domain-lead.md
     evidence_id: EV-MFOS-FVS-LEAD-0001
 source_matrix_ids:
   - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
@@ -225,7 +225,7 @@ evidence_records:
       - MFOS-REQ-SYSINT-0011
       - MFOS-REQ-SYSINT-0012
       - MFOS-REQ-SYSINT-0013
-    path: reports/phase-0-9-readiness.md
+    path: reports/archive/superseded/phase-0-9-readiness.md
     status: draft
     proof_status: readiness_review_only
   - evidence_id: EV-MFOS-FVS-LEAD-0001
@@ -235,7 +235,7 @@ evidence_records:
       - MFOS-REQ-SYSINT-0016
       - MFOS-REQ-AUTH-0001
       - MFOS-REQ-AUDIT-0002
-    path: reports/phase-0-8-cross-domain-lead.md
+    path: reports/phases/phase-0-8/phase-0-8-cross-domain-lead.md
     status: draft
     proof_status: coordination_report_only
 test_to_evidence:

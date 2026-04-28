@@ -140,7 +140,7 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
 - Migrated IBM-derived canonical Source IDs from legacy `IBM-*` IDs to
   `EXTREF-IBM-*` IDs.
 - Preserved old source IDs only as `legacy_source_ids` aliases and in
-  `reports/naming-alias-map.yml`.
+  `reports/naming-safety/naming-alias-map.yml`.
 - Renamed IBM-derived Source Card filenames to match the new `EXTREF-*`
   canonical IDs.
 - Converted Source Cards from concept-summary cards to public-safe
@@ -356,56 +356,22 @@ Status: reviewed for merge readiness on 2026-04-28.
 
 ## Reports
 
-- `reports/repo-audit.md`
-- `reports/source-card-audit.md`
-- `reports/source-card-pin-audit.md`
-- `reports/requirement-audit.md`
-- `reports/requirement-gap-closure.md`
-- `reports/reserved-requirement-test-evidence-closure.md`
-- `reports/spec-front-matter-audit.md`
-- `reports/traceability-audit.md`
-- `reports/lint-audit.md`
-- `reports/spec-gap-warning-cleanup.md`
-- `reports/japanese-mirror-audit.md`
-- `reports/ci-enforcement-audit.md`
-- `reports/pack-audit.md`
-- `reports/assurance-audit.md`
-- `reports/red-team-review.md`
-- `reports/final-phase-0-6-summary.md`
-- `reports/phase-0-7-system-integrity-progress.md`
-- `reports/phase-0-7-gap-closure-summary.md`
-- `reports/system-integrity-front-half-review.md`
-- `reports/system-integrity-boundary-review.md`
-- `reports/system-integrity-tail-review.md`
-- `reports/status-sync-audit.md`
-- `reports/naming-source-id-audit.md`
-- `reports/mfos-owned-name-audit.md`
-- `reports/naming-registry-audit.md`
-- `reports/naming-alias-map.yml`
-- `reports/naming-safety-refactor-report.md`
-- `reports/naming-safety-open-issues.md`
-- `reports/naming-safety-red-team-review.md`
-- `reports/naming-path-fix-report.md`
-- `reports/source-guidance-fix-report.md`
-- `reports/naming-validator-coverage-report.md`
-- `reports/phase-0-8-core-semantics-freeze-report.md`
-- `reports/phase-0-8-gap-report.md`
-- `reports/phase-0-8-red-team-review.md`
-- `reports/phase-0-8-open-issues.md`
-- `reports/phase-0-8-requirement-traceability.md`
-- `reports/phase-0-8-authorization-lead.md`
-- `reports/phase-0-8-audit-lead.md`
-- `reports/phase-0-8-dataset-catalog-lead.md`
-- `reports/phase-0-8-job-spool-lead.md`
-- `reports/phase-0-8-operator-console-lead.md`
-- `reports/phase-0-8-cross-domain-lead.md`
-- `reports/phase-0-9-readiness.md`
-- `reports/phase-0-9-executable-spec-freeze-report.md`
-- `reports/phase-0-9-validation-report.md`
-- `reports/phase-0-9-gap-report.md`
-- `reports/phase-0-9-red-team-review.md`
-- `reports/phase-0-9-open-issues.md`
-- `reports/phase-1-readiness-report.md`
+Reports are indexed in `reports/index.yml`. The root `reports/` directory now
+contains only index/policy files and categorized report families.
+
+Current PR and readiness reports:
+
+- `reports/current/pr-5-review-report.md`
+- `reports/current/pr-5-post-gap-validation.md`
+- `reports/current/policy-denial-error-taxonomy.md`
+- `reports/current/phase-1-readiness-report.md`
+- `reports/current/phase-1-open-issues.md`
+
+Historical phase reports are under `reports/phases/`. Cross-phase audits are
+under `reports/audits/`. Naming-safety reports are under
+`reports/naming-safety/`. Deterministic script outputs are under
+`reports/generated/`. Superseded reports are retained under
+`reports/archive/`.
 
 ## Next Recommended Work
 

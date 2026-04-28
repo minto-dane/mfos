@@ -24,6 +24,7 @@ RISK_RE = re.compile(
 SAFE_RE = re.compile(r"\b(not|no|does not|do not|must not|without|disclaim|disclaimer|prohibit|prohibited|non-compatibility|not affiliated|not endorsed|not sponsored|not certified|not approved)\b", re.IGNORECASE)
 ALLOWED_PREFIXES = (
     "reports/naming-",
+    "reports/naming-safety/",
     "docs/design/source-matrix/",
     "NOTICE.md",
     "governance/non-compatibility-statement.md",

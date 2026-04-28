@@ -1,0 +1,331 @@
+audit:
+  id: mfos-owned-name-audit
+  date: "2026-04-27"
+  workspace: "/home/nia/mfos"
+  mode: "read-only-source"
+  written_artifacts:
+    - "reports/naming-safety/mfos-owned-name-audit.md"
+    - "reports/naming-safety/mfos-owned-name-audit.yml"
+  source_files_edited: false
+  scope:
+    - "file paths"
+    - "YAML identifiers"
+    - "Markdown identifiers"
+    - "spec filenames and spec IDs"
+    - "pack names"
+    - "schema names"
+    - "service and interface directories"
+    - "requirement/test/evidence/claim IDs"
+    - "prompts"
+  allowed_contexts:
+    - "source cards"
+    - "source matrix"
+    - "NOTICE"
+    - "legal and non-compatibility statements"
+    - "prohibited wording examples"
+    - "source policy material"
+    - "migration and audit reports"
+  scan_methods:
+    - "rg --files path token scan"
+    - "rg identifier-field scan for YAML and Markdown"
+    - "targeted scans for IBM, z/OS, TSO, ISPF, zOSMF, workload policy, SVC, PCALL, AMF"
+    - "manual review of representative findings"
+
+summary:
+  total_findings: 5
+  by_severity:
+    critical: 1
+    major: 2
+    minor: 2
+  no_schema_filename_findings: true
+  no_claim_id_findings: true
+
+findings:
+  - id: "MFOS-NAME-001"
+    severity: "critical"
+    title: "IBM interface/product tokens in owned interface and service paths"
+    tokens:
+      - "TSO"
+      - "ISPF"
+      - "z/OSMF"
+    owned_contexts:
+      - "implementation interface directories"
+      - "implementation service directories"
+      - "implementation README identifiers"
+    locations:
+      paths:
+        - "implementation/interfaces/command-processor/"
+        - "implementation/interfaces/panel-ui/"
+        - "implementation/interfaces/management-api/"
+        - "implementation/services/commandd/"
+        - "implementation/services/paneld/"
+      lines:
+        - path: "implementation/interfaces/README.md"
+          line: 3
+          identifier: "command processor, panel UI, management API"
+        - path: "implementation/README.md"
+          line: 18
+          identifier: "command processor, panel UI"
+    impact: "Owned names can imply compatibility surfaces for IBM TSO, ISPF, or z/OSMF."
+    recommended_update:
+      renames:
+        - from: "implementation/interfaces/command-processor/"
+          to: "implementation/interfaces/interactive-session/"
+        - from: "implementation/interfaces/panel-ui/"
+          to: "implementation/interfaces/panel-ui/"
+        - from: "implementation/interfaces/management-api/"
+          to: "implementation/interfaces/management-api/"
+        - from: "implementation/services/commandd/"
+          to: "implementation/services/sessiond/"
+        - from: "implementation/services/paneld/"
+          to: "implementation/services/paneld/"
+      followups:
+        - "Update README text and implementation indexes."
+        - "Update traceability references after owned path renames."
+
+  - id: "MFOS-NAME-002"
+    severity: "major"
+    title: "WLM used as an owned MFOS namespace"
+    tokens:
+      - "WLM"
+      - "Workload Policy"
+    owned_contexts:
+      - "spec filename"
+      - "spec_id"
+      - "pack title"
+      - "service directory"
+      - "requirement IDs"
+      - "test IDs"
+      - "evidence IDs"
+      - "local requirement IDs"
+      - "audit/event IDs"
+      - "artifact paths"
+      - "prompt target"
+    locations:
+      paths:
+        - "docs/design/specs/11-workload-policy.md"
+        - "implementation/services/workpolicyd/"
+        - "implementation/prototypes/hosted-semantic/services/workpolicyd/"
+      lines:
+        - path: "docs/design/specs/11-workload-policy.md"
+          line: 2
+          identifier: "MFOS-SPEC-11-WORKLOAD-POLICY"
+        - path: "docs/design/specs/11-workload-policy.md"
+          line: 10
+          identifier: "MFOS-REQ-WPOL-*"
+        - path: "docs/design/specs/11-workload-policy.md"
+          line: 80
+          identifier: "WPOL-R-*"
+        - path: "docs/design/specs/11-workload-policy.md"
+          line: 331
+          identifier: "WORKLOAD_POLICY_*"
+        - path: "packs/pack-index.yml"
+          line: 130
+          identifier: "PACK-10 Workload Policy"
+        - path: "requirements/catalog.yml"
+          line: 19
+          identifier: "wlm"
+        - path: "docs/design/registries/requirements.yaml"
+          line: 5653
+          identifier: "MFOS-REQ-WPOL-*"
+        - path: "docs/design/registries/tests.yaml"
+          line: 4123
+          identifier: "MFOS-TEST-WPOL-*"
+        - path: "docs/design/registries/evidence.yaml"
+          line: 3700
+          identifier: "MFOS-EVID-WPOL-*"
+    impact: "workload policy is an IBM z/OS workload management acronym. Use as an MFOS-owned namespace creates name ownership and compatibility risk."
+    recommended_update:
+      renames:
+        - from: "docs/design/specs/11-workload-policy.md"
+          to: "docs/design/specs/11-workload-policy.md"
+        - from: "MFOS-SPEC-11-WORKLOAD-POLICY"
+          to: "MFOS-SPEC-11-WORKLOAD-POLICY"
+        - from: "MFOS-REQ-WPOL-*"
+          to: "MFOS-REQ-WPOL-*"
+        - from: "MFOS-TEST-WPOL-*"
+          to: "MFOS-TEST-WPOL-*"
+        - from: "MFOS-EVID-WPOL-*"
+          to: "MFOS-EVID-WPOL-*"
+        - from: "WPOL-R-*"
+          to: "WPOL-R-*"
+        - from: "INV-WPOL-*"
+          to: "INV-WPOL-*"
+        - from: "WORKLOAD_POLICY_*"
+          to: "WORK_POLICY_*"
+        - from: "workpolicyd"
+          to: "workpolicyd"
+        - from: "requirements domain wlm"
+          to: "requirements domain workload-policy"
+        - from: "PACK-10 title Workload Policy"
+          to: "PACK-10 title Workload Policy"
+      preserve_only_as_source_refs:
+        - "EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001"
+
+  - id: "MFOS-NAME-003"
+    severity: "major"
+    title: "SVC/PCALL used as owned ABI namespaces"
+    tokens:
+      - "SVC"
+      - "PCALL"
+    owned_contexts:
+      - "spec filename"
+      - "spec_id"
+      - "pack title"
+      - "runtime ABI directories"
+      - "nucleus directories"
+      - "Guard root directory"
+      - "requirement IDs"
+      - "test IDs"
+      - "evidence IDs"
+    locations:
+      paths:
+        - "docs/design/specs/15-svc-pcall.md"
+        - "implementation/nucleus/svc/"
+        - "implementation/runtime/abi/svc/"
+        - "implementation/guard/roots/svc-table/"
+        - "implementation/nucleus/pcall/"
+        - "implementation/runtime/abi/pcall/"
+      lines:
+        - path: "docs/design/specs/15-svc-pcall.md"
+          line: 2
+          identifier: "MFOS-SPEC-15-SVC-PCALL"
+        - path: "docs/design/specs/15-svc-pcall.md"
+          line: 10
+          identifier: "MFOS-REQ-PCALL-*, MFOS-REQ-SVC-*"
+        - path: "docs/design/specs/15-svc-pcall.md"
+          line: 372
+          identifier: "MFOS-REQ-SVC-*"
+        - path: "docs/design/specs/15-svc-pcall.md"
+          line: 382
+          identifier: "MFOS-REQ-PCALL-*"
+        - path: "packs/pack-index.yml"
+          line: 159
+          identifier: "Nucleus and SVC/PCALL"
+        - path: "evidence/traceability/pack-to-artifacts.yml"
+          line: 138
+          identifier: "MFOS-REQ-SVC-*"
+        - path: "evidence/traceability/pack-to-artifacts.yml"
+          line: 139
+          identifier: "MFOS-REQ-PCALL-*"
+    impact: "The ABI namespaces are MFOS-owned names, not source citations. SVC is strongly z/OS-associated, and PCALL is the owned name for an IBM cross-memory inspired concept."
+    recommended_update:
+      renames:
+        - from: "docs/design/specs/15-svc-pcall.md"
+          to: "docs/design/specs/15-kcall-service-ipc.md"
+        - from: "MFOS-SPEC-15-SVC-PCALL"
+          to: "MFOS-SPEC-15-KCALL-SERVICE-IPC"
+        - from: "MFOS-REQ-SVC-*"
+          to: "MFOS-REQ-KCALL-*"
+        - from: "MFOS-REQ-PCALL-*"
+          to: "MFOS-REQ-SIPC-*"
+        - from: "svc"
+          to: "kcall"
+        - from: "pcall"
+          to: "service-ipc"
+        - from: "svc-table"
+          to: "kcall-table"
+
+  - id: "MFOS-NAME-004"
+    severity: "minor"
+    title: "IBM-specific prompt role and prompt field names"
+    tokens:
+      - "IBM"
+    owned_contexts:
+      - "canonical prompt heading"
+      - "prompt role"
+      - "prompt output field names"
+    locations:
+      lines:
+        - path: "docs/design/prompts/ai-prompts.md"
+          line: 54
+          identifier: "IBM Concept Mapping Prompt"
+        - path: "docs/design/prompts/ai-prompts.md"
+          line: 57
+          identifier: "MFOS IBM Concept Mapping reviewer"
+        - path: "docs/design/prompts/ai-prompts.md"
+          line: 66
+          identifier: "IBM source concept"
+        - path: "docs/design/prompts/ai-prompts.md"
+          line: 67
+          identifier: "IBM source document title"
+    impact: "The prompt is source-mapping oriented, but prompts are owned reusable instructions and were explicitly in audit scope."
+    recommended_update:
+      renames:
+        - from: "IBM Concept Mapping Prompt"
+          to: "External Source Concept Mapping Prompt"
+        - from: "MFOS IBM Concept Mapping reviewer"
+          to: "MFOS external source mapping reviewer"
+        - from: "IBM source concept"
+          to: "external source concept"
+        - from: "IBM source document title"
+          to: "external source document title"
+      alternative: "Document prompt library source-mapping prompts as an explicit source-policy allowlisted context."
+
+  - id: "MFOS-NAME-005"
+    severity: "minor"
+    title: "APF-derived AMF namespace needs explicit allow decision or rename"
+    tokens:
+      - "AMF"
+      - "APF-derived analogue"
+    owned_contexts:
+      - "spec filename"
+      - "spec_id"
+      - "service directories"
+      - "requirement IDs"
+      - "test IDs"
+      - "evidence IDs"
+      - "Guard root directory"
+    locations:
+      paths:
+        - "docs/design/specs/12-amf.md"
+        - "implementation/services/amfd/"
+        - "implementation/prototypes/hosted-semantic/services/amfd/"
+        - "implementation/guard/roots/amf-registry/"
+      lines:
+        - path: "docs/design/specs/12-amf.md"
+          line: 2
+          identifier: "MFOS-SPEC-12-AMF"
+        - path: "docs/design/specs/12-amf.md"
+          line: 10
+          identifier: "MFOS-REQ-AMF-*"
+        - path: "docs/design/specs/12-amf.md"
+          line: 399
+          identifier: "MFOS-REQ-AMF-*"
+        - path: "docs/design/registries/tests.yaml"
+          line: 1211
+          identifier: "MFOS-TEST-AMF-*"
+        - path: "docs/design/registries/evidence.yaml"
+          line: 1508
+          identifier: "MFOS-EVID-AMF-*"
+    impact: "AMF is not a literal IBM acronym, but it is an owned APF-inspired analogue. A strict policy may treat it as IBM-related."
+    recommended_update:
+      options:
+        - "Document AMF as an explicit coined MFOS exception if allowed."
+        - "Rename AMF to MODAUTH or MODULE-AUTH if IBM-derived analogue names are prohibited."
+      suggested_renames:
+        - from: "docs/design/specs/12-amf.md"
+          to: "docs/design/specs/12-module-auth.md"
+        - from: "MFOS-SPEC-12-AMF"
+          to: "MFOS-SPEC-12-MODULE-AUTH"
+        - from: "MFOS-REQ-AMF-*"
+          to: "MFOS-REQ-MODAUTH-*"
+        - from: "amfd"
+          to: "moduleauthd"
+        - from: "amf-registry"
+          to: "module-auth-registry"
+
+non_findings:
+  allowed_source_context_examples:
+    - "docs/design/source-matrix/cards/IBM-*.yml"
+    - "docs/design/source-matrix/source-matrix.yml"
+    - "docs/design/source-matrix/source-matrix.yaml"
+    - "docs/design/source-matrix/traceability-index.md"
+  allowed_legal_or_policy_context_examples:
+    - "NOTICE.md"
+    - "governance/non-compatibility-statement.md"
+    - "reports/audits/lint/prohibited-wording-audit.md"
+  schema_filenames:
+    result: "no prohibited IBM-related schema filename found under schemas/"
+  claim_ids:
+    result: "no claim ID family using prohibited IBM-related tokens found"
