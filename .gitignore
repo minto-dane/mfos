@@ -9,6 +9,29 @@
 *.html
 *.htm
 *.epub
+*.doc
+*.docx
+*.ppt
+*.pptx
+*.xls
+*.xlsx
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.svg
+*.md.txt
+*.extracted.txt
+
+# Python validation byproducts
+__pycache__/
+*.py[cod]
 
 # Build artifacts
 /target/
@@ -36,4 +59,3 @@
 # Raw AI outputs
 /ai/outputs/*
 !/ai/outputs/DO_NOT_TRUST_WITHOUT_REVIEW.md
-

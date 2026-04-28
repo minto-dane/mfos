@@ -1,0 +1,30 @@
+schema_version: 1
+artifact_index_kind: mfos_design_task_inventory
+status: current
+
+current:
+  implementation_roadmap:
+    path: docs/design/tasks/implementation-roadmap.md
+    status: current
+  japanese_doc_sync:
+    path: docs/design/tasks/japanese-doc-sync.md
+    status: current
+  spec_front_matter_migration:
+    path: docs/design/tasks/spec-front-matter-migration.md
+    status: current
+  test_taxonomy:
+    path: docs/design/tasks/test-taxonomy.md
+    status: current
+  work_breakdown:
+    path: docs/design/tasks/work-breakdown.md
+    status: current
+
+archive:
+  phase_0_7:
+    path: docs/design/tasks/archive/phase-0-7/
+    status: historical
+    origin_phase: phase-0-7
+
+policy:
+  root_current_only: true
+  phase_specific_filenames_allowed_in_root: false
