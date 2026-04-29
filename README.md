@@ -10,9 +10,9 @@ approved by IBM. MFOS does not claim compatibility with IBM products,
 interfaces, record layouts, command syntax, macro interfaces, or documentation.
 
 The current canonical design corpus lives under [docs/design](docs/design/).
-The top-level directories added here are the project work layers that will
-receive implementation, verification, source-grounding, and AI task artifacts
-over time. They intentionally do not move or rewrite the existing design docs.
+The top-level directories are project work layers for implementation,
+verification, source-grounding, and AI task artifacts over time. They
+intentionally do not move or rewrite the existing design docs.
 
 ## Canonical Artifacts
 

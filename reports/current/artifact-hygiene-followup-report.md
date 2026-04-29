@@ -15,7 +15,8 @@ catalog cleanup.
 - Moved Phase 0.8 and Phase 0.9 fuzz target plans out of phase-specific root
   filenames.
 - Moved Phase 0.7 task plans under archive directories.
-- Moved PR-specific and Phase 1-specific reports out of `reports/current/`.
+- Moved scattered PR-specific and Phase 1-specific reports out of
+  `reports/current/` unless they are part of the indexed current-report set.
 - Updated current specs, pack contracts, pack index, and traceability outputs
   to reference stable current test catalogs instead of archived Phase 0.8
   catalogs.

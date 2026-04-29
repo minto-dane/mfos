@@ -1,8 +1,8 @@
 # MFOS Design Work Status
 
-Status date: 2026-04-28
+Status date: 2026-04-29
 Workspace: `/home/nia/mfos`
-Git status: working branch `fix/pre-phase1-fixedpoint-closure`;
+Git status: working branch `phase/1-dafny-executable-semantics`;
 PR #10 (`fix/phase-0.10-pxm-mfvm-expansion`), PR #11
 (`fix/pre-phase-1-total-readiness`), PR #12
 (`fix/pre-phase-1-total-readiness-second-pass`), and PR #13
@@ -16,9 +16,9 @@ attorney review.
 
 ## Current Phase
 
-Pre-Phase-1 Fixed-Point Repository Closure after repeated readiness
-remediation and Phase 0.10 PXM / MFVM / Confidential VM / Datacenter / Formal
-Assurance Requirements Expansion
+Phase 1: Verified Executable Semantics + Conformance Harness. Phase 1 is
+non-production and uses Dafny as the canonical executable-semantics source
+artifact language.
 
 Final judgment:
 
@@ -34,8 +34,9 @@ structural_freeze_remains_valid: true
 semantic_freeze_fully_valid: false
 phase_1_loader_allowed: true
 phase_1_dafny_skeleton_allowed: true
-phase_1_dafny_semantics_allowed: conditional
-phase_1_semantic_evaluator_status: conditional_blocked_pending_domain_gates
+phase_1_dafny_semantics_allowed: true
+phase_1_conformance_harness_allowed: true
+phase_1_semantic_evaluator_status: non_production_dafny_only
 phase_1_portable_semantic_core_allowed: false
 phase_1_rust_semantic_core_allowed: false
 phase_1_semantic_evaluator_allowed_domains: []
@@ -48,12 +49,45 @@ hosted_semantic_prototype_allowed: false
 public_release_allowed: false
 private_internal_use_allowed: true
 requires_ip_attorney_review_before_public_release: true
-next_phase: Phase 1 Loader-Only Artifact Loading And Traceability Repair
+next_phase: Continue Phase 1 Dafny verification and conformance evidence closure
 ```
 
 No production nucleus, service, PXM, Guard, or other OS-body implementation was
 started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
 0.9.
+
+## Phase 1 Dafny Executable Semantics
+
+- Added Dafny executable-semantics modules under
+  `formal/executable-semantics/dafny/modules/` for common primitives, error
+  taxonomy, shared types, authorization, audit, dataset/catalog, job/spool,
+  operator console, and the first vertical slice.
+- Added non-production fixture normalization and conformance-harness tooling
+  under `tools/semantic-fixture-normalizer/` and
+  `tools/dafny-conformance-harness/`.
+- Added Phase 1 validation gates for Dafny semantics, fixture/golden/oracle
+  loading, Rust semantic-core absence, Dafny generated-code production
+  exclusion, and normalizer boundary checks.
+- Dafny verification is `blocked_by_missing_toolchain` in the local
+  environment until the Dafny CLI is installed. No verification-passed claim is
+  made.
+
+## Phase 1 Formal / Traceability Consistency
+
+- Added Phase 1 model consistency reporting to record TLA+, Alloy, formal
+  evidence, and traceability readiness for non-production Dafny conformance
+  work.
+- `formal/models/tla/` and `formal/models/alloy/` remain planned,
+  noncanonical scaffolds. Current TLA+ design models remain under
+  `formal/tla/` until a reviewed migration updates formal registries.
+- Formal model, proof-obligation, evidence, and tool registries remain draft
+  with `proof_claimed: false`.
+- No TLA+ model checking, Alloy analysis, or Dafny verification pass is claimed
+  by the Phase 1 consistency report.
+- Model-reference conflicts remain blocking for verification claims: some
+  planned model paths are empty scaffolds, CVM/cluster model entries point at a
+  generic scaffold path, and aggregate formal claims reference planned
+  `formal/models/cvm-*` paths not present in the inspected tree.
 
 ## Completed In Fixed-Point Repository Closure
 
@@ -73,9 +107,9 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
   naming-safety release, artifact hygiene, component scaffold, language/formal
   assurance, Dafny scaffold, Phase 0.9 validation, Python `py_compile`, and
   `git diff --check` passed.
-- Phase 1 remains limited to Dafny scaffold and loader-only artifact
-  validation. Semantic evaluator work remains conditional; Rust semantic-core,
-  semantic runner, hosted daemon, service implementation, PXM/MFVM/CVM/cluster
+- Phase 1 remains limited to non-production Dafny executable semantics and
+  conformance-harness validation. Rust semantic-core, semantic runner command
+  implementation, hosted daemon, service implementation, PXM/MFVM/CVM/cluster
   implementation, and production implementation remain forbidden.
 
 ## Completed In Phase 0.10 PXM/MFVM Requirements Expansion
@@ -105,15 +139,17 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
   contracts, test catalogs, claims, and validation for the Phase 0.10 planning
   domains.
 - Added language/formal-assurance policy, red-team, and open-issues reports
-  that keep the work limited to policy/spec/registry planning. Phase 1
-  loader-only validation remains allowed; semantic evaluator work is
-  conditional and remains blocked until domain gates close.
+  that keep the work limited to policy/spec/registry planning. Phase 1 Dafny
+  executable-semantics work is allowed only under the non-production boundary;
+  PXM/MFVM/CVM/cluster semantic evaluator work remains blocked until domain
+  gates close.
 - Updated naming-safety lint so `TDX`, `SEV`, `SEV-SNP`, `CET`, `CFI`, Kani,
   and Verus may be used as technology/profile names while Hyper-V and KVM
   remain restricted to external-reference or comparison contexts.
-- Phase gates remain conservative: Phase 1 loader-only validation remains
-  allowed; PXM/MFVM/CVM/cluster semantic evaluators, hosted daemons, semantic
-  runner, and production implementation remain blocked.
+- Phase gates remain conservative: Phase 1 Dafny conformance work is
+  non-production; PXM/MFVM/CVM/cluster semantic evaluators, hosted daemons,
+  semantic runner command implementation, and production implementation remain
+  blocked.
 
 ## Completed In Pre-Phase-1 Total Readiness Remediation
 
@@ -128,7 +164,7 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
   `rust_semantic_core`, `dafny_executable_semantics`, `semantic_runner`,
   `generated_production_code`, and `validation_only`.
 - Updated specs 31, 33, 39, 40, PACKS, and AI/prompt guardrails so Phase 1 is
-  Dafny-first and loader-only. Rust semantic-core, semantic runner, hosted
+  Dafny-first and non-production. Rust semantic-core, semantic runner, hosted
   daemon, hosted semantic prototype, service implementation, PXM/MFVM/CVM
   implementation, cluster implementation, and production generated code remain
   forbidden.
@@ -152,7 +188,7 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
   Card path and that `sources/` remains a public-safe workbench until an
   ADR-backed migration.
 - Reaffirmed that source cards remain draft and semantic freeze remains
-  conditional; Phase 1 remains loader-only.
+  conditional; broad production and service implementation remained blocked.
 - Updated repository remediation reports and indexes under `reports/current/`.
 
 ## Completed In Phase 0.9.9
@@ -478,9 +514,9 @@ Status: reviewed for merge readiness on 2026-04-28.
   them.
 - Source-card pin limits, reserved requirements, draft-only evidence, and
   populated noncanonical `sources/` workbench drift still block production,
-  release, Portable Semantic Core behavior, semantic evaluator, and semantic
-  runner claims. They do not block Phase 1 loader-only validation of the Phase
-  0.9 executable-spec artifact set.
+  release, Portable Semantic Core behavior, hosted semantic evaluator, and
+  semantic runner claims. They do not block reviewed non-production Phase 1
+  Dafny artifacts or fixture/golden structural validation.
 - Release-mode evidence checking intentionally blocks claims until verified
   evidence artifacts, digests, verifiers, and verification timestamps exist.
 - CI design validation is wired, but release-mode evidence gates still require
@@ -507,10 +543,10 @@ Status: reviewed for merge readiness on 2026-04-28.
   documentation fields, record layouts, command syntax, or macro signatures.
 - Confirmed no Source Card reaches SG6/SG7 because all remain draft and direct
   card-local spec/test links are missing.
-- Rechecked PACK-05 through PACK-09 for loader-only versus semantic evaluator
-  readiness.
-- Downgraded Phase 1 permission to loader-only artifact validation and
-  traceability repair.
+- Rechecked PACK-05 through PACK-09 for pre-Phase-1 artifact loading versus
+  broader semantic evaluator readiness.
+- Downgraded the pre-Phase-1 gate to artifact validation and traceability
+  repair before the current Phase 1 Dafny semantics task.
 - Blocked Portable Semantic Core behavior, semantic evaluator, and semantic
   runner command implementation until source-grounding trace gaps close.
 - Recorded conditional refreeze outputs under
@@ -573,17 +609,14 @@ under `reports/audits/`. Naming-safety reports are under
 
 ## Next Recommended Work
 
-After the pre-Phase-1 readiness PR passes required checks and lands in `dev`,
-proceed only to Phase 1 Dafny executable-semantics scaffold and loader-only
-artifact validation.
+Continue Phase 1 by installing/pinning the Dafny toolchain and closing
+verification evidence gaps.
 
 Allowed Phase 1 scope:
 
-1. Create reviewed Dafny source artifacts under
-   `formal/executable-semantics/dafny/`.
-2. Validate Dafny artifact metadata, dependencies, requirement refs, source
-   refs, and declared proof status.
-3. Repair traceability metadata for executable-spec artifacts.
+1. Run Dafny verification for `formal/executable-semantics/dafny/modules/*.dfy`.
+2. Record verification output as reviewed evidence.
+3. Expand conformance comparison only where Dafny model output is available.
 
 Forbidden Phase 1 scope remains:
 

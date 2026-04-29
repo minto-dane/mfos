@@ -3,7 +3,7 @@ spec_id: MFOS-SPEC-43-DAFNY-EXECUTABLE-SEMANTICS-POLICY
 title: MFOS Dafny Executable Semantics Policy
 canonical_language: en-US
 japanese_mirror: missing
-status: draft
+status: current
 owner: MFOS architecture
 last_reviewed: '2026-04-28'
 source_refs:
@@ -14,6 +14,7 @@ source_refs:
 - FBVBS-001
 requirement_refs:
 - MFOS-REQ-DAFNY-*
+- MFOS-REQ-SEMSPEC-*
 - MFOS-REQ-EXECSPEC-*
 - MFOS-REQ-FORMAL-*
 claim_refs: []
@@ -23,27 +24,32 @@ implementation_allowed: false
 downstream_packs:
 - PACK-34
 - PACK-35
+- PACK-37
 spec_gap_policy: implementation_must_not_infer_or_fill_gaps
 ---
 
 # MFOS Dafny Executable Semantics Policy
 
-Status: Draft Phase 1 policy. This document is specification-only and validation-only. It does not authorize production code, semantic-runner implementation, hosted daemon implementation, Rust semantic-core implementation, a Portable Semantic Core, generated production code, or any production readiness claim.
+Status: Current Phase 1 policy. This document authorizes non-production Dafny executable-semantics source artifacts and conformance-harness validation. It does not authorize production code, semantic-runner implementation, semantic runner implementation, hosted daemon implementation, Rust semantic-core implementation, a Portable Semantic Core, generated production code, or any production readiness claim.
+
+Phase 1 does not authorize semantic runner implementation.
 
 ## 1. Purpose
 
-Define the Phase 1 executable-semantics policy for MFOS. The canonical executable-semantics language for Phase 1 is Dafny. Phase 1 work remains limited to loader-only artifact validation.
+Define the Phase 1 executable-semantics policy for MFOS. The canonical executable-semantics language for Phase 1 is Dafny. Phase 1 work is limited to non-production Dafny model artifacts, deterministic fixture/oracle/golden loading, structural comparison, verification reporting, and traceability updates.
 
 This policy narrows the meaning of executable semantics. A Dafny artifact may define an MFOS-owned semantic model or proof-oriented contract, but the repository must not infer that a runtime evaluator, product feature, daemon, or production implementation exists.
 
-No .dafny files are required by this scaffold. Dafny source files remain optional until a later reviewed task creates specific artifacts under this policy.
+Dafny source files are allowed only under `formal/executable-semantics/dafny/` and related non-production test/evidence paths. Dafny must consume normalized typed input; it must not parse YAML directly.
 
 ## 2. Scope
 
 In scope:
 
 - Dafny as the canonical Phase 1 executable-semantics artifact language.
-- Loader-only validation of Dafny artifact metadata, dependency closure, source references, requirement references, and declared proof status.
+- Pure executable semantic contracts for authorization, audit, dataset/catalog, job/spool, operator console, and the first vertical slice.
+- Deterministic fixture/oracle/golden loading and structural comparison.
+- Validation of Dafny artifact metadata, dependency closure, source references, requirement references, and declared proof status.
 - Rules for generated code from Dafny.
 - Negative authorization boundaries for semantic runners, hosted daemons, Rust semantic-core work, and production claims.
 
@@ -55,6 +61,7 @@ Out of scope:
 - Production service code.
 - Production loader behavior.
 - Product conformance claims based on Dafny artifact presence alone.
+- PXM, MFVM, Confidential VM, cluster, nucleus, Guard, or service implementation.
 
 ## 3. Canonical Artifact Language
 
@@ -64,11 +71,11 @@ No Phase 1 document, pack, test plan, implementation task, or review note may de
 
 The canonical artifact is the reviewed Dafny source plus its MFOS metadata. Generated output, tool logs, and translated code are evidence candidates only when explicitly reviewed and linked to a Dafny artifact. They do not replace the Dafny source.
 
-## 4. Phase 1 Loader-only Boundary
+## 4. Phase 1 Non-production Boundary
 
-Phase 1 allows loader-only artifact validation for Dafny executable-semantics artifacts. This is validation-only scope.
+Phase 1 allows non-production Dafny executable-semantics artifacts and a non-production conformance harness.
 
-Allowed loader-only checks:
+Allowed checks and artifacts:
 
 - File discovery under the approved Dafny scaffold.
 - Metadata shape validation.
@@ -76,17 +83,21 @@ Allowed loader-only checks:
 - Dependency path and digest declaration checks.
 - Declared proof-status checks.
 - Detection of missing artifacts, malformed artifacts, unsupported declarations, and SPEC_GAP declarations.
-- Emission of validation reports that say whether the artifact set is loadable.
+- Pure Dafny functions, predicates, lemmas, and symbolic state-transition contracts.
+- Fixture/oracle/golden loading that does not encode MFOS business semantics.
+- Structural comparison between model output shapes and golden-vector expectations.
+- Emission of validation reports that state verification and comparison status.
 
 Forbidden Phase 1 behavior:
 
-- Evaluating MFOS behavior against fixtures or oracles.
 - Executing a semantic model as a product decision engine.
 - Treating artifact loading as conformance, production readiness, or runtime correctness.
 - Filling unspecified behavior from implementation convenience.
 - Converting `UNSUPPORTED` or `SPEC_GAP` into success.
+- Implementing future `mfos-semantic-runner` commands.
+- Starting a hosted executable-semantics daemon.
 
-Loader-only validation proves artifact shape and declared traceability only. It does not prove semantic correctness.
+The conformance harness is non-production. It may compare deterministic artifacts and record results, but it is not a hosted daemon, service implementation, or product conformance claim.
 
 ## 5. Generated Code Policy
 
@@ -103,9 +114,9 @@ Dafny-generated code MAY be used only inside explicitly non-production validatio
 
 ## 6. No Semantic Runner
 
-Phase 1 does not authorize a semantic runner.
+Phase 1 does not authorize the future semantic runner.
 
-The existing semantic-runner contract remains a future contract only. A Dafny loader may report whether artifacts are loadable, malformed, missing, unsupported, or blocked by SPEC_GAP. It must not execute test cases, apply fixtures, evaluate oracles, emit PASS or FAIL for MFOS behavior, or act as a conformance runner.
+The existing semantic-runner contract remains a future contract. A Phase 1 conformance harness may load fixtures, load embedded oracles, normalize deterministic inputs, compare expected output shapes, and record whether Dafny verification was run. It must not implement the named `mfos-semantic-runner` CLI, start a hosted evaluator, or become product behavior.
 
 ## 7. No Hosted Daemon
 
@@ -117,7 +128,7 @@ No `dafnyd`, hosted semantic service, HTTP service, RPC service, background work
 
 Phase 1 does not authorize a Rust semantic core or Portable Semantic Core.
 
-Rust may remain available for ordinary loader tooling only when a later task explicitly authorizes such tooling and keeps it loader-only. Rust code must not define MFOS executable semantics, evaluate MFOS semantic behavior, or become a semantic-core substitute for Dafny in Phase 1.
+Rust code must not define MFOS executable semantics, evaluate MFOS semantic behavior, or become a semantic-core substitute for Dafny in Phase 1. Python may be used for non-production validation tools that normalize and compare declared artifact structure without business semantics.
 
 ## 9. No Production Claim
 
@@ -149,8 +160,8 @@ This directory is reserved for Dafny executable-semantics source artifacts, meta
 | ID | Requirement | Verification |
 | --- | --- | --- |
 | `MFOS-REQ-DAFNY-0001` | Phase 1 executable-semantics artifacts MUST use Dafny as the canonical artifact language. | spec review |
-| `MFOS-REQ-DAFNY-0002` | Phase 1 Dafny work MUST remain loader-only artifact validation. | loader review |
-| `MFOS-REQ-DAFNY-0003` | Loader validation MUST NOT be represented as semantic execution, conformance, production readiness, or product correctness. | release review |
+| `MFOS-REQ-DAFNY-0002` | Phase 1 Dafny work MUST remain non-production conformance semantics and validation. | harness review |
+| `MFOS-REQ-DAFNY-0003` | Validation and harness results MUST NOT be represented as production readiness or product correctness. | release review |
 | `MFOS-REQ-DAFNY-0004` | Dafny-generated code MUST be test-only and MUST NOT enter production paths or production packages. | package review |
 | `MFOS-REQ-DAFNY-0005` | Phase 1 MUST NOT implement or operate a semantic runner. | review |
 | `MFOS-REQ-DAFNY-0006` | Phase 1 MUST NOT implement or operate a hosted executable-semantics daemon. | review |
@@ -158,12 +169,22 @@ This directory is reserved for Dafny executable-semantics source artifacts, meta
 | `MFOS-REQ-DAFNY-0008` | Missing or unspecified Dafny semantics MUST remain `SPEC_GAP` and MUST NOT be inferred by loader tooling. | negative review |
 | `MFOS-REQ-DAFNY-0009` | Unsupported declarations MUST remain `UNSUPPORTED` and MUST NOT be converted into success. | negative review |
 | `MFOS-REQ-DAFNY-0010` | No production claim may depend on this policy without a later production readiness gate. | release review |
+| `MFOS-REQ-SEMSPEC-0001` | Phase 1 canonical executable semantics MUST be written in Dafny. | spec review |
+| `MFOS-REQ-SEMSPEC-0002` | Rust MUST NOT be used as canonical Phase 1 semantic implementation. | negative review |
+| `MFOS-REQ-SEMSPEC-0003` | Dafny generated code MUST NOT be linked into production MFOS binaries. | package review |
+| `MFOS-REQ-SEMSPEC-0004` | Dafny semantics MUST consume normalized deterministic fixture input. | fixture review |
+| `MFOS-REQ-SEMSPEC-0005` | Dafny semantics MUST NOT depend on host OS filesystem, process IDs, wall-clock time, sockets, or random state. | static review |
+| `MFOS-REQ-SEMSPEC-0006` | Dafny semantic outputs MUST be comparable to Phase 0.9 golden vectors. | harness review |
+| `MFOS-REQ-SEMSPEC-0007` | Semantic model conflicts between Dafny and TLA+/Alloy MUST be recorded as `SEMANTIC_MODEL_CONFLICT`. | model review |
+| `MFOS-REQ-SEMSPEC-0008` | Phase 1 Rust semantic-core implementation is forbidden unless explicitly reauthorized by a later phase decision. | negative review |
+| `MFOS-REQ-SEMSPEC-0009` | Fixture normalizer MUST NOT implement MFOS business semantics. | code review |
+| `MFOS-REQ-SEMSPEC-0010` | Dafny model verification status MUST be recorded as evidence. | evidence review |
 
 ## 12. Gaps
 
 | Gap ID | Gap | Impact |
 | --- | --- | --- |
 | `DAFNY-GAP-0001` | Dafny toolchain source card is registered, but a pinned toolchain version and reviewed proof-output acceptance policy are not fixed. | Tool output cannot be accepted as reviewed proof evidence from this document alone. |
-| `DAFNY-GAP-0002` | Dafny artifact metadata schema is not defined here. | Loader-only validation remains limited to scaffold and policy review until a schema exists. |
-| `DAFNY-GAP-0003` | No semantic runner is authorized. | Dafny artifacts cannot produce PASS/FAIL runtime observations for MFOS behavior. |
+| `DAFNY-GAP-0002` | Dafny artifact metadata schema remains minimal. | Validation uses file/module policy and report evidence until a richer schema exists. |
+| `DAFNY-GAP-0003` | No semantic runner is authorized. | Dafny artifacts cannot be exposed through future runner commands or hosted behavior. |
 | `DAFNY-GAP-0004` | No generated-code production path is authorized. | Dafny translation targets remain test-only. |

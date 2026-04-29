@@ -1,6 +1,6 @@
 scope:
 - design and validation
-- Phase 0.10 requirements expansion
+- deferred requirements expansion
 non_objectives:
 - production implementation
 - hosted daemon implementation
@@ -30,7 +30,7 @@ fuzz_targets: &id001
 - verus-plan-review
 fuzz_or_formal_targets: *id001
 spec_gaps:
-- No Phase 0.10 proof artifact exists.
+- No reviewed proof artifact exists for this pack yet.
 - Proof CI is planned but not active for new claims.
 implementation_allowed:
   hosted_semantic_prototype: false

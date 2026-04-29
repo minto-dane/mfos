@@ -38,6 +38,7 @@ CANONICAL_ROOT_FILES_ALLOWED = {
         "validate-all.sh",
         "validate-artifact-hygiene.sh",
         "validate-component-scaffold.sh",
+        "validate-dafny-semantics.sh",
         "validate-dafny-semantics-scaffold.sh",
         "validate-language-formal-assurance.sh",
         "validate-naming-safety.sh",
@@ -84,6 +85,15 @@ def main() -> int:
 
         for path in sorted((ROOT / "docs/design/tasks").glob(pattern)):
             findings.append(Finding("ERROR", path, "phase-specific design task must be under docs/design/tasks/archive/<phase>/"))
+
+    for path in sorted(ROOT.rglob("__pycache__")):
+        if ".git" not in path.parts:
+            findings.append(Finding("ERROR", path, "generated Python bytecode cache must not remain in the repository worktree"))
+
+    for pattern in ("*.pyc", "*.pyo"):
+        for path in sorted(ROOT.rglob(pattern)):
+            if ".git" not in path.parts:
+                findings.append(Finding("ERROR", path, "generated Python bytecode artifact must not remain in the repository worktree"))
 
     return emit(findings, args.mode, "Artifact layout check OK")
 

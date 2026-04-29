@@ -35,3 +35,9 @@ jobs:
 
       - name: Run Dafny executable semantics scaffold validation
         run: ./scripts/validate-dafny-semantics-scaffold.sh
+
+      - name: Run Dafny executable semantics validation
+        run: ./scripts/validate-dafny-semantics.sh
+
+      - name: Run Phase 1 red-team validation
+        run: python3 scripts/checks/check-phase1-red-team.py --mode draft

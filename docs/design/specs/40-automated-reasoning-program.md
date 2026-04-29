@@ -151,7 +151,7 @@ Verus is a candidate for selected verified Rust components after requirements an
 
 ## 13.1 Dafny Policy
 
-Dafny is the canonical executable-semantics artifact language for Phase 1. Its Phase 1 role is loader-only artifact validation, proof-oriented specification planning, and traceability review. Dafny does not authorize semantic-runner implementation, hosted daemon implementation, Rust semantic-core implementation, generated production code, or production service behavior.
+Dafny is the canonical executable-semantics artifact language for Phase 1. Its Phase 1 role is non-production executable semantic modeling, proof-oriented specification, deterministic conformance checks, and traceability review. Dafny does not authorize semantic-runner command implementation, hosted daemon implementation, Rust semantic-core implementation, generated production code, or production service behavior.
 
 Dafny output is not accepted proof evidence unless it is linked to reviewed source, requirement refs, assumptions, tool version, result status, and human review. The presence of a Dafny scaffold or planned Dafny artifact must not be described as proving MFOS behavior.
 

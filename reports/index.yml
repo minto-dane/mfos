@@ -119,6 +119,20 @@ current:
   purpose: Repeated recursive Pre-Phase-1 readiness audit package.
 - path: reports/current/fixedpoint/
   purpose: Fixed-point repository closure package before Phase 1.
+- path: reports/current/dafny-semantics-report.md
+  purpose: Phase 1 Dafny executable-semantics implementation boundary and invariant summary.
+- path: reports/current/dafny-semantics-validation-report.md
+  purpose: Phase 1 Dafny semantics local validation status.
+- path: reports/current/dafny-verification-report.md
+  purpose: Dafny verification status and missing-toolchain evidence boundary.
+- path: reports/current/fixture-oracle-loader-report.md
+  purpose: Fixture/oracle/golden loader and conformance-support harness boundary.
+- path: reports/current/model-consistency-report.md
+  purpose: Dafny, TLA+, and Alloy consistency policy and current model gaps.
+- path: reports/current/dafny-semantics-red-team-review.md
+  purpose: Red-team review for Phase 1 Dafny executable-semantics artifacts.
+- path: reports/current/dafny-semantics-open-issues.md
+  purpose: Nonblocking Phase 1 Dafny semantic artifact open issues.
 sections:
 - path: reports/phases/phase-0-6/
   purpose: Phase 0.6 canonicalization and enforcement closure.

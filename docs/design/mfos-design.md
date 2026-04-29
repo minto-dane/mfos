@@ -20,12 +20,11 @@ MFOS is worth building, but only under a narrow and enforceable claim:
 
 MFOS must not be described as a z/OS-compatible operating system, a z/Architecture emulator, a Linux clone, a UNIX-first OS, a Windows VBS clone, or a hypervisor-first research system.
 
-Phase 0.10 adds MFVM as an MFOS-based VM management subsystem. MFVM runs in
-the MFOS control plane, is less trusted than PXM Core, and requests PXM
-operations through a capability-checked PXM Control API. MFVM is not an
-independent hypervisor, not a nested hypervisor, not Hyper-V or KVM
-compatibility work, and not a production implementation authorization. VMs are
-PXM-managed VM partitions, not nested guests under MFVM.
+Partition and VM-management scope belongs under explicit trust boundaries. PXM
+is the hardware-facing partition/resource authority. MFVM is an MFOS
+control-plane VM management subsystem, is less trusted than PXM Core, and
+cannot create a hypervisor-root, nested-hypervisor, compatibility, hosted
+daemon, or production-implementation claim by itself.
 
 MFOS succeeds if it can demonstrate this vertical slice before pursuing broad kernel features:
 
@@ -143,6 +142,23 @@ High-Assurance-AMF:
   + Guard-approved AMF registry
   + Guard-approved executable mapping.
 ```
+
+### 1.6 PXM / MFVM VM Management Boundary
+
+MFOS VM-management semantics are part of the PXM-backed architecture profile,
+not a standalone hypervisor product claim.
+
+MFVM runs in the MFOS control plane and requests PXM operations through a
+capability-checked PXM Control API. It is an MFOS-based VM management subsystem,
+not an independent hypervisor, not a nested hypervisor, not Hyper-V or KVM
+compatibility work, and not a production implementation authorization. VMs are
+PXM-managed VM partitions, not nested guests under MFVM.
+
+The Phase 0.10 requirements expansion captured this boundary in the split
+specifications and pack contracts. The durable design rule is the trust
+separation above: MFVM coordinates management workflows, while PXM validates and
+enforces hardware-facing resource, partition, memory, device, and confidential
+VM primitives.
 
 ## 2. Non-Compatibility Statement
 

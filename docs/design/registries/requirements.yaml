@@ -10761,8 +10761,8 @@ entries:
   status: draft
   phase: Pre-Phase-1 Readiness
 - requirement_id: MFOS-REQ-DAFNY-0002
-  title: Dafny loader-only boundary
-  normative_text: Phase 1 Dafny work MUST remain loader-only artifact validation and MUST NOT execute MFOS semantics as a conformance result.
+  title: Dafny non-production conformance boundary
+  normative_text: Phase 1 Dafny work MUST remain non-production executable semantics and conformance validation and MUST NOT become production behavior.
   source_refs: *dafny_source_refs
   profile_applicability: *dafny_profile_applicability
   target_components: *dafny_target_components
@@ -10774,8 +10774,8 @@ entries:
   status: draft
   phase: Pre-Phase-1 Readiness
 - requirement_id: MFOS-REQ-DAFNY-0003
-  title: Loader validation is not semantic execution
-  normative_text: Loader validation MUST NOT be represented as semantic execution, conformance, production readiness, or product correctness.
+  title: Conformance validation is not production readiness
+  normative_text: Dafny validation and conformance harness results MUST NOT be represented as production readiness, product correctness, hosted service behavior, or runtime conformance.
   source_refs: *dafny_source_refs
   profile_applicability: *dafny_profile_applicability
   target_components: *dafny_target_components
@@ -10877,6 +10877,171 @@ entries:
   mfos_non_compatibility: *dafny_non_compatibility
   status: draft
   phase: Pre-Phase-1 Readiness
+- requirement_id: MFOS-REQ-SEMSPEC-0001
+  title: Dafny canonical Phase 1 executable semantics
+  normative_text: Phase 1 canonical executable semantics MUST be written in Dafny.
+  source_refs: *dafny_source_refs
+  profile_applicability: *dafny_profile_applicability
+  target_components:
+  - formal/executable-semantics/dafny
+  - tools/dafny-conformance-harness
+  verification: &semspec_verification
+    primary:
+    - dafny_artifact_validation
+    - conformance_harness_validation
+    - traceability_review
+    tests:
+      positive:
+      - TEST-MFOS-DAFNY-0001
+      negative:
+      - NEG-MFOS-DAFNY-0001
+  audit_obligation: *dafny_audit_obligation
+  failure_mode: &semspec_failure_mode
+    error: MFOS_ERR_SPEC_GAP
+    fail_closed: true
+    conditions:
+    - Phase 1 semantic artifacts, verification status, or harness boundaries are missing or ambiguous.
+  evidence_required: &semspec_evidence_required
+  - evidence_type: dafny_verification_or_blocked_status
+    evidence_id: EV-MFOS-DAFNY-0001
+  mfos_non_compatibility: *dafny_non_compatibility
+  status: draft
+  phase: Phase 1 Verified Executable Semantics
+- requirement_id: MFOS-REQ-SEMSPEC-0002
+  title: Rust forbidden as Phase 1 canonical semantics
+  normative_text: Rust MUST NOT be used as canonical Phase 1 semantic implementation.
+  source_refs: *dafny_source_refs
+  profile_applicability: *dafny_profile_applicability
+  target_components:
+  - formal/executable-semantics/dafny
+  - scripts/checks/check-phase1-no-rust-semantic-core.py
+  verification: *semspec_verification
+  audit_obligation: *dafny_audit_obligation
+  failure_mode: *semspec_failure_mode
+  evidence_required: *semspec_evidence_required
+  mfos_non_compatibility: *dafny_non_compatibility
+  status: draft
+  phase: Phase 1 Verified Executable Semantics
+- requirement_id: MFOS-REQ-SEMSPEC-0003
+  title: Dafny generated code forbidden in production
+  normative_text: Dafny generated code MUST NOT be linked into production MFOS binaries.
+  source_refs: *dafny_source_refs
+  profile_applicability: *dafny_profile_applicability
+  target_components:
+  - formal/executable-semantics/dafny/generated
+  - scripts/checks/check-dafny-generated-not-production.py
+  verification: *semspec_verification
+  audit_obligation: *dafny_audit_obligation
+  failure_mode: *semspec_failure_mode
+  evidence_required: *semspec_evidence_required
+  mfos_non_compatibility: *dafny_non_compatibility
+  status: draft
+  phase: Phase 1 Verified Executable Semantics
+- requirement_id: MFOS-REQ-SEMSPEC-0004
+  title: Deterministic normalized fixture input
+  normative_text: Dafny semantics MUST consume normalized deterministic fixture input and MUST NOT parse YAML directly.
+  source_refs: *dafny_source_refs
+  profile_applicability: *dafny_profile_applicability
+  target_components:
+  - tools/semantic-fixture-normalizer
+  - formal/executable-semantics/dafny
+  verification: *semspec_verification
+  audit_obligation: *dafny_audit_obligation
+  failure_mode: *semspec_failure_mode
+  evidence_required: *semspec_evidence_required
+  mfos_non_compatibility: *dafny_non_compatibility
+  status: draft
+  phase: Phase 1 Verified Executable Semantics
+- requirement_id: MFOS-REQ-SEMSPEC-0005
+  title: Host OS independence
+  normative_text: Dafny semantics MUST NOT depend on host OS filesystem, process IDs, wall-clock time, sockets, or random state.
+  source_refs: *dafny_source_refs
+  profile_applicability: *dafny_profile_applicability
+  target_components:
+  - formal/executable-semantics/dafny
+  - scripts/validators/validate-dafny-semantics.py
+  verification: *semspec_verification
+  audit_obligation: *dafny_audit_obligation
+  failure_mode: *semspec_failure_mode
+  evidence_required: *semspec_evidence_required
+  mfos_non_compatibility: *dafny_non_compatibility
+  status: draft
+  phase: Phase 1 Verified Executable Semantics
+- requirement_id: MFOS-REQ-SEMSPEC-0006
+  title: Golden-vector comparability
+  normative_text: Dafny semantic outputs MUST be comparable to Phase 0.9 golden vectors.
+  source_refs: *dafny_source_refs
+  profile_applicability: *dafny_profile_applicability
+  target_components:
+  - tools/dafny-conformance-harness
+  - tests/golden
+  verification: *semspec_verification
+  audit_obligation: *dafny_audit_obligation
+  failure_mode: *semspec_failure_mode
+  evidence_required: *semspec_evidence_required
+  mfos_non_compatibility: *dafny_non_compatibility
+  status: draft
+  phase: Phase 1 Verified Executable Semantics
+- requirement_id: MFOS-REQ-SEMSPEC-0007
+  title: Model conflict reporting
+  normative_text: Semantic model conflicts between Dafny and TLA+/Alloy MUST be recorded as SEMANTIC_MODEL_CONFLICT.
+  source_refs: *dafny_source_refs
+  profile_applicability: *dafny_profile_applicability
+  target_components:
+  - formal/executable-semantics/dafny
+  - formal/models/tla
+  - formal/models/alloy
+  verification: *semspec_verification
+  audit_obligation: *dafny_audit_obligation
+  failure_mode: *semspec_failure_mode
+  evidence_required: *semspec_evidence_required
+  mfos_non_compatibility: *dafny_non_compatibility
+  status: draft
+  phase: Phase 1 Verified Executable Semantics
+- requirement_id: MFOS-REQ-SEMSPEC-0008
+  title: Rust semantic-core remains forbidden unless reauthorized
+  normative_text: Phase 1 Rust semantic-core implementation is forbidden unless explicitly reauthorized by a later phase decision.
+  source_refs: *dafny_source_refs
+  profile_applicability: *dafny_profile_applicability
+  target_components:
+  - scripts/checks/check-phase1-no-rust-semantic-core.py
+  verification: *semspec_verification
+  audit_obligation: *dafny_audit_obligation
+  failure_mode: *semspec_failure_mode
+  evidence_required: *semspec_evidence_required
+  mfos_non_compatibility: *dafny_non_compatibility
+  status: draft
+  phase: Phase 1 Verified Executable Semantics
+- requirement_id: MFOS-REQ-SEMSPEC-0009
+  title: Fixture normalizer has no business semantics
+  normative_text: Fixture normalizer MUST NOT implement MFOS business semantics.
+  source_refs: *dafny_source_refs
+  profile_applicability: *dafny_profile_applicability
+  target_components:
+  - tools/semantic-fixture-normalizer
+  - scripts/checks/check-semantic-fixture-normalizer.py
+  verification: *semspec_verification
+  audit_obligation: *dafny_audit_obligation
+  failure_mode: *semspec_failure_mode
+  evidence_required: *semspec_evidence_required
+  mfos_non_compatibility: *dafny_non_compatibility
+  status: draft
+  phase: Phase 1 Verified Executable Semantics
+- requirement_id: MFOS-REQ-SEMSPEC-0010
+  title: Dafny verification status evidence
+  normative_text: Dafny model verification status MUST be recorded as evidence and MUST NOT be claimed as passed when the toolchain is unavailable.
+  source_refs: *dafny_source_refs
+  profile_applicability: *dafny_profile_applicability
+  target_components:
+  - reports/current/phase-1-dafny-verification-report.md
+  - scripts/validate-dafny-semantics.sh
+  verification: *semspec_verification
+  audit_obligation: *dafny_audit_obligation
+  failure_mode: *semspec_failure_mode
+  evidence_required: *semspec_evidence_required
+  mfos_non_compatibility: *dafny_non_compatibility
+  status: draft
+  phase: Phase 1 Verified Executable Semantics
 spec_gaps:
 - gap_id: REQ-GAP-0001
   summary: This catalog covers v0.5 priority requirements plus draft spec-gap reservations for Source Card requirement references; it is not a full deep specification of every reserved requirement.

@@ -17,9 +17,9 @@ spec_gap_policy: "implementation_must_not_infer_or_fill_gaps"
 ---
 # MFOS Phase 0.9 Fuzz Corpus Plan
 
-Status: Phase 0.9 executable-spec artifact.
+Status: Draft executable-spec artifact. Origin: Phase 0.9.
 
-This document freezes fuzz-corpus planning for Phase 1. It does not implement
+This document records fuzz-corpus planning for Phase 1. It does not implement
 fuzzers, parser harnesses, semantic evaluators, service daemons, or production
 code.
 
@@ -30,7 +30,7 @@ record layouts, macro signatures, message tables, or documentation text.
 
 ## 1. Purpose
 
-Phase 0.9 defines seed-corpus requirements for:
+This plan defines seed-corpus requirements for:
 
 - Dataset-name parser inputs.
 - MFOS job-control stream parser inputs.
@@ -100,14 +100,14 @@ Minimum categories:
 
 ## 5. Exit Gate
 
-Phase 0.9 passes this area only when:
+This area is complete only when:
 
 - `scripts/validators/validate-fuzz-corpus-plan.py` passes.
 - Naming-safety validation passes.
-- No fuzzer implementation exists in Phase 0.9 outputs.
+- No fuzzer implementation exists in this artifact set.
 - Traceability maps fuzz targets to requirements.
 
 ## 6. Spec Gaps
 
 `GAP-MFOS-PHASE09-FUZZ-0001`: concrete byte-level corpus files are deferred to
-Phase 1 because Phase 0.9 freezes categories and contracts only.
+Phase 1 because this document freezes categories and contracts only.

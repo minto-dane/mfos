@@ -19,7 +19,12 @@ spec_gap_policy: "implementation_must_not_infer_or_fill_gaps"
 
 Status: structural draft with conditional semantic freeze. Production implementation, hosted daemon work, semantic runner work, Portable Semantic Core behavior, and semantic evaluator work are not authorized by this file.
 
-Source-grounding warning: Phase 0.9.7/0.9.8 review keeps this specification blocked for semantic evaluator work until the MFOS-native job-control grammar and DD-shaped identifiers are either refactored or explicitly re-bound by a legal/source-grounding review. The grammar below is a design artifact, not an implementation license and not an external job-control-language compatibility claim.
+Source-grounding warning: this specification remains blocked for semantic
+evaluator work until the MFOS-native job-control grammar and DD-shaped
+identifiers are either refactored or explicitly re-bound by a
+legal/source-grounding review. The grammar below is a design artifact, not an
+implementation license and not an external job-control-language compatibility
+claim.
 
 Owned components: `jobd`, `spoold`
 
@@ -38,7 +43,13 @@ Primary formal and test artifacts:
 
 ## 1. Purpose
 
-This specification freezes the Phase 0.8 MFOS job and spool semantics for design review. It defines the MFOS job-control stream grammar, Job, JobStep, DD, ProgramIdentity, job identity, effective principal establishment, DD resolution, job lifecycle, step execution, return-code handling, SpoolEntry lifecycle, input/output stream behavior, browse/purge/export authorization, retention, audit obligations, failure modes, invalid transitions, tests, fuzz targets, evidence expectations, and remaining spec gaps.
+This specification defines the design-frozen MFOS job and spool semantics for
+review. It defines the MFOS job-control stream grammar, Job, JobStep, DD,
+ProgramIdentity, job identity, effective principal establishment, DD resolution,
+job lifecycle, step execution, return-code handling, SpoolEntry lifecycle,
+input/output stream behavior, browse/purge/export authorization, retention,
+audit obligations, failure modes, invalid transitions, tests, fuzz targets,
+evidence expectations, and remaining spec gaps.
 
 MFOS is z/OS-inspired, not z/OS-compatible. The source-grounded overlap is the enterprise batch model of submitting work, converting it, queueing it, selecting it for execution, capturing output, controlling protected spool access, and purging retained output through governed policy. MFOS defines a native subset and MUST NOT claim JES, JES2, JCL, RACF, DFSMS, SMF, or z/OS compatibility.
 

@@ -50,9 +50,9 @@ If any item is missing, the implementation agent must produce a
 
 ## Hosted Semantic Prototype Label
 
-Hosted prototype work is not allowed in Phase 1. Phase 1 is limited to Dafny
-executable-semantics scaffold work and loader-only artifact validation under
-`formal/executable-semantics/dafny/`.
+Hosted prototype work is not allowed in Phase 1. Phase 1 is limited to
+non-production Dafny executable-semantics artifacts and conformance-harness
+validation under `formal/executable-semantics/dafny/` and `tools/`.
 
 Hosted prototype work may be considered only after a later reviewed gate for
 packs that pass the pre-implementation gate, and it must be labeled:

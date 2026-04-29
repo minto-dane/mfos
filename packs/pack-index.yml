@@ -973,7 +973,7 @@ entries:
   - MFOS-REQ-PCALL-*
 - scope:
   - design and validation
-  - Phase 0.10 requirements expansion
+  - deferred requirements expansion
   non_objectives:
   - production implementation
   - hosted daemon implementation
@@ -1839,7 +1839,7 @@ entries:
   - MFOS-REQ-POLICY-LINT-*
 - scope:
   - design and validation
-  - Phase 0.10 requirements expansion
+  - deferred requirements expansion
   non_objectives:
   - production implementation
   - hosted daemon implementation
@@ -1923,7 +1923,7 @@ entries:
   - MFOS-REQ-PXM-*
 - scope:
   - design and validation
-  - Phase 0.10 requirements expansion
+  - deferred requirements expansion
   non_objectives:
   - production implementation
   - hosted daemon implementation
@@ -2015,7 +2015,7 @@ entries:
   - MFOS-REQ-MFVM-*
 - scope:
   - design and validation
-  - Phase 0.10 requirements expansion
+  - deferred requirements expansion
   non_objectives:
   - production implementation
   - hosted daemon implementation
@@ -2101,7 +2101,7 @@ entries:
   - MFOS-REQ-PERF-*
 - scope:
   - design and validation
-  - Phase 0.10 requirements expansion
+  - deferred requirements expansion
   non_objectives:
   - production implementation
   - hosted daemon implementation
@@ -2172,7 +2172,7 @@ entries:
   - MFOS-REQ-ASSURANCE-*
 - scope:
   - design and validation
-  - Phase 0.10 requirements expansion
+  - deferred requirements expansion
   non_objectives:
   - production implementation
   - hosted daemon implementation
@@ -2202,7 +2202,7 @@ entries:
   - verus-plan-review
   fuzz_or_formal_targets: *id006
   spec_gaps:
-  - No Phase 0.10 proof artifact exists.
+  - No reviewed proof artifact exists for this pack yet.
   - Proof CI is planned but not active for new claims.
   implementation_allowed:
     hosted_semantic_prototype: false
@@ -2257,7 +2257,7 @@ entries:
   - MFOS-REQ-CLUSTER-*
 - scope:
   - design and validation
-  - Phase 0.10 requirements expansion
+  - deferred requirements expansion
   non_objectives:
   - production implementation
   - hosted daemon implementation
@@ -2333,3 +2333,82 @@ entries:
   requirements:
   - MFOS-REQ-PERF-*
   - MFOS-REQ-OPS-*
+- scope:
+  - Dafny executable-semantics source artifacts
+  - fixture/oracle/golden loading
+  - deterministic conformance comparison
+  - verification status reporting
+  non_objectives:
+  - production implementation
+  - hosted daemon implementation
+  - semantic runner implementation
+  - Rust semantic-core implementation
+  - PXM/MFVM/CVM/cluster implementation
+  object_model_refs:
+  - formal/executable-semantics/dafny/modules/types.dfy
+  state_machine_refs:
+  - formal/executable-semantics/dafny/modules/first_vertical_slice.dfy
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  - MFOS_ERR_POLICY_DENIED
+  audit_obligations:
+  - AUDIT_SECURITY_DECISION
+  positive_tests:
+  - TEST-MFOS-DAFNY-0001
+  negative_tests:
+  - NEG-MFOS-DAFNY-0001
+  fuzz_targets:
+  - semantic-fixture
+  - job-fixture
+  - spool-fixture
+  spec_gaps:
+  - Dafny toolchain is not pinned in this pack.
+  - Dafny verification is blocked where the toolchain is unavailable.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    rust_semantic_core: false
+    executable_spec: true
+    generated_production_code: false
+    dafny_executable_semantics: true
+    specification_only: false
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-37
+  title: Dafny Executable Semantics
+  purpose: Define Phase 1 canonical Dafny executable semantics and non-production conformance harness boundaries.
+  depends_on:
+  - PACK-05
+  - PACK-06
+  - PACK-07
+  - PACK-08
+  - PACK-09
+  - PACK-34
+  - PACK-35
+  inputs:
+  - docs/design/specs/31-executable-spec-test-harness.md
+  - docs/design/specs/32-conformance-fixture-format.md
+  - docs/design/specs/33-semantic-runner-contract.md
+  - docs/design/specs/34-oracle-definition-format.md
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
+  - tests/fixtures/
+  - tests/golden/
+  outputs:
+  - formal/executable-semantics/dafny/modules/
+  - tools/semantic-fixture-normalizer/
+  - tools/dafny-conformance-harness/
+  - reports/current/dafny-semantics-report.md
+  source_refs:
+  - EXTREF-DAFNY-REFERENCE-0001
+  - EXTREF-AWS-AUTOMATED-REASONING-0001
+  - EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
+  - EXTREF-NIST-SSDF-0001
+  - FBVBS-001
+  requirements:
+  - MFOS-REQ-DAFNY-*
+  - MFOS-REQ-SEMSPEC-*

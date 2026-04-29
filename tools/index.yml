@@ -1,0 +1,17 @@
+schema_version: 1
+artifact_index_kind: mfos_tools_inventory
+status: current
+current:
+  semantic_fixture_normalizer:
+    path: tools/semantic-fixture-normalizer/
+    status: current
+    purpose: Deterministically normalize Phase 0.9 fixture YAML for Dafny-facing artifact checks without business semantics.
+  dafny_conformance_harness:
+    path: tools/dafny-conformance-harness/
+    status: current
+    purpose: Non-production Phase 1 conformance harness for fixture/golden shape comparison and optional Dafny toolchain discovery.
+policy:
+  production_services_allowed: false
+  hosted_daemons_allowed: false
+  rust_semantic_core_allowed: false
+  semantic_runner_commands_allowed: false

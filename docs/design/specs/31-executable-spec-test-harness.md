@@ -23,7 +23,7 @@ Owner area: `docs/design/specs/31-executable-spec-test-harness.md`
 
 Audience: test architects, conformance authors, schema authors, release reviewers, implementation agents.
 
-This document defines the deterministic artifact contract for executable-spec tests. It does not implement a runner, semantic evaluator, fixture loader, CI job, or production test harness. Phase 1 executable-semantics authority is Dafny scaffold plus loader-only artifact validation under `docs/design/specs/43-dafny-executable-semantics-policy.md`; this contract does not authorize Rust semantic-core work, semantic-runner implementation, hosted daemons, or production generated code. MFOS is source-grounded and z/OS-inspired; these artifacts do not claim external product compatibility or external API compatibility.
+This document defines the deterministic artifact contract for executable-spec tests. It does not implement a production runner, service adapter, hosted daemon, or production test harness. Phase 1 executable-semantics authority is non-production Dafny source plus fixture/oracle/golden conformance checks under `docs/design/specs/43-dafny-executable-semantics-policy.md`; this contract does not authorize Rust semantic-core work, future semantic-runner command implementation, hosted daemons, or production generated code. MFOS is source-grounded and z/OS-inspired; these artifacts do not claim external product compatibility or external API compatibility.
 
 ## 1. Purpose
 

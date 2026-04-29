@@ -13,6 +13,8 @@ requirements:
 - MFOS-REQ-FORMAL-0006
 - MFOS-REQ-FORMAL-0007
 - MFOS-REQ-FORMAL-0108
+- MFOS-REQ-DAFNY-*
+- MFOS-REQ-SEMSPEC-*
 implementation_allowed: false
 notes:
 - This bridge lists canonical requirement IDs only. Do not treat it as a separate

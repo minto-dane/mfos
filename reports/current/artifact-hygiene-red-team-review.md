@@ -20,8 +20,8 @@ current artifacts and the current indexes point to the new paths.
 
 - Canonical roots no longer contain `phase-0-*` filenames.
 - `reports/` root contains only `README.md` and `index.yml`.
-- `reports/current/` no longer contains PR-specific or phase-specific report
-  filenames.
+- `reports/current/` no longer contains scattered PR-specific or phase-specific
+  report filenames outside the indexed current-report set.
 - `tests/catalog/` root contains current stable catalog names only.
 - `evidence/traceability/` root contains only README/index and categorized
   directories.

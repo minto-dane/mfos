@@ -19238,6 +19238,16 @@ entries:
   - MFOS-REQ-DAFNY-0008
   - MFOS-REQ-DAFNY-0009
   - MFOS-REQ-DAFNY-0010
+  - MFOS-REQ-SEMSPEC-0001
+  - MFOS-REQ-SEMSPEC-0002
+  - MFOS-REQ-SEMSPEC-0003
+  - MFOS-REQ-SEMSPEC-0004
+  - MFOS-REQ-SEMSPEC-0005
+  - MFOS-REQ-SEMSPEC-0006
+  - MFOS-REQ-SEMSPEC-0007
+  - MFOS-REQ-SEMSPEC-0008
+  - MFOS-REQ-SEMSPEC-0009
+  - MFOS-REQ-SEMSPEC-0010
   source_matrix_ids: &dafny_source_matrix_ids
   - EXTREF-DAFNY-REFERENCE-0001
   - EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
@@ -19248,10 +19258,10 @@ entries:
   target_artifacts:
   - formal/executable-semantics/dafny/
   preconditions:
-  - Phase 1 scope is loader-only artifact validation.
+  - Phase 1 scope is non-production Dafny executable semantics and conformance validation.
   steps:
-  - Review Dafny scaffold metadata, policy text, and validator output.
-  expected_result: Dafny scaffold is present and remains loader-only, with no semantic runner or production path.
+  - Review Dafny modules, metadata, policy text, and validator output.
+  expected_result: Dafny semantics artifacts are present and remain non-production, with no semantic runner command or production path.
   expected_absence:
   - no Rust semantic core
   - no semantic runner
