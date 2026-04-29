@@ -4,6 +4,9 @@ status: current
 date: '2026-04-28'
 branch: fix/pre-phase-1-total-readiness-iteration-3
 base: dev
+pull_request:
+  number: 13
+  url: https://github.com/minto-dane/mfos/pull/13
 inventory:
   directories_scanned: 714
   files_scanned: 3384
@@ -55,6 +58,6 @@ validation:
   py_compile_scripts: passed
   git_diff_check: passed
 github_checks:
-  validate_design_registries_and_lint_gates: pending_pr
-  codeql_analysis_python: pending_pr
-  codeql: pending_pr
+  validate_design_registries_and_lint_gates: tracked_in_pr_13
+  codeql_analysis_python: tracked_in_pr_13
+  codeql: tracked_in_pr_13
