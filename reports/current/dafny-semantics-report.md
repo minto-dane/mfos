@@ -2,7 +2,7 @@
 
 Status: current  
 Date: 2026-04-29  
-Scope: Phase 1 Verified Executable Semantics + Conformance Harness
+Scope: Phase 1 non-production Dafny executable-semantics artifacts and conformance-harness validation
 
 ## Summary
 
@@ -60,5 +60,7 @@ Forbidden:
 
 ## Verification Status
 
-Dafny CLI is not installed in the current local environment. Dafny verification
-is therefore `blocked_by_missing_toolchain`, not passed.
+Pinned Dafny 4.11.0 is installed through `scripts/install-dafny.sh`.
+`scripts/validate-dafny-semantics.sh --require-dafny` verified
+`formal/executable-semantics/dafny/modules/*.dfy` and completed with
+`26 verified, 0 errors`.

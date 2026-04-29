@@ -124,7 +124,17 @@ current:
 - path: reports/current/dafny-semantics-validation-report.md
   purpose: Phase 1 Dafny semantics local validation status.
 - path: reports/current/dafny-verification-report.md
-  purpose: Dafny verification status and missing-toolchain evidence boundary.
+  purpose: Dafny verification result and proof evidence boundary.
+- path: reports/current/dafny-toolchain-report.md
+  purpose: Pinned Dafny toolchain version, install method, and CI usage.
+- path: reports/current/dafny-module-hygiene-report.md
+  purpose: Dafny module naming and case-duplicate hygiene review.
+- path: reports/current/dafny-loader-nonsemantic-review.md
+  purpose: Python fixture loader and conformance harness nonsemantic boundary review.
+- path: reports/current/dafny-toolchain-red-team-review.md
+  purpose: Red-team review for Dafny toolchain and verification closure.
+- path: reports/current/dafny-toolchain-open-issues.md
+  purpose: Nonblocking open issues after Dafny toolchain verification closure.
 - path: reports/current/fixture-oracle-loader-report.md
   purpose: Fixture/oracle/golden loader and conformance-support harness boundary.
 - path: reports/current/model-consistency-report.md

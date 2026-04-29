@@ -34,8 +34,8 @@ module Audit {
   }
 
   predicate ValidHashChain(records: seq<AuditRecord>) {
-    forall i :: 0 <= i < |records| ==> AuditEvidence(records[i]) &&
-    forall i :: 0 < i < |records| ==> HashLinked(records[i - 1], records[i])
+    (forall i :: 0 <= i < |records| ==> AuditEvidence(records[i])) &&
+    (forall i :: 0 < i < |records| ==> HashLinked(records[i - 1], records[i]))
   }
 
   predicate DenyBeforeReturn(decision: SecurityDecision, record: AuditRecord) {

@@ -11,8 +11,6 @@ Major: none.
 
 Minor:
 
-- Dafny CLI is not installed locally, so verification is blocked and not
-  claimed.
 - Conformance comparison is structural until Dafny model output is produced by
   a verified toolchain path.
 
@@ -28,3 +26,5 @@ Minor:
 - BOB denied ALICE dataset uses `MFOS_ERR_POLICY_DENIED` and
   `DATASET_READ_NOT_PERMITTED`.
 - No PXM/MFVM/CVM/cluster implementation was created.
+- Pinned Dafny 4.11.0 verification was run with `--require-dafny` and completed
+  with `26 verified, 0 errors`.

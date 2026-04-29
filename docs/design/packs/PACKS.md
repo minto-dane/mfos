@@ -200,6 +200,10 @@ reviewed semantic artifacts plus deterministic conformance checks. The
 controlling policy is
 `docs/design/specs/43-dafny-executable-semantics-policy.md`.
 
+The Phase 1 Dafny verification toolchain is pinned by
+`scripts/install-dafny.sh` to Dafny 4.11.0 with bundled Z3 4.14.1. Current
+module verification is recorded in `reports/current/dafny-verification-report.md`.
+
 Allowed Phase 1 work:
 
 - Dafny executable-semantics source artifacts under
