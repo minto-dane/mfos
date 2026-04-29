@@ -1,0 +1,22 @@
+schema_version: 1
+artifact_index_kind: mfos_schema_scaffold
+status: current
+metadata:
+  path: schemas/mfos/.mfos-dir.yml
+  artifact_type: scaffold_metadata
+  status: current
+current:
+  schema_files:
+    path_glob: schemas/mfos/*.schema.yml
+    artifact_type: schema
+    status: current
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  rust_semantic_core: false
+  dafny_executable_semantics: false
+  semantic_runner: false
+  validation_only: true
+policy:
+  validation_only: true
+  generated_binaries_allowed: false

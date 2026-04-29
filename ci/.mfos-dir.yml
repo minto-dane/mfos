@@ -8,9 +8,13 @@ description: Planned CI mirror for local lint gates; active validators currently
 implementation_allowed:
   production: false
   hosted_daemon: false
+  rust_semantic_core: false
+  dafny_executable_semantics: false
   semantic_runner: false
   portable_semantic_core: false
   hosted_semantic_prototype: false
+  generated_production_code: false
+  validation_only: true
 phase_allowed_from: phase-0
 depends_on:
   - scripts

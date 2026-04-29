@@ -1,0 +1,25 @@
+schema_version: 1
+artifact_index_kind: mfos_current_report_scaffold
+status: current
+metadata:
+  path: reports/current/.mfos-dir.yml
+  artifact_type: scaffold_metadata
+  status: current
+current_authority:
+  report_inventory: reports/index.yml
+current:
+  report_files:
+    path_glob: reports/current/*.{md,yml}
+    artifact_type: report
+    status: current
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  rust_semantic_core: false
+  dafny_executable_semantics: false
+  semantic_runner: false
+  generated_production_code: false
+  validation_only: true
+policy:
+  validation_only: true
+  production_implementation_allowed: false

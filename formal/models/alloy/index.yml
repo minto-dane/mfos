@@ -1,0 +1,8 @@
+schema_version: 1
+artifact_index_kind: mfos_formal_model_scaffold
+status: planned
+canonical: false
+policy:
+  migration_required_before_canonical: true
+  implementation_allowed: false
+  production_claim_allowed: false

@@ -1,0 +1,24 @@
+schema_version: 1
+artifact_index_kind: mfos_requirements_by_domain_scaffold
+status: bridge
+metadata:
+  path: requirements/by-domain/.mfos-dir.yml
+  artifact_type: scaffold_metadata
+  status: bridge
+current_authority:
+  requirement_registry: docs/design/registries/requirements.yaml
+current:
+  by_domain_files:
+    path_glob: requirements/by-domain/*.yml
+    artifact_type: requirement_bridge
+    status: bridge
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  rust_semantic_core: false
+  dafny_executable_semantics: false
+  semantic_runner: false
+  validation_only: true
+policy:
+  canonical_requirement_registry: docs/design/registries/requirements.yaml
+  production_implementation_allowed: false

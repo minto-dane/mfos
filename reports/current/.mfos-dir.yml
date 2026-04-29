@@ -1,10 +1,10 @@
-directory_id: MFOS-DIR-SCHEMAS
-path: schemas
-role: canonical_registry
-maturity: M5_VALIDATED
+directory_id: MFOS-DIR-REPORTS-CURRENT
+path: reports/current
+role: validation
+maturity: M4_POPULATED
 status: current
-canonical: true
-description: Machine-readable schema definitions used by local validators.
+canonical: false
+description: Active reports, audits, and readiness metadata for the current remediation window.
 implementation_allowed:
   production: false
   hosted_daemon: false
@@ -17,15 +17,19 @@ implementation_allowed:
   validation_only: true
 phase_allowed_from: phase-0
 depends_on:
-  - docs/design/specs/28-machine-readable-registries.md
+  - reports/index.yml
 allowed_contents:
-  - JSON Schema files
-  - YAML schema files
-  - schema examples
+  - current reports
+  - report package indexes
+  - README files
+  - index files
 forbidden_contents:
   - production code
+  - hosted daemon code
+  - semantic runner implementation
   - generated binaries
 required_before_agent_assignment:
-  - validator coverage
-  - schema owner
+  - report ID
+  - review scope
+  - evidence refs
 review_status: draft

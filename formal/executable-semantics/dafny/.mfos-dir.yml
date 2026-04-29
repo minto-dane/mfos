@@ -1,0 +1,45 @@
+directory_id: MFOS-DIR-FORMAL-EXECUTABLE-SEMANTICS-DAFNY
+path: formal/executable-semantics/dafny
+role: planned
+maturity: M2_CLASSIFIED
+status: planned
+canonical: true
+description: Dafny executable-semantics scaffold for Phase 1 loader-only artifact validation.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  rust_semantic_core: false
+  dafny_executable_semantics: false
+  semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+  generated_production_code: false
+  validation_only: true
+phase_allowed_from: phase-1
+depends_on:
+  - docs/design/specs/24-formal-methods.md
+  - docs/design/specs/31-executable-spec-test-harness.md
+  - docs/design/specs/33-semantic-runner-contract.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
+allowed_contents:
+  - Dafny executable-semantics source artifacts
+  - Dafny artifact metadata
+  - loader-only validation documentation
+  - non-production test evidence references
+forbidden_contents:
+  - production code
+  - hosted daemon code
+  - semantic runner implementation
+  - Rust semantic-core implementation
+  - Portable Semantic Core implementation
+  - generated production code
+  - generated binaries
+  - production readiness claims
+required_before_agent_assignment:
+  - MFOS-REQ-DAFNY requirement ID
+  - loader-only scope statement
+  - evidence path
+  - proof status declaration
+review_status: draft
