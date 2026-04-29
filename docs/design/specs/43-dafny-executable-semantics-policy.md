@@ -5,7 +5,7 @@ canonical_language: en-US
 japanese_mirror: missing
 status: current
 owner: MFOS architecture
-last_reviewed: '2026-04-28'
+last_reviewed: '2026-04-29'
 source_refs:
 - EXTREF-DAFNY-REFERENCE-0001
 - EXTREF-AWS-AUTOMATED-REASONING-0001
@@ -155,7 +155,26 @@ formal/executable-semantics/dafny/
 
 This directory is reserved for Dafny executable-semantics source artifacts, metadata, and documentation. It is not a runtime source tree.
 
-## 11. Requirement Rules
+## 11. Toolchain Pin
+
+Phase 1 Dafny verification uses the pinned Dafny release below:
+
+```yaml
+dafny_version: 4.11.0
+dafny_version_output: 4.11.0+fcb2042d6d043a2634f0854338c08feeaaaf4ae2
+z3_version: Z3 version 4.14.1 - 64 bit
+install_script: scripts/install-dafny.sh
+install_asset: dafny-4.11.0-x64-ubuntu-22.04.zip
+install_sha256: a46a9ff7cdd720f7955854c78e95df13f4cfe6b80691b05f8654fe19e8267179
+verify_command: scripts/validate-dafny-semantics.sh --require-dafny
+module_glob: formal/executable-semantics/dafny/modules/*.dfy
+```
+
+CI must install this pinned toolchain before claiming Dafny verification
+success. If the toolchain is missing, validation may report artifact status but
+must not claim proof success.
+
+## 12. Requirement Rules
 
 | ID | Requirement | Verification |
 | --- | --- | --- |
@@ -180,11 +199,11 @@ This directory is reserved for Dafny executable-semantics source artifacts, meta
 | `MFOS-REQ-SEMSPEC-0009` | Fixture normalizer MUST NOT implement MFOS business semantics. | code review |
 | `MFOS-REQ-SEMSPEC-0010` | Dafny model verification status MUST be recorded as evidence. | evidence review |
 
-## 12. Gaps
+## 13. Gaps
 
 | Gap ID | Gap | Impact |
 | --- | --- | --- |
-| `DAFNY-GAP-0001` | Dafny toolchain source card is registered, but a pinned toolchain version and reviewed proof-output acceptance policy are not fixed. | Tool output cannot be accepted as reviewed proof evidence from this document alone. |
+| `DAFNY-GAP-0001` | Dafny verification currently covers the Phase 1 module set only. | New modules must be added to the same pinned verification gate before being claimed verified. |
 | `DAFNY-GAP-0002` | Dafny artifact metadata schema remains minimal. | Validation uses file/module policy and report evidence until a richer schema exists. |
 | `DAFNY-GAP-0003` | No semantic runner is authorized. | Dafny artifacts cannot be exposed through future runner commands or hosted behavior. |
 | `DAFNY-GAP-0004` | No generated-code production path is authorized. | Dafny translation targets remain test-only. |

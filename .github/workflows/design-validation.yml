@@ -12,7 +12,7 @@ on:
 jobs:
   validate-design:
     name: validate design registries and lint gates
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     permissions:
       contents: read
     steps:
@@ -27,6 +27,11 @@ jobs:
       - name: Install validator dependencies
         run: python -m pip install --upgrade pip pyyaml
 
+      - name: Install pinned Dafny
+        run: |
+          ./scripts/install-dafny.sh
+          echo "$PWD/.tools/dafny/4.11.0/dafny" >> "$GITHUB_PATH"
+
       - name: Run draft check-mode design validation
         run: ./scripts/validate-all.sh --check
 
@@ -37,7 +42,7 @@ jobs:
         run: ./scripts/validate-dafny-semantics-scaffold.sh
 
       - name: Run Dafny executable semantics validation
-        run: ./scripts/validate-dafny-semantics.sh
+        run: ./scripts/validate-dafny-semantics.sh --require-dafny
 
       - name: Run Phase 1 red-team validation
         run: python3 scripts/checks/check-phase1-red-team.py --mode draft

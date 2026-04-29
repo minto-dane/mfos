@@ -23,7 +23,7 @@ Current validation status:
 - Rust semantic-core absence check: pass.
 - Dafny generated-code production-path check: pass.
 - Fixture normalizer boundary check: pass.
-- Dafny verification: blocked by missing toolchain.
+- Dafny verification: pass with pinned Dafny 4.11.0.
 
 No production implementation, hosted daemon, Rust semantic-core, or future
 semantic-runner command implementation was added.
@@ -38,3 +38,7 @@ The Dafny validation wrapper has two proof-gate modes:
 
 No report may treat the default-mode toolchain block as a Dafny verification
 pass.
+
+For this closure pass, `scripts/install-dafny.sh` installed the pinned Dafny
+toolchain and `scripts/validate-dafny-semantics.sh --require-dafny` completed
+with `Dafny program verifier finished with 26 verified, 0 errors`.

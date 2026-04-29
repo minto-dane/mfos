@@ -69,6 +69,8 @@ module Authorization {
   }
 
   lemma INV_AUTH_SPEC_GAP_NOT_SUCCESS(binding: PolicyBinding, context: DecisionContext)
+    requires binding.subject.authenticated
+    requires binding.policy_version == context.policy_version
     requires binding.result == SPEC_GAP
     ensures !DecisionIsSuccess(EvaluateSecurityDecision(binding, context).result)
     ensures EvaluateSecurityDecision(binding, context).error_code == MFOS_ERR_SPEC_GAP
@@ -76,6 +78,8 @@ module Authorization {
   }
 
   lemma INV_AUTH_UNSUPPORTED_NOT_SUCCESS(binding: PolicyBinding, context: DecisionContext)
+    requires binding.subject.authenticated
+    requires binding.policy_version == context.policy_version
     requires binding.result == UNSUPPORTED
     ensures !DecisionIsSuccess(EvaluateSecurityDecision(binding, context).result)
     ensures EvaluateSecurityDecision(binding, context).error_code == MFOS_ERR_UNSUPPORTED

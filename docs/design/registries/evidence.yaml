@@ -10716,7 +10716,7 @@ entries:
 - evidence_id: EV-MFOS-DAFNY-0001
   title: Dafny Phase 1 executable-semantics validation evidence
   evidence_type: design_traceability_record
-  status: draft
+  status: collected
   requirement_ids:
   - MFOS-REQ-DAFNY-0001
   - MFOS-REQ-DAFNY-0002
@@ -10747,24 +10747,24 @@ entries:
   conformance_claim_ids: []
   release_ids: []
   artifact:
-    path: reports/current/dafny-semantics-validation-report.md
+    path: reports/current/dafny-verification-report.md
     media_type: text/markdown
     sha384: null
     size_bytes: null
   produced_by:
-    tool: design-validation
-    version: null
+    tool: scripts/validate-dafny-semantics.sh --require-dafny
+    version: Dafny 4.11.0+fcb2042d6d043a2634f0854338c08feeaaaf4ae2
     ci_job: validate design registries and lint gates
     operator: null
-  produced_at_utc: '2026-04-28T00:00:00Z'
+  produced_at_utc: '2026-04-29T00:00:00Z'
   retention:
     class: draft
     retain_until_utc: null
   verification:
-    verifier: null
-    verified_at_utc: null
-    verification_method: null
-    result: not_checked
+    verifier: Dafny 4.11.0
+    verified_at_utc: '2026-04-29T00:00:00Z'
+    verification_method: dafny verify formal/executable-semantics/dafny/modules/*.dfy
+    result: pass
   audit_linkage:
     audit_record_ids: []
     correlation_ids: []
