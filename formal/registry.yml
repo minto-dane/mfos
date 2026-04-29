@@ -270,8 +270,6 @@ proof_obligations:
   accepted_tools:
   - TLA+
   - Alloy
-  - Kani
-  - Verus
   acceptance_criteria:
   - linked model or harness exists
   - assumptions documented
@@ -279,6 +277,9 @@ proof_obligations:
   - counterexamples triaged
   proof_artifact: null
   proof_claimed: false
+  future_candidate_tools:
+  - Kani
+  - Verus
 - obligation_id: MFOS-PROOF-OBLIGATION-AUDIT-DENY-BEFORE-RETURN
   claim_id: MFOS-FORMAL-CLAIM-AUDIT-DENY-BEFORE-RETURN
   status: planned
@@ -289,8 +290,6 @@ proof_obligations:
   accepted_tools:
   - TLA+
   - Alloy
-  - Kani
-  - Verus
   acceptance_criteria:
   - linked model or harness exists
   - assumptions documented
@@ -298,6 +297,9 @@ proof_obligations:
   - counterexamples triaged
   proof_artifact: null
   proof_claimed: false
+  future_candidate_tools:
+  - Kani
+  - Verus
 - obligation_id: MFOS-PROOF-OBLIGATION-UPDATE-NO-ROLLBACK
   claim_id: MFOS-FORMAL-CLAIM-UPDATE-NO-ROLLBACK
   status: planned
@@ -308,8 +310,6 @@ proof_obligations:
   accepted_tools:
   - TLA+
   - Alloy
-  - Kani
-  - Verus
   acceptance_criteria:
   - linked model or harness exists
   - assumptions documented
@@ -317,6 +317,9 @@ proof_obligations:
   - counterexamples triaged
   proof_artifact: null
   proof_claimed: false
+  future_candidate_tools:
+  - Kani
+  - Verus
 - obligation_id: MFOS-PROOF-OBLIGATION-PARTITION-MEMORY-OWNERSHIP
   claim_id: MFOS-FORMAL-CLAIM-PARTITION-MEMORY-OWNERSHIP
   status: planned
@@ -327,8 +330,6 @@ proof_obligations:
   accepted_tools:
   - TLA+
   - Alloy
-  - Kani
-  - Verus
   acceptance_criteria:
   - linked model or harness exists
   - assumptions documented
@@ -336,6 +337,9 @@ proof_obligations:
   - counterexamples triaged
   proof_artifact: null
   proof_claimed: false
+  future_candidate_tools:
+  - Kani
+  - Verus
 - obligation_id: MFOS-PROOF-OBLIGATION-PXM-CAPABILITY-REQUIRED-FOR-RESOURCE-OPERATION
   claim_id: MFOS-FORMAL-CLAIM-PXM-CAPABILITY-REQUIRED-FOR-RESOURCE-OPERATION
   status: planned
@@ -346,8 +350,6 @@ proof_obligations:
   accepted_tools:
   - TLA+
   - Alloy
-  - Kani
-  - Verus
   acceptance_criteria:
   - linked model or harness exists
   - assumptions documented
@@ -355,6 +357,9 @@ proof_obligations:
   - counterexamples triaged
   proof_artifact: null
   proof_claimed: false
+  future_candidate_tools:
+  - Kani
+  - Verus
 - obligation_id: MFOS-PROOF-OBLIGATION-MFVM-CANNOT-BYPASS-PXM
   claim_id: MFOS-FORMAL-CLAIM-MFVM-CANNOT-BYPASS-PXM
   status: planned
@@ -365,8 +370,6 @@ proof_obligations:
   accepted_tools:
   - TLA+
   - Alloy
-  - Kani
-  - Verus
   acceptance_criteria:
   - linked model or harness exists
   - assumptions documented
@@ -374,6 +377,9 @@ proof_obligations:
   - counterexamples triaged
   proof_artifact: null
   proof_claimed: false
+  future_candidate_tools:
+  - Kani
+  - Verus
 - obligation_id: MFOS-PROOF-OBLIGATION-CVM-LAUNCH-REQUIRES-MEASUREMENT
   claim_id: MFOS-FORMAL-CLAIM-CVM-LAUNCH-REQUIRES-MEASUREMENT
   status: planned
@@ -384,8 +390,6 @@ proof_obligations:
   accepted_tools:
   - TLA+
   - Alloy
-  - Kani
-  - Verus
   acceptance_criteria:
   - linked model or harness exists
   - assumptions documented
@@ -393,6 +397,9 @@ proof_obligations:
   - counterexamples triaged
   proof_artifact: null
   proof_claimed: false
+  future_candidate_tools:
+  - Kani
+  - Verus
 - obligation_id: MFOS-PROOF-OBLIGATION-CVM-SECRET-RELEASE-REQUIRES-ATTESTATION
   claim_id: MFOS-FORMAL-CLAIM-CVM-SECRET-RELEASE-REQUIRES-ATTESTATION
   status: planned
@@ -403,8 +410,6 @@ proof_obligations:
   accepted_tools:
   - TLA+
   - Alloy
-  - Kani
-  - Verus
   acceptance_criteria:
   - linked model or harness exists
   - assumptions documented
@@ -412,6 +417,9 @@ proof_obligations:
   - counterexamples triaged
   proof_artifact: null
   proof_claimed: false
+  future_candidate_tools:
+  - Kani
+  - Verus
 - obligation_id: MFOS-PROOF-OBLIGATION-PRIVATE-SHARED-MEMORY-TRANSITION-VALIDITY
   claim_id: MFOS-FORMAL-CLAIM-PRIVATE-SHARED-MEMORY-TRANSITION-VALIDITY
   status: planned
@@ -422,8 +430,6 @@ proof_obligations:
   accepted_tools:
   - TLA+
   - Alloy
-  - Kani
-  - Verus
   acceptance_criteria:
   - linked model or harness exists
   - assumptions documented
@@ -431,6 +437,9 @@ proof_obligations:
   - counterexamples triaged
   proof_artifact: null
   proof_claimed: false
+  future_candidate_tools:
+  - Kani
+  - Verus
 - obligation_id: MFOS-PROOF-OBLIGATION-CLUSTER-POLICY-DISTRIBUTION-INTEGRITY
   claim_id: MFOS-FORMAL-CLAIM-CLUSTER-POLICY-DISTRIBUTION-INTEGRITY
   status: planned
@@ -441,8 +450,6 @@ proof_obligations:
   accepted_tools:
   - TLA+
   - Alloy
-  - Kani
-  - Verus
   acceptance_criteria:
   - linked model or harness exists
   - assumptions documented
@@ -450,6 +457,9 @@ proof_obligations:
   - counterexamples triaged
   proof_artifact: null
   proof_claimed: false
+  future_candidate_tools:
+  - Kani
+  - Verus
 - obligation_id: MFOS-PROOF-OBLIGATION-CLUSTER-ATTESTATION-COLLECTION-INTEGRITY
   claim_id: MFOS-FORMAL-CLAIM-CLUSTER-ATTESTATION-COLLECTION-INTEGRITY
   status: planned
@@ -460,8 +470,6 @@ proof_obligations:
   accepted_tools:
   - TLA+
   - Alloy
-  - Kani
-  - Verus
   acceptance_criteria:
   - linked model or harness exists
   - assumptions documented
@@ -469,6 +477,9 @@ proof_obligations:
   - counterexamples triaged
   proof_artifact: null
   proof_claimed: false
+  future_candidate_tools:
+  - Kani
+  - Verus
 model_registry:
 - model_id: MFOS-MODEL-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW
   path: formal/tla/authorization

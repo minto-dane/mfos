@@ -165,6 +165,9 @@ def _validate_split_registries(findings: list[Finding]) -> None:
         for tool_ref in _strings(obligation.get("accepted_tool_refs")):
             if tool_ref not in tool_ids:
                 findings.append(Finding("ERROR", PROOF_OBLIGATIONS, f"{oid}: unknown tool ref {tool_ref}"))
+        for tool_ref in _strings(obligation.get("future_candidate_tool_refs")):
+            if tool_ref not in tool_ids:
+                findings.append(Finding("ERROR", PROOF_OBLIGATIONS, f"{oid}: unknown future candidate tool ref {tool_ref}"))
 
     for model in models:
         if not isinstance(model, dict):

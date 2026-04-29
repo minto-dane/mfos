@@ -17,7 +17,8 @@ reference_purpose:
 - non-compatibility boundary definition
 - independent MFOS design traceability
 review_notes:
-- 'Source-card verification 2026-04-28: official Rust Reference URL opened; no external documentation text copied.'
+- 'Source-card verification 2026-04-28: official Rust Reference URL opened; no external
+  documentation text copied.'
 review_topics:
 - Unsafe Rust boundary policy
 - unsafe block and unsafe item review
@@ -31,15 +32,19 @@ mfos_mapping:
   - docs/design/specs/40-automated-reasoning-program.md
   mfos_requirements: &id001
   - MFOS-REQ-LANG-0102
-  - MFOS-REQ-FORMAL-0102
+  - MFOS-REQ-ASSURANCE-0004
   mapping_notes:
-  - Phase 0.10 public-safe reference card intentionally excludes external documentation text, tables, layouts, command syntax, and interface definitions.
+  - Phase 0.10 public-safe reference card intentionally excludes external documentation
+    text, tables, layouts, command syntax, and interface definitions.
 mfos_divergence:
-- MFOS treats unsafe code as a reviewed boundary with MFOS-owned contracts, tests, and evidence; the Rust reference is not copied into MFOS policy.
+- MFOS treats unsafe code as a reviewed boundary with MFOS-owned contracts, tests,
+  and evidence; the Rust reference is not copied into MFOS policy.
 - MFOS-owned identifiers and APIs remain independently specified.
 prohibited_inference:
-- Do not claim that Rust language selection alone proves MFOS memory safety or system integrity.
-- Do not reproduce external record layouts, API layouts, command syntax, macro signatures, tables, diagrams, or documentation text.
+- Do not claim that Rust language selection alone proves MFOS memory safety or system
+  integrity.
+- Do not reproduce external record layouts, API layouts, command syntax, macro signatures,
+  tables, diagrams, or documentation text.
 - Do not treat this card as a substitute for external documentation.
 legal_controls:
   public_safe: true

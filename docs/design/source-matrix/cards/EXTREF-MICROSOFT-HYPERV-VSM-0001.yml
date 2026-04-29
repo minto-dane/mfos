@@ -31,15 +31,18 @@ mfos_mapping:
   - docs/design/specs/40-automated-reasoning-program.md
   mfos_requirements: &id001
   - MFOS-REQ-CVM-0101
-  - MFOS-REQ-FORMAL-0106
+  - MFOS-REQ-FORMAL-0006
   mapping_notes:
-  - Phase 0.10 public-safe reference card intentionally excludes external documentation text, tables, layouts, command syntax, and interface definitions.
+  - Phase 0.10 public-safe reference card intentionally excludes external documentation
+    text, tables, layouts, command syntax, and interface definitions.
 mfos_divergence:
 - MFOS does not implement Windows VSM or VBS.
 - MFOS-owned identifiers and APIs remain independently specified.
 prohibited_inference:
-- Do not claim compatibility with the referenced external product, interface, API, feature profile, or service.
-- Do not reproduce external record layouts, API layouts, command syntax, macro signatures, tables, diagrams, or documentation text.
+- Do not claim compatibility with the referenced external product, interface, API,
+  feature profile, or service.
+- Do not reproduce external record layouts, API layouts, command syntax, macro signatures,
+  tables, diagrams, or documentation text.
 - Do not treat this card as a substitute for external documentation.
 legal_controls:
   public_safe: true

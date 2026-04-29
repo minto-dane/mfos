@@ -27,9 +27,9 @@ mfos_mapping:
   - wlmd
   - jobd
   mfos_specs:
-  - docs/design/specs/11-workload-management.md
+  - docs/design/specs/11-workload-policy.md
   mfos_requirements:
-  - MFOS-REQ-WLM-0001
+  - MFOS-REQ-WPOL-0001
 mfos_divergence:
 - MFOS behavior is independently specified in MFOS-owned specs.
 - This source card does not import external interfaces, record layouts, command syntax,

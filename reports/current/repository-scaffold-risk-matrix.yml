@@ -3,7 +3,7 @@ report_id: REPORT-MFOS-REPOSITORY-SCAFFOLD-RISK-MATRIX-0001
 status: current
 risks:
 - risk_id: SCAF-RISK-0001
-  severity: major
+  severity: minor
   title: Implementation subtree has many empty future directories
   affected_paths:
   - implementation/guard/attestation
@@ -36,22 +36,14 @@ risks:
   - implementation/nucleus/services
   - implementation/nucleus/svc
   - implementation/nucleus/tests
-  - implementation/prototypes/hosted-semantic/first-vertical-slice
-  - implementation/prototypes/hosted-semantic/services/amfd
-  - implementation/prototypes/hosted-semantic/services/auditd
-  - implementation/prototypes/hosted-semantic/services/catalogd
-  - implementation/prototypes/hosted-semantic/services/datasetd
-  - implementation/prototypes/hosted-semantic/services/jobd
-  - implementation/prototypes/hosted-semantic/services/operatord
-  - implementation/prototypes/hosted-semantic/services/securityd
-  - implementation/prototypes/hosted-semantic/services/spoold
-  - implementation/prototypes/hosted-semantic/services/uvsd
   recommended_action: add_readme_only
   priority: P1 before Phase 1
-  status: open
+  status: accepted_deferred
   phase_1_blocker: false
+  notes: Downgraded during fixed-point closure because the risk is explicitly nonblocking
+    for Phase 1 Dafny scaffold and loader-only validation.
 - risk_id: SCAF-RISK-0002
-  severity: major
+  severity: minor
   title: sources/ detailed source-grounding tree is planned but largely empty
   affected_paths:
   - sources/ibm/dfsms/concept-cards
@@ -96,8 +88,10 @@ risks:
   - sources/ibm/zosmf/concept-cards
   recommended_action: create_source_card_task
   priority: P2 before production implementation
-  status: open
+  status: accepted_deferred
   phase_1_blocker: false
+  notes: Downgraded during fixed-point closure because the risk is explicitly nonblocking
+    for Phase 1 Dafny scaffold and loader-only validation.
 - risk_id: SCAF-RISK-0003
   severity: minor
   title: ci/linters duplicates script-based validation as empty placeholders

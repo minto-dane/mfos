@@ -11,9 +11,9 @@ mfos_terms:
 - jobd
 mfos_mapping:
   mfos_specs:
-  - docs/design/specs/11-workload-management.md
+  - docs/design/specs/11-workload-policy.md
   mfos_requirements:
-  - MFOS-REQ-WLM-0001
+  - MFOS-REQ-WPOL-0001
 prohibited_inference:
 - Do not treat this concept card as external documentation.
 - Do not infer external compatibility from MFOS concept names.

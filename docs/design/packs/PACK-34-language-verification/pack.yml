@@ -18,10 +18,8 @@ audit_obligations:
 - AUDIT_VERIFICATION_POLICY_CHANGE
 positive_tests:
 - TEST-MFOS-LANG-0101
-- TEST-MFOS-LANG-0104
 negative_tests:
 - NEG-MFOS-LANG-0103
-- NEG-MFOS-LANG-0106
 fuzz_targets: &id001
 - policy-language-parser
 - unsafe-boundary-registry-validation

@@ -2,7 +2,7 @@ schema_version: 1
 artifact_type: pre_phase1_total_readiness_gate
 status: current
 date: '2026-04-28'
-branch: fix/pre-phase-1-total-readiness-second-pass
+branch: fix/pre-phase1-fixedpoint-closure
 base_dependency:
   pr: 10
   branch: fix/phase-0.10-pxm-mfvm-expansion
@@ -14,19 +14,20 @@ previous_readiness_dependency:
   base: dev
   status: merged
 second_pass_package: reports/current/pre-phase1/
+fixedpoint_package: reports/current/fixedpoint/
 allowed_scope:
   dafny_executable_semantics_scaffold: true
   loader_only_artifact_validation: true
   traceability_repair: true
 forbidden_scope:
-  rust_semantic_core: false
-  portable_semantic_core: false
-  semantic_runner: false
-  hosted_daemon: false
-  hosted_semantic_prototype: false
-  production_code: false
-  generated_production_code: false
-  pxm_mfvm_cvm_cluster_implementation: false
+  rust_semantic_core: true
+  portable_semantic_core: true
+  semantic_runner: true
+  hosted_daemon: true
+  hosted_semantic_prototype: true
+  production_code: true
+  generated_production_code: true
+  pxm_mfvm_cvm_cluster_implementation: true
 readiness:
   critical_findings_remaining: false
   major_findings_remaining: false

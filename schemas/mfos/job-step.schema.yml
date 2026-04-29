@@ -4,6 +4,7 @@ title: "MFOS Phase 0.8 JobStep"
 description: "Design schema for a Phase 0.8 MFOS JobStep object. This is not production code."
 type: object
 additionalProperties: false
+x_implementation_allowed: false
 x_mfos_spec_id: "MFOS-SPEC-09-JOB-SPOOL"
 x_mfos_source_refs:
   - "EXTREF-IBM-ZOS-JES-INTRODUCTION-0001"

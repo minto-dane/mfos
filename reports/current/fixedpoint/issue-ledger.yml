@@ -1,0 +1,372 @@
+schema_version: 1
+artifact_type: fixedpoint_issue_ledger
+status: current
+date: '2026-04-28'
+branch: fix/pre-phase1-fixedpoint-closure
+summary:
+  critical_total: 0
+  major_total_before_fixes: 12
+  major_remaining: 0
+  critical_remaining: 0
+  phase_1_blockers_remaining: 0
+  minor_or_informational_remaining: 2
+  critical_total_before_fixes: 1
+issues:
+- issue_id: FP-0001
+  title: Source grounding audit counted 37 cards after the ledger grew to 65
+  severity: Major
+  category: source_grounding
+  paths:
+  - reports/current/source-grounding/source-card-grounding-audit.yml
+  - reports/current/source-grounding/source-card-grounding-audit.md
+  root_cause: Current report was not regenerated after Phase 0.10 Source Card expansion.
+  risk: Agents could underestimate source-grounding coverage and maturity.
+  detected_by:
+  - Batch A Source Grounding Agent
+  - fixedpoint source-card count scan
+  fix_strategy: Regenerate the current Source Card grounding audit over all canonical
+    cards.
+  fix_applied: Updated Source Card grounding audit to 65 cards and classified SG6/SG7
+    absence as conditional semantic-evaluator blocker, not Phase 1 loader blocker.
+  validator_added_or_updated: Existing source-card and source-grounding validators
+    cover public safety; fixedpoint issue ledger records maturity gap.
+  status: fixed
+  phase_1_blocker: false
+  owner_agent: Source Grounding Agent
+  closed_by_commit: pending
+  notes: Semantic evaluator remains conditional.
+- issue_id: FP-0002
+  title: Current scaffold inventories referenced removed hosted semantic prototype
+    paths
+  severity: Major
+  category: reports
+  paths:
+  - reports/current/empty-directory-inventory.yml
+  - reports/current/directory-maturity-matrix.yml
+  - reports/current/repository-scaffold-risk-matrix.yml
+  - reports/current/repository-scaffold-next-actions.yml
+  root_cause: Current scaffold reports were not regenerated after hosted prototype
+    paths were removed.
+  risk: Agents could target removed hosted prototype paths.
+  detected_by:
+  - Batch A Structure and Lifecycle Agent
+  - fixedpoint hosted path scan
+  fix_strategy: Remove missing paths and downgrade nonblocking planned scaffold risks.
+  fix_applied: Filtered missing directories from inventories and removed stale hosted-semantic
+    next-action references.
+  validator_added_or_updated: Artifact index/orphan checks remain passing; fixedpoint
+    graph now records current paths.
+  status: fixed
+  phase_1_blocker: false
+  owner_agent: Structure and Lifecycle Agent
+  closed_by_commit: pending
+  notes: ''
+- issue_id: FP-0003
+  title: Canonical test registry referenced a nonexistent fake-success fixture path
+  severity: Major
+  category: tests
+  paths:
+  - docs/design/registries/tests.yaml
+  root_cause: A lint-plan test used an executable-looking fixture path without storing
+    the file.
+  risk: Reference graph and agents could search for or create a fake implementation
+    fixture.
+  detected_by:
+  - Batch A Structure and Lifecycle Agent
+  fix_strategy: Represent the test as lint-plan only with no executable fixture path.
+  fix_applied: Cleared fixture list and added fixture_policy explaining no executable
+    fake-success fixture is stored.
+  validator_added_or_updated: Registry-link validation and fixedpoint graph cover
+    path references.
+  status: fixed
+  phase_1_blocker: false
+  owner_agent: Structure and Lifecycle Agent
+  closed_by_commit: pending
+  notes: ''
+- issue_id: FP-0004
+  title: No-implementation validator did not forbid Python or shell implementation
+    files in scaffold roots
+  severity: Major
+  category: validation
+  paths:
+  - scripts/phases/phase-0-9/check-no-implementation.py
+  root_cause: Forbidden suffix set omitted .py and .sh even though these can implement
+    semantic runners or daemons.
+  risk: A Python/shell semantic runner or hosted daemon could appear under implementation
+    scaffolds without this gate catching it.
+  detected_by:
+  - Batch A Scripts / CI / Workflows Agent
+  fix_strategy: Extend forbidden implementation suffixes.
+  fix_applied: Added .py and .sh to forbidden suffixes for Phase 0.9 no-implementation
+    scan.
+  validator_added_or_updated: Updated scripts/phases/phase-0-9/check-no-implementation.py.
+  status: fixed
+  phase_1_blocker: false
+  owner_agent: Scripts / CI / Workflows Agent
+  closed_by_commit: pending
+  notes: No existing implementation source files were present.
+- issue_id: FP-0005
+  title: Design README reading order omitted Phase 0.9/0.10/Phase 1 specs
+  severity: Major
+  category: docs
+  paths:
+  - docs/design/README.md
+  root_cause: Reading order stopped at policy lint after split specs expanded.
+  risk: Agents could miss Dafny, fixture/oracle/fuzz, PXM/MFVM/CVM, and formal assurance
+    gates.
+  detected_by:
+  - Batch A Docs / Specs / Requirements Agent
+  fix_strategy: Synchronize reading order with current split spec set.
+  fix_applied: Added specs 30-first-vertical-slice through 43-Dafny policy to the
+    reading order.
+  validator_added_or_updated: Spec front matter and fixedpoint graph cover these paths.
+  status: fixed
+  phase_1_blocker: false
+  owner_agent: Docs / Specs / Requirements Agent
+  closed_by_commit: pending
+  notes: ''
+- issue_id: FP-0006
+  title: Schema artifact validator produced draft warnings for current MFOS schemas
+  severity: Major
+  category: schemas
+  paths:
+  - scripts/validators/validate-schema-files.py
+  - schemas/mfos/dd.schema.yml
+  - schemas/mfos/job.schema.yml
+  - schemas/mfos/job-step.schema.yml
+  - schemas/mfos/spool-entry.schema.yml
+  root_cause: Validator did not recognize existing guard conventions and several schemas
+    lacked explicit x_implementation_allowed metadata.
+  risk: Schema normalization gaps remained visible but nonblocking; release-mode schema
+    validation could be misread as Phase 1 blocker.
+  detected_by:
+  - Batch A Docs / Specs / Requirements Agent
+  - validate-schema-files.py
+  fix_strategy: Teach validator to recognize design-only guard fields and add explicit
+    implementation guard metadata where absent.
+  fix_applied: Updated validator and four schemas; draft schema validation now has
+    no warnings.
+  validator_added_or_updated: Updated scripts/validators/validate-schema-files.py.
+  status: fixed
+  phase_1_blocker: false
+  owner_agent: Docs / Specs / Requirements Agent
+  closed_by_commit: pending
+  notes: ''
+- issue_id: FP-0007
+  title: CI and root README local-check guidance was stale
+  severity: Minor
+  category: ci
+  paths:
+  - ci/README.md
+  - README.md
+  root_cause: Documentation predated aggregate validation gates.
+  risk: Humans or agents could run partial checks instead of validate-all.
+  detected_by:
+  - Batch A Scripts / CI / Workflows Agent
+  fix_strategy: Document current aggregate and focused validation gates.
+  fix_applied: Updated README and ci/README guidance.
+  validator_added_or_updated: Existing CI invokes validate-all and focused gates.
+  status: fixed
+  phase_1_blocker: false
+  owner_agent: Scripts / CI / Workflows Agent
+  closed_by_commit: pending
+  notes: ''
+- issue_id: FP-0008
+  title: Expected evidence IDs in Phase 0.9 artifacts are planned and not registry-backed
+    evidence artifacts
+  severity: Minor
+  category: evidence
+  paths:
+  - tests/catalog
+  - tests/fixtures
+  - tests/golden
+  - evidence/traceability/generated/phase-0-9/gap-report.yml
+  root_cause: Phase 0.9 executable-spec artifacts declare expected future evidence
+    IDs before actual evidence artifacts exist.
+  risk: Could be misread as missing verified evidence for Phase 1 loader-only scope.
+  detected_by:
+  - Batch A Tests / Evidence / Fuzz Agent
+  fix_strategy: Keep as explicit generated missing_evidence gap and do not fabricate
+    evidence artifacts.
+  fix_applied: Generated Phase 0.9 gap report records 74 missing_evidence entries;
+    no fake evidence was created.
+  validator_added_or_updated: Phase 0.9 traceability generator records missing evidence
+    gaps.
+  status: accepted_deferred
+  phase_1_blocker: false
+  owner_agent: Tests / Evidence / Fuzz Agent
+  closed_by_commit: pending
+  notes: Blocks semantic evaluator/production claims, not loader-only validation.
+- issue_id: FP-0009
+  title: Source Cards remain draft and no card reaches SG6/SG7
+  severity: Minor
+  category: source_grounding
+  paths:
+  - docs/design/source-matrix/cards
+  - reports/current/source-grounding/source-card-grounding-audit.yml
+  root_cause: Public-safe cards have metadata and links but targeted source review
+    has not promoted cards to reviewed.
+  risk: Unqualified semantic freeze or production claim would overclaim.
+  detected_by:
+  - Batch A Source Grounding Agent
+  fix_strategy: Keep semantic freeze conditional and block semantic evaluator/production
+    gates.
+  fix_applied: Updated source-grounding audit and fixedpoint reports to state loader-only
+    scope remains allowed while semantic evaluator remains conditional.
+  validator_added_or_updated: Source-grounding validator and fixedpoint issue ledger
+    enforce statement-level status.
+  status: accepted_deferred
+  phase_1_blocker: false
+  owner_agent: Source Grounding Agent
+  closed_by_commit: pending
+  notes: Not a Phase 1 Dafny scaffold blocker.
+- issue_id: FP-0010
+  title: Forbidden scope booleans were inverted in current readiness YAML
+  severity: Critical
+  category: phase_gate
+  paths:
+  - reports/current/pre-phase1-readiness-audit.yml
+  - reports/phases/phase-1/pre-phase-1-total-readiness.yml
+  root_cause: YAML used false values under a forbidden_scope mapping, which could
+    be read as not forbidden.
+  risk: An agent could infer Rust semantic-core, semantic runner, hosted daemon, or
+    production code were not forbidden.
+  detected_by:
+  - Batch B Red Team Discovery Agent
+  fix_strategy: Represent forbidden-scope membership with true values and keep allowed
+    scope in a separate mapping.
+  fix_applied: Set forbidden_scope values to true for current readiness gate reports.
+  validator_added_or_updated: Dafny scaffold and no-implementation validators already
+    enforce the forbidden implementation classes; fixedpoint red-team records the
+    representation fix.
+  status: fixed
+  phase_1_blocker: false
+  owner_agent: Red Team Discovery Agent
+  closed_by_commit: pending
+  notes: ''
+- issue_id: FP-0011
+  title: Pack index routed design-only packs to implementation output paths
+  severity: Major
+  category: packs
+  paths:
+  - packs/pack-index.yml
+  root_cause: Legacy pack outputs for nucleus, Guard, and gateway packs pointed at
+    future implementation directories.
+  risk: Agents could treat implementation scaffolds as current pack outputs or Phase
+    1-ready targets.
+  detected_by:
+  - Batch B Packs / Prompts / AI Contracts Agent
+  fix_strategy: Route design-only pack outputs to design specs and pack audit reports,
+    and add explicit implementation-denial flags.
+  fix_applied: Updated PACK-13, PACK-15, and PACK-16 outputs and normalized implementation_allowed
+    flags across pack-index entries.
+  validator_added_or_updated: validate-packs.py confirms pack structure; component
+    scaffold/no-implementation validators cover implementation denial.
+  status: fixed
+  phase_1_blocker: false
+  owner_agent: Packs / Prompts / AI Contracts Agent
+  closed_by_commit: pending
+  notes: ''
+- issue_id: FP-0012
+  title: PACK-34 and PACK-35 referenced test IDs absent from current catalogs
+  severity: Major
+  category: tests
+  paths:
+  - docs/design/packs/PACK-34-language-verification/pack.yml
+  - docs/design/packs/PACK-35-automated-reasoning/pack.yml
+  root_cause: Pack contracts referenced planned 0104/0106/0105 IDs that are not in
+    the current catalog files.
+  risk: Reference graph could report broken pack-to-test links.
+  detected_by:
+  - Batch B Reference Graph / Traceability Agent
+  fix_strategy: Limit pack contract test refs to current cataloged loader-only entries.
+  fix_applied: PACK-34 now references TEST-MFOS-LANG-0101 and NEG-MFOS-LANG-0103;
+    PACK-35 references TEST-MFOS-FORMAL-0101 and NEG-MFOS-FORMAL-0108.
+  validator_added_or_updated: Fixedpoint reference graph records current test refs;
+    pack validation remains passing.
+  status: fixed
+  phase_1_blocker: false
+  owner_agent: Reference Graph / Traceability Agent
+  closed_by_commit: pending
+  notes: ''
+- issue_id: FP-0013
+  title: Formal proof obligations mixed later Rust tools into accepted current tool
+    refs
+  severity: Major
+  category: formal
+  paths:
+  - formal/proof-obligations.yml
+  - formal/registry.yml
+  - schemas/mfos/proof-obligation.schema.yml
+  - scripts/validators/validate-proof-obligations.py
+  - formal/README.md
+  root_cause: Kani and Verus were listed as accepted tools for current planned obligations
+    while policy treats them as later selected Rust proof tools.
+  risk: Could overclaim Phase 1 proof readiness or confuse Dafny/TLA+/Alloy boundaries.
+  detected_by:
+  - Batch B Formal / Dafny / Automated Reasoning Agent
+  fix_strategy: Move Kani/Verus to future-candidate fields and update schema/validator
+    to check those refs.
+  fix_applied: Split accepted current tools from future candidates and documented
+    aggregate vs split formal registries.
+  validator_added_or_updated: Updated proof-obligation schema and validator for future_candidate_tool_refs.
+  status: fixed
+  phase_1_blocker: false
+  owner_agent: Formal / Dafny / Automated Reasoning Agent
+  closed_by_commit: pending
+  notes: No proof is claimed.
+- issue_id: FP-0014
+  title: Source cards referenced non-registered requirement IDs after namespace cleanup
+  severity: Major
+  category: source_grounding
+  paths:
+  - docs/design/source-matrix/cards/EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001.yml
+  - docs/design/source-matrix/cards/EXTREF-KANI-RUST-VERIFIER-0001.yml
+  - docs/design/source-matrix/cards/EXTREF-VERUS-RUST-VERIFICATION-0001.yml
+  - docs/design/source-matrix/cards/EXTREF-AWS-AUTOMATED-REASONING-0001.yml
+  - docs/design/source-matrix/cards/EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001.yml
+  - docs/design/source-matrix/cards/EXTREF-MICROSOFT-HYPERV-VSM-0001.yml
+  - docs/design/source-matrix/cards/EXTREF-RUST-UNSAFE-REFERENCE-0001.yml
+  root_cause: Some source cards retained older WLM/FORMAL numbering after registry
+    namespaces were normalized.
+  risk: Source-to-requirement traceability could contain high gaps.
+  detected_by:
+  - Batch B Reference Graph / Traceability Agent
+  fix_strategy: Replace stale refs with registered MFOS-REQ-* IDs without inventing
+    semantics.
+  fix_applied: Updated source-card mfos_requirements and requirement_refs to registered
+    WPOL, LANG, FORMAL, ASSURANCE, CVM, and OPS IDs.
+  validator_added_or_updated: Source-card, source-grounding, and traceability validation
+    now pass with zero warnings.
+  status: fixed
+  phase_1_blocker: false
+  owner_agent: Source Grounding Remediation Agent
+  closed_by_commit: pending
+  notes: ''
+- issue_id: FP-0015
+  title: Implementation leaf README files did not all restate Phase 1 prohibition
+    boundaries
+  severity: Major
+  category: implementation_scaffold
+  paths:
+  - implementation/guard/README.md
+  - implementation/interfaces/README.md
+  - implementation/nucleus/README.md
+  - implementation/pxm/README.md
+  - implementation/runtime/README.md
+  root_cause: Top-level implementation guardrails were strong, but several leaf README
+    files were terse.
+  risk: A focused agent reading only a leaf scaffold could infer implementation readiness.
+  detected_by:
+  - Batch B Implementation Scaffold Agent
+  fix_strategy: Restate Phase 1 Dafny loader-only boundary and forbidden implementation
+    classes in high-risk leaf directories.
+  fix_applied: Added explicit Phase 1 prohibition text to Guard, interfaces, nucleus,
+    PXM, and runtime README files.
+  validator_added_or_updated: Component scaffold and no-implementation validators
+    remain passing.
+  status: fixed
+  phase_1_blocker: false
+  owner_agent: Implementation Scaffold Agent
+  closed_by_commit: pending
+  notes: ''

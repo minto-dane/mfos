@@ -1,119 +1,1138 @@
 schema_version: 1
-audit_id: MFOS-AUDIT-SOURCE-GROUNDING-CARDS-0001
+artifact_type: source_card_grounding_audit
 status: current
-audit_date: "2026-04-27"
-scope:
-  card_directory: docs/design/source-matrix/cards
-  cards_audited: 37
-  canonical_source_index: docs/design/source-matrix/source-matrix.yml
-grounding_model:
-  SG0_IDENTIFIED: URL, title, or vendor only.
-  SG1_PUBLIC_SAFE_CARD: legal-safe card metadata exists.
-  SG2_REVIEW_TOPICS: review topics, divergence, and prohibited inference exist.
-  SG3_REQUIREMENT_LINKED: MFOS requirements are linked.
-  SG4_SPEC_MAPPED: specs cite the source, at least by reverse lookup.
-  SG5_NEGATIVE_TEST_LINKED: negative tests or verification refs are linked.
-  SG6_REVIEWED: reviewed source-grounding record exists.
-  SG7_FROZEN: source-grounded semantic freeze may be claimed.
+generated_at: '2026-04-28'
 summary:
-  all_required_card_fields_present: true
-  public_safe_cards: 37
-  forbidden_old_fields_found: 0
-  cards_with_requirement_refs: 37
-  cards_with_reverse_spec_mapping: 37
-  cards_with_required_negative_tests: 37
-  cards_with_review_status_reviewed: 0
-  cards_with_direct_mfos_specs: 0
-  cards_with_direct_mfos_tests: 0
+  total_cards: 65
+  SG0_IDENTIFIED: 0
+  SG1_PUBLIC_SAFE_CARD: 0
+  SG2_REVIEW_TOPICS: 0
+  SG3_REQUIREMENT_LINKED: 37
+  SG4_SPEC_MAPPED: 28
+  SG5_NEGATIVE_TEST_LINKED: 0
+  SG6_REVIEWED: 0
+  SG7_FROZEN: 0
+cards:
+- source_id: EXTREF-AMD-SEV-ES-0001
+  path: docs/design/source-matrix/cards/EXTREF-AMD-SEV-ES-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-CVM-0103
+  linked_specs:
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  linked_tests: []
+  grounding_level: SG4_SPEC_MAPPED
   source_summary_risk: low
   replacement_for_source_risk: low
-  distribution:
-    SG4_SPEC_MAPPED_PENDING_PIN_REVIEW: 10
-    SG5_NEGATIVE_TEST_LINKED_DRAFT: 27
-    SG6_REVIEWED: 0
-    SG7_FROZEN: 0
-major_gaps:
-  - gap_id: SG-CARD-GAP-0001
-    severity: major
-    description: Source Cards do not carry direct `mfos_mapping.mfos_specs` links.
-    impact: Source-to-spec grounding is reverse-inferred from specs and generated traceability, not card-local.
-    recommended_action: add direct public-safe spec path refs to Source Cards after review.
-  - gap_id: SG-CARD-GAP-0002
-    severity: major
-    description: "All Source Cards remain `review_status: draft`."
-    impact: No card reaches SG6 or SG7.
-    recommended_action: perform targeted source review and mark reviewed cards without copying external text.
-  - gap_id: SG-CARD-GAP-0003
-    severity: major
-    description: Ten cards carry pin-quality review gaps.
-    impacted_source_ids:
-      - EXTREF-IBM-Z-DPM-0001
-      - EXTREF-IBM-Z-LPAR-INTRODUCTION-0001
-      - EXTREF-IBM-ZOS-CROSS-MEMORY-CONTROL-0001
-      - EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
-      - EXTREF-IBM-ZOS-JES-JOB-FLOW-0001
-      - EXTREF-IBM-ZOS-STORAGE-PROTECTION-0001
-      - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
-      - FBVBS-001
-      - SEL4-001
-      - TUF-001
-    recommended_action: complete publication, version, or section pin review.
-entries:
-  - group: pinned_public_safe_draft_cards
-    count: 27
-    grounding_level: SG5_NEGATIVE_TEST_LINKED_DRAFT
-    source_ids:
-      - EXTREF-IBM-Z-ARCHITECTURE-PRINCIPLES-0001
-      - EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
-      - EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001
-      - EXTREF-IBM-ZOS-CROSS-MEMORY-SYNCHRONOUS-0001
-      - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
-      - EXTREF-IBM-ZOS-DFSMS-LIBRARY-0001
-      - EXTREF-IBM-ZOS-JES2-LIBRARY-0001
-      - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
-      - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
-      - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
-      - EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
-      - EXTREF-IBM-ZOS-SMPE-SECINT-HOLDDATA-0001
-      - EXTREF-IBM-ZOS-STORAGE-PROTECTION-SUMMARY-0001
-      - EXTREF-IBM-ZOS-UNIX-INTRODUCTION-0001
-      - EXTREF-IBM-ZOS-UNIX-SERVICES-LIBRARY-0001
-      - EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001
-      - MS-VBS-001
-      - MS-VSM-001
-      - NIST-160-001
-      - NIST-193-001
-      - NIST-218-001
-      - SLSA-001
-      - TCG-001
-      - X64-AMD-001
-      - X64-INTEL-001
-      - X64-LINUX-CET-001
-      - X64-LINUX-PKU-001
-    public_safe: true
-    source_summary_risk: low
-    replacement_for_source_risk: low
-    reason: Cards have public-safe metadata, review topics, divergence, prohibited inference, requirement refs, and negative-test or verification refs, but no reviewed status.
-  - group: pending_pin_review_cards
-    count: 10
-    grounding_level: SG4_SPEC_MAPPED_PENDING_PIN_REVIEW
-    source_ids:
-      - EXTREF-IBM-Z-DPM-0001
-      - EXTREF-IBM-Z-LPAR-INTRODUCTION-0001
-      - EXTREF-IBM-ZOS-CROSS-MEMORY-CONTROL-0001
-      - EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
-      - EXTREF-IBM-ZOS-JES-JOB-FLOW-0001
-      - EXTREF-IBM-ZOS-STORAGE-PROTECTION-0001
-      - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
-      - FBVBS-001
-      - SEL4-001
-      - TUF-001
-    public_safe: true
-    source_summary_risk: low
-    replacement_for_source_risk: low
-    reason: Cards are structurally mapped but pin quality requires source review before SG5+ claims.
-next_actions:
-  - add card-local `mfos_mapping.mfos_specs` links.
-  - add card-local test or verification links that correspond to current catalogs.
-  - complete targeted source review for the ten pin-review cards.
-  - do not add copied external text, tables, record layouts, command syntax, or macro signatures.
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-AMD-SEV-OVERVIEW-0001
+  path: docs/design/source-matrix/cards/EXTREF-AMD-SEV-OVERVIEW-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-CVM-0103
+  linked_specs:
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  linked_tests: []
+  grounding_level: SG4_SPEC_MAPPED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-AMD-SEV-SNP-0001
+  path: docs/design/source-matrix/cards/EXTREF-AMD-SEV-SNP-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-CVM-0103
+  - MFOS-REQ-CVM-0107
+  linked_specs:
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  linked_tests: []
+  grounding_level: SG4_SPEC_MAPPED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-AMD-SEV-TIO-0001
+  path: docs/design/source-matrix/cards/EXTREF-AMD-SEV-TIO-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-CVM-0108
+  linked_specs:
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  linked_tests: []
+  grounding_level: SG4_SPEC_MAPPED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-AWS-AUTOMATED-REASONING-0001
+  path: docs/design/source-matrix/cards/EXTREF-AWS-AUTOMATED-REASONING-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-FORMAL-0001
+  - MFOS-REQ-FORMAL-0005
+  linked_specs:
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  linked_tests: []
+  grounding_level: SG4_SPEC_MAPPED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-CLANG-CFI-0001
+  path: docs/design/source-matrix/cards/EXTREF-CLANG-CFI-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-LANG-0105
+  - MFOS-REQ-LANG-0107
+  linked_specs:
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  linked_tests: []
+  grounding_level: SG4_SPEC_MAPPED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-CLANG-KCFI-0001
+  path: docs/design/source-matrix/cards/EXTREF-CLANG-KCFI-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-LANG-0105
+  - MFOS-REQ-LANG-0108
+  linked_specs:
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  linked_tests: []
+  grounding_level: SG4_SPEC_MAPPED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-DAFNY-REFERENCE-0001
+  path: docs/design/source-matrix/cards/EXTREF-DAFNY-REFERENCE-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-DAFNY-0001
+  - MFOS-REQ-FORMAL-0001
+  linked_specs:
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
+  linked_tests: []
+  grounding_level: SG4_SPEC_MAPPED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-GCC-CF-PROTECTION-0001
+  path: docs/design/source-matrix/cards/EXTREF-GCC-CF-PROTECTION-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-LANG-0105
+  linked_specs:
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  linked_tests: []
+  grounding_level: SG4_SPEC_MAPPED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-GITHUB-CODEQL-0001
+  path: docs/design/source-matrix/cards/EXTREF-GITHUB-CODEQL-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-LANG-0106
+  linked_specs:
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  linked_tests: []
+  grounding_level: SG4_SPEC_MAPPED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-IBM-Z-ARCHITECTURE-PRINCIPLES-0001
+  path: docs/design/source-matrix/cards/EXTREF-IBM-Z-ARCHITECTURE-PRINCIPLES-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-SOURCE-0002
+  - MFOS-REQ-SOURCE-0004
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-IBM-Z-DPM-0001
+  path: docs/design/source-matrix/cards/EXTREF-IBM-Z-DPM-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-PARTITION-0005
+  - MFOS-REQ-PARTITION-0006
+  - MFOS-REQ-PARTITION-0008
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-IBM-Z-LPAR-INTRODUCTION-0001
+  path: docs/design/source-matrix/cards/EXTREF-IBM-Z-LPAR-INTRODUCTION-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-PARTITION-0001
+  - MFOS-REQ-PARTITION-0002
+  - MFOS-REQ-PARTITION-0003
+  - MFOS-REQ-PARTITION-0004
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
+  path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-SYSINT-0009
+  - MFOS-REQ-AMF-0008
+  - MFOS-REQ-QUALITY-0002
+  - MFOS-REQ-QUALITY-0005
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001
+  path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-SYSINT-0004
+  - MFOS-REQ-AMF-0001
+  - MFOS-REQ-AMF-0003
+  - MFOS-REQ-AMF-0004
+  - MFOS-REQ-AMF-0007
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-IBM-ZOS-CROSS-MEMORY-CONTROL-0001
+  path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-CROSS-MEMORY-CONTROL-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-SYSINT-0007
+  - MFOS-REQ-SYSINT-0008
+  - MFOS-REQ-SYSINT-0009
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-IBM-ZOS-CROSS-MEMORY-SYNCHRONOUS-0001
+  path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-CROSS-MEMORY-SYNCHRONOUS-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-SYSINT-0008
+  - MFOS-REQ-SYSINT-0009
+  - MFOS-REQ-NUCLEUS-0005
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-CATALOG-0002
+  - MFOS-REQ-CATALOG-0003
+  - MFOS-REQ-CATALOG-0004
+  - MFOS-REQ-DATASET-0001
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-IBM-ZOS-DFSMS-LIBRARY-0001
+  path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-DFSMS-LIBRARY-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-DATASET-0002
+  - MFOS-REQ-DATASET-0003
+  - MFOS-REQ-DATASET-0004
+  - MFOS-REQ-DATASET-0005
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
+  path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-JES-INTRODUCTION-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-JOB-0001
+  - MFOS-REQ-JOB-0003
+  - MFOS-REQ-SPOOL-0001
+  - MFOS-REQ-SPOOL-0003
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-IBM-ZOS-JES-JOB-FLOW-0001
+  path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-JES-JOB-FLOW-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-JOB-0001
+  - MFOS-REQ-JOB-0005
+  - MFOS-REQ-SPOOL-0004
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-IBM-ZOS-JES2-LIBRARY-0001
+  path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-JES2-LIBRARY-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-JOB-0002
+  - MFOS-REQ-OPER-0002
+  - MFOS-REQ-OPER-0003
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-AUTH-0002
+  - MFOS-REQ-AUTH-0004
+  - MFOS-REQ-AUTH-0005
+  - MFOS-REQ-AUTH-0006
+  - MFOS-REQ-AUTH-0009
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-SECURITY-SERVER-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-AUTH-0001
+  - MFOS-REQ-AUTH-0002
+  - MFOS-REQ-AUTH-0003
+  - MFOS-REQ-AUTH-0008
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+  path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-AUDIT-0001
+  - MFOS-REQ-AUDIT-0003
+  - MFOS-REQ-AUDIT-0004
+  - MFOS-REQ-AUDIT-0005
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+  path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-AUDIT-0002
+  - MFOS-REQ-AUDIT-0003
+  - MFOS-REQ-AUDIT-0001
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-IBM-ZOS-SMPE-SECINT-HOLDDATA-0001
+  path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-SMPE-SECINT-HOLDDATA-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-UPDATE-0004
+  - MFOS-REQ-UPDATE-0008
+  - MFOS-REQ-QUALITY-0006
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-IBM-ZOS-STORAGE-PROTECTION-0001
+  path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-STORAGE-PROTECTION-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-SOURCE-0002
+  - MFOS-REQ-SYSINT-0004
+  - MFOS-REQ-NUCLEUS-0007
+  - MFOS-REQ-NUCLEUS-0008
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-IBM-ZOS-STORAGE-PROTECTION-SUMMARY-0001
+  path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-STORAGE-PROTECTION-SUMMARY-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-SOURCE-0002
+  - MFOS-REQ-SYSINT-0005
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-SOURCE-0001
+  - MFOS-REQ-SOURCE-0003
+  - MFOS-REQ-SYSINT-0001
+  - MFOS-REQ-SYSINT-0002
+  - MFOS-REQ-SYSINT-0003
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-IBM-ZOS-UNIX-INTRODUCTION-0001
+  path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-UNIX-INTRODUCTION-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-SOURCE-0003
+  - MFOS-REQ-SYSINT-0001
+  - MFOS-REQ-DATASET-0005
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-IBM-ZOS-UNIX-SERVICES-LIBRARY-0001
+  path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-UNIX-SERVICES-LIBRARY-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-SOURCE-0001
+  - MFOS-REQ-SOURCE-0003
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001
+  path: docs/design/source-matrix/cards/EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-WPOL-0001
+  - MFOS-REQ-WPOL-0002
+  - MFOS-REQ-WPOL-0006
+  - MFOS-REQ-WPOL-0009
+  - MFOS-REQ-WPOL-0010
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-INTEL-CET-0001
+  path: docs/design/source-matrix/cards/EXTREF-INTEL-CET-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-LANG-0105
+  linked_specs:
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  linked_tests: []
+  grounding_level: SG4_SPEC_MAPPED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-INTEL-TDX-ATTESTATION-0001
+  path: docs/design/source-matrix/cards/EXTREF-INTEL-TDX-ATTESTATION-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-CVM-0104
+  - MFOS-REQ-CVM-0105
+  linked_specs:
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  linked_tests: []
+  grounding_level: SG4_SPEC_MAPPED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-INTEL-TDX-LINUX-DOC-0001
+  path: docs/design/source-matrix/cards/EXTREF-INTEL-TDX-LINUX-DOC-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-CVM-0108
+  linked_specs:
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  linked_tests: []
+  grounding_level: SG4_SPEC_MAPPED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-INTEL-TDX-OVERVIEW-0001
+  path: docs/design/source-matrix/cards/EXTREF-INTEL-TDX-OVERVIEW-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-CVM-0102
+  - MFOS-REQ-CVM-0106
+  linked_specs:
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  linked_tests: []
+  grounding_level: SG4_SPEC_MAPPED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-KANI-RUST-VERIFIER-0001
+  path: docs/design/source-matrix/cards/EXTREF-KANI-RUST-VERIFIER-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-LANG-0103
+  - MFOS-REQ-FORMAL-0001
+  linked_specs:
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  linked_tests: []
+  grounding_level: SG4_SPEC_MAPPED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-LINUX-AMD-SEV-KVM-DOC-0001
+  path: docs/design/source-matrix/cards/EXTREF-LINUX-AMD-SEV-KVM-DOC-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-CVM-0103
+  linked_specs:
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  linked_tests: []
+  grounding_level: SG4_SPEC_MAPPED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-LINUX-KVM-API-0001
+  path: docs/design/source-matrix/cards/EXTREF-LINUX-KVM-API-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-VIRT-0102
+  - MFOS-REQ-MFVM-0103
+  linked_specs:
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  linked_tests: []
+  grounding_level: SG4_SPEC_MAPPED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-LINUX-KVM-CAPABILITIES-0001
+  path: docs/design/source-matrix/cards/EXTREF-LINUX-KVM-CAPABILITIES-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-VIRT-0104
+  linked_specs:
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  linked_tests: []
+  grounding_level: SG4_SPEC_MAPPED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-LINUX-KVM-VFIO-0001
+  path: docs/design/source-matrix/cards/EXTREF-LINUX-KVM-VFIO-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-PXM-0104
+  - MFOS-REQ-VIRT-0106
+  linked_specs:
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  linked_tests: []
+  grounding_level: SG4_SPEC_MAPPED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-MICROSOFT-HYPERV-OVERVIEW-0001
+  path: docs/design/source-matrix/cards/EXTREF-MICROSOFT-HYPERV-OVERVIEW-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-MFVM-0101
+  - MFOS-REQ-CLUSTER-0106
+  linked_specs:
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  linked_tests: []
+  grounding_level: SG4_SPEC_MAPPED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-MICROSOFT-HYPERV-TLFS-0001
+  path: docs/design/source-matrix/cards/EXTREF-MICROSOFT-HYPERV-TLFS-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-VIRT-0101
+  - MFOS-REQ-MFVM-0103
+  linked_specs:
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  linked_tests: []
+  grounding_level: SG4_SPEC_MAPPED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-MICROSOFT-HYPERV-VSM-0001
+  path: docs/design/source-matrix/cards/EXTREF-MICROSOFT-HYPERV-VSM-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-CVM-0101
+  - MFOS-REQ-FORMAL-0006
+  linked_specs:
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  linked_tests: []
+  grounding_level: SG4_SPEC_MAPPED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
+  path: docs/design/source-matrix/cards/EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-FORMAL-0001
+  - MFOS-REQ-OPS-0101
+  linked_specs:
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  linked_tests: []
+  grounding_level: SG4_SPEC_MAPPED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-NIST-SSDF-0001
+  path: docs/design/source-matrix/cards/EXTREF-NIST-SSDF-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-LANG-0101
+  - MFOS-REQ-OPS-0102
+  linked_specs:
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  linked_tests: []
+  grounding_level: SG4_SPEC_MAPPED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-RUST-CF-PROTECTION-0001
+  path: docs/design/source-matrix/cards/EXTREF-RUST-CF-PROTECTION-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-LANG-0105
+  linked_specs:
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  linked_tests: []
+  grounding_level: SG4_SPEC_MAPPED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-RUST-NO-STD-REFERENCE-0001
+  path: docs/design/source-matrix/cards/EXTREF-RUST-NO-STD-REFERENCE-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-LANG-0101
+  - MFOS-REQ-LANG-0102
+  linked_specs:
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  linked_tests: []
+  grounding_level: SG4_SPEC_MAPPED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-RUST-UNSAFE-REFERENCE-0001
+  path: docs/design/source-matrix/cards/EXTREF-RUST-UNSAFE-REFERENCE-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-LANG-0102
+  - MFOS-REQ-ASSURANCE-0004
+  linked_specs:
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  linked_tests: []
+  grounding_level: SG4_SPEC_MAPPED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: EXTREF-VERUS-RUST-VERIFICATION-0001
+  path: docs/design/source-matrix/cards/EXTREF-VERUS-RUST-VERIFICATION-0001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-LANG-0104
+  - MFOS-REQ-FORMAL-0001
+  linked_specs:
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  linked_tests: []
+  grounding_level: SG4_SPEC_MAPPED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: FBVBS-001
+  path: docs/design/source-matrix/cards/FBVBS-001.yml
+  source_type: internal_transfer
+  semantic_role: assurance_discipline_transfer
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-QUALITY-0001
+  - MFOS-REQ-QUALITY-0002
+  - MFOS-REQ-QUALITY-0007
+  - MFOS-REQ-AI-0001
+  - MFOS-REQ-AI-0005
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: MS-VBS-001
+  path: docs/design/source-matrix/cards/MS-VBS-001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-GUARD-0001
+  - MFOS-REQ-GUARD-0002
+  - MFOS-REQ-GUARD-0005
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: MS-VSM-001
+  path: docs/design/source-matrix/cards/MS-VSM-001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-GUARD-0002
+  - MFOS-REQ-GUARD-0003
+  - MFOS-REQ-GUARD-0004
+  - MFOS-REQ-GUARD-0008
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: NIST-160-001
+  path: docs/design/source-matrix/cards/NIST-160-001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-QUALITY-0001
+  - MFOS-REQ-QUALITY-0010
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: NIST-193-001
+  path: docs/design/source-matrix/cards/NIST-193-001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-UPDATE-0012
+  - MFOS-REQ-QUALITY-0010
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: NIST-218-001
+  path: docs/design/source-matrix/cards/NIST-218-001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-QUALITY-0002
+  - MFOS-REQ-QUALITY-0003
+  - MFOS-REQ-QUALITY-0006
+  - MFOS-REQ-QUALITY-0008
+  - MFOS-REQ-QUALITY-0009
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: SEL4-001
+  path: docs/design/source-matrix/cards/SEL4-001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-QUALITY-0001
+  - MFOS-REQ-QUALITY-0010
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: SLSA-001
+  path: docs/design/source-matrix/cards/SLSA-001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-QUALITY-0006
+  - MFOS-REQ-QUALITY-0008
+  - MFOS-REQ-QUALITY-0009
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: TCG-001
+  path: docs/design/source-matrix/cards/TCG-001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-QUALITY-0001
+  - MFOS-REQ-PARTITION-0002
+  - MFOS-REQ-GUARD-0008
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: TUF-001
+  path: docs/design/source-matrix/cards/TUF-001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-UPDATE-0001
+  - MFOS-REQ-UPDATE-0003
+  - MFOS-REQ-UPDATE-0005
+  - MFOS-REQ-UPDATE-0006
+  - MFOS-REQ-UPDATE-0007
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: X64-AMD-001
+  path: docs/design/source-matrix/cards/X64-AMD-001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-NUCLEUS-0007
+  - MFOS-REQ-NUCLEUS-0008
+  - MFOS-REQ-PARTITION-0005
+  - MFOS-REQ-PARTITION-0007
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: X64-INTEL-001
+  path: docs/design/source-matrix/cards/X64-INTEL-001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-NUCLEUS-0007
+  - MFOS-REQ-NUCLEUS-0008
+  - MFOS-REQ-PARTITION-0005
+  - MFOS-REQ-PARTITION-0007
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: X64-LINUX-CET-001
+  path: docs/design/source-matrix/cards/X64-LINUX-CET-001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-QUALITY-0004
+  - MFOS-REQ-SYSINT-0001
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+- source_id: X64-LINUX-PKU-001
+  path: docs/design/source-matrix/cards/X64-LINUX-PKU-001.yml
+  source_type: external_reference
+  semantic_role: design_background
+  public_safe: true
+  review_status: draft
+  linked_requirements:
+  - MFOS-REQ-SOURCE-0004
+  - MFOS-REQ-SYSINT-0005
+  - MFOS-REQ-SYSINT-0010
+  linked_specs: []
+  linked_tests: []
+  grounding_level: SG3_REQUIREMENT_LINKED
+  source_summary_risk: low
+  replacement_for_source_risk: low
+  next_action: targeted_source_review_before_semantic_evaluator
+phase_1_loader_allowed: true
+phase_1_semantic_evaluator_allowed: false
+notes:
+- All Source Cards remain public-safe metadata records, not source substitutes.
+- No Source Card is promoted to SG6/SG7 by this audit.

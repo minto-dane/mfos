@@ -49,16 +49,10 @@ instead of code.
 
 Hosted semantic prototype work is not allowed in Phase 1. Phase 1 is limited to
 Dafny executable-semantics scaffold work and loader-only artifact validation
-under `formal/executable-semantics/dafny/`. A hosted semantic prototype may be
-considered only by a later reviewed gate when the pack explicitly sets:
-
-```yaml
-implementation_allowed:
-  hosted_semantic_prototype: true
-  production: false
-  hardware_enforcement_claim: false
-  system_integrity_claim: semantic_only
-```
+under `formal/executable-semantics/dafny/`. A later reviewed gate may define a
+separate hosted prototype profile, but current pack contracts must keep hosted
+prototypes, semantic runners, hosted daemons, Rust semantic-core work, and
+production implementation disabled.
 
 ## Pack Map
 

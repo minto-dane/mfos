@@ -12,7 +12,7 @@ and IBM record layouts.
 - `MFOS-REQ-JOB-0001`, `MFOS-REQ-JOB-0003`, and `MFOS-REQ-JOB-0005` need state-machine and authorization tests.
 - `MFOS-REQ-SPOOL-0001`, `MFOS-REQ-SPOOL-0003`, and `MFOS-REQ-SPOOL-0004` need browse, output, retention, and purge controls.
 - `MFOS-REQ-CATALOG-0002` through `MFOS-REQ-CATALOG-0004` need schema and transaction tests.
-- `MFOS-REQ-WLM-0001`, `MFOS-REQ-WLM-0002`, `MFOS-REQ-WLM-0006`, `MFOS-REQ-WLM-0009`, and `MFOS-REQ-WLM-0010` need policy authorization and starvation tests.
+- `MFOS-REQ-WPOL-0001`, `MFOS-REQ-WPOL-0002`, `MFOS-REQ-WPOL-0006`, `MFOS-REQ-WPOL-0009`, and `MFOS-REQ-WPOL-0010` need policy authorization and starvation tests.
 
 ## Negative Tests
 

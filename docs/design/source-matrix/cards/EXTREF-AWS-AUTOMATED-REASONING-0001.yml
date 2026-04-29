@@ -12,7 +12,8 @@ document_url:
 - https://aws.amazon.com/what-is/automated-reasoning/
 retrieved_at: '2026-04-28'
 review_notes:
-- 'Source-card verification 2026-04-28: official AWS automated reasoning URL opened; metadata is public-safe and no external documentation text copied.'
+- 'Source-card verification 2026-04-28: official AWS automated reasoning URL opened;
+  metadata is public-safe and no external documentation text copied.'
 reference_purpose:
 - source discovery
 - concept mapping
@@ -31,16 +32,20 @@ mfos_mapping:
   - docs/design/specs/39-language-and-verification-policy.md
   - docs/design/specs/40-automated-reasoning-program.md
   mfos_requirements: &id001
-  - MFOS-REQ-FORMAL-0101
-  - MFOS-REQ-FORMAL-0105
+  - MFOS-REQ-FORMAL-0001
+  - MFOS-REQ-FORMAL-0005
   mapping_notes:
-  - Phase 0.10 public-safe reference card intentionally excludes external documentation text, tables, layouts, command syntax, and interface definitions.
+  - Phase 0.10 public-safe reference card intentionally excludes external documentation
+    text, tables, layouts, command syntax, and interface definitions.
 mfos_divergence:
-- AWS material is design background and does not make MFOS an AWS service or claim AWS endorsement.
+- AWS material is design background and does not make MFOS an AWS service or claim
+  AWS endorsement.
 - MFOS-owned identifiers and APIs remain independently specified.
 prohibited_inference:
-- Do not claim compatibility with the referenced external product, interface, API, feature profile, or service.
-- Do not reproduce external record layouts, API layouts, command syntax, macro signatures, tables, diagrams, or documentation text.
+- Do not claim compatibility with the referenced external product, interface, API,
+  feature profile, or service.
+- Do not reproduce external record layouts, API layouts, command syntax, macro signatures,
+  tables, diagrams, or documentation text.
 - Do not treat this card as a substitute for external documentation.
 legal_controls:
   public_safe: true

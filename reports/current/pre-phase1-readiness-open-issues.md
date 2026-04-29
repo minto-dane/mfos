@@ -19,9 +19,8 @@ No Critical or Major issues remain.
    normalization warnings from `validate-schema-files.py`. They are visible and
    nonblocking because Phase 1 is limited to Dafny scaffold and loader-only
    artifact validation.
-4. PR #13 tracks the iteration-3 pre-Phase-1 readiness branch and must pass
-   GitHub checks before merge. PR #10, PR #11, and PR #12 have already landed
-   in `dev`.
+4. The fixed-point closure PR must pass GitHub checks before merge. PR #10,
+   PR #11, PR #12, and PR #13 have already landed in `dev`.
 
 ## Blockers
 

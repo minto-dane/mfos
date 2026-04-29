@@ -116,7 +116,9 @@ current:
 - path: reports/current/pre-phase1-readiness-final-report.md
   purpose: Final Pre-Phase-1 readiness judgement for Dafny scaffold and loader-only validation.
 - path: reports/current/pre-phase1/
-  purpose: Second-pass recursive Pre-Phase-1 readiness audit package.
+  purpose: Repeated recursive Pre-Phase-1 readiness audit package.
+- path: reports/current/fixedpoint/
+  purpose: Fixed-point repository closure package before Phase 1.
 sections:
 - path: reports/phases/phase-0-6/
   purpose: Phase 0.6 canonicalization and enforcement closure.

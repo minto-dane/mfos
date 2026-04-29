@@ -48,12 +48,19 @@ use its own internal `src/` directory when code is added.
 ## Local Checks
 
 ```bash
+./scripts/validate-all.sh --check
 python3 scripts/validators/validate-source-cards.py
 python3 scripts/validators/validate-requirements.py
 ./scripts/validate-naming-safety.sh release
+./scripts/validate-artifact-hygiene.sh
+./scripts/validate-component-scaffold.sh
+./scripts/validate-language-formal-assurance.sh
+./scripts/validate-dafny-semantics-scaffold.sh
 python3 scripts/checks/check-prohibited-terms.py
 python3 scripts/checks/check-no-fake-success.py
 ```
 
-These checks validate the current design artifacts and the naming-safety release
-gate. They are deliberately small and local; CI wiring can build on them.
+These checks validate the current design artifacts, naming-safety release gate,
+artifact hygiene, component scaffold metadata, language/formal assurance, and
+Dafny Phase 1 boundary. CI invokes the aggregate gate and focused scaffold
+checks.

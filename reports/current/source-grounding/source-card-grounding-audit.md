@@ -1,22 +1,85 @@
 # Source Card Grounding Audit
 
-Audited 37 Source Cards under `docs/design/source-matrix/cards/`.
+Status: current
 
-Findings:
+## Summary
 
-- All 37 cards are public-safe bibliographic/reference cards.
-- No forbidden legacy fields were found: `canonical_concepts`,
-  `normative_source`, `detailed_summary`, `source_summary`, `copied_excerpt`,
-  `record_layouts`, `command_syntax`, or `macro_signatures`.
-- All 37 cards have `review_topics`, `mfos_divergence`,
-  `prohibited_inference`, `legal_controls`, `requirement_refs`, and
-  `required_negative_tests`.
-- All 37 cards are still `review_status: draft`.
-- All 37 cards have empty direct `mfos_mapping.mfos_specs`; source-to-spec
-  mapping is currently reverse-inferred from specs and traceability.
-- No card reaches SG6 or SG7.
+- total_cards: `65`
+- SG0_IDENTIFIED: `0`
+- SG1_PUBLIC_SAFE_CARD: `0`
+- SG2_REVIEW_TOPICS: `0`
+- SG3_REQUIREMENT_LINKED: `37`
+- SG4_SPEC_MAPPED: `28`
+- SG5_NEGATIVE_TEST_LINKED: `0`
+- SG6_REVIEWED: `0`
+- SG7_FROZEN: `0`
 
-The Source Card layer is adequate for structural traceability, but not for an
-unqualified source-grounded semantic freeze. The freeze must remain
-conditional until targeted source review marks cards reviewed and card-local
-spec/test links are added.
+All Source Cards remain public-safe metadata records and no card is promoted to SG6/SG7 by this audit. Phase 1 loader-only validation remains allowed; semantic evaluator and production claims remain blocked by source-review maturity.
+
+## Cards
+
+- `EXTREF-AMD-SEV-ES-0001`: `SG4_SPEC_MAPPED` (docs/design/source-matrix/cards/EXTREF-AMD-SEV-ES-0001.yml)
+- `EXTREF-AMD-SEV-OVERVIEW-0001`: `SG4_SPEC_MAPPED` (docs/design/source-matrix/cards/EXTREF-AMD-SEV-OVERVIEW-0001.yml)
+- `EXTREF-AMD-SEV-SNP-0001`: `SG4_SPEC_MAPPED` (docs/design/source-matrix/cards/EXTREF-AMD-SEV-SNP-0001.yml)
+- `EXTREF-AMD-SEV-TIO-0001`: `SG4_SPEC_MAPPED` (docs/design/source-matrix/cards/EXTREF-AMD-SEV-TIO-0001.yml)
+- `EXTREF-AWS-AUTOMATED-REASONING-0001`: `SG4_SPEC_MAPPED` (docs/design/source-matrix/cards/EXTREF-AWS-AUTOMATED-REASONING-0001.yml)
+- `EXTREF-CLANG-CFI-0001`: `SG4_SPEC_MAPPED` (docs/design/source-matrix/cards/EXTREF-CLANG-CFI-0001.yml)
+- `EXTREF-CLANG-KCFI-0001`: `SG4_SPEC_MAPPED` (docs/design/source-matrix/cards/EXTREF-CLANG-KCFI-0001.yml)
+- `EXTREF-DAFNY-REFERENCE-0001`: `SG4_SPEC_MAPPED` (docs/design/source-matrix/cards/EXTREF-DAFNY-REFERENCE-0001.yml)
+- `EXTREF-GCC-CF-PROTECTION-0001`: `SG4_SPEC_MAPPED` (docs/design/source-matrix/cards/EXTREF-GCC-CF-PROTECTION-0001.yml)
+- `EXTREF-GITHUB-CODEQL-0001`: `SG4_SPEC_MAPPED` (docs/design/source-matrix/cards/EXTREF-GITHUB-CODEQL-0001.yml)
+- `EXTREF-IBM-Z-ARCHITECTURE-PRINCIPLES-0001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/EXTREF-IBM-Z-ARCHITECTURE-PRINCIPLES-0001.yml)
+- `EXTREF-IBM-Z-DPM-0001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/EXTREF-IBM-Z-DPM-0001.yml)
+- `EXTREF-IBM-Z-LPAR-INTRODUCTION-0001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/EXTREF-IBM-Z-LPAR-INTRODUCTION-0001.yml)
+- `EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001.yml)
+- `EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001.yml)
+- `EXTREF-IBM-ZOS-CROSS-MEMORY-CONTROL-0001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/EXTREF-IBM-ZOS-CROSS-MEMORY-CONTROL-0001.yml)
+- `EXTREF-IBM-ZOS-CROSS-MEMORY-SYNCHRONOUS-0001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/EXTREF-IBM-ZOS-CROSS-MEMORY-SYNCHRONOUS-0001.yml)
+- `EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001.yml)
+- `EXTREF-IBM-ZOS-DFSMS-LIBRARY-0001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/EXTREF-IBM-ZOS-DFSMS-LIBRARY-0001.yml)
+- `EXTREF-IBM-ZOS-JES-INTRODUCTION-0001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/EXTREF-IBM-ZOS-JES-INTRODUCTION-0001.yml)
+- `EXTREF-IBM-ZOS-JES-JOB-FLOW-0001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/EXTREF-IBM-ZOS-JES-JOB-FLOW-0001.yml)
+- `EXTREF-IBM-ZOS-JES2-LIBRARY-0001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/EXTREF-IBM-ZOS-JES2-LIBRARY-0001.yml)
+- `EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001.yml)
+- `EXTREF-IBM-ZOS-SECURITY-SERVER-0001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/EXTREF-IBM-ZOS-SECURITY-SERVER-0001.yml)
+- `EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001.yml)
+- `EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001.yml)
+- `EXTREF-IBM-ZOS-SMPE-SECINT-HOLDDATA-0001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/EXTREF-IBM-ZOS-SMPE-SECINT-HOLDDATA-0001.yml)
+- `EXTREF-IBM-ZOS-STORAGE-PROTECTION-0001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/EXTREF-IBM-ZOS-STORAGE-PROTECTION-0001.yml)
+- `EXTREF-IBM-ZOS-STORAGE-PROTECTION-SUMMARY-0001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/EXTREF-IBM-ZOS-STORAGE-PROTECTION-SUMMARY-0001.yml)
+- `EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001.yml)
+- `EXTREF-IBM-ZOS-UNIX-INTRODUCTION-0001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/EXTREF-IBM-ZOS-UNIX-INTRODUCTION-0001.yml)
+- `EXTREF-IBM-ZOS-UNIX-SERVICES-LIBRARY-0001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/EXTREF-IBM-ZOS-UNIX-SERVICES-LIBRARY-0001.yml)
+- `EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001.yml)
+- `EXTREF-INTEL-CET-0001`: `SG4_SPEC_MAPPED` (docs/design/source-matrix/cards/EXTREF-INTEL-CET-0001.yml)
+- `EXTREF-INTEL-TDX-ATTESTATION-0001`: `SG4_SPEC_MAPPED` (docs/design/source-matrix/cards/EXTREF-INTEL-TDX-ATTESTATION-0001.yml)
+- `EXTREF-INTEL-TDX-LINUX-DOC-0001`: `SG4_SPEC_MAPPED` (docs/design/source-matrix/cards/EXTREF-INTEL-TDX-LINUX-DOC-0001.yml)
+- `EXTREF-INTEL-TDX-OVERVIEW-0001`: `SG4_SPEC_MAPPED` (docs/design/source-matrix/cards/EXTREF-INTEL-TDX-OVERVIEW-0001.yml)
+- `EXTREF-KANI-RUST-VERIFIER-0001`: `SG4_SPEC_MAPPED` (docs/design/source-matrix/cards/EXTREF-KANI-RUST-VERIFIER-0001.yml)
+- `EXTREF-LINUX-AMD-SEV-KVM-DOC-0001`: `SG4_SPEC_MAPPED` (docs/design/source-matrix/cards/EXTREF-LINUX-AMD-SEV-KVM-DOC-0001.yml)
+- `EXTREF-LINUX-KVM-API-0001`: `SG4_SPEC_MAPPED` (docs/design/source-matrix/cards/EXTREF-LINUX-KVM-API-0001.yml)
+- `EXTREF-LINUX-KVM-CAPABILITIES-0001`: `SG4_SPEC_MAPPED` (docs/design/source-matrix/cards/EXTREF-LINUX-KVM-CAPABILITIES-0001.yml)
+- `EXTREF-LINUX-KVM-VFIO-0001`: `SG4_SPEC_MAPPED` (docs/design/source-matrix/cards/EXTREF-LINUX-KVM-VFIO-0001.yml)
+- `EXTREF-MICROSOFT-HYPERV-OVERVIEW-0001`: `SG4_SPEC_MAPPED` (docs/design/source-matrix/cards/EXTREF-MICROSOFT-HYPERV-OVERVIEW-0001.yml)
+- `EXTREF-MICROSOFT-HYPERV-TLFS-0001`: `SG4_SPEC_MAPPED` (docs/design/source-matrix/cards/EXTREF-MICROSOFT-HYPERV-TLFS-0001.yml)
+- `EXTREF-MICROSOFT-HYPERV-VSM-0001`: `SG4_SPEC_MAPPED` (docs/design/source-matrix/cards/EXTREF-MICROSOFT-HYPERV-VSM-0001.yml)
+- `EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001`: `SG4_SPEC_MAPPED` (docs/design/source-matrix/cards/EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001.yml)
+- `EXTREF-NIST-SSDF-0001`: `SG4_SPEC_MAPPED` (docs/design/source-matrix/cards/EXTREF-NIST-SSDF-0001.yml)
+- `EXTREF-RUST-CF-PROTECTION-0001`: `SG4_SPEC_MAPPED` (docs/design/source-matrix/cards/EXTREF-RUST-CF-PROTECTION-0001.yml)
+- `EXTREF-RUST-NO-STD-REFERENCE-0001`: `SG4_SPEC_MAPPED` (docs/design/source-matrix/cards/EXTREF-RUST-NO-STD-REFERENCE-0001.yml)
+- `EXTREF-RUST-UNSAFE-REFERENCE-0001`: `SG4_SPEC_MAPPED` (docs/design/source-matrix/cards/EXTREF-RUST-UNSAFE-REFERENCE-0001.yml)
+- `EXTREF-VERUS-RUST-VERIFICATION-0001`: `SG4_SPEC_MAPPED` (docs/design/source-matrix/cards/EXTREF-VERUS-RUST-VERIFICATION-0001.yml)
+- `FBVBS-001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/FBVBS-001.yml)
+- `MS-VBS-001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/MS-VBS-001.yml)
+- `MS-VSM-001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/MS-VSM-001.yml)
+- `NIST-160-001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/NIST-160-001.yml)
+- `NIST-193-001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/NIST-193-001.yml)
+- `NIST-218-001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/NIST-218-001.yml)
+- `SEL4-001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/SEL4-001.yml)
+- `SLSA-001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/SLSA-001.yml)
+- `TCG-001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/TCG-001.yml)
+- `TUF-001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/TUF-001.yml)
+- `X64-AMD-001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/X64-AMD-001.yml)
+- `X64-INTEL-001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/X64-INTEL-001.yml)
+- `X64-LINUX-CET-001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/X64-LINUX-CET-001.yml)
+- `X64-LINUX-PKU-001`: `SG3_REQUIREMENT_LINKED` (docs/design/source-matrix/cards/X64-LINUX-PKU-001.yml)

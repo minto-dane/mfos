@@ -235,8 +235,9 @@ entries:
   - docs/design/specs/14-nucleus.md
   - docs/design/specs/15-svc-pcall.md
   outputs:
-  - implementation/nucleus
-  - implementation/runtime/abi
+  - docs/design/specs/14-nucleus.md
+  - docs/design/specs/15-svc-pcall.md
+  - reports/audits/packs/pack-audit.md
   tests: []
 - pack_id: PACK-14
   requirements:
@@ -262,7 +263,8 @@ entries:
   inputs:
   - docs/design/specs/17-guard.md
   outputs:
-  - implementation/guard
+  - docs/design/specs/17-guard.md
+  - reports/audits/packs/pack-audit.md
   tests: []
 - pack_id: PACK-16
   requirements:
@@ -270,8 +272,8 @@ entries:
   inputs:
   - docs/design/specs/18-linux-gateway.md
   outputs:
-  - implementation/interfaces/linux-gateway
-  - implementation/sidecars/linux-desktop-partition
+  - docs/design/specs/18-linux-gateway.md
+  - reports/audits/packs/pack-audit.md
   tests: []
 - pack_id: PACK-17
   requirements:
@@ -470,9 +472,7 @@ entries:
   - tests/catalog/language-verification.yml
   tests:
   - TEST-MFOS-LANG-0101
-  - TEST-MFOS-LANG-0104
   - NEG-MFOS-LANG-0103
-  - NEG-MFOS-LANG-0106
 - pack_id: PACK-35
   requirements:
   - MFOS-REQ-FORMAL-*
@@ -489,8 +489,6 @@ entries:
   - reports/current/pxm-mfvm-requirements-docs-red-team-review.md
   tests:
   - TEST-MFOS-FORMAL-0101
-  - TEST-MFOS-FORMAL-0106
-  - NEG-MFOS-FORMAL-0105
   - NEG-MFOS-FORMAL-0108
 - pack_id: PACK-36
   requirements:

@@ -65,9 +65,23 @@ Start here:
 38. specs/28-machine-readable-registries.md
 39. specs/29-test-strategy.md
 40. specs/30-attestation-measured-boot.md
-41. specs/31-release-distribution-rollback.md
-42. specs/32-language-localization.md
-43. specs/33-policy-lint.md
+41. specs/30-first-vertical-slice-contract.md
+42. specs/31-executable-spec-test-harness.md
+43. specs/31-release-distribution-rollback.md
+44. specs/32-conformance-fixture-format.md
+45. specs/32-language-localization.md
+46. specs/33-policy-lint.md
+47. specs/33-semantic-runner-contract.md
+48. specs/34-oracle-definition-format.md
+49. specs/35-fuzz-corpus-plan.md
+50. specs/36-hypervisor-class-virtualization.md
+51. specs/37-confidential-vm.md
+52. specs/38-datacenter-cluster-operations.md
+53. specs/39-language-and-verification-policy.md
+54. specs/40-automated-reasoning-program.md
+55. specs/41-performance-and-secure-operations.md
+56. specs/42-mfvm.md
+57. specs/43-dafny-executable-semantics-policy.md
 ```
 
 ## Directory Map
