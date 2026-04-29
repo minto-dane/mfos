@@ -107,24 +107,29 @@ Task owners must enforce:
 | FORMAL-011 | Device teardown model. | no reassignment before teardown. | model report. |
 | FORMAL-012 | Guard root transition model. | root mismatch cannot be accepted. | model report. |
 
-## 6. Hosted Prototype Tasks
+## 6. Deferred Semantic Contract Tasks
 
-| ID | Task | Required negative tests | Evidence |
+These rows are inactive future planning items. They do not authorize hosted
+prototypes, service daemons, semantic-runner work, Rust semantic-core work, or
+production implementation. Phase 1 remains limited to Dafny executable-semantics
+scaffold and loader-only artifact validation.
+
+| ID | Task | Required negative planning | Evidence |
 | --- | --- | --- | --- |
-| HOST-001 | securityd hosted prototype. | unauthorized resource deny. | unit/integration report. |
-| HOST-002 | auditd hosted prototype. | tamper and write failure. | hash-chain report. |
-| HOST-003 | catalogd hosted prototype. | invalid DSN and crash mid-commit. | parser/crash report. |
-| HOST-004 | datasetd hosted prototype. | stale handle and unauthorized open. | negative test report. |
-| HOST-005 | jobd hosted prototype. | identity spoof and invalid lifecycle. | negative test report. |
-| HOST-006 | spoold hosted prototype. | non-owner browse/purge. | negative test report. |
-| HOST-007 | operatord hosted prototype. | unauthorized command execute. | parser/auth report. |
-| HOST-008 | workpolicyd minimal prototype. | invalid class and quota overrun. | unit report. |
-| HOST-009 | amfd prototype. | invalid signature and revoked signer. | AMF report. |
-| HOST-010 | uvsd prototype. | rollback/freeze/mix-and-match. | UVS report. |
-| HOST-011 | HELLO job success integration. | none beyond success path. | integration report. |
-| HOST-012 | Unauthorized dataset access deny integration. | BOB cannot read ALICE dataset. | negative report. |
-| HOST-013 | Audit chain tamper test. | tamper detected. | tamper report. |
-| HOST-014 | Catalog crash recovery test. | crash mid-transaction. | recovery report. |
+| DEFER-SEM-001 | security authorization contract planning. | unauthorized resource deny vector remains cataloged. | contract review report. |
+| DEFER-SEM-002 | audit append contract planning. | tamper and write-failure vectors remain cataloged. | hash-chain planning report. |
+| DEFER-SEM-003 | catalog resolution contract planning. | invalid DSN and crash mid-commit vectors remain cataloged. | parser/crash planning report. |
+| DEFER-SEM-004 | dataset handle contract planning. | stale handle and unauthorized open vectors remain cataloged. | negative planning report. |
+| DEFER-SEM-005 | job lifecycle contract planning. | identity spoof and invalid lifecycle vectors remain cataloged. | negative planning report. |
+| DEFER-SEM-006 | spool access contract planning. | non-owner browse/purge vectors remain cataloged. | access planning report. |
+| DEFER-SEM-007 | operator command contract planning. | unauthorized command execute vectors remain cataloged. | parser/auth planning report. |
+| DEFER-SEM-008 | workload policy contract planning. | invalid class and quota overrun vectors remain cataloged. | policy planning report. |
+| DEFER-SEM-009 | module facility contract planning. | invalid signature and revoked signer vectors remain cataloged. | AMF planning report. |
+| DEFER-SEM-010 | update verification contract planning. | rollback/freeze/mix-and-match vectors remain cataloged. | UVS planning report. |
+| DEFER-SEM-011 | HELLO job success contract review. | none beyond success path planning. | contract review report. |
+| DEFER-SEM-012 | Unauthorized dataset access deny contract review. | BOB cannot read ALICE dataset vector remains cataloged. | negative planning report. |
+| DEFER-SEM-013 | Audit chain tamper contract review. | tamper-detection vector remains cataloged. | tamper planning report. |
+| DEFER-SEM-014 | Catalog crash recovery contract review. | crash mid-transaction vector remains cataloged. | recovery planning report. |
 
 ## 7. CI Tasks
 
@@ -296,4 +301,3 @@ Every agent completing a task must return:
 - CI task implementation details are not specified.
 - Formal tool choice is not fixed.
 - Evidence archive layout is not fixed.
-

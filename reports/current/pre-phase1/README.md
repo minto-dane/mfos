@@ -1,11 +1,11 @@
-# Pre-Phase-1 Second-Pass Readiness Package
+# Pre-Phase-1 Readiness Iteration Package
 
 Status: current  
 Date: 2026-04-28
 
-This package records the second recursive readiness pass before assigning Phase
-1 work. It is current review evidence, not generated output and not a Phase 1
-implementation artifact.
+This package records repeated recursive readiness passes before assigning Phase
+1 work, including the second pass and iteration 3. It is current review
+evidence, not generated output and not a Phase 1 implementation artifact.
 
 Allowed conclusion scope:
 

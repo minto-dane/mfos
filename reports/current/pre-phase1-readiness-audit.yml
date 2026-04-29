@@ -2,7 +2,7 @@ schema_version: 1
 artifact_type: pre_phase1_readiness_audit
 status: current
 date: '2026-04-28'
-branch: fix/pre-phase-1-total-readiness-second-pass
+branch: fix/pre-phase-1-total-readiness-iteration-3
 pull_request:
   number: null
   url: null
@@ -14,7 +14,11 @@ phase_0_10_dependency:
 previous_readiness_pr:
   pr: 11
   status: merged
+second_pass_readiness_pr:
+  pr: 12
+  status: merged
 second_pass_package: reports/current/pre-phase1/
+iteration_3_package: reports/current/pre-phase1/
 critical_findings_remaining: false
 major_findings_remaining: false
 phase_1_ready_scope:
