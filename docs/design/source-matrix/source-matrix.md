@@ -328,6 +328,7 @@ The following public-safe reference cards were added for PXM/MFVM, confidential 
 | `EXTREF-LINUX-AMD-SEV-KVM-DOC-0001` | Linux KVM AMD memory encryption documentation |
 | `EXTREF-KANI-RUST-VERIFIER-0001` | The Kani Rust Verifier |
 | `EXTREF-VERUS-RUST-VERIFICATION-0001` | Verus Tutorial and Reference |
+| `EXTREF-DAFNY-REFERENCE-0001` | Dafny Reference Manual |
 | `EXTREF-AWS-AUTOMATED-REASONING-0001` | What is Automated Reasoning? |
 | `EXTREF-GITHUB-CODEQL-0001` | About code scanning with CodeQL |
 | `EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001` | NIST SP 800-160 Vol. 1 Rev. 1 |

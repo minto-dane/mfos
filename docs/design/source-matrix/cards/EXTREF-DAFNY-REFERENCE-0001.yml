@@ -1,0 +1,68 @@
+schema_version: 1
+status: draft
+source_id: EXTREF-DAFNY-REFERENCE-0001
+source_kind: bibliographic_reference
+source_type: external_reference
+semantic_role: design_background
+vendor: Dafny project
+vendor_mark_used: true
+product_family: Dafny
+document_title: Dafny Reference Manual
+document_url:
+  - https://dafny.org/dafny/DafnyRef/DafnyRef
+retrieved_at: '2026-04-28'
+review_notes:
+  - 'Source-card verification 2026-04-28: official Dafny documentation URL identified; metadata is public-safe and no external documentation text copied.'
+reference_purpose:
+  - source discovery
+  - concept mapping
+  - non-compatibility boundary definition
+  - independent MFOS design traceability
+review_topics:
+  - executable-semantics artifact planning
+  - specification and verification language boundaries
+  - generated-code caveats
+mfos_mapping:
+  mfos_components:
+    - formal registry
+    - Dafny executable-semantics scaffold
+  mfos_specs:
+    - docs/design/specs/40-automated-reasoning-program.md
+    - docs/design/specs/43-dafny-executable-semantics-policy.md
+  mfos_requirements:
+    - MFOS-REQ-DAFNY-0001
+    - MFOS-REQ-FORMAL-0001
+  mapping_notes:
+    - Phase 1 uses Dafny as a canonical executable-semantics artifact language only; no runtime implementation claim is made.
+mfos_divergence:
+  - MFOS Phase 1 Dafny artifacts are loader-only and do not implement MFOS runtime behavior.
+  - MFOS does not treat generated code from Dafny as production code without a later gate.
+  - MFOS-owned identifiers, services, and runtime APIs remain independently specified.
+prohibited_inference:
+  - Do not claim that Dafny artifact presence proves MFOS correctness.
+  - Do not claim production readiness from Dafny verification output alone.
+  - Do not treat this card as a substitute for external documentation.
+  - Do not reproduce external documentation text, examples, command syntax, API layouts, or tool output formats.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+source_refs:
+  - source_id: EXTREF-DAFNY-REFERENCE-0001
+    source_type: external_reference
+    role: card_subject
+requirement_refs:
+  - MFOS-REQ-DAFNY-0001
+  - MFOS-REQ-FORMAL-0001
+review_status: draft

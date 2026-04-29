@@ -8,6 +8,7 @@ owner: MFOS architecture
 last_reviewed: '2026-04-28'
 source_refs:
 - EXTREF-AWS-AUTOMATED-REASONING-0001
+- EXTREF-DAFNY-REFERENCE-0001
 - EXTREF-KANI-RUST-VERIFIER-0001
 - EXTREF-VERUS-RUST-VERIFICATION-0001
 - EXTREF-GITHUB-CODEQL-0001
@@ -16,6 +17,7 @@ source_refs:
 - TUF-001
 - FBVBS-001
 requirement_refs:
+- MFOS-REQ-DAFNY-*
 - MFOS-REQ-FORMAL-*
 - MFOS-REQ-ASSURANCE-*
 - MFOS-REQ-PXM-*
@@ -63,7 +65,7 @@ Define the registry, review, evidence, and tool-policy structure for MFOS formal
 
 ## 2. Scope
 
-In scope: automated reasoning charter, formal claim registry, model registry, proof obligation registry, proof harness registry, TLA+, Alloy, Kani, Verus, proof evidence, proof CI, and reasoning domains.
+In scope: automated reasoning charter, formal claim registry, model registry, proof obligation registry, proof harness registry, Dafny, TLA+, Alloy, Kani, Verus, proof evidence, proof CI, and reasoning domains.
 
 ## 3. Non-objectives
 
@@ -147,7 +149,13 @@ Kani is a candidate for bounded Rust proof harnesses after implementation contra
 
 Verus is a candidate for selected verified Rust components after requirements and proof obligations mature.
 
-## 13.1 Tool Registry
+## 13.1 Dafny Policy
+
+Dafny is the canonical executable-semantics artifact language for Phase 1. Its Phase 1 role is loader-only artifact validation, proof-oriented specification planning, and traceability review. Dafny does not authorize semantic-runner implementation, hosted daemon implementation, Rust semantic-core implementation, generated production code, or production service behavior.
+
+Dafny output is not accepted proof evidence unless it is linked to reviewed source, requirement refs, assumptions, tool version, result status, and human review. The presence of a Dafny scaffold or planned Dafny artifact must not be described as proving MFOS behavior.
+
+## 13.2 Tool Registry
 
 The machine-readable tool registry is `formal/tool-registry.yml`. Tools are listed as planned validation aids only; tool presence is not evidence without versioned output, assumptions, and human review.
 

@@ -451,6 +451,12 @@ cards:
   title: Verus Tutorial and Reference
   card_path: docs/design/source-matrix/cards/EXTREF-VERUS-RUST-VERIFICATION-0001.yml
   status: draft
+- source_id: EXTREF-DAFNY-REFERENCE-0001
+  source_type: external_reference
+  vendor: Dafny project
+  title: Dafny Reference Manual
+  card_path: docs/design/source-matrix/cards/EXTREF-DAFNY-REFERENCE-0001.yml
+  status: draft
 - source_id: EXTREF-AWS-AUTOMATED-REASONING-0001
   source_type: external_reference
   vendor: AWS

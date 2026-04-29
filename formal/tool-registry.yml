@@ -45,6 +45,19 @@ tools:
   - selected verified components after proof obligations mature
   not_claimed:
   - production proof completion
+- tool_id: TOOL-DAFNY
+  tool_name: Dafny
+  status: planned
+  source_refs:
+  - EXTREF-DAFNY-REFERENCE-0001
+  evidence_role: planned executable-semantics and verification-language aid; not proof evidence until source, tool version, assumptions, outputs, and review are recorded
+  allowed_use:
+  - Phase 1 loader-only executable-semantics artifacts after metadata schema exists
+  - selected proof-oriented semantic models after proof obligations mature
+  not_claimed:
+  - production proof completion
+  - production implementation
+  - semantic runner implementation
 - tool_id: TOOL-CODEQL
   tool_name: CodeQL
   status: planned
