@@ -22,6 +22,9 @@ current:
     validate_language_formal_assurance:
       path: scripts/validate-language-formal-assurance.sh
       status: current
+    validate_dafny_semantics_scaffold:
+      path: scripts/validate-dafny-semantics-scaffold.sh
+      status: current
 
 sections:
   validators:

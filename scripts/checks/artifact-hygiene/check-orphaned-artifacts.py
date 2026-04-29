@@ -86,7 +86,7 @@ def main() -> int:
             findings.append(Finding("ERROR", path, "current traceability artifact is not listed in evidence/traceability/index.yml"))
 
     for path in sorted((ROOT / "reports/current").glob("*")):
-        if path.name in {"README.md", "index.yml"}:
+        if path.name in {"README.md", "index.yml", ".mfos-dir.yml"}:
             continue
         if path.is_file() and not covered(path, indexed):
             findings.append(Finding("ERROR", path, "current report is not listed in reports/index.yml"))

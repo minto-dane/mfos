@@ -21,12 +21,23 @@ REQUIRED_METADATA_DIRS = [
     Path("docs/design/specs"),
     Path("evidence/traceability"),
     Path("formal"),
+    Path("formal/executable-semantics/dafny"),
+    Path("formal/models"),
+    Path("formal/models/alloy"),
+    Path("formal/models/tla"),
     Path("fuzz"),
+    Path("guard"),
     Path("implementation"),
+    Path("nucleus"),
     Path("packs"),
+    Path("pxm"),
     Path("requirements"),
+    Path("requirements/by-domain"),
     Path("schemas"),
+    Path("schemas/mfos"),
     Path("scripts"),
+    Path("reports/current"),
+    Path("services"),
     Path("source-matrix"),
     Path("sources"),
     Path("specs"),
@@ -60,6 +71,7 @@ VALID_ROLES = {
     "generated",
     "implementation_future",
     "planned",
+    "formal_model_scaffold",
     "test_current",
     "validation",
 }
@@ -90,6 +102,23 @@ FORBIDDEN_IMPLEMENTATION_FLAGS = {
     "semantic_runner",
     "portable_semantic_core",
     "hosted_semantic_prototype",
+    "rust_semantic_core",
+    "dafny_executable_semantics",
+    "generated_production_code",
+}
+
+BOOLEAN_IMPLEMENTATION_FLAGS = FORBIDDEN_IMPLEMENTATION_FLAGS | {
+    "validation_only",
+}
+
+REQUIRED_IMPLEMENTATION_FLAGS = {
+    "production",
+    "hosted_daemon",
+    "rust_semantic_core",
+    "dafny_executable_semantics",
+    "semantic_runner",
+    "generated_production_code",
+    "validation_only",
 }
 
 
@@ -143,9 +172,15 @@ def _validate_metadata(path: Path, expected_dir: Path | None, findings: list[Fin
         findings.append(Finding("ERROR", path, "implementation_allowed must be a mapping"))
         return
 
+    for flag in sorted(REQUIRED_IMPLEMENTATION_FLAGS):
+        if flag not in implementation_allowed:
+            findings.append(Finding("ERROR", path, f"implementation_allowed.{flag} is required"))
     for flag in FORBIDDEN_IMPLEMENTATION_FLAGS:
         if implementation_allowed.get(flag) is True:
             findings.append(Finding("ERROR", path, f"implementation_allowed.{flag} must not be true in Phase 0.x"))
+    for flag in sorted(BOOLEAN_IMPLEMENTATION_FLAGS):
+        if flag in implementation_allowed and not isinstance(implementation_allowed.get(flag), bool):
+            findings.append(Finding("ERROR", path, f"implementation_allowed.{flag} must be boolean when present"))
 
     if data.get("role") == "implementation_future" and "implementation code" not in _as_list(data.get("forbidden_contents")):
         findings.append(Finding("WARN", path, "future implementation scaffolds should forbid implementation code explicitly"))

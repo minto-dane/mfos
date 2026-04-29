@@ -32,3 +32,6 @@ jobs:
 
       - name: Run component scaffold metadata validation
         run: ./scripts/validate-component-scaffold.sh
+
+      - name: Run Dafny executable semantics scaffold validation
+        run: ./scripts/validate-dafny-semantics-scaffold.sh

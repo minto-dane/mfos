@@ -39,7 +39,7 @@ REQUIRED_CLAIMS = {
     "cluster_policy_distribution_integrity",
     "cluster_attestation_collection_integrity",
 }
-REQUIRED_TOOLS = {"TLA+", "Alloy", "Kani", "Verus", "CodeQL", "fuzzing", "property tests"}
+REQUIRED_TOOLS = {"TLA+", "Alloy", "Kani", "Verus", "Dafny", "CodeQL", "fuzzing", "property tests"}
 PLANNING_STATUSES = {"planned", "draft"}
 EVIDENCE_STATUSES = {"planned", "draft"}
 
