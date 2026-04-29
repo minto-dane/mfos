@@ -6,8 +6,8 @@ japanese_mirror: "missing"
 status: "draft"
 owner: "MFOS architecture"
 last_reviewed: "2026-04-28"
-source_refs: ["EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001", "EXTREF-IBM-ZOS-SECURITY-SERVER-0001", "EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001", "EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001"]
-requirement_refs: ["MFOS-REQ-EXECSPEC-*"]
+source_refs: ["EXTREF-DAFNY-REFERENCE-0001", "EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001", "EXTREF-IBM-ZOS-SECURITY-SERVER-0001", "EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001", "EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001"]
+requirement_refs: ["MFOS-REQ-DAFNY-*", "MFOS-REQ-EXECSPEC-*"]
 claim_refs: []
 test_refs: ["TEST-MFOS-EXECSPEC-CONF-*", "NEG-MFOS-EXECSPEC-CONF-*"]
 evidence_refs: ["EV-MFOS-EXECSPEC-*"]
@@ -23,7 +23,7 @@ Owner area: `docs/design/specs/31-executable-spec-test-harness.md`
 
 Audience: test architects, conformance authors, schema authors, release reviewers, implementation agents.
 
-This document defines the deterministic artifact contract for executable-spec tests. It does not implement a runner, semantic evaluator, fixture loader, CI job, or production test harness. MFOS is source-grounded and z/OS-inspired; these artifacts do not claim external product compatibility or external API compatibility.
+This document defines the deterministic artifact contract for executable-spec tests. It does not implement a runner, semantic evaluator, fixture loader, CI job, or production test harness. Phase 1 executable-semantics authority is Dafny scaffold plus loader-only artifact validation under `docs/design/specs/43-dafny-executable-semantics-policy.md`; this contract does not authorize Rust semantic-core work, semantic-runner implementation, hosted daemons, or production generated code. MFOS is source-grounded and z/OS-inspired; these artifacts do not claim external product compatibility or external API compatibility.
 
 ## 1. Purpose
 
@@ -67,6 +67,7 @@ Out of scope:
 | `EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001` | Boundary-negative test discipline and untrusted-input handling. |
 | `EXTREF-IBM-ZOS-SECURITY-SERVER-0001` | Protected-resource authorization traceability. |
 | `EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001` | Audit evidence and ordering traceability. |
+| `EXTREF-DAFNY-REFERENCE-0001` | Phase 1 executable-semantics artifact language background. |
 
 All `source_refs` in executable-spec artifacts MUST use `EXTREF-*` IDs. MFOS-owned identifiers MUST NOT include external product names or abbreviations.
 

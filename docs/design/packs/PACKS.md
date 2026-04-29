@@ -47,7 +47,10 @@ Red-team review
 If any item is missing, the assigned agent MUST produce a `SPEC_GAP_REPORT`
 instead of code.
 
-Hosted semantic prototype work is allowed only when the pack explicitly sets:
+Hosted semantic prototype work is not allowed in Phase 1. Phase 1 is limited to
+Dafny executable-semantics scaffold work and loader-only artifact validation
+under `formal/executable-semantics/dafny/`. A hosted semantic prototype may be
+considered only by a later reviewed gate when the pack explicitly sets:
 
 ```yaml
 implementation_allowed:
@@ -95,8 +98,8 @@ implementation_allowed:
 | PACK-31 | MFVM | `specs/42-mfvm.md`, `specs/36-hypervisor-class-virtualization.md` |
 | PACK-32 | Confidential VM | `specs/37-confidential-vm.md`, `specs/42-mfvm.md` |
 | PACK-33 | Datacenter cluster | `specs/38-datacenter-cluster-operations.md`, `specs/41-performance-and-secure-operations.md` |
-| PACK-34 | Language verification | `specs/39-language-and-verification-policy.md` |
-| PACK-35 | Automated reasoning | `specs/40-automated-reasoning-program.md`, `formal/registry.yml` |
+| PACK-34 | Language verification | `specs/39-language-and-verification-policy.md`, `specs/43-dafny-executable-semantics-policy.md` |
+| PACK-35 | Automated reasoning | `specs/40-automated-reasoning-program.md`, `specs/43-dafny-executable-semantics-policy.md`, `formal/registry.yml` |
 | PACK-36 | Performance and secure operations | `specs/41-performance-and-secure-operations.md` |
 
 ## Pack Completion Checklist
@@ -192,3 +195,25 @@ specification_only: true
 Phase 1 remains limited to loader-only artifact validation for these domains.
 No PXM, MFVM, Confidential VM, cluster, semantic evaluator, hosted daemon, or
 production implementation is authorized by Phase 0.10.
+
+## Pre-Phase-1 Dafny Loader-Only Gate
+
+Phase 1 executable semantics are Dafny-first and loader-only. The controlling
+policy is `docs/design/specs/43-dafny-executable-semantics-policy.md`.
+
+Allowed Phase 1 work:
+
+- Dafny executable-semantics scaffold metadata under
+  `formal/executable-semantics/dafny/`.
+- Loader-only artifact validation for shape, references, dependencies, and
+  declared proof status.
+- Traceability repair that does not evaluate MFOS behavior.
+
+Forbidden Phase 1 work:
+
+- Rust semantic-core or Portable Semantic Core implementation.
+- Semantic-runner implementation or semantic-runner commands.
+- Hosted semantic prototypes, hosted daemons, service adapters, or production
+  services.
+- Dafny-generated production code.
+- PXM, MFVM, Confidential VM, or cluster implementation.

@@ -6,8 +6,8 @@ japanese_mirror: "missing"
 status: "draft"
 owner: "MFOS architecture"
 last_reviewed: "2026-04-28"
-source_refs: ["EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001", "EXTREF-IBM-ZOS-SECURITY-SERVER-0001", "EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001", "EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001"]
-requirement_refs: ["MFOS-REQ-EXECSPEC-*"]
+source_refs: ["EXTREF-DAFNY-REFERENCE-0001", "EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001", "EXTREF-IBM-ZOS-SECURITY-SERVER-0001", "EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001", "EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001"]
+requirement_refs: ["MFOS-REQ-DAFNY-*", "MFOS-REQ-EXECSPEC-*"]
 claim_refs: []
 test_refs: ["TEST-MFOS-EXECSPEC-CONF-*", "NEG-MFOS-EXECSPEC-CONF-*"]
 evidence_refs: ["EV-MFOS-EXECSPEC-*"]
@@ -23,7 +23,7 @@ Owner area: `docs/design/specs/33-semantic-runner-contract.md`
 
 Audience: future runner authors, conformance authors, CI authors, release reviewers.
 
-This document defines the contract a future semantic runner must satisfy when one is implemented. It does not implement a runner, evaluator, adapter, CLI, or CI job. The contract exists so artifacts created in Phase 0.9 have a fixed target.
+This document defines the contract a future semantic runner must satisfy when one is implemented after a later reviewed gate. It does not implement a runner, evaluator, adapter, CLI, hosted daemon, or CI job. Phase 1 is constrained by `docs/design/specs/43-dafny-executable-semantics-policy.md`: Dafny executable-semantics scaffold plus loader-only artifact validation only. The contract exists so artifacts created in Phase 0.9 have a fixed future target without authorizing Phase 1 semantic-runner work.
 
 ## 1. Purpose
 
@@ -37,6 +37,7 @@ The semantic runner contract defines the boundary between artifacts and executio
 | `EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001` | Boundary-negative handling for malformed artifacts and untrusted input. |
 | `EXTREF-IBM-ZOS-SECURITY-SERVER-0001` | Protected-resource authorization observation boundaries. |
 | `EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001` | Audit evidence rejection and audit ordering boundaries. |
+| `EXTREF-DAFNY-REFERENCE-0001` | Phase 1 executable-semantics artifact language background. |
 
 ## 3. Runner Inputs
 
@@ -119,9 +120,10 @@ Runner failures are distinct from MFOS expected failures.
 | Expected MFOS typed failure observed | Determined by oracle |
 | Unexpected success on negative case | `FAIL` |
 
-Phase 1 runner implementations MUST preserve expected MFOS typed failures
-exactly as declared by the oracle. For authorization-oriented fixtures, the
-minimum error taxonomy is:
+A future semantic runner, once a later gate authorizes runner implementation,
+MUST preserve expected MFOS typed failures exactly as declared by the oracle.
+Phase 1 loader-only Dafny scaffold work MUST NOT execute this runner contract.
+For authorization-oriented fixtures, the minimum error taxonomy is:
 
 - `MFOS_ERR_UNAUTHENTICATED`: no valid subject/principal/session exists.
 - `MFOS_ERR_POLICY_DENIED`: a valid subject exists and policy denies the

@@ -50,8 +50,12 @@ If any item is missing, the implementation agent must produce a
 
 ## Hosted Semantic Prototype Label
 
-Hosted prototype work is allowed only for packs that pass the
-pre-implementation gate and must be labeled:
+Hosted prototype work is not allowed in Phase 1. Phase 1 is limited to Dafny
+executable-semantics scaffold work and loader-only artifact validation under
+`formal/executable-semantics/dafny/`.
+
+Hosted prototype work may be considered only after a later reviewed gate for
+packs that pass the pre-implementation gate, and it must be labeled:
 
 ```yaml
 implementation_profile: hosted_semantic_prototype
@@ -59,6 +63,10 @@ production_claim: false
 hardware_enforcement_claim: false
 system_integrity_claim: semantic_only
 ```
+
+This label does not authorize Rust semantic-core work, semantic-runner commands,
+hosted daemons, production services, PXM/MFVM/CVM implementation, cluster
+implementation, or Dafny-generated production code.
 
 ## Prohibited Patterns
 
@@ -71,4 +79,3 @@ system_integrity_claim: semantic_only
 - bypassing `auditd`
 - introducing IBM-derived semantics without Source Matrix IDs
 - making compatibility claims
-

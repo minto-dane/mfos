@@ -583,6 +583,13 @@ tool_registry:
   source_refs: []
   evidence_role: planned validation aid; not proof evidence until outputs exist and
     are reviewed
+- tool_id: TOOL-DAFNY
+  tool_name: Dafny
+  status: planned
+  source_refs:
+  - EXTREF-DAFNY-REFERENCE-0001
+  evidence_role: planned executable-semantics and verification-language aid; not proof
+    evidence until source, tool version, assumptions, outputs, and review are recorded
 - tool_id: TOOL-CODEQL
   tool_name: CodeQL
   status: planned

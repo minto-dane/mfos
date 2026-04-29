@@ -17,6 +17,7 @@ source_refs:
 - X64-LINUX-CET-001
 - EXTREF-KANI-RUST-VERIFIER-0001
 - EXTREF-VERUS-RUST-VERIFICATION-0001
+- EXTREF-DAFNY-REFERENCE-0001
 - EXTREF-GITHUB-CODEQL-0001
 - EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
 - EXTREF-NIST-SSDF-0001
@@ -25,6 +26,7 @@ source_refs:
 - X64-AMD-001
 - FBVBS-001
 requirement_refs:
+- MFOS-REQ-DAFNY-*
 - MFOS-REQ-LANG-*
 - MFOS-REQ-FORMAL-*
 - MFOS-REQ-ASSURANCE-*
@@ -48,7 +50,7 @@ Define MFOS language, toolchain, control-flow, and verification-policy requireme
 
 ## 2. Scope
 
-In scope: safe language policy, Rust default, no_std policy, unsafe boundary policy, Kani, Verus, TLA+, Alloy, proof placeholders, CFI, CET, clang CFI, assembly contracts, VMX/SVM wrapper contracts, toolchain pinning, sanitizers, fuzzing, static analysis, CodeQL, proof obligations, and evidence.
+In scope: safe language policy, Rust default, no_std policy, unsafe boundary policy, Dafny executable-semantics policy, Kani, Verus, TLA+, Alloy, proof placeholders, CFI, CET, clang CFI, assembly contracts, VMX/SVM wrapper contracts, toolchain pinning, sanitizers, fuzzing, static analysis, CodeQL, proof obligations, and evidence.
 
 ## 3. Non-objectives
 
@@ -66,6 +68,7 @@ Out of scope: implementation, proof completion, verified kernel claim, complete 
 - X64-LINUX-CET-001
 - EXTREF-KANI-RUST-VERIFIER-0001
 - EXTREF-VERUS-RUST-VERIFICATION-0001
+- EXTREF-DAFNY-REFERENCE-0001
 - EXTREF-GITHUB-CODEQL-0001
 - EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
 - EXTREF-NIST-SSDF-0001
@@ -81,6 +84,8 @@ These Source Matrix IDs are public-safe reference cards. They are not copied ext
 This specification defines future policy, profile names, and evidence gates only. A profile assignment, tool name, hardware feature name, or planned proof obligation is not evidence that an implementation exists or that the property has been achieved.
 
 No MFOS document may infer production readiness from this specification. Any implementation task that depends on a missing language profile, unsafe boundary decision, proof artifact, CFI/CET measurement, or toolchain record must stop with `MFOS_ERR_SPEC_GAP`.
+
+Phase 1 uses Dafny as the canonical executable-semantics artifact language. Phase 1 does not authorize a Rust semantic core, Portable Semantic Core, semantic runner, hosted daemon, generated production code, PXM/MFVM/CVM/cluster implementation, or production service behavior. Rust remains the future implementation-policy default for many components, but later Rust production code must conform to reviewed Phase 1 artifacts and must not replace Dafny as the Phase 1 executable-semantics authority.
 
 ## 6. Language Assurance Profiles
 
@@ -105,8 +110,9 @@ requirements, future implementation prompts, and evidence records.
 
 Target components include securityd policy core, auditd core, catalogd core,
 datasetd core, jobd core, spoold core, operatord command core, wlmd policy core,
-uvsd validation core, MFVM management plane core, semantic-core, parsers,
-validators, and tools where appropriate.
+uvsd validation core, MFVM management plane core, future Rust implementation
+modules after the appropriate phase gate, parsers, validators, and tools where
+appropriate.
 
 Requirements:
 
@@ -251,6 +257,18 @@ Python remains allowed for non-TCB validation tools. Long-term critical
 validators should migrate to Rust where feasible, but this migration is not a
 Phase 0.10 implementation authorization.
 
+## 7.2 Phase 1 Executable-semantics Matrix Addendum
+
+Phase 1 executable semantics are Dafny-first and loader-only.
+
+| Phase 1 area | Canonical artifact | Allowed Phase 1 activity | Forbidden Phase 1 activity |
+| --- | --- | --- | --- |
+| Executable semantics | Dafny source plus MFOS metadata | scaffold creation, artifact metadata validation, dependency/reference validation | Rust semantic-core implementation, semantic evaluation, semantic-runner commands, hosted daemons, production generated code |
+| Supporting models | TLA+ and Alloy | model planning and registry linkage | product behavior, service implementation, production enforcement |
+| Later implementation | Rust after separate gate | conformance planning only | replacing Dafny as Phase 1 canonical executable semantics |
+
+The detailed Dafny Executable-semantics Policy is `docs/design/specs/43-dafny-executable-semantics-policy.md`. Missing Dafny behavior remains `MFOS_ERR_SPEC_GAP`; unsupported declarations remain `MFOS_ERR_UNSUPPORTED`.
+
 ## 8. Safe Language Policy
 
 MFOS defaults to safe implementation languages where feasible. Deviations require requirement IDs, source refs, unsafe boundary review, tests, and evidence before implementation.
@@ -300,6 +318,14 @@ Kani evidence must identify the function or module under analysis, bounded assum
 Verus may be used for specification and proof of selected Rust logic. No implementation is verified merely because a Verus plan exists.
 
 Verus evidence must link specification functions, executable functions, assumptions, proof status, tool version, and reviewed limitations. A verified subset must not be described as a verified component unless the component boundary is formally defined.
+
+## 14.1 Dafny Executable-semantics Policy
+
+Dafny is the canonical executable-semantics artifact language for Phase 1. This is a specification and loader-validation decision, not an implementation authorization.
+
+Dafny artifacts may become reviewed executable-semantics sources after a Phase 1 task creates them under `formal/executable-semantics/dafny/`. Phase 1 tooling may validate artifact shape, declared requirement links, source references, dependency declarations, and proof-status metadata. Phase 1 tooling must not evaluate MFOS behavior, operate as a semantic runner, start a hosted daemon, or produce production code.
+
+Dafny verification output is evidence only when linked to source, requirements, assumptions, tool version, result, and review status. A Dafny plan or scaffold does not prove a component, service, partition primitive, VM primitive, or production runtime.
 
 ## 15. TLA+ State-machine Policy
 
