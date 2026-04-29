@@ -3,6 +3,9 @@ artifact_type: pre_phase1_readiness_audit
 status: current
 date: '2026-04-28'
 branch: fix/pre-phase-1-total-readiness
+pull_request:
+  number: 11
+  url: https://github.com/minto-dane/mfos/pull/11
 phase_0_10_dependency:
   pr: 10
   branch: fix/phase-0.10-pxm-mfvm-expansion
@@ -31,5 +34,9 @@ validation:
   validate_component_scaffold_check: passed
   validate_language_formal_assurance: passed
   validate_dafny_semantics_scaffold_check: passed
+github_checks:
+  validate_design_registries_and_lint_gates: passed
+  codeql_analysis_python: passed
+  codeql: passed
 public_release_allowed: false
 requires_ip_attorney_review_before_public_release: true
