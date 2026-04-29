@@ -4,8 +4,8 @@ status: current
 date: '2026-04-28'
 branch: fix/pre-phase-1-total-readiness-iteration-3
 pull_request:
-  number: null
-  url: null
+  number: 13
+  url: https://github.com/minto-dane/mfos/pull/13
 phase_0_10_dependency:
   pr: 10
   branch: fix/phase-0.10-pxm-mfvm-expansion
@@ -43,8 +43,8 @@ validation:
   validate_language_formal_assurance: passed
   validate_dafny_semantics_scaffold_check: passed
 github_checks:
-  validate_design_registries_and_lint_gates: pending_pr
-  codeql_analysis_python: pending_pr
-  codeql: pending_pr
+  validate_design_registries_and_lint_gates: tracked_in_pr_13
+  codeql_analysis_python: tracked_in_pr_13
+  codeql: tracked_in_pr_13
 public_release_allowed: false
 requires_ip_attorney_review_before_public_release: true

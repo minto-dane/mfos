@@ -6,7 +6,7 @@ Branch: `fix/pre-phase-1-total-readiness-iteration-3`
 Phase 0.10 dependency: PR #10 merged to `dev`
 Previous readiness dependency: PR #11 merged to `dev`
 Second-pass readiness dependency: PR #12 merged to `dev`
-PR: pending iteration-3 PR creation
+PR: #13 (`fix/pre-phase-1-total-readiness-iteration-3` -> `dev`)
 
 ## Executive Summary
 
@@ -57,7 +57,7 @@ Passed after this report was created:
 - `python3 -m py_compile $(find scripts -name '*.py' -type f | sort)`
 - `git diff --check`
 
-Pending on GitHub for the iteration-3 PR:
+Tracked on GitHub for PR #13:
 
 - `validate design registries and lint gates`
 - `CodeQL analysis (python)`
