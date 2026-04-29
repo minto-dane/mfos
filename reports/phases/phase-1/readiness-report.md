@@ -3,8 +3,10 @@
 Status: downgraded by Phase 0.9.7 source-grounding adequacy audit.
 
 Phase 1 is not ready for Portable Semantic Core behavior implementation,
-semantic evaluator implementation, semantic runner command implementation, or
-production work. Phase 1 is limited to loader-only artifact validation and
+Rust semantic-core implementation, semantic evaluator implementation, semantic
+runner command implementation, hosted daemon implementation, hosted semantic
+prototype work, or production work. Phase 1 is limited to Dafny
+executable-semantics scaffold work, loader-only artifact validation, and
 traceability repair until the source-grounding blockers in
 `reports/current/source-grounding/conditional-refreeze-plan.md` are closed.
 
@@ -16,11 +18,18 @@ traceability repair until the source-grounding blockers in
   traceability matrices exist.
 - Runner contract is defined as a provisional contract only.
 - No implementation was started in Phase 0.9.
+- The Dafny executable-semantics scaffold is defined under
+  `formal/executable-semantics/dafny/` and controlled by
+  `docs/design/specs/43-dafny-executable-semantics-policy.md`.
 
 ## Phase 1 Permission Boundary
 
 Phase 1 may perform loader-only work:
 
+- create reviewed Dafny executable-semantics scaffold artifacts under
+  `formal/executable-semantics/dafny/`;
+- validate Dafny artifact metadata, dependencies, source refs, requirement refs,
+  and declared proof status;
 - load and validate schemas, catalogs, fixtures, golden vectors, and embedded
   oracles;
 - report missing source refs, requirement refs, fixture refs, oracle refs, and
@@ -30,10 +39,13 @@ Phase 1 may perform loader-only work:
 Phase 1 may not implement:
 
 - Portable Semantic Core behavior,
+- Rust semantic-core behavior,
 - semantic evaluator logic,
 - semantic runner commands,
 - hosted daemons,
+- hosted semantic prototypes,
 - production service logic.
+- Dafny-generated production code.
 
 Phase 1 still may not claim production readiness, hardware enforcement, system
 integrity, or IBM/external compatibility.
@@ -59,11 +71,14 @@ Production implementation remains blocked.
 
 ```yaml
 phase_1_loader_allowed: true
+phase_1_dafny_skeleton_allowed: true
+phase_1_dafny_semantics_allowed: conditional
 phase_1_portable_semantic_core_allowed: false
+phase_1_rust_semantic_core_allowed: false
 phase_1_semantic_evaluator_allowed_domains: []
 production_implementation_allowed: false
 hosted_daemon_implementation_allowed: false
 semantic_runner_implementation_allowed: false
 public_release_allowed: false
-reason: Phase 0.9.7 found source-grounding and exact traceability gaps.
+reason: Phase 0.9.7 found source-grounding and exact traceability gaps; pre-Phase-1 remediation narrows allowed work to Dafny scaffold plus loader-only artifact validation.
 ```
