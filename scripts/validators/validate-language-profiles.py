@@ -21,6 +21,7 @@ REQUIRED_PROFILES = {"LAP-0", "LAP-1", "LAP-2", "LAP-3", "LAP-4"}
 REQUIRED_SPEC_PHRASES = {
     "Language Assurance Profiles",
     "Component Language Matrix",
+    "Dafny Executable-semantics Policy",
     "Unsafe Exception Policy",
     "Assembly Boundary Policy",
     "C/C++ Exception Policy",

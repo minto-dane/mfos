@@ -21,7 +21,7 @@ MODEL_REGISTRY = ROOT / "formal/model-registry.yml"
 EVIDENCE_REGISTRY = ROOT / "formal/evidence-registry.yml"
 SPEC = ROOT / "docs/design/specs/40-automated-reasoning-program.md"
 SCHEMA = ROOT / "schemas/mfos/proof-obligation.schema.yml"
-ALLOWED_TOOLS = {"TLA+", "Alloy", "Kani", "Verus", "CodeQL", "fuzzing", "property tests"}
+ALLOWED_TOOLS = {"TLA+", "Alloy", "Kani", "Verus", "Dafny", "CodeQL", "fuzzing", "property tests"}
 REQUIRED_CRITERIA = {
     "linked model or harness exists",
     "assumptions documented",

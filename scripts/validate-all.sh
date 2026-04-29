@@ -24,6 +24,7 @@ python3 scripts/checks/check-audit-obligations.py --mode "$MODE"
 python3 scripts/checks/check-spec-gap-misuse.py --mode "$MODE"
 python3 scripts/validators/validate-claims.py --mode "$MODE"
 ./scripts/validators/validate-language-formal-assurance.sh "$MODE"
+./scripts/validate-dafny-semantics-scaffold.sh "$MODE"
 if [[ "$GENERATE_TRACEABILITY" == "1" ]]; then
   python3 scripts/checks/check-registry-links.py --mode "$MODE"
 else
