@@ -1,15 +1,18 @@
 # Pre-Phase-1 Readiness Audit
 
-Status: current  
-Date: 2026-04-28  
-Branch: `fix/pre-phase-1-total-readiness`  
+Status: current
+Date: 2026-04-28
+Branch: `fix/pre-phase-1-total-readiness-iteration-3`
 Phase 0.10 dependency: PR #10 merged to `dev`
+Earlier readiness dependencies: PR #11 and PR #12 merged to `dev`
 
 ## Summary
 
 The repository was audited for Phase 1 readiness after the Phase 0.10
-PXM/MFVM expansion branch was split into PR #10 and merged to `dev`. This
-readiness branch is rebased on the updated `origin/dev`.
+PXM/MFVM expansion branch was split into PR #10 and merged to `dev`. A first
+readiness branch landed as PR #11, and a second-pass readiness branch landed as
+PR #12. This iteration-3 readiness branch is rebased on the updated
+`origin/dev`.
 
 Phase 1 readiness is limited to Dafny executable-semantics scaffold work and
 loader-only artifact validation. It does not authorize Rust semantic-core work,
@@ -39,6 +42,12 @@ None remain.
   generic Rust `semantic-core` target. It now says later Rust implementation
   must conform to reviewed Phase 1 Dafny artifacts and that Phase 1 does not
   authorize Rust semantic-core work.
+- `scripts/bootstrap/bootstrap-tree.sh` previously still created hosted
+  semantic prototype paths if re-run. It now routes only to deferred
+  semantic-contract planning and Dafny scaffold planning paths.
+- `docs/design/tasks/work-breakdown.md` previously retained active-looking
+  hosted prototype task rows. It now marks them as inactive deferred semantic
+  contract planning tasks.
 
 ## Scope Confirmed
 

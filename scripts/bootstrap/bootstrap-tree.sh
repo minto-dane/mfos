@@ -110,7 +110,7 @@ dirs=(
 
   tests/unit
   tests/integration/first-vertical-slice
-  tests/integration/hosted-semantic-prototype
+  tests/integration/deferred-semantic-contracts
   tests/negative/unauthorized-dataset-open
   tests/negative/stale-handle
   tests/negative/policy-version-mismatch
@@ -191,17 +191,9 @@ dirs=(
   implementation/tools/tracegen
   implementation/tools/packgen
 
-  implementation/prototypes/hosted-semantic/services/securityd
-  implementation/prototypes/hosted-semantic/services/auditd
-  implementation/prototypes/hosted-semantic/services/catalogd
-  implementation/prototypes/hosted-semantic/services/datasetd
-  implementation/prototypes/hosted-semantic/services/jobd
-  implementation/prototypes/hosted-semantic/services/spoold
-  implementation/prototypes/hosted-semantic/services/operatord
-  implementation/prototypes/hosted-semantic/services/workpolicyd
-  implementation/prototypes/hosted-semantic/services/amfd
-  implementation/prototypes/hosted-semantic/services/uvsd
-  implementation/prototypes/hosted-semantic/first-vertical-slice
+  implementation/deferred/semantic-contract-planning
+  implementation/executable-spec
+  formal/executable-semantics/dafny
 
   implementation/runtime/common
   implementation/runtime/abi/svc

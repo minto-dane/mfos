@@ -2,17 +2,18 @@
 
 Status: current  
 Date: 2026-04-28  
-Branch: `fix/pre-phase-1-total-readiness-second-pass`
+Branch: `fix/pre-phase-1-total-readiness-iteration-3`
 Phase 0.10 dependency: PR #10 merged to `dev`
 Previous readiness dependency: PR #11 merged to `dev`
-PR: pending second-pass PR creation
+Second-pass readiness dependency: PR #12 merged to `dev`
+PR: pending iteration-3 PR creation
 
 ## Executive Summary
 
 The repository is ready for a Phase 1 task limited to Dafny
 executable-semantics scaffold work and loader-only artifact validation after
-this second-pass readiness branch passes required checks and lands in `dev`.
-PR #10 and PR #11 have already landed in `dev`.
+this iteration-3 readiness branch passes required checks and lands in `dev`.
+PR #10, PR #11, and PR #12 have already landed in `dev`.
 
 This report does not authorize Rust semantic-core work, semantic-runner
 implementation, hosted daemons, hosted semantic prototypes, production service
@@ -33,6 +34,10 @@ implementation, PXM/MFVM/CVM/cluster implementation, or production code.
 - Completed a second recursive readiness pass, captured in
   `reports/current/pre-phase1/`, and fixed all Critical/Major findings from
   that pass.
+- Completed an iteration-3 recursive readiness pass, captured in
+  `reports/current/pre-phase1/iteration-3-audit.md`, and fixed the remaining
+  hosted-prototype routing and stale requirement-namespace wording found during
+  that pass.
 
 ## Validation Commands
 
@@ -52,7 +57,7 @@ Passed after this report was created:
 - `python3 -m py_compile $(find scripts -name '*.py' -type f | sort)`
 - `git diff --check`
 
-Pending on GitHub for the second-pass PR:
+Pending on GitHub for the iteration-3 PR:
 
 - `validate design registries and lint gates`
 - `CodeQL analysis (python)`

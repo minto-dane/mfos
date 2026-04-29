@@ -1,0 +1,60 @@
+schema_version: 1
+artifact_type: pre_phase1_iteration_3_audit
+status: current
+date: '2026-04-28'
+branch: fix/pre-phase-1-total-readiness-iteration-3
+base: dev
+inventory:
+  directories_scanned: 714
+  files_scanned: 3384
+  tracked_files_scanned: 949
+  empty_directories_observed: 174
+critical_findings:
+  remaining: 0
+  fixed: []
+major_findings:
+  remaining: 0
+  fixed:
+    - id: PREP1-ITER3-001
+      path: scripts/bootstrap/bootstrap-tree.sh
+      issue: bootstrap scaffold still created hosted semantic prototype paths
+      correction: replaced with deferred semantic-contract planning and Dafny scaffold planning paths
+    - id: PREP1-ITER3-002
+      path: docs/design/tasks/work-breakdown.md
+      issue: work breakdown still listed hosted prototype tasks as active-looking routing
+      correction: converted section to inactive deferred semantic contract planning tasks
+    - id: PREP1-ITER3-003
+      path: docs/design/specs/INDEX.md
+      issue: requirement namespace rows used stale future-only wording
+      correction: recorded registered draft requirement namespaces while preserving no-implementation gates
+minor_findings:
+  - id: PREP1-ITER3-MINOR-001
+    issue: legacy schema normalization warnings remain draft-mode only
+    phase_1_blocker: false
+  - id: PREP1-ITER3-MINOR-002
+    issue: source grounding remains conditional for semantic evaluator work
+    phase_1_blocker: false
+phase_1_scope:
+  dafny_scaffold_allowed: true
+  loader_only_artifact_validation_allowed: true
+  semantic_evaluator_allowed: conditional
+  rust_semantic_core_allowed: false
+  semantic_runner_allowed: false
+  hosted_daemon_allowed: false
+  production_allowed: false
+public_release_allowed: false
+requires_ip_attorney_review_before_public_release: true
+validation:
+  validate_all_check: passed
+  validate_naming_safety_release: passed
+  validate_artifact_hygiene: passed
+  validate_component_scaffold: passed
+  validate_language_formal_assurance: passed
+  validate_dafny_semantics_scaffold: passed
+  phase_0_9_validate_check: passed
+  py_compile_scripts: passed
+  git_diff_check: passed
+github_checks:
+  validate_design_registries_and_lint_gates: pending_pr
+  codeql_analysis_python: pending_pr
+  codeql: pending_pr

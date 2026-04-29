@@ -9,6 +9,11 @@ current:
   second_pass_remediation:
     path: reports/current/pre-phase1/second-pass-remediation.md
     machine_readable: reports/current/pre-phase1/second-pass-remediation.yml
+  iteration_3_audit:
+    path: reports/current/pre-phase1/iteration-3-audit.md
+    machine_readable: reports/current/pre-phase1/iteration-3-audit.yml
+  iteration_3_red_team_review:
+    path: reports/current/pre-phase1/iteration-3-red-team-review.md
 policy:
   implementation_allowed: false
   public_release_allowed: false

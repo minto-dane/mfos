@@ -30,6 +30,9 @@ Major findings corrected during this pass:
 - AI and prompt guardrails now explicitly block Rust semantic-core,
   semantic-runner, hosted daemon, hosted semantic prototype, production service,
   PXM/MFVM/CVM, cluster, and generated production-code work in Phase 1.
+- Iteration 3 removed remaining hosted-prototype routing from bootstrap
+  scaffolding and converted old hosted prototype task rows into inactive
+  deferred semantic contract planning rows.
 
 ## Checks
 
