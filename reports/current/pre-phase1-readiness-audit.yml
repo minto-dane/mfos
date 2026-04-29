@@ -1,0 +1,35 @@
+schema_version: 1
+artifact_type: pre_phase1_readiness_audit
+status: current
+date: '2026-04-28'
+branch: fix/pre-phase-1-total-readiness
+phase_0_10_dependency:
+  pr: 10
+  branch: fix/phase-0.10-pxm-mfvm-expansion
+  base: dev
+  status: merged
+critical_findings_remaining: false
+major_findings_remaining: false
+phase_1_ready_scope:
+  dafny_skeleton_allowed: true
+  loader_only_artifact_validation_allowed: true
+  traceability_repair_allowed: true
+forbidden_scope:
+  rust_semantic_core: false
+  portable_semantic_core: false
+  semantic_runner: false
+  hosted_daemon: false
+  hosted_semantic_prototype: false
+  production_code: false
+  generated_production_code: false
+  service_implementation: false
+  pxm_mfvm_cvm_cluster_implementation: false
+validation:
+  validate_all_check: passed
+  validate_naming_safety_release: passed
+  validate_artifact_hygiene: passed
+  validate_component_scaffold_check: passed
+  validate_language_formal_assurance: passed
+  validate_dafny_semantics_scaffold_check: passed
+public_release_allowed: false
+requires_ip_attorney_review_before_public_release: true

@@ -105,6 +105,16 @@ current:
   purpose: Red-team review for Phase 0.10 PXM/MFVM expansion.
 - path: reports/current/pxm-mfvm-open-issues.md
   purpose: Open issues for PXM/MFVM/CVM/cluster/formal planning.
+- path: reports/current/pre-phase1-readiness-audit.md
+  purpose: Pre-Phase-1 readiness audit and scope closure.
+- path: reports/current/pre-phase1-readiness-audit.yml
+  purpose: Machine-readable Pre-Phase-1 readiness audit.
+- path: reports/current/pre-phase1-readiness-red-team-review.md
+  purpose: Pre-Phase-1 readiness red-team review.
+- path: reports/current/pre-phase1-readiness-open-issues.md
+  purpose: Nonblocking Pre-Phase-1 readiness open issues.
+- path: reports/current/pre-phase1-readiness-final-report.md
+  purpose: Final Pre-Phase-1 readiness judgement for Dafny scaffold and loader-only validation.
 sections:
 - path: reports/phases/phase-0-6/
   purpose: Phase 0.6 canonicalization and enforcement closure.
@@ -144,6 +154,10 @@ phase_reports:
   purpose: Machine-readable pack-level loader-only readiness recheck.
 - path: reports/phases/phase-1/pxm-mfvm-readiness-after-refactor.md
   purpose: Phase 1 readiness gate after PXM/MFVM refactor.
+- path: reports/phases/phase-1/pre-phase-1-total-readiness.md
+  purpose: Pre-Phase-1 total readiness gate and stacked PR dependency.
+- path: reports/phases/phase-1/pre-phase-1-total-readiness.yml
+  purpose: Machine-readable Pre-Phase-1 total readiness gate.
 policy:
   new_reports_default_location: reports/current/
   generated_reports_location: reports/generated/

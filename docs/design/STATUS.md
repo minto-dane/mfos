@@ -2,15 +2,16 @@
 
 Status date: 2026-04-28
 Workspace: `/home/nia/mfos`
-Git status: working branch `dev` tracks `origin/dev`; repository visibility is
-being changed to public by owner instruction. This visibility change does not
-remove the formal public release gate: public-release claims remain blocked
-pending IP/trademark attorney review.
+Git status: working branch `fix/pre-phase-1-total-readiness`; PR #10
+(`fix/phase-0.10-pxm-mfvm-expansion`) has landed in `dev`, and this branch is
+rebased on the updated `origin/dev`. Repository visibility may be public by
+owner instruction, but formal public-release claims remain blocked pending
+IP/trademark attorney review.
 
 ## Current Phase
 
-Phase 0.10: PXM / MFVM / Confidential VM / Datacenter / Formal Assurance
-Requirements Expansion
+Pre-Phase-1 Total Readiness Remediation after Phase 0.10 PXM / MFVM /
+Confidential VM / Datacenter / Formal Assurance Requirements Expansion
 
 Final judgment:
 
@@ -25,8 +26,11 @@ phase_0_9_7_source_grounding_status: semantic_freeze_conditional
 structural_freeze_remains_valid: true
 semantic_freeze_fully_valid: false
 phase_1_loader_allowed: true
+phase_1_dafny_skeleton_allowed: true
+phase_1_dafny_semantics_allowed: conditional
 phase_1_semantic_evaluator_status: conditional_blocked_pending_domain_gates
 phase_1_portable_semantic_core_allowed: false
+phase_1_rust_semantic_core_allowed: false
 phase_1_semantic_evaluator_allowed_domains: []
 phase_1_pxm_mfvm_cvm_cluster_semantic_evaluator_allowed: false
 production_implementation_allowed: false
@@ -80,6 +84,26 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
 - Phase gates remain conservative: Phase 1 loader-only validation remains
   allowed; PXM/MFVM/CVM/cluster semantic evaluators, hosted daemons, semantic
   runner, and production implementation remain blocked.
+
+## Completed In Pre-Phase-1 Total Readiness Remediation
+
+- Split Phase 0.10 work into PR #10, merged it into `dev`, and rebased this
+  readiness branch on the updated `origin/dev`.
+- Added `docs/design/specs/43-dafny-executable-semantics-policy.md`.
+- Added the Phase 1 Dafny scaffold at
+  `formal/executable-semantics/dafny/`.
+- Wired `scripts/validate-dafny-semantics-scaffold.sh` into
+  `scripts/validate-all.sh` and GitHub design validation.
+- Repaired component scaffold metadata so Phase 1 targets distinguish
+  `rust_semantic_core`, `dafny_executable_semantics`, `semantic_runner`,
+  `generated_production_code`, and `validation_only`.
+- Updated specs 31, 33, 39, 40, PACKS, and AI/prompt guardrails so Phase 1 is
+  Dafny-first and loader-only. Rust semantic-core, semantic runner, hosted
+  daemon, hosted semantic prototype, service implementation, PXM/MFVM/CVM
+  implementation, cluster implementation, and production generated code remain
+  forbidden.
+- Closed Major red-team wording findings in implementation scaffold README
+  files that previously pointed Phase 1 agents at hosted semantic prototypes.
 
 ## Completed In Phase 0.10 Total Remediation
 
@@ -506,6 +530,10 @@ Current PR and readiness reports:
 - `reports/phases/phase-1/open-issues.md`
 - `reports/current/source-grounding/conditional-refreeze-plan.md`
 - `reports/phases/phase-1/pack-readiness-recheck.md`
+- `reports/current/pre-phase1-readiness-audit.md`
+- `reports/current/pre-phase1-readiness-red-team-review.md`
+- `reports/current/pre-phase1-readiness-final-report.md`
+- `reports/phases/phase-1/pre-phase-1-total-readiness.md`
 
 Historical phase reports are under `reports/phases/`. Cross-phase audits are
 under `reports/audits/`. Naming-safety reports are under
@@ -515,15 +543,23 @@ under `reports/audits/`. Naming-safety reports are under
 
 ## Next Recommended Work
 
-Proceed to Phase 0.9.8 Source-Grounding Trace Closure:
+After the pre-Phase-1 readiness PR passes required checks and lands in `dev`,
+proceed only to Phase 1 Dafny executable-semantics scaffold and loader-only
+artifact validation.
 
-1. Propagate `source_refs` into current fixtures.
-2. Propagate `source_refs` and `target_requirements` into current
-   golden/oracle vectors.
-3. Reconcile planned `010x` requirement tests with current `09xx`
-   executable-spec artifacts, or add a machine-readable alias map.
-4. Refactor or explicitly re-bound job/spool control-stream syntax and
-   JCL/DD-style MFOS-owned identifiers.
-5. Keep production implementation, hosted daemon implementation, Portable
-   Semantic Core behavior, semantic evaluator logic, semantic runner commands,
-   and hardware enforcement claims blocked.
+Allowed Phase 1 scope:
+
+1. Create reviewed Dafny source artifacts under
+   `formal/executable-semantics/dafny/`.
+2. Validate Dafny artifact metadata, dependencies, requirement refs, source
+   refs, and declared proof status.
+3. Repair traceability metadata for executable-spec artifacts.
+
+Forbidden Phase 1 scope remains:
+
+1. Rust semantic-core or Portable Semantic Core implementation.
+2. Semantic-runner implementation or semantic-runner commands.
+3. Hosted daemon or hosted semantic prototype implementation.
+4. Securityd/auditd/catalogd/datasetd/jobd/spoold/operatord implementation.
+5. PXM/MFVM/CVM/cluster implementation.
+6. Production code or Dafny-generated production code.

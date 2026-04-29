@@ -1,0 +1,32 @@
+schema_version: 1
+artifact_type: pre_phase1_total_readiness_gate
+status: current
+date: '2026-04-28'
+branch: fix/pre-phase-1-total-readiness
+base_dependency:
+  pr: 10
+  branch: fix/phase-0.10-pxm-mfvm-expansion
+  base: dev
+  status: merged
+allowed_scope:
+  dafny_executable_semantics_scaffold: true
+  loader_only_artifact_validation: true
+  traceability_repair: true
+forbidden_scope:
+  rust_semantic_core: false
+  portable_semantic_core: false
+  semantic_runner: false
+  hosted_daemon: false
+  hosted_semantic_prototype: false
+  production_code: false
+  generated_production_code: false
+  pxm_mfvm_cvm_cluster_implementation: false
+readiness:
+  critical_findings_remaining: false
+  major_findings_remaining: false
+  phase_1_ready: true
+  phase_1_dafny_skeleton_allowed: true
+  phase_1_dafny_semantics_allowed: conditional
+  phase_1_rust_semantic_core_allowed: false
+public_release_allowed: false
+requires_ip_attorney_review_before_public_release: true
