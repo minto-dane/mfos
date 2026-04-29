@@ -13,7 +13,12 @@ if [[ "${2:-}" == "--check" ]]; then
   GENERATE_TRACEABILITY=0
 fi
 
+if [[ "$GENERATE_TRACEABILITY" == "0" ]]; then
+  export MFOS_VALIDATE_NO_WRITE=1
+fi
+
 python3 scripts/validators/validate-source-cards.py
+python3 scripts/validators/validate-schema-files.py --mode "$MODE"
 python3 scripts/validators/validate-requirements.py
 python3 scripts/checks/check-prohibited-terms.py
 python3 scripts/checks/check-no-fake-success.py
@@ -28,7 +33,7 @@ python3 scripts/validators/validate-claims.py --mode "$MODE"
 if [[ "$GENERATE_TRACEABILITY" == "1" ]]; then
   python3 scripts/checks/check-registry-links.py --mode "$MODE"
 else
-  MFOS_VALIDATE_NO_WRITE=1 python3 scripts/checks/check-registry-links.py --mode "$MODE"
+  python3 scripts/checks/check-registry-links.py --mode "$MODE"
 fi
 python3 scripts/phases/phase-0-8/check-traceability.py --mode "$MODE"
 if [[ "$GENERATE_TRACEABILITY" == "1" ]]; then

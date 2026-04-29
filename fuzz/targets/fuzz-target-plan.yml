@@ -4,7 +4,8 @@ status: draft
 implementation_allowed: false
 runner_implementation_allowed: false
 semantic_execution_allowed: false
-non_compatibility_statement: External references are design background only; corpora are MFOS-defined and do not reproduce external syntax or record layouts.
+non_compatibility_statement: External references are design background only; corpora
+  are MFOS-defined and do not reproduce external syntax or record layouts.
 targets:
 - target_id: FUZZ-MFOS-DATASET-DSN-0001
   target_name: dsn-parser
@@ -18,6 +19,14 @@ targets:
   - overlong_name
   - unsupported_external_name_shape
   - spec_gap_name_shape
+  - valid_minimal_input
+  - boundary_length_input
+  - invalid_token
+  - malformed_nesting
+  - unsupported_feature
+  - explicit_spec_gap_trigger
+  - denied_operation_fixture
+  - audit_before_return_fixture
   phase_to_implement: Phase 1
   implementation_allowed: false
 - target_id: FUZZ-MFOS-JOB-CONTROL-STREAM-0001
@@ -31,6 +40,14 @@ targets:
   - missing_effective_principal
   - unsupported_control_feature
   - spec_gap_control_feature
+  - valid_minimal_input
+  - boundary_length_input
+  - invalid_token
+  - malformed_nesting
+  - unsupported_feature
+  - explicit_spec_gap_trigger
+  - denied_operation_fixture
+  - audit_before_return_fixture
   phase_to_implement: Phase 1
   implementation_allowed: false
 - target_id: FUZZ-MFOS-OPER-COMMAND-0001
@@ -44,6 +61,14 @@ targets:
   - malformed_command
   - destructive_without_confirmation
   - automation_bypass_attempt
+  - valid_minimal_input
+  - boundary_length_input
+  - invalid_token
+  - malformed_nesting
+  - unsupported_feature
+  - explicit_spec_gap_trigger
+  - denied_operation_fixture
+  - audit_before_return_fixture
   phase_to_implement: Phase 1
   implementation_allowed: false
 - target_id: FUZZ-MFOS-AUTH-POLICY-0001
@@ -57,6 +82,14 @@ targets:
   - stale_delegation
   - missing_dual_control
   - malformed_policy
+  - valid_minimal_input
+  - boundary_length_input
+  - invalid_token
+  - malformed_nesting
+  - unsupported_feature
+  - explicit_spec_gap_trigger
+  - denied_operation_fixture
+  - audit_before_return_fixture
   phase_to_implement: Phase 1
   implementation_allowed: false
 - target_id: FUZZ-MFOS-AUDIT-RECORD-0001
@@ -70,6 +103,14 @@ targets:
   - tampered_hash_chain
   - duplicate_record_id
   - redaction_boundary
+  - valid_minimal_input
+  - boundary_length_input
+  - invalid_token
+  - malformed_nesting
+  - unsupported_feature
+  - explicit_spec_gap_trigger
+  - denied_operation_fixture
+  - audit_before_return_fixture
   phase_to_implement: Phase 1
   implementation_allowed: false
 - target_id: FUZZ-MFOS-DATASET-HANDLE-0001
@@ -83,6 +124,14 @@ targets:
   - stale_catalog_generation
   - missing_decision_id
   - forged_subject
+  - valid_minimal_input
+  - boundary_length_input
+  - invalid_token
+  - malformed_nesting
+  - unsupported_feature
+  - explicit_spec_gap_trigger
+  - denied_operation_fixture
+  - audit_before_return_fixture
   phase_to_implement: Phase 1
   implementation_allowed: false
 - target_id: FUZZ-MFOS-JOB-FIXTURE-0001
@@ -96,6 +145,14 @@ targets:
   - missing_audit_correlation
   - unauthorized_dataset_reference
   - nondeterministic_identity
+  - valid_minimal_input
+  - boundary_length_input
+  - invalid_token
+  - malformed_nesting
+  - unsupported_feature
+  - explicit_spec_gap_trigger
+  - denied_operation_fixture
+  - audit_before_return_fixture
   phase_to_implement: Phase 1
   implementation_allowed: false
 - target_id: FUZZ-MFOS-SPOOL-FIXTURE-0001
@@ -109,6 +166,14 @@ targets:
   - export_without_audit
   - purge_without_authority
   - spool_as_audit_evidence
+  - valid_minimal_input
+  - boundary_length_input
+  - invalid_token
+  - malformed_nesting
+  - unsupported_feature
+  - explicit_spec_gap_trigger
+  - denied_operation_fixture
+  - audit_before_return_fixture
   phase_to_implement: Phase 1
   implementation_allowed: false
 - target_id: FUZZ-MFOS-SEMANTIC-FIXTURE-0001
@@ -126,5 +191,13 @@ targets:
   - missing_oracle
   - spec_gap_expected
   - unsupported_expected
+  - valid_minimal_input
+  - boundary_length_input
+  - invalid_token
+  - malformed_nesting
+  - unsupported_feature
+  - explicit_spec_gap_trigger
+  - denied_operation_fixture
+  - audit_before_return_fixture
   phase_to_implement: Phase 1
   implementation_allowed: false

@@ -13,7 +13,7 @@ gaps:
   severity: high
   summary: Source cards or source mappings reference requirements not registered in
     the priority catalog.
-  count: 5
+  count: 12
   items:
   - source_id: EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001
     requirement_id: MFOS-REQ-WLM-0001
@@ -25,3 +25,17 @@ gaps:
     requirement_id: MFOS-REQ-WLM-0009
   - source_id: EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001
     requirement_id: MFOS-REQ-WLM-0010
+  - source_id: EXTREF-KANI-RUST-VERIFIER-0001
+    requirement_id: MFOS-REQ-FORMAL-0103
+  - source_id: EXTREF-VERUS-RUST-VERIFICATION-0001
+    requirement_id: MFOS-REQ-FORMAL-0104
+  - source_id: EXTREF-AWS-AUTOMATED-REASONING-0001
+    requirement_id: MFOS-REQ-FORMAL-0101
+  - source_id: EXTREF-AWS-AUTOMATED-REASONING-0001
+    requirement_id: MFOS-REQ-FORMAL-0105
+  - source_id: EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
+    requirement_id: MFOS-REQ-FORMAL-0101
+  - source_id: EXTREF-MICROSOFT-HYPERV-VSM-0001
+    requirement_id: MFOS-REQ-FORMAL-0106
+  - source_id: EXTREF-RUST-UNSAFE-REFERENCE-0001
+    requirement_id: MFOS-REQ-FORMAL-0102

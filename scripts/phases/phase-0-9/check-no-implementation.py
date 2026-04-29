@@ -25,8 +25,18 @@ PHASE09_ROOTS = [
     ROOT / "fuzz/targets",
     ROOT / "evidence/traceability",
     ROOT / "reports",
+    ROOT / "implementation",
+    ROOT / "services",
+    ROOT / "nucleus",
+    ROOT / "pxm",
+    ROOT / "guard",
+    ROOT / "runtime",
+    ROOT / "interfaces",
 ]
-FORBIDDEN_SUFFIXES = {".rs", ".c", ".cc", ".cpp", ".h", ".hpp", ".go", ".java", ".kt", ".ts", ".js", ".sh"}
+FORBIDDEN_SUFFIXES = {".rs", ".c", ".cc", ".cpp", ".h", ".hpp", ".go", ".java", ".kt", ".ts", ".js"}
+ALLOWED_SCRIPT_PATHS = {
+    ROOT / "scripts/phases/phase-0-9/validate.sh",
+}
 FORBIDDEN_PATTERNS = [
     "fn main(",
     "int main(",
@@ -46,7 +56,9 @@ def main() -> int:
         for path in root.rglob("*"):
             if not path.is_file():
                 continue
-            if path.suffix in FORBIDDEN_SUFFIXES and not str(path).endswith("validate-phase-0-9.sh"):
+            if path in ALLOWED_SCRIPT_PATHS:
+                continue
+            if path.suffix in FORBIDDEN_SUFFIXES:
                 errors.append(f"{rel(path)}: Phase 0.9 artifact must not introduce implementation source file")
                 continue
             if path.suffix not in {".md", ".yml", ".yaml", ".txt"}:

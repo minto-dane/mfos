@@ -732,7 +732,9 @@ entries:
   inputs:
   - docs/design/specs/11-workload-policy.md
   outputs:
-  - implementation/prototypes/hosted-semantic/services/workpolicyd
+  - docs/design/specs/11-workload-policy.md
+  - docs/design/registries/requirements.yaml
+  - reports/audits/packs/pack-audit.md
   source_refs:
   - EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001
   requirements:
@@ -823,7 +825,9 @@ entries:
   inputs:
   - docs/design/specs/13-update.md
   outputs:
-  - implementation/prototypes/hosted-semantic/services/uvsd
+  - docs/design/specs/13-update.md
+  - docs/design/registries/requirements.yaml
+  - reports/audits/packs/pack-audit.md
   source_refs:
   - TUF-001
   - SLSA-001

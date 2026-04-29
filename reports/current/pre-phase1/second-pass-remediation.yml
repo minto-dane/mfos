@@ -1,0 +1,38 @@
+schema_version: 1
+artifact_type: pre_phase1_second_pass_remediation
+status: current
+date: '2026-04-28'
+branch: fix/pre-phase-1-total-readiness-second-pass
+remediation_completed:
+  prompt_guardrails: complete
+  hosted_prototype_routing_cleanup: complete
+  deny_before_return_oracle_fix: complete
+  formal_schema_registry_alignment: complete
+  dafny_requirement_registration: complete
+  fixture_oracle_schema_alignment: complete
+  fuzz_seed_category_alignment: complete
+  source_workbench_parity_update: complete
+  no_implementation_scan_expansion: complete
+  traceability_dedup_and_gap_reporting: complete
+critical_findings_remaining: false
+major_findings_remaining: false
+minor_findings_remaining:
+  - legacy_mfos_schema_shape_warnings
+  - source_grounding_conditional_for_semantic_evaluator
+validation_status:
+  local_validation_passed: true
+  local_validation_notes:
+  - validate-all --check passed with nonblocking draft-mode legacy schema normalization warnings.
+  github_checks_passed: pending_pr
+phase_1_ready_scope:
+  dafny_skeleton_allowed: true
+  loader_only_artifact_validation_allowed: true
+  traceability_repair_allowed: true
+forbidden_scope:
+  phase_1_rust_semantic_core_allowed: false
+  production_implementation_allowed: false
+  hosted_daemon_implementation_allowed: false
+  semantic_runner_implementation_allowed: false
+  hosted_semantic_prototype_allowed: false
+public_release_allowed: false
+requires_ip_attorney_review_before_public_release: true

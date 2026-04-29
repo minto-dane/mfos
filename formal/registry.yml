@@ -519,7 +519,7 @@ model_registry:
   - production implementation
   - hardware-specific execution
 - model_id: MFOS-MODEL-CVM-LAUNCH-REQUIRES-MEASUREMENT
-  path: formal/models/cvm-launch
+  path: formal/models/tla
   status: planned
   tool_family: TLA+ or Alloy or proof harness TBD
   modeled_behavior: cvm launch requires measurement
@@ -527,7 +527,7 @@ model_registry:
   - production implementation
   - hardware-specific execution
 - model_id: MFOS-MODEL-CVM-SECRET-RELEASE-REQUIRES-ATTESTATION
-  path: formal/models/cvm-secret-release
+  path: formal/models/tla
   status: planned
   tool_family: TLA+ or Alloy or proof harness TBD
   modeled_behavior: cvm secret release requires attestation
@@ -535,7 +535,7 @@ model_registry:
   - production implementation
   - hardware-specific execution
 - model_id: MFOS-MODEL-PRIVATE-SHARED-MEMORY-TRANSITION-VALIDITY
-  path: formal/models/cvm-memory-transition
+  path: formal/models/tla
   status: planned
   tool_family: TLA+ or Alloy or proof harness TBD
   modeled_behavior: private shared memory transition validity
@@ -543,7 +543,7 @@ model_registry:
   - production implementation
   - hardware-specific execution
 - model_id: MFOS-MODEL-CLUSTER-POLICY-DISTRIBUTION-INTEGRITY
-  path: formal/models/cluster-policy
+  path: formal/models/tla
   status: planned
   tool_family: TLA+ or Alloy or proof harness TBD
   modeled_behavior: cluster policy distribution integrity
@@ -551,7 +551,7 @@ model_registry:
   - production implementation
   - hardware-specific execution
 - model_id: MFOS-MODEL-CLUSTER-ATTESTATION-COLLECTION-INTEGRITY
-  path: formal/models/cluster-attestation
+  path: formal/models/tla
   status: planned
   tool_family: TLA+ or Alloy or proof harness TBD
   modeled_behavior: cluster attestation collection integrity
@@ -574,13 +574,15 @@ tool_registry:
 - tool_id: TOOL-KANI
   tool_name: Kani
   status: planned
-  source_refs: []
+  source_refs:
+  - EXTREF-KANI-RUST-VERIFIER-0001
   evidence_role: planned validation aid; not proof evidence until outputs exist and
     are reviewed
 - tool_id: TOOL-VERUS
   tool_name: Verus
   status: planned
-  source_refs: []
+  source_refs:
+  - EXTREF-VERUS-RUST-VERIFICATION-0001
   evidence_role: planned validation aid; not proof evidence until outputs exist and
     are reviewed
 - tool_id: TOOL-DAFNY
@@ -593,7 +595,8 @@ tool_registry:
 - tool_id: TOOL-CODEQL
   tool_name: CodeQL
   status: planned
-  source_refs: []
+  source_refs:
+  - EXTREF-GITHUB-CODEQL-0001
   evidence_role: planned validation aid; not proof evidence until outputs exist and
     are reviewed
 - tool_id: TOOL-FUZZING

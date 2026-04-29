@@ -35,6 +35,21 @@ entries:
   - EV-MFOS-AUDIT-AMF-UNSUPPORTED-0021
   - EV-MFOS-CI-AMF-0021
   - EV-MFOS-SYSINT-AMF-BOUNDARY-0017
+- requirement_id: MFOS-REQ-ASSURANCE-0001
+  evidence:
+  - EV-MFOS-ASSURANCE-0001
+- requirement_id: MFOS-REQ-ASSURANCE-0002
+  evidence:
+  - EV-MFOS-ASSURANCE-0002
+- requirement_id: MFOS-REQ-ASSURANCE-0003
+  evidence:
+  - EV-MFOS-ASSURANCE-0003
+- requirement_id: MFOS-REQ-ASSURANCE-0004
+  evidence:
+  - EV-MFOS-ASSURANCE-0004
+- requirement_id: MFOS-REQ-ASSURANCE-0005
+  evidence:
+  - EV-MFOS-ASSURANCE-0005
 - requirement_id: MFOS-REQ-AUDIT-0001
   evidence:
   - EV-MFOS-AUDIT-REQ-RESERVED-0001
@@ -135,6 +150,84 @@ entries:
 - requirement_id: MFOS-REQ-CATALOG-0102
   evidence:
   - EV-MFOS-CATALOG-0102
+- requirement_id: MFOS-REQ-CLUSTER-0101
+  evidence:
+  - EV-MFOS-CLUSTER-0101
+- requirement_id: MFOS-REQ-CLUSTER-0102
+  evidence:
+  - EV-MFOS-CLUSTER-0102
+- requirement_id: MFOS-REQ-CLUSTER-0103
+  evidence:
+  - EV-MFOS-CLUSTER-0103
+- requirement_id: MFOS-REQ-CLUSTER-0104
+  evidence:
+  - EV-MFOS-CLUSTER-0104
+- requirement_id: MFOS-REQ-CLUSTER-0105
+  evidence:
+  - EV-MFOS-CLUSTER-0105
+- requirement_id: MFOS-REQ-CLUSTER-0106
+  evidence:
+  - EV-MFOS-CLUSTER-0106
+- requirement_id: MFOS-REQ-CLUSTER-0107
+  evidence:
+  - EV-MFOS-CLUSTER-0107
+- requirement_id: MFOS-REQ-CLUSTER-0108
+  evidence:
+  - EV-MFOS-CLUSTER-0108
+- requirement_id: MFOS-REQ-CVM-0101
+  evidence:
+  - EV-MFOS-CVM-0101
+- requirement_id: MFOS-REQ-CVM-0102
+  evidence:
+  - EV-MFOS-CVM-0102
+- requirement_id: MFOS-REQ-CVM-0103
+  evidence:
+  - EV-MFOS-CVM-0103
+- requirement_id: MFOS-REQ-CVM-0104
+  evidence:
+  - EV-MFOS-CVM-0104
+- requirement_id: MFOS-REQ-CVM-0105
+  evidence:
+  - EV-MFOS-CVM-0105
+- requirement_id: MFOS-REQ-CVM-0106
+  evidence:
+  - EV-MFOS-CVM-0106
+- requirement_id: MFOS-REQ-CVM-0107
+  evidence:
+  - EV-MFOS-CVM-0107
+- requirement_id: MFOS-REQ-CVM-0108
+  evidence:
+  - EV-MFOS-CVM-0108
+- requirement_id: MFOS-REQ-DAFNY-0001
+  evidence:
+  - EV-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-DAFNY-0002
+  evidence:
+  - EV-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-DAFNY-0003
+  evidence:
+  - EV-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-DAFNY-0004
+  evidence:
+  - EV-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-DAFNY-0005
+  evidence:
+  - EV-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-DAFNY-0006
+  evidence:
+  - EV-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-DAFNY-0007
+  evidence:
+  - EV-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-DAFNY-0008
+  evidence:
+  - EV-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-DAFNY-0009
+  evidence:
+  - EV-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-DAFNY-0010
+  evidence:
+  - EV-MFOS-DAFNY-0001
 - requirement_id: MFOS-REQ-DATASET-0001
   evidence:
   - EV-MFOS-AUDIT-DATA-HANDLE-0001
@@ -169,6 +262,30 @@ entries:
 - requirement_id: MFOS-REQ-DATASET-0103
   evidence:
   - EV-MFOS-DATASET-0103
+- requirement_id: MFOS-REQ-FORMAL-0001
+  evidence:
+  - EV-MFOS-FORMAL-0001
+- requirement_id: MFOS-REQ-FORMAL-0002
+  evidence:
+  - EV-MFOS-FORMAL-0002
+- requirement_id: MFOS-REQ-FORMAL-0003
+  evidence:
+  - EV-MFOS-FORMAL-0003
+- requirement_id: MFOS-REQ-FORMAL-0004
+  evidence:
+  - EV-MFOS-FORMAL-0004
+- requirement_id: MFOS-REQ-FORMAL-0005
+  evidence:
+  - EV-MFOS-FORMAL-0005
+- requirement_id: MFOS-REQ-FORMAL-0006
+  evidence:
+  - EV-MFOS-FORMAL-0006
+- requirement_id: MFOS-REQ-FORMAL-0007
+  evidence:
+  - EV-MFOS-FORMAL-0007
+- requirement_id: MFOS-REQ-FORMAL-0108
+  evidence:
+  - EV-MFOS-FORMAL-0108
 - requirement_id: MFOS-REQ-GUARD-0001
   evidence:
   - EV-MFOS-GUARD-REQ-RESERVED-0001
@@ -208,6 +325,54 @@ entries:
 - requirement_id: MFOS-REQ-JOB-0103
   evidence:
   - EV-MFOS-JOB-0103
+- requirement_id: MFOS-REQ-LANG-0101
+  evidence:
+  - EV-MFOS-LANG-0001
+- requirement_id: MFOS-REQ-LANG-0102
+  evidence:
+  - EV-MFOS-LANG-0002
+- requirement_id: MFOS-REQ-LANG-0103
+  evidence:
+  - EV-MFOS-LANG-0003
+- requirement_id: MFOS-REQ-LANG-0104
+  evidence:
+  - EV-MFOS-LANG-0004
+- requirement_id: MFOS-REQ-LANG-0105
+  evidence:
+  - EV-MFOS-LANG-0005
+- requirement_id: MFOS-REQ-LANG-0106
+  evidence:
+  - EV-MFOS-LANG-0006
+- requirement_id: MFOS-REQ-LANG-0107
+  evidence:
+  - EV-MFOS-LANG-0007
+- requirement_id: MFOS-REQ-LANG-0108
+  evidence:
+  - EV-MFOS-LANG-0008
+- requirement_id: MFOS-REQ-MFVM-0101
+  evidence:
+  - EV-MFOS-MFVM-0101
+- requirement_id: MFOS-REQ-MFVM-0102
+  evidence:
+  - EV-MFOS-MFVM-0102
+- requirement_id: MFOS-REQ-MFVM-0103
+  evidence:
+  - EV-MFOS-MFVM-0103
+- requirement_id: MFOS-REQ-MFVM-0104
+  evidence:
+  - EV-MFOS-MFVM-0104
+- requirement_id: MFOS-REQ-MFVM-0105
+  evidence:
+  - EV-MFOS-MFVM-0105
+- requirement_id: MFOS-REQ-MFVM-0106
+  evidence:
+  - EV-MFOS-MFVM-0106
+- requirement_id: MFOS-REQ-MFVM-0107
+  evidence:
+  - EV-MFOS-MFVM-0107
+- requirement_id: MFOS-REQ-MFVM-0108
+  evidence:
+  - EV-MFOS-MFVM-0108
 - requirement_id: MFOS-REQ-NUCLEUS-0005
   evidence:
   - EV-MFOS-NUCLEUS-REQ-RESERVED-0005
@@ -237,6 +402,21 @@ entries:
 - requirement_id: MFOS-REQ-OPER-0104
   evidence:
   - EV-MFOS-OPER-0104
+- requirement_id: MFOS-REQ-OPS-0101
+  evidence:
+  - EV-MFOS-OPS-0101
+- requirement_id: MFOS-REQ-OPS-0102
+  evidence:
+  - EV-MFOS-OPS-0102
+- requirement_id: MFOS-REQ-OPS-0103
+  evidence:
+  - EV-MFOS-OPS-0103
+- requirement_id: MFOS-REQ-OPS-0104
+  evidence:
+  - EV-MFOS-OPS-0104
+- requirement_id: MFOS-REQ-OPS-0105
+  evidence:
+  - EV-MFOS-OPS-0105
 - requirement_id: MFOS-REQ-PARTITION-0001
   evidence:
   - EV-MFOS-PARTITION-REQ-RESERVED-0001
@@ -275,11 +455,47 @@ entries:
   - EV-MFOS-AUDIT-PXM-MEMORY-0017
   - EV-MFOS-PARTITION-MEMORY-0017
   - EV-MFOS-PARTITION-TEARDOWN-0017
+- requirement_id: MFOS-REQ-PERF-0101
+  evidence:
+  - EV-MFOS-PERF-0101
+- requirement_id: MFOS-REQ-PERF-0102
+  evidence:
+  - EV-MFOS-PERF-0102
+- requirement_id: MFOS-REQ-PERF-0103
+  evidence:
+  - EV-MFOS-PERF-0103
+- requirement_id: MFOS-REQ-PERF-0104
+  evidence:
+  - EV-MFOS-PERF-0104
 - requirement_id: MFOS-REQ-PROFILE-0001
   evidence:
   - EV-MFOS-PROFILE-0001
   - EV-MFOS-PROFILE-0002
   - EV-MFOS-PROFILE-0003
+- requirement_id: MFOS-REQ-PXM-0101
+  evidence:
+  - EV-MFOS-PXM-0101
+- requirement_id: MFOS-REQ-PXM-0102
+  evidence:
+  - EV-MFOS-PXM-0102
+- requirement_id: MFOS-REQ-PXM-0103
+  evidence:
+  - EV-MFOS-PXM-0103
+- requirement_id: MFOS-REQ-PXM-0104
+  evidence:
+  - EV-MFOS-PXM-0104
+- requirement_id: MFOS-REQ-PXM-0105
+  evidence:
+  - EV-MFOS-PXM-0105
+- requirement_id: MFOS-REQ-PXM-0106
+  evidence:
+  - EV-MFOS-PXM-0106
+- requirement_id: MFOS-REQ-PXM-0107
+  evidence:
+  - EV-MFOS-PXM-0107
+- requirement_id: MFOS-REQ-PXM-0108
+  evidence:
+  - EV-MFOS-PXM-0108
 - requirement_id: MFOS-REQ-QUALITY-0001
   evidence:
   - EV-MFOS-QUALITY-REQ-RESERVED-0001
@@ -456,6 +672,30 @@ entries:
 - requirement_id: MFOS-REQ-UPDATE-0012
   evidence:
   - EV-MFOS-UPDATE-REQ-RESERVED-0012
+- requirement_id: MFOS-REQ-VIRT-0101
+  evidence:
+  - EV-MFOS-VIRT-0101
+- requirement_id: MFOS-REQ-VIRT-0102
+  evidence:
+  - EV-MFOS-VIRT-0102
+- requirement_id: MFOS-REQ-VIRT-0103
+  evidence:
+  - EV-MFOS-VIRT-0103
+- requirement_id: MFOS-REQ-VIRT-0104
+  evidence:
+  - EV-MFOS-VIRT-0104
+- requirement_id: MFOS-REQ-VIRT-0105
+  evidence:
+  - EV-MFOS-VIRT-0105
+- requirement_id: MFOS-REQ-VIRT-0106
+  evidence:
+  - EV-MFOS-VIRT-0106
+- requirement_id: MFOS-REQ-VIRT-0107
+  evidence:
+  - EV-MFOS-VIRT-0107
+- requirement_id: MFOS-REQ-VIRT-0108
+  evidence:
+  - EV-MFOS-VIRT-0108
 - requirement_id: MFOS-REQ-WPOL-0001
   evidence:
   - EV-MFOS-WPOL-REQ-RESERVED-0001

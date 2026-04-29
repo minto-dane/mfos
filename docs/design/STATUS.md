@@ -2,10 +2,11 @@
 
 Status date: 2026-04-28
 Workspace: `/home/nia/mfos`
-Git status: working branch `fix/pre-phase-1-total-readiness`; PR #10
-(`fix/phase-0.10-pxm-mfvm-expansion`) has landed in `dev`, and this branch is
-rebased on the updated `origin/dev`. Repository visibility may be public by
-owner instruction, but formal public-release claims remain blocked pending
+Git status: working branch `fix/pre-phase-1-total-readiness-second-pass`;
+PR #10 (`fix/phase-0.10-pxm-mfvm-expansion`) and PR #11
+(`fix/pre-phase-1-total-readiness`) have landed in `dev`, and this branch is
+based on the updated `origin/dev`. Repository visibility may be public by owner
+instruction, but formal public-release claims remain blocked pending
 IP/trademark attorney review.
 
 ## Current Phase

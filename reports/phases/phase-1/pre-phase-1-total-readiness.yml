@@ -2,12 +2,18 @@ schema_version: 1
 artifact_type: pre_phase1_total_readiness_gate
 status: current
 date: '2026-04-28'
-branch: fix/pre-phase-1-total-readiness
+branch: fix/pre-phase-1-total-readiness-second-pass
 base_dependency:
   pr: 10
   branch: fix/phase-0.10-pxm-mfvm-expansion
   base: dev
   status: merged
+previous_readiness_dependency:
+  pr: 11
+  branch: fix/pre-phase-1-total-readiness
+  base: dev
+  status: merged
+second_pass_package: reports/current/pre-phase1/
 allowed_scope:
   dafny_executable_semantics_scaffold: true
   loader_only_artifact_validation: true

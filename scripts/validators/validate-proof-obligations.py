@@ -28,12 +28,46 @@ REQUIRED_CRITERIA = {
     "review recorded",
     "counterexamples triaged",
 }
+CLAIM_SCHEMA = ROOT / "schemas/mfos/formal-claim.schema.yml"
+OBLIGATION_SCHEMA = ROOT / "schemas/mfos/proof-obligation.schema.yml"
 
 
 def _strings(value: object) -> list[str]:
     if not isinstance(value, list):
         return []
     return [item for item in value if isinstance(item, str)]
+
+
+def _schema_required(path: Path, findings: list[Finding]) -> tuple[set[str], bool]:
+    data = load_yaml(path) if path.exists() else None
+    if not isinstance(data, dict):
+        findings.append(Finding("ERROR", path, "schema must be a mapping"))
+        return set(), False
+    if data.get("implementation_allowed") is not False:
+        findings.append(Finding("ERROR", path, "implementation_allowed must be false"))
+    required = data.get("required")
+    if not isinstance(required, list) or not required:
+        findings.append(Finding("ERROR", path, "schema required list must be non-empty"))
+        required_set: set[str] = set()
+    else:
+        required_set = {str(item) for item in required}
+    additional = data.get("additionalProperties")
+    if additional is not False:
+        findings.append(Finding("ERROR", path, "additionalProperties must be false for registry entry schemas"))
+    return required_set, additional is False
+
+
+def _validate_entry_shape(path: Path, entry: dict[str, object], required: set[str], allow_additional: bool, entry_id: str, findings: list[Finding]) -> None:
+    missing = sorted(required - set(entry))
+    if missing:
+        findings.append(Finding("ERROR", path, f"{entry_id}: schema-required fields missing: {', '.join(missing)}"))
+    if not allow_additional:
+        # Legacy ID fields are represented in schema properties and are therefore allowed.
+        schema = load_yaml(path)
+        properties = set(schema.get("properties", {})) if isinstance(schema, dict) and isinstance(schema.get("properties"), dict) else set()
+        extra = sorted(set(entry) - properties)
+        if extra:
+            findings.append(Finding("ERROR", path, f"{entry_id}: fields not declared by schema: {', '.join(extra)}"))
 
 
 def _validate_split_registries(findings: list[Finding]) -> None:
@@ -65,6 +99,8 @@ def _validate_split_registries(findings: list[Finding]) -> None:
     tools = tools_data.get("tools") if isinstance(tools_data, dict) else []
     models = models_data.get("models") if isinstance(models_data, dict) else []
     evidence = evidence_data.get("evidence") if isinstance(evidence_data, dict) else []
+    claim_required, claim_closed = _schema_required(CLAIM_SCHEMA, findings)
+    obligation_required, obligation_closed = _schema_required(OBLIGATION_SCHEMA, findings)
 
     if not isinstance(claims, list) or not claims:
         findings.append(Finding("ERROR", CLAIM_REGISTRY, "claims must be a non-empty list"))
@@ -93,6 +129,7 @@ def _validate_split_registries(findings: list[Finding]) -> None:
             findings.append(Finding("ERROR", CLAIM_REGISTRY, "claim entry is not a mapping"))
             continue
         cid = str(claim.get("claim_id", ""))
+        _validate_entry_shape(CLAIM_SCHEMA, claim, claim_required, claim_closed, cid or "<missing>", findings)
         if not cid.startswith("MFOS-FC-"):
             findings.append(Finding("ERROR", CLAIM_REGISTRY, f"{cid or '<missing>'}: claim_id must use MFOS-FC-*"))
         for field in ("requirement_refs", "assumptions", "not_claimed", "proof_obligation_refs", "model_refs", "evidence_refs"):
@@ -114,6 +151,7 @@ def _validate_split_registries(findings: list[Finding]) -> None:
             continue
         oid = str(obligation.get("obligation_id", ""))
         claim_ref = str(obligation.get("claim_ref", ""))
+        _validate_entry_shape(OBLIGATION_SCHEMA, obligation, obligation_required, obligation_closed, oid or "<missing>", findings)
         if not oid.startswith("MFOS-PO-"):
             findings.append(Finding("ERROR", PROOF_OBLIGATIONS, f"{oid or '<missing>'}: obligation_id must use MFOS-PO-*"))
         if claim_ref not in claim_ids:

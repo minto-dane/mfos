@@ -15,6 +15,7 @@ import sys
 from lib.mfos_phase09 import (
     FIXTURE_DIR,
     FIXTURE_RE,
+    ROOT,
     HOST_SEMANTICS,
     WALL_CLOCK,
     as_list,
@@ -40,11 +41,19 @@ REQUIRED = {
     "status",
 }
 NOT_ALLOWED = {"production_claim", "external_compatibility_claim", "host_os_semantics_dependency"}
+SCHEMA = ROOT / "schemas/test-fixture.schema.yml"
 
 
 def main() -> int:
     errors: list[str] = []
     files = yaml_files(FIXTURE_DIR)
+    if SCHEMA.exists():
+        schema = load_yaml(SCHEMA)
+        schema_required = set(as_list(schema.get("required") if isinstance(schema, dict) else []))
+        if schema_required and schema_required != REQUIRED:
+            errors.append(f"{rel(SCHEMA)}: required fields do not match fixture validator contract")
+    else:
+        errors.append(f"missing fixture schema: {rel(SCHEMA)}")
     if not files:
         errors.append(f"missing fixtures under {rel(FIXTURE_DIR)}")
     for path in files:

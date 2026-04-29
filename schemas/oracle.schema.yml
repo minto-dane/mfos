@@ -1,7 +1,7 @@
 $schema: "https://json-schema.org/draft/2020-12/schema"
 $id: "https://mfos.local/schemas/oracle.schema.yml"
-title: "MFOS Executable-Spec Oracle Schema"
-description: "Design-only schema for declarative oracle artifacts. This schema does not implement oracle evaluation."
+title: "MFOS Phase 0.9 Embedded Oracle Schema"
+description: "Design-only schema for oracle blocks embedded in Phase 0.9 golden vectors. It does not implement oracle evaluation."
 type: object
 additionalProperties: false
 x-mfos:
@@ -9,201 +9,110 @@ x-mfos:
   design_only: true
   implementation_allowed: false
   owning_spec: "MFOS-SPEC-34-ORACLE-DEFINITION-FORMAT"
-  requirement_refs:
-    - MFOS-REQ-EXECSPEC-0301
-    - MFOS-REQ-EXECSPEC-0302
-    - MFOS-REQ-EXECSPEC-0303
-    - MFOS-REQ-EXECSPEC-0304
-    - MFOS-REQ-EXECSPEC-0305
-    - MFOS-REQ-EXECSPEC-0306
-  source_refs:
-    - EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
-    - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
-    - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
-    - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
 required:
-  - artifact_kind
-  - schema_version
   - oracle_id
+  - oracle_version
+  - fixture_ref
+  - expected_decisions
+  - expected_state_transitions
+  - expected_audit_records
+  - expected_failure
+  - expected_final_state
+  - evidence_required
   - status
-  - oracle_kind
-  - requirement_ids
-  - source_refs
-  - expected_outcome
-  - evaluation_order
-  - pass_criteria
-  - fail_criteria
 properties:
-  artifact_kind:
-    const: oracle
-  schema_version:
-    const: 1
   oracle_id:
-    $ref: "#/$defs/oracle_id"
-  legacy_ids:
-    type: array
-    items:
-      $ref: "#/$defs/legacy_id"
-    uniqueItems: true
-  status:
-    $ref: "#/$defs/artifact_status"
-  oracle_kind:
-    enum:
-      - outcome_only
-      - audit_ordering
-      - state_transition
-      - failure_semantics
-      - conformance_matrix
-      - composite
-  requirement_ids:
-    type: array
-    minItems: 1
-    uniqueItems: true
-    items:
-      $ref: "#/$defs/requirement_id"
-  source_refs:
-    type: array
-    minItems: 1
-    uniqueItems: true
-    items:
-      $ref: "#/$defs/extref_id"
-  expected_outcome:
-    $ref: "#/$defs/outcome"
-  evaluation_order:
-    type: array
-    minItems: 1
-    uniqueItems: true
-    items:
-      enum:
-        - outcome
-        - audit
-        - state
-        - failure
-        - conformance
-        - side_effect_absence
-  expected_audit_refs:
-    type: array
-    items:
-      $ref: "#/$defs/expected_audit_id"
-    uniqueItems: true
-  expected_state_transition_refs:
-    type: array
-    items:
-      $ref: "#/$defs/expected_state_transition_id"
-    uniqueItems: true
-  expected_failure_ref:
-    oneOf:
-      - $ref: "#/$defs/expected_failure_id"
-      - type: "null"
-  side_effect_absence:
-    type: array
-    uniqueItems: true
-    items:
-      type: string
-      minLength: 1
-      maxLength: 160
-  pass_criteria:
-    type: array
-    minItems: 1
-    items:
-      $ref: "#/$defs/criterion"
-  fail_criteria:
-    type: array
-    minItems: 1
-    items:
-      $ref: "#/$defs/criterion"
-  blocked_criteria:
-    type: array
-    items:
-      $ref: "#/$defs/criterion"
-  rejected_evidence:
-    type: array
-    uniqueItems: true
-    items:
-      enum:
-        - diagnostic_log_line
-        - debug_log_line
-        - console_output
-        - spool_output
-        - screenshot
-        - unverified_remote_ack
-        - checksum_without_audit_chain
-  notes:
     type: string
-    maxLength: 1000
-$defs:
-  forbidden_mfos_owned_token:
-    pattern: "(IBM|ZOS|Z-OS|Z_OS|MVS|RACF|JES|JES2|DFSMS|SMF|APF|PRSM|PR-SM|LPAR|ZARCHITECTURE|Z-ARCHITECTURE|ZARCH|ZVM|Z-VM|SDSF|ISPF|TSOE|TSO-E|TSO|ZOSMF|ZOS-MF)"
-  artifact_status:
-    enum:
-      - draft
-      - ready_for_review
-      - reviewed
-      - frozen
-      - deprecated
-      - superseded
-  outcome:
-    enum:
-      - PASS
-      - FAIL
-      - BLOCKED
-      - UNSUPPORTED
-      - SPEC_GAP
-      - INVALID_ARTIFACT
-  extref_id:
+    pattern: "^ORACLE-MFOS-[A-Z0-9]+-[A-Z0-9-]*[0-9]{4}$"
+  oracle_version:
+    type: integer
+    minimum: 1
+  fixture_ref:
     type: string
-    pattern: "^EXTREF-[A-Z0-9-]+-[0-9]{4}$"
-  requirement_id:
-    allOf:
-      - type: string
-        pattern: "^MFOS-REQ-[A-Z0-9]+-[0-9]{4}$"
-      - not:
-          $ref: "#/$defs/forbidden_mfos_owned_token"
-  oracle_id:
-    allOf:
-      - type: string
-        pattern: "^ORACLE-MFOS-[A-Z0-9]+-[A-Z0-9-]*[0-9]{4}$"
-      - not:
-          $ref: "#/$defs/forbidden_mfos_owned_token"
-  expected_audit_id:
-    allOf:
-      - type: string
-        pattern: "^EXP-MFOS-AUDIT-[A-Z0-9-]*[0-9]{4}$"
-      - not:
-          $ref: "#/$defs/forbidden_mfos_owned_token"
-  expected_state_transition_id:
-    allOf:
-      - type: string
-        pattern: "^EXP-MFOS-STATE-[A-Z0-9-]*[0-9]{4}$"
-      - not:
-          $ref: "#/$defs/forbidden_mfos_owned_token"
-  expected_failure_id:
-    allOf:
-      - type: string
-        pattern: "^EXP-MFOS-FAIL-[A-Z0-9-]*[0-9]{4}$"
-      - not:
-          $ref: "#/$defs/forbidden_mfos_owned_token"
-  legacy_id:
-    type: string
-    minLength: 1
-    maxLength: 128
-  criterion:
+    pattern: "^tests/fixtures/[a-z0-9-]+/[a-z0-9-]+\\.yml$"
+  expected_decisions:
+    type: array
+    minItems: 1
+    items:
+      type: object
+      additionalProperties: true
+      required:
+        - decision_id
+        - result
+        - policy_version
+        - obligations
+      properties:
+        decision_id:
+          type: string
+          pattern: "^DECISION-MFOS-PHASE09-[0-9]{4}$"
+        result:
+          enum:
+            - ALLOW
+            - DENY
+            - ALLOW_WITH_AUDIT
+            - REQUIRE_MFA
+            - REQUIRE_DUAL_CONTROL
+            - REQUIRE_BREAK_GLASS
+            - REQUIRE_GUARD_APPROVAL
+            - REQUIRE_OPERATOR_CONFIRMATION
+        policy_version:
+          type: integer
+        obligations:
+          type: array
+          items:
+            type: string
+  expected_state_transitions:
+    type: array
+    minItems: 1
+    items:
+      type: object
+      additionalProperties: true
+      required:
+        - object
+        - from
+        - action
+        - to
+        - reason
+  expected_audit_records:
+    type: array
+    minItems: 1
+    items:
+      type: object
+      additionalProperties: true
+      required:
+        - record_type
+        - decision
+        - reason_code
+        - before_return
+      properties:
+        before_return:
+          type: boolean
+  expected_failure:
     type: object
     additionalProperties: false
     required:
-      - criterion_id
-      - description
-      - required
+      - error_code
+      - fail_closed
     properties:
-      criterion_id:
-        allOf:
+      error_code:
+        oneOf:
           - type: string
-            pattern: "^CRIT-MFOS-[A-Z0-9]+-[A-Z0-9-]*[0-9]{4}$"
-          - not:
-              $ref: "#/$defs/forbidden_mfos_owned_token"
-      description:
-        type: string
-        minLength: 1
-        maxLength: 240
-      required:
+            pattern: "^MFOS_ERR_[A-Z0-9_]{1,96}$"
+          - type: "null"
+      fail_closed:
         type: boolean
+  expected_final_state:
+    type: string
+    minLength: 1
+  evidence_required:
+    type: array
+    minItems: 1
+    uniqueItems: true
+    items:
+      type: string
+      pattern: "^EV-MFOS-[A-Z0-9]+-[A-Z0-9-]*[0-9]{4}$"
+  status:
+    enum:
+      - draft
+      - current
+      - frozen

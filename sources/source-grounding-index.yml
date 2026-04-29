@@ -92,8 +92,9 @@ known_gaps:
   do not supersede canonical docs/design/source-matrix records.
 - Some workbench cards are bundle or Markdown-front-matter cards and need normalization
   before canonical migration.
-- sources/source-matrix-parity.yml now records a candidate for each current canonical
-  Source Matrix card, but this is a workbench parity report, not an authority transfer.
+- sources/source-matrix-parity.yml records all current canonical Source Matrix
+  IDs and explicitly marks missing workbench candidates; this is a workbench
+  parity report, not an authority transfer.
 populated_namespaces:
   ibm: sources/ibm/index.yml
   internal: sources/internal/index.yml

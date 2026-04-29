@@ -10713,6 +10713,53 @@ entries:
     correlation_ids: []
   spec_gap_ids:
   - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-DAFNY-0001
+  title: Dafny Phase 1 loader-only policy review evidence
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-DAFNY-0001
+  - MFOS-REQ-DAFNY-0002
+  - MFOS-REQ-DAFNY-0003
+  - MFOS-REQ-DAFNY-0004
+  - MFOS-REQ-DAFNY-0005
+  - MFOS-REQ-DAFNY-0006
+  - MFOS-REQ-DAFNY-0007
+  - MFOS-REQ-DAFNY-0008
+  - MFOS-REQ-DAFNY-0009
+  - MFOS-REQ-DAFNY-0010
+  test_ids:
+  - TEST-MFOS-DAFNY-0001
+  - NEG-MFOS-DAFNY-0001
+  source_matrix_ids:
+  - EXTREF-DAFNY-REFERENCE-0001
+  - EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: reports/current/pre-phase1-readiness-final-report.md
+    media_type: text/markdown
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: design-validation
+    version: null
+    ci_job: validate design registries and lint gates
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - DAFNY-GAP-0002
 spec_gaps:
 - gap_id: REG-GAP-0005
   summary: Evidence artifact storage layout and retention policy are not final.

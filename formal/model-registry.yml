@@ -66,7 +66,7 @@ models:
   claim_refs:
   - MFOS-FC-MFVM-CANNOT-BYPASS-PXM
 - model_id: MFOS-MODEL-CVM-LAUNCH-REQUIRES-MEASUREMENT
-  path: formal/models/cvm-launch
+  path: formal/models/tla
   status: planned
   tool_family: TLA+ or Alloy or proof harness TBD
   modeled_behavior: cvm launch requires measurement
@@ -76,7 +76,7 @@ models:
   claim_refs:
   - MFOS-FC-CVM-LAUNCH-REQUIRES-MEASUREMENT
 - model_id: MFOS-MODEL-CVM-SECRET-RELEASE-REQUIRES-ATTESTATION
-  path: formal/models/cvm-secret-release
+  path: formal/models/tla
   status: planned
   tool_family: TLA+ or Alloy or proof harness TBD
   modeled_behavior: cvm secret release requires attestation
@@ -86,7 +86,7 @@ models:
   claim_refs:
   - MFOS-FC-CVM-SECRET-RELEASE-REQUIRES-ATTESTATION
 - model_id: MFOS-MODEL-PRIVATE-SHARED-MEMORY-TRANSITION-VALIDITY
-  path: formal/models/cvm-memory-transition
+  path: formal/models/tla
   status: planned
   tool_family: TLA+ or Alloy or proof harness TBD
   modeled_behavior: private shared memory transition validity
@@ -96,7 +96,7 @@ models:
   claim_refs:
   - MFOS-FC-PRIVATE-SHARED-MEMORY-TRANSITION-VALIDITY
 - model_id: MFOS-MODEL-CLUSTER-POLICY-DISTRIBUTION-INTEGRITY
-  path: formal/models/cluster-policy
+  path: formal/models/tla
   status: planned
   tool_family: TLA+ or Alloy or proof harness TBD
   modeled_behavior: cluster policy distribution integrity
@@ -106,7 +106,7 @@ models:
   claim_refs:
   - MFOS-FC-CLUSTER-POLICY-DISTRIBUTION-INTEGRITY
 - model_id: MFOS-MODEL-CLUSTER-ATTESTATION-COLLECTION-INTEGRITY
-  path: formal/models/cluster-attestation
+  path: formal/models/tla
   status: planned
   tool_family: TLA+ or Alloy or proof harness TBD
   modeled_behavior: cluster attestation collection integrity

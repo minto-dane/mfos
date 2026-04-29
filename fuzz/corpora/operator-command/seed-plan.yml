@@ -8,4 +8,12 @@ seed_categories:
 - malformed_command
 - destructive_without_confirmation
 - automation_bypass_attempt
+- valid_minimal_input
+- boundary_length_input
+- invalid_token
+- malformed_nesting
+- unsupported_feature
+- explicit_spec_gap_trigger
+- denied_operation_fixture
+- audit_before_return_fixture
 status: draft

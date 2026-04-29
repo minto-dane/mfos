@@ -40,28 +40,36 @@ An oracle states what must be observed for a test case to pass, fail, block, or 
 
 ## 3. Oracle Envelope
 
-Every oracle MUST use this envelope:
+Current Phase 0.9 golden vectors embed oracle blocks with this compact envelope:
 
 ```yaml
-artifact_kind: oracle
-schema_version: 1
 oracle_id: ORACLE-MFOS-AREA-NAME-0001
+oracle_version: 1
+fixture_ref: tests/fixtures/area/name-0001.yml
+expected_decisions:
+  - decision_id: DECISION-MFOS-PHASE09-0001
+    result: DENY
+    policy_version: 1
+    obligations:
+      - AUDIT_SECURITY_DECISION
+expected_state_transitions:
+  - object: PHASE09_OBJECT
+    from: INITIAL
+    action: EVALUATE
+    to: FAILED
+    reason: MFOS_ERR_POLICY_DENIED
+expected_audit_records:
+  - record_type: SECURITY_DECISION
+    decision: DENY
+    reason_code: MFOS_ERR_POLICY_DENIED
+    before_return: true
+expected_failure:
+  error_code: MFOS_ERR_POLICY_DENIED
+  fail_closed: true
+expected_final_state: FAILED
+evidence_required:
+  - EV-MFOS-AREA-NAME-0001
 status: draft
-oracle_kind: composite
-requirement_ids:
-  - MFOS-REQ-AREA-0001
-source_refs:
-  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
-expected_outcome: PASS
-evaluation_order:
-  - outcome
-  - audit
-  - state
-  - failure
-expected_audit_refs: []
-expected_state_transition_refs: []
-expected_failure_ref: null
-side_effect_absence: []
 ```
 
 The schema for the envelope is `schemas/oracle.schema.yml`.

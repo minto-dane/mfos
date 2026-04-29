@@ -1,0 +1,15 @@
+schema_version: 1
+artifact_index_kind: mfos_pre_phase1_second_pass_package
+status: current
+date: '2026-04-28'
+current:
+  deep_directory_audit:
+    path: reports/current/pre-phase1/deep-directory-audit.md
+    machine_readable: reports/current/pre-phase1/deep-directory-audit.yml
+  second_pass_remediation:
+    path: reports/current/pre-phase1/second-pass-remediation.md
+    machine_readable: reports/current/pre-phase1/second-pass-remediation.yml
+policy:
+  implementation_allowed: false
+  public_release_allowed: false
+  phase_1_scope: dafny_scaffold_and_loader_only_validation

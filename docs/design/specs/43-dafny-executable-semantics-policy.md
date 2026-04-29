@@ -163,7 +163,7 @@ This directory is reserved for Dafny executable-semantics source artifacts, meta
 
 | Gap ID | Gap | Impact |
 | --- | --- | --- |
-| `DAFNY-GAP-0001` | Dafny toolchain source card and version pin are not registered in this policy. | Tool output cannot be accepted as reviewed proof evidence from this document alone. |
+| `DAFNY-GAP-0001` | Dafny toolchain source card is registered, but a pinned toolchain version and reviewed proof-output acceptance policy are not fixed. | Tool output cannot be accepted as reviewed proof evidence from this document alone. |
 | `DAFNY-GAP-0002` | Dafny artifact metadata schema is not defined here. | Loader-only validation remains limited to scaffold and policy review until a schema exists. |
 | `DAFNY-GAP-0003` | No semantic runner is authorized. | Dafny artifacts cannot produce PASS/FAIL runtime observations for MFOS behavior. |
 | `DAFNY-GAP-0004` | No generated-code production path is authorized. | Dafny translation targets remain test-only. |

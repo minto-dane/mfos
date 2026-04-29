@@ -15,8 +15,12 @@ No Critical or Major issues remain.
 2. Source-grounding remains conditional for semantic evaluator work. This does
    not block Phase 1 Dafny scaffold and loader-only artifact validation, but it
    continues to block semantic evaluator and production claims.
-3. The pre-Phase-1 readiness PR must pass GitHub checks before merge. PR #10
-   has already landed in `dev`.
+3. Legacy `schemas/mfos/*.schema.yml` files still emit draft-mode
+   normalization warnings from `validate-schema-files.py`. They are visible and
+   nonblocking because Phase 1 is limited to Dafny scaffold and loader-only
+   artifact validation.
+4. The second-pass pre-Phase-1 readiness PR must pass GitHub checks before
+   merge. PR #10 and PR #11 have already landed in `dev`.
 
 ## Blockers
 

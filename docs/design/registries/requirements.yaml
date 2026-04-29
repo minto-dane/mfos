@@ -2363,7 +2363,7 @@ entries:
   - MFOS-REQ-PXM-0017
 - requirement_id: MFOS-REQ-AMF-0021
   title: AMF disabled mode returns unsupported
-  normative_text: 'AMF MUST remain disabled for Phase 1 hosted semantic prototype and early Baseline implementation unless an explicit AMF-enabled conformance mode is approved. In AMF-disabled mode, all AMF load requests MUST fail closed with MFOS_ERR_UNSUPPORTED. AMF-disabled mode MUST NOT create executable mappings, AMF registry entries, or authorized-state transitions.
+  normative_text: 'AMF MUST remain disabled for Phase 1 Dafny loader-only artifact validation and for any future Baseline implementation unless an explicit AMF-enabled conformance mode is approved. In AMF-disabled mode, all AMF load requests MUST fail closed with MFOS_ERR_UNSUPPORTED. AMF-disabled mode MUST NOT create executable mappings, AMF registry entries, or authorized-state transitions.
 
     '
   source_refs:
@@ -10713,6 +10713,170 @@ entries:
   - No external product, interface, record-layout, command, hypervisor API, or confidential-computing service compatibility is claimed.
   status: draft
   phase: Phase 0.10 PXM/MFVM Requirements Expansion
+- requirement_id: MFOS-REQ-DAFNY-0001
+  title: Dafny canonical executable-semantics artifact language
+  normative_text: Phase 1 executable-semantics artifacts MUST use Dafny as the canonical artifact language for specification-level executable semantics.
+  source_refs: &dafny_source_refs
+  - source_id: EXTREF-DAFNY-REFERENCE-0001
+    source_type: external_reference
+    role: executable_semantics_artifact_language_background
+  - source_id: EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
+    source_type: external_reference
+    role: assurance_process_background
+  profile_applicability: &dafny_profile_applicability
+    baseline: required
+    enterprise_standalone: required
+    enterprise_pxm: required
+    high_assurance: required
+  target_components: &dafny_target_components
+  - formal/executable-semantics/dafny
+  - conformance-fixture-loader
+  verification: &dafny_verification
+    primary:
+    - spec_review
+    - loader_only_validation
+    - traceability_review
+    tests:
+      positive:
+      - TEST-MFOS-DAFNY-0001
+      negative:
+      - NEG-MFOS-DAFNY-0001
+  audit_obligation: &dafny_audit_obligation
+    obligation: none
+    record_type: null
+    before_return: false
+    redaction_policy: null
+    notes: Phase 1 loader-only policy requirement; no runtime audit path exists or is authorized.
+  failure_mode: &dafny_failure_mode
+    error: MFOS_ERR_SPEC_GAP
+    fail_closed: true
+    conditions:
+    - Dafny policy, metadata, traceability, or loader-only boundary is missing or ambiguous.
+  evidence_required: &dafny_evidence_required
+  - evidence_type: dafny_policy_review
+    evidence_id: EV-MFOS-DAFNY-0001
+  mfos_non_compatibility: &dafny_non_compatibility
+  - External references inform tool and assurance background only.
+  - Dafny artifacts do not claim production correctness or external compatibility.
+  status: draft
+  phase: Pre-Phase-1 Readiness
+- requirement_id: MFOS-REQ-DAFNY-0002
+  title: Dafny loader-only boundary
+  normative_text: Phase 1 Dafny work MUST remain loader-only artifact validation and MUST NOT execute MFOS semantics as a conformance result.
+  source_refs: *dafny_source_refs
+  profile_applicability: *dafny_profile_applicability
+  target_components: *dafny_target_components
+  verification: *dafny_verification
+  audit_obligation: *dafny_audit_obligation
+  failure_mode: *dafny_failure_mode
+  evidence_required: *dafny_evidence_required
+  mfos_non_compatibility: *dafny_non_compatibility
+  status: draft
+  phase: Pre-Phase-1 Readiness
+- requirement_id: MFOS-REQ-DAFNY-0003
+  title: Loader validation is not semantic execution
+  normative_text: Loader validation MUST NOT be represented as semantic execution, conformance, production readiness, or product correctness.
+  source_refs: *dafny_source_refs
+  profile_applicability: *dafny_profile_applicability
+  target_components: *dafny_target_components
+  verification: *dafny_verification
+  audit_obligation: *dafny_audit_obligation
+  failure_mode: *dafny_failure_mode
+  evidence_required: *dafny_evidence_required
+  mfos_non_compatibility: *dafny_non_compatibility
+  status: draft
+  phase: Pre-Phase-1 Readiness
+- requirement_id: MFOS-REQ-DAFNY-0004
+  title: Dafny generated code remains test-only
+  normative_text: Dafny-generated code MUST be test-only and MUST NOT enter production paths or production packages without a later production gate.
+  source_refs: *dafny_source_refs
+  profile_applicability: *dafny_profile_applicability
+  target_components: *dafny_target_components
+  verification: *dafny_verification
+  audit_obligation: *dafny_audit_obligation
+  failure_mode: *dafny_failure_mode
+  evidence_required: *dafny_evidence_required
+  mfos_non_compatibility: *dafny_non_compatibility
+  status: draft
+  phase: Pre-Phase-1 Readiness
+- requirement_id: MFOS-REQ-DAFNY-0005
+  title: Semantic runner remains forbidden in Phase 1
+  normative_text: Phase 1 MUST NOT implement or operate a semantic runner.
+  source_refs: *dafny_source_refs
+  profile_applicability: *dafny_profile_applicability
+  target_components: *dafny_target_components
+  verification: *dafny_verification
+  audit_obligation: *dafny_audit_obligation
+  failure_mode: *dafny_failure_mode
+  evidence_required: *dafny_evidence_required
+  mfos_non_compatibility: *dafny_non_compatibility
+  status: draft
+  phase: Pre-Phase-1 Readiness
+- requirement_id: MFOS-REQ-DAFNY-0006
+  title: Hosted executable-semantics daemon remains forbidden in Phase 1
+  normative_text: Phase 1 MUST NOT implement or operate a hosted executable-semantics daemon.
+  source_refs: *dafny_source_refs
+  profile_applicability: *dafny_profile_applicability
+  target_components: *dafny_target_components
+  verification: *dafny_verification
+  audit_obligation: *dafny_audit_obligation
+  failure_mode: *dafny_failure_mode
+  evidence_required: *dafny_evidence_required
+  mfos_non_compatibility: *dafny_non_compatibility
+  status: draft
+  phase: Pre-Phase-1 Readiness
+- requirement_id: MFOS-REQ-DAFNY-0007
+  title: Rust semantic core remains forbidden in Phase 1
+  normative_text: Phase 1 MUST NOT implement a Rust semantic core or Portable Semantic Core.
+  source_refs: *dafny_source_refs
+  profile_applicability: *dafny_profile_applicability
+  target_components: *dafny_target_components
+  verification: *dafny_verification
+  audit_obligation: *dafny_audit_obligation
+  failure_mode: *dafny_failure_mode
+  evidence_required: *dafny_evidence_required
+  mfos_non_compatibility: *dafny_non_compatibility
+  status: draft
+  phase: Pre-Phase-1 Readiness
+- requirement_id: MFOS-REQ-DAFNY-0008
+  title: Missing Dafny semantics remain SPEC_GAP
+  normative_text: Missing or unspecified Dafny semantics MUST remain MFOS_ERR_SPEC_GAP and MUST NOT be inferred by loader tooling.
+  source_refs: *dafny_source_refs
+  profile_applicability: *dafny_profile_applicability
+  target_components: *dafny_target_components
+  verification: *dafny_verification
+  audit_obligation: *dafny_audit_obligation
+  failure_mode: *dafny_failure_mode
+  evidence_required: *dafny_evidence_required
+  mfos_non_compatibility: *dafny_non_compatibility
+  status: draft
+  phase: Pre-Phase-1 Readiness
+- requirement_id: MFOS-REQ-DAFNY-0009
+  title: Unsupported declarations remain UNSUPPORTED
+  normative_text: Unsupported Dafny declarations MUST remain MFOS_ERR_UNSUPPORTED and MUST NOT be converted into success.
+  source_refs: *dafny_source_refs
+  profile_applicability: *dafny_profile_applicability
+  target_components: *dafny_target_components
+  verification: *dafny_verification
+  audit_obligation: *dafny_audit_obligation
+  failure_mode: *dafny_failure_mode
+  evidence_required: *dafny_evidence_required
+  mfos_non_compatibility: *dafny_non_compatibility
+  status: draft
+  phase: Pre-Phase-1 Readiness
+- requirement_id: MFOS-REQ-DAFNY-0010
+  title: No production claim depends on Dafny policy alone
+  normative_text: No production claim may depend on the Dafny executable-semantics policy without a later production readiness gate and reviewed evidence.
+  source_refs: *dafny_source_refs
+  profile_applicability: *dafny_profile_applicability
+  target_components: *dafny_target_components
+  verification: *dafny_verification
+  audit_obligation: *dafny_audit_obligation
+  failure_mode: *dafny_failure_mode
+  evidence_required: *dafny_evidence_required
+  mfos_non_compatibility: *dafny_non_compatibility
+  status: draft
+  phase: Pre-Phase-1 Readiness
 spec_gaps:
 - gap_id: REQ-GAP-0001
   summary: This catalog covers v0.5 priority requirements plus draft spec-gap reservations for Source Card requirement references; it is not a full deep specification of every reserved requirement.

@@ -31,7 +31,7 @@ entries:
   expected:
     decisions:
     - decision_id: DECISION-MFOS-PHASE09-0001
-      result: ALLOW
+      result: DENY
       policy_version: 1
       obligations:
       - AUDIT_SECURITY_DECISION
@@ -39,19 +39,19 @@ entries:
     - object: PHASE09_OBJECT
       from: INITIAL
       action: EVALUATE
-      to: COMPLETE
-      reason: EXPECTED
+      to: FAILED
+      reason: MFOS_ERR_POLICY_DENIED
     audit_records:
     - record_type: SECURITY_DECISION
-      decision: ALLOW
-      reason_code: OK
+      decision: DENY
+      reason_code: MFOS_ERR_POLICY_DENIED
       before_return: true
-    failure_mode: null
-    final_state: COMPLETE
+    failure_mode: MFOS_ERR_POLICY_DENIED
+    final_state: FAILED
   oracle_ref: tests/golden/audit/deny-before-return-0901.yml
   fixture_ref: tests/fixtures/audit/deny-before-return-0901.yml
   golden_ref: tests/golden/audit/deny-before-return-0901.yml
-  negative: false
+  negative: true
   security_sensitive: true
   audit_obligation_required: true
   evidence_required:
