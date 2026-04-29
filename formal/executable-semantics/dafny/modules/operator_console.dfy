@@ -37,6 +37,18 @@ module OperatorConsole {
     record.correlation_id == decision.context.correlation_id
   }
 
+  predicate DualControlSatisfied(approval_count: nat) {
+    approval_count >= 2
+  }
+
+  predicate DualControlCommandAuthorized(command: OperatorCommand, decision: SecurityDecision, approval_count: nat) {
+    OperatorCommandAuthorized(command, decision) && DualControlSatisfied(approval_count)
+  }
+
+  predicate EmergencyModeAllowed(has_reason: bool, has_expiry: bool) {
+    has_reason && has_expiry
+  }
+
   predicate RootShellAsFirstPrivilegedUi(proposed: bool) {
     false
   }
@@ -51,6 +63,24 @@ module OperatorConsole {
     requires command.audited
     requires !Audit.AuditEvidence(record)
     ensures !AuditedOperatorCommand(command, decision, record)
+  {
+  }
+
+  lemma INV_OPERATOR_DESTRUCTIVE_WITHOUT_CONFIRMATION_DENIED(command: OperatorCommand, decision: SecurityDecision)
+    requires CommandRequiresConfirmation(command)
+    requires !command.confirmed
+    ensures !OperatorCommandAuthorized(command, decision)
+  {
+  }
+
+  lemma INV_OPERATOR_DUAL_CONTROL_SINGLE_APPROVAL_DENIED(command: OperatorCommand, decision: SecurityDecision)
+    ensures !DualControlCommandAuthorized(command, decision, 1)
+  {
+  }
+
+  lemma INV_OPERATOR_EMERGENCY_WITHOUT_REASON_OR_EXPIRY_DENIED(has_reason: bool, has_expiry: bool)
+    requires !has_reason || !has_expiry
+    ensures !EmergencyModeAllowed(has_reason, has_expiry)
   {
   }
 

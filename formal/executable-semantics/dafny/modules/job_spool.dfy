@@ -44,6 +44,7 @@ module JobSpool {
 
   predicate SpoolBrowseAllowed(spool: SpoolEntry, decision: SecurityDecision) {
     SpoolEntryProtected(spool) &&
+    decision.subject == spool.owner &&
     decision.resource_class == RESOURCE_SPOOL &&
     decision.operation == OP_QUERY &&
     Authorization.DecisionAllowsProtectedEffect(decision)
@@ -71,6 +72,32 @@ module JobSpool {
   lemma INV_SPOOL_PROTECTED_RESOURCE(spool: SpoolEntry)
     requires SpoolEntryProtected(spool)
     ensures spool.protected
+  {
+  }
+
+  lemma INV_SPOOL_BROWSE_BY_NON_OWNER_DENIED(spool: SpoolEntry, decision: SecurityDecision)
+    requires decision.subject != spool.owner
+    ensures !SpoolBrowseAllowed(spool, decision)
+  {
+  }
+
+  lemma INV_SPOOL_BROWSE_WITHOUT_AUTHORITY_DENIED(spool: SpoolEntry, decision: SecurityDecision)
+    requires !Authorization.DecisionAllowsProtectedEffect(decision)
+    ensures !SpoolBrowseAllowed(spool, decision)
+  {
+  }
+
+  lemma INV_SPOOL_PURGE_WITHOUT_AUTHORITY_DENIED(decision: SecurityDecision)
+    requires decision.resource_class == RESOURCE_SPOOL
+    requires decision.operation == OP_PURGE
+    requires !Authorization.DecisionAllowsProtectedEffect(decision)
+    ensures SpoolPurgeDeniedWithoutAuthority(decision)
+  {
+  }
+
+  lemma INV_JOB_INVALID_LIFECYCLE_REJECTED(from_state: JobState, to_state: JobState)
+    requires !ValidJobTransition(from_state, to_state)
+    ensures !ValidJobTransition(from_state, to_state)
   {
   }
 }

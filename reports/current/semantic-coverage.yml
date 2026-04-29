@@ -1,0 +1,33 @@
+schema_version: 1
+artifact_type: phase_1_1_semantic_coverage_summary
+status: current
+source_traceability_dir: evidence/traceability/generated/phase-1-1/
+prerequisite_merge_status:
+  pr_15: merged
+  pr_16: superseded_by_pr_17_due_branch_rules
+  pr_17: merged
+coverage_distribution:
+  requirements:
+    C4_VERIFIED_PROPERTY: 12
+    C5_CONFORMANCE_LINKED: 6
+  tests:
+    C4_VERIFIED_PROPERTY: 72
+    C5_CONFORMANCE_LINKED: 2
+  fixtures:
+    C4_VERIFIED_PROPERTY: 72
+    C5_CONFORMANCE_LINKED: 2
+  formal_claims:
+    C0_NONE: 9
+    C4_VERIFIED_PROPERTY: 2
+core_domains_coverage_level:
+  authorization: C4_VERIFIED_PROPERTY
+  audit: C4_VERIFIED_PROPERTY
+  dataset_catalog: C4_VERIFIED_PROPERTY
+  job_spool: C4_VERIFIED_PROPERTY
+  operator_console: C4_VERIFIED_PROPERTY
+first_vertical_slice_coverage_level: C5_CONFORMANCE_LINKED
+negative_semantics_complete: true
+dafny_verification_expected: 45 verified, 0 errors
+production_implementation_allowed: false
+rust_phase_1_canonical_semantics_allowed: false
+hosted_daemon_implementation_allowed: false

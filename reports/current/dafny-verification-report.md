@@ -1,6 +1,6 @@
 # Phase 1 Dafny Verification Report
 
-Status: current  
+Status: current
 Date: 2026-04-29
 
 ## Result
@@ -28,7 +28,7 @@ module_list:
   - formal/executable-semantics/dafny/modules/operator_console.dfy
   - formal/executable-semantics/dafny/modules/types.dfy
 exit_code: 0
-verification_summary: Dafny program verifier finished with 26 verified, 0 errors
+verification_summary: Dafny program verifier finished with 45 verified, 0 errors
 started_at_utc: '2026-04-29T00:00:00Z'
 completed_at_utc: '2026-04-29T00:00:00Z'
 verification_output_path: reports/current/dafny-verification-report.md
@@ -46,7 +46,7 @@ validator_required_behavior: MFOS_REQUIRE_DAFNY=1 or --require-dafny fails when 
 The pinned Dafny toolchain was installed locally by `scripts/install-dafny.sh`.
 `scripts/validate-dafny-semantics.sh --require-dafny` ran all current modules
 under `formal/executable-semantics/dafny/modules/*.dfy` and completed with
-`26 verified, 0 errors`.
+`45 verified, 0 errors`.
 
 ## Evidence Boundary
 

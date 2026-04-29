@@ -1,0 +1,124 @@
+schema_version: 1
+artifact_type: phase_1_1_semantic_coverage_traceability
+status: generated
+origin_phase: phase-1.1
+generated_by: scripts/generators/generate-semantic-coverage.py
+source_inputs:
+- tests/catalog/*.yml
+- tests/fixtures/**
+- tests/golden/**
+- formal/executable-semantics/dafny/modules/*.dfy
+- formal/claim-registry.yml
+coverage_levels:
+- C0_NONE
+- C1_TYPE_ONLY
+- C2_PARTIAL_SEMANTIC
+- C3_FULL_SEMANTIC
+- C4_VERIFIED_PROPERTY
+- C5_CONFORMANCE_LINKED
+- C6_RELEASE_READY_MODEL
+production_implementation_allowed: false
+traceability_kind: formal_claim_to_dafny
+formal_claims:
+- claim_id: MFOS-FC-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW
+  status: planned
+  requirement_refs:
+  - MFOS-REQ-AUTH-0001
+  dafny_module: formal/executable-semantics/dafny/modules/authorization.dfy
+  dafny_symbols:
+  - INV_AUTH_NO_HANDLE_WITHOUT_ALLOW
+  tla_alloy_coverage: planned_or_existing_design_model_only
+  coverage_level: C4_VERIFIED_PROPERTY
+  production_claimed: false
+- claim_id: MFOS-FC-AUDIT-DENY-BEFORE-RETURN
+  status: planned
+  requirement_refs:
+  - MFOS-REQ-AUDIT-0001
+  dafny_module: formal/executable-semantics/dafny/modules/audit.dfy
+  dafny_symbols:
+  - INV_AUDIT_DENY_WITH_OBLIGATION_HAS_BEFORE_RETURN_RECORD
+  tla_alloy_coverage: planned_or_existing_design_model_only
+  coverage_level: C4_VERIFIED_PROPERTY
+  production_claimed: false
+- claim_id: MFOS-FC-UPDATE-NO-ROLLBACK
+  status: planned
+  requirement_refs:
+  - MFOS-REQ-UPDATE-*
+  dafny_module: null
+  dafny_symbols: []
+  tla_alloy_coverage: planned_non_phase_1_1_domain
+  coverage_level: C0_NONE
+  production_claimed: false
+- claim_id: MFOS-FC-PARTITION-MEMORY-OWNERSHIP
+  status: planned
+  requirement_refs:
+  - MFOS-REQ-PXM-0103
+  dafny_module: null
+  dafny_symbols: []
+  tla_alloy_coverage: planned_non_phase_1_1_domain
+  coverage_level: C0_NONE
+  production_claimed: false
+- claim_id: MFOS-FC-PXM-CAPABILITY-REQUIRED-FOR-RESOURCE-OPERATION
+  status: planned
+  requirement_refs:
+  - MFOS-REQ-PXM-0102
+  dafny_module: null
+  dafny_symbols: []
+  tla_alloy_coverage: planned_non_phase_1_1_domain
+  coverage_level: C0_NONE
+  production_claimed: false
+- claim_id: MFOS-FC-MFVM-CANNOT-BYPASS-PXM
+  status: planned
+  requirement_refs:
+  - MFOS-REQ-MFVM-0103
+  - MFOS-REQ-MFVM-0104
+  dafny_module: null
+  dafny_symbols: []
+  tla_alloy_coverage: planned_non_phase_1_1_domain
+  coverage_level: C0_NONE
+  production_claimed: false
+- claim_id: MFOS-FC-CVM-LAUNCH-REQUIRES-MEASUREMENT
+  status: planned
+  requirement_refs:
+  - MFOS-REQ-CVM-0105
+  dafny_module: null
+  dafny_symbols: []
+  tla_alloy_coverage: planned_non_phase_1_1_domain
+  coverage_level: C0_NONE
+  production_claimed: false
+- claim_id: MFOS-FC-CVM-SECRET-RELEASE-REQUIRES-ATTESTATION
+  status: planned
+  requirement_refs:
+  - MFOS-REQ-CVM-0107
+  dafny_module: null
+  dafny_symbols: []
+  tla_alloy_coverage: planned_non_phase_1_1_domain
+  coverage_level: C0_NONE
+  production_claimed: false
+- claim_id: MFOS-FC-PRIVATE-SHARED-MEMORY-TRANSITION-VALIDITY
+  status: planned
+  requirement_refs:
+  - MFOS-REQ-CVM-0108
+  dafny_module: null
+  dafny_symbols: []
+  tla_alloy_coverage: planned_non_phase_1_1_domain
+  coverage_level: C0_NONE
+  production_claimed: false
+- claim_id: MFOS-FC-CLUSTER-POLICY-DISTRIBUTION-INTEGRITY
+  status: planned
+  requirement_refs:
+  - MFOS-REQ-CLUSTER-0107
+  dafny_module: null
+  dafny_symbols: []
+  tla_alloy_coverage: planned_non_phase_1_1_domain
+  coverage_level: C0_NONE
+  production_claimed: false
+- claim_id: MFOS-FC-CLUSTER-ATTESTATION-COLLECTION-INTEGRITY
+  status: planned
+  requirement_refs:
+  - MFOS-REQ-CLUSTER-0108
+  dafny_module: null
+  dafny_symbols: []
+  tla_alloy_coverage: planned_non_phase_1_1_domain
+  coverage_level: C0_NONE
+  production_claimed: false

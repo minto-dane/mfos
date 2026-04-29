@@ -68,9 +68,50 @@ module DatasetCatalog {
   {
   }
 
+  lemma INV_CATALOG_UNCOMMITTED_CANNOT_RESOLVE(entry: CatalogEntry)
+    requires entry.state == CATALOG_STAGED
+    ensures !CatalogEntryResolvable(entry)
+    ensures ResolveCatalog(entry).ResultErr?
+  {
+  }
+
+  lemma INV_CATALOG_ROLLED_BACK_CANNOT_RESOLVE(entry: CatalogEntry)
+    requires entry.state == CATALOG_ROLLED_BACK
+    ensures !CatalogEntryResolvable(entry)
+    ensures ResolveCatalog(entry).ResultErr?
+  {
+  }
+
+  lemma INV_CATALOG_INTEGRITY_FAILED_CANNOT_RESOLVE(entry: CatalogEntry)
+    requires entry.state == CATALOG_INTEGRITY_FAILED || !entry.integrity_valid
+    ensures !CatalogEntryResolvable(entry)
+    ensures ResolveCatalog(entry).ResultErr?
+  {
+  }
+
+  lemma INV_CATALOG_PARTIAL_JOURNAL_CANNOT_RESOLVE(entry: CatalogEntry)
+    requires entry.state == CATALOG_PARTIAL_JOURNAL
+    ensures !CatalogEntryResolvable(entry)
+    ensures ResolveCatalog(entry).ResultErr?
+  {
+  }
+
   lemma INV_DATASET_NO_HANDLE_WITHOUT_ALLOW(entry: CatalogEntry, decision: SecurityDecision, satisfied: set<DecisionObligation>)
     requires !Authorization.DecisionAllowsProtectedEffect(decision)
     ensures !MayCreateDatasetHandle(entry, decision, satisfied)
+  {
+  }
+
+  lemma INV_DATASET_HANDLE_BOUND_ON_CREATE(entry: CatalogEntry, decision: SecurityDecision, satisfied: set<DecisionObligation>, handle: DatasetHandle)
+    requires MayCreateDatasetHandle(entry, decision, satisfied)
+    requires HandleBoundToObjectGeneration(handle, entry, decision)
+    ensures handle.active
+    ensures handle.subject == decision.subject
+    ensures handle.object_ref == entry.dataset.object_ref
+    ensures handle.operation == decision.operation
+    ensures handle.policy_version == decision.policy_version
+    ensures handle.catalog_generation == entry.catalog_generation
+    ensures handle.dataset_generation == entry.dataset_generation
   {
   }
 
@@ -79,6 +120,19 @@ module DatasetCatalog {
              handle.catalog_generation != entry.catalog_generation ||
              handle.dataset_generation != entry.dataset_generation ||
              !handle.active
+    ensures !HandleFresh(handle, active_policy, entry)
+  {
+  }
+
+  lemma INV_DATASET_STALE_HANDLE_AFTER_POLICY_CHANGE_REJECTED(handle: DatasetHandle, active_policy: PolicyVersion, entry: CatalogEntry)
+    requires handle.policy_version != active_policy
+    ensures !HandleFresh(handle, active_policy, entry)
+  {
+  }
+
+  lemma INV_DATASET_STALE_HANDLE_AFTER_GENERATION_CHANGE_REJECTED(handle: DatasetHandle, active_policy: PolicyVersion, entry: CatalogEntry)
+    requires handle.catalog_generation != entry.catalog_generation ||
+             handle.dataset_generation != entry.dataset_generation
     ensures !HandleFresh(handle, active_policy, entry)
   {
   }

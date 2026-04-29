@@ -41,4 +41,4 @@ pass.
 
 For this closure pass, `scripts/install-dafny.sh` installed the pinned Dafny
 toolchain and `scripts/validate-dafny-semantics.sh --require-dafny` completed
-with `Dafny program verifier finished with 26 verified, 0 errors`.
+with `Dafny program verifier finished with 45 verified, 0 errors`.

@@ -2,7 +2,7 @@
 
 Status date: 2026-04-29
 Workspace: `/home/nia/mfos`
-Git status: working branch `phase/1-dafny-toolchain-verification-closure`;
+Git status: working branch `phase/1-1-semantic-coverage-closure`;
 PR #10 (`fix/phase-0.10-pxm-mfvm-expansion`), PR #11
 (`fix/pre-phase-1-total-readiness`), PR #12
 (`fix/pre-phase-1-total-readiness-second-pass`), and PR #13
@@ -10,7 +10,9 @@ PR #10 (`fix/phase-0.10-pxm-mfvm-expansion`), PR #11
 fixed-point closure branch is based on the updated `origin/dev`. PR #14
 (`fix/pre-phase1-fixedpoint-closure`) carries the fixed-point closure and GitHub
 checks passed (`CodeQL`, `CodeQL analysis (python)`, and `validate design
-registries and lint gates`). Repository visibility may be public by owner
+registries and lint gates`). PR #15 landed the Dafny executable-semantics
+scaffold. PR #17 landed the Dafny 4.11.0 toolchain verification closure after
+PR #16 was superseded by repository branch rules. Repository visibility may be public by owner
 instruction, but formal public-release claims remain blocked pending IP/trademark
 attorney review.
 
@@ -38,6 +40,15 @@ phase_1_dafny_semantics_allowed: true
 phase_1_conformance_harness_allowed: true
 phase_1_dafny_toolchain_pinned: true
 phase_1_dafny_verification_passed: true
+phase_1_1_semantic_coverage_complete: true
+phase_1_1_negative_semantics_complete: true
+phase_1_1_core_domains_coverage_level:
+  authorization: C4_VERIFIED_PROPERTY
+  audit: C4_VERIFIED_PROPERTY
+  dataset_catalog: C4_VERIFIED_PROPERTY
+  job_spool: C4_VERIFIED_PROPERTY
+  operator_console: C4_VERIFIED_PROPERTY
+phase_1_1_first_vertical_slice_coverage_level: C5_CONFORMANCE_LINKED
 phase_1_semantic_evaluator_status: non_production_dafny_only
 phase_1_portable_semantic_core_allowed: false
 phase_1_rust_semantic_core_allowed: false
@@ -73,7 +84,11 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
 - Pinned Dafny 4.11.0 is installed by `scripts/install-dafny.sh`; Z3 4.14.1 is
   bundled in the pinned release.
 - `scripts/validate-dafny-semantics.sh --require-dafny` verifies the current
-  module set with `26 verified, 0 errors`.
+  module set with `45 verified, 0 errors`.
+- Phase 1.1 semantic coverage closure maps 18 Phase 0.9 core requirement IDs,
+  74 catalog entries, 74 fixtures, 74 golden/oracle entries, and formal claims
+  to Dafny targets. Core five domains are `C4_VERIFIED_PROPERTY`; the first
+  vertical slice is `C5_CONFORMANCE_LINKED`.
 
 ## Phase 1 Formal / Traceability Consistency
 

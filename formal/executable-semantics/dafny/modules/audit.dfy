@@ -49,6 +49,12 @@ module Audit {
     record.before_return
   }
 
+  predicate DenyWithAuditObligationSatisfiedBeforeReturn(decision: SecurityDecision, records: seq<AuditRecord>) {
+    decision.result == DENY &&
+    Authorization.RequiresAudit(decision) &&
+    (exists i :: 0 <= i < |records| && DenyBeforeReturn(decision, records[i]))
+  }
+
   predicate AuditFailurePolicyFailClosed(audit_available: bool, decision: SecurityDecision) {
     !audit_available && Authorization.RequiresAudit(decision)
   }
@@ -66,6 +72,12 @@ module Audit {
     ensures record.before_return
     ensures AuditEvidence(record)
     ensures record.decision_result == DENY
+  {
+  }
+
+  lemma INV_AUDIT_DENY_WITH_OBLIGATION_HAS_BEFORE_RETURN_RECORD(decision: SecurityDecision, records: seq<AuditRecord>)
+    requires DenyWithAuditObligationSatisfiedBeforeReturn(decision, records)
+    ensures exists i :: 0 <= i < |records| && DenyBeforeReturn(decision, records[i])
   {
   }
 

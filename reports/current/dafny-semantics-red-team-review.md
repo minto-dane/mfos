@@ -27,4 +27,4 @@ Minor:
   `DATASET_READ_NOT_PERMITTED`.
 - No PXM/MFVM/CVM/cluster implementation was created.
 - Pinned Dafny 4.11.0 verification was run with `--require-dafny` and completed
-  with `26 verified, 0 errors`.
+  with `45 verified, 0 errors`.

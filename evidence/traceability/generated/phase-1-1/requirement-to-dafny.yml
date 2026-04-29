@@ -1,0 +1,416 @@
+schema_version: 1
+artifact_type: phase_1_1_semantic_coverage_traceability
+status: generated
+origin_phase: phase-1.1
+generated_by: scripts/generators/generate-semantic-coverage.py
+source_inputs:
+- tests/catalog/*.yml
+- tests/fixtures/**
+- tests/golden/**
+- formal/executable-semantics/dafny/modules/*.dfy
+- formal/claim-registry.yml
+coverage_levels:
+- C0_NONE
+- C1_TYPE_ONLY
+- C2_PARTIAL_SEMANTIC
+- C3_FULL_SEMANTIC
+- C4_VERIFIED_PROPERTY
+- C5_CONFORMANCE_LINKED
+- C6_RELEASE_READY_MODEL
+production_implementation_allowed: false
+traceability_kind: requirement_to_dafny
+requirements:
+- requirement_id: MFOS-REQ-AUDIT-0001
+  covered_domains:
+  - audit
+  dafny_modules:
+  - formal/executable-semantics/dafny/modules/audit.dfy
+  dafny_symbols:
+  - AuditEvidence
+  - ConstructAuditRecord
+  - DenyBeforeReturn
+  - DenyWithAuditObligationSatisfiedBeforeReturn
+  - INV_AUDIT_DENY_BEFORE_RETURN
+  - INV_AUDIT_DENY_WITH_OBLIGATION_HAS_BEFORE_RETURN_RECORD
+  - INV_AUDIT_LOG_LINE_NOT_RECORD
+  - INV_AUDIT_SPOOL_NOT_EVIDENCE
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_basis: Phase 0.9 catalog target requirement is mapped to verified Dafny
+    predicates/lemmas and linked tests; first vertical slice is fixture/golden linked.
+- requirement_id: MFOS-REQ-AUDIT-0002
+  covered_domains:
+  - audit
+  dafny_modules:
+  - formal/executable-semantics/dafny/modules/audit.dfy
+  dafny_symbols:
+  - AuditEvidence
+  - ConstructAuditRecord
+  - DenyBeforeReturn
+  - DenyWithAuditObligationSatisfiedBeforeReturn
+  - INV_AUDIT_DENY_BEFORE_RETURN
+  - INV_AUDIT_DENY_WITH_OBLIGATION_HAS_BEFORE_RETURN_RECORD
+  - INV_AUDIT_LOG_LINE_NOT_RECORD
+  - INV_AUDIT_SPOOL_NOT_EVIDENCE
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_basis: Phase 0.9 catalog target requirement is mapped to verified Dafny
+    predicates/lemmas and linked tests; first vertical slice is fixture/golden linked.
+- requirement_id: MFOS-REQ-AUDIT-0101
+  covered_domains:
+  - audit
+  dafny_modules:
+  - formal/executable-semantics/dafny/modules/audit.dfy
+  dafny_symbols:
+  - AuditEvidence
+  - ConstructAuditRecord
+  - DenyBeforeReturn
+  - DenyWithAuditObligationSatisfiedBeforeReturn
+  - INV_AUDIT_DENY_BEFORE_RETURN
+  - INV_AUDIT_DENY_WITH_OBLIGATION_HAS_BEFORE_RETURN_RECORD
+  - INV_AUDIT_LOG_LINE_NOT_RECORD
+  - INV_AUDIT_SPOOL_NOT_EVIDENCE
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_basis: Phase 0.9 catalog target requirement is mapped to verified Dafny
+    predicates/lemmas and linked tests; first vertical slice is fixture/golden linked.
+- requirement_id: MFOS-REQ-AUDIT-0104
+  covered_domains:
+  - first_vertical_slice
+  dafny_modules:
+  - formal/executable-semantics/dafny/modules/first_vertical_slice.dfy
+  dafny_symbols:
+  - BobDeniedAliceDatasetContract
+  - BobDeniedAliceDatasetResult
+  - HelloJobAuditSequence
+  - HelloJobContract
+  - HelloJobResult
+  - OpenDenyBeforeFinalDenial
+  - SliceDenyPreventsDatasetHandle
+  - SliceHandleCreatedOnlyAfterAllow
+  - SpecGapUnsupportedNeverComplete
+  coverage_level: C5_CONFORMANCE_LINKED
+  coverage_basis: Phase 0.9 catalog target requirement is mapped to verified Dafny
+    predicates/lemmas and linked tests; first vertical slice is fixture/golden linked.
+- requirement_id: MFOS-REQ-AUTH-0001
+  covered_domains:
+  - authorization
+  dafny_modules:
+  - formal/executable-semantics/dafny/modules/authorization.dfy
+  dafny_symbols:
+  - CanCreateProtectedResourceHandle
+  - DecisionAllowsProtectedEffect
+  - EvaluateSecurityDecision
+  - INV_AUTH_NO_HANDLE_WITHOUT_ALLOW
+  - INV_AUTH_SPEC_GAP_NOT_SUCCESS
+  - INV_AUTH_UNSUPPORTED_NOT_SUCCESS
+  - PolicyDeniedMappingForDatasetRead
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_basis: Phase 0.9 catalog target requirement is mapped to verified Dafny
+    predicates/lemmas and linked tests; first vertical slice is fixture/golden linked.
+- requirement_id: MFOS-REQ-AUTH-0003
+  covered_domains:
+  - authorization
+  dafny_modules:
+  - formal/executable-semantics/dafny/modules/authorization.dfy
+  dafny_symbols:
+  - CanCreateProtectedResourceHandle
+  - DecisionAllowsProtectedEffect
+  - EvaluateSecurityDecision
+  - INV_AUTH_NO_HANDLE_WITHOUT_ALLOW
+  - INV_AUTH_SPEC_GAP_NOT_SUCCESS
+  - INV_AUTH_UNSUPPORTED_NOT_SUCCESS
+  - PolicyDeniedMappingForDatasetRead
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_basis: Phase 0.9 catalog target requirement is mapped to verified Dafny
+    predicates/lemmas and linked tests; first vertical slice is fixture/golden linked.
+- requirement_id: MFOS-REQ-AUTH-0004
+  covered_domains:
+  - first_vertical_slice
+  dafny_modules:
+  - formal/executable-semantics/dafny/modules/first_vertical_slice.dfy
+  dafny_symbols:
+  - BobDeniedAliceDatasetContract
+  - BobDeniedAliceDatasetResult
+  - HelloJobAuditSequence
+  - HelloJobContract
+  - HelloJobResult
+  - OpenDenyBeforeFinalDenial
+  - SliceDenyPreventsDatasetHandle
+  - SliceHandleCreatedOnlyAfterAllow
+  - SpecGapUnsupportedNeverComplete
+  coverage_level: C5_CONFORMANCE_LINKED
+  coverage_basis: Phase 0.9 catalog target requirement is mapped to verified Dafny
+    predicates/lemmas and linked tests; first vertical slice is fixture/golden linked.
+- requirement_id: MFOS-REQ-AUTH-0101
+  covered_domains:
+  - authorization
+  dafny_modules:
+  - formal/executable-semantics/dafny/modules/authorization.dfy
+  dafny_symbols:
+  - CanCreateProtectedResourceHandle
+  - DecisionAllowsProtectedEffect
+  - EvaluateSecurityDecision
+  - INV_AUTH_NO_HANDLE_WITHOUT_ALLOW
+  - INV_AUTH_SPEC_GAP_NOT_SUCCESS
+  - INV_AUTH_UNSUPPORTED_NOT_SUCCESS
+  - PolicyDeniedMappingForDatasetRead
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_basis: Phase 0.9 catalog target requirement is mapped to verified Dafny
+    predicates/lemmas and linked tests; first vertical slice is fixture/golden linked.
+- requirement_id: MFOS-REQ-CATALOG-0002
+  covered_domains:
+  - dataset_catalog
+  dafny_modules:
+  - formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+  dafny_symbols:
+  - CatalogEntryResolvable
+  - HandleFresh
+  - INV_CATALOG_COMMITTED_ONLY
+  - INV_CATALOG_INTEGRITY_FAILED_CANNOT_RESOLVE
+  - INV_CATALOG_PARTIAL_JOURNAL_CANNOT_RESOLVE
+  - INV_CATALOG_ROLLED_BACK_CANNOT_RESOLVE
+  - INV_CATALOG_UNCOMMITTED_CANNOT_RESOLVE
+  - INV_DATASET_HANDLE_BOUND_ON_CREATE
+  - INV_DATASET_NO_HANDLE_WITHOUT_ALLOW
+  - INV_DATASET_STALE_HANDLE_AFTER_GENERATION_CHANGE_REJECTED
+  - INV_DATASET_STALE_HANDLE_AFTER_POLICY_CHANGE_REJECTED
+  - MayCreateDatasetHandle
+  - ResolveCatalog
+  - SymbolicDsnValid
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_basis: Phase 0.9 catalog target requirement is mapped to verified Dafny
+    predicates/lemmas and linked tests; first vertical slice is fixture/golden linked.
+- requirement_id: MFOS-REQ-CATALOG-0101
+  covered_domains:
+  - dataset_catalog
+  dafny_modules:
+  - formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+  dafny_symbols:
+  - CatalogEntryResolvable
+  - HandleFresh
+  - INV_CATALOG_COMMITTED_ONLY
+  - INV_CATALOG_INTEGRITY_FAILED_CANNOT_RESOLVE
+  - INV_CATALOG_PARTIAL_JOURNAL_CANNOT_RESOLVE
+  - INV_CATALOG_ROLLED_BACK_CANNOT_RESOLVE
+  - INV_CATALOG_UNCOMMITTED_CANNOT_RESOLVE
+  - INV_DATASET_HANDLE_BOUND_ON_CREATE
+  - INV_DATASET_NO_HANDLE_WITHOUT_ALLOW
+  - INV_DATASET_STALE_HANDLE_AFTER_GENERATION_CHANGE_REJECTED
+  - INV_DATASET_STALE_HANDLE_AFTER_POLICY_CHANGE_REJECTED
+  - MayCreateDatasetHandle
+  - ResolveCatalog
+  - SymbolicDsnValid
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_basis: Phase 0.9 catalog target requirement is mapped to verified Dafny
+    predicates/lemmas and linked tests; first vertical slice is fixture/golden linked.
+- requirement_id: MFOS-REQ-DATASET-0101
+  covered_domains:
+  - dataset_catalog
+  dafny_modules:
+  - formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+  dafny_symbols:
+  - CatalogEntryResolvable
+  - HandleFresh
+  - INV_CATALOG_COMMITTED_ONLY
+  - INV_CATALOG_INTEGRITY_FAILED_CANNOT_RESOLVE
+  - INV_CATALOG_PARTIAL_JOURNAL_CANNOT_RESOLVE
+  - INV_CATALOG_ROLLED_BACK_CANNOT_RESOLVE
+  - INV_CATALOG_UNCOMMITTED_CANNOT_RESOLVE
+  - INV_DATASET_HANDLE_BOUND_ON_CREATE
+  - INV_DATASET_NO_HANDLE_WITHOUT_ALLOW
+  - INV_DATASET_STALE_HANDLE_AFTER_GENERATION_CHANGE_REJECTED
+  - INV_DATASET_STALE_HANDLE_AFTER_POLICY_CHANGE_REJECTED
+  - MayCreateDatasetHandle
+  - ResolveCatalog
+  - SymbolicDsnValid
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_basis: Phase 0.9 catalog target requirement is mapped to verified Dafny
+    predicates/lemmas and linked tests; first vertical slice is fixture/golden linked.
+- requirement_id: MFOS-REQ-DATASET-0102
+  covered_domains:
+  - dataset_catalog
+  - first_vertical_slice
+  dafny_modules:
+  - formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+  - formal/executable-semantics/dafny/modules/first_vertical_slice.dfy
+  dafny_symbols:
+  - BobDeniedAliceDatasetContract
+  - BobDeniedAliceDatasetResult
+  - CatalogEntryResolvable
+  - HandleFresh
+  - HelloJobAuditSequence
+  - HelloJobContract
+  - HelloJobResult
+  - INV_CATALOG_COMMITTED_ONLY
+  - INV_CATALOG_INTEGRITY_FAILED_CANNOT_RESOLVE
+  - INV_CATALOG_PARTIAL_JOURNAL_CANNOT_RESOLVE
+  - INV_CATALOG_ROLLED_BACK_CANNOT_RESOLVE
+  - INV_CATALOG_UNCOMMITTED_CANNOT_RESOLVE
+  - INV_DATASET_HANDLE_BOUND_ON_CREATE
+  - INV_DATASET_NO_HANDLE_WITHOUT_ALLOW
+  - INV_DATASET_STALE_HANDLE_AFTER_GENERATION_CHANGE_REJECTED
+  - INV_DATASET_STALE_HANDLE_AFTER_POLICY_CHANGE_REJECTED
+  - MayCreateDatasetHandle
+  - OpenDenyBeforeFinalDenial
+  - ResolveCatalog
+  - SliceDenyPreventsDatasetHandle
+  - SliceHandleCreatedOnlyAfterAllow
+  - SpecGapUnsupportedNeverComplete
+  - SymbolicDsnValid
+  coverage_level: C5_CONFORMANCE_LINKED
+  coverage_basis: Phase 0.9 catalog target requirement is mapped to verified Dafny
+    predicates/lemmas and linked tests; first vertical slice is fixture/golden linked.
+- requirement_id: MFOS-REQ-JOB-0101
+  covered_domains:
+  - job_spool
+  dafny_modules:
+  - formal/executable-semantics/dafny/modules/job_spool.dfy
+  dafny_symbols:
+  - DDResolutionThroughCatalogAndAuth
+  - DatasetOpenAllowedForJob
+  - EffectivePrincipalEstablished
+  - INV_JOB_DD_RESOLUTION_THROUGH_CATALOG_AND_AUTH
+  - INV_JOB_EFFECTIVE_PRINCIPAL_BEFORE_OPEN
+  - INV_JOB_INVALID_LIFECYCLE_REJECTED
+  - INV_SPOOL_BROWSE_BY_NON_OWNER_DENIED
+  - INV_SPOOL_BROWSE_WITHOUT_AUTHORITY_DENIED
+  - INV_SPOOL_PROTECTED_RESOURCE
+  - INV_SPOOL_PURGE_WITHOUT_AUTHORITY_DENIED
+  - SpoolBrowseAllowed
+  - SpoolPurgeDeniedWithoutAuthority
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_basis: Phase 0.9 catalog target requirement is mapped to verified Dafny
+    predicates/lemmas and linked tests; first vertical slice is fixture/golden linked.
+- requirement_id: MFOS-REQ-JOB-0102
+  covered_domains:
+  - first_vertical_slice
+  - job_spool
+  dafny_modules:
+  - formal/executable-semantics/dafny/modules/first_vertical_slice.dfy
+  - formal/executable-semantics/dafny/modules/job_spool.dfy
+  dafny_symbols:
+  - BobDeniedAliceDatasetContract
+  - BobDeniedAliceDatasetResult
+  - DDResolutionThroughCatalogAndAuth
+  - DatasetOpenAllowedForJob
+  - EffectivePrincipalEstablished
+  - HelloJobAuditSequence
+  - HelloJobContract
+  - HelloJobResult
+  - INV_JOB_DD_RESOLUTION_THROUGH_CATALOG_AND_AUTH
+  - INV_JOB_EFFECTIVE_PRINCIPAL_BEFORE_OPEN
+  - INV_JOB_INVALID_LIFECYCLE_REJECTED
+  - INV_SPOOL_BROWSE_BY_NON_OWNER_DENIED
+  - INV_SPOOL_BROWSE_WITHOUT_AUTHORITY_DENIED
+  - INV_SPOOL_PROTECTED_RESOURCE
+  - INV_SPOOL_PURGE_WITHOUT_AUTHORITY_DENIED
+  - OpenDenyBeforeFinalDenial
+  - SliceDenyPreventsDatasetHandle
+  - SliceHandleCreatedOnlyAfterAllow
+  - SpecGapUnsupportedNeverComplete
+  - SpoolBrowseAllowed
+  - SpoolPurgeDeniedWithoutAuthority
+  coverage_level: C5_CONFORMANCE_LINKED
+  coverage_basis: Phase 0.9 catalog target requirement is mapped to verified Dafny
+    predicates/lemmas and linked tests; first vertical slice is fixture/golden linked.
+- requirement_id: MFOS-REQ-OPER-0101
+  covered_domains:
+  - first_vertical_slice
+  - operator_console
+  dafny_modules:
+  - formal/executable-semantics/dafny/modules/first_vertical_slice.dfy
+  - formal/executable-semantics/dafny/modules/operator_console.dfy
+  dafny_symbols:
+  - AuditedOperatorCommand
+  - BobDeniedAliceDatasetContract
+  - BobDeniedAliceDatasetResult
+  - DualControlCommandAuthorized
+  - EmergencyModeAllowed
+  - HelloJobAuditSequence
+  - HelloJobContract
+  - HelloJobResult
+  - INV_OPERATOR_DESTRUCTIVE_WITHOUT_CONFIRMATION_DENIED
+  - INV_OPERATOR_DUAL_CONTROL_SINGLE_APPROVAL_DENIED
+  - INV_OPERATOR_EMERGENCY_WITHOUT_REASON_OR_EXPIRY_DENIED
+  - INV_OPERATOR_NO_COMMAND_WITHOUT_AUDIT
+  - INV_OPERATOR_NO_COMMAND_WITHOUT_AUTH
+  - INV_OPERATOR_ROOT_SHELL_NOT_FIRST_UI
+  - OpenDenyBeforeFinalDenial
+  - OperatorCommandAuthorized
+  - RootShellAsFirstPrivilegedUi
+  - SliceDenyPreventsDatasetHandle
+  - SliceHandleCreatedOnlyAfterAllow
+  - SpecGapUnsupportedNeverComplete
+  coverage_level: C5_CONFORMANCE_LINKED
+  coverage_basis: Phase 0.9 catalog target requirement is mapped to verified Dafny
+    predicates/lemmas and linked tests; first vertical slice is fixture/golden linked.
+- requirement_id: MFOS-REQ-OPER-0102
+  covered_domains:
+  - operator_console
+  dafny_modules:
+  - formal/executable-semantics/dafny/modules/operator_console.dfy
+  dafny_symbols:
+  - AuditedOperatorCommand
+  - DualControlCommandAuthorized
+  - EmergencyModeAllowed
+  - INV_OPERATOR_DESTRUCTIVE_WITHOUT_CONFIRMATION_DENIED
+  - INV_OPERATOR_DUAL_CONTROL_SINGLE_APPROVAL_DENIED
+  - INV_OPERATOR_EMERGENCY_WITHOUT_REASON_OR_EXPIRY_DENIED
+  - INV_OPERATOR_NO_COMMAND_WITHOUT_AUDIT
+  - INV_OPERATOR_NO_COMMAND_WITHOUT_AUTH
+  - INV_OPERATOR_ROOT_SHELL_NOT_FIRST_UI
+  - OperatorCommandAuthorized
+  - RootShellAsFirstPrivilegedUi
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_basis: Phase 0.9 catalog target requirement is mapped to verified Dafny
+    predicates/lemmas and linked tests; first vertical slice is fixture/golden linked.
+- requirement_id: MFOS-REQ-OPER-0103
+  covered_domains:
+  - operator_console
+  dafny_modules:
+  - formal/executable-semantics/dafny/modules/operator_console.dfy
+  dafny_symbols:
+  - AuditedOperatorCommand
+  - DualControlCommandAuthorized
+  - EmergencyModeAllowed
+  - INV_OPERATOR_DESTRUCTIVE_WITHOUT_CONFIRMATION_DENIED
+  - INV_OPERATOR_DUAL_CONTROL_SINGLE_APPROVAL_DENIED
+  - INV_OPERATOR_EMERGENCY_WITHOUT_REASON_OR_EXPIRY_DENIED
+  - INV_OPERATOR_NO_COMMAND_WITHOUT_AUDIT
+  - INV_OPERATOR_NO_COMMAND_WITHOUT_AUTH
+  - INV_OPERATOR_ROOT_SHELL_NOT_FIRST_UI
+  - OperatorCommandAuthorized
+  - RootShellAsFirstPrivilegedUi
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_basis: Phase 0.9 catalog target requirement is mapped to verified Dafny
+    predicates/lemmas and linked tests; first vertical slice is fixture/golden linked.
+- requirement_id: MFOS-REQ-SPOOL-0101
+  covered_domains:
+  - first_vertical_slice
+  - job_spool
+  dafny_modules:
+  - formal/executable-semantics/dafny/modules/first_vertical_slice.dfy
+  - formal/executable-semantics/dafny/modules/job_spool.dfy
+  dafny_symbols:
+  - BobDeniedAliceDatasetContract
+  - BobDeniedAliceDatasetResult
+  - DDResolutionThroughCatalogAndAuth
+  - DatasetOpenAllowedForJob
+  - EffectivePrincipalEstablished
+  - HelloJobAuditSequence
+  - HelloJobContract
+  - HelloJobResult
+  - INV_JOB_DD_RESOLUTION_THROUGH_CATALOG_AND_AUTH
+  - INV_JOB_EFFECTIVE_PRINCIPAL_BEFORE_OPEN
+  - INV_JOB_INVALID_LIFECYCLE_REJECTED
+  - INV_SPOOL_BROWSE_BY_NON_OWNER_DENIED
+  - INV_SPOOL_BROWSE_WITHOUT_AUTHORITY_DENIED
+  - INV_SPOOL_PROTECTED_RESOURCE
+  - INV_SPOOL_PURGE_WITHOUT_AUTHORITY_DENIED
+  - OpenDenyBeforeFinalDenial
+  - SliceDenyPreventsDatasetHandle
+  - SliceHandleCreatedOnlyAfterAllow
+  - SpecGapUnsupportedNeverComplete
+  - SpoolBrowseAllowed
+  - SpoolPurgeDeniedWithoutAuthority
+  coverage_level: C5_CONFORMANCE_LINKED
+  coverage_basis: Phase 0.9 catalog target requirement is mapped to verified Dafny
+    predicates/lemmas and linked tests; first vertical slice is fixture/golden linked.

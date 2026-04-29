@@ -143,6 +143,16 @@ current:
   purpose: Red-team review for Phase 1 Dafny executable-semantics artifacts.
 - path: reports/current/dafny-semantics-open-issues.md
   purpose: Nonblocking Phase 1 Dafny semantic artifact open issues.
+- path: reports/current/semantic-coverage-report.md
+  purpose: Phase 1.1 semantic coverage closure report for Dafny executable semantics.
+- path: reports/current/semantic-coverage.yml
+  purpose: Machine-readable Phase 1.1 semantic coverage summary.
+- path: reports/current/negative-semantics-report.md
+  purpose: Phase 1.1 negative semantics hardening report.
+- path: reports/current/semantic-coverage-red-team-review.md
+  purpose: Red-team review for Phase 1.1 semantic coverage and negative semantics.
+- path: reports/current/semantic-coverage-open-issues.md
+  purpose: Nonblocking Phase 1.1 semantic coverage open issues.
 sections:
 - path: reports/phases/phase-0-6/
   purpose: Phase 0.6 canonicalization and enforcement closure.

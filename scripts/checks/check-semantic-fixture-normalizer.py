@@ -19,11 +19,11 @@ TOOL_ROOTS = [
     ROOT / "tools" / "dafny-conformance-harness",
 ]
 BUSINESS_LOGIC = re.compile(
-    r"\b(?:authorize|authenticate|decide|schedule|dispatch|allocate|mount|open_dataset|execute_job|run_step|purge_spool|create_dataset_handle|resolve_catalog|transition_job|operator_authorized|audit_before_return)\s*\(",
+    r"\b(?:authorize|authenticate|decide|evaluate_policy|schedule|dispatch|allocate|mount|open_dataset|execute_job|run_step|purge_spool|browse_spool|create_dataset_handle|create_handle|resolve_catalog|commit_catalog|rollback_catalog|transition_job|job_lifecycle|operator_authorized|operator_authority|execute_command|audit_before_return|audit_obligation)\s*\(",
     re.IGNORECASE,
 )
 BUSINESS_MARKERS = re.compile(
-    r"\b(?:ALLOW|DENY|ALLOW_WITH_AUDIT|MFOS_ERR_POLICY_DENIED|DATASET_READ_NOT_PERMITTED|dataset_handle_created|audit_before_final_result|JOB_STATE_[A-Z0-9_]*|COMMAND_STATE_[A-Z0-9_]*)\b"
+    r"\b(?:ALLOW|DENY|ALLOW_WITH_AUDIT|REQUIRE_DUAL_CONTROL|REQUIRE_OPERATOR_CONFIRMATION|MFOS_ERR_POLICY_DENIED|MFOS_ERR_SPEC_GAP|MFOS_ERR_UNSUPPORTED|DATASET_READ_NOT_PERMITTED|OPEN_DENY|CATALOG_COMMITTED|CATALOG_ROLLED_BACK|CATALOG_INTEGRITY_FAILED|dataset_handle_created|audit_before_final_result|JOB_STATE_[A-Z0-9_]*|COMMAND_STATE_[A-Z0-9_]*)\b"
 )
 HOSTED = re.compile(r"\b(?:HTTPServer|socketserver|serve_forever|listen|bind|uvicorn|flask|fastapi)\b")
 
