@@ -57,6 +57,10 @@ PATTERNS = [
     re.compile(r"\bDFSMS[- ]compatible\b", re.IGNORECASE),
     re.compile(r"\bAPF[- ]compatible\b", re.IGNORECASE),
     re.compile(r"\bPR/SM[- ]compatible\b", re.IGNORECASE),
+    re.compile(r"\bHyper[- ]?V[- ]compatible\b", re.IGNORECASE),
+    re.compile(r"\bKVM[- ]compatible\b", re.IGNORECASE),
+    re.compile(r"\bTDX[- ]certified\b", re.IGNORECASE),
+    re.compile(r"\bSEV(?:[- ]ES|[- ]SNP)?[- ]certified\b", re.IGNORECASE),
 ]
 
 SAFE_MARKERS = (

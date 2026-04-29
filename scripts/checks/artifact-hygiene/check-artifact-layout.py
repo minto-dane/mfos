@@ -38,6 +38,7 @@ CANONICAL_ROOT_FILES_ALLOWED = {
         "validate-all.sh",
         "validate-artifact-hygiene.sh",
         "validate-component-scaffold.sh",
+        "validate-language-formal-assurance.sh",
         "validate-naming-safety.sh",
     },
     Path("tasks"): {"README.md", "index.yml"},
