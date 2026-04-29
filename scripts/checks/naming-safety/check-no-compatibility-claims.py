@@ -16,15 +16,15 @@ from pathlib import Path
 from lib.mfos_lint import Finding, ROOT, emit, mode_arg, text_files
 
 
-EXTERNAL_RE = re.compile(r"\b(IBM|z/OS|RACF|JES2?|DFSMS|SMF|MVS|IBM Z|z/Architecture|APF|PR/SM|LPAR|SDSF|ISPF|TSO/E|TSO|zOSMF|z/OSMF)\b", re.IGNORECASE)
+EXTERNAL_RE = re.compile(r"\b(IBM|z/OS|RACF|JES2?|DFSMS|SMF|MVS|IBM Z|z/Architecture|APF|PR/SM|LPAR|SDSF|ISPF|TSO/E|TSO|zOSMF|z/OSMF|Hyper[- ]?V|KVM|TDX|SEV(?:[- ]ES|[- ]SNP)?|Kani|Verus|CodeQL|NIST)\b", re.IGNORECASE)
 RISK_RE = re.compile(
     r"\b("
     r"(?:is|are|be|being|claims?|supports?|provides?)\s+(?:[a-z0-9_./-]+\s+){0,8}(?:compatible|equivalent|replacement)"
     r"|compatible\s+with"
     r"|equivalent\s+to"
     r"|replacement\s+for"
-    r"|(?:certified|approved|endorsed|sponsored)\s+by\s+IBM"
-    r"|IBM\s+(?:certified|approved|endorsed|sponsored)"
+    r"|(?:certified|approved|endorsed|sponsored)\s+by\s+(?:IBM|Microsoft|Linux|KVM|Hyper[- ]?V|Intel|AMD|TDX|SEV(?:[- ]ES|[- ]SNP)?|Kani|Verus|CodeQL|NIST)"
+    r"|(?:IBM|Microsoft|Linux|KVM|Hyper[- ]?V|Intel|AMD|TDX|SEV(?:[- ]ES|[- ]SNP)?|Kani|Verus|CodeQL|NIST)\s+(?:certified|approved|endorsed|sponsored)"
     r")\b",
     re.IGNORECASE,
 )

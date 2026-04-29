@@ -47,8 +47,16 @@ FORBIDDEN = [
     "tso",
     "zosmf",
     "zos-mf",
+    "hyperv",
+    "hyper-v",
+    "kvm",
 ]
-TOKEN_RE = re.compile("|".join(re.escape(token) for token in FORBIDDEN), re.IGNORECASE)
+TOKEN_RE = re.compile(
+    r"(?<![A-Za-z0-9])(?:"
+    + "|".join(re.escape(token) for token in FORBIDDEN)
+    + r")(?![A-Za-z0-9])",
+    re.IGNORECASE,
+)
 
 ALLOWED_PATH_PARTS = {
     "source-matrix",

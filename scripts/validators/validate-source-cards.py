@@ -160,11 +160,14 @@ def main() -> int:
                 if isinstance(ref, dict) and ref.get("source_id") == source_id and ref.get("source_type") != card.get("source_type"):
                     errors.append(f"{source_id}: self source_ref source_type does not match card source_type")
 
-    indexed_paths = {
-        str(Path(item.get("card_path", "")))
-        for item in cards
-        if isinstance(item, dict) and item.get("card_path")
-    }
+    indexed_paths = set()
+    for item in cards:
+        if not isinstance(item, dict) or not item.get("source_id"):
+            continue
+        if item.get("card_path"):
+            indexed_paths.add(str(Path(item["card_path"])))
+        else:
+            indexed_paths.add(str(CARD_DIR / f"{item['source_id']}.yml"))
     extra_cards = {
         str(path)
         for path in CARD_DIR.glob("*.yml")

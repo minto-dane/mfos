@@ -81,7 +81,7 @@ def main() -> int:
                 if key not in impl:
                     findings.append(Finding("ERROR", PACK_INDEX, f"{pid}: implementation_allowed.{key} missing"))
 
-    expected = {f"PACK-{idx:02d}" for idx in range(31)}
+    expected = {f"PACK-{idx:02d}" for idx in range(37)}
     missing_ids = sorted(expected - seen)
     if missing_ids:
         findings.append(Finding("ERROR", PACK_INDEX, f"missing pack ids: {', '.join(missing_ids)}"))

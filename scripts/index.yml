@@ -19,6 +19,9 @@ current:
     validate_naming_safety:
       path: scripts/validate-naming-safety.sh
       status: current
+    validate_language_formal_assurance:
+      path: scripts/validate-language-formal-assurance.sh
+      status: current
 
 sections:
   validators:
