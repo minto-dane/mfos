@@ -1,10 +1,10 @@
-directory_id: MFOS-DIR-IMPLEMENTATION
-path: implementation
+directory_id: MFOS-DIR-SERVICES
+path: services
 role: implementation_future
-maturity: M2_CLASSIFIED
+maturity: M1_PLACEHOLDER
 status: planned
-canonical: true
-description: Grouped OS-body implementation scaffold. Presence of directories does not authorize implementation.
+canonical: false
+description: Future top-level service scaffold metadata. Service implementation remains unauthorized until gate approval.
 implementation_allowed:
   production: false
   hosted_daemon: false
@@ -15,24 +15,24 @@ implementation_allowed:
   hosted_semantic_prototype: false
   generated_production_code: false
   validation_only: true
-phase_allowed_from: phase-1-loader-only
+phase_allowed_from: post-pre-implementation-gate
 depends_on:
   - docs/design/specs/21-ai-implementation-contract.md
-  - docs/design/specs/33-semantic-runner-contract.md
+  - docs/design/specs/22-production-readiness.md
 allowed_contents:
   - README files
-  - future component directories
-  - reviewed loader-only artifacts after gate approval
+  - index files
+  - component assignment metadata
 forbidden_contents:
   - implementation code
   - production service logic
   - hosted daemon code
   - semantic runner implementation
-  - fake success stubs
+  - generated binaries
 required_before_agent_assignment:
   - pre-implementation gate
   - pack contract
-  - source refs
   - requirement refs
+  - source refs
   - negative tests
 review_status: draft

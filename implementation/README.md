@@ -1,6 +1,6 @@
 # implementation/
 
-This directory contains implementation work for MFOS.
+This directory contains future implementation work for MFOS.
 
 It is grouped here so OS body code does not sit at the same top-level as
 documentation, requirements, tests, and evidence. MFOS is not a single
@@ -17,10 +17,11 @@ guard/        High-Assurance root object protection
 sidecars/     Linux desktop, service, recovery, diagnostics partitions
 interfaces/   operator console, command-processor, panel-ui, management APIs, gateways
 tools/        host and MFOS tools
-prototypes/   hosted semantic prototype, phase 1
+prototypes/   future non-production prototypes; blocked in Phase 1 unless a later gate explicitly authorizes them
 ```
 
-Each component may contain its own `src/` directory when code is added:
+Each component may contain its own `src/` directory only after a later approved
+implementation gate:
 
 ```text
 implementation/services/securityd/src/
@@ -32,3 +33,9 @@ implementation/tools/mfctl/src/
 
 Do not infer production readiness from the presence of a directory. Production
 claims require requirements, source IDs, tests, audit obligations, and evidence.
+
+Phase 1 is limited to Dafny executable-semantics scaffold work and loader-only
+artifact validation under `formal/executable-semantics/dafny/`. Phase 1 does
+not authorize Rust semantic-core work, hosted semantic prototypes, semantic
+runner implementation, hosted daemons, service implementation, PXM/MFVM/CVM
+implementation, cluster implementation, or production code.

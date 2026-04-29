@@ -1,0 +1,35 @@
+directory_id: MFOS-DIR-FORMAL-MODELS-TLA
+path: formal/models/tla
+role: formal_model_scaffold
+maturity: M2_CLASSIFIED
+status: planned
+canonical: false
+description: Planned normalized TLA+ model scaffold. Current TLA+ design models remain under formal/tla until a reviewed migration.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  rust_semantic_core: false
+  dafny_executable_semantics: false
+  semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+  generated_production_code: false
+  validation_only: true
+phase_allowed_from: phase-1-loader-only
+depends_on:
+  - formal/model-registry.yml
+  - docs/design/specs/40-automated-reasoning-program.md
+allowed_contents:
+  - README files
+  - index files
+  - reviewed migration metadata
+forbidden_contents:
+  - implementation code
+  - production proof claims
+  - semantic runner implementation
+  - hosted daemon code
+required_before_agent_assignment:
+  - model registry entry
+  - proof obligation ID
+  - migration review
+review_status: draft

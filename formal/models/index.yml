@@ -1,0 +1,20 @@
+schema_version: 1
+artifact_index_kind: mfos_formal_model_scaffold
+status: planned
+metadata:
+  path: formal/models/.mfos-dir.yml
+  artifact_type: scaffold_metadata
+  status: planned
+current_authority:
+  formal_registry: formal/registry.yml
+  model_registry: formal/model-registry.yml
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  rust_semantic_core: false
+  dafny_executable_semantics: false
+  semantic_runner: false
+  validation_only: true
+policy:
+  proof_claimed: false
+  production_implementation_allowed: false

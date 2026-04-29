@@ -1,10 +1,10 @@
-directory_id: MFOS-DIR-FORMAL
-path: formal
+directory_id: MFOS-DIR-FORMAL-MODELS
+path: formal/models
 role: planned
-maturity: M3_CONTRACTED
+maturity: M2_CLASSIFIED
 status: planned
-canonical: true
-description: Formal-model scaffold and planning area. Proof artifacts are not implemented yet.
+canonical: false
+description: Formal model scaffold metadata. Existing model artifacts remain registered under formal/model-registry.yml until promoted here.
 implementation_allowed:
   production: false
   hosted_daemon: false
@@ -17,17 +17,21 @@ implementation_allowed:
   validation_only: true
 phase_allowed_from: phase-0
 depends_on:
+  - formal/registry.yml
+  - formal/model-registry.yml
   - docs/design/specs/24-formal-methods.md
 allowed_contents:
-  - TLA models
-  - proof obligation registries
-  - formal planning notes
+  - README files
+  - index files
+  - formal model scaffold metadata
 forbidden_contents:
   - unreviewed proof claims
+  - implementation code
+  - semantic runner implementation
   - generated binaries
-  - production code
 required_before_agent_assignment:
-  - formal obligation ID
+  - formal model ID
+  - proof obligation ID
+  - requirement refs
   - evidence path
-  - model status
 review_status: draft

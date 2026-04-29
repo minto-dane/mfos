@@ -1,10 +1,10 @@
-directory_id: MFOS-DIR-SCHEMAS
-path: schemas
+directory_id: MFOS-DIR-SCHEMAS-MFOS
+path: schemas/mfos
 role: canonical_registry
 maturity: M5_VALIDATED
 status: current
 canonical: true
-description: Machine-readable schema definitions used by local validators.
+description: MFOS machine-readable schema definitions used by validation tooling.
 implementation_allowed:
   production: false
   hosted_daemon: false
@@ -19,13 +19,16 @@ phase_allowed_from: phase-0
 depends_on:
   - docs/design/specs/28-machine-readable-registries.md
 allowed_contents:
-  - JSON Schema files
-  - YAML schema files
-  - schema examples
+  - MFOS schema files
+  - README files
+  - index files
 forbidden_contents:
   - production code
+  - hosted daemon code
+  - semantic runner implementation
   - generated binaries
 required_before_agent_assignment:
-  - validator coverage
   - schema owner
+  - validator coverage
+  - registry link
 review_status: draft
