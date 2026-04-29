@@ -10,8 +10,7 @@ generated_from:
 generated_at_utc: null
 updated_at_utc: '2026-04-27T00:00:00Z'
 updated_by: codex
-non_compatibility_statement: MFOS is z/OS-inspired and does not claim z/OS compatibility
-  or IBM product compatibility.
+non_compatibility_statement: MFOS is z/OS-inspired and does not claim z/OS compatibility or IBM product compatibility.
 source_matrix_ref:
   path: docs/design/source-matrix/source-matrix.yml
   schema_version: 1
@@ -3655,8 +3654,7 @@ entries:
   legacy_evidence_ids:
   - MFOS-EVID-SRC-REQ-RESERVED-0004
 - evidence_id: EV-MFOS-UPDATE-REQ-RESERVED-0001
-  title: Update verification reserved behavior 0001 reserved-requirement traceability
-    placeholder
+  title: Update verification reserved behavior 0001 reserved-requirement traceability placeholder
   evidence_type: spec_gap_reservation_record
   status: draft
   requirement_ids:
@@ -3694,8 +3692,7 @@ entries:
   legacy_evidence_ids:
   - MFOS-EVID-UVS-REQ-RESERVED-0001
 - evidence_id: EV-MFOS-UPDATE-REQ-RESERVED-0003
-  title: Update verification reserved behavior 0003 reserved-requirement traceability
-    placeholder
+  title: Update verification reserved behavior 0003 reserved-requirement traceability placeholder
   evidence_type: spec_gap_reservation_record
   status: draft
   requirement_ids:
@@ -3733,8 +3730,7 @@ entries:
   legacy_evidence_ids:
   - MFOS-EVID-UVS-REQ-RESERVED-0003
 - evidence_id: EV-MFOS-UPDATE-REQ-RESERVED-0007
-  title: Update verification reserved behavior 0007 reserved-requirement traceability
-    placeholder
+  title: Update verification reserved behavior 0007 reserved-requirement traceability placeholder
   evidence_type: spec_gap_reservation_record
   status: draft
   requirement_ids:
@@ -3772,8 +3768,7 @@ entries:
   legacy_evidence_ids:
   - MFOS-EVID-UVS-REQ-RESERVED-0007
 - evidence_id: EV-MFOS-UPDATE-REQ-RESERVED-0008
-  title: Update verification reserved behavior 0008 reserved-requirement traceability
-    placeholder
+  title: Update verification reserved behavior 0008 reserved-requirement traceability placeholder
   evidence_type: spec_gap_reservation_record
   status: draft
   requirement_ids:
@@ -3811,8 +3806,7 @@ entries:
   legacy_evidence_ids:
   - MFOS-EVID-UVS-REQ-RESERVED-0008
 - evidence_id: EV-MFOS-UPDATE-REQ-RESERVED-0012
-  title: Update verification reserved behavior 0012 reserved-requirement traceability
-    placeholder
+  title: Update verification reserved behavior 0012 reserved-requirement traceability placeholder
   evidence_type: spec_gap_reservation_record
   status: draft
   requirement_ids:
@@ -7878,6 +7872,2847 @@ entries:
     audit_record_ids: []
     correlation_ids: []
   spec_gap_ids: []
+- evidence_id: EV-MFOS-PXM-0101
+  title: PXM Core is trusted hardware-facing resource authority design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-PXM-0101
+  test_ids:
+  - TEST-MFOS-PXM-0101
+  - NEG-MFOS-PXM-0101
+  source_matrix_ids:
+  - EXTREF-IBM-Z-LPAR-INTRODUCTION-0001
+  - X64-INTEL-001
+  - X64-AMD-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/pxm-0101/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-PXM-0102
+  title: PXM validates all control requests design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-PXM-0102
+  test_ids:
+  - TEST-MFOS-PXM-0102
+  - NEG-MFOS-PXM-0102
+  source_matrix_ids:
+  - X64-INTEL-001
+  - X64-AMD-001
+  - NIST-160-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/pxm-0102/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-PXM-0103
+  title: PXM enforces memory ownership and accounting design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-PXM-0103
+  test_ids:
+  - TEST-MFOS-PXM-0103
+  - NEG-MFOS-PXM-0103
+  source_matrix_ids:
+  - X64-INTEL-001
+  - X64-AMD-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/pxm-0103/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-PXM-0104
+  title: PXM enforces IOMMU and interrupt remapping design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-PXM-0104
+  test_ids:
+  - TEST-MFOS-PXM-0104
+  - NEG-MFOS-PXM-0104
+  source_matrix_ids:
+  - X64-INTEL-001
+  - X64-AMD-001
+  - EXTREF-LINUX-KVM-VFIO-0001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/pxm-0104/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-PXM-0105
+  title: PXM enforces VM partition lifecycle primitives design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-PXM-0105
+  test_ids:
+  - TEST-MFOS-PXM-0105
+  - NEG-MFOS-PXM-0105
+  source_matrix_ids:
+  - EXTREF-MICROSOFT-HYPERV-TLFS-0001
+  - X64-INTEL-001
+  - X64-AMD-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/pxm-0105/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-PXM-0106
+  title: PXM emits root audit for resource operations design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-PXM-0106
+  test_ids:
+  - TEST-MFOS-PXM-0106
+  - NEG-MFOS-PXM-0106
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+  - FBVBS-001
+  - NIST-160-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/pxm-0106/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-PXM-0107
+  title: PXM does not interpret enterprise semantics design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-PXM-0107
+  test_ids:
+  - TEST-MFOS-PXM-0107
+  - NEG-MFOS-PXM-0107
+  source_matrix_ids:
+  - EXTREF-IBM-Z-LPAR-INTRODUCTION-0001
+  - EXTREF-IBM-Z-DPM-0001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/pxm-0107/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-PXM-0108
+  title: PXM rejects overbroad MFVM requests design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-PXM-0108
+  test_ids:
+  - TEST-MFOS-PXM-0108
+  - NEG-MFOS-PXM-0108
+  source_matrix_ids:
+  - EXTREF-LINUX-KVM-API-0001
+  - X64-INTEL-001
+  - X64-AMD-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/pxm-0108/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-MFVM-0101
+  title: MFVM is an MFOS-based VM management subsystem design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-MFVM-0101
+  test_ids:
+  - TEST-MFOS-MFVM-0101
+  - NEG-MFOS-MFVM-0101
+  source_matrix_ids:
+  - EXTREF-MICROSOFT-HYPERV-OVERVIEW-0001
+  - EXTREF-LINUX-KVM-API-0001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/mfvm-0101/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-MFVM-0102
+  title: MFVM is less trusted than PXM design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-MFVM-0102
+  test_ids:
+  - TEST-MFOS-MFVM-0102
+  - NEG-MFOS-MFVM-0102
+  source_matrix_ids:
+  - NIST-160-001
+  - FBVBS-001
+  - X64-INTEL-001
+  - X64-AMD-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/mfvm-0102/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-MFVM-0103
+  title: MFVM uses PXM Control API design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-MFVM-0103
+  test_ids:
+  - TEST-MFOS-MFVM-0103
+  - NEG-MFOS-MFVM-0103
+  source_matrix_ids:
+  - EXTREF-MICROSOFT-HYPERV-TLFS-0001
+  - EXTREF-LINUX-KVM-API-0001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/mfvm-0103/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-MFVM-0104
+  title: MFVM does not own VMX or SVM roots design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-MFVM-0104
+  test_ids:
+  - TEST-MFOS-MFVM-0104
+  - NEG-MFOS-MFVM-0104
+  source_matrix_ids:
+  - X64-INTEL-001
+  - X64-AMD-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/mfvm-0104/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-MFVM-0105
+  title: MFVM does not require nested virtualization design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-MFVM-0105
+  test_ids:
+  - TEST-MFOS-MFVM-0105
+  - NEG-MFOS-MFVM-0105
+  source_matrix_ids:
+  - EXTREF-LINUX-KVM-API-0001
+  - EXTREF-MICROSOFT-HYPERV-OVERVIEW-0001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/mfvm-0105/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-MFVM-0106
+  title: MFVM uses MFOS authorization and evidence services design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-MFVM-0106
+  test_ids:
+  - TEST-MFOS-MFVM-0106
+  - NEG-MFOS-MFVM-0106
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/mfvm-0106/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-MFVM-0107
+  title: MFVM uses MFOS image and metadata services design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-MFVM-0107
+  test_ids:
+  - TEST-MFOS-MFVM-0107
+  - NEG-MFOS-MFVM-0107
+  source_matrix_ids:
+  - TUF-001
+  - SLSA-001
+  - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/mfvm-0107/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-MFVM-0108
+  title: MFVM integrates with workload policy without enforcing isolation design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-MFVM-0108
+  test_ids:
+  - TEST-MFOS-MFVM-0108
+  - NEG-MFOS-MFVM-0108
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001
+  - NIST-160-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/mfvm-0108/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-VIRT-0101
+  title: VM object model design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-VIRT-0101
+  test_ids:
+  - TEST-MFOS-VIRT-0101
+  - NEG-MFOS-VIRT-0101
+  source_matrix_ids:
+  - EXTREF-MICROSOFT-HYPERV-TLFS-0001
+  - EXTREF-LINUX-KVM-API-0001
+  - X64-INTEL-001
+  - X64-AMD-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/virt-0101/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-VIRT-0102
+  title: VM partition lifecycle design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-VIRT-0102
+  test_ids:
+  - TEST-MFOS-VIRT-0102
+  - NEG-MFOS-VIRT-0102
+  source_matrix_ids:
+  - EXTREF-MICROSOFT-HYPERV-TLFS-0001
+  - EXTREF-LINUX-KVM-API-0001
+  - X64-INTEL-001
+  - X64-AMD-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/virt-0102/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-VIRT-0103
+  title: vCPU model design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-VIRT-0103
+  test_ids:
+  - TEST-MFOS-VIRT-0103
+  - NEG-MFOS-VIRT-0103
+  source_matrix_ids:
+  - EXTREF-MICROSOFT-HYPERV-TLFS-0001
+  - EXTREF-LINUX-KVM-API-0001
+  - X64-INTEL-001
+  - X64-AMD-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/virt-0103/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-VIRT-0104
+  title: VM capability discovery design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-VIRT-0104
+  test_ids:
+  - TEST-MFOS-VIRT-0104
+  - NEG-MFOS-VIRT-0104
+  source_matrix_ids:
+  - EXTREF-MICROSOFT-HYPERV-TLFS-0001
+  - EXTREF-LINUX-KVM-API-0001
+  - X64-INTEL-001
+  - X64-AMD-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/virt-0104/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-VIRT-0105
+  title: RAM and CPU accounting design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-VIRT-0105
+  test_ids:
+  - TEST-MFOS-VIRT-0105
+  - NEG-MFOS-VIRT-0105
+  source_matrix_ids:
+  - EXTREF-MICROSOFT-HYPERV-TLFS-0001
+  - EXTREF-LINUX-KVM-API-0001
+  - X64-INTEL-001
+  - X64-AMD-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/virt-0105/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-VIRT-0106
+  title: virtual device and storage model design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-VIRT-0106
+  test_ids:
+  - TEST-MFOS-VIRT-0106
+  - NEG-MFOS-VIRT-0106
+  source_matrix_ids:
+  - EXTREF-MICROSOFT-HYPERV-TLFS-0001
+  - EXTREF-LINUX-KVM-API-0001
+  - X64-INTEL-001
+  - X64-AMD-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/virt-0106/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-VIRT-0107
+  title: snapshot and migration placeholders design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-VIRT-0107
+  test_ids:
+  - TEST-MFOS-VIRT-0107
+  - NEG-MFOS-VIRT-0107
+  source_matrix_ids:
+  - EXTREF-MICROSOFT-HYPERV-TLFS-0001
+  - EXTREF-LINUX-KVM-API-0001
+  - X64-INTEL-001
+  - X64-AMD-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/virt-0107/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-VIRT-0108
+  title: performance budget hooks design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-VIRT-0108
+  test_ids:
+  - TEST-MFOS-VIRT-0108
+  - NEG-MFOS-VIRT-0108
+  source_matrix_ids:
+  - EXTREF-MICROSOFT-HYPERV-TLFS-0001
+  - EXTREF-LINUX-KVM-API-0001
+  - X64-INTEL-001
+  - X64-AMD-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/virt-0108/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-CVM-0101
+  title: CVM profile abstraction design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-CVM-0101
+  test_ids:
+  - TEST-MFOS-CVM-0101
+  - NEG-MFOS-CVM-0101
+  source_matrix_ids:
+  - EXTREF-INTEL-TDX-OVERVIEW-0001
+  - EXTREF-INTEL-TDX-ATTESTATION-0001
+  - EXTREF-AMD-SEV-OVERVIEW-0001
+  - EXTREF-AMD-SEV-SNP-0001
+  - EXTREF-AMD-SEV-TIO-0001
+  - TCG-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/cvm-0101/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-CVM-0102
+  title: Intel TDX profile planning design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-CVM-0102
+  test_ids:
+  - TEST-MFOS-CVM-0102
+  - NEG-MFOS-CVM-0102
+  source_matrix_ids:
+  - EXTREF-INTEL-TDX-OVERVIEW-0001
+  - EXTREF-INTEL-TDX-ATTESTATION-0001
+  - EXTREF-AMD-SEV-OVERVIEW-0001
+  - EXTREF-AMD-SEV-SNP-0001
+  - EXTREF-AMD-SEV-TIO-0001
+  - TCG-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/cvm-0102/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-CVM-0103
+  title: AMD SEV profile planning design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-CVM-0103
+  test_ids:
+  - TEST-MFOS-CVM-0103
+  - NEG-MFOS-CVM-0103
+  source_matrix_ids:
+  - EXTREF-INTEL-TDX-OVERVIEW-0001
+  - EXTREF-INTEL-TDX-ATTESTATION-0001
+  - EXTREF-AMD-SEV-OVERVIEW-0001
+  - EXTREF-AMD-SEV-SNP-0001
+  - EXTREF-AMD-SEV-TIO-0001
+  - TCG-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/cvm-0103/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-CVM-0104
+  title: Guest launch measurement design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-CVM-0104
+  test_ids:
+  - TEST-MFOS-CVM-0104
+  - NEG-MFOS-CVM-0104
+  source_matrix_ids:
+  - EXTREF-INTEL-TDX-OVERVIEW-0001
+  - EXTREF-INTEL-TDX-ATTESTATION-0001
+  - EXTREF-AMD-SEV-OVERVIEW-0001
+  - EXTREF-AMD-SEV-SNP-0001
+  - EXTREF-AMD-SEV-TIO-0001
+  - TCG-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/cvm-0104/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-CVM-0105
+  title: Secret release requires attestation design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-CVM-0105
+  test_ids:
+  - TEST-MFOS-CVM-0105
+  - NEG-MFOS-CVM-0105
+  source_matrix_ids:
+  - EXTREF-INTEL-TDX-OVERVIEW-0001
+  - EXTREF-INTEL-TDX-ATTESTATION-0001
+  - EXTREF-AMD-SEV-OVERVIEW-0001
+  - EXTREF-AMD-SEV-SNP-0001
+  - EXTREF-AMD-SEV-TIO-0001
+  - TCG-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/cvm-0105/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-CVM-0106
+  title: Private shared memory transition policy design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-CVM-0106
+  test_ids:
+  - TEST-MFOS-CVM-0106
+  - NEG-MFOS-CVM-0106
+  source_matrix_ids:
+  - EXTREF-INTEL-TDX-OVERVIEW-0001
+  - EXTREF-INTEL-TDX-ATTESTATION-0001
+  - EXTREF-AMD-SEV-OVERVIEW-0001
+  - EXTREF-AMD-SEV-SNP-0001
+  - EXTREF-AMD-SEV-TIO-0001
+  - TCG-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/cvm-0106/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-CVM-0107
+  title: Encrypted memory and CPU state protection boundary design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-CVM-0107
+  test_ids:
+  - TEST-MFOS-CVM-0107
+  - NEG-MFOS-CVM-0107
+  source_matrix_ids:
+  - EXTREF-INTEL-TDX-OVERVIEW-0001
+  - EXTREF-INTEL-TDX-ATTESTATION-0001
+  - EXTREF-AMD-SEV-OVERVIEW-0001
+  - EXTREF-AMD-SEV-SNP-0001
+  - EXTREF-AMD-SEV-TIO-0001
+  - TCG-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/cvm-0107/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-CVM-0108
+  title: Trusted I/O placeholder remains blocked design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-CVM-0108
+  test_ids:
+  - TEST-MFOS-CVM-0108
+  - NEG-MFOS-CVM-0108
+  source_matrix_ids:
+  - EXTREF-INTEL-TDX-OVERVIEW-0001
+  - EXTREF-INTEL-TDX-ATTESTATION-0001
+  - EXTREF-AMD-SEV-OVERVIEW-0001
+  - EXTREF-AMD-SEV-SNP-0001
+  - EXTREF-AMD-SEV-TIO-0001
+  - TCG-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/cvm-0108/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-CLUSTER-0101
+  title: cluster node identity design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-CLUSTER-0101
+  test_ids:
+  - TEST-MFOS-CLUSTER-0101
+  - NEG-MFOS-CLUSTER-0101
+  source_matrix_ids:
+  - NIST-160-001
+  - NIST-218-001
+  - SLSA-001
+  - TCG-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/cluster-0101/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-CLUSTER-0102
+  title: cluster membership and quorum design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-CLUSTER-0102
+  test_ids:
+  - TEST-MFOS-CLUSTER-0102
+  - NEG-MFOS-CLUSTER-0102
+  source_matrix_ids:
+  - NIST-160-001
+  - NIST-218-001
+  - SLSA-001
+  - TCG-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/cluster-0102/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-CLUSTER-0103
+  title: fencing and HA policy design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-CLUSTER-0103
+  test_ids:
+  - TEST-MFOS-CLUSTER-0103
+  - NEG-MFOS-CLUSTER-0103
+  source_matrix_ids:
+  - NIST-160-001
+  - NIST-218-001
+  - SLSA-001
+  - TCG-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/cluster-0103/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-CLUSTER-0104
+  title: DR and rolling update policy design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-CLUSTER-0104
+  test_ids:
+  - TEST-MFOS-CLUSTER-0104
+  - NEG-MFOS-CLUSTER-0104
+  source_matrix_ids:
+  - NIST-160-001
+  - NIST-218-001
+  - SLSA-001
+  - TCG-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/cluster-0104/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-CLUSTER-0105
+  title: cluster-wide audit and attestation collection design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-CLUSTER-0105
+  test_ids:
+  - TEST-MFOS-CLUSTER-0105
+  - NEG-MFOS-CLUSTER-0105
+  source_matrix_ids:
+  - NIST-160-001
+  - NIST-218-001
+  - SLSA-001
+  - TCG-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/cluster-0105/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-CLUSTER-0106
+  title: VM placement and resource pools design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-CLUSTER-0106
+  test_ids:
+  - TEST-MFOS-CLUSTER-0106
+  - NEG-MFOS-CLUSTER-0106
+  source_matrix_ids:
+  - NIST-160-001
+  - NIST-218-001
+  - SLSA-001
+  - TCG-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/cluster-0106/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-CLUSTER-0107
+  title: tenant and network segmentation model design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-CLUSTER-0107
+  test_ids:
+  - TEST-MFOS-CLUSTER-0107
+  - NEG-MFOS-CLUSTER-0107
+  source_matrix_ids:
+  - NIST-160-001
+  - NIST-218-001
+  - SLSA-001
+  - TCG-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/cluster-0107/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-CLUSTER-0108
+  title: policy distribution integrity design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-CLUSTER-0108
+  test_ids:
+  - TEST-MFOS-CLUSTER-0108
+  - NEG-MFOS-CLUSTER-0108
+  source_matrix_ids:
+  - NIST-160-001
+  - NIST-218-001
+  - SLSA-001
+  - TCG-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/cluster-0108/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-PERF-0101
+  title: VM exit budget design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-PERF-0101
+  test_ids:
+  - TEST-MFOS-PERF-0101
+  - NEG-MFOS-PERF-0101
+  source_matrix_ids:
+  - X64-INTEL-001
+  - X64-AMD-001
+  - NIST-160-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/perf-0101/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-PERF-0102
+  title: audit overhead budget design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-PERF-0102
+  test_ids:
+  - TEST-MFOS-PERF-0102
+  - NEG-MFOS-PERF-0102
+  source_matrix_ids:
+  - X64-INTEL-001
+  - X64-AMD-001
+  - NIST-160-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/perf-0102/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-PERF-0103
+  title: scheduler overhead budget design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-PERF-0103
+  test_ids:
+  - TEST-MFOS-PERF-0103
+  - NEG-MFOS-PERF-0103
+  source_matrix_ids:
+  - X64-INTEL-001
+  - X64-AMD-001
+  - NIST-160-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/perf-0103/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-PERF-0104
+  title: memory placement and I/O performance budget design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-PERF-0104
+  test_ids:
+  - TEST-MFOS-PERF-0104
+  - NEG-MFOS-PERF-0104
+  source_matrix_ids:
+  - X64-INTEL-001
+  - X64-AMD-001
+  - NIST-160-001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/perf-0104/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-LANG-0001
+  title: Rust default policy design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-LANG-0101
+  test_ids:
+  - TEST-MFOS-LANG-0001
+  - NEG-MFOS-LANG-0001
+  source_matrix_ids:
+  - EXTREF-KANI-RUST-VERIFIER-0001
+  - EXTREF-VERUS-RUST-VERIFICATION-0001
+  - EXTREF-INTEL-CET-0001
+  - EXTREF-GITHUB-CODEQL-0001
+  - EXTREF-NIST-SSDF-0001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/lang-0001/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-LANG-0002
+  title: unsafe and assembly boundary policy design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-LANG-0102
+  test_ids:
+  - TEST-MFOS-LANG-0002
+  - NEG-MFOS-LANG-0002
+  source_matrix_ids:
+  - EXTREF-KANI-RUST-VERIFIER-0001
+  - EXTREF-VERUS-RUST-VERIFICATION-0001
+  - EXTREF-INTEL-CET-0001
+  - EXTREF-GITHUB-CODEQL-0001
+  - EXTREF-NIST-SSDF-0001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/lang-0002/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-LANG-0003
+  title: Kani proof harness policy design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-LANG-0103
+  test_ids:
+  - TEST-MFOS-LANG-0003
+  - NEG-MFOS-LANG-0003
+  source_matrix_ids:
+  - EXTREF-KANI-RUST-VERIFIER-0001
+  - EXTREF-VERUS-RUST-VERIFICATION-0001
+  - EXTREF-INTEL-CET-0001
+  - EXTREF-GITHUB-CODEQL-0001
+  - EXTREF-NIST-SSDF-0001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/lang-0003/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-LANG-0004
+  title: Verus proof policy design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-LANG-0104
+  test_ids:
+  - TEST-MFOS-LANG-0004
+  - NEG-MFOS-LANG-0004
+  source_matrix_ids:
+  - EXTREF-KANI-RUST-VERIFIER-0001
+  - EXTREF-VERUS-RUST-VERIFICATION-0001
+  - EXTREF-INTEL-CET-0001
+  - EXTREF-GITHUB-CODEQL-0001
+  - EXTREF-NIST-SSDF-0001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/lang-0004/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-LANG-0005
+  title: CFI and CET policy design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-LANG-0105
+  test_ids:
+  - TEST-MFOS-LANG-0005
+  - NEG-MFOS-LANG-0005
+  source_matrix_ids:
+  - EXTREF-KANI-RUST-VERIFIER-0001
+  - EXTREF-VERUS-RUST-VERIFICATION-0001
+  - EXTREF-INTEL-CET-0001
+  - EXTREF-GITHUB-CODEQL-0001
+  - EXTREF-NIST-SSDF-0001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/lang-0005/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-LANG-0006
+  title: toolchain pinning and static analysis policy design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-LANG-0106
+  test_ids:
+  - TEST-MFOS-LANG-0006
+  - NEG-MFOS-LANG-0006
+  source_matrix_ids:
+  - EXTREF-KANI-RUST-VERIFIER-0001
+  - EXTREF-VERUS-RUST-VERIFICATION-0001
+  - EXTREF-INTEL-CET-0001
+  - EXTREF-GITHUB-CODEQL-0001
+  - EXTREF-NIST-SSDF-0001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/lang-0006/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-LANG-0007
+  title: sanitizer and fuzzing evidence policy design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-LANG-0107
+  test_ids:
+  - TEST-MFOS-LANG-0007
+  - NEG-MFOS-LANG-0007
+  source_matrix_ids:
+  - EXTREF-KANI-RUST-VERIFIER-0001
+  - EXTREF-VERUS-RUST-VERIFICATION-0001
+  - EXTREF-INTEL-CET-0001
+  - EXTREF-GITHUB-CODEQL-0001
+  - EXTREF-NIST-SSDF-0001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/lang-0007/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-LANG-0008
+  title: static analysis and CodeQL evidence policy design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-LANG-0108
+  test_ids:
+  - TEST-MFOS-LANG-0008
+  - NEG-MFOS-LANG-0008
+  source_matrix_ids:
+  - EXTREF-KANI-RUST-VERIFIER-0001
+  - EXTREF-VERUS-RUST-VERIFICATION-0001
+  - EXTREF-INTEL-CET-0001
+  - EXTREF-GITHUB-CODEQL-0001
+  - EXTREF-NIST-SSDF-0001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/lang-0008/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-FORMAL-0001
+  title: formal claim registry design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-FORMAL-0001
+  test_ids:
+  - TEST-MFOS-FORMAL-0001
+  - NEG-MFOS-FORMAL-0001
+  source_matrix_ids:
+  - EXTREF-AWS-AUTOMATED-REASONING-0001
+  - EXTREF-KANI-RUST-VERIFIER-0001
+  - EXTREF-VERUS-RUST-VERIFICATION-0001
+  - EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/formal-0001/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-FORMAL-0002
+  title: authorization reasoning design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-FORMAL-0002
+  test_ids:
+  - TEST-MFOS-FORMAL-0002
+  - NEG-MFOS-FORMAL-0002
+  source_matrix_ids:
+  - EXTREF-AWS-AUTOMATED-REASONING-0001
+  - EXTREF-KANI-RUST-VERIFIER-0001
+  - EXTREF-VERUS-RUST-VERIFICATION-0001
+  - EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/formal-0002/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-FORMAL-0003
+  title: audit chain reasoning design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-FORMAL-0003
+  test_ids:
+  - TEST-MFOS-FORMAL-0003
+  - NEG-MFOS-FORMAL-0003
+  source_matrix_ids:
+  - EXTREF-AWS-AUTOMATED-REASONING-0001
+  - EXTREF-KANI-RUST-VERIFIER-0001
+  - EXTREF-VERUS-RUST-VERIFICATION-0001
+  - EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/formal-0003/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-FORMAL-0004
+  title: update rollback reasoning design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-FORMAL-0004
+  test_ids:
+  - TEST-MFOS-FORMAL-0004
+  - NEG-MFOS-FORMAL-0004
+  source_matrix_ids:
+  - EXTREF-AWS-AUTOMATED-REASONING-0001
+  - EXTREF-KANI-RUST-VERIFIER-0001
+  - EXTREF-VERUS-RUST-VERIFICATION-0001
+  - EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/formal-0004/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-FORMAL-0005
+  title: partition memory ownership reasoning design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-FORMAL-0005
+  test_ids:
+  - TEST-MFOS-FORMAL-0005
+  - NEG-MFOS-FORMAL-0005
+  source_matrix_ids:
+  - EXTREF-AWS-AUTOMATED-REASONING-0001
+  - EXTREF-KANI-RUST-VERIFIER-0001
+  - EXTREF-VERUS-RUST-VERIFICATION-0001
+  - EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/formal-0005/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-FORMAL-0006
+  title: MFVM cannot bypass PXM reasoning design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-FORMAL-0006
+  test_ids:
+  - TEST-MFOS-FORMAL-0006
+  - NEG-MFOS-FORMAL-0006
+  source_matrix_ids:
+  - EXTREF-AWS-AUTOMATED-REASONING-0001
+  - EXTREF-KANI-RUST-VERIFIER-0001
+  - EXTREF-VERUS-RUST-VERIFICATION-0001
+  - EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/formal-0006/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-FORMAL-0007
+  title: CVM launch reasoning design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-FORMAL-0007
+  test_ids:
+  - TEST-MFOS-FORMAL-0007
+  - NEG-MFOS-FORMAL-0007
+  source_matrix_ids:
+  - EXTREF-AWS-AUTOMATED-REASONING-0001
+  - EXTREF-KANI-RUST-VERIFIER-0001
+  - EXTREF-VERUS-RUST-VERIFICATION-0001
+  - EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/formal-0007/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-FORMAL-0108
+  title: cluster policy distribution reasoning design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-FORMAL-0108
+  test_ids:
+  - TEST-MFOS-FORMAL-0108
+  - NEG-MFOS-FORMAL-0108
+  source_matrix_ids:
+  - EXTREF-AWS-AUTOMATED-REASONING-0001
+  - EXTREF-KANI-RUST-VERIFIER-0001
+  - EXTREF-VERUS-RUST-VERIFICATION-0001
+  - EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/formal-0108/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-ASSURANCE-0001
+  title: assurance claim scoping design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-ASSURANCE-0001
+  test_ids:
+  - TEST-MFOS-ASSURANCE-0001
+  - NEG-MFOS-ASSURANCE-0001
+  source_matrix_ids: &id_ev_assurance_sources
+  - EXTREF-AWS-AUTOMATED-REASONING-0001
+  - EXTREF-KANI-RUST-VERIFIER-0001
+  - EXTREF-VERUS-RUST-VERIFICATION-0001
+  - EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
+  - EXTREF-NIST-SSDF-0001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/assurance-0001/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-ASSURANCE-0002
+  title: planned proof claim gating design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-ASSURANCE-0002
+  test_ids:
+  - TEST-MFOS-ASSURANCE-0002
+  - NEG-MFOS-ASSURANCE-0002
+  source_matrix_ids: *id_ev_assurance_sources
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/assurance-0002/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-ASSURANCE-0003
+  title: proof evidence acceptance design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-ASSURANCE-0003
+  test_ids:
+  - TEST-MFOS-ASSURANCE-0003
+  - NEG-MFOS-ASSURANCE-0003
+  source_matrix_ids: *id_ev_assurance_sources
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/assurance-0003/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-ASSURANCE-0004
+  title: proof failure triage design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-ASSURANCE-0004
+  test_ids:
+  - TEST-MFOS-ASSURANCE-0004
+  - NEG-MFOS-ASSURANCE-0004
+  source_matrix_ids: *id_ev_assurance_sources
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/assurance-0004/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-ASSURANCE-0005
+  title: human review and red-team assurance gate design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-ASSURANCE-0005
+  test_ids:
+  - TEST-MFOS-ASSURANCE-0005
+  - NEG-MFOS-ASSURANCE-0005
+  source_matrix_ids: *id_ev_assurance_sources
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/assurance-0005/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-OPS-0101
+  title: secure admin UX design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-OPS-0101
+  test_ids:
+  - TEST-MFOS-OPS-0101
+  - NEG-MFOS-OPS-0101
+  source_matrix_ids:
+  - NIST-160-001
+  - NIST-218-001
+  - EXTREF-NIST-SSDF-0001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/ops-0101/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-OPS-0102
+  title: approval and change control design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-OPS-0102
+  test_ids:
+  - TEST-MFOS-OPS-0102
+  - NEG-MFOS-OPS-0102
+  source_matrix_ids:
+  - NIST-160-001
+  - NIST-218-001
+  - EXTREF-NIST-SSDF-0001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/ops-0102/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-OPS-0103
+  title: break-glass governance design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-OPS-0103
+  test_ids:
+  - TEST-MFOS-OPS-0103
+  - NEG-MFOS-OPS-0103
+  source_matrix_ids:
+  - NIST-160-001
+  - NIST-218-001
+  - EXTREF-NIST-SSDF-0001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/ops-0103/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-OPS-0104
+  title: observability and runbooks design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-OPS-0104
+  test_ids:
+  - TEST-MFOS-OPS-0104
+  - NEG-MFOS-OPS-0104
+  source_matrix_ids:
+  - NIST-160-001
+  - NIST-218-001
+  - EXTREF-NIST-SSDF-0001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/ops-0104/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
+- evidence_id: EV-MFOS-OPS-0105
+  title: public release gate design traceability record
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-OPS-0105
+  test_ids:
+  - TEST-MFOS-OPS-0105
+  - NEG-MFOS-OPS-0105
+  source_matrix_ids:
+  - NIST-160-001
+  - NIST-218-001
+  - EXTREF-NIST-SSDF-0001
+  - FBVBS-001
+  conformance_claim_ids: []
+  release_ids: []
+  artifact:
+    path: artifacts/phase-0-10/ops-0105/traceability.json
+    media_type: application/json
+    sha384: null
+    size_bytes: null
+  produced_by:
+    tool: phase-0-10-design-review
+    version: null
+    ci_job: design-validation
+    operator: null
+  produced_at_utc: '2026-04-28T00:00:00Z'
+  retention:
+    class: draft
+    retain_until_utc: null
+  verification:
+    verifier: null
+    verified_at_utc: null
+    verification_method: null
+    result: not_checked
+  audit_linkage:
+    audit_record_ids: []
+    correlation_ids: []
+  spec_gap_ids:
+  - PHASE-0-10-SPEC-GAP
 spec_gaps:
 - gap_id: REG-GAP-0005
   summary: Evidence artifact storage layout and retention policy are not final.

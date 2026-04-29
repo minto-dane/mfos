@@ -1,0 +1,65 @@
+schema_version: 1
+status: draft
+source_id: EXTREF-CLANG-CFI-0001
+source_kind: bibliographic_reference
+source_type: external_reference
+semantic_role: design_background
+vendor: LLVM project
+vendor_mark_used: true
+product_family: Clang documentation
+document_title: Clang Control Flow Integrity documentation
+document_url:
+- https://clang.llvm.org/docs/ControlFlowIntegrity.html
+retrieved_at: '2026-04-28'
+reference_purpose:
+- source discovery
+- concept mapping
+- non-compatibility boundary definition
+- independent MFOS design traceability
+review_notes:
+- 'Source-card verification 2026-04-28: official Clang documentation URL opened; no external documentation text copied.'
+review_topics:
+- Clang CFI
+- C/C++ boundary hardening
+- LTO and visibility caveats
+mfos_mapping:
+  mfos_components:
+  - language verification policy
+  - C/C++ boundary review
+  - control-flow hardening tests
+  mfos_specs:
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  mfos_requirements: &id001
+  - MFOS-REQ-LANG-0105
+  - MFOS-REQ-LANG-0107
+  mapping_notes:
+  - Phase 0.10 public-safe reference card intentionally excludes external documentation text, tables, layouts, command syntax, and interface definitions.
+mfos_divergence:
+- Clang CFI is defense-in-depth evidence for approved C/C++ boundaries only and does not authorize C/C++ production code by itself.
+- MFOS-owned identifiers and APIs remain independently specified.
+prohibited_inference:
+- Do not treat Clang CFI as a substitute for securityd, auditd, unsafe boundary review, fuzzing, or negative tests.
+- Do not reproduce external record layouts, API layouts, command syntax, macro signatures, tables, diagrams, or documentation text.
+- Do not treat this card as a substitute for external documentation.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+source_refs:
+- source_id: EXTREF-CLANG-CFI-0001
+  source_type: external_reference
+  role: card_subject
+requirement_refs: *id001
+review_status: draft

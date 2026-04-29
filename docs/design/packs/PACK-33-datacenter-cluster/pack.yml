@@ -1,0 +1,84 @@
+scope:
+- design and validation
+- Phase 0.10 requirements expansion
+non_objectives:
+- production implementation
+- hosted daemon implementation
+- semantic runner implementation
+- portable semantic core implementation
+- compatibility claims
+object_model_refs:
+- schemas/mfos/cluster-node.schema.yml
+- schemas/mfos/cluster-membership.schema.yml
+- schemas/mfos/cluster-placement-policy.schema.yml
+- schemas/mfos/cluster-audit-stream.schema.yml
+state_machine_refs: []
+failure_modes:
+- MFOS_ERR_UNSUPPORTED
+- MFOS_ERR_SPEC_GAP
+- MFOS_ERR_POLICY_DENIED
+- MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+audit_obligations:
+- AUDIT_CLUSTER_MEMBERSHIP
+- AUDIT_CLUSTER_POLICY_DISTRIBUTION
+- AUDIT_CLUSTER_FENCING
+positive_tests:
+- TEST-MFOS-CLUSTER-0101
+- TEST-MFOS-CLUSTER-0105
+negative_tests:
+- NEG-MFOS-CLUSTER-0104
+- NEG-MFOS-CLUSTER-0108
+fuzz_targets: &id001
+- cluster-policy-fixture-validation
+- formal:cluster_policy_distribution_integrity
+fuzz_or_formal_targets: *id001
+spec_gaps:
+- No quorum algorithm or scheduler is frozen.
+- No cluster control-plane implementation is authorized.
+implementation_allowed:
+  hosted_semantic_prototype: false
+  production: false
+  hardware_enforcement_claim: false
+  system_integrity_claim: none
+  hosted_daemon: false
+  semantic_runner: false
+  portable_semantic_core: false
+  executable_spec: false
+  specification_only: true
+prompt: docs/design/prompts/ai-prompts.md
+pack_id: PACK-33
+title: Datacenter Cluster
+purpose: Define cluster operations, placement, audit, attestation, and secure operations
+  planning.
+depends_on:
+- PACK-00
+- PACK-01
+- PACK-02
+- PACK-03
+- PACK-04
+- PACK-05
+- PACK-06
+- PACK-11
+- PACK-12
+- PACK-14
+- PACK-31
+inputs:
+- docs/design/specs/38-datacenter-cluster-operations.md
+- docs/design/specs/41-performance-and-secure-operations.md
+outputs:
+- schemas/mfos/cluster-node.schema.yml
+- schemas/mfos/cluster-membership.schema.yml
+- schemas/mfos/cluster-placement-policy.schema.yml
+- schemas/mfos/cluster-audit-stream.schema.yml
+- tests/catalog/datacenter-cluster.yml
+source_refs:
+- EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
+- EXTREF-NIST-SSDF-0001
+- SLSA-001
+- TCG-001
+- EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001
+- FBVBS-001
+requirements:
+- MFOS-REQ-CLUSTER-*
+- MFOS-REQ-OPS-*
+- MFOS-REQ-PERF-*

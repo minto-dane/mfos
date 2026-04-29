@@ -1,0 +1,73 @@
+schema_id: MFOS-SCHEMA-UNSAFE-INVENTORY-ENTRY-0001
+title: UnsafeInventoryEntry
+status: draft
+phase: Phase 0.10
+implementation_allowed: false
+type: object
+required:
+- unsafe_id
+- schema_version
+- status
+- component
+- file
+- function
+- reason
+- safety_contract
+- preconditions
+- postconditions
+- invariants
+- linked_requirements
+- linked_tests
+- linked_proof_obligations
+- reviewer
+- source_refs
+- evidence_refs
+- spec_gap_policy
+- implementation_allowed
+properties:
+  unsafe_id:
+    type: string
+  schema_version:
+    type: integer
+  status:
+    enum:
+    - planned
+    - draft
+    - reviewed
+    - rejected
+  component:
+    type: string
+  file:
+    type: string
+  function:
+    type: string
+  reason:
+    type: string
+  safety_contract:
+    type: object
+  preconditions:
+    type: array
+  postconditions:
+    type: array
+  invariants:
+    type: array
+  linked_requirements:
+    type: array
+  linked_tests:
+    type: array
+  linked_proof_obligations:
+    type: array
+  reviewer:
+    type: string
+  source_refs:
+    type: array
+  evidence_refs:
+    type: array
+  spec_gap_policy:
+    const: implementation_must_not_infer_or_fill_gaps
+  implementation_allowed:
+    const: false
+additionalProperties: false
+source_refs: []
+requirement_refs: []
+spec_gap_policy: implementation_must_not_infer_or_fill_gaps

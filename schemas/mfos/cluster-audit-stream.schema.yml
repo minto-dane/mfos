@@ -1,0 +1,36 @@
+schema_id: MFOS-SCHEMA-CLUSTER-AUDIT-STREAM-0001
+title: ClusterAuditStream
+status: draft
+phase: Phase 0.10
+implementation_allowed: false
+type: object
+required:
+- object_id
+- schema_version
+- status
+- source_refs
+- requirement_refs
+- audit_obligations
+- spec_gap_policy
+- implementation_allowed
+properties:
+  object_id:
+    type: string
+  schema_version:
+    type: integer
+  status:
+    type: string
+  source_refs:
+    type: array
+  requirement_refs:
+    type: array
+  audit_obligations:
+    type: array
+  spec_gap_policy:
+    const: implementation_must_not_infer_or_fill_gaps
+  implementation_allowed:
+    const: false
+additionalProperties: false
+source_refs: []
+requirement_refs: []
+spec_gap_policy: implementation_must_not_infer_or_fill_gaps

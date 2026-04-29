@@ -1,0 +1,65 @@
+schema_version: 1
+status: draft
+source_id: EXTREF-AWS-AUTOMATED-REASONING-0001
+source_kind: bibliographic_reference
+source_type: external_reference
+semantic_role: design_background
+vendor: AWS
+vendor_mark_used: true
+product_family: AWS
+document_title: What is Automated Reasoning?
+document_url:
+- https://aws.amazon.com/what-is/automated-reasoning/
+retrieved_at: '2026-04-28'
+review_notes:
+- 'Source-card verification 2026-04-28: official AWS automated reasoning URL opened; metadata is public-safe and no external documentation text copied.'
+reference_purpose:
+- source discovery
+- concept mapping
+- non-compatibility boundary definition
+- independent MFOS design traceability
+review_topics:
+- automated reasoning overview
+- access-control and reachability reasoning examples
+- proof versus machine learning distinction
+mfos_mapping:
+  mfos_components:
+  - automated reasoning program
+  mfos_specs:
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  mfos_requirements: &id001
+  - MFOS-REQ-FORMAL-0101
+  - MFOS-REQ-FORMAL-0105
+  mapping_notes:
+  - Phase 0.10 public-safe reference card intentionally excludes external documentation text, tables, layouts, command syntax, and interface definitions.
+mfos_divergence:
+- AWS material is design background and does not make MFOS an AWS service or claim AWS endorsement.
+- MFOS-owned identifiers and APIs remain independently specified.
+prohibited_inference:
+- Do not claim compatibility with the referenced external product, interface, API, feature profile, or service.
+- Do not reproduce external record layouts, API layouts, command syntax, macro signatures, tables, diagrams, or documentation text.
+- Do not treat this card as a substitute for external documentation.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+source_refs:
+- source_id: EXTREF-AWS-AUTOMATED-REASONING-0001
+  source_type: external_reference
+  role: card_subject
+requirement_refs: *id001
+review_status: draft

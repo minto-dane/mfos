@@ -1,0 +1,14 @@
+status_date: '2026-04-28'
+pxm_mfvm_requirements_docs_expansion_complete: true
+mfvm_is_mfos_based: true
+mfvm_less_trusted_than_pxm: true
+vms_are_pxm_managed_partitions_not_nested_guests: true
+tdx_sev_names_allowed_for_feature_profiles: true
+hyperv_kvm_names_allowed_only_as_external_references: true
+production_implementation_allowed: false
+phase_1_loader_allowed: true
+phase_1_core_semantic_evaluator_allowed: false
+phase_1_pxm_mfvm_cvm_cluster_semantic_evaluator_allowed: false
+phase_0_10_required: true
+pack_id_decision: PACK-25 through PACK-29 already existed; Phase 0.10 uses PACK-31
+  through PACK-36 and updates PACK-14.

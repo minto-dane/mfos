@@ -12,6 +12,7 @@ review_notes:
 - Publication number is not present in the local card title or URL; leave null until source review confirms it.
 - Human/source review should confirm exact source version, section anchor, and any publication identifier before production use.
 - 'Targeted review 2026-04-27: Linux kernel documentation page verified at the existing URL; reviewed site header identifies documentation version 7.1.0-rc1.'
+- 'Source-card verification 2026-04-28: official Linux kernel documentation URL opened; source remains informative for CET shadow-stack planning only.'
 - No publication number is applicable for this informative kernel documentation page.
 required_negative_tests:
 - TEST-CET-AUTHORIZATION-CLAIM-LINT-001

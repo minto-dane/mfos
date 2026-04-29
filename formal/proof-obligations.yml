@@ -1,0 +1,261 @@
+schema_version: 1
+registry_kind: mfos_proof_obligation_registry
+status: draft
+updated_at: '2026-04-28'
+implementation_allowed: false
+proof_claimed: false
+proof_obligations:
+- obligation_id: MFOS-PO-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW
+  legacy_obligation_id: MFOS-PROOF-OBLIGATION-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW
+  claim_ref: MFOS-FC-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW
+  status: planned
+  statement: Protected handles are never returned unless the modeled authorization decision is allow.
+  requirement_refs:
+  - MFOS-REQ-AUTH-0001
+  invariants:
+  - INV-AUTH-001
+  accepted_tool_refs:
+  - TOOL-TLAPLUS
+  - TOOL-ALLOY
+  - TOOL-KANI
+  - TOOL-VERUS
+  acceptance_criteria:
+  - linked model or harness exists
+  - assumptions documented
+  - review recorded
+  - counterexamples triaged
+  expected_evidence_refs:
+  - EV-MFOS-FORMAL-0101
+  proof_artifact: null
+  proof_claimed: false
+- obligation_id: MFOS-PO-AUDIT-DENY-BEFORE-RETURN
+  legacy_obligation_id: MFOS-PROOF-OBLIGATION-AUDIT-DENY-BEFORE-RETURN
+  claim_ref: MFOS-FC-AUDIT-DENY-BEFORE-RETURN
+  status: planned
+  statement: Denied operations record the required audit event before the modeled return step.
+  requirement_refs:
+  - MFOS-REQ-AUDIT-0001
+  invariants:
+  - AUD-RULE-003
+  accepted_tool_refs:
+  - TOOL-TLAPLUS
+  - TOOL-ALLOY
+  - TOOL-KANI
+  - TOOL-VERUS
+  acceptance_criteria:
+  - linked model or harness exists
+  - assumptions documented
+  - review recorded
+  - counterexamples triaged
+  expected_evidence_refs:
+  - EV-MFOS-FORMAL-0102
+  proof_artifact: null
+  proof_claimed: false
+- obligation_id: MFOS-PO-UPDATE-NO-ROLLBACK
+  legacy_obligation_id: MFOS-PROOF-OBLIGATION-UPDATE-NO-ROLLBACK
+  claim_ref: MFOS-FC-UPDATE-NO-ROLLBACK
+  status: planned
+  statement: Accepted update activations cannot transition to a lower accepted version under the modeled freshness rules.
+  requirement_refs:
+  - MFOS-REQ-UPDATE-*
+  invariants:
+  - UVS-NO-ROLLBACK
+  accepted_tool_refs:
+  - TOOL-TLAPLUS
+  - TOOL-ALLOY
+  - TOOL-KANI
+  - TOOL-VERUS
+  acceptance_criteria:
+  - linked model or harness exists
+  - assumptions documented
+  - review recorded
+  - counterexamples triaged
+  expected_evidence_refs:
+  - EV-MFOS-FORMAL-0103
+  proof_artifact: null
+  proof_claimed: false
+- obligation_id: MFOS-PO-PARTITION-MEMORY-OWNERSHIP
+  legacy_obligation_id: MFOS-PROOF-OBLIGATION-PARTITION-MEMORY-OWNERSHIP
+  claim_ref: MFOS-FC-PARTITION-MEMORY-OWNERSHIP
+  status: planned
+  statement: A memory region has at most one modeled owning partition during allocation, transfer, and reuse transitions.
+  requirement_refs:
+  - MFOS-REQ-PXM-0103
+  invariants:
+  - PXM-MEMORY-OWNERSHIP
+  accepted_tool_refs:
+  - TOOL-TLAPLUS
+  - TOOL-ALLOY
+  - TOOL-KANI
+  - TOOL-VERUS
+  acceptance_criteria:
+  - linked model or harness exists
+  - assumptions documented
+  - review recorded
+  - counterexamples triaged
+  expected_evidence_refs:
+  - EV-MFOS-FORMAL-0104
+  proof_artifact: null
+  proof_claimed: false
+- obligation_id: MFOS-PO-PXM-CAPABILITY-REQUIRED-FOR-RESOURCE-OPERATION
+  legacy_obligation_id: MFOS-PROOF-OBLIGATION-PXM-CAPABILITY-REQUIRED-FOR-RESOURCE-OPERATION
+  claim_ref: MFOS-FC-PXM-CAPABILITY-REQUIRED-FOR-RESOURCE-OPERATION
+  status: planned
+  statement: Modeled PXM resource operations require a valid capability with the required scope.
+  requirement_refs:
+  - MFOS-REQ-PXM-0102
+  invariants:
+  - PXM-CAPABILITY-REQUIRED
+  accepted_tool_refs:
+  - TOOL-TLAPLUS
+  - TOOL-ALLOY
+  - TOOL-KANI
+  - TOOL-VERUS
+  acceptance_criteria:
+  - linked model or harness exists
+  - assumptions documented
+  - review recorded
+  - counterexamples triaged
+  expected_evidence_refs:
+  - EV-MFOS-FORMAL-0105
+  proof_artifact: null
+  proof_claimed: false
+- obligation_id: MFOS-PO-MFVM-CANNOT-BYPASS-PXM
+  legacy_obligation_id: MFOS-PROOF-OBLIGATION-MFVM-CANNOT-BYPASS-PXM
+  claim_ref: MFOS-FC-MFVM-CANNOT-BYPASS-PXM
+  status: planned
+  statement: Modeled MFVM resource effects occur only through PXM-mediated decisions.
+  requirement_refs:
+  - MFOS-REQ-MFVM-0103
+  - MFOS-REQ-MFVM-0104
+  invariants:
+  - MFVM-CANNOT-BYPASS-PXM
+  accepted_tool_refs:
+  - TOOL-TLAPLUS
+  - TOOL-ALLOY
+  - TOOL-KANI
+  - TOOL-VERUS
+  acceptance_criteria:
+  - linked model or harness exists
+  - assumptions documented
+  - review recorded
+  - counterexamples triaged
+  expected_evidence_refs:
+  - EV-MFOS-FORMAL-0106
+  proof_artifact: null
+  proof_claimed: false
+- obligation_id: MFOS-PO-CVM-LAUNCH-REQUIRES-MEASUREMENT
+  legacy_obligation_id: MFOS-PROOF-OBLIGATION-CVM-LAUNCH-REQUIRES-MEASUREMENT
+  claim_ref: MFOS-FC-CVM-LAUNCH-REQUIRES-MEASUREMENT
+  status: planned
+  statement: A modeled CVM launch reaches launch-complete only after the required launch measurement exists.
+  requirement_refs:
+  - MFOS-REQ-CVM-0105
+  invariants:
+  - CVM-LAUNCH-MEASUREMENT
+  accepted_tool_refs:
+  - TOOL-TLAPLUS
+  - TOOL-ALLOY
+  - TOOL-KANI
+  - TOOL-VERUS
+  acceptance_criteria:
+  - linked model or harness exists
+  - assumptions documented
+  - review recorded
+  - counterexamples triaged
+  expected_evidence_refs:
+  - EV-MFOS-FORMAL-0107
+  proof_artifact: null
+  proof_claimed: false
+- obligation_id: MFOS-PO-CVM-SECRET-RELEASE-REQUIRES-ATTESTATION
+  legacy_obligation_id: MFOS-PROOF-OBLIGATION-CVM-SECRET-RELEASE-REQUIRES-ATTESTATION
+  claim_ref: MFOS-FC-CVM-SECRET-RELEASE-REQUIRES-ATTESTATION
+  status: planned
+  statement: Modeled CVM secret release is unreachable unless required attestation evidence satisfies policy.
+  requirement_refs:
+  - MFOS-REQ-CVM-0107
+  invariants:
+  - CVM-SECRET-ATTESTATION
+  accepted_tool_refs:
+  - TOOL-TLAPLUS
+  - TOOL-ALLOY
+  - TOOL-KANI
+  - TOOL-VERUS
+  acceptance_criteria:
+  - linked model or harness exists
+  - assumptions documented
+  - review recorded
+  - counterexamples triaged
+  expected_evidence_refs:
+  - EV-MFOS-FORMAL-0108
+  proof_artifact: null
+  proof_claimed: false
+- obligation_id: MFOS-PO-PRIVATE-SHARED-MEMORY-TRANSITION-VALIDITY
+  legacy_obligation_id: MFOS-PROOF-OBLIGATION-PRIVATE-SHARED-MEMORY-TRANSITION-VALIDITY
+  claim_ref: MFOS-FC-PRIVATE-SHARED-MEMORY-TRANSITION-VALIDITY
+  status: planned
+  statement: Modeled private/shared memory transitions occur only from valid source states and preserve required ownership constraints.
+  requirement_refs:
+  - MFOS-REQ-CVM-0108
+  invariants:
+  - CVM-PRIVATE-SHARED-TRANSITION
+  accepted_tool_refs:
+  - TOOL-TLAPLUS
+  - TOOL-ALLOY
+  - TOOL-KANI
+  - TOOL-VERUS
+  acceptance_criteria:
+  - linked model or harness exists
+  - assumptions documented
+  - review recorded
+  - counterexamples triaged
+  expected_evidence_refs:
+  - EV-MFOS-FORMAL-0109
+  proof_artifact: null
+  proof_claimed: false
+- obligation_id: MFOS-PO-CLUSTER-POLICY-DISTRIBUTION-INTEGRITY
+  legacy_obligation_id: MFOS-PROOF-OBLIGATION-CLUSTER-POLICY-DISTRIBUTION-INTEGRITY
+  claim_ref: MFOS-FC-CLUSTER-POLICY-DISTRIBUTION-INTEGRITY
+  status: planned
+  statement: Modeled cluster nodes accept only current, integrity-checked policy versions.
+  requirement_refs:
+  - MFOS-REQ-CLUSTER-0107
+  invariants:
+  - CLUSTER-POLICY-DISTRIBUTION
+  accepted_tool_refs:
+  - TOOL-TLAPLUS
+  - TOOL-ALLOY
+  - TOOL-KANI
+  - TOOL-VERUS
+  acceptance_criteria:
+  - linked model or harness exists
+  - assumptions documented
+  - review recorded
+  - counterexamples triaged
+  expected_evidence_refs:
+  - EV-MFOS-FORMAL-0110
+  proof_artifact: null
+  proof_claimed: false
+- obligation_id: MFOS-PO-CLUSTER-ATTESTATION-COLLECTION-INTEGRITY
+  legacy_obligation_id: MFOS-PROOF-OBLIGATION-CLUSTER-ATTESTATION-COLLECTION-INTEGRITY
+  claim_ref: MFOS-FC-CLUSTER-ATTESTATION-COLLECTION-INTEGRITY
+  status: planned
+  statement: Modeled cluster admission depends on collected attestation evidence that satisfies freshness and policy rules.
+  requirement_refs:
+  - MFOS-REQ-CLUSTER-0108
+  invariants:
+  - CLUSTER-ATTESTATION-COLLECTION
+  accepted_tool_refs:
+  - TOOL-TLAPLUS
+  - TOOL-ALLOY
+  - TOOL-KANI
+  - TOOL-VERUS
+  acceptance_criteria:
+  - linked model or harness exists
+  - assumptions documented
+  - review recorded
+  - counterexamples triaged
+  expected_evidence_refs:
+  - EV-MFOS-FORMAL-0111
+  proof_artifact: null
+  proof_claimed: false

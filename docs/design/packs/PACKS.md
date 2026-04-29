@@ -92,6 +92,12 @@ implementation_allowed:
 | PACK-28 | Source lint and traceability automation | `source-matrix/source-lint-spec.md`, `source-matrix/traceability-index.md`, `tasks/spec-front-matter-migration.md` |
 | PACK-29 | Language and Japanese sync | `specs/32-language-localization.md`, `ja/README.md`, `ja/SYNC-POLICY.md`, `tasks/japanese-doc-sync.md` |
 | PACK-30 | Policy lint | `specs/33-policy-lint.md` |
+| PACK-31 | MFVM | `specs/42-mfvm.md`, `specs/36-hypervisor-class-virtualization.md` |
+| PACK-32 | Confidential VM | `specs/37-confidential-vm.md`, `specs/42-mfvm.md` |
+| PACK-33 | Datacenter cluster | `specs/38-datacenter-cluster-operations.md`, `specs/41-performance-and-secure-operations.md` |
+| PACK-34 | Language verification | `specs/39-language-and-verification-policy.md` |
+| PACK-35 | Automated reasoning | `specs/40-automated-reasoning-program.md`, `formal/registry.yml` |
+| PACK-36 | Performance and secure operations | `specs/41-performance-and-secure-operations.md` |
 
 ## Pack Completion Checklist
 
@@ -160,3 +166,29 @@ Phase 0.9 outputs:
 The runner contract is defined in
 `docs/design/specs/33-semantic-runner-contract.md`. This contract names future
 commands but explicitly prohibits a Phase 0.9 runner implementation.
+
+## Phase 0.10 PXM/MFVM Requirements Expansion
+
+Phase 0.10 expands design-only pack contracts for PXM Core, MFVM,
+Confidential VM profiles, datacenter/cluster operations, language verification,
+automated reasoning, and performance/secure operations.
+
+The user-facing requested names `PACK-25` through `PACK-29` were not reused
+because the repository already assigns those IDs to existing canonical packs.
+The Phase 0.10 expansion therefore updates `PACK-14` for PXM and adds
+`PACK-31` through `PACK-36` for the new planning domains.
+
+Implementation authorization for `PACK-14` and `PACK-31` through `PACK-36` is:
+
+```yaml
+production: false
+hosted_daemon: false
+semantic_runner: false
+portable_semantic_core: false
+executable_spec: false
+specification_only: true
+```
+
+Phase 1 remains limited to loader-only artifact validation for these domains.
+No PXM, MFVM, Confidential VM, cluster, semantic evaluator, hosted daemon, or
+production implementation is authorized by Phase 0.10.

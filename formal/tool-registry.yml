@@ -1,0 +1,76 @@
+schema_version: 1
+registry_kind: mfos_formal_tool_registry
+status: draft
+updated_at: '2026-04-28'
+implementation_allowed: false
+proof_claimed: false
+tools:
+- tool_id: TOOL-TLAPLUS
+  tool_name: TLA+
+  status: planned
+  source_refs: []
+  evidence_role: planned model-checking aid; not proof evidence until outputs exist and are reviewed
+  allowed_use:
+  - state-machine safety
+  - transition invariants
+  not_claimed:
+  - production proof completion
+- tool_id: TOOL-ALLOY
+  tool_name: Alloy
+  status: planned
+  source_refs: []
+  evidence_role: planned relational-model aid; not proof evidence until outputs exist and are reviewed
+  allowed_use:
+  - reachability constraints
+  - ownership constraints
+  not_claimed:
+  - production proof completion
+- tool_id: TOOL-KANI
+  tool_name: Kani
+  status: planned
+  source_refs:
+  - EXTREF-KANI-RUST-VERIFIER-0001
+  evidence_role: planned bounded Rust harness aid; not proof evidence until outputs exist and are reviewed
+  allowed_use:
+  - bounded proof harnesses after implementation contracts exist
+  not_claimed:
+  - production proof completion
+- tool_id: TOOL-VERUS
+  tool_name: Verus
+  status: planned
+  source_refs:
+  - EXTREF-VERUS-RUST-VERIFICATION-0001
+  evidence_role: planned verified Rust aid; not proof evidence until outputs exist and are reviewed
+  allowed_use:
+  - selected verified components after proof obligations mature
+  not_claimed:
+  - production proof completion
+- tool_id: TOOL-CODEQL
+  tool_name: CodeQL
+  status: planned
+  source_refs:
+  - EXTREF-GITHUB-CODEQL-0001
+  evidence_role: planned static-analysis aid; not proof evidence until outputs exist and are reviewed
+  allowed_use:
+  - source query checks after implementation exists
+  not_claimed:
+  - formal proof
+- tool_id: TOOL-FUZZING
+  tool_name: fuzzing
+  status: planned
+  source_refs: []
+  evidence_role: planned negative-test aid; not proof evidence until outputs exist and are reviewed
+  allowed_use:
+  - counterexample discovery
+  - robustness testing after harnesses exist
+  not_claimed:
+  - formal proof
+- tool_id: TOOL-PROPERTY-TESTS
+  tool_name: property tests
+  status: planned
+  source_refs: []
+  evidence_role: planned semantic-test aid; not proof evidence until outputs exist and are reviewed
+  allowed_use:
+  - executable semantic checks after fixtures exist
+  not_claimed:
+  - formal proof

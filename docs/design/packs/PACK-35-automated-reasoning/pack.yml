@@ -1,0 +1,85 @@
+scope:
+- design and validation
+- Phase 0.10 requirements expansion
+non_objectives:
+- production implementation
+- hosted daemon implementation
+- semantic runner implementation
+- portable semantic core implementation
+- compatibility claims
+object_model_refs:
+- schemas/mfos/formal-claim.schema.yml
+- schemas/mfos/proof-obligation.schema.yml
+- schemas/mfos/proof-artifact.schema.yml
+state_machine_refs:
+- formal/registry.yml
+failure_modes:
+- MFOS_ERR_UNSUPPORTED
+- MFOS_ERR_SPEC_GAP
+audit_obligations:
+- AUDIT_FORMAL_CLAIM_STATUS_CHANGE
+positive_tests:
+- TEST-MFOS-FORMAL-0101
+- TEST-MFOS-FORMAL-0106
+negative_tests:
+- NEG-MFOS-FORMAL-0105
+- NEG-MFOS-FORMAL-0108
+fuzz_targets: &id001
+- formal-registry-validation
+- tla-model-review
+- alloy-model-review
+- kani-plan-review
+- verus-plan-review
+fuzz_or_formal_targets: *id001
+spec_gaps:
+- No Phase 0.10 proof artifact exists.
+- Proof CI is planned but not active for new claims.
+implementation_allowed:
+  hosted_semantic_prototype: false
+  production: false
+  hardware_enforcement_claim: false
+  system_integrity_claim: none
+  hosted_daemon: false
+  semantic_runner: false
+  portable_semantic_core: false
+  executable_spec: false
+  specification_only: true
+prompt: docs/design/prompts/ai-prompts.md
+pack_id: PACK-35
+title: Automated Reasoning
+purpose: Define formal claims, models, proof obligations, tool registry, and proof
+  evidence planning.
+depends_on:
+- PACK-00
+- PACK-01
+- PACK-02
+- PACK-03
+- PACK-05
+- PACK-06
+- PACK-12
+- PACK-14
+- PACK-31
+- PACK-32
+- PACK-33
+- PACK-34
+inputs:
+- docs/design/specs/40-automated-reasoning-program.md
+- formal/registry.yml
+outputs:
+- formal/registry.yml
+- tests/catalog/automated-reasoning.yml
+- reports/current/pxm-mfvm-requirements-docs-red-team-review.md
+source_refs:
+- EXTREF-AWS-AUTOMATED-REASONING-0001
+- EXTREF-KANI-RUST-VERIFIER-0001
+- EXTREF-VERUS-RUST-VERIFICATION-0001
+- EXTREF-GITHUB-CODEQL-0001
+- EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
+- EXTREF-NIST-SSDF-0001
+- FBVBS-001
+requirements:
+- MFOS-REQ-FORMAL-*
+- MFOS-REQ-PXM-*
+- MFOS-REQ-MFVM-*
+- MFOS-REQ-CVM-*
+- MFOS-REQ-CLUSTER-*

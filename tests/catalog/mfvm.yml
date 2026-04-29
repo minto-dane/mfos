@@ -1,0 +1,94 @@
+catalog_id: CATALOG-MFOS-MFVM-001
+phase: '0.10'
+implementation_allowed: false
+entries:
+- test_id: TEST-MFOS-MFVM-0101
+  test_name: MFVM is MFOS-based and less trusted than PXM
+  test_type: traceability
+  phase_to_implement: Phase 1 loader-only
+  target_pack: PACK-31
+  target_specs:
+  - docs/design/specs/42-mfvm.md
+  target_requirements:
+  - MFOS-REQ-MFVM-0101
+  - MFOS-REQ-MFVM-0102
+  source_refs:
+  - EXTREF-MICROSOFT-HYPERV-OVERVIEW-0001
+  - EXTREF-LINUX-KVM-API-0001
+  preconditions:
+  - Phase 0.10 specification artifacts exist
+  - No production implementation is required
+  inputs:
+  - machine-readable artifact under review
+  expected:
+    decisions: []
+    state_transitions: []
+    audit_records: []
+    failure_mode: null
+    final_state: validation_result_recorded
+  evidence_required:
+  - schema_validation_result
+  - traceability_link
+  - red_team_review
+  negative: false
+  status: draft
+  implementation_allowed: false
+- test_id: NEG-MFOS-MFVM-0103
+  test_name: MFVM cannot bypass PXM Control API
+  test_type: negative
+  phase_to_implement: Phase 2 or later
+  target_pack: PACK-31
+  target_specs:
+  - docs/design/specs/42-mfvm.md
+  target_requirements:
+  - MFOS-REQ-MFVM-0103
+  source_refs:
+  - FBVBS-001
+  preconditions:
+  - Phase 0.10 specification artifacts exist
+  - No production implementation is required
+  inputs:
+  - machine-readable artifact under review
+  expected:
+    decisions: []
+    state_transitions: []
+    audit_records: []
+    failure_mode: MFOS_ERR_SPEC_GAP
+    final_state: validation_result_recorded
+  evidence_required:
+  - schema_validation_result
+  - traceability_link
+  - red_team_review
+  negative: true
+  status: draft
+  implementation_allowed: false
+- test_id: NEG-MFOS-MFVM-0104
+  test_name: MFVM does not directly own privileged virtualization roots
+  test_type: negative
+  phase_to_implement: Phase 2 or later
+  target_pack: PACK-31
+  target_specs:
+  - docs/design/specs/42-mfvm.md
+  target_requirements:
+  - MFOS-REQ-MFVM-0104
+  source_refs:
+  - X64-INTEL-001
+  - X64-AMD-001
+  preconditions:
+  - Phase 0.10 specification artifacts exist
+  - No production implementation is required
+  inputs:
+  - machine-readable artifact under review
+  expected:
+    decisions: []
+    state_transitions: []
+    audit_records: []
+    failure_mode: MFOS_ERR_SPEC_GAP
+    final_state: validation_result_recorded
+  evidence_required:
+  - schema_validation_result
+  - traceability_link
+  - red_team_review
+  negative: true
+  status: draft
+  implementation_allowed: false

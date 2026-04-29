@@ -7,9 +7,10 @@ LPAR, and related names may be trademarks or registered trademarks of
 International Business Machines Corporation in the United States and/or other
 jurisdictions.
 
-Microsoft, Windows, Hyper-V, Intel, Intel 64, IA-32, AMD, AMD64, Linux,
-Trusted Computing Group, TCG, TPM, The Update Framework, TUF, SLSA, seL4,
-NIST, and other external names referenced in MFOS source cards, design
+Microsoft, Windows, Hyper-V, Intel, Intel 64, IA-32, TDX, CET, AMD, AMD64,
+SEV, SEV-ES, SEV-SNP, SEV-TIO, Linux, KVM, Kani, Verus, CodeQL, Trusted
+Computing Group, TCG, TPM, The Update Framework, TUF, SLSA, seL4, NIST, and
+other external names referenced in MFOS source cards, design
 documents, or traceability records may be trademarks, registered trademarks,
 service marks, project names, publication names, or other marks of their
 respective owners.

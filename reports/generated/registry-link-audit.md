@@ -4,10 +4,10 @@ This report is generated from the current registry contents. It does not claim t
 
 ## Summary
 
-- Requirements: `130`
-- Tests: `309`
-- Evidence records: `194`
-- Claims: `5`
+- Requirements: `193`
+- Tests: `435`
+- Evidence records: `257`
+- Claims: `9`
 - Missing cross-registry links: `0`
 
 Draft-mode validation reports missing links as warnings. Release-mode validation treats warnings as failures.

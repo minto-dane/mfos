@@ -1,0 +1,117 @@
+schema_version: 1
+registry_kind: mfos_formal_model_registry
+status: draft
+updated_at: '2026-04-28'
+implementation_allowed: false
+proof_claimed: false
+models:
+- model_id: MFOS-MODEL-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW
+  path: formal/tla/authorization
+  status: planned
+  tool_family: TLA+ or Alloy or proof harness TBD
+  modeled_behavior: authorization no handle without allow
+  excluded_behavior:
+  - production implementation
+  - hardware-specific execution
+  claim_refs:
+  - MFOS-FC-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW
+- model_id: MFOS-MODEL-AUDIT-DENY-BEFORE-RETURN
+  path: formal/tla/audit-append
+  status: planned
+  tool_family: TLA+ or Alloy or proof harness TBD
+  modeled_behavior: audit deny before return
+  excluded_behavior:
+  - production implementation
+  - durable media correctness
+  claim_refs:
+  - MFOS-FC-AUDIT-DENY-BEFORE-RETURN
+- model_id: MFOS-MODEL-UPDATE-NO-ROLLBACK
+  path: formal/tla/update-security
+  status: planned
+  tool_family: TLA+ or Alloy or proof harness TBD
+  modeled_behavior: update no rollback
+  excluded_behavior:
+  - production implementation
+  - external update-framework compatibility
+  claim_refs:
+  - MFOS-FC-UPDATE-NO-ROLLBACK
+- model_id: MFOS-MODEL-PARTITION-MEMORY-OWNERSHIP
+  path: formal/tla/pxm-lifecycle
+  status: planned
+  tool_family: TLA+ or Alloy or proof harness TBD
+  modeled_behavior: partition memory ownership
+  excluded_behavior:
+  - production implementation
+  - hardware-specific execution
+  claim_refs:
+  - MFOS-FC-PARTITION-MEMORY-OWNERSHIP
+- model_id: MFOS-MODEL-PXM-CAPABILITY-REQUIRED-FOR-RESOURCE-OPERATION
+  path: formal/tla/pxm-lifecycle
+  status: planned
+  tool_family: TLA+ or Alloy or proof harness TBD
+  modeled_behavior: pxm capability required for resource operation
+  excluded_behavior:
+  - production implementation
+  - hardware-specific execution
+  claim_refs:
+  - MFOS-FC-PXM-CAPABILITY-REQUIRED-FOR-RESOURCE-OPERATION
+- model_id: MFOS-MODEL-MFVM-CANNOT-BYPASS-PXM
+  path: formal/tla/pxm-lifecycle
+  status: planned
+  tool_family: TLA+ or Alloy or proof harness TBD
+  modeled_behavior: mfvm cannot bypass pxm
+  excluded_behavior:
+  - production implementation
+  - hypervisor API compatibility
+  claim_refs:
+  - MFOS-FC-MFVM-CANNOT-BYPASS-PXM
+- model_id: MFOS-MODEL-CVM-LAUNCH-REQUIRES-MEASUREMENT
+  path: formal/models/cvm-launch
+  status: planned
+  tool_family: TLA+ or Alloy or proof harness TBD
+  modeled_behavior: cvm launch requires measurement
+  excluded_behavior:
+  - production implementation
+  - vendor TEE compatibility
+  claim_refs:
+  - MFOS-FC-CVM-LAUNCH-REQUIRES-MEASUREMENT
+- model_id: MFOS-MODEL-CVM-SECRET-RELEASE-REQUIRES-ATTESTATION
+  path: formal/models/cvm-secret-release
+  status: planned
+  tool_family: TLA+ or Alloy or proof harness TBD
+  modeled_behavior: cvm secret release requires attestation
+  excluded_behavior:
+  - production implementation
+  - vendor attestation compatibility
+  claim_refs:
+  - MFOS-FC-CVM-SECRET-RELEASE-REQUIRES-ATTESTATION
+- model_id: MFOS-MODEL-PRIVATE-SHARED-MEMORY-TRANSITION-VALIDITY
+  path: formal/models/cvm-memory-transition
+  status: planned
+  tool_family: TLA+ or Alloy or proof harness TBD
+  modeled_behavior: private shared memory transition validity
+  excluded_behavior:
+  - production implementation
+  - hardware-specific execution
+  claim_refs:
+  - MFOS-FC-PRIVATE-SHARED-MEMORY-TRANSITION-VALIDITY
+- model_id: MFOS-MODEL-CLUSTER-POLICY-DISTRIBUTION-INTEGRITY
+  path: formal/models/cluster-policy
+  status: planned
+  tool_family: TLA+ or Alloy or proof harness TBD
+  modeled_behavior: cluster policy distribution integrity
+  excluded_behavior:
+  - production implementation
+  - network transport correctness
+  claim_refs:
+  - MFOS-FC-CLUSTER-POLICY-DISTRIBUTION-INTEGRITY
+- model_id: MFOS-MODEL-CLUSTER-ATTESTATION-COLLECTION-INTEGRITY
+  path: formal/models/cluster-attestation
+  status: planned
+  tool_family: TLA+ or Alloy or proof harness TBD
+  modeled_behavior: cluster attestation collection integrity
+  excluded_behavior:
+  - production implementation
+  - vendor attestation compatibility
+  claim_refs:
+  - MFOS-FC-CLUSTER-ATTESTATION-COLLECTION-INTEGRITY

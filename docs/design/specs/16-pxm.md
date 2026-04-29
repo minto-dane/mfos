@@ -1,19 +1,38 @@
 ---
-spec_id: "MFOS-SPEC-16-PXM"
-title: "MFOS Design Specification 16: PXM Partition Manager"
-canonical_language: "en-US"
-japanese_mirror: "missing"
-status: "draft"
-owner: "MFOS architecture"
-last_reviewed: "2026-04-27"
-source_refs: ["FBVBS-001", "EXTREF-IBM-Z-DPM-0001", "EXTREF-IBM-Z-LPAR-INTRODUCTION-0001", "NIST-160-001", "NIST-193-001", "TCG-001", "X64-AMD-001", "X64-INTEL-001"]
-requirement_refs: ["MFOS-REQ-PARTITION-*"]
+spec_id: MFOS-SPEC-16-PXM
+title: 'MFOS Design Specification 16: PXM Partition Manager'
+canonical_language: en-US
+japanese_mirror: missing
+status: draft
+owner: MFOS architecture
+last_reviewed: '2026-04-28'
+source_refs:
+- FBVBS-001
+- EXTREF-IBM-Z-DPM-0001
+- EXTREF-IBM-Z-LPAR-INTRODUCTION-0001
+- NIST-160-001
+- NIST-193-001
+- TCG-001
+- X64-AMD-001
+- X64-INTEL-001
+- EXTREF-MICROSOFT-HYPERV-TLFS-0001
+- EXTREF-LINUX-KVM-API-0001
+- EXTREF-INTEL-TDX-OVERVIEW-0001
+- EXTREF-AMD-SEV-SNP-0001
+- EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
+requirement_refs:
+- MFOS-REQ-PARTITION-*
+- MFOS-REQ-PXM-*
+- MFOS-REQ-MFVM-*
+- MFOS-REQ-VIRT-*
+- MFOS-REQ-CVM-*
 claim_refs: []
 test_refs: []
 evidence_refs: []
 implementation_allowed: false
-downstream_packs: []
-spec_gap_policy: "implementation_must_not_infer_or_fill_gaps"
+downstream_packs:
+- PACK-14
+spec_gap_policy: implementation_must_not_infer_or_fill_gaps
 ---
 # MFOS Design Specification 16: PXM Partition Manager
 
@@ -774,3 +793,69 @@ Required output:
 13. Review Checklist
 14. Evidence Artifacts
 ```
+
+## Phase 0.10 PXM Core and MFVM Boundary Expansion
+
+### PXM as Trusted Hardware-facing Resource Authority
+
+PXM Core is the trusted hardware-facing partition and resource authority. It owns partition lifecycle primitives, VM partition lifecycle primitives, vCPU primitives, RAM ownership and accounting, second-stage translation ownership, IOMMU domains, interrupt remapping, device assignment teardown, confidential VM primitive operations, root audit emission, low-level resource enforcement, and PXM capability enforcement.
+
+### PXM/MFVM Separation
+
+MFVM is an MFOS-based VM management subsystem that runs in the MFOS control plane. MFVM is less trusted than PXM. MFVM may request PXM operations, but PXM validates capabilities, resource bounds, memory ownership, device ownership, confidential VM launch preconditions, and audit obligations. VMs are PXM-managed VM partitions, not nested guests under MFVM.
+
+### PXM Control API
+
+The PXM Control API is a capability-checked interface used by MFVM and approved MFOS components to request PXM operations. It is not a general privileged mapping interface and does not expose arbitrary VMX/SVM roots, memory maps, IOMMU domains, or interrupt remapping control to MFVM.
+
+### PXM Capability Model
+
+Every PXM resource operation requires a caller capability, target object identity, requested operation, resource bounds, policy version, audit obligation, and failure-mode mapping. Overbroad or ambiguous requests fail closed.
+
+### VM Partition Primitive
+
+A VM Partition is a PXM-managed partition representing a VM execution context. PXM owns its lifecycle primitive and enforces resource state transitions.
+
+### vCPU Primitive
+
+PXM owns vCPU primitive creation, assignment, accounting, and teardown. MFVM may request vCPU allocation through bounded control requests only.
+
+### RAM Ownership and Accounting
+
+PXM enforces RAM ownership, reservation, quota, accounting, second-stage translation ownership, zero-before-reuse, and memory release validation.
+
+### IOMMU and Interrupt Remapping
+
+PXM owns IOMMU domain assignment and interrupt remapping. Device assignment without valid IOMMU and interrupt-remapping state is forbidden.
+
+### Device Assignment Teardown
+
+PXM must validate teardown and stale ownership removal before device reuse. Failure to prove teardown is fail-closed.
+
+### Confidential VM Primitive Authority
+
+PXM performs privileged confidential VM launch primitives when a profile-specific later phase authorizes them. MFVM coordinates launch but is not the CVM trust root.
+
+### PXM Audit Obligations
+
+PXM emits root audit events for partition creation, resource reservation, memory ownership change, device assignment, teardown, CVM primitive request, rejected MFVM request, and capability denial.
+
+### PXM Must Not Interpret Enterprise Semantics
+
+PXM must not interpret MFOS job, dataset, catalog, spool, operator, tenant, cluster placement, VM image catalog, or workload policy semantics. Those remain in MFOS control-plane services and securityd policy.
+
+### MFVM Less Trusted Than PXM
+
+MFVM compromise must not imply compromise of the PXM isolation root. PXM independently validates every request.
+
+### Failure Modes
+
+New Phase 0.10 failure modes include MFOS_ERR_RESOURCE_QUOTA_EXCEEDED, MFOS_ERR_ATTESTATION_REQUIRED, MFOS_ERR_MEASUREMENT_REQUIRED, and MFOS_ERR_INTEGRITY_CHECK_FAILED where later specs register them. Undefined behavior remains MFOS_ERR_SPEC_GAP.
+
+### Negative Tests
+
+Required negative tests include MFVM overbroad request, MFVM direct privileged-root request, memory ownership bypass, IOMMU bypass, interrupt remapping bypass, stale device teardown, missing root audit, CVM launch without measurement, secret release without attestation, and PXM enterprise-semantic interpretation.
+
+### Formal Proof Obligations
+
+Formal obligations include partition_memory_ownership, pxm_capability_required_for_resource_operation, mfvm_cannot_bypass_pxm, cvm_launch_requires_measurement, private_shared_memory_transition_validity, and cluster_policy_distribution_integrity.

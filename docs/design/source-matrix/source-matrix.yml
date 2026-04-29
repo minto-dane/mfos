@@ -313,3 +313,165 @@ cards:
   title: FBVBS uploaded specification
   card_path: docs/design/source-matrix/cards/FBVBS-001.yml
   status: draft
+- source_id: EXTREF-MICROSOFT-HYPERV-TLFS-0001
+  source_type: external_reference
+  vendor: Microsoft
+  title: Microsoft Hyper-V Hypervisor Top-Level Functional Specification
+  card_path: docs/design/source-matrix/cards/EXTREF-MICROSOFT-HYPERV-TLFS-0001.yml
+  status: draft
+- source_id: EXTREF-MICROSOFT-HYPERV-OVERVIEW-0001
+  source_type: external_reference
+  vendor: Microsoft
+  title: Hyper-V virtualization in Windows Server and Windows
+  card_path: docs/design/source-matrix/cards/EXTREF-MICROSOFT-HYPERV-OVERVIEW-0001.yml
+  status: draft
+- source_id: EXTREF-MICROSOFT-HYPERV-VSM-0001
+  source_type: external_reference
+  vendor: Microsoft
+  title: Virtual Secure Mode
+  card_path: docs/design/source-matrix/cards/EXTREF-MICROSOFT-HYPERV-VSM-0001.yml
+  status: draft
+- source_id: EXTREF-LINUX-KVM-API-0001
+  source_type: external_reference
+  vendor: Linux kernel documentation
+  title: The Definitive KVM API Documentation
+  card_path: docs/design/source-matrix/cards/EXTREF-LINUX-KVM-API-0001.yml
+  status: draft
+- source_id: EXTREF-LINUX-KVM-VFIO-0001
+  source_type: external_reference
+  vendor: Linux kernel documentation
+  title: VFIO - Virtual Function I/O
+  card_path: docs/design/source-matrix/cards/EXTREF-LINUX-KVM-VFIO-0001.yml
+  status: draft
+- source_id: EXTREF-LINUX-KVM-CAPABILITIES-0001
+  source_type: external_reference
+  vendor: Linux kernel documentation
+  title: KVM capability discovery documentation
+  card_path: docs/design/source-matrix/cards/EXTREF-LINUX-KVM-CAPABILITIES-0001.yml
+  status: draft
+- source_id: EXTREF-INTEL-TDX-OVERVIEW-0001
+  source_type: external_reference
+  vendor: Intel
+  title: Intel Trust Domain Extensions overview
+  card_path: docs/design/source-matrix/cards/EXTREF-INTEL-TDX-OVERVIEW-0001.yml
+  status: draft
+- source_id: EXTREF-INTEL-TDX-LINUX-DOC-0001
+  source_type: external_reference
+  vendor: Linux kernel documentation
+  title: Intel Trust Domain Extensions in Linux
+  card_path: docs/design/source-matrix/cards/EXTREF-INTEL-TDX-LINUX-DOC-0001.yml
+  status: draft
+- source_id: EXTREF-INTEL-TDX-ATTESTATION-0001
+  source_type: external_reference
+  vendor: Intel
+  title: Intel Trust Domain Extensions attestation documentation
+  card_path: docs/design/source-matrix/cards/EXTREF-INTEL-TDX-ATTESTATION-0001.yml
+  status: draft
+- source_id: EXTREF-INTEL-CET-0001
+  source_type: external_reference
+  vendor: Intel
+  title: A Technical Look at Intel Control-Flow Enforcement Technology
+  card_path: docs/design/source-matrix/cards/EXTREF-INTEL-CET-0001.yml
+  status: draft
+- source_id: EXTREF-RUST-UNSAFE-REFERENCE-0001
+  source_type: external_reference
+  vendor: Rust project
+  title: 'The Rust Reference: the unsafe keyword'
+  card_path: docs/design/source-matrix/cards/EXTREF-RUST-UNSAFE-REFERENCE-0001.yml
+  status: draft
+- source_id: EXTREF-RUST-NO-STD-REFERENCE-0001
+  source_type: external_reference
+  vendor: Rust project
+  title: 'The Rust Reference: the no_std attribute'
+  card_path: docs/design/source-matrix/cards/EXTREF-RUST-NO-STD-REFERENCE-0001.yml
+  status: draft
+- source_id: EXTREF-RUST-CF-PROTECTION-0001
+  source_type: external_reference
+  vendor: Rust project
+  title: 'The Rust Unstable Book: cf_protection'
+  card_path: docs/design/source-matrix/cards/EXTREF-RUST-CF-PROTECTION-0001.yml
+  status: draft
+- source_id: EXTREF-CLANG-CFI-0001
+  source_type: external_reference
+  vendor: LLVM project
+  title: Clang Control Flow Integrity documentation
+  card_path: docs/design/source-matrix/cards/EXTREF-CLANG-CFI-0001.yml
+  status: draft
+- source_id: EXTREF-CLANG-KCFI-0001
+  source_type: external_reference
+  vendor: LLVM project
+  title: Clang Kernel Control Flow Integrity documentation
+  card_path: docs/design/source-matrix/cards/EXTREF-CLANG-KCFI-0001.yml
+  status: draft
+- source_id: EXTREF-GCC-CF-PROTECTION-0001
+  source_type: external_reference
+  vendor: GNU Compiler Collection
+  title: 'GCC Program Instrumentation Options: fcf-protection'
+  card_path: docs/design/source-matrix/cards/EXTREF-GCC-CF-PROTECTION-0001.yml
+  status: draft
+- source_id: EXTREF-AMD-SEV-OVERVIEW-0001
+  source_type: external_reference
+  vendor: AMD
+  title: AMD Secure Encrypted Virtualization overview
+  card_path: docs/design/source-matrix/cards/EXTREF-AMD-SEV-OVERVIEW-0001.yml
+  status: draft
+- source_id: EXTREF-AMD-SEV-ES-0001
+  source_type: external_reference
+  vendor: AMD
+  title: AMD SEV Encrypted State overview
+  card_path: docs/design/source-matrix/cards/EXTREF-AMD-SEV-ES-0001.yml
+  status: draft
+- source_id: EXTREF-AMD-SEV-SNP-0001
+  source_type: external_reference
+  vendor: AMD
+  title: AMD SEV-SNP strengthening VM isolation white paper
+  card_path: docs/design/source-matrix/cards/EXTREF-AMD-SEV-SNP-0001.yml
+  status: draft
+- source_id: EXTREF-AMD-SEV-TIO-0001
+  source_type: external_reference
+  vendor: AMD
+  title: AMD SEV-TIO Trusted I/O white paper
+  card_path: docs/design/source-matrix/cards/EXTREF-AMD-SEV-TIO-0001.yml
+  status: draft
+- source_id: EXTREF-LINUX-AMD-SEV-KVM-DOC-0001
+  source_type: external_reference
+  vendor: Linux kernel documentation
+  title: Linux KVM AMD memory encryption documentation
+  card_path: docs/design/source-matrix/cards/EXTREF-LINUX-AMD-SEV-KVM-DOC-0001.yml
+  status: draft
+- source_id: EXTREF-KANI-RUST-VERIFIER-0001
+  source_type: external_reference
+  vendor: Kani project
+  title: The Kani Rust Verifier
+  card_path: docs/design/source-matrix/cards/EXTREF-KANI-RUST-VERIFIER-0001.yml
+  status: draft
+- source_id: EXTREF-VERUS-RUST-VERIFICATION-0001
+  source_type: external_reference
+  vendor: Verus project
+  title: Verus Tutorial and Reference
+  card_path: docs/design/source-matrix/cards/EXTREF-VERUS-RUST-VERIFICATION-0001.yml
+  status: draft
+- source_id: EXTREF-AWS-AUTOMATED-REASONING-0001
+  source_type: external_reference
+  vendor: AWS
+  title: What is Automated Reasoning?
+  card_path: docs/design/source-matrix/cards/EXTREF-AWS-AUTOMATED-REASONING-0001.yml
+  status: draft
+- source_id: EXTREF-GITHUB-CODEQL-0001
+  source_type: external_reference
+  vendor: GitHub
+  title: About code scanning with CodeQL
+  card_path: docs/design/source-matrix/cards/EXTREF-GITHUB-CODEQL-0001.yml
+  status: draft
+- source_id: EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
+  source_type: external_reference
+  vendor: NIST
+  title: NIST SP 800-160 Vol. 1 Rev. 1
+  card_path: docs/design/source-matrix/cards/EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001.yml
+  status: draft
+- source_id: EXTREF-NIST-SSDF-0001
+  source_type: external_reference
+  vendor: NIST
+  title: NIST SP 800-218 Secure Software Development Framework
+  card_path: docs/design/source-matrix/cards/EXTREF-NIST-SSDF-0001.yml
+  status: draft

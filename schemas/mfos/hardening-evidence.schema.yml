@@ -1,0 +1,90 @@
+schema_id: MFOS-SCHEMA-HARDENING-EVIDENCE-0001
+title: HardeningEvidence
+status: draft
+phase: Phase 0.10
+implementation_allowed: false
+type: object
+required:
+- artifact_id
+- schema_version
+- status
+- component
+- build_profile
+- target_triple
+- toolchain
+- compiler_flags
+- linker_flags
+- lto_status
+- cfi_status
+- cet_status
+- cfg_status
+- kcfi_status
+- binary_evidence
+- runtime_checks
+- unsupported_objects
+- exceptions
+- reviewer
+- source_refs
+- requirement_refs
+- evidence_refs
+- spec_gap_policy
+- implementation_allowed
+properties:
+  artifact_id:
+    type: string
+  schema_version:
+    type: integer
+  status:
+    enum:
+    - planned
+    - draft
+    - reviewed
+    - accepted
+    - rejected
+    - superseded
+  component:
+    type: string
+  build_profile:
+    type: string
+  target_triple:
+    type: string
+  toolchain:
+    type: object
+  compiler_flags:
+    type: array
+  linker_flags:
+    type: array
+  lto_status:
+    type: string
+  cfi_status:
+    type: string
+  cet_status:
+    type: string
+  cfg_status:
+    type: string
+  kcfi_status:
+    type: string
+  binary_evidence:
+    type: array
+  runtime_checks:
+    type: array
+  unsupported_objects:
+    type: array
+  exceptions:
+    type: array
+  reviewer:
+    type: string
+  source_refs:
+    type: array
+  requirement_refs:
+    type: array
+  evidence_refs:
+    type: array
+  spec_gap_policy:
+    const: implementation_must_not_infer_or_fill_gaps
+  implementation_allowed:
+    const: false
+additionalProperties: false
+source_refs: []
+requirement_refs: []
+spec_gap_policy: implementation_must_not_infer_or_fill_gaps

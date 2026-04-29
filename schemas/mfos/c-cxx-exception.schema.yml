@@ -1,0 +1,76 @@
+schema_id: MFOS-SCHEMA-C-CXX-EXCEPTION-0001
+title: CCxxException
+status: draft
+phase: Phase 0.10
+implementation_allowed: false
+type: object
+required:
+- exception_id
+- schema_version
+- status
+- component
+- reason
+- no_rust_alternative_justification
+- no_policy_logic
+- no_business_semantics
+- cfi_required
+- cet_required
+- sanitizer_required
+- codeql_required
+- linked_adr
+- linked_tests
+- reviewer
+- source_refs
+- requirement_refs
+- evidence_refs
+- spec_gap_policy
+- implementation_allowed
+properties:
+  exception_id:
+    type: string
+  schema_version:
+    type: integer
+  status:
+    enum:
+    - planned
+    - draft
+    - reviewed
+    - rejected
+  component:
+    type: string
+  reason:
+    type: string
+  no_rust_alternative_justification:
+    type: string
+  no_policy_logic:
+    const: true
+  no_business_semantics:
+    const: true
+  cfi_required:
+    type: boolean
+  cet_required:
+    type: boolean
+  sanitizer_required:
+    type: boolean
+  codeql_required:
+    type: boolean
+  linked_adr:
+    type: string
+  linked_tests:
+    type: array
+  reviewer:
+    type: string
+  source_refs:
+    type: array
+  requirement_refs:
+    type: array
+  evidence_refs:
+    type: array
+  spec_gap_policy:
+    const: implementation_must_not_infer_or_fill_gaps
+  implementation_allowed:
+    const: false
+additionalProperties: false
+source_refs: []
+requirement_refs: []
+spec_gap_policy: implementation_must_not_infer_or_fill_gaps

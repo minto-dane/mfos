@@ -3,15 +3,16 @@ status: draft
 gaps:
 - Select target SLSA level per MFOS profile.
 version_or_scope: supply-chain; converted from docs/design/source-matrix/source-matrix.yaml. Exact section/version pins remain gaps unless listed below.
-version_or_release: SLSA latest specification path; floating version pin
+version_or_release: SLSA v1.2 specification and provenance page
 publication_number: null
-section_scope: 'supply-chain; URL path scope: spec/latest'
+section_scope: 'supply-chain; URL path scope: spec/v1.2 and spec/v1.2/provenance'
 pin_quality: latest_redirect_verified_version_pinned
 review_notes:
 - Pin metadata added from existing local title/URL metadata only; no external document body text copied.
 - Publication number is not present in the local card title or URL; leave null until source review confirms it.
 - Human/source review should confirm exact source version, section anchor, and any publication identifier before production use.
 - 'Targeted review 2026-04-27: SLSA latest URL redirects to the approved SLSA v1.2 specification page.'
+- 'Source-card verification 2026-04-28: SLSA latest redirects to v1.2; provenance page opened and added as a scoped URL.'
 - No publication number is applicable for this specification site.
 required_negative_tests:
 - TEST-SUPPLY-UNSIGNED-PROVENANCE-DENY-001
@@ -30,8 +31,9 @@ vendor_mark_used: true
 product_family: SLSA
 document_title: SLSA specification
 document_url:
-- https://slsa.dev/spec/latest/
-retrieved_at: '2026-04-27'
+- https://slsa.dev/spec/v1.2/
+- https://slsa.dev/spec/v1.2/provenance
+retrieved_at: '2026-04-28'
 reference_purpose:
 - source discovery
 - concept mapping
@@ -39,6 +41,7 @@ reference_purpose:
 - independent MFOS design traceability
 review_topics:
 - build provenance
+- provenance format and verification planning
 - hosted build
 - hardened build
 - supply-chain integrity

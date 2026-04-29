@@ -1,0 +1,19 @@
+schema_version: 1
+artifact_type: requirement_domain_bridge
+status: current
+origin_phase: phase-0-10
+canonical_registry: docs/design/registries/requirements.yaml
+domain: mfvm
+requirements:
+- MFOS-REQ-MFVM-0101
+- MFOS-REQ-MFVM-0102
+- MFOS-REQ-MFVM-0103
+- MFOS-REQ-MFVM-0104
+- MFOS-REQ-MFVM-0105
+- MFOS-REQ-MFVM-0106
+- MFOS-REQ-MFVM-0107
+- MFOS-REQ-MFVM-0108
+implementation_allowed: false
+notes:
+- This bridge lists canonical requirement IDs only. Do not treat it as a separate
+  source of truth.

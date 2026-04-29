@@ -1,7 +1,6 @@
 schema_version: 1
 artifact_index_kind: mfos_test_catalog_inventory
 status: current
-
 current:
   metadata:
     path: tests/catalog/.mfos-dir.yml
@@ -53,19 +52,57 @@ current:
     artifact_type: test_catalog
     status: current
     origin_phase: phase-0-9
-
+  pxm:
+    path: tests/catalog/pxm.yml
+    artifact_type: test_catalog
+    status: current
+    origin_phase: phase-0-10
+  mfvm:
+    path: tests/catalog/mfvm.yml
+    artifact_type: test_catalog
+    status: current
+    origin_phase: phase-0-10
+  hypervisor_class_virtualization:
+    path: tests/catalog/hypervisor-class-virtualization.yml
+    artifact_type: test_catalog
+    status: current
+    origin_phase: phase-0-10
+  confidential_vm:
+    path: tests/catalog/confidential-vm.yml
+    artifact_type: test_catalog
+    status: current
+    origin_phase: phase-0-10
+  datacenter_cluster:
+    path: tests/catalog/datacenter-cluster.yml
+    artifact_type: test_catalog
+    status: current
+    origin_phase: phase-0-10
+  language_verification:
+    path: tests/catalog/language-verification.yml
+    artifact_type: test_catalog
+    status: current
+    origin_phase: phase-0-10
+  automated_reasoning:
+    path: tests/catalog/automated-reasoning.yml
+    artifact_type: test_catalog
+    status: current
+    origin_phase: phase-0-10
+  performance_secure_operations:
+    path: tests/catalog/performance-secure-operations.yml
+    artifact_type: test_catalog
+    status: current
+    origin_phase: phase-0-10
 archive:
   phase_0_8:
     path: tests/catalog/archive/phase-0-8/
     status: historical
     superseded_by:
-      - tests/catalog/authorization.yml
-      - tests/catalog/audit.yml
-      - tests/catalog/dataset-catalog.yml
-      - tests/catalog/job-spool.yml
-      - tests/catalog/operator-console.yml
-      - tests/catalog/first-vertical-slice.yml
-
+    - tests/catalog/authorization.yml
+    - tests/catalog/audit.yml
+    - tests/catalog/dataset-catalog.yml
+    - tests/catalog/job-spool.yml
+    - tests/catalog/operator-console.yml
+    - tests/catalog/first-vertical-slice.yml
 policy:
   phase_specific_filenames_allowed_in_root: false
   root_current_only: true
