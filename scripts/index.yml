@@ -28,6 +28,9 @@ current:
     validate_dafny_semantics:
       path: scripts/validate-dafny-semantics.sh
       status: current
+    install_dafny:
+      path: scripts/install-dafny.sh
+      status: current
     validate_schema_files:
       path: scripts/validators/validate-schema-files.py
       status: current

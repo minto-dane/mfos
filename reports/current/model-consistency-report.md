@@ -23,4 +23,5 @@ If Dafny, TLA+, or Alloy disagree, the result must be recorded as
   domains.
 - Existing formal evidence records remain planned placeholders unless linked to
   tool output and review.
-- Dafny verification is blocked by missing local toolchain.
+- Dafny verification now passes for the current Phase 1 module set. TLA+ and
+  Alloy model checking remain separate future evidence paths.

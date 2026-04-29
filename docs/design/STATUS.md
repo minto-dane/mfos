@@ -2,7 +2,7 @@
 
 Status date: 2026-04-29
 Workspace: `/home/nia/mfos`
-Git status: working branch `phase/1-dafny-executable-semantics`;
+Git status: working branch `phase/1-dafny-toolchain-verification-closure`;
 PR #10 (`fix/phase-0.10-pxm-mfvm-expansion`), PR #11
 (`fix/pre-phase-1-total-readiness`), PR #12
 (`fix/pre-phase-1-total-readiness-second-pass`), and PR #13
@@ -36,6 +36,8 @@ phase_1_loader_allowed: true
 phase_1_dafny_skeleton_allowed: true
 phase_1_dafny_semantics_allowed: true
 phase_1_conformance_harness_allowed: true
+phase_1_dafny_toolchain_pinned: true
+phase_1_dafny_verification_passed: true
 phase_1_semantic_evaluator_status: non_production_dafny_only
 phase_1_portable_semantic_core_allowed: false
 phase_1_rust_semantic_core_allowed: false
@@ -49,7 +51,7 @@ hosted_semantic_prototype_allowed: false
 public_release_allowed: false
 private_internal_use_allowed: true
 requires_ip_attorney_review_before_public_release: true
-next_phase: Continue Phase 1 Dafny verification and conformance evidence closure
+next_phase: Continue Phase 1 conformance evidence closure
 ```
 
 No production nucleus, service, PXM, Guard, or other OS-body implementation was
@@ -68,9 +70,10 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
 - Added Phase 1 validation gates for Dafny semantics, fixture/golden/oracle
   loading, Rust semantic-core absence, Dafny generated-code production
   exclusion, and normalizer boundary checks.
-- Dafny verification is `blocked_by_missing_toolchain` in the local
-  environment until the Dafny CLI is installed. No verification-passed claim is
-  made.
+- Pinned Dafny 4.11.0 is installed by `scripts/install-dafny.sh`; Z3 4.14.1 is
+  bundled in the pinned release.
+- `scripts/validate-dafny-semantics.sh --require-dafny` verifies the current
+  module set with `26 verified, 0 errors`.
 
 ## Phase 1 Formal / Traceability Consistency
 
@@ -609,14 +612,15 @@ under `reports/audits/`. Naming-safety reports are under
 
 ## Next Recommended Work
 
-Continue Phase 1 by installing/pinning the Dafny toolchain and closing
-verification evidence gaps.
+Continue Phase 1 by closing conformance evidence gaps beyond Dafny module
+verification.
 
 Allowed Phase 1 scope:
 
-1. Run Dafny verification for `formal/executable-semantics/dafny/modules/*.dfy`.
-2. Record verification output as reviewed evidence.
-3. Expand conformance comparison only where Dafny model output is available.
+1. Keep Dafny verification pinned for every new module under
+   `formal/executable-semantics/dafny/modules/*.dfy`.
+2. Expand conformance comparison only where Dafny model output is available.
+3. Record additional reviewed evidence for fixture/golden semantic comparison.
 
 Forbidden Phase 1 scope remains:
 

@@ -42,6 +42,7 @@ SPEC_SUCCESS = re.compile(
     re.IGNORECASE,
 )
 SAFE_SPEC_SUCCESS = re.compile(r"\b(?:not|never|must not|forbidden|fail[- ]closed|blocked|reject|converted into success)\b", re.IGNORECASE)
+LOWER_SNAKE_DAFNY = re.compile(r"^[a-z][a-z0-9_]*\.dfy$")
 
 
 def _check_required_files(findings: list[Finding]) -> None:
@@ -61,6 +62,14 @@ def _check_required_files(findings: list[Finding]) -> None:
         return
 
     present = {path.name for path in MODULE_DIR.glob("*.dfy")}
+    lowered: dict[str, Path] = {}
+    for path in sorted(MODULE_DIR.glob("*.dfy")):
+        if not LOWER_SNAKE_DAFNY.match(path.name):
+            findings.append(Finding("ERROR", path, "canonical Dafny module files must use lower_snake_case.dfy"))
+        lower_name = path.name.lower()
+        if lower_name in lowered:
+            findings.append(Finding("ERROR", path, f"case-only duplicate Dafny module also matches {lowered[lower_name]}"))
+        lowered[lower_name] = path
     for name in sorted(REQUIRED_MODULES - present):
         findings.append(Finding("ERROR", MODULE_DIR / name, "required Dafny module missing"))
     for name in sorted(present - REQUIRED_MODULES):

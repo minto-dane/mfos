@@ -35,6 +35,7 @@ CANONICAL_ROOT_FILES_ALLOWED = {
         ".mfos-dir.yml",
         "README.md",
         "index.yml",
+        "install-dafny.sh",
         "validate-all.sh",
         "validate-artifact-hygiene.sh",
         "validate-component-scaffold.sh",

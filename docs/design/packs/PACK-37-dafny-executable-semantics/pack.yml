@@ -65,8 +65,8 @@ formal_targets:
   - TLA+ consistency review
   - Alloy consistency review
 spec_gaps:
-  - Dafny toolchain is not pinned in this pack.
-  - Dafny verification is blocked where the toolchain is unavailable.
+  - Dafny verification evidence is available for the current module set only.
+  - Conformance harness comparison remains structural until reviewed Dafny model output is emitted.
 implementation_allowed:
   production: false
   hosted_daemon: false
