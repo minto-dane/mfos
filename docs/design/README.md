@@ -4,7 +4,7 @@ This directory is the design canon area for MFOS.
 
 MFOS is an x64-native, z/OS-inspired, source-grounded enterprise operating system. It is not z/OS-compatible and must not be described that way.
 
-Phase 0.6 added machine-checkable design enforcement around this canon:
+Machine-checkable design enforcement around this canon consists of:
 
 ```text
 - JSON Schemas under ../../schemas/.

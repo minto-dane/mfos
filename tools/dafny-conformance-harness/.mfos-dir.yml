@@ -1,0 +1,36 @@
+directory_id: MFOS-DIR-TOOLS-DAFNY-CONFORMANCE-HARNESS
+path: tools/dafny-conformance-harness
+role: validation
+maturity: M3_CONTRACTED
+status: current
+canonical: true
+description: Non-production conformance-support harness for Dafny artifacts and Phase 0.9 golden vectors.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  rust_semantic_core: false
+  dafny_executable_semantics: false
+  semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+  generated_production_code: false
+  validation_only: true
+phase_allowed_from: phase-1
+depends_on:
+  - formal/executable-semantics/dafny
+  - tools/semantic-fixture-normalizer
+  - tests/golden/index.yml
+allowed_contents:
+  - conformance-support CLI
+  - structural comparison helpers
+  - non-production validation tests
+forbidden_contents:
+  - semantic-runner implementation
+  - hosted daemon code
+  - MFOS business semantics
+  - production code
+required_before_agent_assignment:
+  - Dafny model path
+  - fixture/golden index
+  - no-production boundary
+review_status: draft

@@ -48,11 +48,10 @@ BOUNDARY_CONCEPTS = {
     "Dafny executable-semantics scaffold path": (
         "formal/executable-semantics/dafny",
     ),
-    "validation-only scope": (
-        "validation-only",
-        "validation only",
-        "loader-only artifact validation",
-        "loader only artifact validation",
+    "non-production conformance scope": (
+        "non-production executable-semantics",
+        "non-production conformance",
+        "specification and conformance artifacts",
     ),
     "no Rust semantic-core implementation": (
         "does not authorize rust semantic-core implementation",
@@ -89,21 +88,6 @@ FORBIDDEN_METADATA_FLAGS = {
     "hosted_semantic_prototype",
     "rust_semantic_core",
 }
-
-REQUIRED_DAFNY_PATTERNS = [
-    re.compile(r"\.dafny\s+files?\s+(?:are\s+)?required\b", re.IGNORECASE),
-    re.compile(r"\brequires?\s+\.dafny\s+files?\b", re.IGNORECASE),
-    re.compile(r"\bmust\s+(?:contain|include|provide)\s+\.dafny\s+files?\b", re.IGNORECASE),
-]
-
-SAFE_REQUIRED_DAFNY_MARKERS = (
-    "no .dafny files are required",
-    "no .dafny files required",
-    ".dafny files are not required",
-    "does not require .dafny",
-    "do not require .dafny",
-    "optional",
-)
 
 PHASE_1_TRUE_FLAG = re.compile(
     r"\b(?:phase_1_)?(?:rust_)?(?:portable_)?(?:semantic_core|semantic_runner|hosted_daemon)"
@@ -214,6 +198,8 @@ def _check_metadata_flags(data: object, path: Path, findings: list[Finding]) -> 
     for flag in sorted(FORBIDDEN_METADATA_FLAGS):
         if implementation_allowed.get(flag) is True:
             findings.append(Finding("ERROR", path, f"implementation_allowed.{flag} must not be true"))
+    if implementation_allowed.get("dafny_executable_semantics") is not True:
+        findings.append(Finding("ERROR", path, "implementation_allowed.dafny_executable_semantics must be true for Phase 1 Dafny semantics"))
 
 
 def _check_scaffold_dir(findings: list[Finding]) -> None:
@@ -226,16 +212,6 @@ def _check_scaffold_dir(findings: list[Finding]) -> None:
         findings.append(Finding("ERROR", METADATA, ".mfos-dir.yml missing"))
     else:
         _check_metadata_flags(load_yaml(METADATA), METADATA, findings)
-
-    for path in (README, METADATA):
-        if not path.exists():
-            continue
-        for lineno, line in enumerate(path.read_text(encoding="utf-8", errors="replace").splitlines(), 1):
-            lower = line.lower()
-            if any(marker in lower for marker in SAFE_REQUIRED_DAFNY_MARKERS):
-                continue
-            if any(pattern.search(line) for pattern in REQUIRED_DAFNY_PATTERNS):
-                findings.append(Finding("ERROR", path, "scaffold must not require .dafny files", lineno))
 
 
 def _safe_permission_line(line: str) -> bool:

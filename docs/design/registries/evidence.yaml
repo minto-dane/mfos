@@ -10714,7 +10714,7 @@ entries:
   spec_gap_ids:
   - PHASE-0-10-SPEC-GAP
 - evidence_id: EV-MFOS-DAFNY-0001
-  title: Dafny Phase 1 loader-only policy review evidence
+  title: Dafny Phase 1 executable-semantics validation evidence
   evidence_type: design_traceability_record
   status: draft
   requirement_ids:
@@ -10728,6 +10728,16 @@ entries:
   - MFOS-REQ-DAFNY-0008
   - MFOS-REQ-DAFNY-0009
   - MFOS-REQ-DAFNY-0010
+  - MFOS-REQ-SEMSPEC-0001
+  - MFOS-REQ-SEMSPEC-0002
+  - MFOS-REQ-SEMSPEC-0003
+  - MFOS-REQ-SEMSPEC-0004
+  - MFOS-REQ-SEMSPEC-0005
+  - MFOS-REQ-SEMSPEC-0006
+  - MFOS-REQ-SEMSPEC-0007
+  - MFOS-REQ-SEMSPEC-0008
+  - MFOS-REQ-SEMSPEC-0009
+  - MFOS-REQ-SEMSPEC-0010
   test_ids:
   - TEST-MFOS-DAFNY-0001
   - NEG-MFOS-DAFNY-0001
@@ -10737,7 +10747,7 @@ entries:
   conformance_claim_ids: []
   release_ids: []
   artifact:
-    path: reports/current/pre-phase1-readiness-final-report.md
+    path: reports/current/dafny-semantics-validation-report.md
     media_type: text/markdown
     sha384: null
     size_bytes: null

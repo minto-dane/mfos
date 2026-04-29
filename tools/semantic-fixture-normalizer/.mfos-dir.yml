@@ -1,0 +1,33 @@
+directory_id: MFOS-DIR-TOOLS-SEMANTIC-FIXTURE-NORMALIZER
+path: tools/semantic-fixture-normalizer
+role: validation
+maturity: M3_CONTRACTED
+status: current
+canonical: true
+description: Deterministic fixture normalization for Phase 1 Dafny artifact checks.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  rust_semantic_core: false
+  dafny_executable_semantics: false
+  semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+  generated_production_code: false
+  validation_only: true
+phase_allowed_from: phase-1
+depends_on:
+  - schemas/test-fixture.schema.yml
+  - docs/design/specs/32-conformance-fixture-format.md
+allowed_contents:
+  - deterministic normalization code
+  - tests for normalization shape
+forbidden_contents:
+  - MFOS business semantics
+  - semantic-runner commands
+  - hosted daemon code
+  - production code
+required_before_agent_assignment:
+  - fixture schema
+  - non-semantic normalizer boundary
+review_status: draft

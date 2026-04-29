@@ -191,9 +191,12 @@ observable semantic order, not API names or transport shape.
 | B17 | `jobd` | Complete failed job. | Job result is failed with `POLICY_DENIED` or mapped `DATASET_OPEN_DENIED`. |
 | B18 | `operatord` | Display failed result. | Operator sees `FAILED REASON=POLICY_DENIED`; display is not audit evidence. |
 
-## 9. Phase 0.9 Readiness Items
+## 9. Readiness Items
 
-| ID | Item | Phase 0.8 position | Phase 0.9 action | Status |
+The following items retain phase provenance while defining durable alignment
+work for the vertical slice contract.
+
+| ID | Item | Source position | Required alignment action | Status |
 | --- | --- | --- | --- | --- |
 | FVS-READY-001 | Submitter versus `USER=` effective principal. | Job/spool Phase 0.8 requires submit-as delegation when `USER=` differs from submitter. | Confirm operator target refs and audit payloads include both submitter and requested principal. | Aligned by domain spec; test confirmation needed. |
 | FVS-READY-002 | Dataset content staging for `USER.ALICE.INPUT`. | The slice requires typed, authorized fixture setup and no raw file shortcut. | Specify the operator command or fixture construction rule used by tests. | Open. |

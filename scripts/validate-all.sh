@@ -16,6 +16,7 @@ fi
 if [[ "$GENERATE_TRACEABILITY" == "0" ]]; then
   export MFOS_VALIDATE_NO_WRITE=1
 fi
+export PYTHONDONTWRITEBYTECODE=1
 
 python3 scripts/validators/validate-source-cards.py
 python3 scripts/validators/validate-schema-files.py --mode "$MODE"
@@ -30,6 +31,7 @@ python3 scripts/checks/check-spec-gap-misuse.py --mode "$MODE"
 python3 scripts/validators/validate-claims.py --mode "$MODE"
 ./scripts/validators/validate-language-formal-assurance.sh "$MODE"
 ./scripts/validate-dafny-semantics-scaffold.sh "$MODE"
+./scripts/validate-dafny-semantics.sh "$MODE"
 if [[ "$GENERATE_TRACEABILITY" == "1" ]]; then
   python3 scripts/checks/check-registry-links.py --mode "$MODE"
 else
@@ -43,6 +45,7 @@ else
 fi
 ./scripts/validate-artifact-hygiene.sh "$MODE"
 ./scripts/validate-component-scaffold.sh "$MODE"
+python3 scripts/checks/check-phase1-red-team.py --mode "$MODE"
 python3 scripts/checks/check-evidence-status.py --mode "$MODE"
 ./scripts/validate-naming-safety.sh "$MODE"
 if [[ "$GENERATE_TRACEABILITY" == "1" ]]; then

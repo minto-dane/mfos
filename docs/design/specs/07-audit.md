@@ -23,7 +23,10 @@ Owner area: `docs/design/specs/07-audit.md`
 
 This document defines the MFOS audit evidence model and the `auditd` service. Audit is not ordinary logging. Audit records are security evidence used for authorization accountability, system integrity, job accounting, dataset activity, operator actions, update safety, partition operations, and High-Assurance Guard audit-root transitions.
 
-Phase 0.8 freezes audit semantics at design level only. This document, the machine-readable `AuditRecord` schema, the audit append state-machine artifact, the Phase 0.8 audit test catalog, and the audit-lead report do not authorize production implementation work.
+This specification records the Phase 0.8 design-level audit semantic freeze.
+The document, the machine-readable `AuditRecord` schema, the audit append
+state-machine artifact, the audit test catalog, and the audit-lead report do
+not authorize production implementation work.
 
 MFOS is z/OS-inspired and source-grounded. It does not claim compatibility with IBM products, z/Architecture, z/OS APIs, RACF, JES, DFSMS, SMF, or JCL.
 

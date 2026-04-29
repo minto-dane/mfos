@@ -80,7 +80,7 @@ Status: Draft index
 Owner: MFOS architecture
 Scope: `docs/design/specs/*.md`
 
-This index lists the current MFOS split specifications and routes implementation agents to the correct source material. It covers the numbered specs from `00` through `43`, including Phase 0.9 executable-spec artifacts, deferred Phase 0.10 planning scaffolds, and the Phase 1 Dafny executable-semantics scaffold policy.
+This index lists the current MFOS split specifications and routes implementation agents to the correct source material. It covers the numbered specs from `00` through `43`, including executable-spec artifacts, deferred planning scaffolds, and the Dafny executable-semantics scaffold policy. Phase provenance and implementation gates are kept in the routing addenda below rather than in the high-level index summary.
 
 MFOS is source-grounded and z/OS-inspired. This index does not claim z/OS compatibility, IBM product compatibility, z/Architecture compatibility, RACF compatibility, JES compatibility, DFSMS compatibility, SMF compatibility, Windows VBS compatibility, or Linux compatibility.
 
@@ -100,7 +100,7 @@ Status values:
 
 - `Draft`: split spec exists but is not frozen.
 - `Future candidate`: enough design detail exists for later work after the
-  current loader-only and source-grounding gates close. This is not an
+  current non-production Dafny and source-grounding gates close. This is not an
   implementation authorization.
 - `Blocked for production`: production claims require additional evidence, CI, or formalization.
 
@@ -108,10 +108,10 @@ The downstream-target column is a routing aid only. It does not authorize
 hosted prototype or implementation, semantic evaluator, Portable Semantic Core, daemon, nucleus,
 PXM, Guard, or production work.
 
-Phase 1 loader-only artifact validation remains allowed. Semantic evaluator
-work is conditional and requires a later reviewed domain gate; language,
-verification, automated-reasoning, and secure-operations entries in this index
-are policy/spec/registry planning only.
+Phase 1 non-production Dafny executable-semantics and conformance-harness work
+is allowed under Spec `43`. Product semantic evaluators, future semantic-runner
+commands, hosted daemons, Rust semantic-core work, and production work remain
+blocked.
 
 ## Split Specification Map
 
@@ -153,7 +153,7 @@ are policy/spec/registry planning only.
 | [33-policy-lint.md](33-policy-lint.md) | Defines policy lint as a first-class security control for overly broad default access, wildcard dataset ALTER grants, broad AMF authority, emergency roles without expiry, spool export without audit, and policy update without dual control. | securityd policy tooling, operator/security admin review, CI policy gates | EXTREF-IBM-ZOS-SECURITY-SERVER-0001, EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001, EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001, EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001, FBVBS-001 | policy lint engine, policy activation gate, security-admin review workflow, policy negative tests | 00, 01, 02, 04, 05, 06, 07, 21, 22, 23 | Draft. Gaps: concrete policy grammar, sensitive dataset taxonomy, warning acceptance workflow, policy diff algorithm, central policy lint registry. |
 | [31-executable-spec-test-harness.md](31-executable-spec-test-harness.md) | Defines Phase 0.9 executable-spec test harness artifact contracts without runner implementation. | executable-spec test architecture, schema validation | EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001, EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001, EXTREF-IBM-ZOS-SECURITY-SERVER-0001, EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001 | test catalog validation, fixture/oracle/golden-vector validation | 06, 07, 08, 09, 10, 29, 30-first-vertical-slice-contract | Draft. Phase 0.9 artifact contract only; runner implementation is prohibited. |
 | [32-conformance-fixture-format.md](32-conformance-fixture-format.md) | Defines deterministic Phase 0.9 fixture format and fixture boundary rules. | fixture authors, validation tooling | EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001, EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001, EXTREF-IBM-ZOS-SECURITY-SERVER-0001, EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001 | `tests/fixtures/**`, `schemas/test-fixture.schema.yml` | 31-executable-spec-test-harness | Draft. Fixture loader implementation is prohibited. |
-| [33-semantic-runner-contract.md](33-semantic-runner-contract.md) | Defines future semantic runner command contract and output obligations for a later reviewed gate. | future runner contract, conformance harness design | EXTREF-DAFNY-REFERENCE-0001, EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001, EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001, EXTREF-IBM-ZOS-SECURITY-SERVER-0001, EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001 | future `mfos-semantic-runner` contract only | 31-executable-spec-test-harness, 32-conformance-fixture-format, 34-oracle-definition-format, 43-dafny-executable-semantics-policy | Draft. Runner implementation is explicitly prohibited in Phase 0.9 and Phase 1 loader-only work. |
+| [33-semantic-runner-contract.md](33-semantic-runner-contract.md) | Defines future semantic runner command contract and output obligations for a later reviewed gate. | future runner contract, conformance harness design | EXTREF-DAFNY-REFERENCE-0001, EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001, EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001, EXTREF-IBM-ZOS-SECURITY-SERVER-0001, EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001 | future `mfos-semantic-runner` contract only | 31-executable-spec-test-harness, 32-conformance-fixture-format, 34-oracle-definition-format, 43-dafny-executable-semantics-policy | Draft. Runner command implementation is explicitly prohibited in Phase 0.9 and Phase 1. |
 | [34-oracle-definition-format.md](34-oracle-definition-format.md) | Defines oracle and golden-vector formats for expected decisions, audit sequence, state transitions, failures, and final state. | oracle authors, golden-vector validation | EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001, EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001, EXTREF-IBM-ZOS-SECURITY-SERVER-0001, EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001 | `tests/golden/**`, `schemas/oracle.schema.yml` | 31-executable-spec-test-harness, 32-conformance-fixture-format | Draft. Oracle evaluator implementation is prohibited. |
 | [35-fuzz-corpus-plan.md](35-fuzz-corpus-plan.md) | Defines Phase 0.9 fuzz corpus planning for MFOS-defined parsers and fixture formats. | fuzz planning, parser test design | EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001, EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001, EXTREF-IBM-ZOS-JES-INTRODUCTION-0001, EXTREF-IBM-ZOS-SECURITY-SERVER-0001, EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001 | `fuzz/targets/fuzz-target-plan.yml`, `fuzz/corpora/*/seed-plan.yml` | 29-test-strategy, 31-executable-spec-test-harness | Draft. Fuzzer implementation is prohibited. |
 | [36-hypervisor-class-virtualization.md](36-hypervisor-class-virtualization.md) | Reserves MFOS-owned virtualization planning concepts without importing external hypervisor APIs or compatibility claims. | virtualization planning, partition-resource accounting, future device assignment policy | X64-INTEL-001, X64-AMD-001, MS-VBS-001, MS-VSM-001, NIST-160-001, FBVBS-001 | registered draft `MFOS-REQ-VIRT-*` planning requirements | 03, 04, 16, 26 | Draft scaffold. No virtualization implementation, VM control API, device model, snapshot, or migration work is authorized. |
@@ -164,14 +164,16 @@ are policy/spec/registry planning only.
 | [41-performance-and-secure-operations.md](41-performance-and-secure-operations.md) | Reserves performance budget, secure operations, benchmark, rollback drill, and release operations evidence policies. | secure operations planning, performance evidence, release operations | NIST-160-001, NIST-218-001, NIST-193-001, SLSA-001, TUF-001, TCG-001, X64-INTEL-001, X64-AMD-001, EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001, FBVBS-001 | registered draft `MFOS-REQ-PERF-*` and `MFOS-REQ-OPS-*` planning requirements | 11, 13, 22, 25, 26, 30, 31, 38 | Draft scaffold. No performance, scalability, availability, or production operations claim is authorized. |
 
 | [42-mfvm.md](42-mfvm.md) | Defines MFVM as an MFOS-based VM management subsystem, less trusted than PXM, using PXM Control API and MFOS governance services. | MFVM control plane, PXM request planning, VM management governance | EXTREF-MICROSOFT-HYPERV-OVERVIEW-0001, EXTREF-MICROSOFT-HYPERV-TLFS-0001, EXTREF-LINUX-KVM-API-0001, EXTREF-LINUX-KVM-CAPABILITIES-0001, EXTREF-LINUX-KVM-VFIO-0001, EXTREF-INTEL-TDX-OVERVIEW-0001, EXTREF-AMD-SEV-SNP-0001, EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001, FBVBS-001 | registered draft `MFOS-REQ-MFVM-*`, `MFOS-REQ-VIRT-*`, `MFOS-REQ-CVM-*`, and `MFOS-REQ-CLUSTER-*` planning requirements | 16, 36, 37, 38, 41 | Draft. No MFVM implementation, PXM implementation, VM runtime, hosted daemon, semantic runner, or production work is authorized. |
-| [43-dafny-executable-semantics-policy.md](43-dafny-executable-semantics-policy.md) | Defines Phase 1 Dafny executable-semantics scaffold policy and keeps Phase 1 limited to loader-only artifact validation. | Dafny executable-semantics scaffold, loader-only validation policy | EXTREF-DAFNY-REFERENCE-0001, EXTREF-AWS-AUTOMATED-REASONING-0001, EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001, EXTREF-NIST-SSDF-0001, FBVBS-001 | registered draft `MFOS-REQ-DAFNY-*` planning requirements | 31, 33, 39, 40 | Draft. No semantic runner, Rust semantic-core, hosted daemon, production implementation, or production generated-code path is authorized. |
+| [43-dafny-executable-semantics-policy.md](43-dafny-executable-semantics-policy.md) | Defines Phase 1 Dafny executable-semantics policy, non-production model artifacts, and conformance-harness boundaries. | Dafny executable-semantics artifacts, fixture/oracle/golden comparison, verification status reporting | EXTREF-DAFNY-REFERENCE-0001, EXTREF-AWS-AUTOMATED-REASONING-0001, EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001, EXTREF-NIST-SSDF-0001, FBVBS-001 | registered draft `MFOS-REQ-DAFNY-*` and `MFOS-REQ-SEMSPEC-*` requirements | 31, 33, 39, 40 | Current Phase 1 policy. No semantic runner, Rust semantic-core, hosted daemon, production implementation, PXM/MFVM/CVM/cluster implementation, or production generated-code path is authorized. |
 
 ## Numbering Gaps
 
-The current split set has overlapping historical numbers because Phase 0.9 adds
-executable-spec artifacts as separate files without renaming the earlier
-release/localization/policy-lint specs. This overlap is a documentation routing
-gap only; `spec_id` remains unique and machine validation keys off `spec_id`.
+The current split set has overlapping historical numbers because
+executable-spec artifacts were split into separate files without renaming the
+earlier release/localization/policy-lint specs. Phase provenance is retained in
+the affected specs and reports, while this overlap remains a documentation
+routing gap only; `spec_id` remains unique and machine validation keys off
+`spec_id`.
 
 If a future number is skipped, the gap is a planning gap only; it is not permission to place undefined semantics into unrelated specs.
 
@@ -273,6 +275,15 @@ These gaps recur across multiple specs and should be resolved by dedicated follo
 - Keep source IDs explicit enough for AI routing; component specs remain authoritative for detailed citations.
 - Keep compatibility wording negative and explicit: MFOS is inspired by selected source concepts and does not claim product compatibility.
 
-## Phase 0.10 Routing Addendum
+## Planning And Phase-Gate Routing Addendum
 
-Specs `36` through `42` are draft/provisional requirements-expansion specs. They strengthen planning for PXM, MFVM, Confidential VM, datacenter/cluster, language verification, automated reasoning, and secure operations, but they do not authorize implementation. Spec `43` narrows Phase 1 to Dafny executable-semantics scaffold and loader-only artifact validation. Semantic evaluator work is conditional and requires a later reviewed domain gate; Rust semantic-core, semantic runner, hosted daemon, PXM/MFVM/CVM/cluster evaluator, and production work remain blocked until later gates close.
+Specs `36` through `42` are draft/provisional requirements-expansion specs
+originating from the Phase 0.10 planning work. They strengthen planning for PXM,
+MFVM, Confidential VM, datacenter/cluster, language verification, automated
+reasoning, and secure operations, but they do not authorize implementation.
+Spec `43` narrows Phase 1 to non-production Dafny executable-semantics
+artifacts and deterministic conformance-harness validation. Product semantic
+evaluator work is conditional and requires a later reviewed domain gate; Rust
+semantic-core, future semantic-runner commands, hosted daemon,
+PXM/MFVM/CVM/cluster evaluator, and production work remain blocked until later
+gates close.

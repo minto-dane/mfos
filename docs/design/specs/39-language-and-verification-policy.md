@@ -259,11 +259,11 @@ Phase 0.10 implementation authorization.
 
 ## 7.2 Phase 1 Executable-semantics Matrix Addendum
 
-Phase 1 executable semantics are Dafny-first and loader-only.
+Phase 1 executable semantics are Dafny-first and non-production.
 
 | Phase 1 area | Canonical artifact | Allowed Phase 1 activity | Forbidden Phase 1 activity |
 | --- | --- | --- | --- |
-| Executable semantics | Dafny source plus MFOS metadata | scaffold creation, artifact metadata validation, dependency/reference validation | Rust semantic-core implementation, semantic evaluation, semantic-runner commands, hosted daemons, production generated code |
+| Executable semantics | Dafny source plus MFOS metadata | pure semantic contracts, artifact metadata validation, dependency/reference validation, deterministic conformance checks | Rust semantic-core implementation, product semantic evaluator, semantic-runner commands, hosted daemons, production generated code |
 | Supporting models | TLA+ and Alloy | model planning and registry linkage | product behavior, service implementation, production enforcement |
 | Later implementation | Rust after separate gate | conformance planning only | replacing Dafny as Phase 1 canonical executable semantics |
 
@@ -321,9 +321,9 @@ Verus evidence must link specification functions, executable functions, assumpti
 
 ## 14.1 Dafny Executable-semantics Policy
 
-Dafny is the canonical executable-semantics artifact language for Phase 1. This is a specification and loader-validation decision, not an implementation authorization.
+Dafny is the canonical executable-semantics artifact language for Phase 1. This is a specification and non-production conformance decision, not production implementation authorization.
 
-Dafny artifacts may become reviewed executable-semantics sources after a Phase 1 task creates them under `formal/executable-semantics/dafny/`. Phase 1 tooling may validate artifact shape, declared requirement links, source references, dependency declarations, and proof-status metadata. Phase 1 tooling must not evaluate MFOS behavior, operate as a semantic runner, start a hosted daemon, or produce production code.
+Dafny artifacts under `formal/executable-semantics/dafny/` are reviewed executable-semantics sources for Phase 1. Phase 1 tooling may validate artifact shape, declared requirement links, source references, dependency declarations, proof-status metadata, and deterministic fixture/oracle/golden comparison. Phase 1 tooling must not operate as the future semantic runner, start a hosted daemon, or produce production code.
 
 Dafny verification output is evidence only when linked to source, requirements, assumptions, tool version, result, and review status. A Dafny plan or scaffold does not prove a component, service, partition primitive, VM primitive, or production runtime.
 

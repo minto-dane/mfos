@@ -103,7 +103,6 @@ FORBIDDEN_IMPLEMENTATION_FLAGS = {
     "portable_semantic_core",
     "hosted_semantic_prototype",
     "rust_semantic_core",
-    "dafny_executable_semantics",
     "generated_production_code",
 }
 
@@ -178,6 +177,14 @@ def _validate_metadata(path: Path, expected_dir: Path | None, findings: list[Fin
     for flag in FORBIDDEN_IMPLEMENTATION_FLAGS:
         if implementation_allowed.get(flag) is True:
             findings.append(Finding("ERROR", path, f"implementation_allowed.{flag} must not be true in Phase 0.x"))
+    if implementation_allowed.get("dafny_executable_semantics") is True and data.get("path") != "formal/executable-semantics/dafny":
+        findings.append(
+            Finding(
+                "ERROR",
+                path,
+                "implementation_allowed.dafny_executable_semantics may be true only for formal/executable-semantics/dafny",
+            )
+        )
     for flag in sorted(BOOLEAN_IMPLEMENTATION_FLAGS):
         if flag in implementation_allowed and not isinstance(implementation_allowed.get(flag), bool):
             findings.append(Finding("ERROR", path, f"implementation_allowed.{flag} must be boolean when present"))

@@ -29,7 +29,9 @@ Related requirements: `MFOS-REQ-CATALOG-*`, `MFOS-REQ-DATASET-*`, `MFOS-REQ-AUTH
 
 This specification defines MFOS datasets and catalogs as first-class enterprise OS objects. A dataset is not a POSIX file wrapper. A catalog entry binds a dataset name to controlled metadata, location, ownership, integrity state, security profile, and generation.
 
-Phase 0.8 freezes logical semantics only. It authorizes schema, model, test, and evidence planning work; it does not authorize production code or runtime success paths.
+This specification records a logical-semantic freeze only. It authorizes
+schema, model, test, and evidence planning work; it does not authorize
+production code or runtime success paths.
 
 MFOS is z/OS-inspired, not z/OS-compatible. The source-grounded overlap is the enterprise idea that named datasets are managed resources resolved through catalogs and governed by security and audit policy. MFOS diverges by defining a new x64-native object model, new service ABIs, and a smaller initial dataset type set.
 

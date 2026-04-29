@@ -1,0 +1,35 @@
+directory_id: MFOS-DIR-TOOLS
+path: tools
+role: validation
+maturity: M2_CLASSIFIED
+status: current
+canonical: true
+description: Non-production validation and conformance-support tooling.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  rust_semantic_core: false
+  dafny_executable_semantics: false
+  semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+  generated_production_code: false
+  validation_only: true
+phase_allowed_from: phase-1
+depends_on:
+  - docs/design/specs/31-executable-spec-test-harness.md
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
+allowed_contents:
+  - validation scripts
+  - deterministic normalizers
+  - non-production conformance harness helpers
+forbidden_contents:
+  - production code
+  - hosted daemon code
+  - Rust semantic-core implementation
+  - service implementation
+  - generated production code
+required_before_agent_assignment:
+  - tool scope statement
+  - non-production boundary statement
+review_status: draft

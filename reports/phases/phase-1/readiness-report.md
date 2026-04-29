@@ -1,6 +1,27 @@
 # Phase 1 Readiness Report
 
+Current status: superseded by active Phase 1 Dafny executable-semantics work.
+This report records the pre-Phase-1 readiness boundary produced after the
+Phase 0.9.7 source-grounding audit. The current Phase 1 authority is recorded
+in `docs/design/STATUS.md`,
+`docs/design/specs/43-dafny-executable-semantics-policy.md`, and the active
+reports under:
+
+- `reports/current/dafny-semantics-report.md`
+- `reports/current/dafny-semantics-validation-report.md`
+- `reports/current/dafny-verification-report.md`
+- `reports/current/fixture-oracle-loader-report.md`
+- `reports/current/model-consistency-report.md`
+
+Current Phase 1 permits non-production Dafny executable-semantics artifacts and
+conformance-harness structural checks. It still forbids Rust semantic-core
+work, production implementation, hosted daemons, semantic-runner command
+implementation, Dafny-generated production code, and PXM/MFVM/CVM/cluster
+implementation.
+
 Status: downgraded by Phase 0.9.7 source-grounding adequacy audit.
+
+Historical boundary at the time this report was first written:
 
 Phase 1 is not ready for Portable Semantic Core behavior implementation,
 Rust semantic-core implementation, semantic evaluator implementation, semantic
@@ -24,7 +45,7 @@ traceability repair until the source-grounding blockers in
 
 ## Phase 1 Permission Boundary
 
-Phase 1 may perform loader-only work:
+Historical pre-Phase-1 boundary: Phase 1 could perform loader-only work:
 
 - create reviewed Dafny executable-semantics scaffold artifacts under
   `formal/executable-semantics/dafny/`;
@@ -70,9 +91,12 @@ Production implementation remains blocked.
 ## Judgment
 
 ```yaml
+report_status: superseded_by_active_phase_1_dafny_semantics_reports
 phase_1_loader_allowed: true
 phase_1_dafny_skeleton_allowed: true
 phase_1_dafny_semantics_allowed: conditional
+current_phase_1_dafny_semantics_allowed: true
+current_phase_1_conformance_harness_allowed: true
 phase_1_portable_semantic_core_allowed: false
 phase_1_rust_semantic_core_allowed: false
 phase_1_semantic_evaluator_allowed_domains: []
@@ -80,5 +104,5 @@ production_implementation_allowed: false
 hosted_daemon_implementation_allowed: false
 semantic_runner_implementation_allowed: false
 public_release_allowed: false
-reason: Phase 0.9.7 found source-grounding and exact traceability gaps; pre-Phase-1 remediation narrows allowed work to Dafny scaffold plus loader-only artifact validation.
+reason: This historical readiness report was narrowed by Phase 0.9.7; active Phase 1 now permits non-production Dafny executable-semantics artifacts and conformance-harness structural checks, with Dafny verification still blocked until the toolchain is installed.
 ```

@@ -2,6 +2,7 @@
 set -euo pipefail
 
 MODE="${1:-draft}"
+export PYTHONDONTWRITEBYTECODE=1
 
 python3 scripts/checks/naming-safety/check-extref-namespace.py --mode "$MODE"
 python3 scripts/checks/naming-safety/check-source-card-public-safe.py --mode "$MODE"

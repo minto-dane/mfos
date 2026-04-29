@@ -1,18 +1,24 @@
-# Dafny Executable Semantics Scaffold
+# Dafny Executable Semantics
 
-Status: Phase 1 specification-only scaffold.
+Status: Phase 1 non-production executable-semantics artifacts.
 
-This directory is reserved for MFOS Dafny executable-semantics artifacts and related documentation. The canonical Phase 1 executable-semantics artifact language is Dafny.
+This directory contains the MFOS Phase 1 canonical executable-semantics source
+artifacts written in Dafny. These artifacts are specification and conformance
+artifacts only.
 
-No .dafny files are required by this scaffold. Dafny source files remain optional until a later reviewed artifact task creates them.
+Dafny source files are allowed only under this directory and related
+non-production test/evidence paths. Dafny generated output, if produced, must
+remain under `generated/` and must not be linked into production MFOS binaries
+or services.
 
-Phase 1 scope is loader-only artifact validation:
+Phase 1 scope here includes:
 
-- discover Dafny artifacts in this scaffold,
+- pure Dafny semantic contracts and invariants,
+- deterministic symbolic state transition functions,
+- fixture/oracle/golden compatibility contracts,
 - validate declared metadata shape,
 - check source references and requirement references,
-- check declared dependencies and proof status,
-- report malformed, missing, unsupported, or SPEC_GAP artifacts.
+- check declared dependencies and proof status.
 
 This directory does not authorize:
 
@@ -23,6 +29,16 @@ This directory does not authorize:
 - production use of Dafny-generated code,
 - production readiness or conformance claims.
 
-Dafny-generated code, if later produced by an explicitly non-production test task, is test-only and must not be linked into MFOS production services or packages.
+## Module Map
+
+- `modules/common.dfy`: shared deterministic primitives.
+- `modules/errors.dfy`: MFOS error taxonomy and fail-closed rules.
+- `modules/types.dfy`: MFOS-owned symbolic object types.
+- `modules/authorization.dfy`: authorization decision contracts.
+- `modules/audit.dfy`: audit-evidence and deny-before-return contracts.
+- `modules/dataset_catalog.dfy`: catalog resolution and dataset handle contracts.
+- `modules/job_spool.dfy`: job, DD resolution, and spool contracts.
+- `modules/operator_console.dfy`: operator command contracts.
+- `modules/first_vertical_slice.dfy`: HELLO job and BOB denied ALICE dataset contracts.
 
 Normative policy: `docs/design/specs/43-dafny-executable-semantics-policy.md`.

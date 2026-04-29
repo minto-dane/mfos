@@ -5,7 +5,10 @@ Status: draft expansion complete pending final validation
 
 ## Summary
 
-Phase 0.10 adds MFVM as an MFOS-based VM management subsystem and expands the design-only requirements base for PXM, hypervisor-class virtualization, Confidential VM profiles, datacenter/cluster operations, language verification, automated reasoning, and secure operations.
+Phase 0.10 records design-only MFVM requirements as an MFOS-based VM
+management subsystem and expands the requirements base for PXM,
+hypervisor-class virtualization, Confidential VM profiles, datacenter/cluster
+operations, language verification, automated reasoning, and secure operations.
 
 No production implementation, hosted daemon, semantic runner, semantic-core, PXM implementation, MFVM implementation, VM runtime, CVM launch code, or cluster scheduler was added.
 

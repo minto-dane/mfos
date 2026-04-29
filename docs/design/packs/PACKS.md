@@ -95,6 +95,7 @@ production implementation disabled.
 | PACK-34 | Language verification | `specs/39-language-and-verification-policy.md`, `specs/43-dafny-executable-semantics-policy.md` |
 | PACK-35 | Automated reasoning | `specs/40-automated-reasoning-program.md`, `specs/43-dafny-executable-semantics-policy.md`, `formal/registry.yml` |
 | PACK-36 | Performance and secure operations | `specs/41-performance-and-secure-operations.md` |
+| PACK-37 | Dafny executable semantics | `specs/43-dafny-executable-semantics-policy.md`, `formal/executable-semantics/dafny/modules/`, `tools/dafny-conformance-harness/` |
 
 ## Pack Completion Checklist
 
@@ -164,16 +165,18 @@ The runner contract is defined in
 `docs/design/specs/33-semantic-runner-contract.md`. This contract names future
 commands but explicitly prohibits a Phase 0.9 runner implementation.
 
-## Phase 0.10 PXM/MFVM Requirements Expansion
+## PXM / MFVM Deferred Pack Topology
 
-Phase 0.10 expands design-only pack contracts for PXM Core, MFVM,
+The deferred pack topology records design-only contracts for PXM Core, MFVM,
 Confidential VM profiles, datacenter/cluster operations, language verification,
-automated reasoning, and performance/secure operations.
+automated reasoning, and performance/secure operations. The current topology
+originated in the Phase 0.10 requirements expansion, but the pack contracts are
+durable routing artifacts rather than a phase changelog.
 
 The user-facing requested names `PACK-25` through `PACK-29` were not reused
-because the repository already assigns those IDs to existing canonical packs.
-The Phase 0.10 expansion therefore updates `PACK-14` for PXM and adds
-`PACK-31` through `PACK-36` for the new planning domains.
+because the repository already assigns those IDs to existing canonical packs;
+this topology therefore updates `PACK-14` for PXM and adds `PACK-31` through
+`PACK-36` for the new planning domains.
 
 Implementation authorization for `PACK-14` and `PACK-31` through `PACK-36` is:
 
@@ -188,20 +191,22 @@ specification_only: true
 
 Phase 1 remains limited to loader-only artifact validation for these domains.
 No PXM, MFVM, Confidential VM, cluster, semantic evaluator, hosted daemon, or
-production implementation is authorized by Phase 0.10.
+production implementation is authorized by these design-only pack contracts.
 
-## Pre-Phase-1 Dafny Loader-Only Gate
+## Phase 1 Dafny Executable-Semantics Gate
 
-Phase 1 executable semantics are Dafny-first and loader-only. The controlling
-policy is `docs/design/specs/43-dafny-executable-semantics-policy.md`.
+Phase 1 executable semantics are Dafny-first, non-production, and scoped to
+reviewed semantic artifacts plus deterministic conformance checks. The
+controlling policy is
+`docs/design/specs/43-dafny-executable-semantics-policy.md`.
 
 Allowed Phase 1 work:
 
-- Dafny executable-semantics scaffold metadata under
-  `formal/executable-semantics/dafny/`.
-- Loader-only artifact validation for shape, references, dependencies, and
-  declared proof status.
-- Traceability repair that does not evaluate MFOS behavior.
+- Dafny executable-semantics source artifacts under
+  `formal/executable-semantics/dafny/modules/`.
+- Fixture/oracle/golden loading and deterministic structural comparison.
+- Traceability and verification status reporting.
+- Non-production conformance harness tooling under `tools/`.
 
 Forbidden Phase 1 work:
 

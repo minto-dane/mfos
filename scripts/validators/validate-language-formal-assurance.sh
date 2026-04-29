@@ -2,6 +2,7 @@
 set -euo pipefail
 
 MODE="${1:-draft}"
+export PYTHONDONTWRITEBYTECODE=1
 
 python3 scripts/validators/validate-language-profiles.py --mode "$MODE"
 python3 scripts/validators/validate-formal-registry.py --mode "$MODE"

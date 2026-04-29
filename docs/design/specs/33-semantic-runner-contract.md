@@ -23,7 +23,7 @@ Owner area: `docs/design/specs/33-semantic-runner-contract.md`
 
 Audience: future runner authors, conformance authors, CI authors, release reviewers.
 
-This document defines the contract a future semantic runner must satisfy when one is implemented after a later reviewed gate. It does not implement a runner, evaluator, adapter, CLI, hosted daemon, or CI job. Phase 1 is constrained by `docs/design/specs/43-dafny-executable-semantics-policy.md`: Dafny executable-semantics scaffold plus loader-only artifact validation only. The contract exists so artifacts created in Phase 0.9 have a fixed future target without authorizing Phase 1 semantic-runner work.
+This document defines the contract a future semantic runner must satisfy when one is implemented after a later reviewed gate. It does not implement a runner, product evaluator, adapter, CLI, hosted daemon, or CI job. Phase 1 is constrained by `docs/design/specs/43-dafny-executable-semantics-policy.md`: non-production Dafny executable-semantics artifacts and conformance-harness checks are allowed, but the future `mfos-semantic-runner` commands remain unauthorized. The contract exists so artifacts created in Phase 0.9 have a fixed future target without authorizing Phase 1 semantic-runner work.
 
 ## 1. Purpose
 
@@ -122,7 +122,8 @@ Runner failures are distinct from MFOS expected failures.
 
 A future semantic runner, once a later gate authorizes runner implementation,
 MUST preserve expected MFOS typed failures exactly as declared by the oracle.
-Phase 1 loader-only Dafny scaffold work MUST NOT execute this runner contract.
+Phase 1 Dafny conformance-harness work MUST NOT implement the runner commands
+or expose this contract as a product interface.
 For authorization-oriented fixtures, the minimum error taxonomy is:
 
 - `MFOS_ERR_UNAUTHENTICATED`: no valid subject/principal/session exists.

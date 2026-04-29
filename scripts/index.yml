@@ -25,8 +25,17 @@ current:
     validate_dafny_semantics_scaffold:
       path: scripts/validate-dafny-semantics-scaffold.sh
       status: current
+    validate_dafny_semantics:
+      path: scripts/validate-dafny-semantics.sh
+      status: current
     validate_schema_files:
       path: scripts/validators/validate-schema-files.py
+      status: current
+    validate_dafny_semantics_artifacts:
+      path: scripts/validators/validate-dafny-semantics.py
+      status: current
+    validate_fixture_golden_loader:
+      path: scripts/validators/validate-fixture-golden-loader.py
       status: current
 
 sections:
@@ -36,6 +45,18 @@ sections:
   checks:
     path: scripts/checks/
     status: current
+    phase1_red_team:
+      path: scripts/checks/check-phase1-red-team.py
+      status: current
+    phase1_no_rust_semantic_core:
+      path: scripts/checks/check-phase1-no-rust-semantic-core.py
+      status: current
+    dafny_generated_not_production:
+      path: scripts/checks/check-dafny-generated-not-production.py
+      status: current
+    semantic_fixture_normalizer_boundary:
+      path: scripts/checks/check-semantic-fixture-normalizer.py
+      status: current
   artifact_hygiene_checks:
     path: scripts/checks/artifact-hygiene/
     status: current

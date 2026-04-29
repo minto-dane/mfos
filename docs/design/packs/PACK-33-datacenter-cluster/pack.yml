@@ -1,6 +1,6 @@
 scope:
 - design and validation
-- Phase 0.10 requirements expansion
+- deferred requirements expansion
 non_objectives:
 - production implementation
 - hosted daemon implementation
