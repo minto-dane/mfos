@@ -6,36 +6,6 @@ non_compatibility_statement: MFOS is z/OS-inspired and does not claim z/OS compa
   or IBM product compatibility.
 report_kind: traceability_gap_report
 summary:
-  gap_groups: 1
-  high_gap_groups: 1
-gaps:
-- gap_id: TRACE-SRC-0001
-  severity: high
-  summary: Source cards or source mappings reference requirements not registered in
-    the priority catalog.
-  count: 12
-  items:
-  - source_id: EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001
-    requirement_id: MFOS-REQ-WLM-0001
-  - source_id: EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001
-    requirement_id: MFOS-REQ-WLM-0002
-  - source_id: EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001
-    requirement_id: MFOS-REQ-WLM-0006
-  - source_id: EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001
-    requirement_id: MFOS-REQ-WLM-0009
-  - source_id: EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001
-    requirement_id: MFOS-REQ-WLM-0010
-  - source_id: EXTREF-KANI-RUST-VERIFIER-0001
-    requirement_id: MFOS-REQ-FORMAL-0103
-  - source_id: EXTREF-VERUS-RUST-VERIFICATION-0001
-    requirement_id: MFOS-REQ-FORMAL-0104
-  - source_id: EXTREF-AWS-AUTOMATED-REASONING-0001
-    requirement_id: MFOS-REQ-FORMAL-0101
-  - source_id: EXTREF-AWS-AUTOMATED-REASONING-0001
-    requirement_id: MFOS-REQ-FORMAL-0105
-  - source_id: EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
-    requirement_id: MFOS-REQ-FORMAL-0101
-  - source_id: EXTREF-MICROSOFT-HYPERV-VSM-0001
-    requirement_id: MFOS-REQ-FORMAL-0106
-  - source_id: EXTREF-RUST-UNSAFE-REFERENCE-0001
-    requirement_id: MFOS-REQ-FORMAL-0102
+  gap_groups: 0
+  high_gap_groups: 0
+gaps: []

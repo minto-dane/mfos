@@ -20,9 +20,7 @@ audit_obligations:
 - AUDIT_FORMAL_CLAIM_STATUS_CHANGE
 positive_tests:
 - TEST-MFOS-FORMAL-0101
-- TEST-MFOS-FORMAL-0106
 negative_tests:
-- NEG-MFOS-FORMAL-0105
 - NEG-MFOS-FORMAL-0108
 fuzz_targets: &id001
 - formal-registry-validation

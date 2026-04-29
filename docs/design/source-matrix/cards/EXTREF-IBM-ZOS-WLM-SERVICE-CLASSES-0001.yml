@@ -2,15 +2,19 @@ schema_version: 1
 status: draft
 gaps:
 - Define phase-1 job class and priority schema.
-version_or_scope: workload-management; converted from docs/design/source-matrix/source-matrix.yaml. Exact section/version pins remain gaps unless listed below.
+version_or_scope: workload-management; converted from docs/design/source-matrix/source-matrix.yaml.
+  Exact section/version pins remain gaps unless listed below.
 version_or_release: z/OS 3.2.0
 publication_number: null
 section_scope: 'workload-management; URL path scope: docs/SSLTBW_3.2.0/com.ibm.zos.v3r2.ieaw100/sclg.htm'
 pin_quality: release_pinned_from_url
 review_notes:
-- Pin metadata added from existing local title/URL metadata only; no external document body text copied.
-- Publication number is not present in the local card title or URL; leave null until source review confirms it.
-- Pin is stronger than the prior scope-only card, but semantic extraction still requires normal source review.
+- Pin metadata added from existing local title/URL metadata only; no external document
+  body text copied.
+- Publication number is not present in the local card title or URL; leave null until
+  source review confirms it.
+- Pin is stronger than the prior scope-only card, but semantic extraction still requires
+  normal source review.
 required_negative_tests:
 - TEST-WLM-SECURITY-CRITICAL-STARVATION-001
 - TEST-WLM-UNAUTHORIZED-POLICY-UPDATE-001
@@ -52,15 +56,17 @@ mfos_mapping:
   - dispatch hints
   mfos_specs: []
   mfos_requirements: &id001
-  - MFOS-REQ-WLM-0001
-  - MFOS-REQ-WLM-0002
-  - MFOS-REQ-WLM-0006
-  - MFOS-REQ-WLM-0009
-  - MFOS-REQ-WLM-0010
+  - MFOS-REQ-WPOL-0001
+  - MFOS-REQ-WPOL-0002
+  - MFOS-REQ-WPOL-0006
+  - MFOS-REQ-WPOL-0009
+  - MFOS-REQ-WPOL-0010
   mapping_notes:
-  - Grounds service classes, performance goals, resource requirements, business importance, response time, velocity-like goals, and discretionary work.
+  - Grounds service classes, performance goals, resource requirements, business importance,
+    response time, velocity-like goals, and discretionary work.
 mfos_divergence:
-- MFOS starts with job class, priority, max concurrency, resource caps, and dispatch hints before implementing advanced service goals.
+- MFOS starts with job class, priority, max concurrency, resource caps, and dispatch
+  hints before implementing advanced service goals.
 prohibited_inference:
 - Forbidden claim: wlmd is z/OS WLM-compatible.
 - Do not claim z/OS compatibility.

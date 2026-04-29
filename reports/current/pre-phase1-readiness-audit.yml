@@ -2,10 +2,10 @@ schema_version: 1
 artifact_type: pre_phase1_readiness_audit
 status: current
 date: '2026-04-28'
-branch: fix/pre-phase-1-total-readiness-iteration-3
+branch: fix/pre-phase1-fixedpoint-closure
 pull_request:
-  number: 13
-  url: https://github.com/minto-dane/mfos/pull/13
+  number: null
+  url: null
 phase_0_10_dependency:
   pr: 10
   branch: fix/phase-0.10-pxm-mfvm-expansion
@@ -17,8 +17,12 @@ previous_readiness_pr:
 second_pass_readiness_pr:
   pr: 12
   status: merged
+iteration_3_readiness_pr:
+  pr: 13
+  status: merged
 second_pass_package: reports/current/pre-phase1/
 iteration_3_package: reports/current/pre-phase1/
+fixedpoint_package: reports/current/fixedpoint/
 critical_findings_remaining: false
 major_findings_remaining: false
 phase_1_ready_scope:
@@ -26,15 +30,15 @@ phase_1_ready_scope:
   loader_only_artifact_validation_allowed: true
   traceability_repair_allowed: true
 forbidden_scope:
-  rust_semantic_core: false
-  portable_semantic_core: false
-  semantic_runner: false
-  hosted_daemon: false
-  hosted_semantic_prototype: false
-  production_code: false
-  generated_production_code: false
-  service_implementation: false
-  pxm_mfvm_cvm_cluster_implementation: false
+  rust_semantic_core: true
+  portable_semantic_core: true
+  semantic_runner: true
+  hosted_daemon: true
+  hosted_semantic_prototype: true
+  production_code: true
+  generated_production_code: true
+  service_implementation: true
+  pxm_mfvm_cvm_cluster_implementation: true
 validation:
   validate_all_check: passed
   validate_naming_safety_release: passed
@@ -43,8 +47,8 @@ validation:
   validate_language_formal_assurance: passed
   validate_dafny_semantics_scaffold_check: passed
 github_checks:
-  validate_design_registries_and_lint_gates: tracked_in_pr_13
-  codeql_analysis_python: tracked_in_pr_13
-  codeql: tracked_in_pr_13
+  validate_design_registries_and_lint_gates: pending_fixedpoint_pr
+  codeql_analysis_python: pending_fixedpoint_pr
+  codeql: pending_fixedpoint_pr
 public_release_allowed: false
 requires_ip_attorney_review_before_public_release: true

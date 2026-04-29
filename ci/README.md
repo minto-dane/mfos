@@ -1,7 +1,9 @@
 # ci/
 
-CI and local lint gates. The first checks are implemented as local scripts in
-`scripts/` and can later be wired into CI workflows.
+CI and local lint gates. The executable validators live under `scripts/`; this
+directory records CI-facing policy and future linter scaffolds. Current GitHub
+Actions invoke `./scripts/validate-all.sh --check` plus focused gates for
+component scaffold and Dafny policy validation.
 
 Required gate families:
 
@@ -12,4 +14,3 @@ Required gate families:
 - audit-obligation coverage
 - fuzz-target registration
 - Japanese canonical conflict detection
-

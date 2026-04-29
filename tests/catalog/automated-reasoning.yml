@@ -10,7 +10,7 @@ entries:
   target_specs:
   - docs/design/specs/40-automated-reasoning-program.md
   target_requirements:
-  - MFOS-REQ-FORMAL-0101
+  - MFOS-REQ-FORMAL-0001
   source_refs:
   - EXTREF-AWS-AUTOMATED-REASONING-0001
   preconditions:

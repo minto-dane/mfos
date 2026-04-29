@@ -80,9 +80,9 @@ concept_cards:
         - JobClass
         - ServiceClass
       requirements:
-        - MFOS-REQ-WLM-0001
-        - MFOS-REQ-WLM-0002
-        - MFOS-REQ-WLM-0009
+        - MFOS-REQ-WPOL-0001
+        - MFOS-REQ-WPOL-0002
+        - MFOS-REQ-WPOL-0009
     divergence:
       - MFOS starts with simple classes and caps; advanced goals are not yet claimed.
     prohibited_inference:

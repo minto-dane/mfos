@@ -187,8 +187,9 @@ entries:
   - no release gate pass emitted
   expected_error_code: CI_FAILURE
   audit_expectations: []
-  fixtures:
-  - path: tests/fixtures/ci/fake-success.rs
+  fixtures: []
+  fixture_policy: No executable fake-success fixture is stored in the repository;
+    this registry entry is a lint-plan record only.
   fuzz:
     target_name: null
     corpus_path: null

@@ -42,6 +42,7 @@ CANONICAL_ROOTS = [
 ALLOWED_PREFIXES = (
     "reports/phases/",
     "reports/archive/",
+    "reports/current/fixedpoint/",
     "evidence/archive/",
     "evidence/traceability/archive/",
     "evidence/traceability/generated/",

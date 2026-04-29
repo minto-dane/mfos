@@ -4,16 +4,15 @@ status: current
 phase_1_blockers_found: false
 actions:
 - task_id: SCAF-NEXT-0001
-  priority: P1 before Phase 1
+  priority: P2 before production implementation
   recommended_action: add_readme_only
-  title: Add component-level implementation scaffold metadata before assigning Phase
-    1 work
+  title: Add component-level implementation scaffold metadata before assigning future
+    implementation work
   paths:
-  - implementation/prototypes/hosted-semantic/
   - implementation/runtime/
   - implementation/services/
-  reason: Root README warns against production readiness, but empty leaf directories
-    still look ready to agents.
+  reason: Root README and .mfos-dir metadata warn against production readiness; empty
+    future leaves should remain unassigned until a later gate.
   phase_1_blocker: false
 - task_id: SCAF-NEXT-0002
   priority: P2 before production implementation

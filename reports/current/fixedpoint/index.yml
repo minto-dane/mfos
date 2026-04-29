@@ -1,0 +1,27 @@
+schema_version: 1
+artifact_index_kind: mfos_fixedpoint_closure_package
+status: current
+date: '2026-04-28'
+current:
+  repository_graph:
+    path: reports/current/fixedpoint/repository-graph.md
+    machine_readable: reports/current/fixedpoint/repository-graph.yml
+  issue_ledger:
+    path: reports/current/fixedpoint/issue-ledger.md
+    machine_readable: reports/current/fixedpoint/issue-ledger.yml
+  loop_history:
+    path: reports/current/fixedpoint/loop-history.yml
+  validation_report:
+    path: reports/current/fixedpoint/validation-report.md
+    machine_readable: reports/current/fixedpoint/validation-report.yml
+  final_red_team_review:
+    path: reports/current/fixedpoint/final-red-team-review.md
+  phase_1_ready_report:
+    path: reports/current/fixedpoint/phase-1-ready-report.md
+    machine_readable: reports/current/fixedpoint/phase-1-ready-report.yml
+  final_summary:
+    path: reports/current/fixedpoint/final-summary.md
+policy:
+  implementation_allowed: false
+  public_release_allowed: false
+  phase_1_scope: dafny_scaffold_and_loader_only_validation

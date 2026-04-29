@@ -24,6 +24,13 @@ defaults:
     production: false
     hardware_enforcement_claim: false
     system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    rust_semantic_core: false
+    executable_spec: false
+    generated_production_code: false
+    specification_only: true
   prompt: docs/design/prompts/ai-prompts.md
 entries:
 - scope:
@@ -47,6 +54,13 @@ entries:
     production: false
     hardware_enforcement_claim: false
     system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    rust_semantic_core: false
+    executable_spec: false
+    generated_production_code: false
+    specification_only: true
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-00
   title: Normative Language and Profiles
@@ -83,6 +97,13 @@ entries:
     production: false
     hardware_enforcement_claim: false
     system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    rust_semantic_core: false
+    executable_spec: false
+    generated_production_code: false
+    specification_only: true
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-01
   title: Source Matrix and External Reference Mapping
@@ -121,6 +142,13 @@ entries:
     production: false
     hardware_enforcement_claim: false
     system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    rust_semantic_core: false
+    executable_spec: false
+    generated_production_code: false
+    specification_only: true
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-02
   title: Glossary
@@ -158,6 +186,13 @@ entries:
     production: false
     hardware_enforcement_claim: false
     system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    rust_semantic_core: false
+    executable_spec: false
+    generated_production_code: false
+    specification_only: true
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-03
   title: System Integrity
@@ -198,6 +233,13 @@ entries:
     production: false
     hardware_enforcement_claim: false
     system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    rust_semantic_core: false
+    executable_spec: false
+    generated_production_code: false
+    specification_only: true
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-04
   title: Object Model
@@ -272,6 +314,9 @@ entries:
     portable_semantic_core: false
     executable_spec: false
     specification_only: true
+    semantic_runner: false
+    rust_semantic_core: false
+    generated_production_code: false
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-05
   title: Authorization Model
@@ -364,6 +409,9 @@ entries:
     portable_semantic_core: false
     executable_spec: false
     specification_only: true
+    semantic_runner: false
+    rust_semantic_core: false
+    generated_production_code: false
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-06
   title: Audit Schema
@@ -466,6 +514,9 @@ entries:
     portable_semantic_core: false
     executable_spec: false
     specification_only: true
+    semantic_runner: false
+    rust_semantic_core: false
+    generated_production_code: false
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-07
   title: Dataset/Catalog
@@ -565,6 +616,9 @@ entries:
     portable_semantic_core: false
     executable_spec: false
     specification_only: true
+    semantic_runner: false
+    rust_semantic_core: false
+    generated_production_code: false
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-08
   title: Job/Spool
@@ -657,6 +711,9 @@ entries:
     portable_semantic_core: false
     executable_spec: false
     specification_only: true
+    semantic_runner: false
+    rust_semantic_core: false
+    generated_production_code: false
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-09
   title: Operator Console
@@ -716,6 +773,13 @@ entries:
     production: false
     hardware_enforcement_claim: false
     system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    rust_semantic_core: false
+    executable_spec: false
+    generated_production_code: false
+    specification_only: true
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-10
   title: Workload Policy
@@ -761,6 +825,13 @@ entries:
     production: false
     hardware_enforcement_claim: false
     system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    rust_semantic_core: false
+    executable_spec: false
+    generated_production_code: false
+    specification_only: true
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-11
   title: AMF
@@ -810,6 +881,13 @@ entries:
     production: false
     hardware_enforcement_claim: false
     system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    rust_semantic_core: false
+    executable_spec: false
+    generated_production_code: false
+    specification_only: true
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-12
   title: Update Verification
@@ -858,6 +936,13 @@ entries:
     production: false
     hardware_enforcement_claim: false
     system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    rust_semantic_core: false
+    executable_spec: false
+    generated_production_code: false
+    specification_only: true
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-13
   title: Nucleus and SVC/PCALL
@@ -873,8 +958,9 @@ entries:
   - docs/design/specs/14-nucleus.md
   - docs/design/specs/15-svc-pcall.md
   outputs:
-  - implementation/nucleus
-  - implementation/runtime/abi
+  - docs/design/specs/14-nucleus.md
+  - docs/design/specs/15-svc-pcall.md
+  - reports/audits/packs/pack-audit.md
   source_refs:
   - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
   - EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
@@ -932,6 +1018,8 @@ entries:
     portable_semantic_core: false
     executable_spec: false
     specification_only: true
+    rust_semantic_core: false
+    generated_production_code: false
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-14
   title: PXM Partition Manager
@@ -988,6 +1076,13 @@ entries:
     production: false
     hardware_enforcement_claim: false
     system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    rust_semantic_core: false
+    executable_spec: false
+    generated_production_code: false
+    specification_only: true
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-15
   title: PXM Guard
@@ -1005,7 +1100,8 @@ entries:
   inputs:
   - docs/design/specs/17-guard.md
   outputs:
-  - implementation/guard
+  - docs/design/specs/17-guard.md
+  - reports/audits/packs/pack-audit.md
   source_refs:
   - MS-VBS-001
   - MS-VSM-001
@@ -1034,6 +1130,13 @@ entries:
     production: false
     hardware_enforcement_claim: false
     system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    rust_semantic_core: false
+    executable_spec: false
+    generated_production_code: false
+    specification_only: true
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-16
   title: Linux/Desktop Gateway
@@ -1050,8 +1153,8 @@ entries:
   inputs:
   - docs/design/specs/18-linux-gateway.md
   outputs:
-  - implementation/interfaces/linux-gateway
-  - implementation/sidecars/linux-desktop-partition
+  - docs/design/specs/18-linux-gateway.md
+  - reports/audits/packs/pack-audit.md
   source_refs:
   - EXTREF-IBM-Z-LPAR-INTRODUCTION-0001
   - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
@@ -1079,6 +1182,13 @@ entries:
     production: false
     hardware_enforcement_claim: false
     system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    rust_semantic_core: false
+    executable_spec: false
+    generated_production_code: false
+    specification_only: true
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-17
   title: Assurance and Conformance
@@ -1122,6 +1232,13 @@ entries:
     production: false
     hardware_enforcement_claim: false
     system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    rust_semantic_core: false
+    executable_spec: false
+    generated_production_code: false
+    specification_only: true
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-18
   title: Prompts
@@ -1160,6 +1277,13 @@ entries:
     production: false
     hardware_enforcement_claim: false
     system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    rust_semantic_core: false
+    executable_spec: false
+    generated_production_code: false
+    specification_only: true
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-19
   title: Roadmap and Task IDs
@@ -1195,6 +1319,13 @@ entries:
     production: false
     hardware_enforcement_claim: false
     system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    rust_semantic_core: false
+    executable_spec: false
+    generated_production_code: false
+    specification_only: true
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-20
   title: AI Contract and Production Readiness
@@ -1237,6 +1368,13 @@ entries:
     production: false
     hardware_enforcement_claim: false
     system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    rust_semantic_core: false
+    executable_spec: false
+    generated_production_code: false
+    specification_only: true
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-21
   title: Requirements and Roadmap
@@ -1275,6 +1413,13 @@ entries:
     production: false
     hardware_enforcement_claim: false
     system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    rust_semantic_core: false
+    executable_spec: false
+    generated_production_code: false
+    specification_only: true
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-22
   title: Formal Methods
@@ -1322,6 +1467,13 @@ entries:
     production: false
     hardware_enforcement_claim: false
     system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    rust_semantic_core: false
+    executable_spec: false
+    generated_production_code: false
+    specification_only: true
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-23
   title: Operations and Recovery
@@ -1366,6 +1518,13 @@ entries:
     production: false
     hardware_enforcement_claim: false
     system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    rust_semantic_core: false
+    executable_spec: false
+    generated_production_code: false
+    specification_only: true
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-24
   title: Hardware Profile and Attestation
@@ -1408,6 +1567,13 @@ entries:
     production: false
     hardware_enforcement_claim: false
     system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    rust_semantic_core: false
+    executable_spec: false
+    generated_production_code: false
+    specification_only: true
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-25
   title: Spec and Registry Schemas
@@ -1449,6 +1615,13 @@ entries:
     production: false
     hardware_enforcement_claim: false
     system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    rust_semantic_core: false
+    executable_spec: false
+    generated_production_code: false
+    specification_only: true
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-26
   title: Test Strategy
@@ -1492,6 +1665,13 @@ entries:
     production: false
     hardware_enforcement_claim: false
     system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    rust_semantic_core: false
+    executable_spec: false
+    generated_production_code: false
+    specification_only: true
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-27
   title: Release Workflow
@@ -1534,6 +1714,13 @@ entries:
     production: false
     hardware_enforcement_claim: false
     system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    rust_semantic_core: false
+    executable_spec: false
+    generated_production_code: false
+    specification_only: true
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-28
   title: Source Lint and Traceability Automation
@@ -1574,6 +1761,13 @@ entries:
     production: false
     hardware_enforcement_claim: false
     system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    rust_semantic_core: false
+    executable_spec: false
+    generated_production_code: false
+    specification_only: true
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-29
   title: Language and Japanese Sync
@@ -1615,6 +1809,13 @@ entries:
     production: false
     hardware_enforcement_claim: false
     system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    rust_semantic_core: false
+    executable_spec: false
+    generated_production_code: false
+    specification_only: true
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-30
   title: Policy Lint
@@ -1683,6 +1884,8 @@ entries:
     portable_semantic_core: false
     executable_spec: false
     specification_only: true
+    rust_semantic_core: false
+    generated_production_code: false
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-31
   title: MFVM
@@ -1769,6 +1972,8 @@ entries:
     portable_semantic_core: false
     executable_spec: false
     specification_only: true
+    rust_semantic_core: false
+    generated_production_code: false
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-32
   title: Confidential VM
@@ -1855,6 +2060,8 @@ entries:
     portable_semantic_core: false
     executable_spec: false
     specification_only: true
+    rust_semantic_core: false
+    generated_production_code: false
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-33
   title: Datacenter Cluster
@@ -1912,10 +2119,8 @@ entries:
   - AUDIT_VERIFICATION_POLICY_CHANGE
   positive_tests:
   - TEST-MFOS-LANG-0101
-  - TEST-MFOS-LANG-0104
   negative_tests:
   - NEG-MFOS-LANG-0103
-  - NEG-MFOS-LANG-0106
   fuzz_targets: &id005
   - policy-language-parser
   - unsafe-boundary-registry-validation
@@ -1934,6 +2139,8 @@ entries:
     portable_semantic_core: false
     executable_spec: false
     specification_only: true
+    rust_semantic_core: false
+    generated_production_code: false
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-34
   title: Language Verification
@@ -1985,9 +2192,7 @@ entries:
   - AUDIT_FORMAL_CLAIM_STATUS_CHANGE
   positive_tests:
   - TEST-MFOS-FORMAL-0101
-  - TEST-MFOS-FORMAL-0106
   negative_tests:
-  - NEG-MFOS-FORMAL-0105
   - NEG-MFOS-FORMAL-0108
   fuzz_targets: &id006
   - formal-registry-validation
@@ -2009,6 +2214,8 @@ entries:
     portable_semantic_core: false
     executable_spec: false
     specification_only: true
+    rust_semantic_core: false
+    generated_production_code: false
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-35
   title: Automated Reasoning
@@ -2090,6 +2297,8 @@ entries:
     portable_semantic_core: false
     executable_spec: false
     specification_only: true
+    rust_semantic_core: false
+    generated_production_code: false
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-36
   title: Performance and Secure Operations

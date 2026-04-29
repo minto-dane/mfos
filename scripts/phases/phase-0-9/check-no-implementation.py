@@ -33,7 +33,21 @@ PHASE09_ROOTS = [
     ROOT / "runtime",
     ROOT / "interfaces",
 ]
-FORBIDDEN_SUFFIXES = {".rs", ".c", ".cc", ".cpp", ".h", ".hpp", ".go", ".java", ".kt", ".ts", ".js"}
+FORBIDDEN_SUFFIXES = {
+    ".rs",
+    ".c",
+    ".cc",
+    ".cpp",
+    ".h",
+    ".hpp",
+    ".go",
+    ".java",
+    ".kt",
+    ".ts",
+    ".js",
+    ".py",
+    ".sh",
+}
 ALLOWED_SCRIPT_PATHS = {
     ROOT / "scripts/phases/phase-0-9/validate.sh",
 }

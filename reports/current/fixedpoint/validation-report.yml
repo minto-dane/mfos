@@ -1,0 +1,111 @@
+schema_version: 1
+artifact_type: fixedpoint_validation_report
+status: current
+date: '2026-04-28'
+branch: fix/pre-phase1-fixedpoint-closure
+commands:
+- command: ./scripts/validate-all.sh --check
+  result: passed
+- command: ./scripts/validate-naming-safety.sh release
+  result: passed
+- command: ./scripts/validate-artifact-hygiene.sh
+  result: passed
+- command: ./scripts/validate-component-scaffold.sh
+  result: passed
+- command: ./scripts/validate-language-formal-assurance.sh
+  result: passed
+- command: ./scripts/validate-dafny-semantics-scaffold.sh
+  result: passed
+- command: ./scripts/phases/phase-0-9/validate.sh --check
+  result: passed
+- command: python3 -m py_compile $(find scripts -name '*.py' -type f | sort)
+  result: passed
+- command: git diff --check
+  result: passed
+all_local_validation_passed: true
+warnings: 0
+errors: 0
+github_checks: pending_pr_creation
+notes:
+- Phase-name policy explicitly permits reports/current/fixedpoint/ because the fixed-point
+  package requires phase-1-ready-report artifacts.
+- Repository graph omits noncanonical legacy Source IDs from active source_refs outside
+  alias-map context.
+log_excerpt_lines:
+- $ ./scripts/validate-all.sh --check
+- 'Source Card validation OK: 65 cards'
+- 'Schema artifact validation OK: 48 schemas checked: 0 warnings'
+- 'Requirement validation OK: 210 entries'
+- Prohibited wording check OK
+- No fake-success placeholders found in implementation areas
+- 'Spec front matter validation OK: 49 specs checked: 0 warnings'
+- 'Pack validation OK: 37 packs checked: 0 warnings'
+- 'Source grounding check OK: 0 warnings'
+- 'Audit obligation check OK: 210 requirements checked: 0 warnings'
+- 'SPEC_GAP/UNSUPPORTED misuse check OK: 0 warnings'
+- 'Claim validation OK: 9 claims checked: 0 warnings'
+- 'Language profile validation OK: 0 warnings'
+- 'Formal registry validation OK: 0 warnings'
+- 'Proof obligation validation OK: 0 warnings'
+- 'Unsafe inventory check OK: 0 warnings'
+- 'Assembly boundary check OK: 0 warnings'
+- 'C/C++ exception check OK: 0 warnings'
+- 'Hardening evidence check OK: 0 warnings'
+- 'No proof overclaim check OK: 0 warnings'
+- 'Dafny semantics scaffold validation OK: 0 warnings'
+- 'Registry link validation OK: 0 warnings'
+- Phase 0.8 traceability check passed in draft mode.
+- 'Phase 0.9 test catalog validation OK: 154 entries checked'
+- 'Phase 0.9 fixture validation OK: 74 fixtures checked'
+- 'Phase 0.9 oracle validation OK: 74 oracles checked'
+- 'Phase 0.9 golden vector validation OK: 74 vectors checked'
+- 'Phase 0.9 fuzz corpus plan validation OK: 9 targets checked'
+- Phase 0.9 no-implementation check OK
+- 'Artifact layout check OK: 0 warnings'
+- 'Phase-name policy check OK: 0 warnings'
+- 'Artifact index check OK: 0 warnings'
+- 'Orphaned artifact check OK: 0 warnings'
+- 'Component scaffold metadata check OK: 0 warnings'
+- 'Evidence status check OK: 265 entries checked: 0 warnings'
+- 'EXTREF namespace check OK: 0 warnings'
+- 'Source Card public-safety check OK: 0 warnings'
+- 'Sources workbench public-safety check OK: 0 warnings'
+- 'Requirement namespace check OK: 0 warnings'
+- 'MFOS-owned name check OK: 0 warnings'
+- 'Compatibility-claim check OK: 0 warnings'
+- 'External-doc copy guard OK: 0 warnings'
+- $ ./scripts/validate-naming-safety.sh release
+- 'EXTREF namespace check OK: 0 warnings'
+- 'Source Card public-safety check OK: 0 warnings'
+- 'Sources workbench public-safety check OK: 0 warnings'
+- 'Requirement namespace check OK: 0 warnings'
+- 'MFOS-owned name check OK: 0 warnings'
+- 'Compatibility-claim check OK: 0 warnings'
+- 'External-doc copy guard OK: 0 warnings'
+- $ ./scripts/validate-artifact-hygiene.sh
+- 'Artifact layout check OK: 0 warnings'
+- 'Phase-name policy check OK: 0 warnings'
+- 'Artifact index check OK: 0 warnings'
+- 'Orphaned artifact check OK: 0 warnings'
+- $ ./scripts/validate-component-scaffold.sh
+- 'Component scaffold metadata check OK: 0 warnings'
+- $ ./scripts/validate-language-formal-assurance.sh
+- 'Language profile validation OK: 0 warnings'
+- 'Formal registry validation OK: 0 warnings'
+- 'Proof obligation validation OK: 0 warnings'
+- 'Unsafe inventory check OK: 0 warnings'
+- 'Assembly boundary check OK: 0 warnings'
+- 'C/C++ exception check OK: 0 warnings'
+- 'Hardening evidence check OK: 0 warnings'
+- 'No proof overclaim check OK: 0 warnings'
+- $ ./scripts/validate-dafny-semantics-scaffold.sh
+- 'Dafny semantics scaffold validation OK: 0 warnings'
+- $ ./scripts/phases/phase-0-9/validate.sh --check
+- 'Phase 0.9 test catalog validation OK: 154 entries checked'
+- 'Phase 0.9 fixture validation OK: 74 fixtures checked'
+- 'Phase 0.9 oracle validation OK: 74 oracles checked'
+- 'Phase 0.9 golden vector validation OK: 74 vectors checked'
+- 'Phase 0.9 fuzz corpus plan validation OK: 9 targets checked'
+- Phase 0.9 no-implementation check OK
+- $ python3 -m py_compile $(find scripts -name *.py -type f | sort)
+- $ git diff --check

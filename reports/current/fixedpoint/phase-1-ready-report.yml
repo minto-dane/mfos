@@ -1,0 +1,37 @@
+schema_version: 1
+artifact_type: fixedpoint_phase_1_ready_report
+status: current
+date: '2026-04-28'
+phase_1_ready: true
+phase_1_allowed_scope:
+- Dafny executable-semantics scaffold
+- Dafny artifact metadata and dependency loading
+- fixture/oracle/golden loader-only validation
+- schema validation
+- deterministic normalization for loader-visible artifacts
+- traceability repair and report generation
+phase_1_forbidden_scope:
+- production implementation
+- Rust canonical semantic-core
+- semantic runner implementation
+- hosted daemon or hosted semantic service
+- securityd/auditd/catalogd/datasetd/jobd/spoold/operatord implementation
+- nucleus/PXM/Guard/MFVM/CVM/cluster implementation
+- Dafny-generated production code
+source_grounding_status: conditional; no SG6/SG7 semantic-freeze claim; loader-only
+  scope allowed
+dafny_policy_status: present and validated
+artifact_hygiene_status: validated
+component_scaffold_status: validated
+ci_status: local_validation_passed; github_checks_pending_pr_creation
+remaining_minor_issues:
+- Phase 0.9 expected future evidence IDs remain recorded as generated gaps and are
+  not Phase 1 loader blockers.
+- Source Cards remain draft; this blocks semantic evaluator and production claims,
+  not loader-only validation.
+- CodeQL remains Python-focused and does not imply broad implementation security coverage.
+blockers: []
+final_recommendation: Open fixed-point PR, require GitHub checks to pass, then merge
+  before Phase 1 loader-only work.
+all_local_validation_passed: true
+all_required_github_checks_passed: pending_pr_creation

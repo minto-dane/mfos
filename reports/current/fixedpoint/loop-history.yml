@@ -1,0 +1,61 @@
+schema_version: 1
+artifact_type: fixedpoint_loop_history
+status: current
+loops:
+- loop_number: 1
+  agents_run:
+  - Batch A discovery agents
+  - Batch B deep discovery agents
+  critical_count_before: 1
+  major_count_before: 12
+  fixes_applied:
+  - source grounding audit regeneration
+  - stale scaffold report cleanup
+  - fake-success fixture path removal
+  - no-implementation suffix expansion
+  - design reading order update
+  - schema guard normalization
+  - forbidden scope boolean repair
+  - pack output rerouting
+  - source-card requirement ref cleanup
+  - formal tool candidate split
+  - implementation README guardrails
+  validators_added_or_updated:
+  - scripts/validators/validate-schema-files.py
+  - scripts/phases/phase-0-9/check-no-implementation.py
+  - schemas/mfos/proof-obligation.schema.yml
+  - scripts/validators/validate-proof-obligations.py
+  critical_count_after: 0
+  major_count_after: 0
+  validation_passed: false
+  continue_reason: final artifacts and graph sanitation required
+  stop_reason: null
+- loop_number: 2
+  agents_run:
+  - Batch D validation and red-team recheck agents
+  critical_count_before: 1
+  major_count_before: 3
+  fixes_applied:
+  - sanitized fixed-point graph legacy source refs
+  - created missing fixed-point validation/readiness/final reports
+  - regenerated traceability
+  validators_added_or_updated:
+  - 'fixedpoint graph policy: omit noncanonical legacy Source IDs from active source_refs'
+  critical_count_after: 0
+  major_count_after: 0
+  validation_passed: true
+  continue_reason: second consecutive clean validation required
+  stop_reason: null
+- loop_number: 3
+  agents_run:
+  - Final integration validator
+  - local validation suite
+  critical_count_before: 0
+  major_count_before: 0
+  fixes_applied: []
+  validators_added_or_updated: []
+  critical_count_after: 0
+  major_count_after: 0
+  validation_passed: true
+  continue_reason: null
+  stop_reason: two consecutive clean passes and local validation succeeded
