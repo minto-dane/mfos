@@ -8,4 +8,12 @@ seed_categories:
 - missing_audit_correlation
 - unauthorized_dataset_reference
 - nondeterministic_identity
+- valid_minimal_input
+- boundary_length_input
+- invalid_token
+- malformed_nesting
+- unsupported_feature
+- explicit_spec_gap_trigger
+- denied_operation_fixture
+- audit_before_return_fixture
 status: draft

@@ -25,6 +25,9 @@ current:
     validate_dafny_semantics_scaffold:
       path: scripts/validate-dafny-semantics-scaffold.sh
       status: current
+    validate_schema_files:
+      path: scripts/validators/validate-schema-files.py
+      status: current
 
 sections:
   validators:

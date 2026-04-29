@@ -12,7 +12,7 @@ if _SCRIPT_ROOT is not None and str(_SCRIPT_ROOT) not in sys.path:
 
 import sys
 
-from lib.mfos_phase09 import GOLDEN_DIR, ORACLE_RE, as_list, load_yaml, rel, yaml_files
+from lib.mfos_phase09 import GOLDEN_DIR, ORACLE_RE, ROOT, as_list, load_yaml, rel, yaml_files
 
 
 REQUIRED = {
@@ -27,11 +27,19 @@ REQUIRED = {
     "evidence_required",
     "status",
 }
+SCHEMA = ROOT / "schemas/oracle.schema.yml"
 
 
 def main() -> int:
     errors: list[str] = []
     count = 0
+    if SCHEMA.exists():
+        schema = load_yaml(SCHEMA)
+        schema_required = set(as_list(schema.get("required") if isinstance(schema, dict) else []))
+        if schema_required and schema_required != REQUIRED:
+            errors.append(f"{rel(SCHEMA)}: required fields do not match embedded oracle validator contract")
+    else:
+        errors.append(f"missing oracle schema: {rel(SCHEMA)}")
     for path in yaml_files(GOLDEN_DIR):
         data = load_yaml(path)
         oracle = data.get("oracle") if isinstance(data, dict) else None
@@ -49,6 +57,25 @@ def main() -> int:
             errors.append(f"{rel(path)}:{oracle_id}: expected_decisions must be non-empty")
         if oracle.get("requires_state_transitions", True) is not False and not as_list(oracle.get("expected_state_transitions")):
             errors.append(f"{rel(path)}:{oracle_id}: expected_state_transitions must be non-empty")
+        normalized = data.get("normalized_input", {}) if isinstance(data, dict) else {}
+        operation = str(normalized.get("operation", ""))
+        expected_failure = oracle.get("expected_failure", {})
+        failure_code = str(expected_failure.get("error_code", "")) if isinstance(expected_failure, dict) else ""
+        decisions = as_list(oracle.get("expected_decisions"))
+        decision_results = {
+            str(decision.get("result"))
+            for decision in decisions
+            if isinstance(decision, dict) and decision.get("result") is not None
+        }
+        if "DENY-BEFORE-RETURN" in {operation, oracle_id} and "DENY" not in decision_results:
+            errors.append(f"{rel(path)}:{oracle_id}: deny-before-return oracle must expect DENY")
+        if failure_code in {"MFOS_ERR_SPEC_GAP", "MFOS_ERR_UNSUPPORTED"}:
+            if expected_failure.get("fail_closed") is not True:
+                errors.append(f"{rel(path)}:{oracle_id}: {failure_code} must be fail_closed")
+            if str(oracle.get("expected_final_state")) in {"COMPLETE", "SUCCESS"}:
+                errors.append(f"{rel(path)}:{oracle_id}: {failure_code} must not produce success final state")
+            if "ALLOW" in decision_results:
+                errors.append(f"{rel(path)}:{oracle_id}: {failure_code} must not pair with ALLOW")
         for record in as_list(oracle.get("expected_audit_records")):
             if isinstance(record, dict) and record.get("decision") == "DENY" and record.get("before_return") is not True:
                 errors.append(f"{rel(path)}:{oracle_id}: DENY audit record must set before_return: true")

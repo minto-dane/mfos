@@ -368,12 +368,12 @@ This table remains a compact reading aid. Split files may expand each row, but m
 | EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001 | Authorized boundary testing | [z/OS Authorized Code Scanner introduction](https://www.ibm.com/docs/en/zos/3.2.0?topic=zacsg-introduction) | Source for AMF/SVC/PCALL negative testing discipline. |
 | EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001 | Authorized programs | [Authorized programs](https://www.ibm.com/docs/en/zos/3.2.0?topic=system-authorized-programs) | Source for separating supervisor state, key 0-7, and APF-authorized job-step task concepts before mapping them into AMF. |
 | EXTREF-IBM-ZOS-STORAGE-PROTECTION-0001 | Storage protection | [What is storage protection?](https://www.ibm.com/docs/en/zos-basic-skills?topic=storage-what-is-protection) | Source for storage key, PSW key, and fetch/store protection concepts. |
-| EXTREF-IBM-ZOS-STORAGE-PROTECTION-SUMMARY-0001 | Storage protection detail | [Storage protection summary](https://www.ibm.com/docs/en/zos/3.1.0?topic=summary-storage-protection) | Source for storage key bit model and storage-domain vocabulary. |
-| EXTREF-IBM-ZOS-SECURITY-SERVER-0001 | Security manager library | [z/OS Security Server RACF](https://www.ibm.com/docs/en/zos/3.2.0?topic=zos-security-server-racf) | Source family for securityd profile, command, callable service, macro, and audit mapping. |
+| EXTREF-IBM-ZOS-STORAGE-PROTECTION-SUMMARY-0001 | Storage protection detail | [Storage protection summary](https://www.ibm.com/docs/en/zos/3.1.0?topic=summary-storage-protection) | Public-safe background for memory-protection review topics; MFOS storage-domain definitions remain independently specified. |
+| EXTREF-IBM-ZOS-SECURITY-SERVER-0001 | Security manager library | [z/OS Security Server RACF](https://www.ibm.com/docs/en/zos/3.2.0?topic=zos-security-server-racf) | Public-safe source family for authorization and audit review topics; MFOS must not copy commands, callable service interfaces, macros, or audit layouts. |
 | EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001 | Resource authorization | [Authorizing users to access protected resources](https://www.ibm.com/docs/en/zos/3.1.0?topic=racf-authorizing-users-access-protected-resources) | Source for user/group/resource profile, access list, and default access mapping. |
 | EXTREF-IBM-ZOS-JES-INTRODUCTION-0001 | Job subsystem | [What is JES?](https://www.ibm.com/docs/en/zos-basic-skills?topic=jobs-what-is-jes) | Source for receiving jobs, queues, initiators, SYSIN/SYSOUT, and spool semantics. |
 | EXTREF-IBM-ZOS-JES-JOB-FLOW-0001 | Job lifecycle | [Job flow through the system](https://www.ibm.com/docs/en/zos-basic-skills?topic=jobs-job-flow-through-system) | Source for input, conversion, processing, output, print/punch, and purge lifecycle. |
-| EXTREF-IBM-ZOS-JES2-LIBRARY-0001 | JES2 library | [z/OS JES2](https://www.ibm.com/docs/en/zos/3.2.0?topic=zos-jes2) | Source family for jobd/spoold command, message, initialization, and macro details. |
+| EXTREF-IBM-ZOS-JES2-LIBRARY-0001 | JES2 library | [z/OS JES2](https://www.ibm.com/docs/en/zos/3.2.0?topic=zos-jes2) | Public-safe source family for job/spool review topics; MFOS must not copy commands, messages, initialization procedures, or macros. |
 | EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001 | Catalogs | [DFSMS catalogs](https://www.ibm.com/docs/en/zos/3.1.0?topic=dfsmsdfp-catalogs) | Source for catalog entries describing dataset attributes and locations so users need not supply physical location. |
 | EXTREF-IBM-ZOS-DFSMS-LIBRARY-0001 | Storage management | [z/OS DFSMS](https://www.ibm.com/docs/en/zos/3.2.0?topic=zos-dfsms) | Source family for dataset, catalog, allocation, storage administration, and access-method concepts. |
 | EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001 | Audit/accounting | [Introduction to SMF](https://www.ibm.com/docs/en/zos/3.1.0?topic=smf-introduction) | Source for system/job-related records, billing, reliability, dataset activity, scheduling, and security maintenance use cases. |
@@ -2021,7 +2021,7 @@ mfos/
       policyc/
       manifestck/
     prototypes/
-      hosted-semantic/
+      deferred-semantic-contracts/   # planning only; no Phase 1 hosted daemon
   tests/
     unit/
     integration/
@@ -2155,28 +2155,32 @@ Audit Schema v0.1 approved
 no-fake-success policy in CI
 ```
 
-### Phase 1: Hosted Semantic Prototype
+### Phase 1: Dafny Executable-Semantics Scaffold And Loader-Only Validation
 
-Runs on Linux/BSD/macOS for semantics only.
+Creates Dafny executable-semantics scaffold artifacts and loader-only artifact
+validation. It does not run hosted services, a semantic runner, or production
+code.
 
 All Phase 1 artifacts MUST be marked:
 
 ```text
-implementation_profile: hosted_semantic_prototype
+implementation_profile: dafny_loader_only_artifact_validation
 production_claim: false
 hardware_enforcement_claim: false
-system_integrity_claim: semantic_only
+system_integrity_claim: false
+semantic_runner_claim: false
+hosted_daemon_claim: false
 ```
 
 Exit criteria:
 
 ```text
-securityd/auditd/catalogd/datasetd/jobd/spoold/operatord hosted services run
-HELLO job success
-BOB cannot read ALICE dataset
-DENY is audited before result returns
-catalog crash recovery test passes
-JCL/DSN/operator parser fuzz targets exist
+Dafny scaffold metadata validates
+test catalogs, fixtures, golden vectors, and traceability load deterministically
+HELLO job success remains a specified semantic contract, not a running service
+BOB denied ALICE dataset remains a specified semantic contract
+deny-before-return audit obligation is represented in oracle artifacts
+no semantic runner, hosted daemon, or production code exists
 ```
 
 ### Phase 2: Minimal MFOS Nucleus
@@ -2319,23 +2323,23 @@ FORMAL-011  device teardown model
 FORMAL-012  Guard root transition model
 ```
 
-### 22.4 Hosted Prototype Tasks
+### 22.4 Deferred Semantic Contract Tasks
 
 ```text
-HOST-001  securityd hosted prototype
-HOST-002  auditd hosted prototype
-HOST-003  catalogd hosted prototype
-HOST-004  datasetd hosted prototype
-HOST-005  jobd hosted prototype
-HOST-006  spoold hosted prototype
-HOST-007  operatord hosted prototype
-HOST-008  workpolicyd minimal prototype
-HOST-009  amfd prototype
-HOST-010  uvsd prototype
-HOST-011  HELLO job success integration
-HOST-012  unauthorized dataset access deny integration
-HOST-013  audit chain tamper test
-HOST-014  catalog crash recovery test
+SEMCON-001  securityd contract fixture planning
+SEMCON-002  auditd contract fixture planning
+SEMCON-003  catalogd contract fixture planning
+SEMCON-004  datasetd contract fixture planning
+SEMCON-005  jobd contract fixture planning
+SEMCON-006  spoold contract fixture planning
+SEMCON-007  operatord contract fixture planning
+SEMCON-008  workload-policy contract fixture planning
+SEMCON-009  AMF disabled-mode contract fixture planning
+SEMCON-010  UVS contract fixture planning
+SEMCON-011  HELLO job success contract
+SEMCON-012  unauthorized dataset access deny contract
+SEMCON-013  audit chain tamper contract
+SEMCON-014  catalog crash recovery contract
 ```
 
 ### 22.5 CI Tasks
@@ -2726,8 +2730,9 @@ Implementation rule:
 
 ```text
 Do not start nucleus, securityd, datasetd, jobd, PXM, or Guard production
-implementation until this document exists. Hosted semantic prototype work may
-start earlier only if it is explicitly marked non-production.
+implementation until the relevant later gate exists. Phase 1 does not authorize
+hosted semantic prototype work, semantic runner work, hosted daemons, or service
+implementation.
 ```
 
 ## 30. Final Architecture Recommendation

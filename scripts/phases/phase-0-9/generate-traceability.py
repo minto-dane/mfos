@@ -13,6 +13,7 @@ if _SCRIPT_ROOT is not None and str(_SCRIPT_ROOT) not in sys.path:
 from collections import defaultdict
 
 from lib.mfos_phase09 import (
+    FIXTURE_DIR,
     FUZZ_PLAN,
     GOLDEN_DIR,
     ROOT,
@@ -29,7 +30,7 @@ OUT = ROOT / "evidence/traceability/generated/phase-0-9"
 
 
 def main() -> int:
-    req_to_test: dict[str, list[str]] = defaultdict(list)
+    req_to_test: dict[str, set[str]] = defaultdict(set)
     test_to_fixture: dict[str, dict[str, str]] = {}
     fixture_to_oracle: dict[str, dict[str, str]] = {}
     gaps: list[dict[str, str]] = []
@@ -37,7 +38,7 @@ def main() -> int:
     for catalog_path, entry in all_catalog_entries():
         test_id = str(entry.get("test_id"))
         for req in as_list(entry.get("target_requirements")):
-            req_to_test[str(req)].append(test_id)
+            req_to_test[str(req)].add(test_id)
         fixture_ref = str(entry.get("fixture_ref", ""))
         oracle_ref = str(entry.get("oracle_ref", ""))
         golden_ref = str(entry.get("golden_ref", ""))
@@ -60,6 +61,24 @@ def main() -> int:
                 "golden_ref": rel(path),
                 "oracle_id": str(oracle.get("oracle_id", "")),
             }
+
+    known_evidence: set[str] = set()
+    evidence_map = ROOT / "evidence/traceability/current/requirement-to-evidence.yml"
+    if evidence_map.exists():
+        data = load_yaml(evidence_map)
+        for entry in as_list(data.get("entries") if isinstance(data, dict) else []):
+            if isinstance(entry, dict):
+                known_evidence.update(str(item) for item in as_list(entry.get("evidence")) if item)
+
+    for path in yaml_files(FIXTURE_DIR):
+        data = load_yaml(path)
+        if not isinstance(data, dict):
+            continue
+        fixture_id = str(data.get("fixture_id", rel(path)))
+        for evidence_id in as_list(data.get("expected_evidence")):
+            evidence_id = str(evidence_id)
+            if evidence_id not in known_evidence:
+                gaps.append({"gap_type": "missing_evidence", "artifact": evidence_id, "test_id": fixture_id})
 
     req_to_fuzz: dict[str, list[str]] = defaultdict(list)
     if FUZZ_PLAN.exists():
@@ -101,6 +120,7 @@ def main() -> int:
                 "missing_audit_expectation",
                 "missing_failure_mode",
                 "missing_fuzz_target",
+                "missing_evidence",
                 "source_gap",
                 "spec_gap",
                 "naming_safety_gap",

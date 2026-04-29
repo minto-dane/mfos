@@ -45,6 +45,26 @@ entries:
   - docs/design/specs/12-amf.md
   - docs/design/specs/23-requirements-catalog.md
   - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-ASSURANCE-0001
+  specs:
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+- requirement_id: MFOS-REQ-ASSURANCE-0002
+  specs:
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+- requirement_id: MFOS-REQ-ASSURANCE-0003
+  specs:
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+- requirement_id: MFOS-REQ-ASSURANCE-0004
+  specs:
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+- requirement_id: MFOS-REQ-ASSURANCE-0005
+  specs:
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
 - requirement_id: MFOS-REQ-AUDIT-0001
   specs:
   - docs/design/specs/07-audit.md
@@ -52,6 +72,7 @@ entries:
   - docs/design/specs/19-assurance-case.md
   - docs/design/specs/23-requirements-catalog.md
   - docs/design/specs/35-fuzz-corpus-plan.md
+  - docs/design/specs/38-datacenter-cluster-operations.md
 - requirement_id: MFOS-REQ-AUDIT-0002
   specs:
   - docs/design/specs/07-audit.md
@@ -59,6 +80,7 @@ entries:
   - docs/design/specs/19-assurance-case.md
   - docs/design/specs/23-requirements-catalog.md
   - docs/design/specs/35-fuzz-corpus-plan.md
+  - docs/design/specs/38-datacenter-cluster-operations.md
 - requirement_id: MFOS-REQ-AUDIT-0003
   specs:
   - docs/design/specs/07-audit.md
@@ -66,6 +88,7 @@ entries:
   - docs/design/specs/19-assurance-case.md
   - docs/design/specs/23-requirements-catalog.md
   - docs/design/specs/35-fuzz-corpus-plan.md
+  - docs/design/specs/38-datacenter-cluster-operations.md
 - requirement_id: MFOS-REQ-AUDIT-0004
   specs:
   - docs/design/specs/07-audit.md
@@ -73,6 +96,7 @@ entries:
   - docs/design/specs/19-assurance-case.md
   - docs/design/specs/23-requirements-catalog.md
   - docs/design/specs/35-fuzz-corpus-plan.md
+  - docs/design/specs/38-datacenter-cluster-operations.md
 - requirement_id: MFOS-REQ-AUDIT-0005
   specs:
   - docs/design/specs/07-audit.md
@@ -80,6 +104,7 @@ entries:
   - docs/design/specs/19-assurance-case.md
   - docs/design/specs/23-requirements-catalog.md
   - docs/design/specs/35-fuzz-corpus-plan.md
+  - docs/design/specs/38-datacenter-cluster-operations.md
 - requirement_id: MFOS-REQ-AUDIT-0101
   specs:
   - docs/design/specs/07-audit.md
@@ -87,6 +112,7 @@ entries:
   - docs/design/specs/19-assurance-case.md
   - docs/design/specs/23-requirements-catalog.md
   - docs/design/specs/35-fuzz-corpus-plan.md
+  - docs/design/specs/38-datacenter-cluster-operations.md
 - requirement_id: MFOS-REQ-AUDIT-0102
   specs:
   - docs/design/specs/07-audit.md
@@ -95,6 +121,7 @@ entries:
   - docs/design/specs/23-requirements-catalog.md
   - docs/design/specs/30-first-vertical-slice-contract.md
   - docs/design/specs/35-fuzz-corpus-plan.md
+  - docs/design/specs/38-datacenter-cluster-operations.md
 - requirement_id: MFOS-REQ-AUDIT-0103
   specs:
   - docs/design/specs/07-audit.md
@@ -102,6 +129,7 @@ entries:
   - docs/design/specs/19-assurance-case.md
   - docs/design/specs/23-requirements-catalog.md
   - docs/design/specs/35-fuzz-corpus-plan.md
+  - docs/design/specs/38-datacenter-cluster-operations.md
 - requirement_id: MFOS-REQ-AUDIT-0104
   specs:
   - docs/design/specs/07-audit.md
@@ -110,6 +138,7 @@ entries:
   - docs/design/specs/23-requirements-catalog.md
   - docs/design/specs/30-first-vertical-slice-contract.md
   - docs/design/specs/35-fuzz-corpus-plan.md
+  - docs/design/specs/38-datacenter-cluster-operations.md
 - requirement_id: MFOS-REQ-AUDIT-0105
   specs:
   - docs/design/specs/07-audit.md
@@ -117,6 +146,7 @@ entries:
   - docs/design/specs/19-assurance-case.md
   - docs/design/specs/23-requirements-catalog.md
   - docs/design/specs/35-fuzz-corpus-plan.md
+  - docs/design/specs/38-datacenter-cluster-operations.md
 - requirement_id: MFOS-REQ-AUTH-0001
   specs:
   - docs/design/specs/06-authorization.md
@@ -236,6 +266,172 @@ entries:
   - docs/design/specs/08-dataset-catalog.md
   - docs/design/specs/23-requirements-catalog.md
   - docs/design/specs/35-fuzz-corpus-plan.md
+- requirement_id: MFOS-REQ-CLUSTER-0101
+  specs:
+  - docs/design/specs/38-datacenter-cluster-operations.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/41-performance-and-secure-operations.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-CLUSTER-0102
+  specs:
+  - docs/design/specs/38-datacenter-cluster-operations.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/41-performance-and-secure-operations.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-CLUSTER-0103
+  specs:
+  - docs/design/specs/38-datacenter-cluster-operations.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/41-performance-and-secure-operations.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-CLUSTER-0104
+  specs:
+  - docs/design/specs/38-datacenter-cluster-operations.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/41-performance-and-secure-operations.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-CLUSTER-0105
+  specs:
+  - docs/design/specs/38-datacenter-cluster-operations.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/41-performance-and-secure-operations.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-CLUSTER-0106
+  specs:
+  - docs/design/specs/38-datacenter-cluster-operations.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/41-performance-and-secure-operations.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-CLUSTER-0107
+  specs:
+  - docs/design/specs/38-datacenter-cluster-operations.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/41-performance-and-secure-operations.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-CLUSTER-0108
+  specs:
+  - docs/design/specs/38-datacenter-cluster-operations.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/41-performance-and-secure-operations.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-CVM-0101
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-CVM-0102
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-CVM-0103
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-CVM-0104
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-CVM-0105
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-CVM-0106
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-CVM-0107
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-CVM-0108
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-DAFNY-0001
+  specs:
+  - docs/design/specs/31-executable-spec-test-harness.md
+  - docs/design/specs/33-semantic-runner-contract.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
+- requirement_id: MFOS-REQ-DAFNY-0002
+  specs:
+  - docs/design/specs/31-executable-spec-test-harness.md
+  - docs/design/specs/33-semantic-runner-contract.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
+- requirement_id: MFOS-REQ-DAFNY-0003
+  specs:
+  - docs/design/specs/31-executable-spec-test-harness.md
+  - docs/design/specs/33-semantic-runner-contract.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
+- requirement_id: MFOS-REQ-DAFNY-0004
+  specs:
+  - docs/design/specs/31-executable-spec-test-harness.md
+  - docs/design/specs/33-semantic-runner-contract.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
+- requirement_id: MFOS-REQ-DAFNY-0005
+  specs:
+  - docs/design/specs/31-executable-spec-test-harness.md
+  - docs/design/specs/33-semantic-runner-contract.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
+- requirement_id: MFOS-REQ-DAFNY-0006
+  specs:
+  - docs/design/specs/31-executable-spec-test-harness.md
+  - docs/design/specs/33-semantic-runner-contract.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
+- requirement_id: MFOS-REQ-DAFNY-0007
+  specs:
+  - docs/design/specs/31-executable-spec-test-harness.md
+  - docs/design/specs/33-semantic-runner-contract.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
+- requirement_id: MFOS-REQ-DAFNY-0008
+  specs:
+  - docs/design/specs/31-executable-spec-test-harness.md
+  - docs/design/specs/33-semantic-runner-contract.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
+- requirement_id: MFOS-REQ-DAFNY-0009
+  specs:
+  - docs/design/specs/31-executable-spec-test-harness.md
+  - docs/design/specs/33-semantic-runner-contract.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
+- requirement_id: MFOS-REQ-DAFNY-0010
+  specs:
+  - docs/design/specs/31-executable-spec-test-harness.md
+  - docs/design/specs/33-semantic-runner-contract.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
 - requirement_id: MFOS-REQ-DATASET-0001
   specs:
   - docs/design/specs/08-dataset-catalog.md
@@ -300,6 +496,54 @@ entries:
   - docs/design/specs/23-requirements-catalog.md
   - docs/design/specs/28-machine-readable-registries.md
   - docs/design/specs/35-fuzz-corpus-plan.md
+- requirement_id: MFOS-REQ-FORMAL-0001
+  specs:
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
+- requirement_id: MFOS-REQ-FORMAL-0002
+  specs:
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
+- requirement_id: MFOS-REQ-FORMAL-0003
+  specs:
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
+- requirement_id: MFOS-REQ-FORMAL-0004
+  specs:
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
+- requirement_id: MFOS-REQ-FORMAL-0005
+  specs:
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
+- requirement_id: MFOS-REQ-FORMAL-0006
+  specs:
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
+- requirement_id: MFOS-REQ-FORMAL-0007
+  specs:
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
+- requirement_id: MFOS-REQ-FORMAL-0108
+  specs:
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
 - requirement_id: MFOS-REQ-GUARD-0001
   specs:
   - docs/design/specs/17-guard.md
@@ -367,6 +611,102 @@ entries:
   - docs/design/specs/09-job-spool.md
   - docs/design/specs/23-requirements-catalog.md
   - docs/design/specs/35-fuzz-corpus-plan.md
+- requirement_id: MFOS-REQ-LANG-0101
+  specs:
+  - docs/design/specs/00-normative-language.md
+  - docs/design/specs/32-language-localization.md
+  - docs/design/specs/39-language-and-verification-policy.md
+- requirement_id: MFOS-REQ-LANG-0102
+  specs:
+  - docs/design/specs/00-normative-language.md
+  - docs/design/specs/32-language-localization.md
+  - docs/design/specs/39-language-and-verification-policy.md
+- requirement_id: MFOS-REQ-LANG-0103
+  specs:
+  - docs/design/specs/00-normative-language.md
+  - docs/design/specs/32-language-localization.md
+  - docs/design/specs/39-language-and-verification-policy.md
+- requirement_id: MFOS-REQ-LANG-0104
+  specs:
+  - docs/design/specs/00-normative-language.md
+  - docs/design/specs/32-language-localization.md
+  - docs/design/specs/39-language-and-verification-policy.md
+- requirement_id: MFOS-REQ-LANG-0105
+  specs:
+  - docs/design/specs/00-normative-language.md
+  - docs/design/specs/32-language-localization.md
+  - docs/design/specs/39-language-and-verification-policy.md
+- requirement_id: MFOS-REQ-LANG-0106
+  specs:
+  - docs/design/specs/00-normative-language.md
+  - docs/design/specs/32-language-localization.md
+  - docs/design/specs/39-language-and-verification-policy.md
+- requirement_id: MFOS-REQ-LANG-0107
+  specs:
+  - docs/design/specs/00-normative-language.md
+  - docs/design/specs/32-language-localization.md
+  - docs/design/specs/39-language-and-verification-policy.md
+- requirement_id: MFOS-REQ-LANG-0108
+  specs:
+  - docs/design/specs/00-normative-language.md
+  - docs/design/specs/32-language-localization.md
+  - docs/design/specs/39-language-and-verification-policy.md
+- requirement_id: MFOS-REQ-MFVM-0101
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-MFVM-0102
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-MFVM-0103
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-MFVM-0104
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-MFVM-0105
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-MFVM-0106
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-MFVM-0107
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-MFVM-0108
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/42-mfvm.md
 - requirement_id: MFOS-REQ-NUCLEUS-0005
   specs:
   - docs/design/specs/14-nucleus.md
@@ -410,6 +750,31 @@ entries:
   - docs/design/specs/10-operator-console.md
   - docs/design/specs/23-requirements-catalog.md
   - docs/design/specs/35-fuzz-corpus-plan.md
+- requirement_id: MFOS-REQ-OPS-0101
+  specs:
+  - docs/design/specs/25-operations-recovery.md
+  - docs/design/specs/38-datacenter-cluster-operations.md
+  - docs/design/specs/41-performance-and-secure-operations.md
+- requirement_id: MFOS-REQ-OPS-0102
+  specs:
+  - docs/design/specs/25-operations-recovery.md
+  - docs/design/specs/38-datacenter-cluster-operations.md
+  - docs/design/specs/41-performance-and-secure-operations.md
+- requirement_id: MFOS-REQ-OPS-0103
+  specs:
+  - docs/design/specs/25-operations-recovery.md
+  - docs/design/specs/38-datacenter-cluster-operations.md
+  - docs/design/specs/41-performance-and-secure-operations.md
+- requirement_id: MFOS-REQ-OPS-0104
+  specs:
+  - docs/design/specs/25-operations-recovery.md
+  - docs/design/specs/38-datacenter-cluster-operations.md
+  - docs/design/specs/41-performance-and-secure-operations.md
+- requirement_id: MFOS-REQ-OPS-0105
+  specs:
+  - docs/design/specs/25-operations-recovery.md
+  - docs/design/specs/38-datacenter-cluster-operations.md
+  - docs/design/specs/41-performance-and-secure-operations.md
 - requirement_id: MFOS-REQ-PARTITION-0001
   specs:
   - docs/design/specs/16-pxm.md
@@ -450,10 +815,86 @@ entries:
   specs:
   - docs/design/specs/16-pxm.md
   - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-PERF-0101
+  specs:
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/38-datacenter-cluster-operations.md
+  - docs/design/specs/41-performance-and-secure-operations.md
+- requirement_id: MFOS-REQ-PERF-0102
+  specs:
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/38-datacenter-cluster-operations.md
+  - docs/design/specs/41-performance-and-secure-operations.md
+- requirement_id: MFOS-REQ-PERF-0103
+  specs:
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/38-datacenter-cluster-operations.md
+  - docs/design/specs/41-performance-and-secure-operations.md
+- requirement_id: MFOS-REQ-PERF-0104
+  specs:
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/38-datacenter-cluster-operations.md
+  - docs/design/specs/41-performance-and-secure-operations.md
 - requirement_id: MFOS-REQ-PROFILE-0001
   specs:
   - docs/design/specs/00-normative-language.md
   - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-PXM-0101
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-PXM-0102
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-PXM-0103
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-PXM-0104
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-PXM-0105
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-PXM-0106
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-PXM-0107
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-PXM-0108
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  - docs/design/specs/42-mfvm.md
 - requirement_id: MFOS-REQ-QUALITY-0001
   specs:
   - docs/design/specs/00-normative-language.md
@@ -684,34 +1125,90 @@ entries:
   specs:
   - docs/design/specs/13-update.md
   - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/38-datacenter-cluster-operations.md
 - requirement_id: MFOS-REQ-UPDATE-0003
   specs:
   - docs/design/specs/13-update.md
   - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/38-datacenter-cluster-operations.md
 - requirement_id: MFOS-REQ-UPDATE-0004
   specs:
   - docs/design/specs/13-update.md
   - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/38-datacenter-cluster-operations.md
 - requirement_id: MFOS-REQ-UPDATE-0005
   specs:
   - docs/design/specs/13-update.md
   - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/38-datacenter-cluster-operations.md
 - requirement_id: MFOS-REQ-UPDATE-0006
   specs:
   - docs/design/specs/13-update.md
   - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/38-datacenter-cluster-operations.md
 - requirement_id: MFOS-REQ-UPDATE-0007
   specs:
   - docs/design/specs/13-update.md
   - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/38-datacenter-cluster-operations.md
 - requirement_id: MFOS-REQ-UPDATE-0008
   specs:
   - docs/design/specs/13-update.md
   - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/38-datacenter-cluster-operations.md
 - requirement_id: MFOS-REQ-UPDATE-0012
   specs:
   - docs/design/specs/13-update.md
   - docs/design/specs/23-requirements-catalog.md
+  - docs/design/specs/38-datacenter-cluster-operations.md
+- requirement_id: MFOS-REQ-VIRT-0101
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/41-performance-and-secure-operations.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-VIRT-0102
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/41-performance-and-secure-operations.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-VIRT-0103
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/41-performance-and-secure-operations.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-VIRT-0104
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/41-performance-and-secure-operations.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-VIRT-0105
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/41-performance-and-secure-operations.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-VIRT-0106
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/41-performance-and-secure-operations.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-VIRT-0107
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/41-performance-and-secure-operations.md
+  - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-VIRT-0108
+  specs:
+  - docs/design/specs/16-pxm.md
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/41-performance-and-secure-operations.md
+  - docs/design/specs/42-mfvm.md
 - requirement_id: MFOS-REQ-WPOL-0001
   specs:
   - docs/design/specs/11-workload-policy.md

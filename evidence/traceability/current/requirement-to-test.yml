@@ -44,6 +44,26 @@ entries:
   - NEG-MFOS-AMF-RX-MAPPING-DISABLED-0021
   - NEG-MFOS-SYSINT-AMF-BOUNDARY-0017
   - TEST-MFOS-AMF-DISABLED-QUERY-0021
+- requirement_id: MFOS-REQ-ASSURANCE-0001
+  tests:
+  - NEG-MFOS-ASSURANCE-0001
+  - TEST-MFOS-ASSURANCE-0001
+- requirement_id: MFOS-REQ-ASSURANCE-0002
+  tests:
+  - NEG-MFOS-ASSURANCE-0002
+  - TEST-MFOS-ASSURANCE-0002
+- requirement_id: MFOS-REQ-ASSURANCE-0003
+  tests:
+  - NEG-MFOS-ASSURANCE-0003
+  - TEST-MFOS-ASSURANCE-0003
+- requirement_id: MFOS-REQ-ASSURANCE-0004
+  tests:
+  - NEG-MFOS-ASSURANCE-0004
+  - TEST-MFOS-ASSURANCE-0004
+- requirement_id: MFOS-REQ-ASSURANCE-0005
+  tests:
+  - NEG-MFOS-ASSURANCE-0005
+  - TEST-MFOS-ASSURANCE-0005
 - requirement_id: MFOS-REQ-AUDIT-0001
   tests:
   - NEG-MFOS-AUDIT-SPEC-GAP-0001
@@ -183,6 +203,110 @@ entries:
   tests:
   - NEG-MFOS-CATALOG-CRASH-MID-COMMIT-0102
   - TEST-MFOS-CATALOG-RECOVERY-0102
+- requirement_id: MFOS-REQ-CLUSTER-0101
+  tests:
+  - NEG-MFOS-CLUSTER-0101
+  - TEST-MFOS-CLUSTER-0101
+- requirement_id: MFOS-REQ-CLUSTER-0102
+  tests:
+  - NEG-MFOS-CLUSTER-0102
+  - TEST-MFOS-CLUSTER-0102
+- requirement_id: MFOS-REQ-CLUSTER-0103
+  tests:
+  - NEG-MFOS-CLUSTER-0103
+  - TEST-MFOS-CLUSTER-0103
+- requirement_id: MFOS-REQ-CLUSTER-0104
+  tests:
+  - NEG-MFOS-CLUSTER-0104
+  - TEST-MFOS-CLUSTER-0104
+- requirement_id: MFOS-REQ-CLUSTER-0105
+  tests:
+  - NEG-MFOS-CLUSTER-0105
+  - TEST-MFOS-CLUSTER-0105
+- requirement_id: MFOS-REQ-CLUSTER-0106
+  tests:
+  - NEG-MFOS-CLUSTER-0106
+  - TEST-MFOS-CLUSTER-0106
+- requirement_id: MFOS-REQ-CLUSTER-0107
+  tests:
+  - NEG-MFOS-CLUSTER-0107
+  - TEST-MFOS-CLUSTER-0107
+- requirement_id: MFOS-REQ-CLUSTER-0108
+  tests:
+  - NEG-MFOS-CLUSTER-0108
+  - TEST-MFOS-CLUSTER-0108
+- requirement_id: MFOS-REQ-CVM-0101
+  tests:
+  - NEG-MFOS-CVM-0101
+  - TEST-MFOS-CVM-0101
+- requirement_id: MFOS-REQ-CVM-0102
+  tests:
+  - NEG-MFOS-CVM-0102
+  - TEST-MFOS-CVM-0102
+- requirement_id: MFOS-REQ-CVM-0103
+  tests:
+  - NEG-MFOS-CVM-0103
+  - TEST-MFOS-CVM-0103
+- requirement_id: MFOS-REQ-CVM-0104
+  tests:
+  - NEG-MFOS-CVM-0104
+  - TEST-MFOS-CVM-0104
+- requirement_id: MFOS-REQ-CVM-0105
+  tests:
+  - NEG-MFOS-CVM-0105
+  - TEST-MFOS-CVM-0105
+- requirement_id: MFOS-REQ-CVM-0106
+  tests:
+  - NEG-MFOS-CVM-0106
+  - TEST-MFOS-CVM-0106
+- requirement_id: MFOS-REQ-CVM-0107
+  tests:
+  - NEG-MFOS-CVM-0107
+  - TEST-MFOS-CVM-0107
+- requirement_id: MFOS-REQ-CVM-0108
+  tests:
+  - NEG-MFOS-CVM-0108
+  - TEST-MFOS-CVM-0108
+- requirement_id: MFOS-REQ-DAFNY-0001
+  tests:
+  - NEG-MFOS-DAFNY-0001
+  - TEST-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-DAFNY-0002
+  tests:
+  - NEG-MFOS-DAFNY-0001
+  - TEST-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-DAFNY-0003
+  tests:
+  - NEG-MFOS-DAFNY-0001
+  - TEST-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-DAFNY-0004
+  tests:
+  - NEG-MFOS-DAFNY-0001
+  - TEST-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-DAFNY-0005
+  tests:
+  - NEG-MFOS-DAFNY-0001
+  - TEST-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-DAFNY-0006
+  tests:
+  - NEG-MFOS-DAFNY-0001
+  - TEST-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-DAFNY-0007
+  tests:
+  - NEG-MFOS-DAFNY-0001
+  - TEST-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-DAFNY-0008
+  tests:
+  - NEG-MFOS-DAFNY-0001
+  - TEST-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-DAFNY-0009
+  tests:
+  - NEG-MFOS-DAFNY-0001
+  - TEST-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-DAFNY-0010
+  tests:
+  - NEG-MFOS-DAFNY-0001
+  - TEST-MFOS-DAFNY-0001
 - requirement_id: MFOS-REQ-DATASET-0001
   tests:
   - NEG-MFOS-DATASET-EXPIRED-HANDLE-0001
@@ -228,6 +352,38 @@ entries:
   tests:
   - NEG-MFOS-DATASET-DELETE-BEFORE-RETENTION-0103
   - TEST-MFOS-DATASET-RETENTION-0103
+- requirement_id: MFOS-REQ-FORMAL-0001
+  tests:
+  - NEG-MFOS-FORMAL-0001
+  - TEST-MFOS-FORMAL-0001
+- requirement_id: MFOS-REQ-FORMAL-0002
+  tests:
+  - NEG-MFOS-FORMAL-0002
+  - TEST-MFOS-FORMAL-0002
+- requirement_id: MFOS-REQ-FORMAL-0003
+  tests:
+  - NEG-MFOS-FORMAL-0003
+  - TEST-MFOS-FORMAL-0003
+- requirement_id: MFOS-REQ-FORMAL-0004
+  tests:
+  - NEG-MFOS-FORMAL-0004
+  - TEST-MFOS-FORMAL-0004
+- requirement_id: MFOS-REQ-FORMAL-0005
+  tests:
+  - NEG-MFOS-FORMAL-0005
+  - TEST-MFOS-FORMAL-0005
+- requirement_id: MFOS-REQ-FORMAL-0006
+  tests:
+  - NEG-MFOS-FORMAL-0006
+  - TEST-MFOS-FORMAL-0006
+- requirement_id: MFOS-REQ-FORMAL-0007
+  tests:
+  - NEG-MFOS-FORMAL-0007
+  - TEST-MFOS-FORMAL-0007
+- requirement_id: MFOS-REQ-FORMAL-0108
+  tests:
+  - NEG-MFOS-FORMAL-0108
+  - TEST-MFOS-FORMAL-0108
 - requirement_id: MFOS-REQ-GUARD-0001
   tests:
   - NEG-MFOS-GUARD-SPEC-GAP-0001
@@ -280,6 +436,70 @@ entries:
   tests:
   - NEG-MFOS-JOB-AUTH-BYPASS-0103
   - TEST-MFOS-JOB-AUTH-ENFORCE-0103
+- requirement_id: MFOS-REQ-LANG-0101
+  tests:
+  - NEG-MFOS-LANG-0001
+  - TEST-MFOS-LANG-0001
+- requirement_id: MFOS-REQ-LANG-0102
+  tests:
+  - NEG-MFOS-LANG-0002
+  - TEST-MFOS-LANG-0002
+- requirement_id: MFOS-REQ-LANG-0103
+  tests:
+  - NEG-MFOS-LANG-0003
+  - TEST-MFOS-LANG-0003
+- requirement_id: MFOS-REQ-LANG-0104
+  tests:
+  - NEG-MFOS-LANG-0004
+  - TEST-MFOS-LANG-0004
+- requirement_id: MFOS-REQ-LANG-0105
+  tests:
+  - NEG-MFOS-LANG-0005
+  - TEST-MFOS-LANG-0005
+- requirement_id: MFOS-REQ-LANG-0106
+  tests:
+  - NEG-MFOS-LANG-0006
+  - TEST-MFOS-LANG-0006
+- requirement_id: MFOS-REQ-LANG-0107
+  tests:
+  - NEG-MFOS-LANG-0007
+  - TEST-MFOS-LANG-0007
+- requirement_id: MFOS-REQ-LANG-0108
+  tests:
+  - NEG-MFOS-LANG-0008
+  - TEST-MFOS-LANG-0008
+- requirement_id: MFOS-REQ-MFVM-0101
+  tests:
+  - NEG-MFOS-MFVM-0101
+  - TEST-MFOS-MFVM-0101
+- requirement_id: MFOS-REQ-MFVM-0102
+  tests:
+  - NEG-MFOS-MFVM-0102
+  - TEST-MFOS-MFVM-0102
+- requirement_id: MFOS-REQ-MFVM-0103
+  tests:
+  - NEG-MFOS-MFVM-0103
+  - TEST-MFOS-MFVM-0103
+- requirement_id: MFOS-REQ-MFVM-0104
+  tests:
+  - NEG-MFOS-MFVM-0104
+  - TEST-MFOS-MFVM-0104
+- requirement_id: MFOS-REQ-MFVM-0105
+  tests:
+  - NEG-MFOS-MFVM-0105
+  - TEST-MFOS-MFVM-0105
+- requirement_id: MFOS-REQ-MFVM-0106
+  tests:
+  - NEG-MFOS-MFVM-0106
+  - TEST-MFOS-MFVM-0106
+- requirement_id: MFOS-REQ-MFVM-0107
+  tests:
+  - NEG-MFOS-MFVM-0107
+  - TEST-MFOS-MFVM-0107
+- requirement_id: MFOS-REQ-MFVM-0108
+  tests:
+  - NEG-MFOS-MFVM-0108
+  - TEST-MFOS-MFVM-0108
 - requirement_id: MFOS-REQ-NUCLEUS-0005
   tests:
   - NEG-MFOS-NUCLEUS-SPEC-GAP-0005
@@ -317,6 +537,26 @@ entries:
   tests:
   - NEG-MFOS-OPER-AUTOMATION-BYPASS-0104
   - TEST-MFOS-OPER-AUTOMATION-0104
+- requirement_id: MFOS-REQ-OPS-0101
+  tests:
+  - NEG-MFOS-OPS-0101
+  - TEST-MFOS-OPS-0101
+- requirement_id: MFOS-REQ-OPS-0102
+  tests:
+  - NEG-MFOS-OPS-0102
+  - TEST-MFOS-OPS-0102
+- requirement_id: MFOS-REQ-OPS-0103
+  tests:
+  - NEG-MFOS-OPS-0103
+  - TEST-MFOS-OPS-0103
+- requirement_id: MFOS-REQ-OPS-0104
+  tests:
+  - NEG-MFOS-OPS-0104
+  - TEST-MFOS-OPS-0104
+- requirement_id: MFOS-REQ-OPS-0105
+  tests:
+  - NEG-MFOS-OPS-0105
+  - TEST-MFOS-OPS-0105
 - requirement_id: MFOS-REQ-PARTITION-0001
   tests:
   - NEG-MFOS-PARTITION-SPEC-GAP-0001
@@ -374,11 +614,59 @@ entries:
   - NEG-MFOS-PARTITION-MEMORY-BEFORE-ZERO-0017
   - NEG-MFOS-PARTITION-OWNERSHIP-STALE-0017
   - TEST-MFOS-PARTITION-MEMORY-REUSE-0017
+- requirement_id: MFOS-REQ-PERF-0101
+  tests:
+  - NEG-MFOS-PERF-0101
+  - TEST-MFOS-PERF-0101
+- requirement_id: MFOS-REQ-PERF-0102
+  tests:
+  - NEG-MFOS-PERF-0102
+  - TEST-MFOS-PERF-0102
+- requirement_id: MFOS-REQ-PERF-0103
+  tests:
+  - NEG-MFOS-PERF-0103
+  - TEST-MFOS-PERF-0103
+- requirement_id: MFOS-REQ-PERF-0104
+  tests:
+  - NEG-MFOS-PERF-0104
+  - TEST-MFOS-PERF-0104
 - requirement_id: MFOS-REQ-PROFILE-0001
   tests:
   - NEG-MFOS-PROFILE-0001
   - NEG-MFOS-PROFILE-0002
   - TEST-MFOS-PROFILE-0001
+- requirement_id: MFOS-REQ-PXM-0101
+  tests:
+  - NEG-MFOS-PXM-0101
+  - TEST-MFOS-PXM-0101
+- requirement_id: MFOS-REQ-PXM-0102
+  tests:
+  - NEG-MFOS-PXM-0102
+  - TEST-MFOS-PXM-0102
+- requirement_id: MFOS-REQ-PXM-0103
+  tests:
+  - NEG-MFOS-PXM-0103
+  - TEST-MFOS-PXM-0103
+- requirement_id: MFOS-REQ-PXM-0104
+  tests:
+  - NEG-MFOS-PXM-0104
+  - TEST-MFOS-PXM-0104
+- requirement_id: MFOS-REQ-PXM-0105
+  tests:
+  - NEG-MFOS-PXM-0105
+  - TEST-MFOS-PXM-0105
+- requirement_id: MFOS-REQ-PXM-0106
+  tests:
+  - NEG-MFOS-PXM-0106
+  - TEST-MFOS-PXM-0106
+- requirement_id: MFOS-REQ-PXM-0107
+  tests:
+  - NEG-MFOS-PXM-0107
+  - TEST-MFOS-PXM-0107
+- requirement_id: MFOS-REQ-PXM-0108
+  tests:
+  - NEG-MFOS-PXM-0108
+  - TEST-MFOS-PXM-0108
 - requirement_id: MFOS-REQ-QUALITY-0001
   tests:
   - NEG-MFOS-QUALITY-SPEC-GAP-0001
@@ -601,6 +889,38 @@ entries:
   tests:
   - NEG-MFOS-UPDATE-SPEC-GAP-0012
   - TEST-MFOS-UPDATE-RESERVED-0012
+- requirement_id: MFOS-REQ-VIRT-0101
+  tests:
+  - NEG-MFOS-VIRT-0101
+  - TEST-MFOS-VIRT-0101
+- requirement_id: MFOS-REQ-VIRT-0102
+  tests:
+  - NEG-MFOS-VIRT-0102
+  - TEST-MFOS-VIRT-0102
+- requirement_id: MFOS-REQ-VIRT-0103
+  tests:
+  - NEG-MFOS-VIRT-0103
+  - TEST-MFOS-VIRT-0103
+- requirement_id: MFOS-REQ-VIRT-0104
+  tests:
+  - NEG-MFOS-VIRT-0104
+  - TEST-MFOS-VIRT-0104
+- requirement_id: MFOS-REQ-VIRT-0105
+  tests:
+  - NEG-MFOS-VIRT-0105
+  - TEST-MFOS-VIRT-0105
+- requirement_id: MFOS-REQ-VIRT-0106
+  tests:
+  - NEG-MFOS-VIRT-0106
+  - TEST-MFOS-VIRT-0106
+- requirement_id: MFOS-REQ-VIRT-0107
+  tests:
+  - NEG-MFOS-VIRT-0107
+  - TEST-MFOS-VIRT-0107
+- requirement_id: MFOS-REQ-VIRT-0108
+  tests:
+  - NEG-MFOS-VIRT-0108
+  - TEST-MFOS-VIRT-0108
 - requirement_id: MFOS-REQ-WPOL-0001
   tests:
   - NEG-MFOS-WPOL-SPEC-GAP-0001

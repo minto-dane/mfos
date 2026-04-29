@@ -2,16 +2,17 @@
 
 Status: current  
 Date: 2026-04-28  
-Branch: `fix/pre-phase-1-total-readiness`  
+Branch: `fix/pre-phase-1-total-readiness-second-pass`
 Phase 0.10 dependency: PR #10 merged to `dev`
-PR: https://github.com/minto-dane/mfos/pull/11
+Previous readiness dependency: PR #11 merged to `dev`
+PR: pending second-pass PR creation
 
 ## Executive Summary
 
 The repository is ready for a Phase 1 task limited to Dafny
 executable-semantics scaffold work and loader-only artifact validation after
-this readiness branch passes required checks and lands in `dev`. PR #10 has
-already landed in `dev`.
+this second-pass readiness branch passes required checks and lands in `dev`.
+PR #10 and PR #11 have already landed in `dev`.
 
 This report does not authorize Rust semantic-core work, semantic-runner
 implementation, hosted daemons, hosted semantic prototypes, production service
@@ -29,24 +30,29 @@ implementation, PXM/MFVM/CVM/cluster implementation, or production code.
   preserve the Dafny-first, loader-only Phase 1 boundary.
 - Updated reports and STATUS to record that PR #10 landed before this
   readiness branch was rebased onto `origin/dev`.
+- Completed a second recursive readiness pass, captured in
+  `reports/current/pre-phase1/`, and fixed all Critical/Major findings from
+  that pass.
 
 ## Validation Commands
 
 Passed locally:
 
 - `./scripts/validate-all.sh --check`
+- `./scripts/validators/validate-schema-files.py --mode draft`
 - `./scripts/validate-naming-safety.sh release`
 - `./scripts/validate-artifact-hygiene.sh`
 - `./scripts/validate-component-scaffold.sh --check`
 - `./scripts/validate-language-formal-assurance.sh`
 - `./scripts/validate-dafny-semantics-scaffold.sh --check`
+- `./scripts/phases/phase-0-9/validate.sh --check`
 
 Passed after this report was created:
 
 - `python3 -m py_compile $(find scripts -name '*.py' -type f | sort)`
 - `git diff --check`
 
-Passed on GitHub for PR #11:
+Pending on GitHub for the second-pass PR:
 
 - `validate design registries and lint gates`
 - `CodeQL analysis (python)`

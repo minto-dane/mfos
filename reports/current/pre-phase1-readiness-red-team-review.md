@@ -13,6 +13,16 @@ Major findings corrected during this pass:
 
 - Hosted semantic prototype wording in implementation scaffolds was removed as
   a Phase 1 target.
+- The canonical prompt library's Rust service implementation prompt was changed
+  to an inactive future template and is blocked for Phase 1.
+- The `deny-before-return` audit oracle no longer treats a denied path as
+  `ALLOW` or `COMPLETE`.
+- Formal claim and proof-obligation schemas now match the split registries and
+  are checked by validation.
+- `MFOS-REQ-DAFNY-*` requirements are registered in the canonical requirement,
+  test, and evidence registries.
+- Source workbench parity no longer overclaims complete coverage for all
+  canonical Source Matrix cards.
 - Semantic-runner contract wording was narrowed from Phase 1 runner
   implementation to future runner implementation after a later gate.
 - Language policy wording was narrowed so Rust remains a future implementation

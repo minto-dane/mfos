@@ -18,7 +18,7 @@ source_matrix_ref:
   schema_version: 1
 entries:
 - test_id: TEST-MFOS-DATASET-0001
-  title: ALICE can read her authorized dataset through the hosted semantic path
+  title: ALICE can read her authorized dataset through the deferred semantic contract
   test_type: positive
   status: draft
   requirement_ids:
@@ -38,7 +38,7 @@ entries:
   - USER.ALICE.INPUT catalog entry exists.
   - securityd policy allows ALICE READ on USER.ALICE.INPUT.
   steps:
-  - Submit a job or direct hosted request as ALICE to open USER.ALICE.INPUT for read.
+  - Submit a job or deferred semantic request as ALICE to open USER.ALICE.INPUT for read.
   - Resolve DSN through catalogd.
   - Authorize open through securityd.
   - Create dataset handle through datasetd.
@@ -48,7 +48,7 @@ entries:
   audit_expectations:
   - Dataset open allow audit obligation is emitted according to profile policy.
   fixtures:
-  - path: tests/fixtures/datasets/user-alice-input.yaml
+  - path: tests/fixtures/dataset/valid-dsn-0901.yml
   fuzz:
     target_name: null
     corpus_path: null
@@ -57,7 +57,7 @@ entries:
     minimum_duration: null
   evidence_ids: []
   ci_jobs:
-  - hosted-semantic-positive
+  - phase1-loader-validation
   spec_gap_ids:
   - REG-GAP-0002
   created_at_utc: '2026-04-27T00:00:00Z'
@@ -86,7 +86,7 @@ entries:
   - BOB principal exists and is active.
   - securityd policy does not allow BOB READ on USER.ALICE.INPUT.
   steps:
-  - Submit a job or direct hosted request as BOB to open USER.ALICE.INPUT for read.
+  - Submit a job or deferred semantic request as BOB to open USER.ALICE.INPUT for read.
   - Resolve DSN through catalogd.
   - Request authorization through securityd.
   expected_result: MFOS_ERR_POLICY_DENIED
@@ -99,8 +99,7 @@ entries:
   - OPEN_DENY audit record is emitted before final caller result.
   - Audit correlation ID links deny to subject BOB and object USER.ALICE.INPUT.
   fixtures:
-  - path: tests/fixtures/datasets/user-alice-input.yaml
-  - path: tests/fixtures/policies/bob-denied-alice.yaml
+  - path: tests/fixtures/first-vertical-slice/bob-denied-alice-dataset.yml
   fuzz:
     target_name: null
     corpus_path: null
@@ -19221,6 +19220,98 @@ entries:
   - design-validation
   spec_gap_ids:
   - PHASE-0-10-SPEC-GAP
+  created_at_utc: '2026-04-28T00:00:00Z'
+  updated_at_utc: '2026-04-28T00:00:00Z'
+- test_id: TEST-MFOS-DAFNY-0001
+  title: Dafny Phase 1 loader-only policy review
+  test_type: positive
+  status: draft
+  requirement_ids: &dafny_requirement_ids
+  - MFOS-REQ-DAFNY-0001
+  - MFOS-REQ-DAFNY-0002
+  - MFOS-REQ-DAFNY-0003
+  - MFOS-REQ-DAFNY-0004
+  - MFOS-REQ-DAFNY-0005
+  - MFOS-REQ-DAFNY-0006
+  - MFOS-REQ-DAFNY-0007
+  - MFOS-REQ-DAFNY-0008
+  - MFOS-REQ-DAFNY-0009
+  - MFOS-REQ-DAFNY-0010
+  source_matrix_ids: &dafny_source_matrix_ids
+  - EXTREF-DAFNY-REFERENCE-0001
+  - EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
+  owning_spec:
+    path: docs/design/specs/43-dafny-executable-semantics-policy.md
+    section: Requirement Rules
+  target_subsystem: formal-executable-semantics
+  target_artifacts:
+  - formal/executable-semantics/dafny/
+  preconditions:
+  - Phase 1 scope is loader-only artifact validation.
+  steps:
+  - Review Dafny scaffold metadata, policy text, and validator output.
+  expected_result: Dafny scaffold is present and remains loader-only, with no semantic runner or production path.
+  expected_absence:
+  - no Rust semantic core
+  - no semantic runner
+  - no hosted daemon
+  - no production generated code
+  expected_error_code: null
+  audit_expectations:
+  - No runtime audit is required because this is a design-only loader policy review.
+  fixtures: []
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-DAFNY-0001
+  ci_jobs:
+  - design-validation
+  spec_gap_ids:
+  - DAFNY-GAP-0002
+  created_at_utc: '2026-04-28T00:00:00Z'
+  updated_at_utc: '2026-04-28T00:00:00Z'
+- test_id: NEG-MFOS-DAFNY-0001
+  title: Dafny Phase 1 forbidden implementation negative review
+  test_type: negative
+  status: draft
+  requirement_ids: *dafny_requirement_ids
+  source_matrix_ids: *dafny_source_matrix_ids
+  owning_spec:
+    path: docs/design/specs/43-dafny-executable-semantics-policy.md
+    section: Prohibited Artifacts
+  target_subsystem: formal-executable-semantics
+  target_artifacts:
+  - formal/executable-semantics/dafny/
+  preconditions:
+  - A proposed Phase 1 change claims semantic execution, Rust semantic-core, hosted daemon, semantic runner, or production generated code.
+  steps:
+  - Run Dafny scaffold validation and review forbidden-scope metadata.
+  expected_result: Proposed change is rejected as outside Phase 1 scope.
+  expected_absence:
+  - no semantic execution claim
+  - no production claim
+  - no hosted daemon
+  - no Rust semantic core
+  expected_error_code: MFOS_ERR_SPEC_GAP
+  audit_expectations:
+  - No runtime audit is required because this is a design-only negative review.
+  fixtures: []
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-DAFNY-0001
+  ci_jobs:
+  - design-validation
+  spec_gap_ids:
+  - DAFNY-GAP-0002
   created_at_utc: '2026-04-28T00:00:00Z'
   updated_at_utc: '2026-04-28T00:00:00Z'
 spec_gaps:

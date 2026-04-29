@@ -198,7 +198,9 @@ entries:
   inputs:
   - docs/design/specs/11-workload-policy.md
   outputs:
-  - implementation/prototypes/hosted-semantic/services/workpolicyd
+  - docs/design/specs/11-workload-policy.md
+  - docs/design/registries/requirements.yaml
+  - reports/audits/packs/pack-audit.md
   tests: []
 - pack_id: PACK-11
   requirements:
@@ -217,7 +219,9 @@ entries:
   inputs:
   - docs/design/specs/13-update.md
   outputs:
-  - implementation/prototypes/hosted-semantic/services/uvsd
+  - docs/design/specs/13-update.md
+  - docs/design/registries/requirements.yaml
+  - reports/audits/packs/pack-audit.md
   tests:
   - NEG-MFOS-UPDATE-ROLLBACK-0004
   - NEG-MFOS-UPDATE-FREEZE-0005
@@ -236,16 +240,22 @@ entries:
   tests: []
 - pack_id: PACK-14
   requirements:
-  - MFOS-REQ-PARTITION-0005
-  - MFOS-REQ-PARTITION-0006
-  - MFOS-REQ-PARTITION-0016
-  - MFOS-REQ-PARTITION-0017
+  - MFOS-REQ-PARTITION-*
+  - MFOS-REQ-PXM-*
   inputs:
   - docs/design/specs/16-pxm.md
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
   outputs:
-  - implementation/pxm
+  - schemas/mfos/pxm-control-request.schema.yml
+  - schemas/mfos/pxm-capability.schema.yml
+  - formal/registry.yml
+  - reports/current/pxm-mfvm-requirements-docs-expansion-report.md
   tests:
-  - NEG-MFOS-PARTITION-DEVICE-TEARDOWN-0006
+  - TEST-MFOS-PXM-0101
+  - TEST-MFOS-PXM-0102
+  - NEG-MFOS-PXM-0102
+  - NEG-MFOS-PXM-0108
 - pack_id: PACK-15
   requirements:
   - MFOS-REQ-GUARD-*
@@ -392,3 +402,108 @@ entries:
   outputs:
   - ci/linters
   tests: []
+- pack_id: PACK-31
+  requirements:
+  - MFOS-REQ-MFVM-*
+  - MFOS-REQ-VIRT-*
+  - MFOS-REQ-PXM-*
+  inputs:
+  - docs/design/specs/42-mfvm.md
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  outputs:
+  - schemas/mfos/mfvm-managed-vm.schema.yml
+  - schemas/mfos/vm-config.schema.yml
+  - schemas/mfos/vm-placement-decision.schema.yml
+  - tests/catalog/mfvm.yml
+  tests:
+  - TEST-MFOS-MFVM-0101
+  - TEST-MFOS-MFVM-0106
+  - NEG-MFOS-MFVM-0103
+  - NEG-MFOS-MFVM-0108
+- pack_id: PACK-32
+  requirements:
+  - MFOS-REQ-CVM-*
+  - MFOS-REQ-PXM-*
+  - MFOS-REQ-MFVM-*
+  inputs:
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/42-mfvm.md
+  outputs:
+  - schemas/mfos/confidential-vm.schema.yml
+  - schemas/mfos/cvm-profile.schema.yml
+  - schemas/mfos/cvm-launch-measurement.schema.yml
+  - schemas/mfos/cvm-attestation-evidence.schema.yml
+  - tests/catalog/confidential-vm.yml
+  tests:
+  - TEST-MFOS-CVM-0101
+  - TEST-MFOS-CVM-0103
+  - NEG-MFOS-CVM-0107
+  - NEG-MFOS-CVM-0108
+- pack_id: PACK-33
+  requirements:
+  - MFOS-REQ-CLUSTER-*
+  - MFOS-REQ-OPS-*
+  - MFOS-REQ-PERF-*
+  inputs:
+  - docs/design/specs/38-datacenter-cluster-operations.md
+  - docs/design/specs/41-performance-and-secure-operations.md
+  outputs:
+  - schemas/mfos/cluster-node.schema.yml
+  - schemas/mfos/cluster-membership.schema.yml
+  - schemas/mfos/cluster-placement-policy.schema.yml
+  - schemas/mfos/cluster-audit-stream.schema.yml
+  - tests/catalog/datacenter-cluster.yml
+  tests:
+  - TEST-MFOS-CLUSTER-0101
+  - TEST-MFOS-CLUSTER-0105
+  - NEG-MFOS-CLUSTER-0104
+  - NEG-MFOS-CLUSTER-0108
+- pack_id: PACK-34
+  requirements:
+  - MFOS-REQ-LANG-*
+  - MFOS-REQ-FORMAL-*
+  - MFOS-REQ-ASSURANCE-*
+  inputs:
+  - docs/design/specs/39-language-and-verification-policy.md
+  outputs:
+  - formal/registry.yml
+  - tests/catalog/language-verification.yml
+  tests:
+  - TEST-MFOS-LANG-0101
+  - TEST-MFOS-LANG-0104
+  - NEG-MFOS-LANG-0103
+  - NEG-MFOS-LANG-0106
+- pack_id: PACK-35
+  requirements:
+  - MFOS-REQ-FORMAL-*
+  - MFOS-REQ-PXM-*
+  - MFOS-REQ-MFVM-*
+  - MFOS-REQ-CVM-*
+  - MFOS-REQ-CLUSTER-*
+  inputs:
+  - docs/design/specs/40-automated-reasoning-program.md
+  - formal/registry.yml
+  outputs:
+  - formal/registry.yml
+  - tests/catalog/automated-reasoning.yml
+  - reports/current/pxm-mfvm-requirements-docs-red-team-review.md
+  tests:
+  - TEST-MFOS-FORMAL-0101
+  - TEST-MFOS-FORMAL-0106
+  - NEG-MFOS-FORMAL-0105
+  - NEG-MFOS-FORMAL-0108
+- pack_id: PACK-36
+  requirements:
+  - MFOS-REQ-PERF-*
+  - MFOS-REQ-OPS-*
+  inputs:
+  - docs/design/specs/41-performance-and-secure-operations.md
+  - docs/design/specs/38-datacenter-cluster-operations.md
+  outputs:
+  - tests/catalog/performance-secure-operations.yml
+  - reports/current/pxm-mfvm-requirements-docs-expansion-report.md
+  tests:
+  - TEST-MFOS-PERF-0101
+  - TEST-MFOS-OPS-0101
+  - NEG-MFOS-OPS-0103
+  - NEG-MFOS-OPS-0104

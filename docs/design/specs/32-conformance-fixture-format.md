@@ -47,32 +47,35 @@ Fixtures exist to prevent:
 
 ## 3. Fixture Envelope
 
-Every fixture MUST use this envelope:
+Current Phase 0.9 fixtures use this compact deterministic envelope:
 
 ```yaml
-artifact_kind: test_fixture
-schema_version: 1
-fixture_id: FIX-MFOS-AREA-NAME-0001
-title: Human-readable title
-status: draft
-profile: BASELINE
-owning_spec:
-  spec_id: MFOS-SPEC-AREA-NAME
-  path: docs/design/specs/NN-area.md
-requirement_ids:
+fixture_id: FIXTURE-MFOS-AREA-NAME-0001
+fixture_version: 1
+description: Human-readable title
+target_specs:
+  - docs/design/specs/NN-area.md
+target_requirements:
   - MFOS-REQ-AREA-0001
-source_refs:
-  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
-determinism:
-  clock_utc: "2026-04-28T00:00:00Z"
+preconditions:
+  - All subjects, policy versions, object generations, and dependency states are symbolic and deterministic.
+initial_state:
+  clock: T0
   security_epoch: 1
   policy_version: 1
-  ordering: declaration_order
-initial_state:
-  state_version: 1
   objects: []
-inputs: []
-dependency_states: []
+inputs:
+  - input_id: INPUT-MFOS-PHASE09-0001
+    operation: MFOS-DEFINED-OPERATION
+    deterministic_seed: SEED-MFOS-PHASE09-0001
+expected_oracle: tests/golden/area/name-0001.yml
+expected_evidence:
+  - EV-MFOS-AREA-NAME-0001
+not_allowed:
+  - production_claim
+  - external_compatibility_claim
+  - host_os_semantics_dependency
+status: draft
 ```
 
 The schema for this envelope is `schemas/test-fixture.schema.yml`.

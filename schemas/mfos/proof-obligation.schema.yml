@@ -5,32 +5,59 @@ phase: Phase 0.10
 implementation_allowed: false
 type: object
 required:
-- object_id
-- schema_version
-- status
-- source_refs
-- requirement_refs
-- audit_obligations
-- spec_gap_policy
-- implementation_allowed
+  - obligation_id
+  - claim_ref
+  - status
+  - statement
+  - requirement_refs
+  - invariants
+  - accepted_tool_refs
+  - acceptance_criteria
+  - expected_evidence_refs
+  - proof_artifact
+  - proof_claimed
 properties:
-  object_id:
+  obligation_id:
     type: string
-  schema_version:
-    type: integer
+    pattern: "^MFOS-PO-[A-Z0-9-]+$"
+  legacy_obligation_id:
+    type: string
+    pattern: "^MFOS-PROOF-OBLIGATION-[A-Z0-9-]+$"
+  claim_ref:
+    type: string
+    pattern: "^MFOS-FC-[A-Z0-9-]+$"
   status:
+    enum:
+      - planned
+      - draft
+      - reviewed
+  statement:
     type: string
-  source_refs:
-    type: array
   requirement_refs:
     type: array
-  audit_obligations:
+    minItems: 1
+  invariants:
     type: array
-  spec_gap_policy:
-    const: implementation_must_not_infer_or_fill_gaps
-  implementation_allowed:
+    minItems: 1
+  accepted_tool_refs:
+    type: array
+    minItems: 1
+  acceptance_criteria:
+    type: array
+    minItems: 1
+  expected_evidence_refs:
+    type: array
+    minItems: 1
+  proof_artifact:
+    type:
+      - "null"
+      - string
+  proof_claimed:
     const: false
 additionalProperties: false
-source_refs: []
-requirement_refs: []
+source_refs:
+  - EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
+  - EXTREF-NIST-SSDF-0001
+requirement_refs:
+  - MFOS-REQ-FORMAL-0002
 spec_gap_policy: implementation_must_not_infer_or_fill_gaps

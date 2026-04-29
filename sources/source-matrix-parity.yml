@@ -6,11 +6,11 @@ generated_manually_from:
   canonical_source_cards: docs/design/source-matrix/cards
   workbench_root: sources
 summary:
-  canonical_source_cards: 37
+  canonical_source_cards: 65
   canonical_source_ids_with_workbench_candidate: 37
-  missing_workbench_candidates: 0
+  missing_workbench_candidates: 28
   duplicate_source_ids_requiring_normalization: []
-  note: Presence in sources/ does not make sources/ canonical; docs/design/source-matrix remains authority until ADR migration.
+  note: Presence in sources/ does not make sources/ canonical; docs/design/source-matrix remains authority until ADR migration. Missing workbench candidates are not Source Matrix gaps.
 entries:
   - source_id: EXTREF-IBM-Z-ARCHITECTURE-PRINCIPLES-0001
     canonical_card: docs/design/source-matrix/cards/EXTREF-IBM-Z-ARCHITECTURE-PRINCIPLES-0001.yml
@@ -160,3 +160,115 @@ entries:
     canonical_card: docs/design/source-matrix/cards/X64-LINUX-PKU-001.yml
     primary_workbench_path: sources/x64/linux-informative/source-cards/X64-LINUX-PKU-001.yml
     parity_status: present
+  - source_id: EXTREF-MICROSOFT-HYPERV-TLFS-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-MICROSOFT-HYPERV-TLFS-0001.yml
+    primary_workbench_path: null
+    parity_status: missing_workbench_candidate
+  - source_id: EXTREF-MICROSOFT-HYPERV-OVERVIEW-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-MICROSOFT-HYPERV-OVERVIEW-0001.yml
+    primary_workbench_path: null
+    parity_status: missing_workbench_candidate
+  - source_id: EXTREF-MICROSOFT-HYPERV-VSM-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-MICROSOFT-HYPERV-VSM-0001.yml
+    primary_workbench_path: null
+    parity_status: missing_workbench_candidate
+  - source_id: EXTREF-LINUX-KVM-API-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-LINUX-KVM-API-0001.yml
+    primary_workbench_path: null
+    parity_status: missing_workbench_candidate
+  - source_id: EXTREF-LINUX-KVM-VFIO-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-LINUX-KVM-VFIO-0001.yml
+    primary_workbench_path: null
+    parity_status: missing_workbench_candidate
+  - source_id: EXTREF-LINUX-KVM-CAPABILITIES-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-LINUX-KVM-CAPABILITIES-0001.yml
+    primary_workbench_path: null
+    parity_status: missing_workbench_candidate
+  - source_id: EXTREF-INTEL-TDX-OVERVIEW-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-INTEL-TDX-OVERVIEW-0001.yml
+    primary_workbench_path: null
+    parity_status: missing_workbench_candidate
+  - source_id: EXTREF-INTEL-TDX-LINUX-DOC-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-INTEL-TDX-LINUX-DOC-0001.yml
+    primary_workbench_path: null
+    parity_status: missing_workbench_candidate
+  - source_id: EXTREF-INTEL-TDX-ATTESTATION-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-INTEL-TDX-ATTESTATION-0001.yml
+    primary_workbench_path: null
+    parity_status: missing_workbench_candidate
+  - source_id: EXTREF-INTEL-CET-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-INTEL-CET-0001.yml
+    primary_workbench_path: null
+    parity_status: missing_workbench_candidate
+  - source_id: EXTREF-RUST-UNSAFE-REFERENCE-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-RUST-UNSAFE-REFERENCE-0001.yml
+    primary_workbench_path: null
+    parity_status: missing_workbench_candidate
+  - source_id: EXTREF-RUST-NO-STD-REFERENCE-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-RUST-NO-STD-REFERENCE-0001.yml
+    primary_workbench_path: null
+    parity_status: missing_workbench_candidate
+  - source_id: EXTREF-RUST-CF-PROTECTION-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-RUST-CF-PROTECTION-0001.yml
+    primary_workbench_path: null
+    parity_status: missing_workbench_candidate
+  - source_id: EXTREF-CLANG-CFI-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-CLANG-CFI-0001.yml
+    primary_workbench_path: null
+    parity_status: missing_workbench_candidate
+  - source_id: EXTREF-CLANG-KCFI-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-CLANG-KCFI-0001.yml
+    primary_workbench_path: null
+    parity_status: missing_workbench_candidate
+  - source_id: EXTREF-GCC-CF-PROTECTION-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-GCC-CF-PROTECTION-0001.yml
+    primary_workbench_path: null
+    parity_status: missing_workbench_candidate
+  - source_id: EXTREF-AMD-SEV-OVERVIEW-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-AMD-SEV-OVERVIEW-0001.yml
+    primary_workbench_path: null
+    parity_status: missing_workbench_candidate
+  - source_id: EXTREF-AMD-SEV-ES-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-AMD-SEV-ES-0001.yml
+    primary_workbench_path: null
+    parity_status: missing_workbench_candidate
+  - source_id: EXTREF-AMD-SEV-SNP-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-AMD-SEV-SNP-0001.yml
+    primary_workbench_path: null
+    parity_status: missing_workbench_candidate
+  - source_id: EXTREF-AMD-SEV-TIO-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-AMD-SEV-TIO-0001.yml
+    primary_workbench_path: null
+    parity_status: missing_workbench_candidate
+  - source_id: EXTREF-LINUX-AMD-SEV-KVM-DOC-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-LINUX-AMD-SEV-KVM-DOC-0001.yml
+    primary_workbench_path: null
+    parity_status: missing_workbench_candidate
+  - source_id: EXTREF-KANI-RUST-VERIFIER-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-KANI-RUST-VERIFIER-0001.yml
+    primary_workbench_path: null
+    parity_status: missing_workbench_candidate
+  - source_id: EXTREF-VERUS-RUST-VERIFICATION-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-VERUS-RUST-VERIFICATION-0001.yml
+    primary_workbench_path: null
+    parity_status: missing_workbench_candidate
+  - source_id: EXTREF-DAFNY-REFERENCE-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-DAFNY-REFERENCE-0001.yml
+    primary_workbench_path: null
+    parity_status: missing_workbench_candidate
+  - source_id: EXTREF-AWS-AUTOMATED-REASONING-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-AWS-AUTOMATED-REASONING-0001.yml
+    primary_workbench_path: null
+    parity_status: missing_workbench_candidate
+  - source_id: EXTREF-GITHUB-CODEQL-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-GITHUB-CODEQL-0001.yml
+    primary_workbench_path: null
+    parity_status: missing_workbench_candidate
+  - source_id: EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001.yml
+    primary_workbench_path: null
+    parity_status: missing_workbench_candidate
+  - source_id: EXTREF-NIST-SSDF-0001
+    canonical_card: docs/design/source-matrix/cards/EXTREF-NIST-SSDF-0001.yml
+    primary_workbench_path: null
+    parity_status: missing_workbench_candidate

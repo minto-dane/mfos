@@ -8,4 +8,12 @@ seed_categories:
 - tampered_hash_chain
 - duplicate_record_id
 - redaction_boundary
+- valid_minimal_input
+- boundary_length_input
+- invalid_token
+- malformed_nesting
+- unsupported_feature
+- explicit_spec_gap_trigger
+- denied_operation_fixture
+- audit_before_return_fixture
 status: draft

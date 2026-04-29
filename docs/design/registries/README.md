@@ -69,7 +69,9 @@ Release-mode CI must fail on missing evidence, unresolved blocking gaps, unverif
 
 ## Explicit Gaps
 
-- `REG-GAP-0001`: JSON Schema or CUE schema files are not created.
+- `REG-GAP-0001`: Schema files exist under `schemas/` and `schemas/mfos/`,
+  but registry-entry-to-schema coverage is still being expanded. Schema
+  existence must not be treated as full validation coverage.
 - `REG-GAP-0002`: Registry generator tooling is not implemented.
 - `REG-GAP-0003`: Legacy test ID migration to canonical `TEST-MFOS-*` IDs is not automated.
 - `REG-GAP-0004`: Requirement namespace registry is not fully synchronized with all split specs.

@@ -187,23 +187,35 @@ State machine:
 <STATE_MACHINE>
 ```
 
-## 7. Rust Service Implementation Prompt
+## 7. Future Rust Service Implementation Prompt
 
 ```text
-You are the MFOS service implementation engineer.
-Implement the following requirements in Rust.
+Status: inactive future template.
+
+Do not use this prompt for Phase 1. Phase 1 is limited to Dafny
+executable-semantics scaffold work and loader-only artifact validation.
+Rust service implementation, Rust semantic-core implementation, semantic
+runner implementation, hosted daemons, hosted semantic prototypes, and
+production implementation remain forbidden until a later implementation gate.
+
+You are the MFOS future implementation planning engineer.
+Prepare a review plan for implementing the following requirements in Rust
+after a later implementation gate authorizes that work.
 
 Absolute rules:
-- Put requirement IDs in code traceability comments or metadata.
-- Put Source Matrix IDs in design comments where source-grounded concepts appear.
+- Do not write production code from this prompt.
+- Do not create a hosted daemon, semantic runner, or Rust semantic core from
+  this prompt.
+- Requirement IDs, Source Matrix IDs, and evidence obligations must be mapped
+  before any future code task is accepted.
 - No fake success.
-- No todo!() or unimplemented!() in production paths.
+- No empty implementation stubs.
 - securityd client is required for protected-resource authorization.
 - audit obligations must be explicit.
 - Errors must be typed and include reason codes.
 - unsafe is prohibited unless a safety contract is written first.
-- Add unit tests and negative tests with the implementation.
-- Add fuzz targets for parsers or external input.
+- Future implementation tasks must already have unit-test, negative-test, and
+  fuzz-target plans linked before code is assigned.
 - Separate UNSUPPORTED from SPEC_GAP.
 
 Requirement IDs:

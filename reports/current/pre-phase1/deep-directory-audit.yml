@@ -1,0 +1,52 @@
+schema_version: 1
+artifact_type: pre_phase1_deep_directory_audit
+status: current
+date: '2026-04-28'
+branch: fix/pre-phase-1-total-readiness-second-pass
+scope:
+  recursive_directory_scan: true
+  recursive_file_scan: true
+  git_tracked_file_scan: true
+counts:
+  directories_observed_excluding_git: 441
+  files_observed_excluding_git_and_pycache: 943
+  git_tracked_files: 942
+  empty_directories_observed_locally: 171
+findings:
+  critical_fixed:
+    - deny_before_return_oracle_expected_allow
+    - readiness_reports_overclaimed_before_second_pass_fixes
+    - inactive_prompt_library_contained_phase1_rust_service_implementation_prompt
+  major_fixed:
+    - hosted_semantic_paths_in_pack_outputs
+    - hosted_prototype_targets_in_spec_index
+    - stale_source_workbench_parity_count
+    - source_matrix_guidance_risked_external_substitute_wording
+    - formal_model_registry_referenced_missing_planned_paths
+    - formal_tool_source_refs_inconsistent_between_registries
+    - formal_claim_and_proof_obligation_schema_mismatch
+    - dafny_requirements_missing_from_canonical_requirement_registry
+    - phase09_fixture_oracle_schema_contract_mismatch
+    - phase09_traceability_duplicate_test_ids
+    - phase09_gap_report_missing_fixture_evidence_gaps
+    - fuzz_seed_category_minimums_not_reflected_in_seed_plans
+    - no_implementation_check_coverage_gap_for_future_scaffold_roots
+  remaining_minor:
+    - legacy_schema_files_emit_draft_mode_shape_policy_warnings
+    - local_worktree_contains_untracked_empty_planned_dirs_not_present_in_clean_clone
+    - source_grounding_semantic_freeze_remains_conditional_outside_loader_only_scope
+phase_1_allowed_scope:
+  dafny_skeleton: true
+  loader_only_artifact_validation: true
+  traceability_repair: true
+phase_1_forbidden_scope:
+  rust_semantic_core: true
+  portable_semantic_core: true
+  semantic_runner: true
+  hosted_daemon: true
+  hosted_semantic_prototype: true
+  production_code: true
+  service_implementation: true
+  pxm_mfvm_cvm_cluster_implementation: true
+public_release_allowed: false
+requires_ip_attorney_review_before_public_release: true
