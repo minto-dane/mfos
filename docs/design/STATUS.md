@@ -7,9 +7,12 @@ PR #10 (`fix/phase-0.10-pxm-mfvm-expansion`), PR #11
 (`fix/pre-phase-1-total-readiness`), PR #12
 (`fix/pre-phase-1-total-readiness-second-pass`), and PR #13
 (`fix/pre-phase-1-total-readiness-iteration-3`) have landed in `dev`. This
-fixed-point closure branch is based on the updated `origin/dev`. Repository
-visibility may be public by owner instruction, but formal public-release claims
-remain blocked pending IP/trademark attorney review.
+fixed-point closure branch is based on the updated `origin/dev`. PR #14
+(`fix/pre-phase1-fixedpoint-closure`) carries the fixed-point closure and GitHub
+checks passed (`CodeQL`, `CodeQL analysis (python)`, and `validate design
+registries and lint gates`). Repository visibility may be public by owner
+instruction, but formal public-release claims remain blocked pending IP/trademark
+attorney review.
 
 ## Current Phase
 

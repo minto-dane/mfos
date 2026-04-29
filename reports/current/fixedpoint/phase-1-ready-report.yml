@@ -23,7 +23,7 @@ source_grounding_status: conditional; no SG6/SG7 semantic-freeze claim; loader-o
 dafny_policy_status: present and validated
 artifact_hygiene_status: validated
 component_scaffold_status: validated
-ci_status: local_validation_passed; github_checks_pending_pr_creation
+ci_status: local_validation_passed; github_checks_passed_on_pr_14
 remaining_minor_issues:
 - Phase 0.9 expected future evidence IDs remain recorded as generated gaps and are
   not Phase 1 loader blockers.
@@ -34,4 +34,7 @@ blockers: []
 final_recommendation: Open fixed-point PR, require GitHub checks to pass, then merge
   before Phase 1 loader-only work.
 all_local_validation_passed: true
-all_required_github_checks_passed: pending_pr_creation
+all_required_github_checks_passed: true
+pull_request:
+  number: 14
+  url: https://github.com/minto-dane/mfos/pull/14

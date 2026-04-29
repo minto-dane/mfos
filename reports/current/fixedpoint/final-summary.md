@@ -4,7 +4,7 @@ Status: current
 
 ## Summary
 
-The fixed-point closure pass generated a repository graph, issue ledger, loop history, validation report, final red-team review, and Phase 1 readiness report. Critical and Major findings are closed. Local validation passed. GitHub checks must pass on the fixed-point PR before merge.
+The fixed-point closure pass generated a repository graph, issue ledger, loop history, validation report, final red-team review, and Phase 1 readiness report. Critical and Major findings are closed. Local validation passed. GitHub checks passed on PR #14 before merge.
 
 ## Phase 1 Scope
 
@@ -28,3 +28,5 @@ semantic_runner_implementation_allowed: false
 public_release_allowed: false
 requires_ip_attorney_review_before_public_release: true
 ```
+
+PR: https://github.com/minto-dane/mfos/pull/14

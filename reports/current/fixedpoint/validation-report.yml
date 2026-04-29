@@ -25,7 +25,12 @@ commands:
 all_local_validation_passed: true
 warnings: 0
 errors: 0
-github_checks: pending_pr_creation
+github_checks:
+  status: passed
+  checks:
+  - CodeQL
+  - CodeQL analysis (python)
+  - validate design registries and lint gates
 notes:
 - Phase-name policy explicitly permits reports/current/fixedpoint/ because the fixed-point
   package requires phase-1-ready-report artifacts.
@@ -109,3 +114,7 @@ log_excerpt_lines:
 - Phase 0.9 no-implementation check OK
 - $ python3 -m py_compile $(find scripts -name *.py -type f | sort)
 - $ git diff --check
+pull_request:
+  number: 14
+  url: https://github.com/minto-dane/mfos/pull/14
+all_required_github_checks_passed: true

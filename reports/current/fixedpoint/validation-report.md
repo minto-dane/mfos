@@ -4,7 +4,7 @@ Status: current
 
 ## Result
 
-All required local validation commands passed with zero reported warnings or errors. GitHub checks are pending PR creation at the time of this artifact and must pass before merge.
+All required local validation commands passed with zero reported warnings or errors. GitHub checks passed on PR #14 before merge.
 
 ## Commands
 
@@ -22,3 +22,10 @@ All required local validation commands passed with zero reported warnings or err
 
 - `reports/current/fixedpoint/` is an explicit phase-name policy exception for this closure package.
 - The repository graph does not republish noncanonical legacy Source IDs as active `source_refs`.
+
+## GitHub Checks
+
+- PR: https://github.com/minto-dane/mfos/pull/14
+- `CodeQL`: passed
+- `CodeQL analysis (python)`: passed
+- `validate design registries and lint gates`: passed
