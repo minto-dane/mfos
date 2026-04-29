@@ -1,7 +1,7 @@
 schema_version: 1
 plan_id: MFOS-CONDITIONAL-REFREEZE-SOURCE-GROUNDING-0001
 status: current
-generated_at: "2026-04-27"
+generated_at: '2026-04-28'
 overall_decision:
   structural_freeze_remains_valid: true
   semantic_freeze_fully_valid: false
@@ -9,6 +9,7 @@ overall_decision:
   production_allowed: false
   phase_1_loader_allowed: true
   phase_1_semantic_evaluator_allowed_domains: []
+  phase_1_pxm_mfvm_cvm_cluster_semantic_evaluator_allowed: false
 status_changes_recommended:
   docs/design/specs/03-system-integrity.md: frozen_pending_source_review
   docs/design/specs/06-authorization.md: frozen_pending_source_review
@@ -22,30 +23,49 @@ status_changes_recommended:
   docs/design/specs/33-semantic-runner-contract.md: provisional
   docs/design/specs/34-oracle-definition-format.md: provisional
   docs/design/specs/35-fuzz-corpus-plan.md: structural_frozen_semantic_pending
+  docs/design/specs/36-hypervisor-class-virtualization.md: structural_frozen_semantic_pending
+  docs/design/specs/37-confidential-vm.md: structural_frozen_semantic_pending
+  docs/design/specs/38-datacenter-cluster-operations.md: structural_frozen_semantic_pending
+  docs/design/specs/39-language-and-verification-policy.md: structural_frozen_semantic_pending
+  docs/design/specs/40-automated-reasoning-program.md: structural_frozen_semantic_pending
+  docs/design/specs/41-performance-and-secure-operations.md: structural_frozen_semantic_pending
+  docs/design/specs/42-mfvm.md: structural_frozen_semantic_pending
 pack_status_recommended:
   PACK-05: ready_for_loader_only
   PACK-06: ready_for_loader_only
   PACK-07: ready_for_loader_only
   PACK-08: not_ready_for_phase_1_semantic_evaluator
   PACK-09: ready_for_loader_only
+  PACK-14: ready_for_loader_only_not_semantic_evaluator
+  PACK-31: ready_for_loader_only_not_semantic_evaluator
+  PACK-32: ready_for_loader_only_not_semantic_evaluator
+  PACK-33: ready_for_loader_only_not_semantic_evaluator
+  PACK-34: ready_for_loader_only_not_semantic_evaluator
+  PACK-35: ready_for_loader_only_not_semantic_evaluator
+  PACK-36: ready_for_loader_only_not_semantic_evaluator
 critical_items:
-  - id: SG-CRIT-0001
-    finding: Phase 1 readiness report over-authorized Portable Semantic Core and semantic runner work.
-    action_taken: Downgrade readiness report and STATUS to loader-only pending source-grounding closure.
-  - id: SG-CRIT-0002
-    finding: Job/spool control stream grammar creates external command-syntax impression.
-    action_required: Refactor or re-bound the grammar before semantic evaluator work.
+- id: SG-CRIT-0001
+  finding: Phase 1 readiness report over-authorized Portable Semantic Core and semantic
+    runner work.
+  action_taken: Downgrade readiness report and STATUS to loader-only pending source-grounding
+    closure.
+- id: SG-CRIT-0002
+  finding: Job/spool control stream grammar creates external command-syntax impression.
+  action_required: Refactor or re-bound the grammar before semantic evaluator work.
 major_items:
-  - id: SG-MAJOR-0001
-    finding: Source Cards are draft and lack direct spec/test links.
-    action_required: Add card-local spec/test refs and targeted source-review records.
-  - id: SG-MAJOR-0002
-    finding: Fixtures and golden/oracle vectors lack direct source refs.
-    action_required: Propagate source_refs and target_requirements from catalogs.
-  - id: SG-MAJOR-0003
-    finding: Planned 010x requirement test IDs and current 09xx executable-spec catalog IDs remain unreconciled.
-    action_required: Add alias map or align IDs before semantic evaluator work.
-  - id: SG-MAJOR-0004
-    finding: MFOS-owned job/spool identifiers still include external-looking JCL/DD terms.
-    action_required: Naming-safety follow-up before evaluator work.
-next_action: close source-grounding trace propagation gaps before Phase 1 semantic evaluator.
+- id: SG-MAJOR-0001
+  finding: Source Cards are draft and lack direct spec/test links.
+  action_required: Add card-local spec/test refs and targeted source-review records.
+- id: SG-MAJOR-0002
+  finding: Fixtures and golden/oracle vectors lack direct source refs.
+  action_required: Propagate source_refs and target_requirements from catalogs.
+- id: SG-MAJOR-0003
+  finding: Planned 010x requirement test IDs and current 09xx executable-spec catalog
+    IDs remain unreconciled.
+  action_required: Add alias map or align IDs before semantic evaluator work.
+- id: SG-MAJOR-0004
+  finding: MFOS-owned job/spool identifiers still include external-looking JCL/DD
+    terms.
+  action_required: Naming-safety follow-up before evaluator work.
+next_action: keep Phase 1 loader-only; close source-grounding and semantic gates before
+  evaluator work.

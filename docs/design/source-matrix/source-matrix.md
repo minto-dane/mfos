@@ -41,6 +41,7 @@ This matrix covers source grounding for the MFOS design areas listed below:
 - x64 hardware reality: Intel, AMD, Linux PKU, Linux CET.
 - VBS/VSM-inspired Guard concepts for the High-Assurance profile only.
 - Supply-chain, update, firmware resilience, and formal-assurance references.
+- Language, unsafe-code, no_std, and compiler control-flow hardening references.
 - FBVBS as an internal transfer source for traceability and assurance
   discipline.
 
@@ -52,6 +53,8 @@ This matrix does not:
 - Claim JES, RACF, DFSMS, SMF, workload policy, APF, or z/OS UNIX compatibility.
 - Replace IBM, Intel, AMD, Microsoft, NIST, TCG, seL4, SLSA, or TUF
   documentation.
+- Replace Rust, LLVM/Clang, GCC, Linux kernel, Kani, Verus, AWS, GitHub, or
+  NIST documentation.
 - Authorize copying IBM behavior that is not explicitly mapped and reviewed.
 - Permit long quotations from vendor documentation.
 - Make hardware features such as PKU, PKS, CET, SMEP, or SMAP the primary
@@ -63,8 +66,9 @@ This matrix does not:
 Normative Source:
   A source that may ground MFOS requirements and conformance claims. Examples:
   IBM-published public documentation, Intel SDM, AMD APM, TCG specifications,
-  NIST publications, Microsoft-published documentation for VBS/VSM concepts, TUF and
-  SLSA specifications.
+  NIST publications, Microsoft-published documentation for VBS/VSM concepts,
+  Rust Reference documentation for MFOS language policy, TUF, and SLSA
+  specifications.
 
 Informative Source:
   A source used for comparison, implementation understanding, or review
@@ -123,6 +127,12 @@ Internal Transfer Source:
 | X64-AMD-001 | Normative | AMD64 system programming | AMD64 Architecture Programmer's Manual Volume 2: System Programming | https://docs.amd.com/v/u/en-US/24593_3.44_APM_Vol2 | Grounds AMD64 protection, SVM, NPT, paging, interrupts, and system programming differences. |
 | X64-LINUX-PKU-001 | Informative | PKU behavior | Linux kernel memory protection keys documentation | https://docs.kernel.org/core-api/protection-keys.html | Grounds the MFOS warning that x86 pkeys are data-access controls, not instruction-fetch controls or z/OS storage-key compatibility. |
 | X64-LINUX-CET-001 | Informative | CET behavior | Linux x86 CET shadow stack documentation | https://docs.kernel.org/arch/x86/shstk.html | Grounds CET as control-flow hardening and not a full authorization or storage-domain mechanism. |
+| EXTREF-RUST-UNSAFE-REFERENCE-0001 | Normative | Rust unsafe policy | The Rust Reference: the unsafe keyword | https://doc.rust-lang.org/reference/unsafe-keyword.html | Grounds MFOS unsafe-boundary review and evidence planning without copying Rust reference text. |
+| EXTREF-RUST-NO-STD-REFERENCE-0001 | Normative | Rust no_std policy | The Rust Reference: the no_std attribute | https://doc.rust-lang.org/reference/names/preludes.html#the-no_std-attribute | Grounds no_std/freestanding runtime-contract planning. |
+| EXTREF-RUST-CF-PROTECTION-0001 | Informative | Rust cf-protection planning | The Rust Unstable Book: cf_protection | https://doc.rust-lang.org/unstable-book/compiler-flags/cf-protection.html | Grounds Rust x86 CET feature-profile planning only; no production enforcement claim. |
+| EXTREF-CLANG-CFI-0001 | Informative | C/C++ boundary hardening | Clang Control Flow Integrity documentation | https://clang.llvm.org/docs/ControlFlowIntegrity.html | Grounds Clang CFI as defense-in-depth evidence for approved C/C++ boundaries. |
+| EXTREF-CLANG-KCFI-0001 | Informative | Kernel CFI planning | Clang Kernel Control Flow Integrity documentation | https://clang.llvm.org/docs/ControlFlowIntegrity.html#fsanitize-kcfi | Grounds KCFI planning for future kernel-oriented indirect-call hardening. |
+| EXTREF-GCC-CF-PROTECTION-0001 | Informative | GCC cf-protection planning | GCC Program Instrumentation Options: fcf-protection | https://gcc.gnu.org/onlinedocs/gcc/Instrumentation-Options.html | Grounds GCC x86 GNU/Linux CET instrumentation planning only. |
 | MS-VBS-001 | Normative | Guard inspiration | Memory Integrity and Virtualization-Based Security | https://learn.microsoft.com/en-us/windows-hardware/drivers/bringup/device-guard-and-credential-guard | Grounds High-Assurance-only Guard concepts around isolated protection for code integrity and executable page policy. |
 | MS-VSM-001 | Normative | Guard inspiration | Virtual Secure Mode | https://learn.microsoft.com/en-us/virtualization/hyper-v-on-windows/tlfs/vsm | Grounds VTL-like separation ideas for Guard root objects, with explicit divergence from Windows VSM. |
 | TCG-001 | Normative | Measured boot | TCG PC Client Platform Firmware Profile Specification | https://trustedcomputinggroup.org/resource/pc-client-specific-platform-firmware-profile-specification/ | Grounds TPM, firmware measurements, measured boot, and event log expectations. |
@@ -130,7 +140,7 @@ Internal Transfer Source:
 | NIST-218-001 | Normative | Secure software development | NIST SP 800-218 SSDF | https://csrc.nist.gov/pubs/sp/800/218/final | Grounds secure development practice requirements and quality gates. |
 | NIST-193-001 | Normative | Firmware resilience | NIST SP 800-193 Platform Firmware Resiliency Guidelines | https://www.nist.gov/node/1336751 | Grounds protection, detection, and recovery requirements for firmware and boot resilience. |
 | SEL4-001 | Informative | Formal assurance boundary | seL4 verification material | https://sel4.org/Verification/ | Informs how MFOS must state verified properties, assumptions, and out-of-scope hardware or boot assumptions. |
-| SLSA-001 | Normative | Supply chain | SLSA specification | https://slsa.dev/spec/latest/ | Grounds build provenance, hosted build, hardened build, and supply-chain integrity claims. |
+| SLSA-001 | Normative | Supply chain | SLSA specification and provenance page | https://slsa.dev/spec/v1.2/ and https://slsa.dev/spec/v1.2/provenance | Grounds build provenance, hosted build, hardened build, and supply-chain integrity claims. |
 | TUF-001 | Normative | Update security | The Update Framework Specification | https://theupdateframework.github.io/specification/v1.0.26/ and https://theupdateframework.io/docs/metadata/ | Grounds root, targets, snapshot, timestamp roles and rollback, freeze, mix-and-match, and key-compromise defenses. |
 | FBVBS-001 | Internal Transfer | Assurance discipline | FBVBS uploaded specification | Internal project document | Transfers requirement IDs, profiles, state machines, command-page discipline, update manifests, evidence, and production proof obligations into MFOS. |
 
@@ -152,6 +162,7 @@ Internal Transfer Source:
 | PXM Guard | MS-VBS-001, MS-VSM-001, FBVBS-001, X64-INTEL-001, X64-AMD-001 | Define High-Assurance-only root object protection, executable mapping policy, AMF registry sealing, SVC table integrity, and attestation. |
 | Update verification | TUF-001, EXTREF-IBM-ZOS-SMPE-SECINT-HOLDDATA-0001, NIST-218-001, SLSA-001, FBVBS-001 | Define metadata verification, rollback/freeze/mix-and-match defense, security epoch, provenance, and evidence. |
 | Firmware and measured boot | TCG-001, NIST-193-001, NIST-160-001 | Define measured boot, TPM event logs, firmware resilience, recovery, and assumptions. |
+| Language and toolchain hardening | EXTREF-RUST-UNSAFE-REFERENCE-0001, EXTREF-RUST-NO-STD-REFERENCE-0001, EXTREF-RUST-CF-PROTECTION-0001, EXTREF-CLANG-CFI-0001, EXTREF-CLANG-KCFI-0001, EXTREF-GCC-CF-PROTECTION-0001, X64-LINUX-CET-001, EXTREF-INTEL-CET-0001, EXTREF-KANI-RUST-VERIFIER-0001, EXTREF-VERUS-RUST-VERIFICATION-0001, EXTREF-GITHUB-CODEQL-0001 | Define unsafe-boundary review, no_std runtime contracts, CFI/CET evidence limits, static-analysis evidence, and proof-tool caveats. |
 
 ## Semantic Mapping Summary
 
@@ -287,3 +298,37 @@ Output:
 Input:
 <MFOS_TEXT>
 ```
+
+## Phase 0.10 External Reference Additions
+
+The following public-safe reference cards were added for PXM/MFVM, confidential VM, language-safety, and formal-assurance planning. They are reference and comparison sources only; they do not create compatibility claims.
+
+| Source ID | Purpose |
+| --- | --- |
+| `EXTREF-MICROSOFT-HYPERV-TLFS-0001` | Microsoft Hyper-V Hypervisor Top-Level Functional Specification |
+| `EXTREF-MICROSOFT-HYPERV-OVERVIEW-0001` | Hyper-V virtualization in Windows Server and Windows |
+| `EXTREF-MICROSOFT-HYPERV-VSM-0001` | Virtual Secure Mode |
+| `EXTREF-LINUX-KVM-API-0001` | The Definitive KVM API Documentation |
+| `EXTREF-LINUX-KVM-VFIO-0001` | VFIO - Virtual Function I/O |
+| `EXTREF-LINUX-KVM-CAPABILITIES-0001` | KVM capability discovery documentation |
+| `EXTREF-INTEL-TDX-OVERVIEW-0001` | Intel Trust Domain Extensions overview |
+| `EXTREF-INTEL-TDX-LINUX-DOC-0001` | Intel Trust Domain Extensions in Linux |
+| `EXTREF-INTEL-TDX-ATTESTATION-0001` | Intel Trust Domain Extensions attestation documentation |
+| `EXTREF-INTEL-CET-0001` | A Technical Look at Intel Control-Flow Enforcement Technology |
+| `EXTREF-RUST-UNSAFE-REFERENCE-0001` | The Rust Reference: the unsafe keyword |
+| `EXTREF-RUST-NO-STD-REFERENCE-0001` | The Rust Reference: the no_std attribute |
+| `EXTREF-RUST-CF-PROTECTION-0001` | The Rust Unstable Book: cf_protection |
+| `EXTREF-CLANG-CFI-0001` | Clang Control Flow Integrity documentation |
+| `EXTREF-CLANG-KCFI-0001` | Clang Kernel Control Flow Integrity documentation |
+| `EXTREF-GCC-CF-PROTECTION-0001` | GCC Program Instrumentation Options: fcf-protection |
+| `EXTREF-AMD-SEV-OVERVIEW-0001` | AMD Secure Encrypted Virtualization overview |
+| `EXTREF-AMD-SEV-ES-0001` | AMD SEV Encrypted State overview |
+| `EXTREF-AMD-SEV-SNP-0001` | AMD SEV-SNP strengthening VM isolation white paper |
+| `EXTREF-AMD-SEV-TIO-0001` | AMD SEV-TIO Trusted I/O white paper |
+| `EXTREF-LINUX-AMD-SEV-KVM-DOC-0001` | Linux KVM AMD memory encryption documentation |
+| `EXTREF-KANI-RUST-VERIFIER-0001` | The Kani Rust Verifier |
+| `EXTREF-VERUS-RUST-VERIFICATION-0001` | Verus Tutorial and Reference |
+| `EXTREF-AWS-AUTOMATED-REASONING-0001` | What is Automated Reasoning? |
+| `EXTREF-GITHUB-CODEQL-0001` | About code scanning with CodeQL |
+| `EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001` | NIST SP 800-160 Vol. 1 Rev. 1 |
+| `EXTREF-NIST-SSDF-0001` | NIST SP 800-218 Secure Software Development Framework |

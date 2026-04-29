@@ -1,0 +1,261 @@
+schema_version: 1
+registry_kind: mfos_formal_claim_registry
+status: draft
+updated_at: '2026-04-28'
+implementation_allowed: false
+proof_claimed: false
+claims:
+- claim_id: MFOS-FC-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW
+  legacy_claim_id: MFOS-FORMAL-CLAIM-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW
+  title: Authorization no handle without allow
+  status: planned
+  requirement_refs:
+  - MFOS-REQ-AUTH-0001
+  protected_assets:
+  - MFOS authorization semantics
+  - protected object handles
+  assumptions:
+  - Authorization decisions are modeled at the MFOS semantic boundary.
+  - Phase 0.10 requirements remain draft.
+  - No proof artifact exists yet.
+  not_claimed:
+  - production correctness
+  - complete verification
+  - hardware enforcement
+  proof_obligation_refs:
+  - MFOS-PO-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW
+  model_refs:
+  - MFOS-MODEL-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW
+  evidence_refs:
+  - EV-MFOS-FORMAL-0101
+- claim_id: MFOS-FC-AUDIT-DENY-BEFORE-RETURN
+  legacy_claim_id: MFOS-FORMAL-CLAIM-AUDIT-DENY-BEFORE-RETURN
+  title: Audit deny before return
+  status: planned
+  requirement_refs:
+  - MFOS-REQ-AUDIT-0001
+  protected_assets:
+  - audit evidence
+  - deny-path semantics
+  assumptions:
+  - Audit append ordering is modeled separately from durable storage mechanics.
+  - Phase 0.10 requirements remain draft.
+  - No proof artifact exists yet.
+  not_claimed:
+  - production correctness
+  - complete verification
+  - durable media correctness
+  proof_obligation_refs:
+  - MFOS-PO-AUDIT-DENY-BEFORE-RETURN
+  model_refs:
+  - MFOS-MODEL-AUDIT-DENY-BEFORE-RETURN
+  evidence_refs:
+  - EV-MFOS-FORMAL-0102
+- claim_id: MFOS-FC-UPDATE-NO-ROLLBACK
+  legacy_claim_id: MFOS-FORMAL-CLAIM-UPDATE-NO-ROLLBACK
+  title: Update no rollback
+  status: planned
+  requirement_refs:
+  - MFOS-REQ-UPDATE-*
+  protected_assets:
+  - update activation state
+  - rollback prevention evidence
+  assumptions:
+  - Update manifest and activation semantics are modeled before implementation.
+  - Phase 0.10 requirements remain draft.
+  - No proof artifact exists yet.
+  not_claimed:
+  - production updater correctness
+  - complete verification
+  - external update-framework compatibility
+  proof_obligation_refs:
+  - MFOS-PO-UPDATE-NO-ROLLBACK
+  model_refs:
+  - MFOS-MODEL-UPDATE-NO-ROLLBACK
+  evidence_refs:
+  - EV-MFOS-FORMAL-0103
+- claim_id: MFOS-FC-PARTITION-MEMORY-OWNERSHIP
+  legacy_claim_id: MFOS-FORMAL-CLAIM-PARTITION-MEMORY-OWNERSHIP
+  title: Partition memory ownership
+  status: planned
+  requirement_refs:
+  - MFOS-REQ-PXM-0103
+  protected_assets:
+  - PXM isolation root
+  - partition memory ownership state
+  assumptions:
+  - PXM memory ownership transitions are modeled independently from hardware page-table details.
+  - Phase 0.10 requirements remain draft.
+  - No proof artifact exists yet.
+  not_claimed:
+  - production correctness
+  - complete verification
+  - hardware enforcement
+  proof_obligation_refs:
+  - MFOS-PO-PARTITION-MEMORY-OWNERSHIP
+  model_refs:
+  - MFOS-MODEL-PARTITION-MEMORY-OWNERSHIP
+  evidence_refs:
+  - EV-MFOS-FORMAL-0104
+- claim_id: MFOS-FC-PXM-CAPABILITY-REQUIRED-FOR-RESOURCE-OPERATION
+  legacy_claim_id: MFOS-FORMAL-CLAIM-PXM-CAPABILITY-REQUIRED-FOR-RESOURCE-OPERATION
+  title: PXM capability required for resource operation
+  status: planned
+  requirement_refs:
+  - MFOS-REQ-PXM-0102
+  protected_assets:
+  - PXM resource operation authority
+  - PXM capability state
+  assumptions:
+  - Capability grant, use, and revocation semantics are modeled before implementation.
+  - Phase 0.10 requirements remain draft.
+  - No proof artifact exists yet.
+  not_claimed:
+  - production correctness
+  - complete verification
+  - hardware enforcement
+  proof_obligation_refs:
+  - MFOS-PO-PXM-CAPABILITY-REQUIRED-FOR-RESOURCE-OPERATION
+  model_refs:
+  - MFOS-MODEL-PXM-CAPABILITY-REQUIRED-FOR-RESOURCE-OPERATION
+  evidence_refs:
+  - EV-MFOS-FORMAL-0105
+- claim_id: MFOS-FC-MFVM-CANNOT-BYPASS-PXM
+  legacy_claim_id: MFOS-FORMAL-CLAIM-MFVM-CANNOT-BYPASS-PXM
+  title: MFVM cannot bypass PXM
+  status: planned
+  requirement_refs:
+  - MFOS-REQ-MFVM-0103
+  - MFOS-REQ-MFVM-0104
+  protected_assets:
+  - PXM isolation root
+  - MFVM resource request boundary
+  assumptions:
+  - MFVM authority is modeled as mediated by PXM decisions.
+  - Phase 0.10 requirements remain draft.
+  - No proof artifact exists yet.
+  not_claimed:
+  - production MFVM correctness
+  - complete verification
+  - hypervisor API compatibility
+  proof_obligation_refs:
+  - MFOS-PO-MFVM-CANNOT-BYPASS-PXM
+  model_refs:
+  - MFOS-MODEL-MFVM-CANNOT-BYPASS-PXM
+  evidence_refs:
+  - EV-MFOS-FORMAL-0106
+- claim_id: MFOS-FC-CVM-LAUNCH-REQUIRES-MEASUREMENT
+  legacy_claim_id: MFOS-FORMAL-CLAIM-CVM-LAUNCH-REQUIRES-MEASUREMENT
+  title: Confidential VM launch requires measurement
+  status: planned
+  requirement_refs:
+  - MFOS-REQ-CVM-0105
+  protected_assets:
+  - CVM launch state
+  - launch measurement evidence
+  assumptions:
+  - Measurement semantics are modeled at the MFOS CVM abstraction boundary.
+  - Phase 0.10 requirements remain draft.
+  - No proof artifact exists yet.
+  not_claimed:
+  - production CVM correctness
+  - complete verification
+  - vendor TEE compatibility
+  proof_obligation_refs:
+  - MFOS-PO-CVM-LAUNCH-REQUIRES-MEASUREMENT
+  model_refs:
+  - MFOS-MODEL-CVM-LAUNCH-REQUIRES-MEASUREMENT
+  evidence_refs:
+  - EV-MFOS-FORMAL-0107
+- claim_id: MFOS-FC-CVM-SECRET-RELEASE-REQUIRES-ATTESTATION
+  legacy_claim_id: MFOS-FORMAL-CLAIM-CVM-SECRET-RELEASE-REQUIRES-ATTESTATION
+  title: Confidential VM secret release requires attestation
+  status: planned
+  requirement_refs:
+  - MFOS-REQ-CVM-0107
+  protected_assets:
+  - CVM secrets
+  - attestation evidence
+  assumptions:
+  - Secret release policy is modeled before any runtime release path exists.
+  - Phase 0.10 requirements remain draft.
+  - No proof artifact exists yet.
+  not_claimed:
+  - production secret handling correctness
+  - complete verification
+  - vendor attestation compatibility
+  proof_obligation_refs:
+  - MFOS-PO-CVM-SECRET-RELEASE-REQUIRES-ATTESTATION
+  model_refs:
+  - MFOS-MODEL-CVM-SECRET-RELEASE-REQUIRES-ATTESTATION
+  evidence_refs:
+  - EV-MFOS-FORMAL-0108
+- claim_id: MFOS-FC-PRIVATE-SHARED-MEMORY-TRANSITION-VALIDITY
+  legacy_claim_id: MFOS-FORMAL-CLAIM-PRIVATE-SHARED-MEMORY-TRANSITION-VALIDITY
+  title: Private/shared memory transition validity
+  status: planned
+  requirement_refs:
+  - MFOS-REQ-CVM-0108
+  protected_assets:
+  - CVM private memory state
+  - shared memory transition state
+  assumptions:
+  - Private/shared transition rules are modeled at the MFOS semantic boundary.
+  - Phase 0.10 requirements remain draft.
+  - No proof artifact exists yet.
+  not_claimed:
+  - production memory safety
+  - complete verification
+  - hardware enforcement
+  proof_obligation_refs:
+  - MFOS-PO-PRIVATE-SHARED-MEMORY-TRANSITION-VALIDITY
+  model_refs:
+  - MFOS-MODEL-PRIVATE-SHARED-MEMORY-TRANSITION-VALIDITY
+  evidence_refs:
+  - EV-MFOS-FORMAL-0109
+- claim_id: MFOS-FC-CLUSTER-POLICY-DISTRIBUTION-INTEGRITY
+  legacy_claim_id: MFOS-FORMAL-CLAIM-CLUSTER-POLICY-DISTRIBUTION-INTEGRITY
+  title: Cluster policy distribution integrity
+  status: planned
+  requirement_refs:
+  - MFOS-REQ-CLUSTER-0107
+  protected_assets:
+  - cluster policy version state
+  - policy distribution evidence
+  assumptions:
+  - Policy freshness, identity, and rejection semantics are modeled before implementation.
+  - Phase 0.10 requirements remain draft.
+  - No proof artifact exists yet.
+  not_claimed:
+  - production cluster correctness
+  - complete verification
+  - network transport correctness
+  proof_obligation_refs:
+  - MFOS-PO-CLUSTER-POLICY-DISTRIBUTION-INTEGRITY
+  model_refs:
+  - MFOS-MODEL-CLUSTER-POLICY-DISTRIBUTION-INTEGRITY
+  evidence_refs:
+  - EV-MFOS-FORMAL-0110
+- claim_id: MFOS-FC-CLUSTER-ATTESTATION-COLLECTION-INTEGRITY
+  legacy_claim_id: MFOS-FORMAL-CLAIM-CLUSTER-ATTESTATION-COLLECTION-INTEGRITY
+  title: Cluster attestation collection integrity
+  status: planned
+  requirement_refs:
+  - MFOS-REQ-CLUSTER-0108
+  protected_assets:
+  - cluster attestation evidence
+  - node admission state
+  assumptions:
+  - Attestation collection freshness and admission semantics are modeled before implementation.
+  - Phase 0.10 requirements remain draft.
+  - No proof artifact exists yet.
+  not_claimed:
+  - production cluster correctness
+  - complete verification
+  - vendor attestation compatibility
+  proof_obligation_refs:
+  - MFOS-PO-CLUSTER-ATTESTATION-COLLECTION-INTEGRITY
+  model_refs:
+  - MFOS-MODEL-CLUSTER-ATTESTATION-COLLECTION-INTEGRITY
+  evidence_refs:
+  - EV-MFOS-FORMAL-0111

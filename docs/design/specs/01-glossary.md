@@ -1,19 +1,63 @@
 ---
-spec_id: "MFOS-SPEC-01-GLOSSARY"
-title: "MFOS Glossary v0.1"
-canonical_language: "en-US"
-japanese_mirror: "missing"
-status: "draft"
-owner: "MFOS architecture"
-last_reviewed: "2026-04-27"
-source_refs: ["FBVBS-001", "EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001", "EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001", "EXTREF-IBM-ZOS-DFSMS-LIBRARY-0001", "EXTREF-IBM-Z-DPM-0001", "EXTREF-IBM-ZOS-JES-INTRODUCTION-0001", "EXTREF-IBM-ZOS-JES-JOB-FLOW-0001", "EXTREF-IBM-ZOS-JES2-LIBRARY-0001", "EXTREF-IBM-Z-LPAR-INTRODUCTION-0001", "EXTREF-IBM-ZOS-SECURITY-SERVER-0001", "EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001", "EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001", "EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001", "EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001", "EXTREF-IBM-ZOS-SMPE-SECINT-HOLDDATA-0001", "EXTREF-IBM-ZOS-STORAGE-PROTECTION-0001", "EXTREF-IBM-ZOS-STORAGE-PROTECTION-SUMMARY-0001", "EXTREF-IBM-ZOS-UNIX-INTRODUCTION-0001", "EXTREF-IBM-ZOS-UNIX-SERVICES-LIBRARY-0001", "EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001", "EXTREF-IBM-ZOS-CROSS-MEMORY-SYNCHRONOUS-0001", "EXTREF-IBM-ZOS-CROSS-MEMORY-CONTROL-0001", "EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001", "EXTREF-IBM-Z-ARCHITECTURE-PRINCIPLES-0001", "MS-VBS-001", "MS-VSM-001", "NIST-160-001", "NIST-193-001", "NIST-218-001", "SEL4-001", "SLSA-001", "TCG-001", "TUF-001", "X64-AMD-001", "X64-INTEL-001", "X64-LINUX-CET-001", "X64-LINUX-PKU-001"]
-requirement_refs: ["MFOS-REQ-GLOSS-*"]
+spec_id: MFOS-SPEC-01-GLOSSARY
+title: MFOS Glossary v0.1
+canonical_language: en-US
+japanese_mirror: missing
+status: draft
+owner: MFOS architecture
+last_reviewed: '2026-04-28'
+source_refs:
+- FBVBS-001
+- EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001
+- EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+- EXTREF-IBM-ZOS-DFSMS-LIBRARY-0001
+- EXTREF-IBM-Z-DPM-0001
+- EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
+- EXTREF-IBM-ZOS-JES-JOB-FLOW-0001
+- EXTREF-IBM-ZOS-JES2-LIBRARY-0001
+- EXTREF-IBM-Z-LPAR-INTRODUCTION-0001
+- EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+- EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+- EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+- EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+- EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+- EXTREF-IBM-ZOS-SMPE-SECINT-HOLDDATA-0001
+- EXTREF-IBM-ZOS-STORAGE-PROTECTION-0001
+- EXTREF-IBM-ZOS-STORAGE-PROTECTION-SUMMARY-0001
+- EXTREF-IBM-ZOS-UNIX-INTRODUCTION-0001
+- EXTREF-IBM-ZOS-UNIX-SERVICES-LIBRARY-0001
+- EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001
+- EXTREF-IBM-ZOS-CROSS-MEMORY-SYNCHRONOUS-0001
+- EXTREF-IBM-ZOS-CROSS-MEMORY-CONTROL-0001
+- EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
+- EXTREF-IBM-Z-ARCHITECTURE-PRINCIPLES-0001
+- MS-VBS-001
+- MS-VSM-001
+- NIST-160-001
+- NIST-193-001
+- NIST-218-001
+- SEL4-001
+- SLSA-001
+- TCG-001
+- TUF-001
+- X64-AMD-001
+- X64-INTEL-001
+- X64-LINUX-CET-001
+- X64-LINUX-PKU-001
+- EXTREF-MICROSOFT-HYPERV-OVERVIEW-0001
+- EXTREF-LINUX-KVM-API-0001
+- EXTREF-INTEL-TDX-OVERVIEW-0001
+- EXTREF-AMD-SEV-SNP-0001
+- EXTREF-KANI-RUST-VERIFIER-0001
+- EXTREF-VERUS-RUST-VERIFICATION-0001
+requirement_refs:
+- MFOS-REQ-GLOSS-*
 claim_refs: []
 test_refs: []
 evidence_refs: []
 implementation_allowed: false
 downstream_packs: []
-spec_gap_policy: "implementation_must_not_infer_or_fill_gaps"
+spec_gap_policy: implementation_must_not_infer_or_fill_gaps
 ---
 # MFOS Glossary v0.1
 
@@ -1166,3 +1210,71 @@ For each term:
 - reject hardware overclaims
 - reject Guard scope expansion beyond selected root objects
 ```
+
+## Phase 0.10 PXM, MFVM, CVM, Cluster, and Formal Assurance Terms
+
+The following terms are MFOS-owned unless explicitly described as external reference names. They do not create compatibility claims with external products, APIs, attestation formats, or management planes.
+
+### PXM
+
+MFOS Partition Manager. PXM is the trusted hardware-facing partition and resource authority.
+
+### PXM Core
+
+Minimal trusted component that enforces partition resources, memory ownership, VM execution primitives, IOMMU, interrupt remapping, and PXM capabilities.
+
+### PXM Guard
+
+High-Assurance selected root-object protection layer. PXM Guard does not interpret dataset, job, spool, operator, or tenant business semantics.
+
+### MFVM
+
+MFOS Virtual Machine Manager. MFVM is an MFOS-based VM management subsystem that runs in the MFOS control plane and requests PXM operations. MFVM is less trusted than PXM.
+
+### MFVM Control Plane
+
+MFOS subsystem layer that manages VM definitions, lifecycle requests, placement recommendations, confidential VM launch coordination, and administrative workflows.
+
+### PXM Control API
+
+Capability-checked interface used by MFVM and approved MFOS components to request PXM operations.
+
+### VM Partition
+
+A PXM-managed partition representing a VM execution context.
+
+### Confidential VM
+
+A PXM-managed VM partition using a hardware confidential-computing profile.
+
+### CVM Profile
+
+Hardware-specific confidential VM profile such as `CVM_PROFILE_INTEL_TDX` or `CVM_PROFILE_AMD_SEV_SNP`. These are feature-profile names, not external certification claims.
+
+### VM Resource Pool
+
+MFOS-authorized CPU, RAM, storage, and device allocation pool enforced by PXM and managed by MFVM.
+
+### VM Image Resource
+
+MFOS-managed VM image artifact or dataset-backed image resource verified by uvsd and governed by securityd.
+
+### VM Placement Decision
+
+MFVM management-plane decision or recommendation used to select a node/resource pool. It is not a PXM trust root.
+
+### Cluster Node
+
+MFOS/PXM-capable physical or virtual host participating in an MFOS cluster.
+
+### Cluster Control Plane
+
+MFOS/MFVM management layer for membership, placement, policy distribution, attestation collection, audit collection, HA, and DR.
+
+### Formal Claim
+
+A precise claim linked to requirements, models, proof obligations, tests, and evidence.
+
+### Proof Obligation
+
+A required proof, model check, or verification artifact tied to a claim or critical invariant.

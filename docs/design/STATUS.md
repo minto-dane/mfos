@@ -9,7 +9,8 @@ pending IP/trademark attorney review.
 
 ## Current Phase
 
-Phase 0.10: Total Repository Remediation
+Phase 0.10: PXM / MFVM / Confidential VM / Datacenter / Formal Assurance
+Requirements Expansion
 
 Final judgment:
 
@@ -24,8 +25,10 @@ phase_0_9_7_source_grounding_status: semantic_freeze_conditional
 structural_freeze_remains_valid: true
 semantic_freeze_fully_valid: false
 phase_1_loader_allowed: true
+phase_1_semantic_evaluator_status: conditional_blocked_pending_domain_gates
 phase_1_portable_semantic_core_allowed: false
 phase_1_semantic_evaluator_allowed_domains: []
+phase_1_pxm_mfvm_cvm_cluster_semantic_evaluator_allowed: false
 production_implementation_allowed: false
 hosted_daemon_implementation_allowed: false
 portable_semantic_core_implementation_allowed: false
@@ -40,6 +43,43 @@ next_phase: Phase 1 Loader-Only Artifact Loading And Traceability Repair
 No production nucleus, service, PXM, Guard, or other OS-body implementation was
 started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
 0.9.
+
+## Completed In Phase 0.10 PXM/MFVM Requirements Expansion
+
+- Added MFVM as an MFOS-based VM management subsystem, not an independent
+  hypervisor root, not a nested hypervisor, and not a compatibility layer.
+- Reaffirmed that PXM Core is the trusted hardware-facing partition/resource
+  authority and that MFVM is less trusted than PXM.
+- Reaffirmed that VMs are PXM-managed VM partitions, not nested guests under
+  MFVM.
+- Expanded `16-pxm.md` with PXM Core authority, PXM Control API, PXM/MFVM
+  separation, VM partition primitives, RAM ownership, IOMMU/interrupt
+  remapping, device teardown, CVM primitive authority, audit obligations,
+  negative tests, and formal proof obligations.
+- Expanded specs `36` through `41` and added `42-mfvm.md` as design-only
+  requirements skeletons for hypervisor-class virtualization, Confidential VM,
+  datacenter/cluster operations, language verification, automated reasoning,
+  performance/secure operations, and MFVM.
+- Added public-safe EXTREF source cards for Microsoft Hyper-V, Linux KVM,
+  Intel TDX/CET, AMD SEV/SEV-ES/SEV-SNP/SEV-TIO, Kani, Verus, AWS automated
+  reasoning, GitHub CodeQL, and NIST references.
+- Added Phase 0.10 requirement namespaces for `MFOS-REQ-PXM-*`,
+  `MFOS-REQ-MFVM-*`, `MFOS-REQ-VIRT-*`, `MFOS-REQ-CVM-*`,
+  `MFOS-REQ-CLUSTER-*`, `MFOS-REQ-PERF-*`, `MFOS-REQ-LANG-*`,
+  `MFOS-REQ-FORMAL-*`, and `MFOS-REQ-OPS-*`.
+- Added object-model schema skeletons, formal registry entries, pack
+  contracts, test catalogs, claims, and validation for the Phase 0.10 planning
+  domains.
+- Added language/formal-assurance policy, red-team, and open-issues reports
+  that keep the work limited to policy/spec/registry planning. Phase 1
+  loader-only validation remains allowed; semantic evaluator work is
+  conditional and remains blocked until domain gates close.
+- Updated naming-safety lint so `TDX`, `SEV`, `SEV-SNP`, `CET`, `CFI`, Kani,
+  and Verus may be used as technology/profile names while Hyper-V and KVM
+  remain restricted to external-reference or comparison contexts.
+- Phase gates remain conservative: Phase 1 loader-only validation remains
+  allowed; PXM/MFVM/CVM/cluster semantic evaluators, hosted daemons, semantic
+  runner, and production implementation remain blocked.
 
 ## Completed In Phase 0.10 Total Remediation
 

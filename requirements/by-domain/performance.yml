@@ -1,0 +1,15 @@
+schema_version: 1
+artifact_type: requirement_domain_bridge
+status: current
+origin_phase: phase-0-10
+canonical_registry: docs/design/registries/requirements.yaml
+domain: performance
+requirements:
+- MFOS-REQ-PERF-0101
+- MFOS-REQ-PERF-0102
+- MFOS-REQ-PERF-0103
+- MFOS-REQ-PERF-0104
+implementation_allowed: false
+notes:
+- This bridge lists canonical requirement IDs only. Do not treat it as a separate
+  source of truth.

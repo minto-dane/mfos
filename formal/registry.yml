@@ -1,0 +1,692 @@
+schema_version: 1
+registry_kind: mfos_formal_assurance_registry
+status: draft
+updated_at: '2026-04-28'
+implementation_allowed: false
+proof_claimed: false
+registry_files:
+  claim_registry: formal/claim-registry.yml
+  proof_obligations: formal/proof-obligations.yml
+  tool_registry: formal/tool-registry.yml
+  model_registry: formal/model-registry.yml
+  evidence_registry: formal/evidence-registry.yml
+id_policy:
+  canonical_claim_namespace: MFOS-FC-*
+  canonical_proof_obligation_namespace: MFOS-PO-*
+  aggregate_legacy_claim_namespace: MFOS-FORMAL-CLAIM-*
+  aggregate_legacy_proof_obligation_namespace: MFOS-PROOF-OBLIGATION-*
+formal_claims:
+- claim_id: MFOS-FORMAL-CLAIM-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW
+  title: Authorization No Handle Without Allow
+  status: planned
+  requirements: &id001
+  - MFOS-REQ-AUTH-0001
+  protected_assets:
+  - MFOS semantics
+  - audit evidence
+  - PXM isolation root
+  assumptions:
+  - Phase 0.10 requirements remain draft.
+  - No proof artifact exists yet.
+  not_claimed:
+  - production correctness
+  - complete verification
+  - hardware enforcement
+  proof_obligations:
+  - MFOS-PROOF-OBLIGATION-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW
+  model_refs:
+  - formal/tla/authorization
+  evidence_refs:
+  - EV-MFOS-FORMAL-0101
+- claim_id: MFOS-FORMAL-CLAIM-AUDIT-DENY-BEFORE-RETURN
+  title: Audit Deny Before Return
+  status: planned
+  requirements: &id002
+  - MFOS-REQ-AUDIT-0001
+  protected_assets:
+  - MFOS semantics
+  - audit evidence
+  - PXM isolation root
+  assumptions:
+  - Phase 0.10 requirements remain draft.
+  - No proof artifact exists yet.
+  not_claimed:
+  - production correctness
+  - complete verification
+  - hardware enforcement
+  proof_obligations:
+  - MFOS-PROOF-OBLIGATION-AUDIT-DENY-BEFORE-RETURN
+  model_refs:
+  - formal/tla/audit-append
+  evidence_refs:
+  - EV-MFOS-FORMAL-0102
+- claim_id: MFOS-FORMAL-CLAIM-UPDATE-NO-ROLLBACK
+  title: Update No Rollback
+  status: planned
+  requirements: &id003
+  - MFOS-REQ-UPDATE-*
+  protected_assets:
+  - MFOS semantics
+  - audit evidence
+  - PXM isolation root
+  assumptions:
+  - Phase 0.10 requirements remain draft.
+  - No proof artifact exists yet.
+  not_claimed:
+  - production correctness
+  - complete verification
+  - hardware enforcement
+  proof_obligations:
+  - MFOS-PROOF-OBLIGATION-UPDATE-NO-ROLLBACK
+  model_refs:
+  - formal/tla/update-security
+  evidence_refs:
+  - EV-MFOS-FORMAL-0103
+- claim_id: MFOS-FORMAL-CLAIM-PARTITION-MEMORY-OWNERSHIP
+  title: Partition Memory Ownership
+  status: planned
+  requirements: &id004
+  - MFOS-REQ-PXM-0103
+  protected_assets:
+  - MFOS semantics
+  - audit evidence
+  - PXM isolation root
+  assumptions:
+  - Phase 0.10 requirements remain draft.
+  - No proof artifact exists yet.
+  not_claimed:
+  - production correctness
+  - complete verification
+  - hardware enforcement
+  proof_obligations:
+  - MFOS-PROOF-OBLIGATION-PARTITION-MEMORY-OWNERSHIP
+  model_refs:
+  - formal/tla/pxm-lifecycle
+  evidence_refs:
+  - EV-MFOS-FORMAL-0104
+- claim_id: MFOS-FORMAL-CLAIM-PXM-CAPABILITY-REQUIRED-FOR-RESOURCE-OPERATION
+  title: Pxm Capability Required For Resource Operation
+  status: planned
+  requirements: &id005
+  - MFOS-REQ-PXM-0102
+  protected_assets:
+  - MFOS semantics
+  - audit evidence
+  - PXM isolation root
+  assumptions:
+  - Phase 0.10 requirements remain draft.
+  - No proof artifact exists yet.
+  not_claimed:
+  - production correctness
+  - complete verification
+  - hardware enforcement
+  proof_obligations:
+  - MFOS-PROOF-OBLIGATION-PXM-CAPABILITY-REQUIRED-FOR-RESOURCE-OPERATION
+  model_refs:
+  - formal/tla/pxm-lifecycle
+  evidence_refs:
+  - EV-MFOS-FORMAL-0105
+- claim_id: MFOS-FORMAL-CLAIM-MFVM-CANNOT-BYPASS-PXM
+  title: Mfvm Cannot Bypass Pxm
+  status: planned
+  requirements: &id006
+  - MFOS-REQ-MFVM-0103
+  - MFOS-REQ-MFVM-0104
+  protected_assets:
+  - MFOS semantics
+  - audit evidence
+  - PXM isolation root
+  assumptions:
+  - Phase 0.10 requirements remain draft.
+  - No proof artifact exists yet.
+  not_claimed:
+  - production correctness
+  - complete verification
+  - hardware enforcement
+  proof_obligations:
+  - MFOS-PROOF-OBLIGATION-MFVM-CANNOT-BYPASS-PXM
+  model_refs:
+  - formal/tla/pxm-lifecycle
+  evidence_refs:
+  - EV-MFOS-FORMAL-0106
+- claim_id: MFOS-FORMAL-CLAIM-CVM-LAUNCH-REQUIRES-MEASUREMENT
+  title: Cvm Launch Requires Measurement
+  status: planned
+  requirements: &id007
+  - MFOS-REQ-CVM-0105
+  protected_assets:
+  - MFOS semantics
+  - audit evidence
+  - PXM isolation root
+  assumptions:
+  - Phase 0.10 requirements remain draft.
+  - No proof artifact exists yet.
+  not_claimed:
+  - production correctness
+  - complete verification
+  - hardware enforcement
+  proof_obligations:
+  - MFOS-PROOF-OBLIGATION-CVM-LAUNCH-REQUIRES-MEASUREMENT
+  model_refs:
+  - formal/models/cvm-launch
+  evidence_refs:
+  - EV-MFOS-FORMAL-0107
+- claim_id: MFOS-FORMAL-CLAIM-CVM-SECRET-RELEASE-REQUIRES-ATTESTATION
+  title: Cvm Secret Release Requires Attestation
+  status: planned
+  requirements: &id008
+  - MFOS-REQ-CVM-0107
+  protected_assets:
+  - MFOS semantics
+  - audit evidence
+  - PXM isolation root
+  assumptions:
+  - Phase 0.10 requirements remain draft.
+  - No proof artifact exists yet.
+  not_claimed:
+  - production correctness
+  - complete verification
+  - hardware enforcement
+  proof_obligations:
+  - MFOS-PROOF-OBLIGATION-CVM-SECRET-RELEASE-REQUIRES-ATTESTATION
+  model_refs:
+  - formal/models/cvm-secret-release
+  evidence_refs:
+  - EV-MFOS-FORMAL-0108
+- claim_id: MFOS-FORMAL-CLAIM-PRIVATE-SHARED-MEMORY-TRANSITION-VALIDITY
+  title: Private Shared Memory Transition Validity
+  status: planned
+  requirements: &id009
+  - MFOS-REQ-CVM-0108
+  protected_assets:
+  - MFOS semantics
+  - audit evidence
+  - PXM isolation root
+  assumptions:
+  - Phase 0.10 requirements remain draft.
+  - No proof artifact exists yet.
+  not_claimed:
+  - production correctness
+  - complete verification
+  - hardware enforcement
+  proof_obligations:
+  - MFOS-PROOF-OBLIGATION-PRIVATE-SHARED-MEMORY-TRANSITION-VALIDITY
+  model_refs:
+  - formal/models/cvm-memory-transition
+  evidence_refs:
+  - EV-MFOS-FORMAL-0109
+- claim_id: MFOS-FORMAL-CLAIM-CLUSTER-POLICY-DISTRIBUTION-INTEGRITY
+  title: Cluster Policy Distribution Integrity
+  status: planned
+  requirements: &id010
+  - MFOS-REQ-CLUSTER-0107
+  protected_assets:
+  - MFOS semantics
+  - audit evidence
+  - PXM isolation root
+  assumptions:
+  - Phase 0.10 requirements remain draft.
+  - No proof artifact exists yet.
+  not_claimed:
+  - production correctness
+  - complete verification
+  - hardware enforcement
+  proof_obligations:
+  - MFOS-PROOF-OBLIGATION-CLUSTER-POLICY-DISTRIBUTION-INTEGRITY
+  model_refs:
+  - formal/models/cluster-policy
+  evidence_refs:
+  - EV-MFOS-FORMAL-0110
+- claim_id: MFOS-FORMAL-CLAIM-CLUSTER-ATTESTATION-COLLECTION-INTEGRITY
+  title: Cluster Attestation Collection Integrity
+  status: planned
+  requirements: &id011
+  - MFOS-REQ-CLUSTER-0108
+  protected_assets:
+  - MFOS semantics
+  - audit evidence
+  - PXM isolation root
+  assumptions:
+  - Phase 0.10 requirements remain draft.
+  - No proof artifact exists yet.
+  not_claimed:
+  - production correctness
+  - complete verification
+  - hardware enforcement
+  proof_obligations:
+  - MFOS-PROOF-OBLIGATION-CLUSTER-ATTESTATION-COLLECTION-INTEGRITY
+  model_refs:
+  - formal/models/cluster-attestation
+  evidence_refs:
+  - EV-MFOS-FORMAL-0111
+proof_obligations:
+- obligation_id: MFOS-PROOF-OBLIGATION-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW
+  claim_id: MFOS-FORMAL-CLAIM-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW
+  status: planned
+  statement: authorization no handle without allow
+  requirements: *id001
+  invariants:
+  - INV-AUTH-001
+  accepted_tools:
+  - TLA+
+  - Alloy
+  - Kani
+  - Verus
+  acceptance_criteria:
+  - linked model or harness exists
+  - assumptions documented
+  - review recorded
+  - counterexamples triaged
+  proof_artifact: null
+  proof_claimed: false
+- obligation_id: MFOS-PROOF-OBLIGATION-AUDIT-DENY-BEFORE-RETURN
+  claim_id: MFOS-FORMAL-CLAIM-AUDIT-DENY-BEFORE-RETURN
+  status: planned
+  statement: audit deny before return
+  requirements: *id002
+  invariants:
+  - AUD-RULE-003
+  accepted_tools:
+  - TLA+
+  - Alloy
+  - Kani
+  - Verus
+  acceptance_criteria:
+  - linked model or harness exists
+  - assumptions documented
+  - review recorded
+  - counterexamples triaged
+  proof_artifact: null
+  proof_claimed: false
+- obligation_id: MFOS-PROOF-OBLIGATION-UPDATE-NO-ROLLBACK
+  claim_id: MFOS-FORMAL-CLAIM-UPDATE-NO-ROLLBACK
+  status: planned
+  statement: update no rollback
+  requirements: *id003
+  invariants:
+  - UVS-NO-ROLLBACK
+  accepted_tools:
+  - TLA+
+  - Alloy
+  - Kani
+  - Verus
+  acceptance_criteria:
+  - linked model or harness exists
+  - assumptions documented
+  - review recorded
+  - counterexamples triaged
+  proof_artifact: null
+  proof_claimed: false
+- obligation_id: MFOS-PROOF-OBLIGATION-PARTITION-MEMORY-OWNERSHIP
+  claim_id: MFOS-FORMAL-CLAIM-PARTITION-MEMORY-OWNERSHIP
+  status: planned
+  statement: partition memory ownership
+  requirements: *id004
+  invariants:
+  - PXM-MEMORY-OWNERSHIP
+  accepted_tools:
+  - TLA+
+  - Alloy
+  - Kani
+  - Verus
+  acceptance_criteria:
+  - linked model or harness exists
+  - assumptions documented
+  - review recorded
+  - counterexamples triaged
+  proof_artifact: null
+  proof_claimed: false
+- obligation_id: MFOS-PROOF-OBLIGATION-PXM-CAPABILITY-REQUIRED-FOR-RESOURCE-OPERATION
+  claim_id: MFOS-FORMAL-CLAIM-PXM-CAPABILITY-REQUIRED-FOR-RESOURCE-OPERATION
+  status: planned
+  statement: pxm capability required for resource operation
+  requirements: *id005
+  invariants:
+  - PXM-CAPABILITY-REQUIRED
+  accepted_tools:
+  - TLA+
+  - Alloy
+  - Kani
+  - Verus
+  acceptance_criteria:
+  - linked model or harness exists
+  - assumptions documented
+  - review recorded
+  - counterexamples triaged
+  proof_artifact: null
+  proof_claimed: false
+- obligation_id: MFOS-PROOF-OBLIGATION-MFVM-CANNOT-BYPASS-PXM
+  claim_id: MFOS-FORMAL-CLAIM-MFVM-CANNOT-BYPASS-PXM
+  status: planned
+  statement: mfvm cannot bypass pxm
+  requirements: *id006
+  invariants:
+  - MFVM-CANNOT-BYPASS-PXM
+  accepted_tools:
+  - TLA+
+  - Alloy
+  - Kani
+  - Verus
+  acceptance_criteria:
+  - linked model or harness exists
+  - assumptions documented
+  - review recorded
+  - counterexamples triaged
+  proof_artifact: null
+  proof_claimed: false
+- obligation_id: MFOS-PROOF-OBLIGATION-CVM-LAUNCH-REQUIRES-MEASUREMENT
+  claim_id: MFOS-FORMAL-CLAIM-CVM-LAUNCH-REQUIRES-MEASUREMENT
+  status: planned
+  statement: cvm launch requires measurement
+  requirements: *id007
+  invariants:
+  - CVM-LAUNCH-MEASUREMENT
+  accepted_tools:
+  - TLA+
+  - Alloy
+  - Kani
+  - Verus
+  acceptance_criteria:
+  - linked model or harness exists
+  - assumptions documented
+  - review recorded
+  - counterexamples triaged
+  proof_artifact: null
+  proof_claimed: false
+- obligation_id: MFOS-PROOF-OBLIGATION-CVM-SECRET-RELEASE-REQUIRES-ATTESTATION
+  claim_id: MFOS-FORMAL-CLAIM-CVM-SECRET-RELEASE-REQUIRES-ATTESTATION
+  status: planned
+  statement: cvm secret release requires attestation
+  requirements: *id008
+  invariants:
+  - CVM-SECRET-ATTESTATION
+  accepted_tools:
+  - TLA+
+  - Alloy
+  - Kani
+  - Verus
+  acceptance_criteria:
+  - linked model or harness exists
+  - assumptions documented
+  - review recorded
+  - counterexamples triaged
+  proof_artifact: null
+  proof_claimed: false
+- obligation_id: MFOS-PROOF-OBLIGATION-PRIVATE-SHARED-MEMORY-TRANSITION-VALIDITY
+  claim_id: MFOS-FORMAL-CLAIM-PRIVATE-SHARED-MEMORY-TRANSITION-VALIDITY
+  status: planned
+  statement: private shared memory transition validity
+  requirements: *id009
+  invariants:
+  - CVM-PRIVATE-SHARED-TRANSITION
+  accepted_tools:
+  - TLA+
+  - Alloy
+  - Kani
+  - Verus
+  acceptance_criteria:
+  - linked model or harness exists
+  - assumptions documented
+  - review recorded
+  - counterexamples triaged
+  proof_artifact: null
+  proof_claimed: false
+- obligation_id: MFOS-PROOF-OBLIGATION-CLUSTER-POLICY-DISTRIBUTION-INTEGRITY
+  claim_id: MFOS-FORMAL-CLAIM-CLUSTER-POLICY-DISTRIBUTION-INTEGRITY
+  status: planned
+  statement: cluster policy distribution integrity
+  requirements: *id010
+  invariants:
+  - CLUSTER-POLICY-DISTRIBUTION
+  accepted_tools:
+  - TLA+
+  - Alloy
+  - Kani
+  - Verus
+  acceptance_criteria:
+  - linked model or harness exists
+  - assumptions documented
+  - review recorded
+  - counterexamples triaged
+  proof_artifact: null
+  proof_claimed: false
+- obligation_id: MFOS-PROOF-OBLIGATION-CLUSTER-ATTESTATION-COLLECTION-INTEGRITY
+  claim_id: MFOS-FORMAL-CLAIM-CLUSTER-ATTESTATION-COLLECTION-INTEGRITY
+  status: planned
+  statement: cluster attestation collection integrity
+  requirements: *id011
+  invariants:
+  - CLUSTER-ATTESTATION-COLLECTION
+  accepted_tools:
+  - TLA+
+  - Alloy
+  - Kani
+  - Verus
+  acceptance_criteria:
+  - linked model or harness exists
+  - assumptions documented
+  - review recorded
+  - counterexamples triaged
+  proof_artifact: null
+  proof_claimed: false
+model_registry:
+- model_id: MFOS-MODEL-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW
+  path: formal/tla/authorization
+  status: planned
+  tool_family: TLA+ or Alloy or proof harness TBD
+  modeled_behavior: authorization no handle without allow
+  excluded_behavior:
+  - production implementation
+  - hardware-specific execution
+- model_id: MFOS-MODEL-AUDIT-DENY-BEFORE-RETURN
+  path: formal/tla/audit-append
+  status: planned
+  tool_family: TLA+ or Alloy or proof harness TBD
+  modeled_behavior: audit deny before return
+  excluded_behavior:
+  - production implementation
+  - hardware-specific execution
+- model_id: MFOS-MODEL-UPDATE-NO-ROLLBACK
+  path: formal/tla/update-security
+  status: planned
+  tool_family: TLA+ or Alloy or proof harness TBD
+  modeled_behavior: update no rollback
+  excluded_behavior:
+  - production implementation
+  - hardware-specific execution
+- model_id: MFOS-MODEL-PARTITION-MEMORY-OWNERSHIP
+  path: formal/tla/pxm-lifecycle
+  status: planned
+  tool_family: TLA+ or Alloy or proof harness TBD
+  modeled_behavior: partition memory ownership
+  excluded_behavior:
+  - production implementation
+  - hardware-specific execution
+- model_id: MFOS-MODEL-PXM-CAPABILITY-REQUIRED-FOR-RESOURCE-OPERATION
+  path: formal/tla/pxm-lifecycle
+  status: planned
+  tool_family: TLA+ or Alloy or proof harness TBD
+  modeled_behavior: pxm capability required for resource operation
+  excluded_behavior:
+  - production implementation
+  - hardware-specific execution
+- model_id: MFOS-MODEL-MFVM-CANNOT-BYPASS-PXM
+  path: formal/tla/pxm-lifecycle
+  status: planned
+  tool_family: TLA+ or Alloy or proof harness TBD
+  modeled_behavior: mfvm cannot bypass pxm
+  excluded_behavior:
+  - production implementation
+  - hardware-specific execution
+- model_id: MFOS-MODEL-CVM-LAUNCH-REQUIRES-MEASUREMENT
+  path: formal/models/cvm-launch
+  status: planned
+  tool_family: TLA+ or Alloy or proof harness TBD
+  modeled_behavior: cvm launch requires measurement
+  excluded_behavior:
+  - production implementation
+  - hardware-specific execution
+- model_id: MFOS-MODEL-CVM-SECRET-RELEASE-REQUIRES-ATTESTATION
+  path: formal/models/cvm-secret-release
+  status: planned
+  tool_family: TLA+ or Alloy or proof harness TBD
+  modeled_behavior: cvm secret release requires attestation
+  excluded_behavior:
+  - production implementation
+  - hardware-specific execution
+- model_id: MFOS-MODEL-PRIVATE-SHARED-MEMORY-TRANSITION-VALIDITY
+  path: formal/models/cvm-memory-transition
+  status: planned
+  tool_family: TLA+ or Alloy or proof harness TBD
+  modeled_behavior: private shared memory transition validity
+  excluded_behavior:
+  - production implementation
+  - hardware-specific execution
+- model_id: MFOS-MODEL-CLUSTER-POLICY-DISTRIBUTION-INTEGRITY
+  path: formal/models/cluster-policy
+  status: planned
+  tool_family: TLA+ or Alloy or proof harness TBD
+  modeled_behavior: cluster policy distribution integrity
+  excluded_behavior:
+  - production implementation
+  - hardware-specific execution
+- model_id: MFOS-MODEL-CLUSTER-ATTESTATION-COLLECTION-INTEGRITY
+  path: formal/models/cluster-attestation
+  status: planned
+  tool_family: TLA+ or Alloy or proof harness TBD
+  modeled_behavior: cluster attestation collection integrity
+  excluded_behavior:
+  - production implementation
+  - hardware-specific execution
+tool_registry:
+- tool_id: TOOL-TLAPLUS
+  tool_name: TLA+
+  status: planned
+  source_refs: []
+  evidence_role: planned validation aid; not proof evidence until outputs exist and
+    are reviewed
+- tool_id: TOOL-ALLOY
+  tool_name: Alloy
+  status: planned
+  source_refs: []
+  evidence_role: planned validation aid; not proof evidence until outputs exist and
+    are reviewed
+- tool_id: TOOL-KANI
+  tool_name: Kani
+  status: planned
+  source_refs: []
+  evidence_role: planned validation aid; not proof evidence until outputs exist and
+    are reviewed
+- tool_id: TOOL-VERUS
+  tool_name: Verus
+  status: planned
+  source_refs: []
+  evidence_role: planned validation aid; not proof evidence until outputs exist and
+    are reviewed
+- tool_id: TOOL-CODEQL
+  tool_name: CodeQL
+  status: planned
+  source_refs: []
+  evidence_role: planned validation aid; not proof evidence until outputs exist and
+    are reviewed
+- tool_id: TOOL-FUZZING
+  tool_name: fuzzing
+  status: planned
+  source_refs: []
+  evidence_role: planned validation aid; not proof evidence until outputs exist and
+    are reviewed
+- tool_id: TOOL-PROPERTY-TESTS
+  tool_name: property tests
+  status: planned
+  source_refs: []
+  evidence_role: planned validation aid; not proof evidence until outputs exist and
+    are reviewed
+evidence_registry:
+- evidence_id: EV-MFOS-FORMAL-0101
+  status: planned
+  claim_ref: MFOS-FORMAL-CLAIM-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW
+  required_artifacts:
+  - model or proof harness
+  - tool output
+  - review note
+  artifact_path: null
+- evidence_id: EV-MFOS-FORMAL-0102
+  status: planned
+  claim_ref: MFOS-FORMAL-CLAIM-AUDIT-DENY-BEFORE-RETURN
+  required_artifacts:
+  - model or proof harness
+  - tool output
+  - review note
+  artifact_path: null
+- evidence_id: EV-MFOS-FORMAL-0103
+  status: planned
+  claim_ref: MFOS-FORMAL-CLAIM-UPDATE-NO-ROLLBACK
+  required_artifacts:
+  - model or proof harness
+  - tool output
+  - review note
+  artifact_path: null
+- evidence_id: EV-MFOS-FORMAL-0104
+  status: planned
+  claim_ref: MFOS-FORMAL-CLAIM-PARTITION-MEMORY-OWNERSHIP
+  required_artifacts:
+  - model or proof harness
+  - tool output
+  - review note
+  artifact_path: null
+- evidence_id: EV-MFOS-FORMAL-0105
+  status: planned
+  claim_ref: MFOS-FORMAL-CLAIM-PXM-CAPABILITY-REQUIRED-FOR-RESOURCE-OPERATION
+  required_artifacts:
+  - model or proof harness
+  - tool output
+  - review note
+  artifact_path: null
+- evidence_id: EV-MFOS-FORMAL-0106
+  status: planned
+  claim_ref: MFOS-FORMAL-CLAIM-MFVM-CANNOT-BYPASS-PXM
+  required_artifacts:
+  - model or proof harness
+  - tool output
+  - review note
+  artifact_path: null
+- evidence_id: EV-MFOS-FORMAL-0107
+  status: planned
+  claim_ref: MFOS-FORMAL-CLAIM-CVM-LAUNCH-REQUIRES-MEASUREMENT
+  required_artifacts:
+  - model or proof harness
+  - tool output
+  - review note
+  artifact_path: null
+- evidence_id: EV-MFOS-FORMAL-0108
+  status: planned
+  claim_ref: MFOS-FORMAL-CLAIM-CVM-SECRET-RELEASE-REQUIRES-ATTESTATION
+  required_artifacts:
+  - model or proof harness
+  - tool output
+  - review note
+  artifact_path: null
+- evidence_id: EV-MFOS-FORMAL-0109
+  status: planned
+  claim_ref: MFOS-FORMAL-CLAIM-PRIVATE-SHARED-MEMORY-TRANSITION-VALIDITY
+  required_artifacts:
+  - model or proof harness
+  - tool output
+  - review note
+  artifact_path: null
+- evidence_id: EV-MFOS-FORMAL-0110
+  status: planned
+  claim_ref: MFOS-FORMAL-CLAIM-CLUSTER-POLICY-DISTRIBUTION-INTEGRITY
+  required_artifacts:
+  - model or proof harness
+  - tool output
+  - review note
+  artifact_path: null
+- evidence_id: EV-MFOS-FORMAL-0111
+  status: planned
+  claim_ref: MFOS-FORMAL-CLAIM-CLUSTER-ATTESTATION-COLLECTION-INTEGRITY
+  required_artifacts:
+  - model or proof harness
+  - tool output
+  - review note
+  artifact_path: null

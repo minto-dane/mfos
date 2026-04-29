@@ -20,6 +20,13 @@ MFOS is worth building, but only under a narrow and enforceable claim:
 
 MFOS must not be described as a z/OS-compatible operating system, a z/Architecture emulator, a Linux clone, a UNIX-first OS, a Windows VBS clone, or a hypervisor-first research system.
 
+Phase 0.10 adds MFVM as an MFOS-based VM management subsystem. MFVM runs in
+the MFOS control plane, is less trusted than PXM Core, and requests PXM
+operations through a capability-checked PXM Control API. MFVM is not an
+independent hypervisor, not a nested hypervisor, not Hyper-V or KVM
+compatibility work, and not a production implementation authorization. VMs are
+PXM-managed VM partitions, not nested guests under MFVM.
+
 MFOS succeeds if it can demonstrate this vertical slice before pursuing broad kernel features:
 
 ```text

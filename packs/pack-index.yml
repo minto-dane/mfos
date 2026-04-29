@@ -1,7 +1,7 @@
 registry_kind: pack_contracts
 schema_version: 1
 status: draft
-updated_at_utc: '2026-04-27T00:00:00Z'
+updated_at_utc: '2026-04-28T00:00:00Z'
 defaults:
   scope:
   - design and validation
@@ -86,7 +86,8 @@ entries:
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-01
   title: Source Matrix and External Reference Mapping
-  purpose: Maintain source-card, external-reference, and concept-mapping rules without product-compatibility claims.
+  purpose: Maintain source-card, external-reference, and concept-mapping rules without
+    product-compatibility claims.
   depends_on:
   - PACK-00
   inputs:
@@ -274,7 +275,8 @@ entries:
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-05
   title: Authorization Model
-  purpose: Freeze Phase 0.8 Authorization Model semantics as specification, requirements, state machines, tests, evidence planning, and pack contract only.
+  purpose: Freeze Phase 0.8 Authorization Model semantics as specification, requirements,
+    state machines, tests, evidence planning, and pack contract only.
   depends_on:
   - PACK-00
   - PACK-01
@@ -365,7 +367,8 @@ entries:
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-06
   title: Audit Schema
-  purpose: Freeze Phase 0.8 Audit Schema semantics as specification, requirements, state machines, tests, evidence planning, and pack contract only.
+  purpose: Freeze Phase 0.8 Audit Schema semantics as specification, requirements,
+    state machines, tests, evidence planning, and pack contract only.
   depends_on:
   - PACK-00
   - PACK-01
@@ -466,7 +469,8 @@ entries:
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-07
   title: Dataset/Catalog
-  purpose: Freeze Phase 0.8 Dataset/Catalog semantics as specification, requirements, state machines, tests, evidence planning, and pack contract only.
+  purpose: Freeze Phase 0.8 Dataset/Catalog semantics as specification, requirements,
+    state machines, tests, evidence planning, and pack contract only.
   depends_on:
   - PACK-00
   - PACK-01
@@ -564,7 +568,8 @@ entries:
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-08
   title: Job/Spool
-  purpose: Freeze Phase 0.8 Job/Spool semantics as specification, requirements, state machines, tests, evidence planning, and pack contract only.
+  purpose: Freeze Phase 0.8 Job/Spool semantics as specification, requirements, state
+    machines, tests, evidence planning, and pack contract only.
   depends_on:
   - PACK-00
   - PACK-01
@@ -655,7 +660,8 @@ entries:
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-09
   title: Operator Console
-  purpose: Freeze Phase 0.8 Operator Console semantics as specification, requirements, state machines, tests, evidence planning, and pack contract only.
+  purpose: Freeze Phase 0.8 Operator Console semantics as specification, requirements,
+    state machines, tests, evidence planning, and pack contract only.
   depends_on:
   - PACK-00
   - PACK-01
@@ -877,30 +883,56 @@ entries:
   - MFOS-REQ-PCALL-*
 - scope:
   - design and validation
+  - Phase 0.10 requirements expansion
   non_objectives:
   - production implementation
+  - hosted daemon implementation
+  - semantic runner implementation
+  - portable semantic core implementation
   - compatibility claims
-  object_model_refs: []
-  state_machine_refs: []
+  object_model_refs:
+  - schemas/mfos/pxm-control-request.schema.yml
+  - schemas/mfos/pxm-capability.schema.yml
+  - schemas/mfos/vm-partition.schema.yml
+  state_machine_refs:
+  - formal/tla/pxm-lifecycle
   failure_modes:
   - MFOS_ERR_UNSUPPORTED
   - MFOS_ERR_SPEC_GAP
-  audit_obligations: []
-  positive_tests: []
+  - MFOS_ERR_POLICY_DENIED
+  - MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+  - MFOS_ERR_STALE_HANDLE
+  audit_obligations:
+  - AUDIT_PXM_RESOURCE_OPERATION
+  - AUDIT_PXM_CAPABILITY_DENY
+  - AUDIT_PXM_DEVICE_TEARDOWN
+  positive_tests:
+  - TEST-MFOS-PXM-0101
+  - TEST-MFOS-PXM-0102
   negative_tests:
-  - NEG-MFOS-PARTITION-DEVICE-TEARDOWN-0006
-  fuzz_targets: []
+  - NEG-MFOS-PXM-0102
+  - NEG-MFOS-PXM-0108
+  fuzz_targets: &id001
+  - pxm-control-request-schema-validation
+  - pxm-capability-formal-obligation
   spec_gaps:
-  - Phase 0.6 pack contract requires later deepening before implementation.
+  - PXM Control API wire format remains draft.
+  - No PXM implementation is authorized.
   implementation_allowed:
     hosted_semantic_prototype: false
     production: false
     hardware_enforcement_claim: false
     system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    executable_spec: false
+    specification_only: true
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-14
-  title: PXM
-  purpose: Govern partition isolation without MFOS enterprise semantics.
+  title: PXM Partition Manager
+  purpose: Govern PXM Core as trusted hardware-facing resource authority and define
+    the PXM/MFVM boundary without implementing PXM.
   depends_on:
   - PACK-00
   - PACK-01
@@ -910,18 +942,27 @@ entries:
   - PACK-13
   inputs:
   - docs/design/specs/16-pxm.md
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  - docs/design/specs/37-confidential-vm.md
   outputs:
-  - implementation/pxm
+  - schemas/mfos/pxm-control-request.schema.yml
+  - schemas/mfos/pxm-capability.schema.yml
+  - formal/registry.yml
+  - reports/current/pxm-mfvm-requirements-docs-expansion-report.md
   source_refs:
   - EXTREF-IBM-Z-LPAR-INTRODUCTION-0001
   - EXTREF-IBM-Z-DPM-0001
+  - EXTREF-MICROSOFT-HYPERV-TLFS-0001
+  - EXTREF-LINUX-KVM-API-0001
+  - EXTREF-INTEL-TDX-OVERVIEW-0001
+  - EXTREF-AMD-SEV-SNP-0001
   - X64-INTEL-001
   - X64-AMD-001
+  - FBVBS-001
   requirements:
-  - MFOS-REQ-PARTITION-0005
-  - MFOS-REQ-PARTITION-0006
-  - MFOS-REQ-PARTITION-0016
-  - MFOS-REQ-PARTITION-0017
+  - MFOS-REQ-PARTITION-*
+  - MFOS-REQ-PXM-*
+  fuzz_or_formal_targets: *id001
 - scope:
   - design and validation
   non_objectives:
@@ -1591,3 +1632,491 @@ entries:
   - FBVBS-001
   requirements:
   - MFOS-REQ-POLICY-LINT-*
+- scope:
+  - design and validation
+  - Phase 0.10 requirements expansion
+  non_objectives:
+  - production implementation
+  - hosted daemon implementation
+  - semantic runner implementation
+  - portable semantic core implementation
+  - compatibility claims
+  object_model_refs:
+  - schemas/mfos/mfvm-managed-vm.schema.yml
+  - schemas/mfos/vm-config.schema.yml
+  - schemas/mfos/vm-placement-decision.schema.yml
+  - schemas/mfos/vm-image-resource.schema.yml
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  - MFOS_ERR_POLICY_DENIED
+  - MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+  audit_obligations:
+  - AUDIT_MFVM_REQUEST
+  - AUDIT_MFVM_DENY
+  - AUDIT_MFVM_PXM_REQUEST
+  positive_tests:
+  - TEST-MFOS-MFVM-0101
+  - TEST-MFOS-MFVM-0106
+  negative_tests:
+  - NEG-MFOS-MFVM-0103
+  - NEG-MFOS-MFVM-0108
+  fuzz_targets: &id002
+  - vm-fixture-schema-validation
+  - mfvm-pxm-boundary-negative-tests
+  fuzz_or_formal_targets: *id002
+  spec_gaps:
+  - MFVM management API wire format remains draft.
+  - No MFVM implementation is authorized.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    executable_spec: false
+    specification_only: true
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-31
+  title: MFVM
+  purpose: Define MFVM as an MFOS-based VM management subsystem less trusted than
+    PXM.
+  depends_on:
+  - PACK-00
+  - PACK-01
+  - PACK-02
+  - PACK-03
+  - PACK-04
+  - PACK-05
+  - PACK-06
+  - PACK-07
+  - PACK-11
+  - PACK-12
+  - PACK-14
+  inputs:
+  - docs/design/specs/42-mfvm.md
+  - docs/design/specs/36-hypervisor-class-virtualization.md
+  outputs:
+  - schemas/mfos/mfvm-managed-vm.schema.yml
+  - schemas/mfos/vm-config.schema.yml
+  - schemas/mfos/vm-placement-decision.schema.yml
+  - tests/catalog/mfvm.yml
+  source_refs:
+  - EXTREF-MICROSOFT-HYPERV-OVERVIEW-0001
+  - EXTREF-LINUX-KVM-API-0001
+  - EXTREF-LINUX-KVM-CAPABILITIES-0001
+  - EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
+  - FBVBS-001
+  requirements:
+  - MFOS-REQ-MFVM-*
+  - MFOS-REQ-VIRT-*
+  - MFOS-REQ-PXM-*
+- scope:
+  - design and validation
+  - Phase 0.10 requirements expansion
+  non_objectives:
+  - production implementation
+  - hosted daemon implementation
+  - semantic runner implementation
+  - portable semantic core implementation
+  - compatibility claims
+  object_model_refs:
+  - schemas/mfos/confidential-vm.schema.yml
+  - schemas/mfos/cvm-profile.schema.yml
+  - schemas/mfos/cvm-launch-measurement.schema.yml
+  - schemas/mfos/cvm-attestation-evidence.schema.yml
+  - schemas/mfos/cvm-secret-release-decision.schema.yml
+  - schemas/mfos/cvm-private-shared-memory-transition.schema.yml
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  - MFOS_ERR_ATTESTATION_REQUIRED
+  - MFOS_ERR_MEASUREMENT_REQUIRED
+  - MFOS_ERR_INTEGRITY_CHECK_FAILED
+  audit_obligations:
+  - AUDIT_CVM_LAUNCH
+  - AUDIT_CVM_ATTESTATION
+  - AUDIT_CVM_SECRET_RELEASE_DENY
+  positive_tests:
+  - TEST-MFOS-CVM-0101
+  - TEST-MFOS-CVM-0103
+  negative_tests:
+  - NEG-MFOS-CVM-0107
+  - NEG-MFOS-CVM-0108
+  fuzz_targets: &id003
+  - cvm-profile-schema-validation
+  - attestation-evidence-oracle-plan
+  - formal:cvm_secret_release_requires_attestation
+  fuzz_or_formal_targets: *id003
+  spec_gaps:
+  - Profile-specific launch and attestation formats remain draft.
+  - No CVM launch or secret-release implementation is authorized.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    executable_spec: false
+    specification_only: true
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-32
+  title: Confidential VM
+  purpose: Define CVM profiles, launch evidence, attestation, and secret-release gates
+    without implementation.
+  depends_on:
+  - PACK-00
+  - PACK-01
+  - PACK-02
+  - PACK-03
+  - PACK-04
+  - PACK-05
+  - PACK-06
+  - PACK-13
+  - PACK-14
+  - PACK-31
+  inputs:
+  - docs/design/specs/37-confidential-vm.md
+  - docs/design/specs/42-mfvm.md
+  outputs:
+  - schemas/mfos/confidential-vm.schema.yml
+  - schemas/mfos/cvm-profile.schema.yml
+  - schemas/mfos/cvm-launch-measurement.schema.yml
+  - schemas/mfos/cvm-attestation-evidence.schema.yml
+  - tests/catalog/confidential-vm.yml
+  source_refs:
+  - EXTREF-INTEL-TDX-OVERVIEW-0001
+  - EXTREF-INTEL-TDX-ATTESTATION-0001
+  - EXTREF-AMD-SEV-OVERVIEW-0001
+  - EXTREF-AMD-SEV-ES-0001
+  - EXTREF-AMD-SEV-SNP-0001
+  - EXTREF-AMD-SEV-TIO-0001
+  - EXTREF-LINUX-AMD-SEV-KVM-DOC-0001
+  - TCG-001
+  - FBVBS-001
+  requirements:
+  - MFOS-REQ-CVM-*
+  - MFOS-REQ-PXM-*
+  - MFOS-REQ-MFVM-*
+- scope:
+  - design and validation
+  - Phase 0.10 requirements expansion
+  non_objectives:
+  - production implementation
+  - hosted daemon implementation
+  - semantic runner implementation
+  - portable semantic core implementation
+  - compatibility claims
+  object_model_refs:
+  - schemas/mfos/cluster-node.schema.yml
+  - schemas/mfos/cluster-membership.schema.yml
+  - schemas/mfos/cluster-placement-policy.schema.yml
+  - schemas/mfos/cluster-audit-stream.schema.yml
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  - MFOS_ERR_POLICY_DENIED
+  - MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+  audit_obligations:
+  - AUDIT_CLUSTER_MEMBERSHIP
+  - AUDIT_CLUSTER_POLICY_DISTRIBUTION
+  - AUDIT_CLUSTER_FENCING
+  positive_tests:
+  - TEST-MFOS-CLUSTER-0101
+  - TEST-MFOS-CLUSTER-0105
+  negative_tests:
+  - NEG-MFOS-CLUSTER-0104
+  - NEG-MFOS-CLUSTER-0108
+  fuzz_targets: &id004
+  - cluster-policy-fixture-validation
+  - formal:cluster_policy_distribution_integrity
+  fuzz_or_formal_targets: *id004
+  spec_gaps:
+  - No quorum algorithm or scheduler is frozen.
+  - No cluster control-plane implementation is authorized.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    executable_spec: false
+    specification_only: true
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-33
+  title: Datacenter Cluster
+  purpose: Define cluster operations, placement, audit, attestation, and secure operations
+    planning.
+  depends_on:
+  - PACK-00
+  - PACK-01
+  - PACK-02
+  - PACK-03
+  - PACK-04
+  - PACK-05
+  - PACK-06
+  - PACK-11
+  - PACK-12
+  - PACK-14
+  - PACK-31
+  inputs:
+  - docs/design/specs/38-datacenter-cluster-operations.md
+  - docs/design/specs/41-performance-and-secure-operations.md
+  outputs:
+  - schemas/mfos/cluster-node.schema.yml
+  - schemas/mfos/cluster-membership.schema.yml
+  - schemas/mfos/cluster-placement-policy.schema.yml
+  - schemas/mfos/cluster-audit-stream.schema.yml
+  - tests/catalog/datacenter-cluster.yml
+  source_refs:
+  - EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
+  - EXTREF-NIST-SSDF-0001
+  - SLSA-001
+  - TCG-001
+  - EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001
+  - FBVBS-001
+  requirements:
+  - MFOS-REQ-CLUSTER-*
+  - MFOS-REQ-OPS-*
+  - MFOS-REQ-PERF-*
+- scope:
+  - design and validation
+  - Phase 0.10 requirements expansion
+  non_objectives:
+  - production implementation
+  - hosted daemon implementation
+  - semantic runner implementation
+  - portable semantic core implementation
+  - compatibility claims
+  object_model_refs:
+  - schemas/mfos/proof-obligation.schema.yml
+  - schemas/mfos/proof-artifact.schema.yml
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  audit_obligations:
+  - AUDIT_VERIFICATION_POLICY_CHANGE
+  positive_tests:
+  - TEST-MFOS-LANG-0101
+  - TEST-MFOS-LANG-0104
+  negative_tests:
+  - NEG-MFOS-LANG-0103
+  - NEG-MFOS-LANG-0106
+  fuzz_targets: &id005
+  - policy-language-parser
+  - unsafe-boundary-registry-validation
+  - cfi-cet-policy-review
+  fuzz_or_formal_targets: *id005
+  spec_gaps:
+  - Unsafe boundary acceptance criteria remain draft.
+  - No proof or CFI/CET coverage claim is authorized.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    executable_spec: false
+    specification_only: true
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-34
+  title: Language Verification
+  purpose: Define language, unsafe boundary, CFI/CET, and verification-tool policy.
+  depends_on:
+  - PACK-00
+  - PACK-01
+  - PACK-02
+  - PACK-03
+  - PACK-21
+  - PACK-24
+  - PACK-26
+  inputs:
+  - docs/design/specs/39-language-and-verification-policy.md
+  outputs:
+  - formal/registry.yml
+  - tests/catalog/language-verification.yml
+  source_refs:
+  - EXTREF-INTEL-CET-0001
+  - EXTREF-KANI-RUST-VERIFIER-0001
+  - EXTREF-VERUS-RUST-VERIFICATION-0001
+  - EXTREF-GITHUB-CODEQL-0001
+  - EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
+  - EXTREF-NIST-SSDF-0001
+  - FBVBS-001
+  requirements:
+  - MFOS-REQ-LANG-*
+  - MFOS-REQ-FORMAL-*
+  - MFOS-REQ-ASSURANCE-*
+- scope:
+  - design and validation
+  - Phase 0.10 requirements expansion
+  non_objectives:
+  - production implementation
+  - hosted daemon implementation
+  - semantic runner implementation
+  - portable semantic core implementation
+  - compatibility claims
+  object_model_refs:
+  - schemas/mfos/formal-claim.schema.yml
+  - schemas/mfos/proof-obligation.schema.yml
+  - schemas/mfos/proof-artifact.schema.yml
+  state_machine_refs:
+  - formal/registry.yml
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  audit_obligations:
+  - AUDIT_FORMAL_CLAIM_STATUS_CHANGE
+  positive_tests:
+  - TEST-MFOS-FORMAL-0101
+  - TEST-MFOS-FORMAL-0106
+  negative_tests:
+  - NEG-MFOS-FORMAL-0105
+  - NEG-MFOS-FORMAL-0108
+  fuzz_targets: &id006
+  - formal-registry-validation
+  - tla-model-review
+  - alloy-model-review
+  - kani-plan-review
+  - verus-plan-review
+  fuzz_or_formal_targets: *id006
+  spec_gaps:
+  - No Phase 0.10 proof artifact exists.
+  - Proof CI is planned but not active for new claims.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    executable_spec: false
+    specification_only: true
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-35
+  title: Automated Reasoning
+  purpose: Define formal claims, models, proof obligations, tool registry, and proof
+    evidence planning.
+  depends_on:
+  - PACK-00
+  - PACK-01
+  - PACK-02
+  - PACK-03
+  - PACK-05
+  - PACK-06
+  - PACK-12
+  - PACK-14
+  - PACK-31
+  - PACK-32
+  - PACK-33
+  - PACK-34
+  inputs:
+  - docs/design/specs/40-automated-reasoning-program.md
+  - formal/registry.yml
+  outputs:
+  - formal/registry.yml
+  - tests/catalog/automated-reasoning.yml
+  - reports/current/pxm-mfvm-requirements-docs-red-team-review.md
+  source_refs:
+  - EXTREF-AWS-AUTOMATED-REASONING-0001
+  - EXTREF-KANI-RUST-VERIFIER-0001
+  - EXTREF-VERUS-RUST-VERIFICATION-0001
+  - EXTREF-GITHUB-CODEQL-0001
+  - EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
+  - EXTREF-NIST-SSDF-0001
+  - FBVBS-001
+  requirements:
+  - MFOS-REQ-FORMAL-*
+  - MFOS-REQ-PXM-*
+  - MFOS-REQ-MFVM-*
+  - MFOS-REQ-CVM-*
+  - MFOS-REQ-CLUSTER-*
+- scope:
+  - design and validation
+  - Phase 0.10 requirements expansion
+  non_objectives:
+  - production implementation
+  - hosted daemon implementation
+  - semantic runner implementation
+  - portable semantic core implementation
+  - compatibility claims
+  object_model_refs: []
+  state_machine_refs: []
+  failure_modes:
+  - MFOS_ERR_UNSUPPORTED
+  - MFOS_ERR_SPEC_GAP
+  - MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+  audit_obligations:
+  - AUDIT_CHANGE_CONTROL
+  - AUDIT_BREAK_GLASS
+  - AUDIT_ROLLBACK_WORKFLOW
+  positive_tests:
+  - TEST-MFOS-PERF-0101
+  - TEST-MFOS-OPS-0101
+  negative_tests:
+  - NEG-MFOS-OPS-0103
+  - NEG-MFOS-OPS-0104
+  fuzz_targets: &id007
+  - performance-budget-schema-validation
+  - runbook-schema-validation
+  fuzz_or_formal_targets: *id007
+  spec_gaps:
+  - Benchmark schema is not frozen.
+  - No production operations claim is authorized.
+  implementation_allowed:
+    hosted_semantic_prototype: false
+    production: false
+    hardware_enforcement_claim: false
+    system_integrity_claim: none
+    hosted_daemon: false
+    semantic_runner: false
+    portable_semantic_core: false
+    executable_spec: false
+    specification_only: true
+  prompt: docs/design/prompts/ai-prompts.md
+  pack_id: PACK-36
+  title: Performance and Secure Operations
+  purpose: Define performance budgets, secure admin UX, change control, runbooks,
+    and operations evidence planning.
+  depends_on:
+  - PACK-00
+  - PACK-01
+  - PACK-02
+  - PACK-03
+  - PACK-06
+  - PACK-11
+  - PACK-12
+  - PACK-22
+  - PACK-27
+  - PACK-31
+  - PACK-33
+  inputs:
+  - docs/design/specs/41-performance-and-secure-operations.md
+  - docs/design/specs/38-datacenter-cluster-operations.md
+  outputs:
+  - tests/catalog/performance-secure-operations.yml
+  - reports/current/pxm-mfvm-requirements-docs-expansion-report.md
+  source_refs:
+  - EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
+  - EXTREF-NIST-SSDF-0001
+  - SLSA-001
+  - TUF-001
+  - TCG-001
+  - EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001
+  - FBVBS-001
+  requirements:
+  - MFOS-REQ-PERF-*
+  - MFOS-REQ-OPS-*

@@ -1,19 +1,77 @@
 ---
-spec_id: "MFOS-SPEC-INDEX"
-title: "MFOS Split Specification Index v0.1"
-canonical_language: "en-US"
-japanese_mirror: "missing"
-status: "draft"
-owner: "MFOS architecture"
-last_reviewed: "2026-04-27"
-source_refs: ["FBVBS-001", "EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001", "EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001", "EXTREF-IBM-ZOS-DFSMS-LIBRARY-0001", "EXTREF-IBM-Z-DPM-0001", "EXTREF-IBM-ZOS-JES-INTRODUCTION-0001", "EXTREF-IBM-ZOS-JES-JOB-FLOW-0001", "EXTREF-IBM-ZOS-JES2-LIBRARY-0001", "EXTREF-IBM-Z-LPAR-INTRODUCTION-0001", "EXTREF-IBM-ZOS-SECURITY-SERVER-0001", "EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001", "EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001", "EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001", "EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001", "EXTREF-IBM-ZOS-SMPE-SECINT-HOLDDATA-0001", "EXTREF-IBM-ZOS-STORAGE-PROTECTION-0001", "EXTREF-IBM-ZOS-STORAGE-PROTECTION-SUMMARY-0001", "EXTREF-IBM-ZOS-UNIX-INTRODUCTION-0001", "EXTREF-IBM-ZOS-UNIX-SERVICES-LIBRARY-0001", "EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001", "EXTREF-IBM-ZOS-CROSS-MEMORY-SYNCHRONOUS-0001", "EXTREF-IBM-ZOS-CROSS-MEMORY-CONTROL-0001", "EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001", "EXTREF-IBM-Z-ARCHITECTURE-PRINCIPLES-0001", "MS-VBS-001", "MS-VSM-001", "NIST-160-001", "NIST-193-001", "NIST-218-001", "SEL4-001", "SLSA-001", "TCG-001", "TUF-001", "X64-AMD-001", "X64-INTEL-001", "X64-LINUX-CET-001", "X64-LINUX-PKU-001"]
+spec_id: MFOS-SPEC-INDEX
+title: MFOS Split Specification Index v0.1
+canonical_language: en-US
+japanese_mirror: missing
+status: draft
+owner: MFOS architecture
+last_reviewed: '2026-04-28'
+source_refs:
+- FBVBS-001
+- EXTREF-IBM-ZOS-AUTHORIZED-PROGRAMS-0001
+- EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+- EXTREF-IBM-ZOS-DFSMS-LIBRARY-0001
+- EXTREF-IBM-Z-DPM-0001
+- EXTREF-IBM-ZOS-JES-INTRODUCTION-0001
+- EXTREF-IBM-ZOS-JES-JOB-FLOW-0001
+- EXTREF-IBM-ZOS-JES2-LIBRARY-0001
+- EXTREF-IBM-Z-LPAR-INTRODUCTION-0001
+- EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+- EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+- EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+- EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+- EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+- EXTREF-IBM-ZOS-SMPE-SECINT-HOLDDATA-0001
+- EXTREF-IBM-ZOS-STORAGE-PROTECTION-0001
+- EXTREF-IBM-ZOS-STORAGE-PROTECTION-SUMMARY-0001
+- EXTREF-IBM-ZOS-UNIX-INTRODUCTION-0001
+- EXTREF-IBM-ZOS-UNIX-SERVICES-LIBRARY-0001
+- EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001
+- EXTREF-IBM-ZOS-CROSS-MEMORY-SYNCHRONOUS-0001
+- EXTREF-IBM-ZOS-CROSS-MEMORY-CONTROL-0001
+- EXTREF-IBM-ZOS-AUTHORIZED-CODE-SCANNER-0001
+- EXTREF-IBM-Z-ARCHITECTURE-PRINCIPLES-0001
+- MS-VBS-001
+- MS-VSM-001
+- NIST-160-001
+- NIST-193-001
+- NIST-218-001
+- SEL4-001
+- SLSA-001
+- TCG-001
+- TUF-001
+- X64-AMD-001
+- X64-INTEL-001
+- X64-LINUX-CET-001
+- X64-LINUX-PKU-001
+- EXTREF-MICROSOFT-HYPERV-OVERVIEW-0001
+- EXTREF-MICROSOFT-HYPERV-TLFS-0001
+- EXTREF-MICROSOFT-HYPERV-VSM-0001
+- EXTREF-LINUX-KVM-API-0001
+- EXTREF-LINUX-KVM-CAPABILITIES-0001
+- EXTREF-LINUX-KVM-VFIO-0001
+- EXTREF-INTEL-TDX-OVERVIEW-0001
+- EXTREF-INTEL-TDX-LINUX-DOC-0001
+- EXTREF-INTEL-TDX-ATTESTATION-0001
+- EXTREF-INTEL-CET-0001
+- EXTREF-AMD-SEV-OVERVIEW-0001
+- EXTREF-AMD-SEV-ES-0001
+- EXTREF-AMD-SEV-SNP-0001
+- EXTREF-AMD-SEV-TIO-0001
+- EXTREF-LINUX-AMD-SEV-KVM-DOC-0001
+- EXTREF-KANI-RUST-VERIFIER-0001
+- EXTREF-VERUS-RUST-VERIFICATION-0001
+- EXTREF-AWS-AUTOMATED-REASONING-0001
+- EXTREF-GITHUB-CODEQL-0001
+- EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
+- EXTREF-NIST-SSDF-0001
 requirement_refs: []
 claim_refs: []
 test_refs: []
 evidence_refs: []
 implementation_allowed: false
 downstream_packs: []
-spec_gap_policy: "implementation_must_not_infer_or_fill_gaps"
+spec_gap_policy: implementation_must_not_infer_or_fill_gaps
 ---
 # MFOS Split Specification Index v0.1
 
@@ -21,7 +79,7 @@ Status: Draft index
 Owner: MFOS architecture
 Scope: `docs/design/specs/*.md`
 
-This index lists the current MFOS split specifications and routes implementation agents to the correct source material. It covers the numbered specs from `00` through `41`, including Phase 0.9 executable-spec artifacts and deferred Phase 0.10 planning scaffolds.
+This index lists the current MFOS split specifications and routes implementation agents to the correct source material. It covers the numbered specs from `00` through `42`, including Phase 0.9 executable-spec artifacts and deferred Phase 0.10 planning scaffolds.
 
 MFOS is source-grounded and z/OS-inspired. This index does not claim z/OS compatibility, IBM product compatibility, z/Architecture compatibility, RACF compatibility, JES compatibility, DFSMS compatibility, SMF compatibility, Windows VBS compatibility, or Linux compatibility.
 
@@ -48,6 +106,11 @@ Status values:
 The downstream-target column is a routing aid only. It does not authorize
 hosted prototype, semantic evaluator, Portable Semantic Core, daemon, nucleus,
 PXM, Guard, or production work.
+
+Phase 1 loader-only artifact validation remains allowed. Semantic evaluator
+work is conditional and requires a later reviewed domain gate; language,
+verification, automated-reasoning, and secure-operations entries in this index
+are policy/spec/registry planning only.
 
 ## Split Specification Map
 
@@ -98,6 +161,8 @@ PXM, Guard, or production work.
 | [39-language-and-verification-policy.md](39-language-and-verification-policy.md) | Reserves language, unsafe-boundary, control-flow, hardware-aid, and proof-tool policy areas. | language policy, verification policy, unsafe-boundary review | X64-INTEL-001, X64-AMD-001, X64-LINUX-CET-001, X64-LINUX-PKU-001, NIST-160-001, NIST-218-001, FBVBS-001 | future `MFOS-REQ-LANG-*`, `MFOS-REQ-FORMAL-*`, and `MFOS-REQ-ASSURANCE-*` planning only | 03, 04, 21, 22, 24 | Draft scaffold. No language safety, CFI, hardware-aid, or proof-coverage claim is authorized. |
 | [40-automated-reasoning-program.md](40-automated-reasoning-program.md) | Reserves automated-reasoning program structure, proof obligation fields, model registry expectations, and evidence boundaries. | formal assurance planning, model registry, proof obligation governance | NIST-160-001, NIST-218-001, SEL4-001, TUF-001, FBVBS-001 | future proof-obligation registry and model evidence planning | 19, 20, 24, 39 | Draft scaffold. No verified implementation or release proof evidence is claimed. |
 | [41-performance-and-secure-operations.md](41-performance-and-secure-operations.md) | Reserves performance budget, secure operations, benchmark, rollback drill, and release operations evidence policies. | secure operations planning, performance evidence, release operations | NIST-160-001, NIST-218-001, NIST-193-001, SLSA-001, TUF-001, TCG-001, X64-INTEL-001, X64-AMD-001, EXTREF-IBM-ZOS-WLM-SERVICE-CLASSES-0001, FBVBS-001 | future `MFOS-REQ-PERF-*` and `MFOS-REQ-OPS-*` planning only | 11, 13, 22, 25, 26, 30, 31, 38 | Draft scaffold. No performance, scalability, availability, or production operations claim is authorized. |
+
+| [42-mfvm.md](42-mfvm.md) | Defines MFVM as an MFOS-based VM management subsystem, less trusted than PXM, using PXM Control API and MFOS governance services. | MFVM control plane, PXM request planning, VM management governance | EXTREF-MICROSOFT-HYPERV-OVERVIEW-0001, EXTREF-MICROSOFT-HYPERV-TLFS-0001, EXTREF-LINUX-KVM-API-0001, EXTREF-LINUX-KVM-CAPABILITIES-0001, EXTREF-LINUX-KVM-VFIO-0001, EXTREF-INTEL-TDX-OVERVIEW-0001, EXTREF-AMD-SEV-SNP-0001, EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001, FBVBS-001 | future `MFOS-REQ-MFVM-*`, `MFOS-REQ-VIRT-*`, `MFOS-REQ-CVM-*`, and `MFOS-REQ-CLUSTER-*` planning only | 16, 36, 37, 38, 41 | Draft. No MFVM implementation, PXM implementation, VM runtime, hosted daemon, semantic runner, or production work is authorized. |
 
 ## Numbering Gaps
 
@@ -182,6 +247,8 @@ These gaps recur across multiple specs and should be resolved by dedicated follo
 - Cryptographic algorithm choices, key hierarchy, threshold signing, revocation distribution, and attestation claim format.
 - Production-path scanner scope and CI implementation for no-fake-success, TODO/unimplemented detection, source ID enforcement, ownership enforcement, and release evidence checking.
 - Formal model toolchain, file locations, and proof/model-checking coverage criteria.
+- Domain gate criteria for any semantic evaluator, especially language,
+  verification, automated reasoning, and secure-operations policy domains.
 - Fuzz campaign duration, corpus quality bar, and coverage thresholds.
 - Recovery partition implementation and recovery drill evidence format.
 - Independent TCB review workflow.
@@ -201,3 +268,7 @@ These gaps recur across multiple specs and should be resolved by dedicated follo
 - Do not move gap ownership into an unrelated subsystem to make a row look complete.
 - Keep source IDs explicit enough for AI routing; component specs remain authoritative for detailed citations.
 - Keep compatibility wording negative and explicit: MFOS is inspired by selected source concepts and does not claim product compatibility.
+
+## Phase 0.10 Routing Addendum
+
+Specs `36` through `42` are draft/provisional requirements-expansion specs. They strengthen planning for PXM, MFVM, Confidential VM, datacenter/cluster, language verification, automated reasoning, and secure operations, but they do not authorize implementation. Phase 1 remains loader-only artifact validation for these domains. Semantic evaluator work is conditional and requires a later reviewed domain gate; PXM/MFVM/CVM/cluster semantic evaluator work is explicitly blocked until later gates close.

@@ -1,0 +1,19 @@
+schema_version: 1
+artifact_type: requirement_domain_bridge
+status: current
+origin_phase: phase-0-10
+canonical_registry: docs/design/registries/requirements.yaml
+domain: formal
+requirements:
+- MFOS-REQ-FORMAL-0001
+- MFOS-REQ-FORMAL-0002
+- MFOS-REQ-FORMAL-0003
+- MFOS-REQ-FORMAL-0004
+- MFOS-REQ-FORMAL-0005
+- MFOS-REQ-FORMAL-0006
+- MFOS-REQ-FORMAL-0007
+- MFOS-REQ-FORMAL-0108
+implementation_allowed: false
+notes:
+- This bridge lists canonical requirement IDs only. Do not treat it as a separate
+  source of truth.

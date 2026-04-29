@@ -1,0 +1,128 @@
+schema_version: 1
+registry_kind: mfos_formal_evidence_registry
+status: draft
+updated_at: '2026-04-28'
+implementation_allowed: false
+proof_claimed: false
+evidence:
+- evidence_id: EV-MFOS-FORMAL-0101
+  status: planned
+  claim_ref: MFOS-FC-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW
+  proof_obligation_refs:
+  - MFOS-PO-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW
+  required_artifacts:
+  - model or proof harness
+  - tool output
+  - review note
+  artifact_path: null
+  proof_claimed: false
+- evidence_id: EV-MFOS-FORMAL-0102
+  status: planned
+  claim_ref: MFOS-FC-AUDIT-DENY-BEFORE-RETURN
+  proof_obligation_refs:
+  - MFOS-PO-AUDIT-DENY-BEFORE-RETURN
+  required_artifacts:
+  - model or proof harness
+  - tool output
+  - review note
+  artifact_path: null
+  proof_claimed: false
+- evidence_id: EV-MFOS-FORMAL-0103
+  status: planned
+  claim_ref: MFOS-FC-UPDATE-NO-ROLLBACK
+  proof_obligation_refs:
+  - MFOS-PO-UPDATE-NO-ROLLBACK
+  required_artifacts:
+  - model or proof harness
+  - tool output
+  - review note
+  artifact_path: null
+  proof_claimed: false
+- evidence_id: EV-MFOS-FORMAL-0104
+  status: planned
+  claim_ref: MFOS-FC-PARTITION-MEMORY-OWNERSHIP
+  proof_obligation_refs:
+  - MFOS-PO-PARTITION-MEMORY-OWNERSHIP
+  required_artifacts:
+  - model or proof harness
+  - tool output
+  - review note
+  artifact_path: null
+  proof_claimed: false
+- evidence_id: EV-MFOS-FORMAL-0105
+  status: planned
+  claim_ref: MFOS-FC-PXM-CAPABILITY-REQUIRED-FOR-RESOURCE-OPERATION
+  proof_obligation_refs:
+  - MFOS-PO-PXM-CAPABILITY-REQUIRED-FOR-RESOURCE-OPERATION
+  required_artifacts:
+  - model or proof harness
+  - tool output
+  - review note
+  artifact_path: null
+  proof_claimed: false
+- evidence_id: EV-MFOS-FORMAL-0106
+  status: planned
+  claim_ref: MFOS-FC-MFVM-CANNOT-BYPASS-PXM
+  proof_obligation_refs:
+  - MFOS-PO-MFVM-CANNOT-BYPASS-PXM
+  required_artifacts:
+  - model or proof harness
+  - tool output
+  - review note
+  artifact_path: null
+  proof_claimed: false
+- evidence_id: EV-MFOS-FORMAL-0107
+  status: planned
+  claim_ref: MFOS-FC-CVM-LAUNCH-REQUIRES-MEASUREMENT
+  proof_obligation_refs:
+  - MFOS-PO-CVM-LAUNCH-REQUIRES-MEASUREMENT
+  required_artifacts:
+  - model or proof harness
+  - tool output
+  - review note
+  artifact_path: null
+  proof_claimed: false
+- evidence_id: EV-MFOS-FORMAL-0108
+  status: planned
+  claim_ref: MFOS-FC-CVM-SECRET-RELEASE-REQUIRES-ATTESTATION
+  proof_obligation_refs:
+  - MFOS-PO-CVM-SECRET-RELEASE-REQUIRES-ATTESTATION
+  required_artifacts:
+  - model or proof harness
+  - tool output
+  - review note
+  artifact_path: null
+  proof_claimed: false
+- evidence_id: EV-MFOS-FORMAL-0109
+  status: planned
+  claim_ref: MFOS-FC-PRIVATE-SHARED-MEMORY-TRANSITION-VALIDITY
+  proof_obligation_refs:
+  - MFOS-PO-PRIVATE-SHARED-MEMORY-TRANSITION-VALIDITY
+  required_artifacts:
+  - model or proof harness
+  - tool output
+  - review note
+  artifact_path: null
+  proof_claimed: false
+- evidence_id: EV-MFOS-FORMAL-0110
+  status: planned
+  claim_ref: MFOS-FC-CLUSTER-POLICY-DISTRIBUTION-INTEGRITY
+  proof_obligation_refs:
+  - MFOS-PO-CLUSTER-POLICY-DISTRIBUTION-INTEGRITY
+  required_artifacts:
+  - model or proof harness
+  - tool output
+  - review note
+  artifact_path: null
+  proof_claimed: false
+- evidence_id: EV-MFOS-FORMAL-0111
+  status: planned
+  claim_ref: MFOS-FC-CLUSTER-ATTESTATION-COLLECTION-INTEGRITY
+  proof_obligation_refs:
+  - MFOS-PO-CLUSTER-ATTESTATION-COLLECTION-INTEGRITY
+  required_artifacts:
+  - model or proof harness
+  - tool output
+  - review note
+  artifact_path: null
+  proof_claimed: false

@@ -1,0 +1,64 @@
+schema_version: 1
+status: draft
+source_id: EXTREF-RUST-CF-PROTECTION-0001
+source_kind: bibliographic_reference
+source_type: external_reference
+semantic_role: design_background
+vendor: Rust project
+vendor_mark_used: true
+product_family: Rust Unstable Book
+document_title: 'The Rust Unstable Book: cf_protection'
+document_url:
+- https://doc.rust-lang.org/unstable-book/compiler-flags/cf-protection.html
+retrieved_at: '2026-04-28'
+reference_purpose:
+- source discovery
+- concept mapping
+- non-compatibility boundary definition
+- independent MFOS design traceability
+review_notes:
+- 'Source-card verification 2026-04-28: official Rust Unstable Book URL opened; feature remains unstable and must not be treated as a production claim.'
+review_topics:
+- Rust x86 cf-protection planning
+- CET feature-profile evidence
+- unstable compiler flag caveats
+mfos_mapping:
+  mfos_components:
+  - language verification policy
+  - control-flow hardening tests
+  mfos_specs:
+  - docs/design/specs/39-language-and-verification-policy.md
+  - docs/design/specs/40-automated-reasoning-program.md
+  mfos_requirements: &id001
+  - MFOS-REQ-LANG-0105
+  mapping_notes:
+  - Phase 0.10 public-safe reference card intentionally excludes external documentation text, tables, layouts, command syntax, and interface definitions.
+  - Applicable only as feature-profile planning until MFOS pins a Rust toolchain, target, linked modules, and binary evidence.
+mfos_divergence:
+- Rust cf-protection is a compiler/toolchain hardening input, not an MFOS authorization, audit, memory-safety, or proof boundary.
+- MFOS-owned identifiers and APIs remain independently specified.
+prohibited_inference:
+- Do not claim CET or Rust cf-protection enforcement without target, linker, standard-library, and binary evidence.
+- Do not reproduce external record layouts, API layouts, command syntax, macro signatures, tables, diagrams, or documentation text.
+- Do not treat this card as a substitute for external documentation.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+source_refs:
+- source_id: EXTREF-RUST-CF-PROTECTION-0001
+  source_type: external_reference
+  role: card_subject
+requirement_refs: *id001
+review_status: draft

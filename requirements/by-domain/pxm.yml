@@ -1,0 +1,19 @@
+schema_version: 1
+artifact_type: requirement_domain_bridge
+status: current
+origin_phase: phase-0-10
+canonical_registry: docs/design/registries/requirements.yaml
+domain: pxm
+requirements:
+- MFOS-REQ-PXM-0101
+- MFOS-REQ-PXM-0102
+- MFOS-REQ-PXM-0103
+- MFOS-REQ-PXM-0104
+- MFOS-REQ-PXM-0105
+- MFOS-REQ-PXM-0106
+- MFOS-REQ-PXM-0107
+- MFOS-REQ-PXM-0108
+implementation_allowed: false
+notes:
+- This bridge lists canonical requirement IDs only. Do not treat it as a separate
+  source of truth.

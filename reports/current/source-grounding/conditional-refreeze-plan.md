@@ -20,3 +20,7 @@ Before semantic evaluator work:
 3. Align planned `010x` requirement tests with current `09xx` executable-spec
    artifacts, or add a machine-readable alias map.
 4. Complete targeted source review for pin-review cards.
+
+## Phase 0.10 Addendum
+
+PXM, MFVM, Confidential VM, datacenter/cluster, language verification, automated reasoning, and performance/secure operations are structurally documented but semantically provisional. Phase 1 may validate loader-visible artifacts for these domains only. PXM/MFVM/CVM/cluster semantic evaluator work remains blocked until source grounding, profile-specific semantics, formal obligations, negative tests, and evidence mature.

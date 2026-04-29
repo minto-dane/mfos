@@ -31,6 +31,12 @@ current:
   purpose: Datacenter and cluster remediation status.
 - path: reports/current/language-formal-assurance-remediation.md
   purpose: Language, formal assurance, and secure-operations remediation status.
+- path: reports/current/language-formal-assurance-policy-report.md
+  purpose: Policy/spec/registry boundary for language, formal assurance, and secure operations.
+- path: reports/current/language-formal-assurance-red-team-review.md
+  purpose: Red-team review for language/formal-assurance policy and semantic-evaluator gates.
+- path: reports/current/language-formal-assurance-open-issues.md
+  purpose: Open issues for language/formal-assurance semantic-evaluator readiness.
 - path: reports/current/total-remediation-red-team-review.md
   purpose: Total remediation red-team review.
 - path: reports/current/total-remediation-open-issues.md
@@ -91,6 +97,14 @@ current:
   purpose: Scripts and CI scaffold audit.
 - path: reports/current/ai-pack-scaffold-audit.md
   purpose: AI/packs/prompts scaffold audit.
+- path: reports/current/pxm-mfvm-requirements-docs-expansion-report.md
+  purpose: Phase 0.10 PXM/MFVM requirements and docs expansion report.
+- path: reports/current/pxm-mfvm-requirements-docs-expansion-report.yml
+  purpose: Machine-readable Phase 0.10 PXM/MFVM expansion summary.
+- path: reports/current/pxm-mfvm-requirements-docs-red-team-review.md
+  purpose: Red-team review for Phase 0.10 PXM/MFVM expansion.
+- path: reports/current/pxm-mfvm-open-issues.md
+  purpose: Open issues for PXM/MFVM/CVM/cluster/formal planning.
 sections:
 - path: reports/phases/phase-0-6/
   purpose: Phase 0.6 canonicalization and enforcement closure.
@@ -128,6 +142,8 @@ phase_reports:
   purpose: Pack-level loader-only versus semantic-evaluator readiness recheck.
 - path: reports/phases/phase-1/pack-readiness-recheck.yml
   purpose: Machine-readable pack-level loader-only readiness recheck.
+- path: reports/phases/phase-1/pxm-mfvm-readiness-after-refactor.md
+  purpose: Phase 1 readiness gate after PXM/MFVM refactor.
 policy:
   new_reports_default_location: reports/current/
   generated_reports_location: reports/generated/

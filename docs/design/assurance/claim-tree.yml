@@ -1,12 +1,14 @@
 registry_kind: assurance_claim_tree
 schema_version: 1
 status: draft
-updated_at_utc: '2026-04-27T00:00:00Z'
-non_compatibility_statement: MFOS is z/OS-inspired and does not claim z/OS or IBM product compatibility.
+updated_at_utc: '2026-04-28T00:00:00Z'
+non_compatibility_statement: MFOS is z/OS-inspired and does not claim z/OS or IBM
+  product compatibility.
 claims:
 - claim_id: MFOS-CLAIM-BASELINE-SYSINT-0001
   profile: Baseline
-  claim: Unauthorized subjects cannot obtain protected dataset handles through defined MFOS system interfaces.
+  claim: Unauthorized subjects cannot obtain protected dataset handles through defined
+    MFOS system interfaces.
   protected_assets:
   - dataset handles
   - catalog entries
@@ -46,12 +48,14 @@ claims:
   - Protection after malicious signed AMF module compromise.
   - z/OS, RACF, DFSMS, or JES compatibility.
   residual_risks:
-  - Policy administrator may grant overly broad access; policy lint and review mitigate this.
+  - Policy administrator may grant overly broad access; policy lint and review mitigate
+    this.
   legacy_claim_ids:
   - CLAIM-SI-BASELINE-001
 - claim_id: MFOS-CLAIM-BASELINE-AUDIT-0001
   profile: Baseline
-  claim: Required authorization denial records are emitted before callers receive final denied results.
+  claim: Required authorization denial records are emitted before callers receive
+    final denied results.
   protected_assets:
   - audit record stream
   - denied operation evidence
@@ -113,8 +117,10 @@ claims:
   - EV-MFOS-UPDATE-FREEZE-0005
   - EV-MFOS-UPDATE-MIXMATCH-0006
   assumptions:
-  - TUF-like metadata roles and signing keys are configured according to the update spec.
-  - Time/freshness inputs used by uvsd are within the Enterprise-Standalone threat model.
+  - TUF-like metadata roles and signing keys are configured according to the update
+    spec.
+  - Time/freshness inputs used by uvsd are within the Enterprise-Standalone threat
+    model.
   not_claimed:
   - PXM partition rollback protection.
   - Guard-sealed update policy.
@@ -124,7 +130,8 @@ claims:
   - CLAIM-UVS-ENTERPRISE-STANDALONE-001
 - claim_id: MFOS-CLAIM-ENTERPRISE-PXM-PARTITION-0001
   profile: Enterprise-PXM
-  claim: Device reassignment is blocked until PXM teardown and memory/DMA cleanup evidence exists.
+  claim: Device reassignment is blocked until PXM teardown and memory/DMA cleanup
+    evidence exists.
   protected_assets:
   - partition memory
   - IOMMU mappings
@@ -153,7 +160,8 @@ claims:
   - EV-MFOS-PARTITION-PLATFORM-0016
   - EV-MFOS-PARTITION-MEMORY-0017
   assumptions:
-  - Platform IOMMU and interrupt remapping facilities match the declared hardware profile.
+  - Platform IOMMU and interrupt remapping facilities match the declared hardware
+    profile.
   - PXM does not interpret MFOS enterprise semantics.
   not_claimed:
   - Device assignment in Enterprise-Standalone.
@@ -164,7 +172,8 @@ claims:
   - CLAIM-PXM-ENTERPRISE-PXM-001
 - claim_id: MFOS-CLAIM-HA-GUARD-0001
   profile: High-Assurance
-  claim: Selected security and audit root transitions are protected by Guard root-object verification.
+  claim: Selected security and audit root transitions are protected by Guard root-object
+    verification.
   protected_assets:
   - GUARD_ROOT_SECURITY_POLICY
   - GUARD_ROOT_AUDIT_CHAIN
@@ -194,7 +203,8 @@ claims:
   - EV-MFOS-GUARD-AUDIT-0007
   - EV-MFOS-ATTESTATION-HA-0001
   assumptions:
-  - Guard isolation mechanism is implemented and verified for the High-Assurance hardware profile.
+  - Guard isolation mechanism is implemented and verified for the High-Assurance hardware
+    profile.
   - Guard root canonicalization and measurements are stable.
   not_claimed:
   - Guard interpretation of dataset, job, spool, or operator business semantics.
@@ -204,3 +214,149 @@ claims:
   - Guard implementation and isolation mechanism remain future proof obligations.
   legacy_claim_ids:
   - CLAIM-GRD-HA-001
+- claim_id: MFOS-CLAIM-ENTERPRISE-PXM-MFVM-BOUNDARY-0001
+  profile: Enterprise-PXM
+  claim: MFVM management-plane compromise does not imply PXM isolation-root compromise
+    when PXM capability validation and root audit obligations hold.
+  protected_assets:
+  - PXM isolation root
+  - VM partitions
+  - PXM capabilities
+  threat_scope:
+  - compromised MFVM control plane
+  - overbroad PXM request
+  - audit suppression attempt
+  trusted_components:
+  - PXM Core
+  - securityd
+  - auditd
+  requirements:
+  - MFOS-REQ-PXM-0102
+  - MFOS-REQ-MFVM-0102
+  - MFOS-REQ-MFVM-0103
+  - MFOS-REQ-MFVM-0108
+  tests:
+  - NEG-MFOS-MFVM-0103
+  - NEG-MFOS-PXM-0102
+  evidence:
+  - EV-MFOS-PXM-0102
+  - EV-MFOS-MFVM-0103
+  assumptions:
+  - PXM Core validates every control request independently.
+  - PXM root audit events cannot be suppressed by MFVM.
+  not_claimed:
+  - Protection after PXM Core compromise.
+  - MFVM implementation exists.
+  - Production VM isolation.
+  residual_risks:
+  - PXM Control API wire format is draft.
+  status: draft
+- claim_id: MFOS-CLAIM-ENTERPRISE-PXM-CVM-GATE-0001
+  profile: Enterprise-PXM
+  claim: Confidential VM secret release requires policy approval, launch measurement,
+    attestation evidence, and audit planning before implementation.
+  protected_assets:
+  - CVM secrets
+  - launch measurement
+  - attestation evidence
+  threat_scope:
+  - secret release without attestation
+  - launch without measurement
+  - unsupported CVM profile
+  trusted_components:
+  - PXM Core
+  - securityd
+  - auditd
+  - attestation verifier placeholder
+  requirements:
+  - MFOS-REQ-CVM-0105
+  - MFOS-REQ-CVM-0106
+  - MFOS-REQ-CVM-0107
+  - MFOS-REQ-CVM-0108
+  tests:
+  - NEG-MFOS-CVM-0107
+  - NEG-MFOS-CVM-0108
+  evidence:
+  - EV-MFOS-CVM-0105
+  - EV-MFOS-CVM-0107
+  assumptions:
+  - No CVM launch implementation exists in Phase 0.10.
+  - Profile-specific evidence remains draft.
+  not_claimed:
+  - CVM production confidentiality.
+  - External attestation format compatibility.
+  - Trusted I/O enforcement.
+  residual_risks:
+  - Profile-specific launch formats and verifier policies are open.
+  status: draft
+- claim_id: MFOS-CLAIM-ENTERPRISE-PXM-CLUSTER-OPS-0001
+  profile: Enterprise-PXM
+  claim: Cluster placement and operations are management-plane decisions and do not
+    replace PXM enforcement, securityd authorization, or auditd evidence.
+  protected_assets:
+  - cluster policy
+  - VM placement decisions
+  - audit collection
+  threat_scope:
+  - placement treated as trust root
+  - stale policy distribution
+  - automation bypass
+  trusted_components:
+  - securityd
+  - auditd
+  - PXM Core
+  requirements:
+  - MFOS-REQ-CLUSTER-0107
+  - MFOS-REQ-CLUSTER-0108
+  - MFOS-REQ-OPS-0103
+  - MFOS-REQ-OPS-0104
+  tests:
+  - NEG-MFOS-CLUSTER-0104
+  - NEG-MFOS-OPS-0103
+  evidence:
+  - EV-MFOS-CLUSTER-0107
+  - EV-MFOS-OPS-0103
+  assumptions:
+  - Cluster control-plane implementation is not present.
+  - Policy distribution semantics remain draft.
+  not_claimed:
+  - Cluster scheduler correctness.
+  - Production HA/DR.
+  - Network isolation implementation.
+  residual_risks:
+  - Quorum and fencing algorithms remain unspecified.
+  status: draft
+- claim_id: MFOS-CLAIM-BASELINE-LANG-FORMAL-GATE-0001
+  profile: Baseline
+  claim: Formal assurance artifacts are planned evidence and must not be represented
+    as completed proof without linked proof artifacts and review.
+  protected_assets:
+  - formal claims
+  - proof obligations
+  - release evidence
+  threat_scope:
+  - proof overclaim
+  - tool output treated as release evidence without review
+  trusted_components:
+  - formal registry
+  - CI validation
+  - human review
+  requirements:
+  - MFOS-REQ-FORMAL-0001
+  - MFOS-REQ-FORMAL-0108
+  - MFOS-REQ-LANG-0105
+  tests:
+  - TEST-MFOS-FORMAL-0001
+  - NEG-MFOS-FORMAL-0108
+  evidence:
+  - EV-MFOS-FORMAL-0001
+  - EV-MFOS-FORMAL-0108
+  assumptions:
+  - Formal registry validation runs in CI.
+  not_claimed:
+  - Any proof is complete.
+  - Verified implementation.
+  - Production assurance.
+  residual_risks:
+  - Proof CI for new obligations is planned only.
+  status: draft
