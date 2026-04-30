@@ -18,6 +18,10 @@ initial_state:
   objects:
   - object_ref: OBJ-MFOS-PHASE09-0001
     generation: 1
+  catalog_transaction:
+    candidate_state: CATALOG_PARTIAL_JOURNAL
+    transaction_state: CATALOG_TX_ROLLBACK_REQUIRED
+    recovery_expectation: expose_prior_committed_or_absent_only
 inputs:
 - input_id: INPUT-MFOS-PHASE09-0001
   operation: CRASH-MID-COMMIT
@@ -29,4 +33,6 @@ not_allowed:
 - production_claim
 - external_compatibility_claim
 - host_os_semantics_dependency
+- partial_catalog_success
+- usable_partial_dataset_handle
 status: draft

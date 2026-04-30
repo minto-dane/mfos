@@ -1,0 +1,24 @@
+schema_version: 1
+status: generated
+origin_phase: phase-1.3
+generated_by: scripts/generators/generate-dataset-catalog-coverage.py
+production_implementation_allowed: false
+rust_semantic_core_allowed: false
+hosted_daemon_allowed: false
+artifact_type: phase_1_3_formal_claim_to_dafny
+formal_claims:
+- claim_id: MFOS-CLAIM-BASELINE-SYSINT-0001
+  domain: dataset_catalog
+  coverage_level: C3_FULL_SEMANTIC
+  proof_claimed: false
+  proof_artifact_refs: []
+  phase_1_3_exit_blocker: false
+  accepted_deferred: true
+  reason: Assurance claim exists, but no formal proof artifact is claimed.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_DATASET_HANDLE_CREATION_CANNOT_BYPASS_AUTHORIZATION
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-CLAIM-BASELINE-SYSINT-0001
+    coverage_level: C3_FULL_SEMANTIC

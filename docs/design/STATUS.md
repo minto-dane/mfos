@@ -2,7 +2,7 @@
 
 Status date: 2026-04-30
 Workspace: `/home/nia/mfos`
-Git status: working branch `phase/1-2-authorization-audit-dafny-semantics`;
+Git status: working branch `phase/1-3-dataset-catalog-dafny-semantics`;
 PR #10 (`fix/phase-0.10-pxm-mfvm-expansion`), PR #11
 (`fix/pre-phase-1-total-readiness`), PR #12
 (`fix/pre-phase-1-total-readiness-second-pass`), and PR #13
@@ -13,8 +13,10 @@ checks passed (`CodeQL`, `CodeQL analysis (python)`, and `validate design
 registries and lint gates`). PR #15 landed the Dafny executable-semantics
 scaffold. PR #17 landed the Dafny 4.11.0 toolchain verification closure after
 PR #16 was superseded by repository branch rules. PR #18 landed Phase 1.1
-semantic coverage truthfulness remediation. The current branch records the
-PR #19 Phase 1.2 Authorization/Audit conformance closure. Repository
+semantic coverage truthfulness remediation. PR #19 remains open, but its
+Phase 1.2 Authorization/Audit conformance closure changes are present in the
+current branch. The current branch records the Phase 1.3 Dataset/Catalog Dafny
+semantic deepening. Repository
 visibility may be public by owner instruction, but formal public-release claims
 remain blocked pending IP/trademark attorney review.
 
@@ -64,6 +66,14 @@ phase_1_2_audit_coverage_level: C5_CONFORMANCE_LINKED
 phase_1_2_auth_audit_integration_coverage_level: C5_CONFORMANCE_LINKED
 phase_1_2_formal_claim_proof_coverage_complete: false
 phase_1_2_dafny_verification_passed: true
+phase_1_3_dataset_catalog_deepening_allowed: true
+phase_1_3_dataset_catalog_complete: true
+phase_1_3_dataset_catalog_exit_blockers_remaining: false
+phase_1_3_dataset_catalog_coverage_level: C5_CONFORMANCE_LINKED
+phase_1_3_dataset_catalog_requirement_coverage_level: C4_VERIFIED_PROPERTY
+phase_1_3_dataset_catalog_auth_audit_integration_coverage_level: C4_VERIFIED_PROPERTY
+phase_1_3_formal_claim_proof_coverage_complete: false
+phase_1_3_dafny_verification_passed: true
 phase_1_semantic_evaluator_status: non_production_dafny_only
 phase_1_portable_semantic_core_allowed: false
 phase_1_rust_semantic_core_allowed: false
@@ -77,7 +87,7 @@ hosted_semantic_prototype_allowed: false
 public_release_allowed: false
 private_internal_use_allowed: true
 requires_ip_attorney_review_before_public_release: true
-next_phase: Post-Phase-1.2 merge review and next scoped planning
+next_phase: Phase 1.3 PR review, then next scoped domain deepening
 ```
 
 No production nucleus, service, PXM, Guard, or other OS-body implementation was
@@ -99,7 +109,7 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
 - Pinned Dafny 4.11.0 is installed by `scripts/install-dafny.sh`; Z3 4.14.1 is
   bundled in the pinned release.
 - `scripts/validate-dafny-semantics.sh --require-dafny` verifies the current
-  module set with `89 verified, 0 errors`.
+  module set with `118 verified, 0 errors`.
 - Phase 1.1 semantic coverage traceability now maps Phase 0.9 core catalogs to
   explicit Dafny targets per test. The first vertical slice remains
   `C5_CONFORMANCE_LINKED`; the core five domains remain mixed because several
@@ -109,6 +119,15 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
   `INV_AUDIT_DENY_TRANSITION_FAILS_CLOSED_WHEN_UNAVAILABLE`. Aggregate
   Authorization/Audit integration C5 is evidence-backed by its required child
   rows; formal claim proof artifacts remain deferred below C4/C5.
+- Phase 1.3 Dataset/Catalog deepening adds verified Dafny properties for
+  symbolic DSN validation, committed-entry-only catalog resolution, rejected
+  uncommitted/rolled-back/partial-journal/integrity-failed entries, dataset
+  handle binding to authorization and generation state, stale-handle rejection,
+  retention and immutable-system denial, non-POSIX dataset semantics, and
+  Dataset/Catalog links to the Phase 1.2 Authorization/Audit model. Generated
+  Phase 1.3 traceability lives under
+  `evidence/traceability/generated/phase-1-3/`; Python remains a non-semantic
+  artifact generator and structural checker.
 
 ## Phase 1 Formal / Traceability Consistency
 

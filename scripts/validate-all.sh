@@ -36,6 +36,7 @@ python3 scripts/check-semantic-coverage-mapping.py
 python3 scripts/check-formal-claim-coverage.py
 python3 scripts/check-phase1-gap-triage.py
 python3 scripts/check-phase1-2-auth-audit-coverage.py
+python3 scripts/check-phase1-3-dataset-catalog-coverage.py
 if [[ "$GENERATE_TRACEABILITY" == "1" ]]; then
   python3 scripts/checks/check-registry-links.py --mode "$MODE"
 else
@@ -56,4 +57,5 @@ if [[ "$GENERATE_TRACEABILITY" == "1" ]]; then
   python3 scripts/generators/generate-traceability.py
   python3 scripts/generators/generate-semantic-coverage.py
   python3 scripts/generators/generate-auth-audit-coverage.py
+  python3 scripts/generators/generate-dataset-catalog-coverage.py
 fi
