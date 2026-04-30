@@ -36,6 +36,8 @@ CANONICAL_ROOT_FILES_ALLOWED = {
         "README.md",
         "index.yml",
         "install-dafny.sh",
+        "check-formal-claim-coverage.py",
+        "check-semantic-coverage-mapping.py",
         "validate-all.sh",
         "validate-artifact-hygiene.sh",
         "validate-component-scaffold.sh",

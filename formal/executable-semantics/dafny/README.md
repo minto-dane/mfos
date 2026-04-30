@@ -43,6 +43,26 @@ This directory does not authorize:
 
 Normative policy: `docs/design/specs/43-dafny-executable-semantics-policy.md`.
 
+## Phase 1.1 Semantic Coverage
+
+Phase 1.1 maps Phase 0.9 core requirements, test catalog entries, fixtures,
+oracles, golden vectors, and formal claims to Dafny modules and verified
+symbols. Generated traceability lives under
+`evidence/traceability/generated/phase-1-1/`.
+
+Coverage status:
+
+- Core five domains: `C4_VERIFIED_PROPERTY`.
+- First vertical slice: `C5_CONFORMANCE_LINKED`.
+- Release-ready production model: not claimed.
+
+Negative semantics explicitly covered by verified predicates/lemmas include
+`SPEC_GAP` and `UNSUPPORTED` fail-closed behavior, deny-before-return audit,
+no dataset handle without allow, committed-only catalog resolution, stale-handle
+rejection, principal-before-open, DD catalog/auth dependency, spool denial,
+operator confirmation, dual control, emergency metadata, and root-shell
+exclusion.
+
 ## Pinned Verification Toolchain
 
 Phase 1 verification uses the pinned Dafny release installed by
@@ -60,4 +80,4 @@ Verification command:
 ./scripts/validate-dafny-semantics.sh --require-dafny
 ```
 
-The current module set verifies with `26 verified, 0 errors`.
+The current module set verifies with `49 verified, 0 errors`.

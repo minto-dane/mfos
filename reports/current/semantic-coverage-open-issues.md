@@ -1,0 +1,57 @@
+# Phase 1.1 Semantic Coverage Open Issues
+
+These are truthful gaps left after remediation. They are not treated as successful semantic coverage.
+
+- `TEST-MFOS-AUTH-ALLOW-0901`: `C3_FULL_SEMANTIC` - Executable decision function exists; no C4 property is claimed for this positive path.
+- `TEST-MFOS-AUTH-ALLOW-WITH-AUDIT-0903`: `C3_FULL_SEMANTIC` - Executable decision function exists; no C4 property is claimed for this positive path.
+- `TEST-MFOS-AUTH-REQUIRE-MFA-0904`: `C2_PARTIAL_SEMANTIC` - Decision result exists, but the workflow is a Phase 1.1 gap.
+- `TEST-MFOS-AUTH-REQUIRE-DUAL-CONTROL-0905`: `C2_PARTIAL_SEMANTIC` - Decision result exists, but the workflow is a Phase 1.1 gap.
+- `TEST-MFOS-AUTH-REQUIRE-BREAK-GLASS-0906`: `C2_PARTIAL_SEMANTIC` - Decision result exists, but the workflow is a Phase 1.1 gap.
+- `TEST-MFOS-AUTH-REQUIRE-GUARD-APPROVAL-0907`: `C2_PARTIAL_SEMANTIC` - Decision result exists, but the workflow is a Phase 1.1 gap.
+- `TEST-MFOS-AUTH-REQUIRE-OPERATOR-CONFIRMATION-0908`: `C2_PARTIAL_SEMANTIC` - Decision result exists, but the workflow is a Phase 1.1 gap.
+- `NEG-MFOS-AUTH-STALE-POLICY-0920`: `C3_FULL_SEMANTIC` - Executable branch exists; coverage is below C4 until a dedicated property is added.
+- `NEG-MFOS-AUTH-EXPIRED-DELEGATION-0921`: `C0_NONE` - No Dafny mapping.
+- `NEG-MFOS-AUTH-BREAK-GLASS-NO-REASON-0922`: `C2_PARTIAL_SEMANTIC` - Type-level/partial representation only.
+- `NEG-MFOS-AUTH-BREAK-GLASS-NO-EXPIRY-0923`: `C2_PARTIAL_SEMANTIC` - Type-level/partial representation only.
+- `NEG-MFOS-AUTH-POLICY-LINT-WILDCARD-0924`: `C0_NONE` - No Dafny mapping.
+- `TEST-MFOS-AUDIT-MINIMUM-FIELDS-0902`: `C3_FULL_SEMANTIC` - Executable predicate exists; no C4 claim.
+- `NEG-MFOS-AUDIT-MISSING-CORRELATION-0903`: `C2_PARTIAL_SEMANTIC` - Partial semantic coverage only.
+- `TEST-MFOS-AUDIT-HASH-CHAIN-VALID-0904`: `C3_FULL_SEMANTIC` - Executable predicate exists; no C4 claim.
+- `NEG-MFOS-AUDIT-HASH-CHAIN-TAMPERED-0905`: `C2_PARTIAL_SEMANTIC` - Partial semantic coverage only.
+- `NEG-MFOS-AUDIT-UNAUTHORIZED-QUERY-0907`: `C0_NONE` - No Dafny mapping.
+- `NEG-MFOS-AUDIT-REDACTION-FAILURE-0910`: `C0_NONE` - No Dafny mapping.
+- `NEG-MFOS-AUDIT-DUPLICATE-RECORD-ID-0911`: `C0_NONE` - No Dafny mapping.
+- `NEG-MFOS-AUDIT-NON-MONOTONIC-SEQUENCE-0912`: `C2_PARTIAL_SEMANTIC` - Partial semantic coverage only.
+- `TEST-MFOS-DATASET-VALID-DSN-0901`: `C3_FULL_SEMANTIC` - Executable predicate exists; no C4 claim.
+- `NEG-MFOS-DATASET-MALFORMED-DSN-0902`: `C2_PARTIAL_SEMANTIC` - Downgraded because no matching invalid-DSN error property exists.
+- `TEST-MFOS-DATASET-CATALOG-COMMITTED-0903`: `C3_FULL_SEMANTIC` - Executable predicate exists; no C4 claim.
+- `NEG-MFOS-DATASET-RETENTION-DELETE-0911`: `C3_FULL_SEMANTIC` - Executable predicate exists; no C4 claim.
+- `NEG-MFOS-DATASET-IMMUTABLE-SYSTEM-0912`: `C3_FULL_SEMANTIC` - Executable predicate exists; no C4 claim.
+- `NEG-MFOS-DATASET-NOT-POSIX-FILE-0913`: `C0_NONE` - No Dafny mapping.
+- `TEST-MFOS-DATASET-CRASH-MID-COMMIT-0914`: `C2_PARTIAL_SEMANTIC` - Partial semantic coverage only.
+- `TEST-MFOS-JOB-HELLO-JOB-0901`: `C3_FULL_SEMANTIC` - Executable predicate exists; no C4 claim in job_spool.
+- `NEG-MFOS-JOB-MALFORMED-CONTROL-0902`: `C0_NONE` - No Dafny mapping.
+- `NEG-MFOS-JOB-SUBMIT-NO-PRINCIPAL-0903`: `C2_PARTIAL_SEMANTIC` - Partial semantic coverage only.
+- `TEST-MFOS-JOB-STEP-FAILURE-RC-0909`: `C2_PARTIAL_SEMANTIC` - Type-level/partial representation only.
+- `TEST-MFOS-JOB-SPOOL-CREATE-0911`: `C3_FULL_SEMANTIC` - Executable predicate exists; no C4 claim.
+- `TEST-MFOS-JOB-SPOOL-BROWSE-OWNER-0912`: `C3_FULL_SEMANTIC` - Executable predicate exists; no C4 claim.
+- `NEG-MFOS-JOB-SPOOL-EXPORT-NO-AUDIT-0915`: `C0_NONE` - No Dafny mapping.
+- `NEG-MFOS-JOB-CANCEL-NO-AUTHORITY-0916`: `C0_NONE` - No Dafny mapping.
+- `NEG-MFOS-JOB-STEP-NO-AUDIT-CORRELATION-0917`: `C0_NONE` - No Dafny mapping.
+- `TEST-MFOS-OPER-DISPLAY-SYSTEM-0901`: `C3_FULL_SEMANTIC` - Executable predicate exists; no C4 claim.
+- `TEST-MFOS-OPER-DEFINE-USER-0902`: `C3_FULL_SEMANTIC` - Executable predicate exists; no C4 claim.
+- `TEST-MFOS-OPER-DEFINE-DATASET-0903`: `C3_FULL_SEMANTIC` - Executable predicate exists; no C4 claim.
+- `TEST-MFOS-OPER-SUBMIT-JOB-0904`: `C3_FULL_SEMANTIC` - Executable predicate exists; no C4 claim.
+- `NEG-MFOS-OPER-AUTOMATION-BYPASS-0910`: `C0_NONE` - No Dafny mapping.
+- `NEG-MFOS-OPER-MALFORMED-COMMAND-0911`: `C0_NONE` - No Dafny mapping.
+- `MFOS-FC-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW`: `C3_FULL_SEMANTIC` - Formal claim lacks proof-backed artifact coverage.
+- `MFOS-FC-AUDIT-DENY-BEFORE-RETURN`: `C3_FULL_SEMANTIC` - Formal claim lacks proof-backed artifact coverage.
+- `MFOS-FC-UPDATE-NO-ROLLBACK`: `C0_NONE` - Formal claim outside Phase 1.1 Dafny semantic coverage.
+- `MFOS-FC-PARTITION-MEMORY-OWNERSHIP`: `C0_NONE` - Formal claim outside Phase 1.1 Dafny semantic coverage.
+- `MFOS-FC-PXM-CAPABILITY-REQUIRED-FOR-RESOURCE-OPERATION`: `C0_NONE` - Formal claim outside Phase 1.1 Dafny semantic coverage.
+- `MFOS-FC-MFVM-CANNOT-BYPASS-PXM`: `C0_NONE` - Formal claim outside Phase 1.1 Dafny semantic coverage.
+- `MFOS-FC-CVM-LAUNCH-REQUIRES-MEASUREMENT`: `C0_NONE` - Formal claim outside Phase 1.1 Dafny semantic coverage.
+- `MFOS-FC-CVM-SECRET-RELEASE-REQUIRES-ATTESTATION`: `C0_NONE` - Formal claim outside Phase 1.1 Dafny semantic coverage.
+- `MFOS-FC-PRIVATE-SHARED-MEMORY-TRANSITION-VALIDITY`: `C0_NONE` - Formal claim outside Phase 1.1 Dafny semantic coverage.
+- `MFOS-FC-CLUSTER-POLICY-DISTRIBUTION-INTEGRITY`: `C0_NONE` - Formal claim outside Phase 1.1 Dafny semantic coverage.
+- `MFOS-FC-CLUSTER-ATTESTATION-COLLECTION-INTEGRITY`: `C0_NONE` - Formal claim outside Phase 1.1 Dafny semantic coverage.

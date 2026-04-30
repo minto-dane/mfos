@@ -199,7 +199,35 @@ must not claim proof success.
 | `MFOS-REQ-SEMSPEC-0009` | Fixture normalizer MUST NOT implement MFOS business semantics. | code review |
 | `MFOS-REQ-SEMSPEC-0010` | Dafny model verification status MUST be recorded as evidence. | evidence review |
 
-## 13. Gaps
+## 13. Phase 1.1 Semantic Coverage Closure
+
+Phase 1.1 strengthens the Phase 1 Dafny executable-semantics artifacts without
+authorizing production implementation.
+
+Coverage traceability is generated under:
+
+```text
+evidence/traceability/generated/phase-1-1/
+```
+
+Current coverage judgment:
+
+```yaml
+core_domains_coverage_level:
+  authorization: C0_NONE
+  audit: C0_NONE
+  dataset_catalog: C0_NONE
+  job_spool: C0_NONE
+  operator_console: C0_NONE
+first_vertical_slice_coverage_level: C5_CONFORMANCE_LINKED
+negative_semantics_complete: false
+phase_1_1_semantic_coverage_complete: false
+release_ready_model_claimed: false
+```
+
+The current Dafny module set verifies with `49 verified, 0 errors`.
+
+## 14. Gaps
 
 | Gap ID | Gap | Impact |
 | --- | --- | --- |

@@ -40,6 +40,12 @@ current:
     validate_fixture_golden_loader:
       path: scripts/validators/validate-fixture-golden-loader.py
       status: current
+    check_semantic_coverage_mapping:
+      path: scripts/check-semantic-coverage-mapping.py
+      status: current
+    check_formal_claim_coverage:
+      path: scripts/check-formal-claim-coverage.py
+      status: current
 
 sections:
   validators:

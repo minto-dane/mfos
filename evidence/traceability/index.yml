@@ -38,6 +38,11 @@ generated:
     status: generated
     origin_phase: phase-0-9
     generated_by: scripts/phases/phase-0-9/generate-traceability.py
+  phase_1_1:
+    path: evidence/traceability/generated/phase-1-1/
+    status: generated
+    origin_phase: phase-1.1
+    generated_by: scripts/generators/generate-semantic-coverage.py
 
 archive:
   phase_0_8:

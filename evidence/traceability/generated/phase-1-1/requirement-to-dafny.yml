@@ -1,0 +1,887 @@
+schema_version: 1
+artifact_type: phase_1_1_semantic_coverage_traceability
+status: generated
+origin_phase: phase-1.1
+generated_by: scripts/generators/generate-semantic-coverage.py
+source_inputs:
+- tests/catalog/authorization.yml
+- tests/catalog/audit.yml
+- tests/catalog/dataset-catalog.yml
+- tests/catalog/job-spool.yml
+- tests/catalog/operator-console.yml
+- tests/catalog/first-vertical-slice.yml
+- tests/fixtures/**
+- tests/golden/**
+- formal/executable-semantics/dafny/modules/*.dfy
+- formal/claim-registry.yml
+coverage_levels:
+- C0_NONE
+- C1_TYPE_ONLY
+- C2_PARTIAL_SEMANTIC
+- C3_FULL_SEMANTIC
+- C4_VERIFIED_PROPERTY
+- C5_CONFORMANCE_LINKED
+- C6_RELEASE_READY_MODEL
+production_implementation_allowed: false
+traceability_kind: requirement_to_dafny
+requirements:
+- requirement_id: MFOS-REQ-AUDIT-0001
+  linked_tests:
+  - TEST-MFOS-AUDIT-DENY-BEFORE-RETURN-0901
+  - TEST-MFOS-AUDIT-MINIMUM-FIELDS-0902
+  - NEG-MFOS-AUDIT-MISSING-CORRELATION-0903
+  - TEST-MFOS-AUDIT-HASH-CHAIN-VALID-0904
+  - NEG-MFOS-AUDIT-HASH-CHAIN-TAMPERED-0905
+  - NEG-MFOS-AUDIT-AUDIT-UNAVAILABLE-0906
+  - NEG-MFOS-AUDIT-UNAUTHORIZED-QUERY-0907
+  - NEG-MFOS-AUDIT-SPOOL-NOT-EVIDENCE-0908
+  - NEG-MFOS-AUDIT-LOG-LINE-NOT-RECORD-0909
+  - NEG-MFOS-AUDIT-REDACTION-FAILURE-0910
+  - NEG-MFOS-AUDIT-DUPLICATE-RECORD-ID-0911
+  - NEG-MFOS-AUDIT-NON-MONOTONIC-SEQUENCE-0912
+  coverage_level: C0_NONE
+  coverage_mappings:
+  - &id001
+    dafny_module: formal/executable-semantics/dafny/modules/audit.dfy
+    dafny_symbol: INV_AUDIT_DENY_TRANSITION_WRITES_BEFORE_RETURN
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Denied operation finalization appends before-return audit evidence when
+      audit is available.
+  - &id002
+    dafny_module: formal/executable-semantics/dafny/modules/audit.dfy
+    dafny_symbol: AuditRecordMinimumFields
+    symbol_kind: predicate
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C2_PARTIAL_SEMANTIC
+    note: Correlation validity participates in the predicate, but no missing-correlation
+      negative lemma exists.
+  - &id003
+    dafny_module: formal/executable-semantics/dafny/modules/audit.dfy
+    dafny_symbol: ValidHashChain
+    symbol_kind: predicate
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C2_PARTIAL_SEMANTIC
+    note: Sequence monotonicity is part of hash-chain validity, but no dedicated negative
+      lemma exists.
+  - &id004
+    dafny_module: formal/executable-semantics/dafny/modules/audit.dfy
+    dafny_symbol: INV_AUDIT_DENY_TRANSITION_FAILS_CLOSED_WHEN_UNAVAILABLE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Denied operation finalization fails closed when required audit is unavailable.
+  - &id005
+    dafny_module: null
+    dafny_symbol: null
+    symbol_kind: null
+    verification_status: missing
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C0_NONE
+    note: Duplicate audit record-id semantics are not modeled in Phase 1.1 Dafny.
+  - &id006
+    dafny_module: formal/executable-semantics/dafny/modules/audit.dfy
+    dafny_symbol: INV_AUDIT_SPOOL_NOT_EVIDENCE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Spool entries are not audit evidence.
+  - &id007
+    dafny_module: formal/executable-semantics/dafny/modules/audit.dfy
+    dafny_symbol: INV_AUDIT_LOG_LINE_NOT_RECORD
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Diagnostic log lines are not audit records.
+  coverage_basis: Worst linked-test level; C4/C5 require explicit verified symbols
+    and evidence references.
+- requirement_id: MFOS-REQ-AUDIT-0002
+  linked_tests:
+  - TEST-MFOS-AUDIT-DENY-BEFORE-RETURN-0901
+  - TEST-MFOS-AUDIT-MINIMUM-FIELDS-0902
+  - NEG-MFOS-AUDIT-MISSING-CORRELATION-0903
+  - TEST-MFOS-AUDIT-HASH-CHAIN-VALID-0904
+  - NEG-MFOS-AUDIT-HASH-CHAIN-TAMPERED-0905
+  - NEG-MFOS-AUDIT-AUDIT-UNAVAILABLE-0906
+  - NEG-MFOS-AUDIT-UNAUTHORIZED-QUERY-0907
+  - NEG-MFOS-AUDIT-SPOOL-NOT-EVIDENCE-0908
+  - NEG-MFOS-AUDIT-LOG-LINE-NOT-RECORD-0909
+  - NEG-MFOS-AUDIT-REDACTION-FAILURE-0910
+  - NEG-MFOS-AUDIT-DUPLICATE-RECORD-ID-0911
+  - NEG-MFOS-AUDIT-NON-MONOTONIC-SEQUENCE-0912
+  coverage_level: C0_NONE
+  coverage_mappings:
+  - *id001
+  - *id002
+  - *id003
+  - *id004
+  - *id005
+  - *id006
+  - *id007
+  coverage_basis: Worst linked-test level; C4/C5 require explicit verified symbols
+    and evidence references.
+- requirement_id: MFOS-REQ-AUDIT-0101
+  linked_tests:
+  - TEST-MFOS-AUDIT-DENY-BEFORE-RETURN-0901
+  - TEST-MFOS-AUDIT-MINIMUM-FIELDS-0902
+  - NEG-MFOS-AUDIT-MISSING-CORRELATION-0903
+  - TEST-MFOS-AUDIT-HASH-CHAIN-VALID-0904
+  - NEG-MFOS-AUDIT-HASH-CHAIN-TAMPERED-0905
+  - NEG-MFOS-AUDIT-AUDIT-UNAVAILABLE-0906
+  - NEG-MFOS-AUDIT-UNAUTHORIZED-QUERY-0907
+  - NEG-MFOS-AUDIT-SPOOL-NOT-EVIDENCE-0908
+  - NEG-MFOS-AUDIT-LOG-LINE-NOT-RECORD-0909
+  - NEG-MFOS-AUDIT-REDACTION-FAILURE-0910
+  - NEG-MFOS-AUDIT-DUPLICATE-RECORD-ID-0911
+  - NEG-MFOS-AUDIT-NON-MONOTONIC-SEQUENCE-0912
+  coverage_level: C0_NONE
+  coverage_mappings:
+  - *id001
+  - *id002
+  - *id003
+  - *id004
+  - *id005
+  - *id006
+  - *id007
+  coverage_basis: Worst linked-test level; C4/C5 require explicit verified symbols
+    and evidence references.
+- requirement_id: MFOS-REQ-AUDIT-0104
+  linked_tests:
+  - TEST-MFOS-FVS-HELLO-JOB-9001
+  - NEG-MFOS-FVS-BOB-DENIED-9002
+  coverage_level: C5_CONFORMANCE_LINKED
+  coverage_mappings:
+  - &id015
+    dafny_module: formal/executable-semantics/dafny/modules/first_vertical_slice.dfy
+    dafny_symbol: HelloJobContract
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Hello-job final state, return code, handle-after-allow, spool output, and
+      audit sequence are verified and fixture-linked.
+  - &id016
+    dafny_module: formal/executable-semantics/dafny/modules/first_vertical_slice.dfy
+    dafny_symbol: BobDeniedAliceDatasetContract
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Bob-denied path verifies no handle, policy denial code, before-final audit,
+      and failure summary, and is fixture-linked.
+  coverage_basis: Worst linked-test level; C4/C5 require explicit verified symbols
+    and evidence references.
+- requirement_id: MFOS-REQ-AUTH-0001
+  linked_tests:
+  - TEST-MFOS-AUTH-ALLOW-0901
+  - NEG-MFOS-AUTH-DENY-0902
+  - TEST-MFOS-AUTH-ALLOW-WITH-AUDIT-0903
+  - TEST-MFOS-AUTH-REQUIRE-MFA-0904
+  - TEST-MFOS-AUTH-REQUIRE-DUAL-CONTROL-0905
+  - TEST-MFOS-AUTH-REQUIRE-BREAK-GLASS-0906
+  - TEST-MFOS-AUTH-REQUIRE-GUARD-APPROVAL-0907
+  - TEST-MFOS-AUTH-REQUIRE-OPERATOR-CONFIRMATION-0908
+  - NEG-MFOS-AUTH-UNSUPPORTED-0909
+  - NEG-MFOS-AUTH-SPEC-GAP-0910
+  - NEG-MFOS-AUTH-STALE-POLICY-0920
+  - NEG-MFOS-AUTH-EXPIRED-DELEGATION-0921
+  - NEG-MFOS-AUTH-BREAK-GLASS-NO-REASON-0922
+  - NEG-MFOS-AUTH-BREAK-GLASS-NO-EXPIRY-0923
+  - NEG-MFOS-AUTH-POLICY-LINT-WILDCARD-0924
+  - NEG-MFOS-AUTH-UNAUTHORIZED-HANDLE-0925
+  coverage_level: C0_NONE
+  coverage_mappings:
+  - &id008
+    dafny_module: formal/executable-semantics/dafny/modules/authorization.dfy
+    dafny_symbol: EvaluateSecurityDecision
+    symbol_kind: function
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C3_FULL_SEMANTIC
+    note: Policy-version mismatch branch exists, but no dedicated stale-policy lemma
+      is declared.
+  - &id009
+    dafny_module: formal/executable-semantics/dafny/modules/authorization.dfy
+    dafny_symbol: PolicyDeniedMappingForDatasetRead
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Dataset read denial maps to MFOS_ERR_POLICY_DENIED and DATASET_READ_NOT_PERMITTED.
+  - &id010
+    dafny_module: formal/executable-semantics/dafny/modules/authorization.dfy
+    dafny_symbol: INV_AUTH_UNSUPPORTED_NOT_SUCCESS
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: UNSUPPORTED is fail-closed and never a success result.
+  - &id011
+    dafny_module: formal/executable-semantics/dafny/modules/authorization.dfy
+    dafny_symbol: INV_AUTH_SPEC_GAP_NOT_SUCCESS
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: SPEC_GAP is fail-closed and never a success result.
+  - &id012
+    dafny_module: null
+    dafny_symbol: null
+    symbol_kind: null
+    verification_status: missing
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C0_NONE
+    note: Policy lint wildcard semantics are not modeled in Phase 1.1 Dafny.
+  - &id013
+    dafny_module: formal/executable-semantics/dafny/modules/authorization.dfy
+    dafny_symbol: DecisionObligation
+    symbol_kind: datatype
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C2_PARTIAL_SEMANTIC
+    note: Break-glass obligation datatype exists; missing expiry semantics are not
+      modeled here.
+  - &id014
+    dafny_module: formal/executable-semantics/dafny/modules/authorization.dfy
+    dafny_symbol: INV_AUTH_NO_HANDLE_WITHOUT_ALLOW
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Protected handles cannot be created without ALLOW or ALLOW_WITH_AUDIT.
+  coverage_basis: Worst linked-test level; C4/C5 require explicit verified symbols
+    and evidence references.
+- requirement_id: MFOS-REQ-AUTH-0003
+  linked_tests:
+  - TEST-MFOS-AUTH-ALLOW-0901
+  - NEG-MFOS-AUTH-DENY-0902
+  - TEST-MFOS-AUTH-ALLOW-WITH-AUDIT-0903
+  - TEST-MFOS-AUTH-REQUIRE-MFA-0904
+  - TEST-MFOS-AUTH-REQUIRE-DUAL-CONTROL-0905
+  - TEST-MFOS-AUTH-REQUIRE-BREAK-GLASS-0906
+  - TEST-MFOS-AUTH-REQUIRE-GUARD-APPROVAL-0907
+  - TEST-MFOS-AUTH-REQUIRE-OPERATOR-CONFIRMATION-0908
+  - NEG-MFOS-AUTH-UNSUPPORTED-0909
+  - NEG-MFOS-AUTH-SPEC-GAP-0910
+  - NEG-MFOS-AUTH-STALE-POLICY-0920
+  - NEG-MFOS-AUTH-EXPIRED-DELEGATION-0921
+  - NEG-MFOS-AUTH-BREAK-GLASS-NO-REASON-0922
+  - NEG-MFOS-AUTH-BREAK-GLASS-NO-EXPIRY-0923
+  - NEG-MFOS-AUTH-POLICY-LINT-WILDCARD-0924
+  - NEG-MFOS-AUTH-UNAUTHORIZED-HANDLE-0925
+  coverage_level: C0_NONE
+  coverage_mappings:
+  - *id008
+  - *id009
+  - *id010
+  - *id011
+  - *id012
+  - *id013
+  - *id014
+  coverage_basis: Worst linked-test level; C4/C5 require explicit verified symbols
+    and evidence references.
+- requirement_id: MFOS-REQ-AUTH-0004
+  linked_tests:
+  - TEST-MFOS-FVS-HELLO-JOB-9001
+  - NEG-MFOS-FVS-BOB-DENIED-9002
+  coverage_level: C5_CONFORMANCE_LINKED
+  coverage_mappings:
+  - *id015
+  - *id016
+  coverage_basis: Worst linked-test level; C4/C5 require explicit verified symbols
+    and evidence references.
+- requirement_id: MFOS-REQ-AUTH-0101
+  linked_tests:
+  - TEST-MFOS-AUTH-ALLOW-0901
+  - NEG-MFOS-AUTH-DENY-0902
+  - TEST-MFOS-AUTH-ALLOW-WITH-AUDIT-0903
+  - TEST-MFOS-AUTH-REQUIRE-MFA-0904
+  - TEST-MFOS-AUTH-REQUIRE-DUAL-CONTROL-0905
+  - TEST-MFOS-AUTH-REQUIRE-BREAK-GLASS-0906
+  - TEST-MFOS-AUTH-REQUIRE-GUARD-APPROVAL-0907
+  - TEST-MFOS-AUTH-REQUIRE-OPERATOR-CONFIRMATION-0908
+  - NEG-MFOS-AUTH-UNSUPPORTED-0909
+  - NEG-MFOS-AUTH-SPEC-GAP-0910
+  - NEG-MFOS-AUTH-STALE-POLICY-0920
+  - NEG-MFOS-AUTH-EXPIRED-DELEGATION-0921
+  - NEG-MFOS-AUTH-BREAK-GLASS-NO-REASON-0922
+  - NEG-MFOS-AUTH-BREAK-GLASS-NO-EXPIRY-0923
+  - NEG-MFOS-AUTH-POLICY-LINT-WILDCARD-0924
+  - NEG-MFOS-AUTH-UNAUTHORIZED-HANDLE-0925
+  coverage_level: C0_NONE
+  coverage_mappings:
+  - *id008
+  - *id009
+  - *id010
+  - *id011
+  - *id012
+  - *id013
+  - *id014
+  coverage_basis: Worst linked-test level; C4/C5 require explicit verified symbols
+    and evidence references.
+- requirement_id: MFOS-REQ-CATALOG-0002
+  linked_tests:
+  - TEST-MFOS-DATASET-VALID-DSN-0901
+  - NEG-MFOS-DATASET-MALFORMED-DSN-0902
+  - TEST-MFOS-DATASET-CATALOG-COMMITTED-0903
+  - NEG-MFOS-DATASET-CATALOG-UNCOMMITTED-0904
+  - NEG-MFOS-DATASET-CATALOG-ROLLED-BACK-0905
+  - NEG-MFOS-DATASET-CATALOG-PARTIAL-JOURNAL-0906
+  - NEG-MFOS-DATASET-CATALOG-INTEGRITY-FAILED-0907
+  - NEG-MFOS-DATASET-UNAUTHORIZED-OPEN-0908
+  - NEG-MFOS-DATASET-STALE-HANDLE-POLICY-0909
+  - NEG-MFOS-DATASET-STALE-HANDLE-CATALOG-0910
+  - NEG-MFOS-DATASET-RETENTION-DELETE-0911
+  - NEG-MFOS-DATASET-IMMUTABLE-SYSTEM-0912
+  - NEG-MFOS-DATASET-NOT-POSIX-FILE-0913
+  - TEST-MFOS-DATASET-CRASH-MID-COMMIT-0914
+  coverage_level: C0_NONE
+  coverage_mappings:
+  - &id017
+    dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: SymbolicDsnValid
+    symbol_kind: predicate
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C2_PARTIAL_SEMANTIC
+    note: Malformed DSN rejection and MFOS_ERR_INVALID_DATASET_NAME are not modeled
+      in Dafny.
+  - &id018
+    dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: CatalogEntryResolvable
+    symbol_kind: predicate
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C2_PARTIAL_SEMANTIC
+    note: Crash-mid-commit recovery success is not modeled as a transition property.
+  - &id019
+    dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_CATALOG_UNCOMMITTED_CANNOT_RESOLVE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Uncommitted entries cannot resolve.
+  - &id020
+    dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_CATALOG_ROLLED_BACK_CANNOT_RESOLVE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Rolled-back entries cannot resolve.
+  - &id021
+    dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_CATALOG_PARTIAL_JOURNAL_CANNOT_RESOLVE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Partial-journal entries cannot resolve.
+  - &id022
+    dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_CATALOG_INTEGRITY_FAILED_CANNOT_RESOLVE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Integrity-failed entries cannot resolve.
+  - &id023
+    dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_DATASET_NO_HANDLE_WITHOUT_ALLOW
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Dataset handle creation requires an allow decision.
+  - &id024
+    dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_DATASET_STALE_HANDLE_AFTER_POLICY_CHANGE_REJECTED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Policy-version-stale handles are rejected.
+  - &id025
+    dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_DATASET_STALE_HANDLE_AFTER_GENERATION_CHANGE_REJECTED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Generation-stale handles are rejected.
+  - &id026
+    dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: RetentionBlocksDelete
+    symbol_kind: predicate
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C3_FULL_SEMANTIC
+    note: Retention delete-block predicate exists without a dedicated verified lemma.
+  - &id027
+    dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: ImmutableSystemDatasetBlocksModify
+    symbol_kind: predicate
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C3_FULL_SEMANTIC
+    note: Immutable-system modify-block predicate exists without a dedicated verified
+      lemma.
+  - &id028
+    dafny_module: null
+    dafny_symbol: null
+    symbol_kind: null
+    verification_status: missing
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C0_NONE
+    note: Non-POSIX-file distinction is documented as a non-objective, not executable
+      Dafny semantics.
+  coverage_basis: Worst linked-test level; C4/C5 require explicit verified symbols
+    and evidence references.
+- requirement_id: MFOS-REQ-CATALOG-0101
+  linked_tests:
+  - TEST-MFOS-DATASET-VALID-DSN-0901
+  - NEG-MFOS-DATASET-MALFORMED-DSN-0902
+  - TEST-MFOS-DATASET-CATALOG-COMMITTED-0903
+  - NEG-MFOS-DATASET-CATALOG-UNCOMMITTED-0904
+  - NEG-MFOS-DATASET-CATALOG-ROLLED-BACK-0905
+  - NEG-MFOS-DATASET-CATALOG-PARTIAL-JOURNAL-0906
+  - NEG-MFOS-DATASET-CATALOG-INTEGRITY-FAILED-0907
+  - NEG-MFOS-DATASET-UNAUTHORIZED-OPEN-0908
+  - NEG-MFOS-DATASET-STALE-HANDLE-POLICY-0909
+  - NEG-MFOS-DATASET-STALE-HANDLE-CATALOG-0910
+  - NEG-MFOS-DATASET-RETENTION-DELETE-0911
+  - NEG-MFOS-DATASET-IMMUTABLE-SYSTEM-0912
+  - NEG-MFOS-DATASET-NOT-POSIX-FILE-0913
+  - TEST-MFOS-DATASET-CRASH-MID-COMMIT-0914
+  coverage_level: C0_NONE
+  coverage_mappings:
+  - *id017
+  - *id018
+  - *id019
+  - *id020
+  - *id021
+  - *id022
+  - *id023
+  - *id024
+  - *id025
+  - *id026
+  - *id027
+  - *id028
+  coverage_basis: Worst linked-test level; C4/C5 require explicit verified symbols
+    and evidence references.
+- requirement_id: MFOS-REQ-DATASET-0101
+  linked_tests:
+  - TEST-MFOS-DATASET-VALID-DSN-0901
+  - NEG-MFOS-DATASET-MALFORMED-DSN-0902
+  - TEST-MFOS-DATASET-CATALOG-COMMITTED-0903
+  - NEG-MFOS-DATASET-CATALOG-UNCOMMITTED-0904
+  - NEG-MFOS-DATASET-CATALOG-ROLLED-BACK-0905
+  - NEG-MFOS-DATASET-CATALOG-PARTIAL-JOURNAL-0906
+  - NEG-MFOS-DATASET-CATALOG-INTEGRITY-FAILED-0907
+  - NEG-MFOS-DATASET-UNAUTHORIZED-OPEN-0908
+  - NEG-MFOS-DATASET-STALE-HANDLE-POLICY-0909
+  - NEG-MFOS-DATASET-STALE-HANDLE-CATALOG-0910
+  - NEG-MFOS-DATASET-RETENTION-DELETE-0911
+  - NEG-MFOS-DATASET-IMMUTABLE-SYSTEM-0912
+  - NEG-MFOS-DATASET-NOT-POSIX-FILE-0913
+  - TEST-MFOS-DATASET-CRASH-MID-COMMIT-0914
+  coverage_level: C0_NONE
+  coverage_mappings:
+  - *id017
+  - *id018
+  - *id019
+  - *id020
+  - *id021
+  - *id022
+  - *id023
+  - *id024
+  - *id025
+  - *id026
+  - *id027
+  - *id028
+  coverage_basis: Worst linked-test level; C4/C5 require explicit verified symbols
+    and evidence references.
+- requirement_id: MFOS-REQ-DATASET-0102
+  linked_tests:
+  - TEST-MFOS-DATASET-VALID-DSN-0901
+  - NEG-MFOS-DATASET-MALFORMED-DSN-0902
+  - TEST-MFOS-DATASET-CATALOG-COMMITTED-0903
+  - NEG-MFOS-DATASET-CATALOG-UNCOMMITTED-0904
+  - NEG-MFOS-DATASET-CATALOG-ROLLED-BACK-0905
+  - NEG-MFOS-DATASET-CATALOG-PARTIAL-JOURNAL-0906
+  - NEG-MFOS-DATASET-CATALOG-INTEGRITY-FAILED-0907
+  - NEG-MFOS-DATASET-UNAUTHORIZED-OPEN-0908
+  - NEG-MFOS-DATASET-STALE-HANDLE-POLICY-0909
+  - NEG-MFOS-DATASET-STALE-HANDLE-CATALOG-0910
+  - NEG-MFOS-DATASET-RETENTION-DELETE-0911
+  - NEG-MFOS-DATASET-IMMUTABLE-SYSTEM-0912
+  - NEG-MFOS-DATASET-NOT-POSIX-FILE-0913
+  - TEST-MFOS-DATASET-CRASH-MID-COMMIT-0914
+  - TEST-MFOS-FVS-HELLO-JOB-9001
+  - NEG-MFOS-FVS-BOB-DENIED-9002
+  coverage_level: C0_NONE
+  coverage_mappings:
+  - *id017
+  - *id018
+  - *id019
+  - *id020
+  - *id021
+  - *id022
+  - *id023
+  - *id024
+  - *id025
+  - *id026
+  - *id027
+  - *id028
+  - *id015
+  - *id016
+  coverage_basis: Worst linked-test level; C4/C5 require explicit verified symbols
+    and evidence references.
+- requirement_id: MFOS-REQ-JOB-0101
+  linked_tests:
+  - TEST-MFOS-JOB-HELLO-JOB-0901
+  - NEG-MFOS-JOB-MALFORMED-CONTROL-0902
+  - NEG-MFOS-JOB-SUBMIT-NO-PRINCIPAL-0903
+  - TEST-MFOS-JOB-PRINCIPAL-BEFORE-OPEN-0904
+  - TEST-MFOS-JOB-DD-CATALOG-RESOLUTION-0905
+  - TEST-MFOS-JOB-DD-AUTHORIZATION-0906
+  - NEG-MFOS-JOB-DD-BYPASS-DENIED-0907
+  - NEG-MFOS-JOB-UNAUTHORIZED-DATASET-0908
+  - TEST-MFOS-JOB-STEP-FAILURE-RC-0909
+  - NEG-MFOS-JOB-INVALID-LIFECYCLE-0910
+  - TEST-MFOS-JOB-SPOOL-CREATE-0911
+  - TEST-MFOS-JOB-SPOOL-BROWSE-OWNER-0912
+  - NEG-MFOS-JOB-SPOOL-BROWSE-NONOWNER-0913
+  - NEG-MFOS-JOB-SPOOL-PURGE-DENIED-0914
+  - NEG-MFOS-JOB-SPOOL-EXPORT-NO-AUDIT-0915
+  - NEG-MFOS-JOB-CANCEL-NO-AUTHORITY-0916
+  - NEG-MFOS-JOB-STEP-NO-AUDIT-CORRELATION-0917
+  coverage_level: C0_NONE
+  coverage_mappings:
+  - &id029
+    dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: ValidJobTransition
+    symbol_kind: predicate
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C3_FULL_SEMANTIC
+    note: Job lifecycle predicate exists; end-to-end hello-job proof is in first vertical
+      slice.
+  - &id030
+    dafny_module: null
+    dafny_symbol: null
+    symbol_kind: null
+    verification_status: missing
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C0_NONE
+    note: Job step audit correlation semantics are not modeled in Phase 1.1 Dafny.
+  - &id031
+    dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: EffectivePrincipalEstablished
+    symbol_kind: predicate
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C2_PARTIAL_SEMANTIC
+    note: Effective principal predicate exists; submit-time failure property is not
+      modeled.
+  - &id032
+    dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_EFFECTIVE_PRINCIPAL_BEFORE_OPEN
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Dataset open is blocked until effective principal is established.
+  - &id033
+    dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_DD_RESOLUTION_THROUGH_CATALOG_AND_AUTH
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: DD resolution cannot bypass catalog and authorization.
+  - &id034
+    dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_DATASET_NO_HANDLE_WITHOUT_ALLOW
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Dataset handle creation requires an allow decision.
+  - &id035
+    dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: JobStep
+    symbol_kind: datatype
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C2_PARTIAL_SEMANTIC
+    note: Return-code state exists as data, but failure RC semantics are not modeled.
+  - &id036
+    dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_INVALID_LIFECYCLE_REJECTED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Invalid lifecycle transitions are rejected.
+  - &id037
+    dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: SpoolEntryProtected
+    symbol_kind: predicate
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C3_FULL_SEMANTIC
+    note: Protected spool-entry predicate exists without a create-transition lemma.
+  - &id038
+    dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: SpoolBrowseAllowed
+    symbol_kind: predicate
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C3_FULL_SEMANTIC
+    note: Owner browse predicate exists without a dedicated positive lemma.
+  - &id039
+    dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_BROWSE_BY_NON_OWNER_DENIED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Non-owner spool browse is denied.
+  - &id040
+    dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_PURGE_WITHOUT_AUTHORITY_DENIED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Spool purge without authority is denied.
+  coverage_basis: Worst linked-test level; C4/C5 require explicit verified symbols
+    and evidence references.
+- requirement_id: MFOS-REQ-JOB-0102
+  linked_tests:
+  - TEST-MFOS-JOB-HELLO-JOB-0901
+  - NEG-MFOS-JOB-MALFORMED-CONTROL-0902
+  - NEG-MFOS-JOB-SUBMIT-NO-PRINCIPAL-0903
+  - TEST-MFOS-JOB-PRINCIPAL-BEFORE-OPEN-0904
+  - TEST-MFOS-JOB-DD-CATALOG-RESOLUTION-0905
+  - TEST-MFOS-JOB-DD-AUTHORIZATION-0906
+  - NEG-MFOS-JOB-DD-BYPASS-DENIED-0907
+  - NEG-MFOS-JOB-UNAUTHORIZED-DATASET-0908
+  - TEST-MFOS-JOB-STEP-FAILURE-RC-0909
+  - NEG-MFOS-JOB-INVALID-LIFECYCLE-0910
+  - TEST-MFOS-JOB-SPOOL-CREATE-0911
+  - TEST-MFOS-JOB-SPOOL-BROWSE-OWNER-0912
+  - NEG-MFOS-JOB-SPOOL-BROWSE-NONOWNER-0913
+  - NEG-MFOS-JOB-SPOOL-PURGE-DENIED-0914
+  - NEG-MFOS-JOB-SPOOL-EXPORT-NO-AUDIT-0915
+  - NEG-MFOS-JOB-CANCEL-NO-AUTHORITY-0916
+  - NEG-MFOS-JOB-STEP-NO-AUDIT-CORRELATION-0917
+  - TEST-MFOS-FVS-HELLO-JOB-9001
+  - NEG-MFOS-FVS-BOB-DENIED-9002
+  coverage_level: C0_NONE
+  coverage_mappings:
+  - *id029
+  - *id030
+  - *id031
+  - *id032
+  - *id033
+  - *id034
+  - *id035
+  - *id036
+  - *id037
+  - *id038
+  - *id039
+  - *id040
+  - *id015
+  - *id016
+  coverage_basis: Worst linked-test level; C4/C5 require explicit verified symbols
+    and evidence references.
+- requirement_id: MFOS-REQ-OPER-0101
+  linked_tests:
+  - TEST-MFOS-OPER-DISPLAY-SYSTEM-0901
+  - TEST-MFOS-OPER-DEFINE-USER-0902
+  - TEST-MFOS-OPER-DEFINE-DATASET-0903
+  - TEST-MFOS-OPER-SUBMIT-JOB-0904
+  - NEG-MFOS-OPER-CANCEL-JOB-DENIED-0905
+  - NEG-MFOS-OPER-DESTRUCTIVE-NO-CONFIRM-0906
+  - NEG-MFOS-OPER-DUAL-CONTROL-SINGLE-0907
+  - NEG-MFOS-OPER-EMERGENCY-NO-REASON-0908
+  - NEG-MFOS-OPER-EMERGENCY-NO-EXPIRY-0909
+  - NEG-MFOS-OPER-AUTOMATION-BYPASS-0910
+  - NEG-MFOS-OPER-MALFORMED-COMMAND-0911
+  - NEG-MFOS-OPER-COMMAND-NO-AUDIT-0912
+  - NEG-MFOS-OPER-ROOT-SHELL-FIRST-UI-0913
+  - TEST-MFOS-FVS-HELLO-JOB-9001
+  - NEG-MFOS-FVS-BOB-DENIED-9002
+  coverage_level: C0_NONE
+  coverage_mappings:
+  - &id041
+    dafny_module: formal/executable-semantics/dafny/modules/operator_console.dfy
+    dafny_symbol: OperatorCommandAuthorized
+    symbol_kind: predicate
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C3_FULL_SEMANTIC
+    note: Operator authorization predicate exists without a dedicated positive lemma.
+  - &id042
+    dafny_module: formal/executable-semantics/dafny/modules/operator_console.dfy
+    dafny_symbol: INV_OPERATOR_NO_COMMAND_WITHOUT_AUTH
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Operator command cannot execute without authorization.
+  - &id043
+    dafny_module: formal/executable-semantics/dafny/modules/operator_console.dfy
+    dafny_symbol: INV_OPERATOR_DESTRUCTIVE_WITHOUT_CONFIRMATION_DENIED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Destructive command without confirmation is denied.
+  - &id044
+    dafny_module: formal/executable-semantics/dafny/modules/operator_console.dfy
+    dafny_symbol: INV_OPERATOR_DUAL_CONTROL_SINGLE_APPROVAL_DENIED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Dual-control command with one approval is denied.
+  - &id045
+    dafny_module: formal/executable-semantics/dafny/modules/operator_console.dfy
+    dafny_symbol: INV_OPERATOR_EMERGENCY_WITHOUT_REASON_OR_EXPIRY_DENIED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Emergency mode without expiry is denied.
+  - &id046
+    dafny_module: null
+    dafny_symbol: null
+    symbol_kind: null
+    verification_status: missing
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C0_NONE
+    note: Operator command parser semantics are not modeled in Phase 1.1 Dafny.
+  - &id047
+    dafny_module: formal/executable-semantics/dafny/modules/operator_console.dfy
+    dafny_symbol: INV_OPERATOR_NO_COMMAND_WITHOUT_AUDIT
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Audited operator commands require audit evidence.
+  - &id048
+    dafny_module: formal/executable-semantics/dafny/modules/operator_console.dfy
+    dafny_symbol: INV_OPERATOR_ROOT_SHELL_NOT_FIRST_UI
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Root shell cannot be modeled as the first privileged UI.
+  - *id015
+  - *id016
+  coverage_basis: Worst linked-test level; C4/C5 require explicit verified symbols
+    and evidence references.
+- requirement_id: MFOS-REQ-OPER-0102
+  linked_tests:
+  - TEST-MFOS-OPER-DISPLAY-SYSTEM-0901
+  - TEST-MFOS-OPER-DEFINE-USER-0902
+  - TEST-MFOS-OPER-DEFINE-DATASET-0903
+  - TEST-MFOS-OPER-SUBMIT-JOB-0904
+  - NEG-MFOS-OPER-CANCEL-JOB-DENIED-0905
+  - NEG-MFOS-OPER-DESTRUCTIVE-NO-CONFIRM-0906
+  - NEG-MFOS-OPER-DUAL-CONTROL-SINGLE-0907
+  - NEG-MFOS-OPER-EMERGENCY-NO-REASON-0908
+  - NEG-MFOS-OPER-EMERGENCY-NO-EXPIRY-0909
+  - NEG-MFOS-OPER-AUTOMATION-BYPASS-0910
+  - NEG-MFOS-OPER-MALFORMED-COMMAND-0911
+  - NEG-MFOS-OPER-COMMAND-NO-AUDIT-0912
+  - NEG-MFOS-OPER-ROOT-SHELL-FIRST-UI-0913
+  coverage_level: C0_NONE
+  coverage_mappings:
+  - *id041
+  - *id042
+  - *id043
+  - *id044
+  - *id045
+  - *id046
+  - *id047
+  - *id048
+  coverage_basis: Worst linked-test level; C4/C5 require explicit verified symbols
+    and evidence references.
+- requirement_id: MFOS-REQ-OPER-0103
+  linked_tests:
+  - TEST-MFOS-OPER-DISPLAY-SYSTEM-0901
+  - TEST-MFOS-OPER-DEFINE-USER-0902
+  - TEST-MFOS-OPER-DEFINE-DATASET-0903
+  - TEST-MFOS-OPER-SUBMIT-JOB-0904
+  - NEG-MFOS-OPER-CANCEL-JOB-DENIED-0905
+  - NEG-MFOS-OPER-DESTRUCTIVE-NO-CONFIRM-0906
+  - NEG-MFOS-OPER-DUAL-CONTROL-SINGLE-0907
+  - NEG-MFOS-OPER-EMERGENCY-NO-REASON-0908
+  - NEG-MFOS-OPER-EMERGENCY-NO-EXPIRY-0909
+  - NEG-MFOS-OPER-AUTOMATION-BYPASS-0910
+  - NEG-MFOS-OPER-MALFORMED-COMMAND-0911
+  - NEG-MFOS-OPER-COMMAND-NO-AUDIT-0912
+  - NEG-MFOS-OPER-ROOT-SHELL-FIRST-UI-0913
+  coverage_level: C0_NONE
+  coverage_mappings:
+  - *id041
+  - *id042
+  - *id043
+  - *id044
+  - *id045
+  - *id046
+  - *id047
+  - *id048
+  coverage_basis: Worst linked-test level; C4/C5 require explicit verified symbols
+    and evidence references.
+- requirement_id: MFOS-REQ-SPOOL-0101
+  linked_tests:
+  - TEST-MFOS-JOB-HELLO-JOB-0901
+  - NEG-MFOS-JOB-MALFORMED-CONTROL-0902
+  - NEG-MFOS-JOB-SUBMIT-NO-PRINCIPAL-0903
+  - TEST-MFOS-JOB-PRINCIPAL-BEFORE-OPEN-0904
+  - TEST-MFOS-JOB-DD-CATALOG-RESOLUTION-0905
+  - TEST-MFOS-JOB-DD-AUTHORIZATION-0906
+  - NEG-MFOS-JOB-DD-BYPASS-DENIED-0907
+  - NEG-MFOS-JOB-UNAUTHORIZED-DATASET-0908
+  - TEST-MFOS-JOB-STEP-FAILURE-RC-0909
+  - NEG-MFOS-JOB-INVALID-LIFECYCLE-0910
+  - TEST-MFOS-JOB-SPOOL-CREATE-0911
+  - TEST-MFOS-JOB-SPOOL-BROWSE-OWNER-0912
+  - NEG-MFOS-JOB-SPOOL-BROWSE-NONOWNER-0913
+  - NEG-MFOS-JOB-SPOOL-PURGE-DENIED-0914
+  - NEG-MFOS-JOB-SPOOL-EXPORT-NO-AUDIT-0915
+  - NEG-MFOS-JOB-CANCEL-NO-AUTHORITY-0916
+  - NEG-MFOS-JOB-STEP-NO-AUDIT-CORRELATION-0917
+  - TEST-MFOS-FVS-HELLO-JOB-9001
+  - NEG-MFOS-FVS-BOB-DENIED-9002
+  coverage_level: C0_NONE
+  coverage_mappings:
+  - *id029
+  - *id030
+  - *id031
+  - *id032
+  - *id033
+  - *id034
+  - *id035
+  - *id036
+  - *id037
+  - *id038
+  - *id039
+  - *id040
+  - *id015
+  - *id016
+  coverage_basis: Worst linked-test level; C4/C5 require explicit verified symbols
+    and evidence references.

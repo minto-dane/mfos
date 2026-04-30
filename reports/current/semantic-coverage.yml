@@ -1,0 +1,61 @@
+schema_version: 1
+artifact_type: phase_1_1_semantic_coverage_summary
+status: current
+generated_by: scripts/generators/generate-semantic-coverage.py
+source_traceability_dir: evidence/traceability/generated/phase-1-1/
+source_inputs:
+- tests/catalog/authorization.yml
+- tests/catalog/audit.yml
+- tests/catalog/dataset-catalog.yml
+- tests/catalog/job-spool.yml
+- tests/catalog/operator-console.yml
+- tests/catalog/first-vertical-slice.yml
+- tests/fixtures/**
+- tests/golden/**
+- formal/executable-semantics/dafny/modules/*.dfy
+- formal/claim-registry.yml
+prerequisite_merge_status:
+  pr_15: merged
+  pr_16: superseded_by_pr_17_due_branch_rules
+  pr_17: merged
+coverage_distribution:
+  requirements:
+    C0_NONE: 16
+    C5_CONFORMANCE_LINKED: 2
+  tests:
+    C0_NONE: 12
+    C2_PARTIAL_SEMANTIC: 14
+    C3_FULL_SEMANTIC: 16
+    C4_VERIFIED_PROPERTY: 30
+    C5_CONFORMANCE_LINKED: 2
+  fixtures:
+    C0_NONE: 12
+    C2_PARTIAL_SEMANTIC: 14
+    C3_FULL_SEMANTIC: 16
+    C4_VERIFIED_PROPERTY: 30
+    C5_CONFORMANCE_LINKED: 2
+  oracles:
+    C0_NONE: 12
+    C2_PARTIAL_SEMANTIC: 14
+    C3_FULL_SEMANTIC: 16
+    C4_VERIFIED_PROPERTY: 30
+    C5_CONFORMANCE_LINKED: 2
+  formal_claims:
+    C0_NONE: 9
+    C3_FULL_SEMANTIC: 2
+core_domains_coverage_level:
+  authorization: C0_NONE
+  audit: C0_NONE
+  dataset_catalog: C0_NONE
+  job_spool: C0_NONE
+  operator_console: C0_NONE
+first_vertical_slice_coverage_level: C5_CONFORMANCE_LINKED
+phase_1_1_semantic_coverage_complete: false
+phase_1_1_core_domain_coverage_status: mixed_verified_and_partial
+phase_1_1_formal_claim_coverage_complete: false
+negative_semantics_complete: false
+audit_deny_before_return_transition_backed: true
+dafny_verification_result: 49 verified, 0 errors
+production_implementation_allowed: false
+rust_phase_1_canonical_semantics_allowed: false
+hosted_daemon_implementation_allowed: false

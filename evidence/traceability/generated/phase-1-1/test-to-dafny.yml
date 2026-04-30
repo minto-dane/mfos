@@ -1,0 +1,1586 @@
+schema_version: 1
+artifact_type: phase_1_1_semantic_coverage_traceability
+status: generated
+origin_phase: phase-1.1
+generated_by: scripts/generators/generate-semantic-coverage.py
+source_inputs:
+- tests/catalog/authorization.yml
+- tests/catalog/audit.yml
+- tests/catalog/dataset-catalog.yml
+- tests/catalog/job-spool.yml
+- tests/catalog/operator-console.yml
+- tests/catalog/first-vertical-slice.yml
+- tests/fixtures/**
+- tests/golden/**
+- formal/executable-semantics/dafny/modules/*.dfy
+- formal/claim-registry.yml
+coverage_levels:
+- C0_NONE
+- C1_TYPE_ONLY
+- C2_PARTIAL_SEMANTIC
+- C3_FULL_SEMANTIC
+- C4_VERIFIED_PROPERTY
+- C5_CONFORMANCE_LINKED
+- C6_RELEASE_READY_MODEL
+production_implementation_allowed: false
+traceability_kind: test_to_dafny
+tests:
+- test_id: TEST-MFOS-AUTH-ALLOW-0901
+  catalog: tests/catalog/authorization.yml
+  domain: authorization
+  negative: false
+  target_requirements: &id001
+  - MFOS-REQ-AUTH-0001
+  - MFOS-REQ-AUTH-0003
+  - MFOS-REQ-AUTH-0101
+  fixture_ref: tests/fixtures/auth/allow-0901.yml
+  oracle_ref: tests/golden/auth/allow-0901.yml
+  golden_ref: tests/golden/auth/allow-0901.yml
+  coverage_level: C3_FULL_SEMANTIC
+  coverage_justification: Executable decision function exists; no C4 property is claimed
+    for this positive path.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/authorization.dfy
+    dafny_symbol: EvaluateSecurityDecision
+    symbol_kind: function
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C3_FULL_SEMANTIC
+    note: ALLOW evaluation is executable, but no test-specific verified lemma is declared.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-AUTH-DENY-0902
+  catalog: tests/catalog/authorization.yml
+  domain: authorization
+  negative: true
+  target_requirements: *id001
+  fixture_ref: tests/fixtures/auth/deny-0902.yml
+  oracle_ref: tests/golden/auth/deny-0902.yml
+  golden_ref: tests/golden/auth/deny-0902.yml
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_justification: Negative dataset read denial has an explicit verified lemma.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/authorization.dfy
+    dafny_symbol: PolicyDeniedMappingForDatasetRead
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Dataset read denial maps to MFOS_ERR_POLICY_DENIED and DATASET_READ_NOT_PERMITTED.
+  negative_failure_conditions:
+  - PolicyDeniedMappingForDatasetRead
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: TEST-MFOS-AUTH-ALLOW-WITH-AUDIT-0903
+  catalog: tests/catalog/authorization.yml
+  domain: authorization
+  negative: false
+  target_requirements: *id001
+  fixture_ref: tests/fixtures/auth/allow-with-audit-0903.yml
+  oracle_ref: tests/golden/auth/allow-with-audit-0903.yml
+  golden_ref: tests/golden/auth/allow-with-audit-0903.yml
+  coverage_level: C3_FULL_SEMANTIC
+  coverage_justification: Executable decision function exists; no C4 property is claimed
+    for this positive path.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/authorization.dfy
+    dafny_symbol: EvaluateSecurityDecision
+    symbol_kind: function
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C3_FULL_SEMANTIC
+    note: ALLOW_WITH_AUDIT is executable; audit linkage is covered in audit/FVS properties.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: TEST-MFOS-AUTH-REQUIRE-MFA-0904
+  catalog: tests/catalog/authorization.yml
+  domain: authorization
+  negative: false
+  target_requirements: *id001
+  fixture_ref: tests/fixtures/auth/require-mfa-0904.yml
+  oracle_ref: tests/golden/auth/require-mfa-0904.yml
+  golden_ref: tests/golden/auth/require-mfa-0904.yml
+  coverage_level: C2_PARTIAL_SEMANTIC
+  coverage_justification: Decision result exists, but the workflow is a Phase 1.1
+    gap.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/authorization.dfy
+    dafny_symbol: EvaluateSecurityDecision
+    symbol_kind: function
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C2_PARTIAL_SEMANTIC
+    note: REQUIRE_MFA is represented as a decision result, but MFA workflow semantics
+      are not modeled.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: TEST-MFOS-AUTH-REQUIRE-DUAL-CONTROL-0905
+  catalog: tests/catalog/authorization.yml
+  domain: authorization
+  negative: false
+  target_requirements: *id001
+  fixture_ref: tests/fixtures/auth/require-dual-control-0905.yml
+  oracle_ref: tests/golden/auth/require-dual-control-0905.yml
+  golden_ref: tests/golden/auth/require-dual-control-0905.yml
+  coverage_level: C2_PARTIAL_SEMANTIC
+  coverage_justification: Decision result exists, but the workflow is a Phase 1.1
+    gap.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/authorization.dfy
+    dafny_symbol: EvaluateSecurityDecision
+    symbol_kind: function
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C2_PARTIAL_SEMANTIC
+    note: REQUIRE_DUAL_CONTROL is represented, but authorization-side dual-control
+      workflow semantics are not modeled.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: TEST-MFOS-AUTH-REQUIRE-BREAK-GLASS-0906
+  catalog: tests/catalog/authorization.yml
+  domain: authorization
+  negative: false
+  target_requirements: *id001
+  fixture_ref: tests/fixtures/auth/require-break-glass-0906.yml
+  oracle_ref: tests/golden/auth/require-break-glass-0906.yml
+  golden_ref: tests/golden/auth/require-break-glass-0906.yml
+  coverage_level: C2_PARTIAL_SEMANTIC
+  coverage_justification: Decision result exists, but the workflow is a Phase 1.1
+    gap.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/authorization.dfy
+    dafny_symbol: EvaluateSecurityDecision
+    symbol_kind: function
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C2_PARTIAL_SEMANTIC
+    note: REQUIRE_BREAK_GLASS is represented, but reason/expiry workflow semantics
+      are not modeled in authorization.dfy.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: TEST-MFOS-AUTH-REQUIRE-GUARD-APPROVAL-0907
+  catalog: tests/catalog/authorization.yml
+  domain: authorization
+  negative: false
+  target_requirements: *id001
+  fixture_ref: tests/fixtures/auth/require-guard-approval-0907.yml
+  oracle_ref: tests/golden/auth/require-guard-approval-0907.yml
+  golden_ref: tests/golden/auth/require-guard-approval-0907.yml
+  coverage_level: C2_PARTIAL_SEMANTIC
+  coverage_justification: Decision result exists, but the workflow is a Phase 1.1
+    gap.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/authorization.dfy
+    dafny_symbol: EvaluateSecurityDecision
+    symbol_kind: function
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C2_PARTIAL_SEMANTIC
+    note: REQUIRE_GUARD_APPROVAL is represented, but Guard approval workflow semantics
+      are not modeled.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: TEST-MFOS-AUTH-REQUIRE-OPERATOR-CONFIRMATION-0908
+  catalog: tests/catalog/authorization.yml
+  domain: authorization
+  negative: false
+  target_requirements: *id001
+  fixture_ref: tests/fixtures/auth/require-operator-confirmation-0908.yml
+  oracle_ref: tests/golden/auth/require-operator-confirmation-0908.yml
+  golden_ref: tests/golden/auth/require-operator-confirmation-0908.yml
+  coverage_level: C2_PARTIAL_SEMANTIC
+  coverage_justification: Decision result exists, but the workflow is a Phase 1.1
+    gap.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/authorization.dfy
+    dafny_symbol: EvaluateSecurityDecision
+    symbol_kind: function
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C2_PARTIAL_SEMANTIC
+    note: REQUIRE_OPERATOR_CONFIRMATION is represented, but authorization-side confirmation
+      workflow semantics are not modeled.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-AUTH-UNSUPPORTED-0909
+  catalog: tests/catalog/authorization.yml
+  domain: authorization
+  negative: true
+  target_requirements: *id001
+  fixture_ref: tests/fixtures/auth/unsupported-0909.yml
+  oracle_ref: tests/golden/auth/unsupported-0909.yml
+  golden_ref: tests/golden/auth/unsupported-0909.yml
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_justification: UNSUPPORTED negative path has an explicit verified lemma.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/authorization.dfy
+    dafny_symbol: INV_AUTH_UNSUPPORTED_NOT_SUCCESS
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: UNSUPPORTED is fail-closed and never a success result.
+  negative_failure_conditions:
+  - INV_AUTH_UNSUPPORTED_NOT_SUCCESS
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-AUTH-SPEC-GAP-0910
+  catalog: tests/catalog/authorization.yml
+  domain: authorization
+  negative: true
+  target_requirements: *id001
+  fixture_ref: tests/fixtures/auth/spec-gap-0910.yml
+  oracle_ref: tests/golden/auth/spec-gap-0910.yml
+  golden_ref: tests/golden/auth/spec-gap-0910.yml
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_justification: SPEC_GAP negative path has an explicit verified lemma.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/authorization.dfy
+    dafny_symbol: INV_AUTH_SPEC_GAP_NOT_SUCCESS
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: SPEC_GAP is fail-closed and never a success result.
+  negative_failure_conditions:
+  - INV_AUTH_SPEC_GAP_NOT_SUCCESS
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-AUTH-STALE-POLICY-0920
+  catalog: tests/catalog/authorization.yml
+  domain: authorization
+  negative: true
+  target_requirements: *id001
+  fixture_ref: tests/fixtures/auth/stale-policy-0920.yml
+  oracle_ref: tests/golden/auth/stale-policy-0920.yml
+  golden_ref: tests/golden/auth/stale-policy-0920.yml
+  coverage_level: C3_FULL_SEMANTIC
+  coverage_justification: Executable branch exists; coverage is below C4 until a dedicated
+    property is added.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/authorization.dfy
+    dafny_symbol: EvaluateSecurityDecision
+    symbol_kind: function
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C3_FULL_SEMANTIC
+    note: Policy-version mismatch branch exists, but no dedicated stale-policy lemma
+      is declared.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-AUTH-EXPIRED-DELEGATION-0921
+  catalog: tests/catalog/authorization.yml
+  domain: authorization
+  negative: true
+  target_requirements: *id001
+  fixture_ref: tests/fixtures/auth/expired-delegation-0921.yml
+  oracle_ref: tests/golden/auth/expired-delegation-0921.yml
+  golden_ref: tests/golden/auth/expired-delegation-0921.yml
+  coverage_level: C0_NONE
+  coverage_justification: No Dafny mapping.
+  coverage_mappings:
+  - dafny_module: null
+    dafny_symbol: null
+    symbol_kind: null
+    verification_status: missing
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C0_NONE
+    note: Delegation expiry semantics are not modeled in Phase 1.1 Dafny.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-AUTH-BREAK-GLASS-NO-REASON-0922
+  catalog: tests/catalog/authorization.yml
+  domain: authorization
+  negative: true
+  target_requirements: *id001
+  fixture_ref: tests/fixtures/auth/break-glass-no-reason-0922.yml
+  oracle_ref: tests/golden/auth/break-glass-no-reason-0922.yml
+  golden_ref: tests/golden/auth/break-glass-no-reason-0922.yml
+  coverage_level: C2_PARTIAL_SEMANTIC
+  coverage_justification: Type-level/partial representation only.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/authorization.dfy
+    dafny_symbol: DecisionObligation
+    symbol_kind: datatype
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C2_PARTIAL_SEMANTIC
+    note: Break-glass obligation datatype exists; missing reason semantics are not
+      modeled here.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-AUTH-BREAK-GLASS-NO-EXPIRY-0923
+  catalog: tests/catalog/authorization.yml
+  domain: authorization
+  negative: true
+  target_requirements: *id001
+  fixture_ref: tests/fixtures/auth/break-glass-no-expiry-0923.yml
+  oracle_ref: tests/golden/auth/break-glass-no-expiry-0923.yml
+  golden_ref: tests/golden/auth/break-glass-no-expiry-0923.yml
+  coverage_level: C2_PARTIAL_SEMANTIC
+  coverage_justification: Type-level/partial representation only.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/authorization.dfy
+    dafny_symbol: DecisionObligation
+    symbol_kind: datatype
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C2_PARTIAL_SEMANTIC
+    note: Break-glass obligation datatype exists; missing expiry semantics are not
+      modeled here.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-AUTH-POLICY-LINT-WILDCARD-0924
+  catalog: tests/catalog/authorization.yml
+  domain: authorization
+  negative: true
+  target_requirements: *id001
+  fixture_ref: tests/fixtures/auth/policy-lint-wildcard-0924.yml
+  oracle_ref: tests/golden/auth/policy-lint-wildcard-0924.yml
+  golden_ref: tests/golden/auth/policy-lint-wildcard-0924.yml
+  coverage_level: C0_NONE
+  coverage_justification: No Dafny mapping.
+  coverage_mappings:
+  - dafny_module: null
+    dafny_symbol: null
+    symbol_kind: null
+    verification_status: missing
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C0_NONE
+    note: Policy lint wildcard semantics are not modeled in Phase 1.1 Dafny.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-AUTH-UNAUTHORIZED-HANDLE-0925
+  catalog: tests/catalog/authorization.yml
+  domain: authorization
+  negative: true
+  target_requirements: *id001
+  fixture_ref: tests/fixtures/auth/unauthorized-handle-0925.yml
+  oracle_ref: tests/golden/auth/unauthorized-handle-0925.yml
+  golden_ref: tests/golden/auth/unauthorized-handle-0925.yml
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_justification: Unauthorized handle creation is backed by a verified lemma.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/authorization.dfy
+    dafny_symbol: INV_AUTH_NO_HANDLE_WITHOUT_ALLOW
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Protected handles cannot be created without ALLOW or ALLOW_WITH_AUDIT.
+  negative_failure_conditions:
+  - INV_AUTH_NO_HANDLE_WITHOUT_ALLOW
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: TEST-MFOS-AUDIT-DENY-BEFORE-RETURN-0901
+  catalog: tests/catalog/audit.yml
+  domain: audit
+  negative: true
+  target_requirements: &id002
+  - MFOS-REQ-AUDIT-0001
+  - MFOS-REQ-AUDIT-0002
+  - MFOS-REQ-AUDIT-0101
+  fixture_ref: tests/fixtures/audit/deny-before-return-0901.yml
+  oracle_ref: tests/golden/audit/deny-before-return-0901.yml
+  golden_ref: tests/golden/audit/deny-before-return-0901.yml
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_justification: Deny-before-return is transition-backed.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/audit.dfy
+    dafny_symbol: INV_AUDIT_DENY_TRANSITION_WRITES_BEFORE_RETURN
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Denied operation finalization appends before-return audit evidence when
+      audit is available.
+  negative_failure_conditions:
+  - INV_AUDIT_DENY_TRANSITION_WRITES_BEFORE_RETURN
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: TEST-MFOS-AUDIT-MINIMUM-FIELDS-0902
+  catalog: tests/catalog/audit.yml
+  domain: audit
+  negative: false
+  target_requirements: *id002
+  fixture_ref: tests/fixtures/audit/minimum-fields-0902.yml
+  oracle_ref: tests/golden/audit/minimum-fields-0902.yml
+  golden_ref: tests/golden/audit/minimum-fields-0902.yml
+  coverage_level: C3_FULL_SEMANTIC
+  coverage_justification: Executable predicate exists; no C4 claim.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/audit.dfy
+    dafny_symbol: AuditRecordMinimumFields
+    symbol_kind: predicate
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C3_FULL_SEMANTIC
+    note: Minimum field predicate exists without a test-specific lemma.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-AUDIT-MISSING-CORRELATION-0903
+  catalog: tests/catalog/audit.yml
+  domain: audit
+  negative: true
+  target_requirements: *id002
+  fixture_ref: tests/fixtures/audit/missing-correlation-0903.yml
+  oracle_ref: tests/golden/audit/missing-correlation-0903.yml
+  golden_ref: tests/golden/audit/missing-correlation-0903.yml
+  coverage_level: C2_PARTIAL_SEMANTIC
+  coverage_justification: Partial semantic coverage only.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/audit.dfy
+    dafny_symbol: AuditRecordMinimumFields
+    symbol_kind: predicate
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C2_PARTIAL_SEMANTIC
+    note: Correlation validity participates in the predicate, but no missing-correlation
+      negative lemma exists.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: TEST-MFOS-AUDIT-HASH-CHAIN-VALID-0904
+  catalog: tests/catalog/audit.yml
+  domain: audit
+  negative: false
+  target_requirements: *id002
+  fixture_ref: tests/fixtures/audit/hash-chain-valid-0904.yml
+  oracle_ref: tests/golden/audit/hash-chain-valid-0904.yml
+  golden_ref: tests/golden/audit/hash-chain-valid-0904.yml
+  coverage_level: C3_FULL_SEMANTIC
+  coverage_justification: Executable predicate exists; no C4 claim.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/audit.dfy
+    dafny_symbol: ValidHashChain
+    symbol_kind: predicate
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C3_FULL_SEMANTIC
+    note: Hash-chain predicate exists without dedicated verified test lemma.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-AUDIT-HASH-CHAIN-TAMPERED-0905
+  catalog: tests/catalog/audit.yml
+  domain: audit
+  negative: true
+  target_requirements: *id002
+  fixture_ref: tests/fixtures/audit/hash-chain-tampered-0905.yml
+  oracle_ref: tests/golden/audit/hash-chain-tampered-0905.yml
+  golden_ref: tests/golden/audit/hash-chain-tampered-0905.yml
+  coverage_level: C2_PARTIAL_SEMANTIC
+  coverage_justification: Partial semantic coverage only.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/audit.dfy
+    dafny_symbol: ValidHashChain
+    symbol_kind: predicate
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C2_PARTIAL_SEMANTIC
+    note: Tamper rejection is not expressed as a dedicated lemma.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-AUDIT-AUDIT-UNAVAILABLE-0906
+  catalog: tests/catalog/audit.yml
+  domain: audit
+  negative: true
+  target_requirements: *id002
+  fixture_ref: tests/fixtures/audit/audit-unavailable-0906.yml
+  oracle_ref: tests/golden/audit/audit-unavailable-0906.yml
+  golden_ref: tests/golden/audit/audit-unavailable-0906.yml
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_justification: Audit-unavailable negative path is transition-backed.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/audit.dfy
+    dafny_symbol: INV_AUDIT_DENY_TRANSITION_FAILS_CLOSED_WHEN_UNAVAILABLE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Denied operation finalization fails closed when required audit is unavailable.
+  negative_failure_conditions:
+  - INV_AUDIT_DENY_TRANSITION_FAILS_CLOSED_WHEN_UNAVAILABLE
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-AUDIT-UNAUTHORIZED-QUERY-0907
+  catalog: tests/catalog/audit.yml
+  domain: audit
+  negative: true
+  target_requirements: *id002
+  fixture_ref: tests/fixtures/audit/unauthorized-query-0907.yml
+  oracle_ref: tests/golden/audit/unauthorized-query-0907.yml
+  golden_ref: tests/golden/audit/unauthorized-query-0907.yml
+  coverage_level: C0_NONE
+  coverage_justification: No Dafny mapping.
+  coverage_mappings:
+  - dafny_module: null
+    dafny_symbol: null
+    symbol_kind: null
+    verification_status: missing
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C0_NONE
+    note: Audit query authorization is not modeled in Phase 1.1 Dafny.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-AUDIT-SPOOL-NOT-EVIDENCE-0908
+  catalog: tests/catalog/audit.yml
+  domain: audit
+  negative: true
+  target_requirements: *id002
+  fixture_ref: tests/fixtures/audit/spool-not-evidence-0908.yml
+  oracle_ref: tests/golden/audit/spool-not-evidence-0908.yml
+  golden_ref: tests/golden/audit/spool-not-evidence-0908.yml
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_justification: Verified negative property.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/audit.dfy
+    dafny_symbol: INV_AUDIT_SPOOL_NOT_EVIDENCE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Spool entries are not audit evidence.
+  negative_failure_conditions:
+  - INV_AUDIT_SPOOL_NOT_EVIDENCE
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-AUDIT-LOG-LINE-NOT-RECORD-0909
+  catalog: tests/catalog/audit.yml
+  domain: audit
+  negative: true
+  target_requirements: *id002
+  fixture_ref: tests/fixtures/audit/log-line-not-record-0909.yml
+  oracle_ref: tests/golden/audit/log-line-not-record-0909.yml
+  golden_ref: tests/golden/audit/log-line-not-record-0909.yml
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_justification: Verified negative property.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/audit.dfy
+    dafny_symbol: INV_AUDIT_LOG_LINE_NOT_RECORD
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Diagnostic log lines are not audit records.
+  negative_failure_conditions:
+  - INV_AUDIT_LOG_LINE_NOT_RECORD
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-AUDIT-REDACTION-FAILURE-0910
+  catalog: tests/catalog/audit.yml
+  domain: audit
+  negative: true
+  target_requirements: *id002
+  fixture_ref: tests/fixtures/audit/redaction-failure-0910.yml
+  oracle_ref: tests/golden/audit/redaction-failure-0910.yml
+  golden_ref: tests/golden/audit/redaction-failure-0910.yml
+  coverage_level: C0_NONE
+  coverage_justification: No Dafny mapping.
+  coverage_mappings:
+  - dafny_module: null
+    dafny_symbol: null
+    symbol_kind: null
+    verification_status: missing
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C0_NONE
+    note: Redaction failure semantics are not modeled in Phase 1.1 Dafny.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-AUDIT-DUPLICATE-RECORD-ID-0911
+  catalog: tests/catalog/audit.yml
+  domain: audit
+  negative: true
+  target_requirements: *id002
+  fixture_ref: tests/fixtures/audit/duplicate-record-id-0911.yml
+  oracle_ref: tests/golden/audit/duplicate-record-id-0911.yml
+  golden_ref: tests/golden/audit/duplicate-record-id-0911.yml
+  coverage_level: C0_NONE
+  coverage_justification: No Dafny mapping.
+  coverage_mappings:
+  - dafny_module: null
+    dafny_symbol: null
+    symbol_kind: null
+    verification_status: missing
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C0_NONE
+    note: Duplicate audit record-id semantics are not modeled in Phase 1.1 Dafny.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-AUDIT-NON-MONOTONIC-SEQUENCE-0912
+  catalog: tests/catalog/audit.yml
+  domain: audit
+  negative: true
+  target_requirements: *id002
+  fixture_ref: tests/fixtures/audit/non-monotonic-sequence-0912.yml
+  oracle_ref: tests/golden/audit/non-monotonic-sequence-0912.yml
+  golden_ref: tests/golden/audit/non-monotonic-sequence-0912.yml
+  coverage_level: C2_PARTIAL_SEMANTIC
+  coverage_justification: Partial semantic coverage only.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/audit.dfy
+    dafny_symbol: ValidHashChain
+    symbol_kind: predicate
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C2_PARTIAL_SEMANTIC
+    note: Sequence monotonicity is part of hash-chain validity, but no dedicated negative
+      lemma exists.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: TEST-MFOS-DATASET-VALID-DSN-0901
+  catalog: tests/catalog/dataset-catalog.yml
+  domain: dataset_catalog
+  negative: false
+  target_requirements: &id003
+  - MFOS-REQ-DATASET-0101
+  - MFOS-REQ-DATASET-0102
+  - MFOS-REQ-CATALOG-0002
+  - MFOS-REQ-CATALOG-0101
+  fixture_ref: tests/fixtures/dataset/valid-dsn-0901.yml
+  oracle_ref: tests/golden/dataset/valid-dsn-0901.yml
+  golden_ref: tests/golden/dataset/valid-dsn-0901.yml
+  coverage_level: C3_FULL_SEMANTIC
+  coverage_justification: Executable predicate exists; no C4 claim.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: SymbolicDsnValid
+    symbol_kind: predicate
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C3_FULL_SEMANTIC
+    note: Symbolic DSN validity predicate exists; no dedicated positive lemma.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-DATASET-MALFORMED-DSN-0902
+  catalog: tests/catalog/dataset-catalog.yml
+  domain: dataset_catalog
+  negative: true
+  target_requirements: *id003
+  fixture_ref: tests/fixtures/dataset/malformed-dsn-0902.yml
+  oracle_ref: tests/golden/dataset/malformed-dsn-0902.yml
+  golden_ref: tests/golden/dataset/malformed-dsn-0902.yml
+  coverage_level: C2_PARTIAL_SEMANTIC
+  coverage_justification: Downgraded because no matching invalid-DSN error property
+    exists.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: SymbolicDsnValid
+    symbol_kind: predicate
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C2_PARTIAL_SEMANTIC
+    note: Malformed DSN rejection and MFOS_ERR_INVALID_DATASET_NAME are not modeled
+      in Dafny.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: TEST-MFOS-DATASET-CATALOG-COMMITTED-0903
+  catalog: tests/catalog/dataset-catalog.yml
+  domain: dataset_catalog
+  negative: false
+  target_requirements: *id003
+  fixture_ref: tests/fixtures/dataset/catalog-committed-0903.yml
+  oracle_ref: tests/golden/dataset/catalog-committed-0903.yml
+  golden_ref: tests/golden/dataset/catalog-committed-0903.yml
+  coverage_level: C3_FULL_SEMANTIC
+  coverage_justification: Executable predicate exists; no C4 claim.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: CatalogEntryResolvable
+    symbol_kind: predicate
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C3_FULL_SEMANTIC
+    note: Committed entry resolution predicate exists; no dedicated positive lemma.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-DATASET-CATALOG-UNCOMMITTED-0904
+  catalog: tests/catalog/dataset-catalog.yml
+  domain: dataset_catalog
+  negative: true
+  target_requirements: *id003
+  fixture_ref: tests/fixtures/dataset/catalog-uncommitted-0904.yml
+  oracle_ref: tests/golden/dataset/catalog-uncommitted-0904.yml
+  golden_ref: tests/golden/dataset/catalog-uncommitted-0904.yml
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_justification: Verified negative property.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_CATALOG_UNCOMMITTED_CANNOT_RESOLVE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Uncommitted entries cannot resolve.
+  negative_failure_conditions:
+  - INV_CATALOG_UNCOMMITTED_CANNOT_RESOLVE
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-DATASET-CATALOG-ROLLED-BACK-0905
+  catalog: tests/catalog/dataset-catalog.yml
+  domain: dataset_catalog
+  negative: true
+  target_requirements: *id003
+  fixture_ref: tests/fixtures/dataset/catalog-rolled-back-0905.yml
+  oracle_ref: tests/golden/dataset/catalog-rolled-back-0905.yml
+  golden_ref: tests/golden/dataset/catalog-rolled-back-0905.yml
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_justification: Verified negative property.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_CATALOG_ROLLED_BACK_CANNOT_RESOLVE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Rolled-back entries cannot resolve.
+  negative_failure_conditions:
+  - INV_CATALOG_ROLLED_BACK_CANNOT_RESOLVE
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-DATASET-CATALOG-PARTIAL-JOURNAL-0906
+  catalog: tests/catalog/dataset-catalog.yml
+  domain: dataset_catalog
+  negative: true
+  target_requirements: *id003
+  fixture_ref: tests/fixtures/dataset/catalog-partial-journal-0906.yml
+  oracle_ref: tests/golden/dataset/catalog-partial-journal-0906.yml
+  golden_ref: tests/golden/dataset/catalog-partial-journal-0906.yml
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_justification: Verified negative property.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_CATALOG_PARTIAL_JOURNAL_CANNOT_RESOLVE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Partial-journal entries cannot resolve.
+  negative_failure_conditions:
+  - INV_CATALOG_PARTIAL_JOURNAL_CANNOT_RESOLVE
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-DATASET-CATALOG-INTEGRITY-FAILED-0907
+  catalog: tests/catalog/dataset-catalog.yml
+  domain: dataset_catalog
+  negative: true
+  target_requirements: *id003
+  fixture_ref: tests/fixtures/dataset/catalog-integrity-failed-0907.yml
+  oracle_ref: tests/golden/dataset/catalog-integrity-failed-0907.yml
+  golden_ref: tests/golden/dataset/catalog-integrity-failed-0907.yml
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_justification: Verified negative property.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_CATALOG_INTEGRITY_FAILED_CANNOT_RESOLVE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Integrity-failed entries cannot resolve.
+  negative_failure_conditions:
+  - INV_CATALOG_INTEGRITY_FAILED_CANNOT_RESOLVE
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-DATASET-UNAUTHORIZED-OPEN-0908
+  catalog: tests/catalog/dataset-catalog.yml
+  domain: dataset_catalog
+  negative: true
+  target_requirements: *id003
+  fixture_ref: tests/fixtures/dataset/unauthorized-open-0908.yml
+  oracle_ref: tests/golden/dataset/unauthorized-open-0908.yml
+  golden_ref: tests/golden/dataset/unauthorized-open-0908.yml
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_justification: Verified negative property.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_DATASET_NO_HANDLE_WITHOUT_ALLOW
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Dataset handle creation requires an allow decision.
+  negative_failure_conditions:
+  - INV_DATASET_NO_HANDLE_WITHOUT_ALLOW
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-DATASET-STALE-HANDLE-POLICY-0909
+  catalog: tests/catalog/dataset-catalog.yml
+  domain: dataset_catalog
+  negative: true
+  target_requirements: *id003
+  fixture_ref: tests/fixtures/dataset/stale-handle-policy-0909.yml
+  oracle_ref: tests/golden/dataset/stale-handle-policy-0909.yml
+  golden_ref: tests/golden/dataset/stale-handle-policy-0909.yml
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_justification: Verified negative property.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_DATASET_STALE_HANDLE_AFTER_POLICY_CHANGE_REJECTED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Policy-version-stale handles are rejected.
+  negative_failure_conditions:
+  - INV_DATASET_STALE_HANDLE_AFTER_POLICY_CHANGE_REJECTED
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-DATASET-STALE-HANDLE-CATALOG-0910
+  catalog: tests/catalog/dataset-catalog.yml
+  domain: dataset_catalog
+  negative: true
+  target_requirements: *id003
+  fixture_ref: tests/fixtures/dataset/stale-handle-catalog-0910.yml
+  oracle_ref: tests/golden/dataset/stale-handle-catalog-0910.yml
+  golden_ref: tests/golden/dataset/stale-handle-catalog-0910.yml
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_justification: Verified negative property.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_DATASET_STALE_HANDLE_AFTER_GENERATION_CHANGE_REJECTED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Generation-stale handles are rejected.
+  negative_failure_conditions:
+  - INV_DATASET_STALE_HANDLE_AFTER_GENERATION_CHANGE_REJECTED
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-DATASET-RETENTION-DELETE-0911
+  catalog: tests/catalog/dataset-catalog.yml
+  domain: dataset_catalog
+  negative: true
+  target_requirements: *id003
+  fixture_ref: tests/fixtures/dataset/retention-delete-0911.yml
+  oracle_ref: tests/golden/dataset/retention-delete-0911.yml
+  golden_ref: tests/golden/dataset/retention-delete-0911.yml
+  coverage_level: C3_FULL_SEMANTIC
+  coverage_justification: Executable predicate exists; no C4 claim.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: RetentionBlocksDelete
+    symbol_kind: predicate
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C3_FULL_SEMANTIC
+    note: Retention delete-block predicate exists without a dedicated verified lemma.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-DATASET-IMMUTABLE-SYSTEM-0912
+  catalog: tests/catalog/dataset-catalog.yml
+  domain: dataset_catalog
+  negative: true
+  target_requirements: *id003
+  fixture_ref: tests/fixtures/dataset/immutable-system-0912.yml
+  oracle_ref: tests/golden/dataset/immutable-system-0912.yml
+  golden_ref: tests/golden/dataset/immutable-system-0912.yml
+  coverage_level: C3_FULL_SEMANTIC
+  coverage_justification: Executable predicate exists; no C4 claim.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: ImmutableSystemDatasetBlocksModify
+    symbol_kind: predicate
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C3_FULL_SEMANTIC
+    note: Immutable-system modify-block predicate exists without a dedicated verified
+      lemma.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-DATASET-NOT-POSIX-FILE-0913
+  catalog: tests/catalog/dataset-catalog.yml
+  domain: dataset_catalog
+  negative: true
+  target_requirements: *id003
+  fixture_ref: tests/fixtures/dataset/not-posix-file-0913.yml
+  oracle_ref: tests/golden/dataset/not-posix-file-0913.yml
+  golden_ref: tests/golden/dataset/not-posix-file-0913.yml
+  coverage_level: C0_NONE
+  coverage_justification: No Dafny mapping.
+  coverage_mappings:
+  - dafny_module: null
+    dafny_symbol: null
+    symbol_kind: null
+    verification_status: missing
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C0_NONE
+    note: Non-POSIX-file distinction is documented as a non-objective, not executable
+      Dafny semantics.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: TEST-MFOS-DATASET-CRASH-MID-COMMIT-0914
+  catalog: tests/catalog/dataset-catalog.yml
+  domain: dataset_catalog
+  negative: false
+  target_requirements: *id003
+  fixture_ref: tests/fixtures/dataset/crash-mid-commit-0914.yml
+  oracle_ref: tests/golden/dataset/crash-mid-commit-0914.yml
+  golden_ref: tests/golden/dataset/crash-mid-commit-0914.yml
+  coverage_level: C2_PARTIAL_SEMANTIC
+  coverage_justification: Partial semantic coverage only.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: CatalogEntryResolvable
+    symbol_kind: predicate
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C2_PARTIAL_SEMANTIC
+    note: Crash-mid-commit recovery success is not modeled as a transition property.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: TEST-MFOS-JOB-HELLO-JOB-0901
+  catalog: tests/catalog/job-spool.yml
+  domain: job_spool
+  negative: false
+  target_requirements: &id004
+  - MFOS-REQ-JOB-0101
+  - MFOS-REQ-JOB-0102
+  - MFOS-REQ-SPOOL-0101
+  fixture_ref: tests/fixtures/job/hello-job-0901.yml
+  oracle_ref: tests/golden/job/hello-job-0901.yml
+  golden_ref: tests/golden/job/hello-job-0901.yml
+  coverage_level: C3_FULL_SEMANTIC
+  coverage_justification: Executable predicate exists; no C4 claim in job_spool.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: ValidJobTransition
+    symbol_kind: predicate
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C3_FULL_SEMANTIC
+    note: Job lifecycle predicate exists; end-to-end hello-job proof is in first vertical
+      slice.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-JOB-MALFORMED-CONTROL-0902
+  catalog: tests/catalog/job-spool.yml
+  domain: job_spool
+  negative: true
+  target_requirements: *id004
+  fixture_ref: tests/fixtures/job/malformed-control-0902.yml
+  oracle_ref: tests/golden/job/malformed-control-0902.yml
+  golden_ref: tests/golden/job/malformed-control-0902.yml
+  coverage_level: C0_NONE
+  coverage_justification: No Dafny mapping.
+  coverage_mappings:
+  - dafny_module: null
+    dafny_symbol: null
+    symbol_kind: null
+    verification_status: missing
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C0_NONE
+    note: Malformed control stream parsing is outside Phase 1.1 Dafny semantics.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-JOB-SUBMIT-NO-PRINCIPAL-0903
+  catalog: tests/catalog/job-spool.yml
+  domain: job_spool
+  negative: true
+  target_requirements: *id004
+  fixture_ref: tests/fixtures/job/submit-no-principal-0903.yml
+  oracle_ref: tests/golden/job/submit-no-principal-0903.yml
+  golden_ref: tests/golden/job/submit-no-principal-0903.yml
+  coverage_level: C2_PARTIAL_SEMANTIC
+  coverage_justification: Partial semantic coverage only.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: EffectivePrincipalEstablished
+    symbol_kind: predicate
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C2_PARTIAL_SEMANTIC
+    note: Effective principal predicate exists; submit-time failure property is not
+      modeled.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: TEST-MFOS-JOB-PRINCIPAL-BEFORE-OPEN-0904
+  catalog: tests/catalog/job-spool.yml
+  domain: job_spool
+  negative: false
+  target_requirements: *id004
+  fixture_ref: tests/fixtures/job/principal-before-open-0904.yml
+  oracle_ref: tests/golden/job/principal-before-open-0904.yml
+  golden_ref: tests/golden/job/principal-before-open-0904.yml
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_justification: Verified property.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_EFFECTIVE_PRINCIPAL_BEFORE_OPEN
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Dataset open is blocked until effective principal is established.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: TEST-MFOS-JOB-DD-CATALOG-RESOLUTION-0905
+  catalog: tests/catalog/job-spool.yml
+  domain: job_spool
+  negative: false
+  target_requirements: *id004
+  fixture_ref: tests/fixtures/job/dd-catalog-resolution-0905.yml
+  oracle_ref: tests/golden/job/dd-catalog-resolution-0905.yml
+  golden_ref: tests/golden/job/dd-catalog-resolution-0905.yml
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_justification: Verified property.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_DD_RESOLUTION_THROUGH_CATALOG_AND_AUTH
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Dataset DD resolution requires catalog resolution and authorization.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: TEST-MFOS-JOB-DD-AUTHORIZATION-0906
+  catalog: tests/catalog/job-spool.yml
+  domain: job_spool
+  negative: false
+  target_requirements: *id004
+  fixture_ref: tests/fixtures/job/dd-authorization-0906.yml
+  oracle_ref: tests/golden/job/dd-authorization-0906.yml
+  golden_ref: tests/golden/job/dd-authorization-0906.yml
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_justification: Verified property.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_DD_RESOLUTION_THROUGH_CATALOG_AND_AUTH
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Dataset DD resolution requires authorization.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-JOB-DD-BYPASS-DENIED-0907
+  catalog: tests/catalog/job-spool.yml
+  domain: job_spool
+  negative: true
+  target_requirements: *id004
+  fixture_ref: tests/fixtures/job/dd-bypass-denied-0907.yml
+  oracle_ref: tests/golden/job/dd-bypass-denied-0907.yml
+  golden_ref: tests/golden/job/dd-bypass-denied-0907.yml
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_justification: Verified property.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_DD_RESOLUTION_THROUGH_CATALOG_AND_AUTH
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: DD resolution cannot bypass catalog and authorization.
+  negative_failure_conditions:
+  - INV_JOB_DD_RESOLUTION_THROUGH_CATALOG_AND_AUTH
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-JOB-UNAUTHORIZED-DATASET-0908
+  catalog: tests/catalog/job-spool.yml
+  domain: job_spool
+  negative: true
+  target_requirements: *id004
+  fixture_ref: tests/fixtures/job/unauthorized-dataset-0908.yml
+  oracle_ref: tests/golden/job/unauthorized-dataset-0908.yml
+  golden_ref: tests/golden/job/unauthorized-dataset-0908.yml
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_justification: Verified property.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_DATASET_NO_HANDLE_WITHOUT_ALLOW
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Dataset handle creation requires an allow decision.
+  negative_failure_conditions:
+  - INV_DATASET_NO_HANDLE_WITHOUT_ALLOW
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: TEST-MFOS-JOB-STEP-FAILURE-RC-0909
+  catalog: tests/catalog/job-spool.yml
+  domain: job_spool
+  negative: false
+  target_requirements: *id004
+  fixture_ref: tests/fixtures/job/step-failure-rc-0909.yml
+  oracle_ref: tests/golden/job/step-failure-rc-0909.yml
+  golden_ref: tests/golden/job/step-failure-rc-0909.yml
+  coverage_level: C2_PARTIAL_SEMANTIC
+  coverage_justification: Type-level/partial representation only.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: JobStep
+    symbol_kind: datatype
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C2_PARTIAL_SEMANTIC
+    note: Return-code state exists as data, but failure RC semantics are not modeled.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-JOB-INVALID-LIFECYCLE-0910
+  catalog: tests/catalog/job-spool.yml
+  domain: job_spool
+  negative: true
+  target_requirements: *id004
+  fixture_ref: tests/fixtures/job/invalid-lifecycle-0910.yml
+  oracle_ref: tests/golden/job/invalid-lifecycle-0910.yml
+  golden_ref: tests/golden/job/invalid-lifecycle-0910.yml
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_justification: Verified property.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_INVALID_LIFECYCLE_REJECTED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Invalid lifecycle transitions are rejected.
+  negative_failure_conditions:
+  - INV_JOB_INVALID_LIFECYCLE_REJECTED
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: TEST-MFOS-JOB-SPOOL-CREATE-0911
+  catalog: tests/catalog/job-spool.yml
+  domain: job_spool
+  negative: false
+  target_requirements: *id004
+  fixture_ref: tests/fixtures/job/spool-create-0911.yml
+  oracle_ref: tests/golden/job/spool-create-0911.yml
+  golden_ref: tests/golden/job/spool-create-0911.yml
+  coverage_level: C3_FULL_SEMANTIC
+  coverage_justification: Executable predicate exists; no C4 claim.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: SpoolEntryProtected
+    symbol_kind: predicate
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C3_FULL_SEMANTIC
+    note: Protected spool-entry predicate exists without a create-transition lemma.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: TEST-MFOS-JOB-SPOOL-BROWSE-OWNER-0912
+  catalog: tests/catalog/job-spool.yml
+  domain: job_spool
+  negative: false
+  target_requirements: *id004
+  fixture_ref: tests/fixtures/job/spool-browse-owner-0912.yml
+  oracle_ref: tests/golden/job/spool-browse-owner-0912.yml
+  golden_ref: tests/golden/job/spool-browse-owner-0912.yml
+  coverage_level: C3_FULL_SEMANTIC
+  coverage_justification: Executable predicate exists; no C4 claim.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: SpoolBrowseAllowed
+    symbol_kind: predicate
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C3_FULL_SEMANTIC
+    note: Owner browse predicate exists without a dedicated positive lemma.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-JOB-SPOOL-BROWSE-NONOWNER-0913
+  catalog: tests/catalog/job-spool.yml
+  domain: job_spool
+  negative: true
+  target_requirements: *id004
+  fixture_ref: tests/fixtures/job/spool-browse-nonowner-0913.yml
+  oracle_ref: tests/golden/job/spool-browse-nonowner-0913.yml
+  golden_ref: tests/golden/job/spool-browse-nonowner-0913.yml
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_justification: Verified property.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_BROWSE_BY_NON_OWNER_DENIED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Non-owner spool browse is denied.
+  negative_failure_conditions:
+  - INV_SPOOL_BROWSE_BY_NON_OWNER_DENIED
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-JOB-SPOOL-PURGE-DENIED-0914
+  catalog: tests/catalog/job-spool.yml
+  domain: job_spool
+  negative: true
+  target_requirements: *id004
+  fixture_ref: tests/fixtures/job/spool-purge-denied-0914.yml
+  oracle_ref: tests/golden/job/spool-purge-denied-0914.yml
+  golden_ref: tests/golden/job/spool-purge-denied-0914.yml
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_justification: Verified property.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_PURGE_WITHOUT_AUTHORITY_DENIED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Spool purge without authority is denied.
+  negative_failure_conditions:
+  - INV_SPOOL_PURGE_WITHOUT_AUTHORITY_DENIED
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-JOB-SPOOL-EXPORT-NO-AUDIT-0915
+  catalog: tests/catalog/job-spool.yml
+  domain: job_spool
+  negative: true
+  target_requirements: *id004
+  fixture_ref: tests/fixtures/job/spool-export-no-audit-0915.yml
+  oracle_ref: tests/golden/job/spool-export-no-audit-0915.yml
+  golden_ref: tests/golden/job/spool-export-no-audit-0915.yml
+  coverage_level: C0_NONE
+  coverage_justification: No Dafny mapping.
+  coverage_mappings:
+  - dafny_module: null
+    dafny_symbol: null
+    symbol_kind: null
+    verification_status: missing
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C0_NONE
+    note: Spool export audit requirement is not modeled in Phase 1.1 Dafny.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-JOB-CANCEL-NO-AUTHORITY-0916
+  catalog: tests/catalog/job-spool.yml
+  domain: job_spool
+  negative: true
+  target_requirements: *id004
+  fixture_ref: tests/fixtures/job/cancel-no-authority-0916.yml
+  oracle_ref: tests/golden/job/cancel-no-authority-0916.yml
+  golden_ref: tests/golden/job/cancel-no-authority-0916.yml
+  coverage_level: C0_NONE
+  coverage_justification: No Dafny mapping.
+  coverage_mappings:
+  - dafny_module: null
+    dafny_symbol: null
+    symbol_kind: null
+    verification_status: missing
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C0_NONE
+    note: Job cancel authority is not modeled in job_spool.dfy.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-JOB-STEP-NO-AUDIT-CORRELATION-0917
+  catalog: tests/catalog/job-spool.yml
+  domain: job_spool
+  negative: true
+  target_requirements: *id004
+  fixture_ref: tests/fixtures/job/step-no-audit-correlation-0917.yml
+  oracle_ref: tests/golden/job/step-no-audit-correlation-0917.yml
+  golden_ref: tests/golden/job/step-no-audit-correlation-0917.yml
+  coverage_level: C0_NONE
+  coverage_justification: No Dafny mapping.
+  coverage_mappings:
+  - dafny_module: null
+    dafny_symbol: null
+    symbol_kind: null
+    verification_status: missing
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C0_NONE
+    note: Job step audit correlation semantics are not modeled in Phase 1.1 Dafny.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: TEST-MFOS-OPER-DISPLAY-SYSTEM-0901
+  catalog: tests/catalog/operator-console.yml
+  domain: operator_console
+  negative: false
+  target_requirements: &id005
+  - MFOS-REQ-OPER-0101
+  - MFOS-REQ-OPER-0102
+  - MFOS-REQ-OPER-0103
+  fixture_ref: tests/fixtures/oper/display-system-0901.yml
+  oracle_ref: tests/golden/oper/display-system-0901.yml
+  golden_ref: tests/golden/oper/display-system-0901.yml
+  coverage_level: C3_FULL_SEMANTIC
+  coverage_justification: Executable predicate exists; no C4 claim.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/operator_console.dfy
+    dafny_symbol: OperatorCommandAuthorized
+    symbol_kind: predicate
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C3_FULL_SEMANTIC
+    note: Operator authorization predicate exists without a dedicated positive lemma.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: TEST-MFOS-OPER-DEFINE-USER-0902
+  catalog: tests/catalog/operator-console.yml
+  domain: operator_console
+  negative: false
+  target_requirements: *id005
+  fixture_ref: tests/fixtures/oper/define-user-0902.yml
+  oracle_ref: tests/golden/oper/define-user-0902.yml
+  golden_ref: tests/golden/oper/define-user-0902.yml
+  coverage_level: C3_FULL_SEMANTIC
+  coverage_justification: Executable predicate exists; no C4 claim.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/operator_console.dfy
+    dafny_symbol: OperatorCommandAuthorized
+    symbol_kind: predicate
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C3_FULL_SEMANTIC
+    note: Operator authorization predicate exists without a dedicated positive lemma.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: TEST-MFOS-OPER-DEFINE-DATASET-0903
+  catalog: tests/catalog/operator-console.yml
+  domain: operator_console
+  negative: false
+  target_requirements: *id005
+  fixture_ref: tests/fixtures/oper/define-dataset-0903.yml
+  oracle_ref: tests/golden/oper/define-dataset-0903.yml
+  golden_ref: tests/golden/oper/define-dataset-0903.yml
+  coverage_level: C3_FULL_SEMANTIC
+  coverage_justification: Executable predicate exists; no C4 claim.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/operator_console.dfy
+    dafny_symbol: OperatorCommandAuthorized
+    symbol_kind: predicate
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C3_FULL_SEMANTIC
+    note: Operator authorization predicate exists without a dedicated positive lemma.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: TEST-MFOS-OPER-SUBMIT-JOB-0904
+  catalog: tests/catalog/operator-console.yml
+  domain: operator_console
+  negative: false
+  target_requirements: *id005
+  fixture_ref: tests/fixtures/oper/submit-job-0904.yml
+  oracle_ref: tests/golden/oper/submit-job-0904.yml
+  golden_ref: tests/golden/oper/submit-job-0904.yml
+  coverage_level: C3_FULL_SEMANTIC
+  coverage_justification: Executable predicate exists; no C4 claim.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/operator_console.dfy
+    dafny_symbol: OperatorCommandAuthorized
+    symbol_kind: predicate
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C3_FULL_SEMANTIC
+    note: Operator authorization predicate exists without a dedicated positive lemma.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-OPER-CANCEL-JOB-DENIED-0905
+  catalog: tests/catalog/operator-console.yml
+  domain: operator_console
+  negative: true
+  target_requirements: *id005
+  fixture_ref: tests/fixtures/oper/cancel-job-denied-0905.yml
+  oracle_ref: tests/golden/oper/cancel-job-denied-0905.yml
+  golden_ref: tests/golden/oper/cancel-job-denied-0905.yml
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_justification: Verified property.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/operator_console.dfy
+    dafny_symbol: INV_OPERATOR_NO_COMMAND_WITHOUT_AUTH
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Operator command cannot execute without authorization.
+  negative_failure_conditions:
+  - INV_OPERATOR_NO_COMMAND_WITHOUT_AUTH
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-OPER-DESTRUCTIVE-NO-CONFIRM-0906
+  catalog: tests/catalog/operator-console.yml
+  domain: operator_console
+  negative: true
+  target_requirements: *id005
+  fixture_ref: tests/fixtures/oper/destructive-no-confirm-0906.yml
+  oracle_ref: tests/golden/oper/destructive-no-confirm-0906.yml
+  golden_ref: tests/golden/oper/destructive-no-confirm-0906.yml
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_justification: Verified property.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/operator_console.dfy
+    dafny_symbol: INV_OPERATOR_DESTRUCTIVE_WITHOUT_CONFIRMATION_DENIED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Destructive command without confirmation is denied.
+  negative_failure_conditions:
+  - INV_OPERATOR_DESTRUCTIVE_WITHOUT_CONFIRMATION_DENIED
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-OPER-DUAL-CONTROL-SINGLE-0907
+  catalog: tests/catalog/operator-console.yml
+  domain: operator_console
+  negative: true
+  target_requirements: *id005
+  fixture_ref: tests/fixtures/oper/dual-control-single-0907.yml
+  oracle_ref: tests/golden/oper/dual-control-single-0907.yml
+  golden_ref: tests/golden/oper/dual-control-single-0907.yml
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_justification: Verified property.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/operator_console.dfy
+    dafny_symbol: INV_OPERATOR_DUAL_CONTROL_SINGLE_APPROVAL_DENIED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Dual-control command with one approval is denied.
+  negative_failure_conditions:
+  - INV_OPERATOR_DUAL_CONTROL_SINGLE_APPROVAL_DENIED
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-OPER-EMERGENCY-NO-REASON-0908
+  catalog: tests/catalog/operator-console.yml
+  domain: operator_console
+  negative: true
+  target_requirements: *id005
+  fixture_ref: tests/fixtures/oper/emergency-no-reason-0908.yml
+  oracle_ref: tests/golden/oper/emergency-no-reason-0908.yml
+  golden_ref: tests/golden/oper/emergency-no-reason-0908.yml
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_justification: Verified property.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/operator_console.dfy
+    dafny_symbol: INV_OPERATOR_EMERGENCY_WITHOUT_REASON_OR_EXPIRY_DENIED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Emergency mode without reason is denied.
+  negative_failure_conditions:
+  - INV_OPERATOR_EMERGENCY_WITHOUT_REASON_OR_EXPIRY_DENIED
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-OPER-EMERGENCY-NO-EXPIRY-0909
+  catalog: tests/catalog/operator-console.yml
+  domain: operator_console
+  negative: true
+  target_requirements: *id005
+  fixture_ref: tests/fixtures/oper/emergency-no-expiry-0909.yml
+  oracle_ref: tests/golden/oper/emergency-no-expiry-0909.yml
+  golden_ref: tests/golden/oper/emergency-no-expiry-0909.yml
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_justification: Verified property.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/operator_console.dfy
+    dafny_symbol: INV_OPERATOR_EMERGENCY_WITHOUT_REASON_OR_EXPIRY_DENIED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Emergency mode without expiry is denied.
+  negative_failure_conditions:
+  - INV_OPERATOR_EMERGENCY_WITHOUT_REASON_OR_EXPIRY_DENIED
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-OPER-AUTOMATION-BYPASS-0910
+  catalog: tests/catalog/operator-console.yml
+  domain: operator_console
+  negative: true
+  target_requirements: *id005
+  fixture_ref: tests/fixtures/oper/automation-bypass-0910.yml
+  oracle_ref: tests/golden/oper/automation-bypass-0910.yml
+  golden_ref: tests/golden/oper/automation-bypass-0910.yml
+  coverage_level: C0_NONE
+  coverage_justification: No Dafny mapping.
+  coverage_mappings:
+  - dafny_module: null
+    dafny_symbol: null
+    symbol_kind: null
+    verification_status: missing
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C0_NONE
+    note: Automation bypass restriction is not modeled in Phase 1.1 Dafny.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-OPER-MALFORMED-COMMAND-0911
+  catalog: tests/catalog/operator-console.yml
+  domain: operator_console
+  negative: true
+  target_requirements: *id005
+  fixture_ref: tests/fixtures/oper/malformed-command-0911.yml
+  oracle_ref: tests/golden/oper/malformed-command-0911.yml
+  golden_ref: tests/golden/oper/malformed-command-0911.yml
+  coverage_level: C0_NONE
+  coverage_justification: No Dafny mapping.
+  coverage_mappings:
+  - dafny_module: null
+    dafny_symbol: null
+    symbol_kind: null
+    verification_status: missing
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C0_NONE
+    note: Operator command parser semantics are not modeled in Phase 1.1 Dafny.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-OPER-COMMAND-NO-AUDIT-0912
+  catalog: tests/catalog/operator-console.yml
+  domain: operator_console
+  negative: true
+  target_requirements: *id005
+  fixture_ref: tests/fixtures/oper/command-no-audit-0912.yml
+  oracle_ref: tests/golden/oper/command-no-audit-0912.yml
+  golden_ref: tests/golden/oper/command-no-audit-0912.yml
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_justification: Verified property.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/operator_console.dfy
+    dafny_symbol: INV_OPERATOR_NO_COMMAND_WITHOUT_AUDIT
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Audited operator commands require audit evidence.
+  negative_failure_conditions:
+  - INV_OPERATOR_NO_COMMAND_WITHOUT_AUDIT
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-OPER-ROOT-SHELL-FIRST-UI-0913
+  catalog: tests/catalog/operator-console.yml
+  domain: operator_console
+  negative: true
+  target_requirements: *id005
+  fixture_ref: tests/fixtures/oper/root-shell-first-ui-0913.yml
+  oracle_ref: tests/golden/oper/root-shell-first-ui-0913.yml
+  golden_ref: tests/golden/oper/root-shell-first-ui-0913.yml
+  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_justification: Verified property.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/operator_console.dfy
+    dafny_symbol: INV_OPERATOR_ROOT_SHELL_NOT_FIRST_UI
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Root shell cannot be modeled as the first privileged UI.
+  negative_failure_conditions:
+  - INV_OPERATOR_ROOT_SHELL_NOT_FIRST_UI
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: TEST-MFOS-FVS-HELLO-JOB-9001
+  catalog: tests/catalog/first-vertical-slice.yml
+  domain: first_vertical_slice
+  negative: false
+  target_requirements: &id006
+  - MFOS-REQ-AUTH-0004
+  - MFOS-REQ-AUDIT-0104
+  - MFOS-REQ-DATASET-0102
+  - MFOS-REQ-JOB-0102
+  - MFOS-REQ-SPOOL-0101
+  - MFOS-REQ-OPER-0101
+  fixture_ref: tests/fixtures/first-vertical-slice/hello-job.yml
+  oracle_ref: tests/golden/first-vertical-slice/hello-job.yml
+  golden_ref: tests/golden/first-vertical-slice/hello-job.yml
+  coverage_level: C5_CONFORMANCE_LINKED
+  coverage_justification: First vertical slice positive path is verified and linked
+    to fixture/oracle/golden artifacts.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/first_vertical_slice.dfy
+    dafny_symbol: HelloJobContract
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Hello-job final state, return code, handle-after-allow, spool output, and
+      audit sequence are verified and fixture-linked.
+  negative_failure_conditions: []
+  audit_expectation: explicit_audit_property_or_gap_recorded
+- test_id: NEG-MFOS-FVS-BOB-DENIED-9002
+  catalog: tests/catalog/first-vertical-slice.yml
+  domain: first_vertical_slice
+  negative: true
+  target_requirements: *id006
+  fixture_ref: tests/fixtures/first-vertical-slice/bob-denied-alice-dataset.yml
+  oracle_ref: tests/golden/first-vertical-slice/bob-denied-alice-dataset.yml
+  golden_ref: tests/golden/first-vertical-slice/bob-denied-alice-dataset.yml
+  coverage_level: C5_CONFORMANCE_LINKED
+  coverage_justification: First vertical slice negative path is verified and linked
+    to fixture/oracle/golden artifacts.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/first_vertical_slice.dfy
+    dafny_symbol: BobDeniedAliceDatasetContract
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/current/dafny-verification-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+    note: Bob-denied path verifies no handle, policy denial code, before-final audit,
+      and failure summary, and is fixture-linked.
+  negative_failure_conditions:
+  - BobDeniedAliceDatasetContract
+  audit_expectation: explicit_audit_property_or_gap_recorded

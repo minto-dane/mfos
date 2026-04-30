@@ -63,4 +63,4 @@ Forbidden:
 Pinned Dafny 4.11.0 is installed through `scripts/install-dafny.sh`.
 `scripts/validate-dafny-semantics.sh --require-dafny` verified
 `formal/executable-semantics/dafny/modules/*.dfy` and completed with
-`26 verified, 0 errors`.
+`49 verified, 0 errors`.
