@@ -64,15 +64,16 @@ updated on GitHub after PR #19 merged:
 - `gh pr update-branch 20 --rebase`: rejected by GitHub due to conflicts.
 
 GitHub currently reports PR #20 as draft and `DIRTY` at remote head
-`10e59c4e0c5cfd9e378189ee91006dd80917e321`.
+`cebc71b6ed2ab8e911ab74fbd53d87fe1d4fa978`.
 
 ## Final Judgment
 
 ```yaml
 pr_20_phase_1_3_review_passed_locally: true
-pr_20_remote_branch_updated: false
+pr_20_remote_branch_updated: true
 pr_20_validation_passed_locally: true
-pr_20_github_checks_passed_after_rebase: false
+pr_20_github_checks_passed_on_current_head: true
+pr_20_rebased_or_retargeted_on_github: false
 coverage_overclaim_remaining: false
 production_boundary_violated: false
 pr_20_ready_for_merge: false
