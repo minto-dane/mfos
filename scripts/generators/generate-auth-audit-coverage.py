@@ -15,6 +15,17 @@ ROOT = Path(__file__).resolve().parents[2]
 TRACEABILITY_DIR = ROOT / "evidence" / "traceability" / "generated" / "phase-1-2"
 REPORTS_DIR = ROOT / "reports" / "current"
 
+COVERAGE_LEVELS = [
+    "C0_NONE",
+    "C1_TYPE_ONLY",
+    "C2_PARTIAL_SEMANTIC",
+    "C3_FULL_SEMANTIC",
+    "C4_VERIFIED_PROPERTY",
+    "C5_CONFORMANCE_LINKED",
+    "C6_RELEASE_READY_MODEL",
+]
+COVERAGE_RANK = {level: rank for rank, level in enumerate(COVERAGE_LEVELS)}
+
 
 AUTH_TESTS: list[dict[str, Any]] = [
     ("TEST-MFOS-AUTH-ALLOW-0901", "authorization", "INV_AUTH_ALLOW_MAPPING", "C5_CONFORMANCE_LINKED"),
@@ -41,7 +52,7 @@ AUDIT_TESTS: list[dict[str, Any]] = [
     ("NEG-MFOS-AUDIT-MISSING-CORRELATION-0903", "audit", "INV_AUDIT_MISSING_CORRELATION_REJECTED", "C5_CONFORMANCE_LINKED"),
     ("TEST-MFOS-AUDIT-HASH-CHAIN-VALID-0904", "audit", "INV_AUDIT_HASH_CHAIN_VALID", "C5_CONFORMANCE_LINKED"),
     ("NEG-MFOS-AUDIT-HASH-CHAIN-TAMPERED-0905", "audit", "INV_AUDIT_HASH_CHAIN_MISMATCH_TAMPER", "C5_CONFORMANCE_LINKED"),
-    ("NEG-MFOS-AUDIT-AUDIT-UNAVAILABLE-0906", "auth_audit_integration", "INV_AUTH_AUDIT_REQUIRED_UNAVAILABLE_PREVENTS_SUCCESS", "C4_VERIFIED_PROPERTY"),
+    ("NEG-MFOS-AUDIT-AUDIT-UNAVAILABLE-0906", "auth_audit_integration", "INV_AUDIT_DENY_TRANSITION_FAILS_CLOSED_WHEN_UNAVAILABLE", "C5_CONFORMANCE_LINKED"),
     ("NEG-MFOS-AUDIT-UNAUTHORIZED-QUERY-0907", "audit", "INV_AUDIT_UNAUTHORIZED_QUERY_DENIED", "C5_CONFORMANCE_LINKED"),
     ("NEG-MFOS-AUDIT-SPOOL-NOT-EVIDENCE-0908", "audit", "INV_AUDIT_SPOOL_NOT_EVIDENCE", "C5_CONFORMANCE_LINKED"),
     ("NEG-MFOS-AUDIT-LOG-LINE-NOT-RECORD-0909", "audit", "INV_AUDIT_LOG_LINE_NOT_RECORD", "C5_CONFORMANCE_LINKED"),
@@ -63,6 +74,14 @@ FORMAL_CLAIMS = [
     ("MFOS-FC-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW", "authorization", "INV_AUTH_EVALUATED_DECISION_NO_HANDLE_UNLESS_ALLOW"),
     ("MFOS-FC-AUDIT-DENY-BEFORE-RETURN", "auth_audit_integration", "INV_AUDIT_DENY_TRANSITION_WRITES_BEFORE_RETURN"),
 ]
+
+TEST_REQUIREMENT_REFS = {
+    "NEG-MFOS-AUDIT-AUDIT-UNAVAILABLE-0906": [
+        "MFOS-REQ-AUDIT-0001",
+        "MFOS-REQ-AUDIT-0002",
+        "MFOS-REQ-AUDIT-0101",
+    ],
+}
 
 PREVIOUS_GAP_TEST_IDS = {
     "TEST-MFOS-AUTH-ALLOW-0901",
@@ -115,11 +134,15 @@ def test_entry(test_tuple: tuple[str, str, str, str]) -> dict[str, Any]:
         base_slug = base_slug[len(group) + 1:]
     linked = level == "C5_CONFORMANCE_LINKED"
     notes = (
-        "Fixture/oracle/golden links are attached to the verified property; Python remains a non-semantic loader/comparator."
-        if linked
-        else "Verified Dafny property only; Phase 0.9 conformance artifacts are not used to raise this entry to C5."
+        "Audit-unavailable fixture/oracle/golden links exercise the verified fail-closed transition; the golden vector expects no fabricated audit record and no released result."
+        if test_id == "NEG-MFOS-AUDIT-AUDIT-UNAVAILABLE-0906" and linked
+        else (
+            "Fixture/oracle/golden links are attached to the verified property; Python remains a non-semantic loader/comparator."
+            if linked
+            else "Verified Dafny property only; Phase 0.9 conformance artifacts are not used to raise this entry to C5."
+        )
     )
-    return {
+    entry = {
         "test_id": test_id,
         "domain": domain,
         "test_type": kind,
@@ -140,6 +163,9 @@ def test_entry(test_tuple: tuple[str, str, str, str]) -> dict[str, Any]:
         ],
         "notes": notes,
     }
+    if test_id in TEST_REQUIREMENT_REFS:
+        entry["requirement_refs"] = TEST_REQUIREMENT_REFS[test_id]
+    return entry
 
 
 def requirement_entry(req_tuple: tuple[str, str, str, str]) -> dict[str, Any]:
@@ -305,6 +331,9 @@ def render_coverage_markdown(summary: dict[str, Any]) -> str:
         "",
         "Coverage levels are backed by explicit Dafny symbols in `evidence/traceability/generated/phase-1-2/`.",
         "C5 entries have fixture/oracle/golden links, but Python remains a non-semantic normalizer/comparator.",
+        "Audit-unavailable integration was previously C4 without conformance links; Phase 1.2 now adds a real fixture at `tests/fixtures/audit/audit-unavailable-0906.yml` and a real embedded oracle/golden vector at `tests/golden/audit/audit-unavailable-0906.yml`.",
+        "Aggregate Authorization/Audit integration C5 is evidence-backed because every required integration child row is C5 with fixture/oracle/golden links.",
+        "No production implementation, Rust semantic-core, hosted daemon, or production-like runner is introduced.",
     ]
     return "\n".join(lines) + "\n"
 
@@ -329,6 +358,26 @@ coverage.
 """
 
 
+def aggregate_level(items: list[dict[str, Any]], domain: str) -> str:
+    levels = [item["coverage_level"] for item in items if item["domain"] == domain]
+    if not levels:
+        return "C0_NONE"
+    return min(levels, key=lambda level: COVERAGE_RANK[level])
+
+
+def c5_ready(item: dict[str, Any]) -> bool:
+    return (
+        item["coverage_level"] == "C5_CONFORMANCE_LINKED"
+        and bool(item.get("fixture_ref"))
+        and bool(item.get("oracle_ref"))
+        and bool(item.get("golden_ref"))
+        and bool(item.get("coverage_mappings"))
+        and bool(item["coverage_mappings"][0].get("dafny_symbol"))
+        and item["coverage_mappings"][0].get("verification_status") == "verified"
+        and bool(item["coverage_mappings"][0].get("evidence_ref"))
+    )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--traceability-dir", type=Path, default=TRACEABILITY_DIR)
@@ -339,6 +388,7 @@ def main() -> int:
     reqs = [requirement_entry(item) for item in REQUIREMENTS]
     claims = [formal_claim_entry(item) for item in FORMAL_CLAIMS]
     levels = Counter(item["coverage_level"] for item in tests + reqs + claims)
+    audit_unavailable = next(item for item in tests if item["test_id"] == "NEG-MFOS-AUDIT-AUDIT-UNAVAILABLE-0906")
 
     common = {
         "schema_version": 1,
@@ -386,15 +436,16 @@ def main() -> int:
         "origin_phase": "phase-1.2",
         "phase_1_2_authorization_audit_complete": True,
         "completion_scope": "Authorization/Audit Dafny semantic exit blockers closed or explicitly re-scoped; formal proof artifacts are not complete.",
-        "authorization_coverage_level": "C4_VERIFIED_PROPERTY",
-        "audit_coverage_level": "C5_CONFORMANCE_LINKED",
-        "auth_audit_integration_coverage_level": "C5_CONFORMANCE_LINKED",
+        "authorization_coverage_level": aggregate_level(tests, "authorization"),
+        "audit_coverage_level": aggregate_level(tests, "audit"),
+        "auth_audit_integration_coverage_level": aggregate_level(tests, "auth_audit_integration"),
         "coverage_level_distribution": dict(levels),
         "accepted_deferred_non_exit_count": sum(1 for item in reqs + claims if item.get("accepted_deferred") or item.get("coverage_level") == "C3_FULL_SEMANTIC"),
         "formal_claims_proof_backed": False,
         "formal_claim_coverage_level": "C3_FULL_SEMANTIC",
         "authorization_audit_exit_blockers_remaining": False,
         "deny_before_return_transition_backed": True,
+        "audit_unavailable_conformance_linked": c5_ready(audit_unavailable),
         "spec_gap_success_blocked": True,
         "unsupported_success_blocked": True,
         "policy_denial_mapping_fixed": True,
@@ -429,13 +480,13 @@ def main() -> int:
     write_text(args.reports_dir / "phase-1-2-entry-gate.md", render_entry_gate_markdown())
 
     write_text(args.reports_dir / "dafny-authorization-audit-report.md",
-               "# Dafny Authorization/Audit Report\n\nStatus: current.\n\nPhase 1.2 adds verified Dafny properties for authorization decisions, audit records, and the authorization/audit integration boundary. No production implementation, Rust semantic-core, hosted daemon, or production-like semantic runner is introduced.\n")
+               "# Dafny Authorization/Audit Report\n\nStatus: current.\n\nPhase 1.2 adds verified Dafny properties for authorization decisions, audit records, and the authorization/audit integration boundary. The audit-unavailable integration row now has real fixture/oracle/golden linkage and remains tied to the verified fail-closed Dafny transition. No production implementation, Rust semantic-core, hosted daemon, or production-like semantic runner is introduced.\n")
     write_text(args.reports_dir / "dafny-authorization-audit-validation-report.md",
                "# Dafny Authorization/Audit Validation Report\n\nStatus: current.\n\nDafny verification and repository validators are required before this branch can merge. The latest recorded local result is `89 verified, 0 errors`; final command output is recorded in the PR summary.\n")
     write_text(args.reports_dir / "dafny-authorization-audit-red-team-review.md",
-               "# Dafny Authorization/Audit Red-Team Review\n\nStatus: current.\n\nCritical/Major findings addressed: deny-before-return is transition-backed with unavailable-audit no-release behavior; SPEC_GAP, UNSUPPORTED, and DENY are not success; coverage files keep formal claims below proof-backed levels; Python tooling remains non-semantic; no production or Rust semantic-core artifacts were introduced.\n\nRemaining risk: formal claims require separate proof artifacts before C4/C5 claim-level coverage may be asserted.\n")
+               "# Dafny Authorization/Audit Red-Team Review\n\nStatus: current.\n\nCritical/Major findings addressed: deny-before-return is transition-backed with unavailable-audit no-release behavior; audit-unavailable now has a deterministic fixture/oracle/golden vector that expects fail-closed behavior, no fabricated audit record, and no released result; SPEC_GAP, UNSUPPORTED, and DENY are not success; coverage files keep formal claims below proof-backed levels; Python tooling remains non-semantic; no production or Rust semantic-core artifacts were introduced.\n\nRemaining risk: formal claims require separate proof artifacts before C4/C5 claim-level coverage may be asserted.\n")
     write_text(args.reports_dir / "dafny-authorization-audit-open-issues.md",
-               "# Dafny Authorization/Audit Open Issues\n\nStatus: current.\n\n- Formal claim registry remains `proof_claimed: false`; claim-level proof-backed coverage is deferred to a formal-assurance closure task.\n- REQUIRE_* conformance fixtures are linked only to pending-decision properties where the Phase 0.9 golden files describe final allow states; a later conformance execution pass should model evidence-satisfaction transitions before upgrading those entries to C5.\n")
+               "# Dafny Authorization/Audit Open Issues\n\nStatus: current.\n\n- Formal claim registry remains `proof_claimed: false`; claim-level proof-backed coverage is deferred to a formal-assurance closure task.\n- REQUIRE_* authorization scenarios remain below C5 because Phase 1.2 links them only to verified pending-decision Dafny properties; a later conformance execution pass should model evidence-satisfaction transitions before upgrading those entries to C5.\n")
     return 0
 
 

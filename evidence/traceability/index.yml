@@ -48,6 +48,8 @@ generated:
     status: generated
     origin_phase: phase-1.2
     generated_by: scripts/generators/generate-auth-audit-coverage.py
+    coverage_summary: reports/current/dafny-authorization-audit-coverage.yml
+    audit_unavailable_conformance_linked: true
 
 archive:
   phase_0_8:

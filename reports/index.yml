@@ -192,6 +192,8 @@ current:
 - path: reports/current/dafny-authorization-audit-open-issues.md
   purpose: Nonblocking Phase 1.2 Authorization/Audit open issues.
   generated_by: scripts/generators/generate-auth-audit-coverage.py
+- path: reports/current/pr-19-review-report.md
+  purpose: PR #19 Phase 1.2 Authorization/Audit review merge decision.
 sections:
 - path: reports/phases/phase-0-6/
   purpose: Phase 0.6 canonicalization and enforcement closure.

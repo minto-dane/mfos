@@ -60,6 +60,19 @@ TEST_TYPES = {
     "traceability",
     "red_team",
 }
+AUDIT_UNAVAILABLE_ERROR = "MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE"
+
+
+def is_audit_unavailable_case(entry: dict, expected: dict) -> bool:
+    operations = {
+        str(item.get("operation", "")).upper()
+        for item in as_list(entry.get("inputs"))
+        if isinstance(item, dict)
+    }
+    return (
+        expected.get("audit_unavailable") is True
+        or "AUDIT-UNAVAILABLE" in operations
+    )
 
 
 def main() -> int:
@@ -115,10 +128,44 @@ def main() -> int:
                 errors.append(f"{rel(path)}:{test_id}: negative/failure test requires expected.failure_mode")
             if entry.get("audit_obligation_required") is True:
                 records = expected.get("audit_records")
-                if not as_list(records):
+                audit_unavailable = is_audit_unavailable_case(entry, expected)
+                if audit_unavailable:
+                    if as_list(records):
+                        errors.append(f"{rel(path)}:{test_id}: audit unavailable must not fabricate expected.audit_records")
+                    if expected.get("audit_unavailable") is not True:
+                        errors.append(f"{rel(path)}:{test_id}: audit unavailable requires expected.audit_unavailable true")
+                    if expected.get("failure_mode") != AUDIT_UNAVAILABLE_ERROR:
+                        errors.append(f"{rel(path)}:{test_id}: audit unavailable requires {AUDIT_UNAVAILABLE_ERROR}")
+                    if expected.get("final_state") in {"COMPLETE", "SUCCESS"}:
+                        errors.append(f"{rel(path)}:{test_id}: audit unavailable must not produce success final_state")
+                    if expected.get("result_released") is not False:
+                        errors.append(f"{rel(path)}:{test_id}: audit unavailable requires result_released: false")
+                    if expected.get("protected_resource_released") is not False:
+                        errors.append(f"{rel(path)}:{test_id}: audit unavailable requires protected_resource_released: false")
+                    if expected.get("audit_evidence_fabricated") is not False:
+                        errors.append(f"{rel(path)}:{test_id}: audit unavailable requires audit_evidence_fabricated: false")
+                    finalization = expected.get("finalization")
+                    if not isinstance(finalization, dict):
+                        errors.append(f"{rel(path)}:{test_id}: audit unavailable requires expected.finalization")
+                    else:
+                        if finalization.get("audit_available") is not False:
+                            errors.append(f"{rel(path)}:{test_id}: audit unavailable requires finalization.audit_available: false")
+                        if finalization.get("final_result") != "DENY":
+                            errors.append(f"{rel(path)}:{test_id}: audit unavailable requires finalization.final_result DENY")
+                        if finalization.get("final_error") != AUDIT_UNAVAILABLE_ERROR:
+                            errors.append(f"{rel(path)}:{test_id}: audit unavailable finalization must use {AUDIT_UNAVAILABLE_ERROR}")
+                        if finalization.get("result_released") is not False:
+                            errors.append(f"{rel(path)}:{test_id}: audit unavailable requires finalization.result_released: false")
+                        if finalization.get("records_appended") != 0:
+                            errors.append(f"{rel(path)}:{test_id}: audit unavailable requires finalization.records_appended: 0")
+                elif not as_list(records):
                     errors.append(f"{rel(path)}:{test_id}: audit obligation requires expected.audit_records")
                 joined = f"{test_id} {entry.get('test_name', '')}".upper()
-                if ("DENY" in joined or "BEFORE-RETURN" in joined or "DENIED" in joined) and not has_before_return(records):
+                if (
+                    not audit_unavailable
+                    and ("DENY" in joined or "BEFORE-RETURN" in joined or "DENIED" in joined)
+                    and not has_before_return(records)
+                ):
                     errors.append(f"{rel(path)}:{test_id}: deny-before-return test requires before_return: true")
             if entry.get("security_sensitive") is True and not negative and not as_list(expected.get("audit_records")):
                 errors.append(f"{rel(path)}:{test_id}: security_sensitive positive test requires audit expectation")

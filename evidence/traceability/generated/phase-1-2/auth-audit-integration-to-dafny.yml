@@ -26,17 +26,22 @@ entries:
 - test_id: NEG-MFOS-AUDIT-AUDIT-UNAVAILABLE-0906
   domain: auth_audit_integration
   test_type: negative
-  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_level: C5_CONFORMANCE_LINKED
   phase_1_2_exit_blocker: false
-  fixture_ref: null
-  oracle_ref: null
-  golden_ref: null
+  fixture_ref: tests/fixtures/audit/audit-unavailable-0906.yml
+  oracle_ref: tests/golden/audit/audit-unavailable-0906.yml
+  golden_ref: tests/golden/audit/audit-unavailable-0906.yml
   coverage_mappings:
   - dafny_module: formal/executable-semantics/dafny/modules/audit.dfy
-    dafny_symbol: INV_AUTH_AUDIT_REQUIRED_UNAVAILABLE_PREVENTS_SUCCESS
+    dafny_symbol: INV_AUDIT_DENY_TRANSITION_FAILS_CLOSED_WHEN_UNAVAILABLE
     symbol_kind: lemma
     verification_status: verified
     evidence_ref: EV-MFOS-AUDIT-AUDIT-UNAVAILABLE-0906
-    coverage_level: C4_VERIFIED_PROPERTY
-  notes: Verified Dafny property only; Phase 0.9 conformance artifacts are not used
-    to raise this entry to C5.
+    coverage_level: C5_CONFORMANCE_LINKED
+  notes: Audit-unavailable fixture/oracle/golden links exercise the verified fail-closed
+    transition; the golden vector expects no fabricated audit record and no released
+    result.
+  requirement_refs:
+  - MFOS-REQ-AUDIT-0001
+  - MFOS-REQ-AUDIT-0002
+  - MFOS-REQ-AUDIT-0101

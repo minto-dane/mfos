@@ -8,17 +8,17 @@ normalized_input:
 expected_normalized_output:
   outcome: EXPECTED_FAIL_CLOSED
   final_state: FAILED
+  final_error: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+  result_released: false
+  protected_resource_released: false
+  audit_evidence_fabricated: false
 expected_decisions: &id001
 - decision_id: DECISION-MFOS-PHASE09-0001
   result: DENY
   policy_version: 1
   obligations:
   - AUDIT_SECURITY_DECISION
-expected_audit_sequence: &id003
-- record_type: SECURITY_DECISION
-  decision: DENY
-  reason_code: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
-  before_return: true
+expected_audit_sequence: &id003 []
 expected_state_transitions: &id002
 - object: PHASE09_OBJECT
   from: INITIAL
@@ -27,6 +27,15 @@ expected_state_transitions: &id002
   reason: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
 expected_final_state: FAILED
 expected_failure_mode: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+expected_finalization: &id004
+  audit_available: false
+  final_result: DENY
+  final_error: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+  result_released: false
+  records_appended: 0
+expected_protected_resource_release: &id005
+  handle_created: false
+  protected_resource_released: false
 deterministic: true
 oracle:
   oracle_id: ORACLE-MFOS-AUDIT-AUDIT-UNAVAILABLE-0906
@@ -39,6 +48,10 @@ oracle:
     error_code: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
     fail_closed: true
   expected_final_state: FAILED
+  expected_finalization: *id004
+  expected_protected_resource_release: *id005
+  expected_no_silent_success: true
+  expected_no_audit_evidence_fabricated: true
   evidence_required:
   - EV-MFOS-AUDIT-AUDIT-UNAVAILABLE-0906
   status: draft

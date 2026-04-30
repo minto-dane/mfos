@@ -79,6 +79,15 @@ def validate_pair(fixture_path: Path, fixture: dict[str, Any], golden: dict[str,
         if canonical(golden.get(golden_field)) != canonical(oracle.get(oracle_field)):
             add_mismatch(errors, golden_path, golden_field)
 
+    optional_field_pairs = [
+        ("expected_finalization", "expected_finalization"),
+        ("expected_protected_resource_release", "expected_protected_resource_release"),
+    ]
+    for golden_field, oracle_field in optional_field_pairs:
+        if golden.get(golden_field) is not None or oracle.get(oracle_field) is not None:
+            if canonical(golden.get(golden_field)) != canonical(oracle.get(oracle_field)):
+                add_mismatch(errors, golden_path, golden_field)
+
     expected_failure = oracle.get("expected_failure")
     oracle_error = expected_failure.get("error_code") if isinstance(expected_failure, dict) else None
     if golden.get("expected_failure_mode") != oracle_error:

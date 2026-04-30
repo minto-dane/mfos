@@ -495,7 +495,7 @@ entries:
   - EV-MFOS-AUDIT-HASH-CHAIN-TAMPERED-0905
   status: draft
 - test_id: NEG-MFOS-AUDIT-AUDIT-UNAVAILABLE-0906
-  test_name: audit unavailable fail-closed
+  test_name: audit unavailable deny-required fail-closed
   test_type: negative
   phase_to_implement: Phase 1
   target_pack: PACK-06
@@ -521,11 +521,17 @@ entries:
       action: EVALUATE
       to: FAILED
       reason: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
-    audit_records:
-    - record_type: SECURITY_DECISION
-      decision: DENY
-      reason_code: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
-      before_return: true
+    audit_records: []
+    audit_unavailable: true
+    result_released: false
+    protected_resource_released: false
+    audit_evidence_fabricated: false
+    finalization:
+      audit_available: false
+      final_result: DENY
+      final_error: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+      result_released: false
+      records_appended: 0
     failure_mode: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
     final_state: FAILED
   oracle_ref: tests/golden/audit/audit-unavailable-0906.yml

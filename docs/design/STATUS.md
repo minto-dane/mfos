@@ -2,7 +2,7 @@
 
 Status date: 2026-04-30
 Workspace: `/home/nia/mfos`
-Git status: working branch `phase/1-1-gap-triage`;
+Git status: working branch `phase/1-2-authorization-audit-dafny-semantics`;
 PR #10 (`fix/phase-0.10-pxm-mfvm-expansion`), PR #11
 (`fix/pre-phase-1-total-readiness`), PR #12
 (`fix/pre-phase-1-total-readiness-second-pass`), and PR #13
@@ -14,7 +14,7 @@ registries and lint gates`). PR #15 landed the Dafny executable-semantics
 scaffold. PR #17 landed the Dafny 4.11.0 toolchain verification closure after
 PR #16 was superseded by repository branch rules. PR #18 landed Phase 1.1
 semantic coverage truthfulness remediation. The current branch records the
-Phase 1.1 gap triage and Phase 1.2 Authorization/Audit entry gate. Repository
+PR #19 Phase 1.2 Authorization/Audit conformance closure. Repository
 visibility may be public by owner instruction, but formal public-release claims
 remain blocked pending IP/trademark attorney review.
 
@@ -77,7 +77,7 @@ hosted_semantic_prototype_allowed: false
 public_release_allowed: false
 private_internal_use_allowed: true
 requires_ip_attorney_review_before_public_release: true
-next_phase: Phase 1.2 Authorization/Audit Deepening
+next_phase: Post-Phase-1.2 merge review and next scoped planning
 ```
 
 No production nucleus, service, PXM, Guard, or other OS-body implementation was
@@ -99,15 +99,16 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
 - Pinned Dafny 4.11.0 is installed by `scripts/install-dafny.sh`; Z3 4.14.1 is
   bundled in the pinned release.
 - `scripts/validate-dafny-semantics.sh --require-dafny` verifies the current
-  module set with `49 verified, 0 errors`.
+  module set with `89 verified, 0 errors`.
 - Phase 1.1 semantic coverage traceability now maps Phase 0.9 core catalogs to
   explicit Dafny targets per test. The first vertical slice remains
   `C5_CONFORMANCE_LINKED`; the core five domains remain mixed because several
   catalog entries are partial or uncovered and formal claims are not proof-backed.
-- Phase 1.1 gap triage classifies Authorization/Audit gaps as Phase 1.2
-  merge-gate work, not deferred work. Phase 1.2 may begin as non-production
-  Dafny deepening, but it may not merge until its Authorization/Audit C0/C2/C3
-  gaps are closed or explicitly re-scoped.
+- Phase 1.2 Authorization/Audit deepening links audit-unavailable integration to
+  deterministic fixture/oracle/golden evidence and verified Dafny symbol
+  `INV_AUDIT_DENY_TRANSITION_FAILS_CLOSED_WHEN_UNAVAILABLE`. Aggregate
+  Authorization/Audit integration C5 is evidence-backed by its required child
+  rows; formal claim proof artifacts remain deferred below C4/C5.
 
 ## Phase 1 Formal / Traceability Consistency
 
