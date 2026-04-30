@@ -32,6 +32,8 @@ python3 scripts/validators/validate-claims.py --mode "$MODE"
 ./scripts/validators/validate-language-formal-assurance.sh "$MODE"
 ./scripts/validate-dafny-semantics-scaffold.sh "$MODE"
 ./scripts/validate-dafny-semantics.sh "$MODE"
+python3 scripts/check-semantic-coverage-mapping.py
+python3 scripts/check-formal-claim-coverage.py
 if [[ "$GENERATE_TRACEABILITY" == "1" ]]; then
   python3 scripts/checks/check-registry-links.py --mode "$MODE"
 else
@@ -50,4 +52,5 @@ python3 scripts/checks/check-evidence-status.py --mode "$MODE"
 ./scripts/validate-naming-safety.sh "$MODE"
 if [[ "$GENERATE_TRACEABILITY" == "1" ]]; then
   python3 scripts/generators/generate-traceability.py
+  python3 scripts/generators/generate-semantic-coverage.py
 fi

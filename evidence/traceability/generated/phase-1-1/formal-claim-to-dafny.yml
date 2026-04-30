@@ -4,7 +4,12 @@ status: generated
 origin_phase: phase-1.1
 generated_by: scripts/generators/generate-semantic-coverage.py
 source_inputs:
-- tests/catalog/*.yml
+- tests/catalog/authorization.yml
+- tests/catalog/audit.yml
+- tests/catalog/dataset-catalog.yml
+- tests/catalog/job-spool.yml
+- tests/catalog/operator-console.yml
+- tests/catalog/first-vertical-slice.yml
 - tests/fixtures/**
 - tests/golden/**
 - formal/executable-semantics/dafny/modules/*.dfy
@@ -24,101 +29,178 @@ formal_claims:
   status: planned
   requirement_refs:
   - MFOS-REQ-AUTH-0001
-  dafny_module: formal/executable-semantics/dafny/modules/authorization.dfy
-  dafny_symbols:
-  - INV_AUTH_NO_HANDLE_WITHOUT_ALLOW
-  tla_alloy_coverage: planned_or_existing_design_model_only
-  coverage_level: C4_VERIFIED_PROPERTY
+  proof_claimed: false
+  proof_artifact_refs: []
+  coverage_level: C3_FULL_SEMANTIC
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/authorization.dfy
+    dafny_symbol: INV_AUTH_NO_HANDLE_WITHOUT_ALLOW
+    symbol_kind: lemma
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C3_FULL_SEMANTIC
+    note: Dafny lemma exists, but formal registry is still planned/draft and proof_claimed
+      is false.
   production_claimed: false
 - claim_id: MFOS-FC-AUDIT-DENY-BEFORE-RETURN
   status: planned
   requirement_refs:
   - MFOS-REQ-AUDIT-0001
-  dafny_module: formal/executable-semantics/dafny/modules/audit.dfy
-  dafny_symbols:
-  - INV_AUDIT_DENY_WITH_OBLIGATION_HAS_BEFORE_RETURN_RECORD
-  tla_alloy_coverage: planned_or_existing_design_model_only
-  coverage_level: C4_VERIFIED_PROPERTY
+  proof_claimed: false
+  proof_artifact_refs: []
+  coverage_level: C3_FULL_SEMANTIC
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/audit.dfy
+    dafny_symbol: INV_AUDIT_DENY_TRANSITION_WRITES_BEFORE_RETURN
+    symbol_kind: lemma
+    verification_status: unverified
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C3_FULL_SEMANTIC
+    note: Dafny lemma exists, but formal registry is still planned/draft and proof_claimed
+      is false.
   production_claimed: false
 - claim_id: MFOS-FC-UPDATE-NO-ROLLBACK
   status: planned
   requirement_refs:
   - MFOS-REQ-UPDATE-*
-  dafny_module: null
-  dafny_symbols: []
-  tla_alloy_coverage: planned_non_phase_1_1_domain
+  proof_claimed: false
+  proof_artifact_refs: []
   coverage_level: C0_NONE
+  coverage_mappings:
+  - dafny_module: null
+    dafny_symbol: null
+    symbol_kind: null
+    verification_status: missing
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C0_NONE
+    note: Formal claim is outside Phase 1.1 Dafny semantic coverage.
   production_claimed: false
 - claim_id: MFOS-FC-PARTITION-MEMORY-OWNERSHIP
   status: planned
   requirement_refs:
   - MFOS-REQ-PXM-0103
-  dafny_module: null
-  dafny_symbols: []
-  tla_alloy_coverage: planned_non_phase_1_1_domain
+  proof_claimed: false
+  proof_artifact_refs: []
   coverage_level: C0_NONE
+  coverage_mappings:
+  - dafny_module: null
+    dafny_symbol: null
+    symbol_kind: null
+    verification_status: missing
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C0_NONE
+    note: Formal claim is outside Phase 1.1 Dafny semantic coverage.
   production_claimed: false
 - claim_id: MFOS-FC-PXM-CAPABILITY-REQUIRED-FOR-RESOURCE-OPERATION
   status: planned
   requirement_refs:
   - MFOS-REQ-PXM-0102
-  dafny_module: null
-  dafny_symbols: []
-  tla_alloy_coverage: planned_non_phase_1_1_domain
+  proof_claimed: false
+  proof_artifact_refs: []
   coverage_level: C0_NONE
+  coverage_mappings:
+  - dafny_module: null
+    dafny_symbol: null
+    symbol_kind: null
+    verification_status: missing
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C0_NONE
+    note: Formal claim is outside Phase 1.1 Dafny semantic coverage.
   production_claimed: false
 - claim_id: MFOS-FC-MFVM-CANNOT-BYPASS-PXM
   status: planned
   requirement_refs:
   - MFOS-REQ-MFVM-0103
   - MFOS-REQ-MFVM-0104
-  dafny_module: null
-  dafny_symbols: []
-  tla_alloy_coverage: planned_non_phase_1_1_domain
+  proof_claimed: false
+  proof_artifact_refs: []
   coverage_level: C0_NONE
+  coverage_mappings:
+  - dafny_module: null
+    dafny_symbol: null
+    symbol_kind: null
+    verification_status: missing
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C0_NONE
+    note: Formal claim is outside Phase 1.1 Dafny semantic coverage.
   production_claimed: false
 - claim_id: MFOS-FC-CVM-LAUNCH-REQUIRES-MEASUREMENT
   status: planned
   requirement_refs:
   - MFOS-REQ-CVM-0105
-  dafny_module: null
-  dafny_symbols: []
-  tla_alloy_coverage: planned_non_phase_1_1_domain
+  proof_claimed: false
+  proof_artifact_refs: []
   coverage_level: C0_NONE
+  coverage_mappings:
+  - dafny_module: null
+    dafny_symbol: null
+    symbol_kind: null
+    verification_status: missing
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C0_NONE
+    note: Formal claim is outside Phase 1.1 Dafny semantic coverage.
   production_claimed: false
 - claim_id: MFOS-FC-CVM-SECRET-RELEASE-REQUIRES-ATTESTATION
   status: planned
   requirement_refs:
   - MFOS-REQ-CVM-0107
-  dafny_module: null
-  dafny_symbols: []
-  tla_alloy_coverage: planned_non_phase_1_1_domain
+  proof_claimed: false
+  proof_artifact_refs: []
   coverage_level: C0_NONE
+  coverage_mappings:
+  - dafny_module: null
+    dafny_symbol: null
+    symbol_kind: null
+    verification_status: missing
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C0_NONE
+    note: Formal claim is outside Phase 1.1 Dafny semantic coverage.
   production_claimed: false
 - claim_id: MFOS-FC-PRIVATE-SHARED-MEMORY-TRANSITION-VALIDITY
   status: planned
   requirement_refs:
   - MFOS-REQ-CVM-0108
-  dafny_module: null
-  dafny_symbols: []
-  tla_alloy_coverage: planned_non_phase_1_1_domain
+  proof_claimed: false
+  proof_artifact_refs: []
   coverage_level: C0_NONE
+  coverage_mappings:
+  - dafny_module: null
+    dafny_symbol: null
+    symbol_kind: null
+    verification_status: missing
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C0_NONE
+    note: Formal claim is outside Phase 1.1 Dafny semantic coverage.
   production_claimed: false
 - claim_id: MFOS-FC-CLUSTER-POLICY-DISTRIBUTION-INTEGRITY
   status: planned
   requirement_refs:
   - MFOS-REQ-CLUSTER-0107
-  dafny_module: null
-  dafny_symbols: []
-  tla_alloy_coverage: planned_non_phase_1_1_domain
+  proof_claimed: false
+  proof_artifact_refs: []
   coverage_level: C0_NONE
+  coverage_mappings:
+  - dafny_module: null
+    dafny_symbol: null
+    symbol_kind: null
+    verification_status: missing
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C0_NONE
+    note: Formal claim is outside Phase 1.1 Dafny semantic coverage.
   production_claimed: false
 - claim_id: MFOS-FC-CLUSTER-ATTESTATION-COLLECTION-INTEGRITY
   status: planned
   requirement_refs:
   - MFOS-REQ-CLUSTER-0108
-  dafny_module: null
-  dafny_symbols: []
-  tla_alloy_coverage: planned_non_phase_1_1_domain
+  proof_claimed: false
+  proof_artifact_refs: []
   coverage_level: C0_NONE
+  coverage_mappings:
+  - dafny_module: null
+    dafny_symbol: null
+    symbol_kind: null
+    verification_status: missing
+    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    coverage_level: C0_NONE
+    note: Formal claim is outside Phase 1.1 Dafny semantic coverage.
   production_claimed: false

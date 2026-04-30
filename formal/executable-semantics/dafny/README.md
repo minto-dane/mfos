@@ -80,4 +80,4 @@ Verification command:
 ./scripts/validate-dafny-semantics.sh --require-dafny
 ```
 
-The current module set verifies with `45 verified, 0 errors`.
+The current module set verifies with `49 verified, 0 errors`.

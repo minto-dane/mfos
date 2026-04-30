@@ -40,14 +40,17 @@ phase_1_dafny_semantics_allowed: true
 phase_1_conformance_harness_allowed: true
 phase_1_dafny_toolchain_pinned: true
 phase_1_dafny_verification_passed: true
-phase_1_1_semantic_coverage_complete: true
-phase_1_1_negative_semantics_complete: true
+phase_1_1_semantic_coverage_complete: false
+phase_1_1_core_domain_coverage_status: mixed_verified_and_partial
+phase_1_1_formal_claim_coverage_complete: false
+phase_1_1_negative_semantics_complete: false
+phase_1_1_truthfulness_remediation_complete: true
 phase_1_1_core_domains_coverage_level:
-  authorization: C4_VERIFIED_PROPERTY
-  audit: C4_VERIFIED_PROPERTY
-  dataset_catalog: C4_VERIFIED_PROPERTY
-  job_spool: C4_VERIFIED_PROPERTY
-  operator_console: C4_VERIFIED_PROPERTY
+  authorization: C0_NONE
+  audit: C0_NONE
+  dataset_catalog: C0_NONE
+  job_spool: C0_NONE
+  operator_console: C0_NONE
 phase_1_1_first_vertical_slice_coverage_level: C5_CONFORMANCE_LINKED
 phase_1_semantic_evaluator_status: non_production_dafny_only
 phase_1_portable_semantic_core_allowed: false
@@ -84,11 +87,11 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
 - Pinned Dafny 4.11.0 is installed by `scripts/install-dafny.sh`; Z3 4.14.1 is
   bundled in the pinned release.
 - `scripts/validate-dafny-semantics.sh --require-dafny` verifies the current
-  module set with `45 verified, 0 errors`.
-- Phase 1.1 semantic coverage closure maps 18 Phase 0.9 core requirement IDs,
-  74 catalog entries, 74 fixtures, 74 golden/oracle entries, and formal claims
-  to Dafny targets. Core five domains are `C4_VERIFIED_PROPERTY`; the first
-  vertical slice is `C5_CONFORMANCE_LINKED`.
+  module set with `49 verified, 0 errors`.
+- Phase 1.1 semantic coverage traceability now maps Phase 0.9 core catalogs to
+  explicit Dafny targets per test. The first vertical slice remains
+  `C5_CONFORMANCE_LINKED`; the core five domains remain mixed because several
+  catalog entries are partial or uncovered and formal claims are not proof-backed.
 
 ## Phase 1 Formal / Traceability Consistency
 

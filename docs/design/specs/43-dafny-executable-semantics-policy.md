@@ -214,17 +214,18 @@ Current coverage judgment:
 
 ```yaml
 core_domains_coverage_level:
-  authorization: C4_VERIFIED_PROPERTY
-  audit: C4_VERIFIED_PROPERTY
-  dataset_catalog: C4_VERIFIED_PROPERTY
-  job_spool: C4_VERIFIED_PROPERTY
-  operator_console: C4_VERIFIED_PROPERTY
+  authorization: C0_NONE
+  audit: C0_NONE
+  dataset_catalog: C0_NONE
+  job_spool: C0_NONE
+  operator_console: C0_NONE
 first_vertical_slice_coverage_level: C5_CONFORMANCE_LINKED
-negative_semantics_complete: true
+negative_semantics_complete: false
+phase_1_1_semantic_coverage_complete: false
 release_ready_model_claimed: false
 ```
 
-The current Dafny module set verifies with `45 verified, 0 errors`.
+The current Dafny module set verifies with `49 verified, 0 errors`.
 
 ## 14. Gaps
 
