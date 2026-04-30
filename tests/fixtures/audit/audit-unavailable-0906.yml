@@ -1,6 +1,6 @@
 fixture_id: FIXTURE-MFOS-AUDIT-AUDIT-UNAVAILABLE-0906
 fixture_version: 1
-description: audit unavailable fail-closed
+description: audit unavailable deny-required fail-closed finalization
 target_specs:
 - docs/design/specs/07-audit.md
 target_requirements:
@@ -8,15 +8,32 @@ target_requirements:
 - MFOS-REQ-AUDIT-0002
 - MFOS-REQ-AUDIT-0101
 preconditions:
+- A valid authenticated subject exists.
+- The operation is security-sensitive and requires audit evidence before release.
+- Authorization has already produced a DENY decision with an AUDIT_SECURITY_DECISION
+  obligation.
+- The audit evidence path is unavailable before finalization.
+- The operation attempts to finalize or release a final result.
 - All subjects, policy versions, object generations, and dependency states are symbolic
   and deterministic.
 initial_state:
   clock: T0
   security_epoch: 1
   policy_version: 1
+  subjects:
+  - principal_ref: PRINCIPAL-MFOS-PHASE09-0001
+    authenticated: true
   objects:
   - object_ref: OBJ-MFOS-PHASE09-0001
     generation: 1
+  authorization_decision:
+    decision_id: DECISION-MFOS-PHASE09-0001
+    result: DENY
+    obligations:
+    - AUDIT_SECURITY_DECISION
+  audit_service:
+    available: false
+    evidence_path: unavailable
 inputs:
 - input_id: INPUT-MFOS-PHASE09-0001
   operation: AUDIT-UNAVAILABLE

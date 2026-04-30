@@ -225,9 +225,35 @@ phase_1_1_semantic_coverage_complete: false
 release_ready_model_claimed: false
 ```
 
-The current Dafny module set verifies with `49 verified, 0 errors`.
+The Phase 1.1 Dafny module set verified with `49 verified, 0 errors`.
 
-## 14. Gaps
+## 14. Phase 1.2 Authorization/Audit Deepening
+
+Phase 1.2 deepens the non-production Dafny executable semantics for
+Authorization, Audit, and their integration boundary. It does not authorize
+production implementation, Rust semantic-core work, hosted daemons, production
+semantic runners, or service implementation.
+
+Coverage traceability is generated under:
+
+```text
+evidence/traceability/generated/phase-1-2/
+```
+
+Current Phase 1.2 judgment:
+
+```yaml
+authorization_coverage_level: C4_VERIFIED_PROPERTY
+audit_coverage_level: C5_CONFORMANCE_LINKED
+auth_audit_integration_coverage_level: C5_CONFORMANCE_LINKED
+formal_claim_proof_coverage_complete: false
+authorization_audit_exit_blockers_remaining: false
+release_ready_model_claimed: false
+```
+
+The current Dafny module set verifies with `89 verified, 0 errors`.
+
+## 15. Gaps
 
 | Gap ID | Gap | Impact |
 | --- | --- | --- |

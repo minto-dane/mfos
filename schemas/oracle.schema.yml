@@ -75,7 +75,7 @@ properties:
         - reason
   expected_audit_records:
     type: array
-    minItems: 1
+    minItems: 0
     items:
       type: object
       additionalProperties: true
@@ -87,6 +87,36 @@ properties:
       properties:
         before_return:
           type: boolean
+  expected_finalization:
+    type: object
+    additionalProperties: true
+    properties:
+      audit_available:
+        type: boolean
+      final_result:
+        type: string
+      final_error:
+        oneOf:
+          - type: string
+            pattern: "^MFOS_ERR_[A-Z0-9_]{1,96}$"
+          - type: "null"
+      result_released:
+        type: boolean
+      records_appended:
+        type: integer
+        minimum: 0
+  expected_protected_resource_release:
+    type: object
+    additionalProperties: true
+    properties:
+      handle_created:
+        type: boolean
+      protected_resource_released:
+        type: boolean
+  expected_no_silent_success:
+    type: boolean
+  expected_no_audit_evidence_fabricated:
+    type: boolean
   expected_failure:
     type: object
     additionalProperties: false

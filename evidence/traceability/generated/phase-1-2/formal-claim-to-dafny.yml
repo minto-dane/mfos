@@ -1,0 +1,40 @@
+schema_version: 1
+status: generated
+origin_phase: phase-1.2
+production_implementation_allowed: false
+rust_semantic_core_allowed: false
+hosted_daemon_allowed: false
+artifact_type: phase_1_2_formal_claim_to_dafny
+formal_claims:
+- claim_id: MFOS-FC-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW
+  domain: authorization
+  coverage_level: C3_FULL_SEMANTIC
+  proof_claimed: false
+  proof_artifact_refs: []
+  phase_1_2_exit_blocker: false
+  accepted_deferred: true
+  reason: Dafny lemma exists, but formal claim registry remains planned and has no
+    proof artifact; not proof-backed coverage.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/authorization.dfy
+    dafny_symbol: INV_AUTH_EVALUATED_DECISION_NO_HANDLE_UNLESS_ALLOW
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-FC-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW
+    coverage_level: C3_FULL_SEMANTIC
+- claim_id: MFOS-FC-AUDIT-DENY-BEFORE-RETURN
+  domain: auth_audit_integration
+  coverage_level: C3_FULL_SEMANTIC
+  proof_claimed: false
+  proof_artifact_refs: []
+  phase_1_2_exit_blocker: false
+  accepted_deferred: true
+  reason: Dafny lemma exists, but formal claim registry remains planned and has no
+    proof artifact; not proof-backed coverage.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/audit.dfy
+    dafny_symbol: INV_AUDIT_DENY_TRANSITION_WRITES_BEFORE_RETURN
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-FC-AUDIT-DENY-BEFORE-RETURN
+    coverage_level: C3_FULL_SEMANTIC

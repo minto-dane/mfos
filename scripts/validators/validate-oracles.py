@@ -28,6 +28,7 @@ REQUIRED = {
     "status",
 }
 SCHEMA = ROOT / "schemas/oracle.schema.yml"
+AUDIT_UNAVAILABLE_ERROR = "MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE"
 
 
 def main() -> int:
@@ -76,6 +77,32 @@ def main() -> int:
                 errors.append(f"{rel(path)}:{oracle_id}: {failure_code} must not produce success final state")
             if "ALLOW" in decision_results:
                 errors.append(f"{rel(path)}:{oracle_id}: {failure_code} must not pair with ALLOW")
+        if operation == "AUDIT-UNAVAILABLE" or oracle.get("expected_no_audit_evidence_fabricated") is True:
+            if expected_failure.get("fail_closed") is not True:
+                errors.append(f"{rel(path)}:{oracle_id}: {AUDIT_UNAVAILABLE_ERROR} must be fail_closed")
+            if str(oracle.get("expected_final_state")) in {"COMPLETE", "SUCCESS"}:
+                errors.append(f"{rel(path)}:{oracle_id}: {AUDIT_UNAVAILABLE_ERROR} must not produce success final state")
+            if decision_results & {"ALLOW", "ALLOW_WITH_AUDIT"}:
+                errors.append(f"{rel(path)}:{oracle_id}: {AUDIT_UNAVAILABLE_ERROR} must not pair with success")
+            if "DENY" not in decision_results:
+                errors.append(f"{rel(path)}:{oracle_id}: {AUDIT_UNAVAILABLE_ERROR} must pair with DENY")
+            if as_list(oracle.get("expected_audit_records")):
+                errors.append(f"{rel(path)}:{oracle_id}: audit unavailable must not fabricate audit records")
+            finalization = oracle.get("expected_finalization")
+            if not isinstance(finalization, dict):
+                errors.append(f"{rel(path)}:{oracle_id}: audit unavailable requires expected_finalization")
+            else:
+                if finalization.get("audit_available") is not False:
+                    errors.append(f"{rel(path)}:{oracle_id}: audit unavailable requires expected_finalization.audit_available false")
+                if finalization.get("final_error") != AUDIT_UNAVAILABLE_ERROR:
+                    errors.append(f"{rel(path)}:{oracle_id}: audit unavailable finalization must use {AUDIT_UNAVAILABLE_ERROR}")
+                if finalization.get("result_released") is not False:
+                    errors.append(f"{rel(path)}:{oracle_id}: audit unavailable requires expected_finalization.result_released false")
+                if finalization.get("records_appended") != 0:
+                    errors.append(f"{rel(path)}:{oracle_id}: audit unavailable requires expected_finalization.records_appended 0")
+            release = oracle.get("expected_protected_resource_release")
+            if not isinstance(release, dict) or release.get("protected_resource_released") is not False:
+                errors.append(f"{rel(path)}:{oracle_id}: audit unavailable must not release protected resource")
         for record in as_list(oracle.get("expected_audit_records")):
             if isinstance(record, dict) and record.get("decision") == "DENY" and record.get("before_return") is not True:
                 errors.append(f"{rel(path)}:{oracle_id}: DENY audit record must set before_return: true")

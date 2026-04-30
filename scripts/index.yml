@@ -46,6 +46,12 @@ current:
     check_formal_claim_coverage:
       path: scripts/check-formal-claim-coverage.py
       status: current
+    check_phase1_gap_triage:
+      path: scripts/check-phase1-gap-triage.py
+      status: current
+    check_phase1_2_auth_audit_coverage:
+      path: scripts/check-phase1-2-auth-audit-coverage.py
+      status: current
 
 sections:
   validators:
@@ -75,6 +81,9 @@ sections:
   generators:
     path: scripts/generators/
     status: current
+    auth_audit_coverage:
+      path: scripts/generators/generate-auth-audit-coverage.py
+      status: current
   library:
     path: scripts/lib/
     status: current
