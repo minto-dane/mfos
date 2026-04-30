@@ -58,8 +58,8 @@ Task owners must enforce:
 | DOC-010 | Register EXTREF-IBM-ZOS-CROSS-MEMORY-SYNCHRONOUS-0001/002. | PCALL mapping. | source review. |
 | DOC-011 | Register EXTREF-IBM-Z-LPAR-INTRODUCTION-0001/DPM-001. | PXM mapping. | source review. |
 | DOC-012 | Register EXTREF-IBM-Z-ARCHITECTURE-PRINCIPLES-0001. | terminology divergence note. | source review. |
-| DOC-013 | Register X64-INTEL-001. | x64 claim source. | source review. |
-| DOC-014 | Register X64-AMD-001. | AMD64 claim source. | source review. |
+| DOC-013 | Register X64-INTEL-001. | x86-64 target-profile source reference, not an x86-only claim. | source review. |
+| DOC-014 | Register X64-AMD-001. | AMD64/x86-64 target-profile source reference, not an x86-only claim. | source review. |
 | DOC-015 | Register MS-VBS/MS-VSM. | Guard-only reference note. | profile review. |
 | DOC-016 | Register TUF/SLSA/NIST/TCG/seL4. | assurance and supply-chain references. | source review. |
 | DOC-017 | Create Source Matrix lint rule. | CI rule. | lint report. |
@@ -89,6 +89,8 @@ Task owners must enforce:
 | SPEC-019 | Linux Gateway v0.1. | `18-linux-gateway.md`. | gateway negative tests. |
 | SPEC-020 | Assurance Case v0.1. | `19-assurance-case.md`. | evidence review. |
 | SPEC-021 | AI Prompt Library v0.1. | `ai-prompts.md`. | prompt review. |
+| SPEC-044 | Architecture Portability Policy. | `44-architecture-portability-policy.md`. | architecture/backend boundary review. |
+| SPEC-045 | x86-64 Target Profiles. | `45-x86-64-target-profiles.md`. | CPU feature/profile registry review. |
 
 ## 5. Formal Tasks
 

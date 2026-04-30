@@ -82,8 +82,8 @@ production implementation disabled.
 | PACK-21 | Requirements and roadmap | `specs/23-requirements-catalog.md`, `tasks/implementation-roadmap.md` |
 | PACK-22 | Formal methods | `specs/24-formal-methods.md`, `assurance/formal-model-plan.md` |
 | PACK-23 | Operations and recovery | `specs/25-operations-recovery.md`, `assurance/operator-runbooks.md`, `assurance/operator-training-drills.md` |
-| PACK-24 | Hardware profile and attestation | `specs/26-hardware-profile.md`, `specs/30-attestation-measured-boot.md` |
-| PACK-25 | Spec and registry schemas | `specs/27-spec-front-matter.md`, `specs/28-machine-readable-registries.md`, `registries/README.md` |
+| PACK-24 | Hardware profile, architecture portability, and attestation | `specs/26-hardware-profile.md`, `specs/30-attestation-measured-boot.md`, `specs/44-architecture-portability-policy.md`, `specs/45-x86-64-target-profiles.md` |
+| PACK-25 | Spec and registry schemas | `specs/27-spec-front-matter.md`, `specs/28-machine-readable-registries.md`, `registries/README.md`, `registries/cpu-feature-registry.yml`, `registries/cpu-target-profiles.yml` |
 | PACK-26 | Test strategy | `specs/29-test-strategy.md`, `tasks/test-taxonomy.md` |
 | PACK-27 | Release workflow | `assurance/release-review-workflow.md`, `specs/31-release-distribution-rollback.md` |
 | PACK-28 | Source lint and traceability automation | `source-matrix/source-lint-spec.md`, `source-matrix/traceability-index.md`, `tasks/spec-front-matter-migration.md` |
@@ -192,6 +192,18 @@ specification_only: true
 Phase 1 remains limited to loader-only artifact validation for these domains.
 No PXM, MFVM, Confidential VM, cluster, semantic evaluator, hosted daemon, or
 production implementation is authorized by these design-only pack contracts.
+
+## Architecture Portability And x86-64 Target Profiles
+
+PACK-24 and PACK-25 now route architecture portability and CPU profile policy.
+MFOS is x86-64-first for initial implementation planning, not x86-64-only.
+Architecture-neutral enterprise semantics must remain separate from
+architecture-specific enforcement. x86-64-v4 is an optional performance profile,
+not baseline. Intel TDX and AMD SEV-SNP are Confidential VM profile
+technologies. Intel SGX is an optional enclave/TEE profile and must not be
+modeled as a Confidential VM profile. CPU target profiles must reference
+machine-readable CPU Feature Registry IDs before any later architecture-backend
+implementation can be assigned.
 
 ## Phase 1 Dafny Executable-Semantics Gate
 

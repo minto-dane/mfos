@@ -876,7 +876,7 @@ The recommended order is:
 
 Reasoning:
 
-- Authorization, audit, and dataset handles form the first hosted semantic prototype safety core.
+- Authorization, audit, and dataset handles form the first Dafny executable-semantics safety core.
 - Update, Guard, AMF, and teardown carry critical high-assurance and supply-chain risk.
 - Catalog, job, spool, operator, and PXM lifecycle models then broaden coverage over core workflows.
 

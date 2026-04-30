@@ -2,7 +2,7 @@
 
 Status date: 2026-04-30
 Workspace: `/home/nia/mfos`
-Git status: working branch `phase/1-3-dataset-catalog-dafny-semantics`;
+Git status: working branch `docs/architecture-portability-x64-target-profiles`;
 PR #10 (`fix/phase-0.10-pxm-mfvm-expansion`), PR #11
 (`fix/pre-phase-1-total-readiness`), PR #12
 (`fix/pre-phase-1-total-readiness-second-pass`), and PR #13
@@ -81,6 +81,19 @@ phase_1_portable_semantic_core_allowed: false
 phase_1_rust_semantic_core_allowed: false
 phase_1_semantic_evaluator_allowed_domains: []
 phase_1_pxm_mfvm_cvm_cluster_semantic_evaluator_allowed: false
+architecture_portability_policy_complete: true
+roadmap_phase_alignment_complete: true
+cpu_feature_registry_complete: true
+cpu_target_profiles_complete: true
+x86_64_first_policy_defined: true
+future_non_x86_architecture_policy_defined: true
+x86_64_profiles_defined: true
+x86_64_v4_optional_profile_defined: true
+sgx_tee_profile_defined: true
+sgx_modeled_as_cvm: false
+x86_64_v4_is_baseline: false
+non_x86_support_claimed_as_implemented: false
+hyperv_kvm_compatibility_claimed: false
 production_implementation_allowed: false
 hosted_daemon_implementation_allowed: false
 portable_semantic_core_implementation_allowed: false
@@ -89,12 +102,31 @@ hosted_semantic_prototype_allowed: false
 public_release_allowed: false
 private_internal_use_allowed: true
 requires_ip_attorney_review_before_public_release: true
-next_phase: resolve PR #20 protected-branch rebase blocker; do not start Phase 1.4
+next_phase: review architecture portability and x86-64 target-profile PR; do not start Phase 1.4
 ```
 
 No production nucleus, service, PXM, Guard, or other OS-body implementation was
 started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
 0.9.
+
+## Architecture Portability And x86-64 Target Profiles
+
+- Added architecture portability policy: MFOS is x86-64-first for initial
+  implementation planning and not x86-64-only.
+- Separated architecture-neutral enterprise semantics from architecture-specific
+  enforcement and platform-specific concerns.
+- Added a design-time CPU Feature Registry and CPU Target Profile Registry. The
+  registries are machine-readable policy/evidence ledgers, not feature
+  detectors or implementation stubs.
+- Defined x86-64 baseline, modern server, optional v4 performance,
+  maximum-feature, Intel TDX CVM, AMD SEV-SNP CVM, Intel SGX TEE, and CET/CFI
+  hardening profiles.
+- Kept x86-64-v4 optional and capability-gated; baseline artifacts must not
+  require v4-only instructions.
+- Modeled Intel SGX as optional enclave/TEE only. SGX is not a Confidential VM
+  profile and SGX attestation mode is separate from SGX feature presence.
+- Future AArch64, RISC-V, or other non-x86 support remains design-allowed but
+  not implemented or claimed.
 
 ## Phase 1 Dafny Executable Semantics
 

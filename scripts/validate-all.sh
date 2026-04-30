@@ -24,6 +24,10 @@ python3 scripts/validators/validate-requirements.py
 python3 scripts/checks/check-prohibited-terms.py
 python3 scripts/checks/check-no-fake-success.py
 python3 scripts/validators/validate-spec-front-matter.py --mode "$MODE"
+python3 scripts/checks/check-architecture-portability-policy.py --mode "$MODE"
+python3 scripts/checks/check-x64-profile-policy.py --mode "$MODE"
+python3 scripts/checks/check-cpu-feature-registry.py --mode "$MODE"
+python3 scripts/checks/check-roadmap-phase-alignment.py --mode "$MODE"
 python3 scripts/validators/validate-packs.py --mode "$MODE"
 python3 scripts/checks/check-source-grounding.py --mode "$MODE"
 python3 scripts/checks/check-audit-obligations.py --mode "$MODE"

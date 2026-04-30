@@ -1527,8 +1527,8 @@ entries:
     specification_only: true
   prompt: docs/design/prompts/ai-prompts.md
   pack_id: PACK-24
-  title: Hardware Profile and Attestation
-  purpose: Govern x64 platform profile and measured boot evidence.
+  title: Hardware Profile, Architecture Portability, and Attestation
+  purpose: Govern x86-64 target-profile documentation, architecture portability policy, and measured boot evidence.
   depends_on:
   - PACK-03
   - PACK-13
@@ -1537,6 +1537,8 @@ entries:
   inputs:
   - docs/design/specs/26-hardware-profile.md
   - docs/design/specs/30-attestation-measured-boot.md
+  - docs/design/specs/44-architecture-portability-policy.md
+  - docs/design/specs/45-x86-64-target-profiles.md
   outputs:
   - build/profiles
   - evidence/attestations
@@ -1544,8 +1546,11 @@ entries:
   - X64-INTEL-001
   - X64-AMD-001
   - TCG-001
+  - EXTREF-X86-64-MICROARCH-LEVELS-0001
   requirements:
   - MFOS-REQ-NUCLEUS-0008
+  - MFOS-REQ-ARCH-*
+  - MFOS-REQ-X64-*
 - scope:
   - design and validation
   non_objectives:
@@ -1586,6 +1591,9 @@ entries:
   inputs:
   - docs/design/specs/27-spec-front-matter.md
   - docs/design/specs/28-machine-readable-registries.md
+  - docs/design/registries/cpu-feature-registry.yml
+  - docs/design/registries/cpu-target-profiles.yml
+  - schemas/mfos/cpu-feature-profile.schema.yml
   outputs:
   - schemas
   - scripts
@@ -1594,6 +1602,7 @@ entries:
   - NIST-218-001
   requirements:
   - MFOS-REQ-QUALITY-*
+  - MFOS-REQ-CPUFEAT-*
 - scope:
   - design and validation
   non_objectives:

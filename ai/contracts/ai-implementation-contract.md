@@ -68,6 +68,21 @@ This label does not authorize Rust semantic-core work, semantic-runner commands,
 hosted daemons, production services, PXM/MFVM/CVM implementation, cluster
 implementation, or Dafny-generated production code.
 
+## Architecture And CPU Profile Gate
+
+MFOS is x86-64-first for initial implementation planning, but it is not
+x86-64-only. AI agents must keep architecture-neutral enterprise semantics
+separate from architecture-specific enforcement and platform-specific concerns.
+Future AArch64, RISC-V, or other non-x86 work must not be claimed as
+implemented without source cards, specs, requirements, CPU feature registries,
+target profiles, tests, CI, evidence, and reviewed backends.
+
+x86-64-v4 is optional performance profile only, not baseline. Intel TDX and AMD
+SEV-SNP are Confidential VM profile technologies. Intel SGX is optional
+enclave/TEE profile and must not be modeled as a Confidential VM profile.
+Hyper-V and KVM references are comparison/source references only and do not
+create compatibility claims.
+
 ## Prohibited Patterns
 
 - fake success

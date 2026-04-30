@@ -10770,6 +10770,125 @@ entries:
     correlation_ids: []
   spec_gap_ids:
   - DAFNY-GAP-0002
+- evidence_id: EV-MFOS-ARCH-0001
+  title: Architecture portability policy report
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: [MFOS-REQ-ARCH-0001, MFOS-REQ-ARCH-0002, MFOS-REQ-ARCH-0003, MFOS-REQ-ARCH-0004]
+  test_ids: [TEST-MFOS-ARCH-POS-0001, NEG-MFOS-ARCH-0001]
+  source_matrix_ids: [FBVBS-001, EXTREF-SEL4-MULTIARCH-SUPPORTED-PLATFORMS-0001, EXTREF-SEL4-ARCH-CONFIGURATION-0001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: reports/current/architecture-portability-policy-report.md, media_type: text/markdown, sha384: null, size_bytes: null}
+  produced_by: {tool: codex-docs, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: [ARCH-GAP-0002]
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-X64-0001
+  title: x86-64 target profile report
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: [MFOS-REQ-X64-0001, MFOS-REQ-X64-0002, MFOS-REQ-X64-0003, MFOS-REQ-X64-0004, MFOS-REQ-X64-0005]
+  test_ids: [TEST-MFOS-X64-POS-0001, NEG-MFOS-X64-0001]
+  source_matrix_ids: [X64-INTEL-001, X64-AMD-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: reports/current/x86-64-target-profile-report.md, media_type: text/markdown, sha384: null, size_bytes: null}
+  produced_by: {tool: codex-docs, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: [X64-GAP-0001]
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-X64-V4-0001
+  title: x86-64-v4 optional profile report
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: [MFOS-REQ-X64-V4-0001, MFOS-REQ-X64-V4-0002, MFOS-REQ-X64-V4-0003, MFOS-REQ-X64-V4-0004, MFOS-REQ-X64-V4-0005, MFOS-REQ-X64-V4-0006]
+  test_ids: [TEST-MFOS-X64-V4-POS-0001, NEG-MFOS-X64-V4-0001]
+  source_matrix_ids: [EXTREF-X86-64-MICROARCH-LEVELS-0001, EXTREF-GLIBC-HWCAPS-X86-64-V4-0001, EXTREF-GCC-X86-64-V4-0001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: reports/current/x86-64-target-profile-report.md, media_type: text/markdown, sha384: null, size_bytes: null}
+  produced_by: {tool: codex-docs, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: [X64-GAP-0001]
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-X64-CVM-0001
+  title: x86-64 CVM profile report
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: [MFOS-REQ-X64-CVM-0001, MFOS-REQ-X64-CVM-0002]
+  test_ids: [TEST-MFOS-X64-CVM-POS-0001, NEG-MFOS-X64-CVM-0001]
+  source_matrix_ids: [EXTREF-INTEL-TDX-OVERVIEW-0001, EXTREF-AMD-SEV-SNP-0001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: reports/current/x86-64-target-profile-report.md, media_type: text/markdown, sha384: null, size_bytes: null}
+  produced_by: {tool: codex-docs, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: [X64-GAP-0003]
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-X64-TEE-0001
+  title: Intel SGX TEE profile report
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: [MFOS-REQ-X64-TEE-0001, MFOS-REQ-X64-TEE-0002, MFOS-REQ-X64-TEE-0003, MFOS-REQ-X64-TEE-0004, MFOS-REQ-X64-TEE-0005]
+  test_ids: [TEST-MFOS-X64-TEE-POS-0001, NEG-MFOS-X64-TEE-0001]
+  source_matrix_ids: [EXTREF-INTEL-SGX-OVERVIEW-0001, EXTREF-INTEL-SGX-ATTESTATION-0001, EXTREF-INTEL-SGX-DCAP-0001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: reports/current/x86-64-target-profile-report.md, media_type: text/markdown, sha384: null, size_bytes: null}
+  produced_by: {tool: codex-docs, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: [X64-GAP-0004]
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-HARDENING-0001
+  title: CET CFI hardening evidence profile report
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: [MFOS-REQ-HARDENING-0001]
+  test_ids: [TEST-MFOS-HARDENING-POS-0001, NEG-MFOS-HARDENING-0001]
+  source_matrix_ids: [EXTREF-INTEL-CET-0001, EXTREF-CLANG-CFI-0001, EXTREF-GCC-CF-PROTECTION-0001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: reports/current/x86-64-target-profile-report.md, media_type: text/markdown, sha384: null, size_bytes: null}
+  produced_by: {tool: codex-docs, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: [X64-GAP-0005]
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-CPUFEAT-0001
+  title: CPU Feature Registry report
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: [MFOS-REQ-CPUFEAT-0001, MFOS-REQ-CPUFEAT-0002, MFOS-REQ-CPUFEAT-0003, MFOS-REQ-CPUFEAT-0004, MFOS-REQ-CPUFEAT-0005]
+  test_ids: [TEST-MFOS-CPUFEAT-POS-0001, NEG-MFOS-CPUFEAT-0001]
+  source_matrix_ids: [FBVBS-001, X64-INTEL-001, X64-AMD-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: reports/current/cpu-feature-registry-report.md, media_type: text/markdown, sha384: null, size_bytes: null}
+  produced_by: {tool: codex-docs, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: [CPUFEAT-GAP-0002]
+  legacy_evidence_ids: []
 spec_gaps:
 - gap_id: REG-GAP-0005
   summary: Evidence artifact storage layout and retention policy are not final.

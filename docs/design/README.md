@@ -2,7 +2,7 @@
 
 This directory is the design canon area for MFOS.
 
-MFOS is an x64-native, z/OS-inspired, source-grounded enterprise operating system. It is not z/OS-compatible and must not be described that way.
+MFOS is an x64-native, z/OS-inspired, source-grounded enterprise operating system. It is x86-64-first for initial implementation planning, but it is not x86-64-only. It is not z/OS-compatible and must not be described that way.
 
 Machine-checkable design enforcement around this canon consists of:
 
@@ -82,6 +82,8 @@ Start here:
 55. specs/41-performance-and-secure-operations.md
 56. specs/42-mfvm.md
 57. specs/43-dafny-executable-semantics-policy.md
+58. specs/44-architecture-portability-policy.md
+59. specs/45-x86-64-target-profiles.md
 ```
 
 ## Directory Map
@@ -114,8 +116,8 @@ docs/design/
     Pack-level index for handing bounded work to AI agents.
 
   registries/
-    Initial machine-readable seeds for requirements, tests, evidence, and
-    tasks.
+    Initial machine-readable seeds for requirements, tests, evidence, tasks,
+    CPU Feature Registry, and CPU Target Profile Registry.
 
   ja/
     Japanese mirror entrypoint and synchronization policy. English remains
@@ -139,6 +141,10 @@ Any AI or human implementer must follow these rules:
 - Add fuzz targets for parsers.
 - Keep PXM isolated from MFOS enterprise semantics.
 - Keep Guard limited to selected root objects.
+- Keep architecture-neutral semantics separate from architecture-specific
+  enforcement.
+- Treat x86-64-v4 as optional performance profile, not baseline.
+- Treat Intel SGX as optional enclave/TEE profile, not Confidential VM.
 ```
 
 ## Canonical Output Format for AI Changes

@@ -1,0 +1,73 @@
+schema_id: MFOS-SCHEMA-CPU-FEATURE-PROFILE-0001
+title: CPUFeatureAndTargetProfileRegistry
+status: draft
+phase: Phase 1 documentation policy
+implementation_allowed: false
+type: object
+required:
+- registry_kind
+- schema_version
+- registry_id
+- status
+- source_matrix_ref
+- non_compatibility_statement
+- implementation_allowed
+- entries
+- spec_gaps
+properties:
+  registry_kind:
+    enum:
+    - cpu_feature_registry
+    - cpu_target_profiles
+  schema_version:
+    type: integer
+  registry_id:
+    type: string
+  status:
+    enum:
+    - draft
+    - review
+    - ready
+    - frozen
+    - deprecated
+    - superseded
+  generated_from:
+    type: array
+  updated_at_utc:
+    type: string
+  updated_by:
+    type: string
+  non_compatibility_statement:
+    type: string
+  source_matrix_ref:
+    type: object
+  schema_ref:
+    type: object
+  implementation_allowed:
+    const: false
+  design_only:
+    const: true
+  registry_rules:
+    type: array
+  entries:
+    type: array
+    items:
+      type: object
+      additionalProperties: true
+  spec_gaps:
+    type: array
+  registry_hash:
+    type: object
+  registry_signature:
+    type: object
+additionalProperties: false
+source_refs:
+- FBVBS-001
+- X64-INTEL-001
+- X64-AMD-001
+- EXTREF-X86-64-MICROARCH-LEVELS-0001
+requirement_refs:
+- MFOS-REQ-ARCH-*
+- MFOS-REQ-X64-*
+- MFOS-REQ-CPUFEAT-*
+spec_gap_policy: implementation_must_not_infer_or_fill_gaps

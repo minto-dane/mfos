@@ -1,0 +1,63 @@
+schema_version: 1
+status: draft
+source_id: EXTREF-GCC-X86-64-V4-0001
+source_kind: bibliographic_reference
+source_type: external_reference
+semantic_role: design_background
+vendor: GNU Compiler Collection
+vendor_mark_used: true
+product_family: GNU Compiler Collection
+document_title: GCC x86 options for x86-64-v4
+document_url:
+- https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html
+retrieved_at: '2026-04-30'
+reference_purpose:
+- source discovery
+- compiler target profile source grounding
+- x86-64-v4 build-evidence planning
+- independent MFOS design traceability
+review_topics:
+- x86 target options
+- x86-64-v4 compilation profile background
+- build flag evidence requirements
+mfos_mapping:
+  mfos_components:
+  - build policy
+  - hardening evidence policy
+  - CPU Target Profile Registry
+  mfos_specs:
+  - docs/design/specs/45-x86-64-target-profiles.md
+  mfos_requirements: &id001
+  - MFOS-REQ-X64-V4-0002
+  - MFOS-REQ-X64-V4-0003
+  - MFOS-REQ-HARDENING-0001
+  mapping_notes:
+  - Public-safe reference for compiler target option existence. MFOS build flags and accepted artifacts remain independently specified.
+mfos_divergence:
+- MFOS does not claim GCC-specific support or generated binary suitability without MFOS evidence.
+- Compiler target names do not define MFOS security semantics.
+prohibited_inference:
+- Do not treat a compiler option as a global CPU feature guarantee.
+- Do not copy GCC option tables or command syntax into MFOS.
+- Do not claim x86-64-v4 support without MFOS build, detection, binary, and runtime evidence.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+source_refs:
+- source_id: EXTREF-GCC-X86-64-V4-0001
+  source_type: external_reference
+  role: card_subject
+requirement_refs: *id001
+review_status: draft

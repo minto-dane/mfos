@@ -16,7 +16,7 @@ from pathlib import Path
 from lib.mfos_lint import EVIDENCE, REQUIREMENTS, TESTS, Finding, ROOT, emit, load_yaml, mode_arg, source_ids
 
 
-REQ_RE = re.compile(r"^MFOS-REQ-[A-Z0-9]+-\d{4}$")
+REQ_RE = re.compile(r"^MFOS-REQ-[A-Z0-9]+(?:-[A-Z0-9]+)*-\d{4}$")
 TEST_RE = re.compile(r"^(TEST|NEG)-MFOS-[A-Z0-9]+-[A-Z0-9-]*\d{4}$")
 EVID_RE = re.compile(r"^EV-MFOS-[A-Z0-9]+-[A-Z0-9-]*\d{4}$")
 CLAIM_RE = re.compile(r"^MFOS-CLAIM-[A-Z0-9-]+-\d{4}$")

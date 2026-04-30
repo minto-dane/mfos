@@ -1,0 +1,213 @@
+registry_kind: cpu_target_profiles
+schema_version: 1
+registry_id: MFOS-REG-CPU-TARGET-PROFILES-0001
+status: draft
+generated_from:
+- path: docs/design/specs/44-architecture-portability-policy.md
+- path: docs/design/specs/45-x86-64-target-profiles.md
+updated_at_utc: '2026-04-30T00:00:00Z'
+updated_by: codex
+non_compatibility_statement: MFOS CPU target profiles are independent design profiles and do not claim Hyper-V, KVM, Intel, AMD, Linux, glibc, GCC, Rust, or seL4 compatibility.
+source_matrix_ref:
+  path: docs/design/source-matrix/source-matrix.yml
+  schema_version: 1
+schema_ref:
+  path: schemas/mfos/cpu-feature-profile.schema.yml
+implementation_allowed: false
+design_only: true
+registry_rules:
+- A profile cannot reference a feature_id missing from docs/design/registries/cpu-feature-registry.yml.
+- MFOS-X64-BASELINE cannot require x86-64-v4, Intel TDX, AMD SEV-SNP, or Intel SGX.
+- MFOS-X64-V4-PERFORMANCE cannot imply TDX, SEV, SGX, CET, CFI, or CVM support.
+- CVM profiles cannot imply x86-64-v4 performance support.
+- MFOS-X64-TEE-INTEL-SGX is enclave/TEE only and cannot be classified as a CVM profile.
+entries:
+- profile_id: MFOS-X64-BASELINE
+  profile_kind: baseline
+  architecture: x86_64
+  purpose: Minimum initial x86-64 profile for early implementation and verification planning.
+  required_features: [X64_PROFILE_X86_64_BASELINE, X64_FEATURE_NX, X64_FEATURE_WX_POLICY_SUPPORT]
+  optional_features: [X64_FEATURE_SMEP, X64_FEATURE_SMAP]
+  forbidden_features: [X64_PROFILE_X86_64_V4, X64_FEATURE_X86_64_V4, X64_FEATURE_INTEL_TDX, X64_FEATURE_AMD_SEV_SNP, X64_FEATURE_INTEL_SGX]
+  required_platform_features: []
+  required_build_evidence: [baseline_build_profile]
+  required_binary_evidence: [baseline_binary_instruction_audit]
+  required_runtime_evidence: [nx_available, wx_policy_enforced]
+  fallback_behavior: fail_closed_for_required_features
+  not_claimed:
+  - x86-64-v4 baseline
+  - Intel TDX support
+  - AMD SEV-SNP support
+  - Intel SGX support
+  - Hyper-V compatibility
+  - KVM compatibility
+  - non-x86 implementation support
+  source_refs: [X64-INTEL-001, X64-AMD-001, EXTREF-X86-64-MICROARCH-LEVELS-0001]
+  requirements: [MFOS-REQ-ARCH-0002, MFOS-REQ-X64-0001, MFOS-REQ-X64-0004, MFOS-REQ-CPUFEAT-0001]
+  tests: [TEST-MFOS-X64-POS-0001, NEG-MFOS-X64-BASELINE-V4-0001, NEG-MFOS-X64-BASELINE-CVM-TEE-0001]
+  evidence_required: [EV-MFOS-X64-BASELINE-0001, EV-MFOS-CPUFEAT-0001]
+  review_status: draft
+- profile_id: MFOS-X64-SERVER-MODERN
+  profile_kind: server
+  architecture: x86_64
+  purpose: Modern datacenter x86-64 server profile with explicit platform evidence.
+  required_features: [X64_PROFILE_X86_64_BASELINE, X64_FEATURE_NX, X64_FEATURE_WX_POLICY_SUPPORT]
+  optional_features: [X64_FEATURE_SMEP, X64_FEATURE_SMAP, X64_FEATURE_INTEL_VMX, X64_FEATURE_AMD_SVM, X64_FEATURE_IOMMU_INTEL_VT_D, X64_FEATURE_IOMMU_AMD_VI, X64_FEATURE_INTERRUPT_REMAPPING, X64_FEATURE_NUMA_TOPOLOGY, X64_FEATURE_TPM_OR_MEASURED_BOOT]
+  forbidden_features: []
+  required_platform_features: []
+  required_build_evidence: [server_build_profile]
+  required_binary_evidence: [server_binary_policy_report]
+  required_runtime_evidence: [capability_discovery_report, platform_topology_report]
+  fallback_behavior: profile_not_satisfied_for_missing_required_features
+  not_claimed:
+  - x86-64-v4 requirement
+  - CVM support
+  - SGX support
+  - Hyper-V compatibility
+  - KVM compatibility
+  source_refs: [X64-INTEL-001, X64-AMD-001, TCG-001, NIST-193-001]
+  requirements: [MFOS-REQ-X64-0002, MFOS-REQ-X64-0004, MFOS-REQ-X64-0005]
+  tests: [TEST-MFOS-X64-POS-0002, NEG-MFOS-X64-OPTIONAL-GLOBAL-0001]
+  evidence_required: [EV-MFOS-X64-SERVER-0001, EV-MFOS-CPUFEAT-0002]
+  review_status: draft
+- profile_id: MFOS-X64-V4-PERFORMANCE
+  profile_kind: performance
+  architecture: x86_64
+  purpose: Optional high-performance profile for systems satisfying x86-64-v4 feature-level requirements.
+  required_features: [X64_PROFILE_X86_64_V4, X64_FEATURE_X86_64_V4]
+  optional_features: [X64_FEATURE_AVX512_CLASS, X64_FEATURE_XSAVE_STATE_MANAGEMENT]
+  forbidden_features: [X64_FEATURE_INTEL_TDX, X64_FEATURE_AMD_SEV, X64_FEATURE_AMD_SEV_SNP, X64_FEATURE_INTEL_SGX, X64_FEATURE_INTEL_CET, X64_FEATURE_CFI_TOOLCHAIN]
+  required_platform_features: []
+  required_build_evidence: [v4_build_flags, v4_artifact_split]
+  required_binary_evidence: [baseline_no_v4_instruction_audit, v4_binary_instruction_audit]
+  required_runtime_evidence: [boot_or_runtime_v4_detection, negative_detection_test]
+  fallback_behavior: fallback_to_baseline
+  not_claimed:
+  - MFOS baseline
+  - TDX support
+  - SEV or SEV-SNP support
+  - SGX support
+  - CET/CFI hardening
+  - security semantics change
+  source_refs: [EXTREF-X86-64-MICROARCH-LEVELS-0001, EXTREF-GLIBC-HWCAPS-X86-64-V4-0001, EXTREF-GCC-X86-64-V4-0001]
+  requirements: [MFOS-REQ-X64-V4-0001, MFOS-REQ-X64-V4-0002, MFOS-REQ-X64-V4-0003, MFOS-REQ-X64-V4-0004, MFOS-REQ-X64-V4-0005, MFOS-REQ-X64-V4-0006]
+  tests: [TEST-MFOS-X64-V4-POS-0001, NEG-MFOS-X64-V4-BASELINE-0001, NEG-MFOS-X64-V4-TCB-0001]
+  evidence_required: [EV-MFOS-X64-V4-0001, EV-MFOS-X64-V4-0002]
+  review_status: draft
+- profile_id: MFOS-X64-MAX-FEATURE
+  profile_kind: best_effort
+  architecture: x86_64
+  purpose: Best-effort profile for newest available x86-64 features with individual capability gates.
+  required_features: [X64_PROFILE_X86_64_BASELINE]
+  optional_features: [X64_PROFILE_X86_64_V2, X64_PROFILE_X86_64_V3, X64_PROFILE_X86_64_V4, X64_FEATURE_SMEP, X64_FEATURE_SMAP, X64_FEATURE_INTEL_VMX, X64_FEATURE_AMD_SVM, X64_FEATURE_IOMMU_INTEL_VT_D, X64_FEATURE_IOMMU_AMD_VI, X64_FEATURE_INTERRUPT_REMAPPING, X64_FEATURE_INTEL_TDX, X64_FEATURE_AMD_SEV, X64_FEATURE_AMD_SEV_ES, X64_FEATURE_AMD_SEV_SNP, X64_FEATURE_AMD_SEV_TIO, X64_FEATURE_INTEL_SGX, X64_FEATURE_INTEL_CET, X64_FEATURE_CET_SHADOW_STACK, X64_FEATURE_CET_IBT, X64_FEATURE_CFI_TOOLCHAIN, X64_FEATURE_AVX512_CLASS, X64_FEATURE_XSAVE_STATE_MANAGEMENT, X64_FEATURE_NUMA_TOPOLOGY, X64_FEATURE_TPM_OR_MEASURED_BOOT]
+  forbidden_features: []
+  required_platform_features: []
+  required_build_evidence: [enabled_feature_manifest]
+  required_binary_evidence: [enabled_feature_binary_evidence]
+  required_runtime_evidence: [enabled_feature_runtime_evidence]
+  fallback_behavior: unsupported_or_profile_not_satisfied_for_missing_claimed_features
+  not_claimed:
+  - global availability of optional features
+  - silent downgrade
+  - Hyper-V compatibility
+  - KVM compatibility
+  source_refs: [X64-INTEL-001, X64-AMD-001, EXTREF-X86-64-MICROARCH-LEVELS-0001]
+  requirements: [MFOS-REQ-X64-0003, MFOS-REQ-X64-0004, MFOS-REQ-CPUFEAT-0004, MFOS-REQ-CPUFEAT-0005]
+  tests: [TEST-MFOS-X64-MAX-POS-0001, NEG-MFOS-X64-MAX-SILENT-DOWNGRADE-0001]
+  evidence_required: [EV-MFOS-X64-MAX-0001, EV-MFOS-CPUFEAT-0003]
+  review_status: draft
+- profile_id: MFOS-X64-CVM-INTEL-TDX
+  profile_kind: confidential_vm
+  architecture: x86_64
+  purpose: Confidential VM profile for Intel TDX-capable platforms.
+  required_features: [X64_FEATURE_INTEL_TDX]
+  optional_features: [X64_FEATURE_TPM_OR_MEASURED_BOOT]
+  forbidden_features: [X64_FEATURE_INTEL_SGX, X64_FEATURE_X86_64_V4]
+  required_platform_features: []
+  required_build_evidence: [tdx_profile_build_policy]
+  required_binary_evidence: [tdx_launch_component_binary_evidence]
+  required_runtime_evidence: [tdx_launch_measurement_evidence, tdx_attestation_evidence, secret_release_policy_evidence]
+  fallback_behavior: profile_not_satisfied
+  not_claimed:
+  - SGX support
+  - Hyper-V compatibility
+  - KVM compatibility
+  - x86-64-v4 performance support
+  - completed CVM implementation
+  source_refs: [EXTREF-INTEL-TDX-OVERVIEW-0001, EXTREF-INTEL-TDX-ATTESTATION-0001]
+  requirements: [MFOS-REQ-X64-CVM-0001, MFOS-REQ-CPUFEAT-0002, MFOS-REQ-CPUFEAT-0005]
+  tests: [TEST-MFOS-X64-CVM-TDX-POS-0001, NEG-MFOS-X64-CVM-TDX-SGX-0001]
+  evidence_required: [EV-MFOS-X64-CVM-TDX-0001]
+  review_status: draft
+- profile_id: MFOS-X64-CVM-AMD-SEV-SNP
+  profile_kind: confidential_vm
+  architecture: x86_64
+  purpose: Confidential VM profile for AMD SEV-SNP-capable platforms.
+  required_features: [X64_FEATURE_AMD_SEV, X64_FEATURE_AMD_SEV_SNP]
+  optional_features: [X64_FEATURE_AMD_SEV_ES, X64_FEATURE_AMD_SEV_TIO, X64_FEATURE_TPM_OR_MEASURED_BOOT]
+  forbidden_features: [X64_FEATURE_INTEL_SGX, X64_FEATURE_X86_64_V4]
+  required_platform_features: []
+  required_build_evidence: [sev_snp_profile_build_policy]
+  required_binary_evidence: [sev_snp_launch_component_binary_evidence]
+  required_runtime_evidence: [sev_snp_launch_measurement_evidence, sev_snp_attestation_evidence, secret_release_policy_evidence]
+  fallback_behavior: profile_not_satisfied
+  not_claimed:
+  - SGX support
+  - KVM compatibility
+  - x86-64-v4 performance support
+  - completed CVM implementation
+  source_refs: [EXTREF-AMD-SEV-OVERVIEW-0001, EXTREF-AMD-SEV-ES-0001, EXTREF-AMD-SEV-SNP-0001, EXTREF-AMD-SEV-TIO-0001]
+  requirements: [MFOS-REQ-X64-CVM-0002, MFOS-REQ-CPUFEAT-0002, MFOS-REQ-CPUFEAT-0005]
+  tests: [TEST-MFOS-X64-CVM-SEVSNP-POS-0001, NEG-MFOS-X64-CVM-SEVSNP-KVM-0001]
+  evidence_required: [EV-MFOS-X64-CVM-SEVSNP-0001]
+  review_status: draft
+- profile_id: MFOS-X64-TEE-INTEL-SGX
+  profile_kind: enclave_tee
+  architecture: x86_64
+  purpose: Optional Intel SGX enclave / TEE profile.
+  required_features: [X64_FEATURE_INTEL_SGX]
+  optional_features: [X64_FEATURE_INTEL_SGX_DCAP_ATTESTATION, X64_FEATURE_INTEL_SGX_EPID_ATTESTATION]
+  forbidden_features: [X64_FEATURE_INTEL_TDX, X64_FEATURE_AMD_SEV_SNP, X64_FEATURE_X86_64_V4]
+  required_platform_features: []
+  required_build_evidence: [sgx_enclave_profile_build_policy]
+  required_binary_evidence: [sgx_enclave_binary_evidence]
+  required_runtime_evidence: [sgx_feature_presence_evidence, sgx_platform_enablement_evidence, sgx_attestation_mode_evidence]
+  fallback_behavior: profile_not_satisfied
+  not_claimed:
+  - MFOS baseline
+  - Confidential VM profile
+  - TDX support
+  - SEV-SNP support
+  - Hyper-V compatibility
+  - KVM compatibility
+  - completed SGX runtime
+  source_refs: [EXTREF-INTEL-SGX-OVERVIEW-0001, EXTREF-INTEL-SGX-ATTESTATION-0001, EXTREF-INTEL-SGX-DCAP-0001]
+  requirements: [MFOS-REQ-X64-TEE-0001, MFOS-REQ-X64-TEE-0002, MFOS-REQ-X64-TEE-0003, MFOS-REQ-X64-TEE-0004, MFOS-REQ-X64-TEE-0005]
+  tests: [TEST-MFOS-X64-TEE-SGX-POS-0001, NEG-MFOS-X64-TEE-SGX-CVM-0001, NEG-MFOS-X64-TEE-SGX-ATTESTATION-CONFLATE-0001]
+  evidence_required: [EV-MFOS-X64-TEE-SGX-0001]
+  review_status: draft
+- profile_id: MFOS-HARDENING-CET-CFI
+  profile_kind: hardening_evidence
+  architecture: multiarch
+  purpose: Hardening evidence profile for CET/CFI claims.
+  required_features: [X64_FEATURE_CFI_TOOLCHAIN]
+  optional_features: [X64_FEATURE_INTEL_CET, X64_FEATURE_CET_SHADOW_STACK, X64_FEATURE_CET_IBT]
+  forbidden_features: []
+  required_platform_features: []
+  required_build_evidence: [cfi_cet_toolchain_flags, hardening_profile_manifest]
+  required_binary_evidence: [cfi_cet_binary_inspection]
+  required_runtime_evidence: [cet_runtime_enablement_when_claimed]
+  fallback_behavior: profile_not_satisfied
+  not_claimed:
+  - memory safety proof
+  - formal verification proof
+  - Rust safety replacement
+  - x86-64-v4 performance support
+  source_refs: [EXTREF-INTEL-CET-0001, EXTREF-CLANG-CFI-0001, EXTREF-CLANG-KCFI-0001, EXTREF-GCC-CF-PROTECTION-0001, EXTREF-RUST-CF-PROTECTION-0001]
+  requirements: [MFOS-REQ-HARDENING-0001]
+  tests: [TEST-MFOS-HARDENING-POS-0001, NEG-MFOS-HARDENING-NO-EVIDENCE-0001]
+  evidence_required: [EV-MFOS-HARDENING-0001]
+  review_status: draft
+spec_gaps:
+- gap_id: CPUFEAT-GAP-0101
+  summary: No architecture backend, CPU feature detector, CVM runtime, SGX runtime, or hardening implementation is authorized by these target profiles.

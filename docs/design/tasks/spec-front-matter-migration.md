@@ -206,15 +206,15 @@ Order:
 
 Rationale:
   AMF, update, nucleus, SVC/PCALL, and hardware profile specs have strong
-  safety and source-grounding needs. They should follow semantic-core metadata
+  safety and source-grounding needs. They should follow Dafny executable-semantics metadata
   so they can reference established security, audit, and failure-mode fields.
 
 Exit criteria:
 
 - `UNSUPPORTED` and `SPEC_GAP` are distinct.
 - AMF and SVC/PCALL list zACS-style negative tests.
-- Hardware claims are tied to x64 source IDs and do not overclaim PKU, PKS, or
-  CET.
+- Hardware claims are tied to x86-64 target-profile source IDs and do not
+  overclaim PKU, PKS, CET, SGX, TDX, SEV-SNP, or x86-64-v4 baseline status.
 - Update specs list rollback, freeze, mix-and-match, and provenance evidence.
 
 ### Phase 4: Partition, Guard, Gateway, Operations, and Assurance
