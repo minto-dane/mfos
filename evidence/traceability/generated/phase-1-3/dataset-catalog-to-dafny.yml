@@ -1,0 +1,374 @@
+schema_version: 1
+status: generated
+origin_phase: phase-1.3
+generated_by: scripts/generators/generate-dataset-catalog-coverage.py
+production_implementation_allowed: false
+rust_semantic_core_allowed: false
+hosted_daemon_allowed: false
+artifact_type: phase_1_3_dataset_catalog_to_dafny
+entries:
+- test_id: TEST-MFOS-DATASET-VALID-DSN-0901
+  domain: dataset_catalog
+  test_type: conformance
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_3_exit_blocker: false
+  required_for_dataset_catalog_aggregate: true
+  fixture_ref: tests/fixtures/dataset/valid-dsn-0901.yml
+  oracle_ref: tests/golden/dataset/valid-dsn-0901.yml
+  golden_ref: tests/golden/dataset/valid-dsn-0901.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_DATASET_VALID_DSN_ACCEPTED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-DATASET-VALID-DSN-0901
+    coverage_level: C5_CONFORMANCE_LINKED
+  negative_failure_conditions: []
+  notes: valid symbolic DSN acceptance; fixture/oracle/golden links are deterministic
+    conformance evidence and Python remains a non-semantic loader/comparator.
+- test_id: NEG-MFOS-DATASET-MALFORMED-DSN-0902
+  domain: dataset_catalog
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_3_exit_blocker: false
+  required_for_dataset_catalog_aggregate: true
+  fixture_ref: tests/fixtures/dataset/malformed-dsn-0902.yml
+  oracle_ref: tests/golden/dataset/malformed-dsn-0902.yml
+  golden_ref: tests/golden/dataset/malformed-dsn-0902.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_DATASET_MALFORMED_DSN_REJECTED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-DATASET-MALFORMED-DSN-0902
+    coverage_level: C5_CONFORMANCE_LINKED
+  negative_failure_conditions:
+  - INV_DATASET_MALFORMED_DSN_REJECTED
+  notes: malformed symbolic DSN rejection; fixture/oracle/golden links are deterministic
+    conformance evidence and Python remains a non-semantic loader/comparator.
+- test_id: TEST-MFOS-DATASET-CATALOG-COMMITTED-0903
+  domain: dataset_catalog
+  test_type: conformance
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_3_exit_blocker: false
+  required_for_dataset_catalog_aggregate: true
+  fixture_ref: tests/fixtures/dataset/catalog-committed-0903.yml
+  oracle_ref: tests/golden/dataset/catalog-committed-0903.yml
+  golden_ref: tests/golden/dataset/catalog-committed-0903.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_CATALOG_COMMITTED_ENTRY_RESOLVES
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-DATASET-CATALOG-COMMITTED-0903
+    coverage_level: C5_CONFORMANCE_LINKED
+  negative_failure_conditions: []
+  notes: committed catalog entry resolution; fixture/oracle/golden links are deterministic
+    conformance evidence and Python remains a non-semantic loader/comparator.
+- test_id: NEG-MFOS-DATASET-CATALOG-UNCOMMITTED-0904
+  domain: dataset_catalog
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_3_exit_blocker: false
+  required_for_dataset_catalog_aggregate: true
+  fixture_ref: tests/fixtures/dataset/catalog-uncommitted-0904.yml
+  oracle_ref: tests/golden/dataset/catalog-uncommitted-0904.yml
+  golden_ref: tests/golden/dataset/catalog-uncommitted-0904.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_CATALOG_UNCOMMITTED_CANNOT_RESOLVE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-DATASET-CATALOG-UNCOMMITTED-0904
+    coverage_level: C5_CONFORMANCE_LINKED
+  negative_failure_conditions:
+  - INV_CATALOG_UNCOMMITTED_CANNOT_RESOLVE
+  notes: uncommitted catalog entry rejection; fixture/oracle/golden links are deterministic
+    conformance evidence and Python remains a non-semantic loader/comparator.
+- test_id: NEG-MFOS-DATASET-CATALOG-ROLLED-BACK-0905
+  domain: dataset_catalog
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_3_exit_blocker: false
+  required_for_dataset_catalog_aggregate: true
+  fixture_ref: tests/fixtures/dataset/catalog-rolled-back-0905.yml
+  oracle_ref: tests/golden/dataset/catalog-rolled-back-0905.yml
+  golden_ref: tests/golden/dataset/catalog-rolled-back-0905.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_CATALOG_ROLLED_BACK_CANNOT_RESOLVE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-DATASET-CATALOG-ROLLED-BACK-0905
+    coverage_level: C5_CONFORMANCE_LINKED
+  negative_failure_conditions:
+  - INV_CATALOG_ROLLED_BACK_CANNOT_RESOLVE
+  notes: rolled-back catalog entry rejection; fixture/oracle/golden links are deterministic
+    conformance evidence and Python remains a non-semantic loader/comparator.
+- test_id: NEG-MFOS-DATASET-CATALOG-PARTIAL-JOURNAL-0906
+  domain: dataset_catalog
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_3_exit_blocker: false
+  required_for_dataset_catalog_aggregate: true
+  fixture_ref: tests/fixtures/dataset/catalog-partial-journal-0906.yml
+  oracle_ref: tests/golden/dataset/catalog-partial-journal-0906.yml
+  golden_ref: tests/golden/dataset/catalog-partial-journal-0906.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_CATALOG_PARTIAL_JOURNAL_CANNOT_RESOLVE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-DATASET-CATALOG-PARTIAL-JOURNAL-0906
+    coverage_level: C5_CONFORMANCE_LINKED
+  negative_failure_conditions:
+  - INV_CATALOG_PARTIAL_JOURNAL_CANNOT_RESOLVE
+  notes: partial-journal catalog entry rejection; fixture/oracle/golden links are
+    deterministic conformance evidence and Python remains a non-semantic loader/comparator.
+- test_id: NEG-MFOS-DATASET-CATALOG-INTEGRITY-FAILED-0907
+  domain: dataset_catalog
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_3_exit_blocker: false
+  required_for_dataset_catalog_aggregate: true
+  fixture_ref: tests/fixtures/dataset/catalog-integrity-failed-0907.yml
+  oracle_ref: tests/golden/dataset/catalog-integrity-failed-0907.yml
+  golden_ref: tests/golden/dataset/catalog-integrity-failed-0907.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_CATALOG_INTEGRITY_FAILED_CANNOT_RESOLVE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-DATASET-CATALOG-INTEGRITY-FAILED-0907
+    coverage_level: C5_CONFORMANCE_LINKED
+  negative_failure_conditions:
+  - INV_CATALOG_INTEGRITY_FAILED_CANNOT_RESOLVE
+  notes: integrity-failed catalog entry rejection; fixture/oracle/golden links are
+    deterministic conformance evidence and Python remains a non-semantic loader/comparator.
+- test_id: NEG-MFOS-DATASET-UNAUTHORIZED-OPEN-0908
+  domain: dataset_catalog
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_3_exit_blocker: false
+  required_for_dataset_catalog_aggregate: true
+  fixture_ref: tests/fixtures/dataset/unauthorized-open-0908.yml
+  oracle_ref: tests/golden/dataset/unauthorized-open-0908.yml
+  golden_ref: tests/golden/dataset/unauthorized-open-0908.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_DATASET_OPEN_DENY_PRODUCES_NO_HANDLE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-DATASET-UNAUTHORIZED-OPEN-0908
+    coverage_level: C5_CONFORMANCE_LINKED
+  negative_failure_conditions:
+  - INV_DATASET_OPEN_DENY_PRODUCES_NO_HANDLE
+  notes: denied dataset open creates no handle; fixture/oracle/golden links are deterministic
+    conformance evidence and Python remains a non-semantic loader/comparator.
+- test_id: NEG-MFOS-DATASET-STALE-HANDLE-POLICY-0909
+  domain: dataset_catalog
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_3_exit_blocker: false
+  required_for_dataset_catalog_aggregate: true
+  fixture_ref: tests/fixtures/dataset/stale-handle-policy-0909.yml
+  oracle_ref: tests/golden/dataset/stale-handle-policy-0909.yml
+  golden_ref: tests/golden/dataset/stale-handle-policy-0909.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_DATASET_STALE_HANDLE_AFTER_POLICY_CHANGE_REJECTED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-DATASET-STALE-HANDLE-POLICY-0909
+    coverage_level: C5_CONFORMANCE_LINKED
+  negative_failure_conditions:
+  - INV_DATASET_STALE_HANDLE_AFTER_POLICY_CHANGE_REJECTED
+  notes: policy-version stale handle rejection; fixture/oracle/golden links are deterministic
+    conformance evidence and Python remains a non-semantic loader/comparator.
+- test_id: NEG-MFOS-DATASET-STALE-HANDLE-CATALOG-0910
+  domain: dataset_catalog
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_3_exit_blocker: false
+  required_for_dataset_catalog_aggregate: true
+  fixture_ref: tests/fixtures/dataset/stale-handle-catalog-0910.yml
+  oracle_ref: tests/golden/dataset/stale-handle-catalog-0910.yml
+  golden_ref: tests/golden/dataset/stale-handle-catalog-0910.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_DATASET_STALE_HANDLE_AFTER_CATALOG_GENERATION_CHANGE_REJECTED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-DATASET-STALE-HANDLE-CATALOG-0910
+    coverage_level: C5_CONFORMANCE_LINKED
+  negative_failure_conditions:
+  - INV_DATASET_STALE_HANDLE_AFTER_CATALOG_GENERATION_CHANGE_REJECTED
+  notes: catalog-generation stale handle rejection; fixture/oracle/golden links are
+    deterministic conformance evidence and Python remains a non-semantic loader/comparator.
+- test_id: NEG-MFOS-DATASET-RETENTION-DELETE-0911
+  domain: dataset_catalog
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_3_exit_blocker: false
+  required_for_dataset_catalog_aggregate: true
+  fixture_ref: tests/fixtures/dataset/retention-delete-0911.yml
+  oracle_ref: tests/golden/dataset/retention-delete-0911.yml
+  golden_ref: tests/golden/dataset/retention-delete-0911.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_DATASET_RETENTION_VIOLATION_NOT_SUCCESS
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-DATASET-RETENTION-DELETE-0911
+    coverage_level: C5_CONFORMANCE_LINKED
+  negative_failure_conditions:
+  - INV_DATASET_RETENTION_VIOLATION_NOT_SUCCESS
+  notes: retention delete rejection; fixture/oracle/golden links are deterministic
+    conformance evidence and Python remains a non-semantic loader/comparator.
+- test_id: NEG-MFOS-DATASET-IMMUTABLE-SYSTEM-0912
+  domain: dataset_catalog
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_3_exit_blocker: false
+  required_for_dataset_catalog_aggregate: true
+  fixture_ref: tests/fixtures/dataset/immutable-system-0912.yml
+  oracle_ref: tests/golden/dataset/immutable-system-0912.yml
+  golden_ref: tests/golden/dataset/immutable-system-0912.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_DATASET_IMMUTABLE_SYSTEM_MODIFICATION_NOT_SUCCESS
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-DATASET-IMMUTABLE-SYSTEM-0912
+    coverage_level: C5_CONFORMANCE_LINKED
+  negative_failure_conditions:
+  - INV_DATASET_IMMUTABLE_SYSTEM_MODIFICATION_NOT_SUCCESS
+  notes: immutable system dataset modification rejection; fixture/oracle/golden links
+    are deterministic conformance evidence and Python remains a non-semantic loader/comparator.
+- test_id: NEG-MFOS-DATASET-NOT-POSIX-FILE-0913
+  domain: dataset_catalog
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_3_exit_blocker: false
+  required_for_dataset_catalog_aggregate: true
+  fixture_ref: tests/fixtures/dataset/not-posix-file-0913.yml
+  oracle_ref: tests/golden/dataset/not-posix-file-0913.yml
+  golden_ref: tests/golden/dataset/not-posix-file-0913.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_DATASET_NOT_POSIX_FILE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-DATASET-NOT-POSIX-FILE-0913
+    coverage_level: C5_CONFORMANCE_LINKED
+  negative_failure_conditions:
+  - INV_DATASET_NOT_POSIX_FILE
+  notes: dataset is not a POSIX file model; fixture/oracle/golden links are deterministic
+    conformance evidence and Python remains a non-semantic loader/comparator.
+- test_id: TEST-MFOS-DATASET-CRASH-MID-COMMIT-0914
+  domain: dataset_catalog
+  test_type: conformance
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_3_exit_blocker: false
+  required_for_dataset_catalog_aggregate: true
+  fixture_ref: tests/fixtures/dataset/crash-mid-commit-0914.yml
+  oracle_ref: tests/golden/dataset/crash-mid-commit-0914.yml
+  golden_ref: tests/golden/dataset/crash-mid-commit-0914.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_CATALOG_CRASH_MID_COMMIT_RECOVERY_EXPOSES_ONLY_SAFE_STATE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-DATASET-CRASH-MID-COMMIT-0914
+    coverage_level: C5_CONFORMANCE_LINKED
+  negative_failure_conditions: []
+  notes: crash recovery exposes only safe catalog state; fixture/oracle/golden links
+    are deterministic conformance evidence and Python remains a non-semantic loader/comparator.
+- integration_id: DATASET-CATALOG-AUTH-ALLOW-ONLY
+  domain: dataset_catalog_auth_audit_integration
+  coverage_level: C4_VERIFIED_PROPERTY
+  phase_1_3_exit_blocker: false
+  required_for_dataset_catalog_aggregate: false
+  fixture_ref: null
+  oracle_ref: null
+  golden_ref: null
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_DATASET_OPEN_SUCCESS_REQUIRES_ALLOW_OR_ALLOW_WITH_AUDIT
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-DATASET-CATALOG-AUTH-ALLOW-ONLY
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: Dataset open success requires ALLOW or ALLOW_WITH_AUDIT. Dedicated Dataset/Catalog
+    conformance vectors are not used to raise this integration row to C5.
+- integration_id: DATASET-CATALOG-HANDLE-NO-BYPASS
+  domain: dataset_catalog_auth_audit_integration
+  coverage_level: C4_VERIFIED_PROPERTY
+  phase_1_3_exit_blocker: false
+  required_for_dataset_catalog_aggregate: false
+  fixture_ref: null
+  oracle_ref: null
+  golden_ref: null
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_DATASET_HANDLE_CREATION_CANNOT_BYPASS_AUTHORIZATION
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-DATASET-CATALOG-HANDLE-NO-BYPASS
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: Dataset handle creation cannot bypass authorization. Dedicated Dataset/Catalog
+    conformance vectors are not used to raise this integration row to C5.
+- integration_id: DATASET-CATALOG-DENY-AUDIT-BEFORE-RETURN
+  domain: dataset_catalog_auth_audit_integration
+  coverage_level: C4_VERIFIED_PROPERTY
+  phase_1_3_exit_blocker: false
+  required_for_dataset_catalog_aggregate: false
+  fixture_ref: null
+  oracle_ref: null
+  golden_ref: null
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_DATASET_OPEN_DENY_WITH_AUDIT_WRITES_BEFORE_RETURN
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-DATASET-CATALOG-DENY-AUDIT-BEFORE-RETURN
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: Dataset open DENY with audit obligation links to before-return audit evidence.
+    Dedicated Dataset/Catalog conformance vectors are not used to raise this integration
+    row to C5.
+- integration_id: DATASET-CATALOG-DENY-AUDIT-UNAVAILABLE
+  domain: dataset_catalog_auth_audit_integration
+  coverage_level: C4_VERIFIED_PROPERTY
+  phase_1_3_exit_blocker: false
+  required_for_dataset_catalog_aggregate: false
+  fixture_ref: null
+  oracle_ref: null
+  golden_ref: null
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_DATASET_OPEN_DENY_AUDIT_UNAVAILABLE_FAILS_CLOSED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-DATASET-CATALOG-DENY-AUDIT-UNAVAILABLE
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: Dataset open DENY fails closed when required audit is unavailable. Dedicated
+    Dataset/Catalog conformance vectors are not used to raise this integration row
+    to C5.
+- integration_id: DATASET-CATALOG-AUDIT-NO-BYPASS
+  domain: dataset_catalog_auth_audit_integration
+  coverage_level: C4_VERIFIED_PROPERTY
+  phase_1_3_exit_blocker: false
+  required_for_dataset_catalog_aggregate: false
+  fixture_ref: null
+  oracle_ref: null
+  golden_ref: null
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_DATASET_CANNOT_BYPASS_AUDIT_WHEN_OBLIGATION_EXISTS
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-DATASET-CATALOG-AUDIT-NO-BYPASS
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: Dataset/Catalog fail-closed result cannot bypass required audit evidence.
+    Dedicated Dataset/Catalog conformance vectors are not used to raise this integration
+    row to C5.

@@ -1,0 +1,217 @@
+schema_version: 1
+artifact_type: phase_1_3_dataset_catalog_gap_normalization
+status: current
+origin_phase: phase-1.3
+entry_blockers_remaining: false
+exit_blockers_remaining: false
+current_pr_merge_blockers_remaining: false
+accepted_deferred_count: 2
+closed_count: 11
+entries:
+- gap_id: GAP-TEST-TEST-MFOS-DATASET-VALID-DSN-0901
+  artifact_kind: test
+  artifact_id: TEST-MFOS-DATASET-VALID-DSN-0901
+  owner_domain: dataset_catalog
+  previous_classification: accepted_deferred
+  normalized_disposition: closed_with_verified_dafny_property_and_conformance_links
+  phase_1_3_entry_blocker: false
+  phase_1_3_exit_blocker: false
+  current_pr_merge_blocker: false
+  accepted_deferred: false
+  false_positive: false
+  coverage_level: C5_CONFORMANCE_LINKED
+  dafny_symbol: INV_DATASET_VALID_DSN_ACCEPTED
+  reason: Phase 1.3 links the scenario to a verified Dafny property and deterministic
+    fixture/oracle/golden evidence.
+  required_action: none
+- gap_id: GAP-TEST-NEG-MFOS-DATASET-MALFORMED-DSN-0902
+  artifact_kind: test
+  artifact_id: NEG-MFOS-DATASET-MALFORMED-DSN-0902
+  owner_domain: dataset_catalog
+  previous_classification: accepted_deferred
+  normalized_disposition: closed_with_verified_dafny_property_and_conformance_links
+  phase_1_3_entry_blocker: false
+  phase_1_3_exit_blocker: false
+  current_pr_merge_blocker: false
+  accepted_deferred: false
+  false_positive: false
+  coverage_level: C5_CONFORMANCE_LINKED
+  dafny_symbol: INV_DATASET_MALFORMED_DSN_REJECTED
+  reason: Phase 1.3 links the scenario to a verified Dafny property and deterministic
+    fixture/oracle/golden evidence.
+  required_action: none
+- gap_id: GAP-TEST-TEST-MFOS-DATASET-CATALOG-COMMITTED-0903
+  artifact_kind: test
+  artifact_id: TEST-MFOS-DATASET-CATALOG-COMMITTED-0903
+  owner_domain: dataset_catalog
+  previous_classification: accepted_deferred
+  normalized_disposition: closed_with_verified_dafny_property_and_conformance_links
+  phase_1_3_entry_blocker: false
+  phase_1_3_exit_blocker: false
+  current_pr_merge_blocker: false
+  accepted_deferred: false
+  false_positive: false
+  coverage_level: C5_CONFORMANCE_LINKED
+  dafny_symbol: INV_CATALOG_COMMITTED_ENTRY_RESOLVES
+  reason: Phase 1.3 links the scenario to a verified Dafny property and deterministic
+    fixture/oracle/golden evidence.
+  required_action: none
+- gap_id: GAP-TEST-NEG-MFOS-DATASET-RETENTION-DELETE-0911
+  artifact_kind: test
+  artifact_id: NEG-MFOS-DATASET-RETENTION-DELETE-0911
+  owner_domain: dataset_catalog
+  previous_classification: accepted_deferred
+  normalized_disposition: closed_with_verified_dafny_property_and_conformance_links
+  phase_1_3_entry_blocker: false
+  phase_1_3_exit_blocker: false
+  current_pr_merge_blocker: false
+  accepted_deferred: false
+  false_positive: false
+  coverage_level: C5_CONFORMANCE_LINKED
+  dafny_symbol: INV_DATASET_RETENTION_VIOLATION_NOT_SUCCESS
+  reason: Phase 1.3 links the scenario to a verified Dafny property and deterministic
+    fixture/oracle/golden evidence.
+  required_action: none
+- gap_id: GAP-TEST-NEG-MFOS-DATASET-IMMUTABLE-SYSTEM-0912
+  artifact_kind: test
+  artifact_id: NEG-MFOS-DATASET-IMMUTABLE-SYSTEM-0912
+  owner_domain: dataset_catalog
+  previous_classification: accepted_deferred
+  normalized_disposition: closed_with_verified_dafny_property_and_conformance_links
+  phase_1_3_entry_blocker: false
+  phase_1_3_exit_blocker: false
+  current_pr_merge_blocker: false
+  accepted_deferred: false
+  false_positive: false
+  coverage_level: C5_CONFORMANCE_LINKED
+  dafny_symbol: INV_DATASET_IMMUTABLE_SYSTEM_MODIFICATION_NOT_SUCCESS
+  reason: Phase 1.3 links the scenario to a verified Dafny property and deterministic
+    fixture/oracle/golden evidence.
+  required_action: none
+- gap_id: GAP-TEST-NEG-MFOS-DATASET-NOT-POSIX-FILE-0913
+  artifact_kind: test
+  artifact_id: NEG-MFOS-DATASET-NOT-POSIX-FILE-0913
+  owner_domain: dataset_catalog
+  previous_classification: accepted_deferred
+  normalized_disposition: closed_with_verified_dafny_property_and_conformance_links
+  phase_1_3_entry_blocker: false
+  phase_1_3_exit_blocker: false
+  current_pr_merge_blocker: false
+  accepted_deferred: false
+  false_positive: false
+  coverage_level: C5_CONFORMANCE_LINKED
+  dafny_symbol: INV_DATASET_NOT_POSIX_FILE
+  reason: Phase 1.3 links the scenario to a verified Dafny property and deterministic
+    fixture/oracle/golden evidence.
+  required_action: none
+- gap_id: GAP-TEST-TEST-MFOS-DATASET-CRASH-MID-COMMIT-0914
+  artifact_kind: test
+  artifact_id: TEST-MFOS-DATASET-CRASH-MID-COMMIT-0914
+  owner_domain: dataset_catalog
+  previous_classification: accepted_deferred
+  normalized_disposition: closed_with_verified_dafny_property_and_conformance_links
+  phase_1_3_entry_blocker: false
+  phase_1_3_exit_blocker: false
+  current_pr_merge_blocker: false
+  accepted_deferred: false
+  false_positive: false
+  coverage_level: C5_CONFORMANCE_LINKED
+  dafny_symbol: INV_CATALOG_CRASH_MID_COMMIT_RECOVERY_EXPOSES_ONLY_SAFE_STATE
+  reason: Phase 1.3 links the scenario to a verified Dafny property and deterministic
+    fixture/oracle/golden evidence.
+  required_action: none
+- gap_id: GAP-REQ-MFOS-REQ-CATALOG-0002
+  artifact_kind: requirement
+  artifact_id: MFOS-REQ-CATALOG-0002
+  owner_domain: dataset_catalog
+  previous_classification: accepted_deferred
+  normalized_disposition: closed_with_verified_dafny_property
+  phase_1_3_entry_blocker: false
+  phase_1_3_exit_blocker: false
+  current_pr_merge_blocker: false
+  accepted_deferred: false
+  false_positive: false
+  coverage_level: C4_VERIFIED_PROPERTY
+  dafny_symbol: INV_CATALOG_RESOLVE_SUCCESS_IMPLIES_COMMITTED
+  reason: Phase 1.3 adds verified Dataset/Catalog Dafny properties for the requirement
+    aggregate.
+  required_action: none
+- gap_id: GAP-REQ-MFOS-REQ-CATALOG-0101
+  artifact_kind: requirement
+  artifact_id: MFOS-REQ-CATALOG-0101
+  owner_domain: dataset_catalog
+  previous_classification: accepted_deferred
+  normalized_disposition: closed_with_verified_dafny_property
+  phase_1_3_entry_blocker: false
+  phase_1_3_exit_blocker: false
+  current_pr_merge_blocker: false
+  accepted_deferred: false
+  false_positive: false
+  coverage_level: C4_VERIFIED_PROPERTY
+  dafny_symbol: INV_CATALOG_RESOLVE_SUCCESS_IMPLIES_COMMITTED
+  reason: Phase 1.3 adds verified Dataset/Catalog Dafny properties for the requirement
+    aggregate.
+  required_action: none
+- gap_id: GAP-REQ-MFOS-REQ-DATASET-0101
+  artifact_kind: requirement
+  artifact_id: MFOS-REQ-DATASET-0101
+  owner_domain: dataset_catalog
+  previous_classification: accepted_deferred
+  normalized_disposition: closed_with_verified_dafny_property
+  phase_1_3_entry_blocker: false
+  phase_1_3_exit_blocker: false
+  current_pr_merge_blocker: false
+  accepted_deferred: false
+  false_positive: false
+  coverage_level: C4_VERIFIED_PROPERTY
+  dafny_symbol: INV_DATASET_CREATE_HANDLE_BINDS_DECISION
+  reason: Phase 1.3 adds verified Dataset/Catalog Dafny properties for the requirement
+    aggregate.
+  required_action: none
+- gap_id: GAP-REQ-MFOS-REQ-DATASET-0102
+  artifact_kind: requirement
+  artifact_id: MFOS-REQ-DATASET-0102
+  owner_domain: dataset_catalog
+  previous_classification: accepted_deferred
+  normalized_disposition: closed_with_verified_dafny_property
+  phase_1_3_entry_blocker: false
+  phase_1_3_exit_blocker: false
+  current_pr_merge_blocker: false
+  accepted_deferred: false
+  false_positive: false
+  coverage_level: C4_VERIFIED_PROPERTY
+  dafny_symbol: INV_DATASET_NOT_POSIX_FILE
+  reason: Phase 1.3 adds verified Dataset/Catalog Dafny properties for the requirement
+    aggregate.
+  required_action: none
+- gap_id: GAP-FORMAL-MFOS-CLAIM-BASELINE-SYSINT-0001
+  artifact_kind: formal_claim
+  artifact_id: MFOS-CLAIM-BASELINE-SYSINT-0001
+  owner_domain: dataset_catalog
+  previous_classification: accepted_deferred
+  normalized_disposition: accepted_deferred_formal_proof_artifact_required
+  phase_1_3_entry_blocker: false
+  phase_1_3_exit_blocker: false
+  current_pr_merge_blocker: false
+  accepted_deferred: true
+  false_positive: false
+  coverage_level: C3_FULL_SEMANTIC
+  dafny_symbol: INV_DATASET_HANDLE_CREATION_CANNOT_BYPASS_AUTHORIZATION
+  reason: Assurance claim exists, but no formal proof artifact is claimed.
+  required_action: Create proof artifacts before raising formal claims to C4/C5.
+- gap_id: GAP-TEST-TEST-MFOS-OPER-DEFINE-DATASET-0903
+  artifact_kind: test
+  artifact_id: TEST-MFOS-OPER-DEFINE-DATASET-0903
+  owner_domain: operator_console
+  previous_classification: accepted_deferred
+  normalized_disposition: accepted_deferred_non_dataset_catalog_owner
+  phase_1_3_entry_blocker: false
+  phase_1_3_exit_blocker: false
+  current_pr_merge_blocker: false
+  accepted_deferred: true
+  false_positive: false
+  coverage_level: C3_FULL_SEMANTIC
+  dafny_symbol: OperatorCommandAuthorized
+  reason: Operator console define-dataset workflow consumes Dataset/Catalog semantics
+    but is owned by a later Operator Console deepening pass.
+  required_action: Defer to Operator Console semantic deepening.

@@ -8,6 +8,8 @@ normalized_input:
 expected_normalized_output:
   outcome: EXPECTED_ALLOW
   final_state: COMPLETE
+  recovery_exposes_only_committed_or_absent: true
+  partial_catalog_success: false
 expected_decisions: &id001
 - decision_id: DECISION-MFOS-PHASE09-0001
   result: ALLOW
@@ -38,6 +40,10 @@ oracle:
   expected_failure:
     error_code: null
     fail_closed: false
+  expected_recovery:
+    exposes_only_committed_or_absent: true
+    partial_catalog_success: false
+    usable_partial_dataset_handle: false
   expected_final_state: COMPLETE
   evidence_required:
   - EV-MFOS-DATASET-CRASH-MID-COMMIT-0914

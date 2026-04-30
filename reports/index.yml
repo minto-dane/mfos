@@ -208,6 +208,36 @@ current:
 - path: reports/current/dafny-authorization-audit-open-issues.md
   purpose: Nonblocking Phase 1.2 Authorization/Audit open issues.
   generated_by: scripts/generators/generate-auth-audit-coverage.py
+- path: reports/current/phase-1-3-entry-gate.md
+  purpose: Phase 1.3 Dataset/Catalog Deepening entry gate decision.
+  generated_by: scripts/generators/generate-dataset-catalog-coverage.py
+- path: reports/current/phase-1-3-entry-gate.yml
+  purpose: Machine-readable Phase 1.3 Dataset/Catalog entry gate decision and merge blockers.
+  generated_by: scripts/generators/generate-dataset-catalog-coverage.py
+- path: reports/current/dafny-dataset-catalog-gap-normalization.md
+  purpose: Phase 1.3 Dataset/Catalog gap normalization and merge-gate disposition.
+  generated_by: scripts/generators/generate-dataset-catalog-coverage.py
+- path: reports/current/dafny-dataset-catalog-gap-normalization.yml
+  purpose: Machine-readable Phase 1.3 Dataset/Catalog gap normalization ledger.
+  generated_by: scripts/generators/generate-dataset-catalog-coverage.py
+- path: reports/current/dafny-dataset-catalog-report.md
+  purpose: Phase 1.3 Dataset/Catalog Dafny semantic deepening report.
+  generated_by: scripts/generators/generate-dataset-catalog-coverage.py
+- path: reports/current/dafny-dataset-catalog-validation-report.md
+  purpose: Phase 1.3 Dataset/Catalog validation result report.
+  generated_by: scripts/generators/generate-dataset-catalog-coverage.py
+- path: reports/current/dafny-dataset-catalog-coverage-report.md
+  purpose: Phase 1.3 Dataset/Catalog coverage report.
+  generated_by: scripts/generators/generate-dataset-catalog-coverage.py
+- path: reports/current/dafny-dataset-catalog-coverage.yml
+  purpose: Machine-readable Phase 1.3 Dataset/Catalog coverage summary.
+  generated_by: scripts/generators/generate-dataset-catalog-coverage.py
+- path: reports/current/dafny-dataset-catalog-red-team-review.md
+  purpose: Red-team review for Phase 1.3 Dataset/Catalog Dafny semantics.
+  generated_by: scripts/generators/generate-dataset-catalog-coverage.py
+- path: reports/current/dafny-dataset-catalog-open-issues.md
+  purpose: Nonblocking Phase 1.3 Dataset/Catalog open issues.
+  generated_by: scripts/generators/generate-dataset-catalog-coverage.py
 - path: reports/current/pr-19-review-report.md
   purpose: PR #19 Phase 1.2 Authorization/Audit review merge decision.
 - path: reports/current/pr-19-post-pr21-review-report.md

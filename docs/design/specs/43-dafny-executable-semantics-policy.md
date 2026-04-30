@@ -5,7 +5,7 @@ canonical_language: en-US
 japanese_mirror: missing
 status: current
 owner: MFOS architecture
-last_reviewed: '2026-04-29'
+last_reviewed: '2026-04-30'
 source_refs:
 - EXTREF-DAFNY-REFERENCE-0001
 - EXTREF-AWS-AUTOMATED-REASONING-0001
@@ -251,9 +251,36 @@ authorization_audit_exit_blockers_remaining: false
 release_ready_model_claimed: false
 ```
 
-The current Dafny module set verifies with `97 verified, 0 errors`.
+The Phase 1.2 Dafny module set verified with `97 verified, 0 errors`.
 
-## 15. Gaps
+## 15. Phase 1.3 Dataset/Catalog Deepening
+
+Phase 1.3 deepens the non-production Dafny executable semantics for
+Dataset/Catalog and its Authorization/Audit integration boundary. It does not
+authorize production implementation, catalogd, datasetd, storage, Rust
+semantic-core work, hosted daemons, production semantic runners, or service
+implementation.
+
+Coverage traceability is generated under:
+
+```text
+evidence/traceability/generated/phase-1-3/
+```
+
+Current Phase 1.3 judgment:
+
+```yaml
+dataset_catalog_coverage_level: C5_CONFORMANCE_LINKED
+dataset_catalog_requirement_coverage_level: C4_VERIFIED_PROPERTY
+dataset_catalog_auth_audit_integration_coverage_level: C4_VERIFIED_PROPERTY
+formal_claim_proof_coverage_complete: false
+dataset_catalog_exit_blockers_remaining: false
+release_ready_model_claimed: false
+```
+
+The current Dafny module set verifies with `118 verified, 0 errors`.
+
+## 16. Gaps
 
 | Gap ID | Gap | Impact |
 | --- | --- | --- |
