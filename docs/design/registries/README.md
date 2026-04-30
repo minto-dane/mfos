@@ -13,7 +13,9 @@ MFOS is source-grounded and z/OS-inspired. These registries do not claim z/OS co
 | [requirements.yaml](requirements.yaml) | `requirements` | Seed requirement records with Source Matrix IDs, verification methods, test links, evidence links, task links, audit obligations, and gaps. |
 | [tests.yaml](tests.yaml) | `tests` | Seed positive, negative, and fuzz test metadata. Negative tests include expected absence of success side effects. |
 | [evidence.yaml](evidence.yaml) | `evidence` | Draft expected evidence artifacts for tests and CI. These are placeholders, not verified release evidence. |
-| [tasks.yaml](tasks.yaml) | `tasks` | Seed task ownership and expected outputs for registry, hosted semantic, audit, and CI work. |
+| [tasks.yaml](tasks.yaml) | `tasks` | Seed task ownership and expected outputs for registry, Dafny semantic, audit, and CI work. |
+| [cpu-feature-registry.yml](cpu-feature-registry.yml) | `cpu_feature_registry` | Design-time CPU feature identity, source grounding, profile affinity, evidence expectation, fallback, and review-state registry. It is not a feature detector. |
+| [cpu-target-profiles.yml](cpu-target-profiles.yml) | `cpu_target_profiles` | Design-time x86-64 target profile registry. Profiles reference CPU Feature Registry IDs and do not authorize architecture backend implementation. |
 
 ## Current Seed Scope
 
@@ -33,6 +35,11 @@ The v0.5 seed set covers the priority requirements from the current review pass:
   authorized-state, claim-boundary, SVC/PCALL, audit-evidence, dataset-handle,
   job-identity, operator-command, AMF, PXM, Guard, and hardware-mechanism
   integrity requirements.
+- `MFOS-REQ-ARCH-*`, `MFOS-REQ-X64-*`, `MFOS-REQ-X64-V4-*`,
+  `MFOS-REQ-X64-CVM-*`, `MFOS-REQ-X64-TEE-*`,
+  `MFOS-REQ-HARDENING-*`, and `MFOS-REQ-CPUFEAT-*`: architecture
+  portability, x86-64 target profiles, optional v4, CVM, SGX/TEE, hardening,
+  and CPU feature registry policy.
 
 The linked seed tests cover:
 
@@ -46,6 +53,10 @@ The linked seed tests cover:
   unsupported/SPEC_GAP success, log-as-audit substitution, dataset handle
   binding, missing job principal, operator destructive command, AMF boundary,
   PXM scope, Guard scope, and hardware overclaim.
+- Architecture portability and x86-64 target-profile review tests covering
+  x86-64-first-but-not-only boundaries, optional v4, TDX/SEV-SNP CVM profiles,
+  SGX as TEE rather than CVM, CET/CFI evidence claims, and CPU Feature Registry
+  cross-references.
 
 ## Validation Intent
 

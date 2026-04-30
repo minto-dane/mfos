@@ -1,0 +1,666 @@
+registry_kind: cpu_feature_registry
+schema_version: 1
+registry_id: MFOS-REG-CPU-FEATURES-0001
+status: draft
+generated_from:
+- path: docs/design/specs/44-architecture-portability-policy.md
+- path: docs/design/specs/45-x86-64-target-profiles.md
+updated_at_utc: '2026-04-30T00:00:00Z'
+updated_by: codex
+non_compatibility_statement: MFOS is x86-64-first for initial implementation planning, not x86-64-only, and does not claim Hyper-V, KVM, Intel, AMD, Linux, Rust, glibc, GCC, or seL4 compatibility.
+source_matrix_ref:
+  path: docs/design/source-matrix/source-matrix.yml
+  schema_version: 1
+schema_ref:
+  path: schemas/mfos/cpu-feature-profile.schema.yml
+implementation_allowed: false
+design_only: true
+registry_rules:
+- This registry is a design-time identity, evidence, and policy registry; it is not a CPU feature detector.
+- CPU feature presence does not define MFOS enterprise semantics.
+- Optional CPU features are available only through selected profile requirements and capability evidence.
+- A feature status of planned, required, optional, forbidden_in_baseline, future, or deprecated is not an implementation or validation claim.
+constants:
+  tcb_v4_forbidden_components: &tcb_v4_forbidden
+  - PXM_CORE
+  - PXM_GUARD
+  - NUCLEUS_ENTRY_EXIT
+  - INTERRUPT_TRAP
+  - CONTEXT_SWITCH
+  - VMX_SVM_BOUNDARY
+entries:
+- feature_id: X64_PROFILE_X86_64_BASELINE
+  name: x86-64 baseline feature level
+  architecture: x86_64
+  feature_kind: other
+  status: required
+  source_refs: [X64-INTEL-001, X64-AMD-001, EXTREF-X86-64-MICROARCH-LEVELS-0001]
+  profile_affinity: [MFOS-X64-BASELINE, MFOS-X64-SERVER-MODERN]
+  required_for_profiles: [MFOS-X64-BASELINE, MFOS-X64-SERVER-MODERN, MFOS-X64-MAX-FEATURE]
+  optional_for_profiles: []
+  forbidden_in_profiles: []
+  forbidden_in_components: []
+  capability_detection: {design_status: planned, method: build_profile}
+  build_evidence_required: true
+  binary_evidence_required: true
+  runtime_evidence_required: false
+  security_semantics_dependency: none
+  fallback_behavior: not_required
+  attestation: {required: false, modes: [none]}
+  side_channel_risk_review_required: false
+  notes: Baseline identity for initial x86-64 artifacts; exact CPU lists are not copied into MFOS docs.
+  review_status: draft
+- feature_id: X64_PROFILE_X86_64_V2
+  name: x86-64-v2 feature level
+  architecture: x86_64
+  feature_kind: other
+  status: optional
+  source_refs: [EXTREF-X86-64-MICROARCH-LEVELS-0001, EXTREF-GLIBC-HWCAPS-X86-64-V4-0001, EXTREF-GCC-X86-64-V4-0001]
+  profile_affinity: [MFOS-X64-MAX-FEATURE]
+  required_for_profiles: []
+  optional_for_profiles: [MFOS-X64-MAX-FEATURE]
+  forbidden_in_profiles: []
+  forbidden_in_components: []
+  capability_detection: {design_status: planned, method: cpuid}
+  build_evidence_required: true
+  binary_evidence_required: true
+  runtime_evidence_required: true
+  security_semantics_dependency: none
+  fallback_behavior: fallback_to_baseline
+  attestation: {required: false, modes: [none]}
+  side_channel_risk_review_required: false
+  notes: Optional optimization level; not a security semantics dependency.
+  review_status: draft
+- feature_id: X64_PROFILE_X86_64_V3
+  name: x86-64-v3 feature level
+  architecture: x86_64
+  feature_kind: other
+  status: optional
+  source_refs: [EXTREF-X86-64-MICROARCH-LEVELS-0001, EXTREF-GLIBC-HWCAPS-X86-64-V4-0001, EXTREF-GCC-X86-64-V4-0001]
+  profile_affinity: [MFOS-X64-MAX-FEATURE]
+  required_for_profiles: []
+  optional_for_profiles: [MFOS-X64-MAX-FEATURE]
+  forbidden_in_profiles: []
+  forbidden_in_components: []
+  capability_detection: {design_status: planned, method: cpuid}
+  build_evidence_required: true
+  binary_evidence_required: true
+  runtime_evidence_required: true
+  security_semantics_dependency: none
+  fallback_behavior: fallback_to_baseline
+  attestation: {required: false, modes: [none]}
+  side_channel_risk_review_required: false
+  notes: Optional optimization level; does not imply v4, TDX, SEV-SNP, SGX, CET, or CFI.
+  review_status: draft
+- feature_id: X64_PROFILE_X86_64_V4
+  name: x86-64-v4 feature level
+  architecture: x86_64
+  feature_kind: instruction_set
+  status: forbidden_in_baseline
+  source_refs: [EXTREF-X86-64-MICROARCH-LEVELS-0001, EXTREF-GLIBC-HWCAPS-X86-64-V4-0001, EXTREF-GCC-X86-64-V4-0001]
+  profile_affinity: [MFOS-X64-V4-PERFORMANCE, MFOS-X64-MAX-FEATURE]
+  required_for_profiles: [MFOS-X64-V4-PERFORMANCE]
+  optional_for_profiles: [MFOS-X64-MAX-FEATURE]
+  forbidden_in_profiles: [MFOS-X64-BASELINE]
+  forbidden_in_components: *tcb_v4_forbidden
+  capability_detection: {design_status: planned, method: cpuid}
+  build_evidence_required: true
+  binary_evidence_required: true
+  runtime_evidence_required: true
+  security_semantics_dependency: none
+  fallback_behavior: fallback_to_baseline
+  attestation: {required: false, modes: [none]}
+  side_channel_risk_review_required: true
+  notes: Optional performance profile only. Any TCB use requires ADR, XSAVE/vector-state analysis, tests/proofs, binary evidence, and rollback/fallback behavior.
+  review_status: draft
+- feature_id: X64_FEATURE_NX
+  name: NX / no-execute memory protection
+  architecture: x86_64
+  feature_kind: memory_protection
+  status: required
+  source_refs: [X64-INTEL-001, X64-AMD-001]
+  profile_affinity: [MFOS-X64-BASELINE, MFOS-X64-SERVER-MODERN]
+  required_for_profiles: [MFOS-X64-BASELINE, MFOS-X64-SERVER-MODERN]
+  optional_for_profiles: []
+  forbidden_in_profiles: []
+  forbidden_in_components: []
+  capability_detection: {design_status: planned, method: cpuid}
+  build_evidence_required: false
+  binary_evidence_required: false
+  runtime_evidence_required: true
+  security_semantics_dependency: profile_required
+  fallback_behavior: fail_closed
+  attestation: {required: false, modes: [none]}
+  side_channel_risk_review_required: false
+  notes: Required for x86-64 baseline execution-protection claims.
+  review_status: draft
+- feature_id: X64_FEATURE_WX_POLICY_SUPPORT
+  name: W^X policy support
+  architecture: platform
+  feature_kind: memory_protection
+  status: required
+  source_refs: [X64-INTEL-001, X64-AMD-001, FBVBS-001]
+  profile_affinity: [MFOS-X64-BASELINE, MFOS-X64-SERVER-MODERN]
+  required_for_profiles: [MFOS-X64-BASELINE, MFOS-X64-SERVER-MODERN]
+  optional_for_profiles: []
+  forbidden_in_profiles: []
+  forbidden_in_components: []
+  capability_detection: {design_status: planned, method: build_profile}
+  build_evidence_required: true
+  binary_evidence_required: true
+  runtime_evidence_required: true
+  security_semantics_dependency: profile_required
+  fallback_behavior: fail_closed
+  attestation: {required: false, modes: [none]}
+  side_channel_risk_review_required: false
+  notes: Platform/build policy entry, not a single CPU instruction feature.
+  review_status: draft
+- feature_id: X64_FEATURE_SMEP
+  name: Supervisor Mode Execution Prevention
+  architecture: x86_64
+  feature_kind: memory_protection
+  status: optional
+  source_refs: [X64-INTEL-001, X64-AMD-001]
+  profile_affinity: [MFOS-X64-SERVER-MODERN, MFOS-X64-MAX-FEATURE]
+  required_for_profiles: []
+  optional_for_profiles: [MFOS-X64-SERVER-MODERN, MFOS-X64-MAX-FEATURE]
+  forbidden_in_profiles: []
+  forbidden_in_components: []
+  capability_detection: {design_status: planned, method: cpuid}
+  build_evidence_required: false
+  binary_evidence_required: false
+  runtime_evidence_required: true
+  security_semantics_dependency: none
+  fallback_behavior: profile_not_satisfied
+  attestation: {required: false, modes: [none]}
+  side_channel_risk_review_required: false
+  notes: Hardening aid; not an authorization mechanism.
+  review_status: draft
+- feature_id: X64_FEATURE_SMAP
+  name: Supervisor Mode Access Prevention
+  architecture: x86_64
+  feature_kind: memory_protection
+  status: optional
+  source_refs: [X64-INTEL-001, X64-AMD-001]
+  profile_affinity: [MFOS-X64-SERVER-MODERN, MFOS-X64-MAX-FEATURE]
+  required_for_profiles: []
+  optional_for_profiles: [MFOS-X64-SERVER-MODERN, MFOS-X64-MAX-FEATURE]
+  forbidden_in_profiles: []
+  forbidden_in_components: []
+  capability_detection: {design_status: planned, method: cpuid}
+  build_evidence_required: false
+  binary_evidence_required: false
+  runtime_evidence_required: true
+  security_semantics_dependency: none
+  fallback_behavior: profile_not_satisfied
+  attestation: {required: false, modes: [none]}
+  side_channel_risk_review_required: false
+  notes: Hardening aid; absence cannot change architecture-neutral semantics.
+  review_status: draft
+- feature_id: X64_FEATURE_INTEL_VMX
+  name: Intel VMX
+  architecture: x86_64
+  feature_kind: virtualization
+  status: optional
+  source_refs: [X64-INTEL-001]
+  profile_affinity: [MFOS-X64-SERVER-MODERN, MFOS-X64-MAX-FEATURE]
+  required_for_profiles: []
+  optional_for_profiles: [MFOS-X64-SERVER-MODERN, MFOS-X64-MAX-FEATURE]
+  forbidden_in_profiles: []
+  forbidden_in_components: []
+  capability_detection: {design_status: planned, method: cpuid}
+  build_evidence_required: false
+  binary_evidence_required: false
+  runtime_evidence_required: true
+  security_semantics_dependency: none
+  fallback_behavior: unsupported
+  attestation: {required: false, modes: [none]}
+  side_channel_risk_review_required: true
+  notes: Future backend primitive; does not authorize PXM or hypervisor implementation.
+  review_status: draft
+- feature_id: X64_FEATURE_AMD_SVM
+  name: AMD SVM
+  architecture: x86_64
+  feature_kind: virtualization
+  status: optional
+  source_refs: [X64-AMD-001]
+  profile_affinity: [MFOS-X64-SERVER-MODERN, MFOS-X64-MAX-FEATURE]
+  required_for_profiles: []
+  optional_for_profiles: [MFOS-X64-SERVER-MODERN, MFOS-X64-MAX-FEATURE]
+  forbidden_in_profiles: []
+  forbidden_in_components: []
+  capability_detection: {design_status: planned, method: cpuid}
+  build_evidence_required: false
+  binary_evidence_required: false
+  runtime_evidence_required: true
+  security_semantics_dependency: none
+  fallback_behavior: unsupported
+  attestation: {required: false, modes: [none]}
+  side_channel_risk_review_required: true
+  notes: Future backend primitive; does not authorize PXM or hypervisor implementation.
+  review_status: draft
+- feature_id: X64_FEATURE_IOMMU_INTEL_VT_D
+  name: Intel VT-d IOMMU
+  architecture: platform
+  feature_kind: virtualization
+  status: optional
+  source_refs: [X64-INTEL-001]
+  profile_affinity: [MFOS-X64-SERVER-MODERN, MFOS-X64-MAX-FEATURE]
+  required_for_profiles: []
+  optional_for_profiles: [MFOS-X64-SERVER-MODERN, MFOS-X64-MAX-FEATURE]
+  forbidden_in_profiles: []
+  forbidden_in_components: []
+  capability_detection: {design_status: planned, method: firmware_table}
+  build_evidence_required: false
+  binary_evidence_required: false
+  runtime_evidence_required: true
+  security_semantics_dependency: profile_required
+  fallback_behavior: profile_not_satisfied
+  attestation: {required: false, modes: [none]}
+  side_channel_risk_review_required: true
+  notes: Platform DMA isolation feature; exact requirements remain profile-specific.
+  review_status: draft
+- feature_id: X64_FEATURE_IOMMU_AMD_VI
+  name: AMD-Vi IOMMU
+  architecture: platform
+  feature_kind: virtualization
+  status: optional
+  source_refs: [X64-AMD-001]
+  profile_affinity: [MFOS-X64-SERVER-MODERN, MFOS-X64-MAX-FEATURE]
+  required_for_profiles: []
+  optional_for_profiles: [MFOS-X64-SERVER-MODERN, MFOS-X64-MAX-FEATURE]
+  forbidden_in_profiles: []
+  forbidden_in_components: []
+  capability_detection: {design_status: planned, method: firmware_table}
+  build_evidence_required: false
+  binary_evidence_required: false
+  runtime_evidence_required: true
+  security_semantics_dependency: profile_required
+  fallback_behavior: profile_not_satisfied
+  attestation: {required: false, modes: [none]}
+  side_channel_risk_review_required: true
+  notes: Platform DMA isolation feature; exact requirements remain profile-specific.
+  review_status: draft
+- feature_id: X64_FEATURE_INTERRUPT_REMAPPING
+  name: interrupt remapping
+  architecture: platform
+  feature_kind: virtualization
+  status: optional
+  source_refs: [X64-INTEL-001, X64-AMD-001]
+  profile_affinity: [MFOS-X64-SERVER-MODERN, MFOS-X64-MAX-FEATURE]
+  required_for_profiles: []
+  optional_for_profiles: [MFOS-X64-SERVER-MODERN, MFOS-X64-MAX-FEATURE]
+  forbidden_in_profiles: []
+  forbidden_in_components: []
+  capability_detection: {design_status: planned, method: firmware_table}
+  build_evidence_required: false
+  binary_evidence_required: false
+  runtime_evidence_required: true
+  security_semantics_dependency: profile_required
+  fallback_behavior: profile_not_satisfied
+  attestation: {required: false, modes: [none]}
+  side_channel_risk_review_required: true
+  notes: DMA isolation does not imply interrupt remapping; they must be detected separately.
+  review_status: draft
+- feature_id: X64_FEATURE_INTEL_TDX
+  name: Intel TDX
+  architecture: x86_64
+  feature_kind: confidential_computing
+  status: optional
+  source_refs: [EXTREF-INTEL-TDX-OVERVIEW-0001, EXTREF-INTEL-TDX-ATTESTATION-0001]
+  profile_affinity: [MFOS-X64-CVM-INTEL-TDX]
+  required_for_profiles: [MFOS-X64-CVM-INTEL-TDX]
+  optional_for_profiles: [MFOS-X64-MAX-FEATURE]
+  forbidden_in_profiles: [MFOS-X64-BASELINE, MFOS-X64-TEE-INTEL-SGX]
+  forbidden_in_components: []
+  capability_detection: {design_status: planned, method: platform_attestation}
+  build_evidence_required: true
+  binary_evidence_required: true
+  runtime_evidence_required: true
+  security_semantics_dependency: profile_required
+  fallback_behavior: profile_not_satisfied
+  attestation: {required: true, modes: [platform_specific]}
+  side_channel_risk_review_required: true
+  notes: Confidential VM profile feature; does not imply SGX or Hyper-V/KVM compatibility.
+  review_status: draft
+- feature_id: X64_FEATURE_AMD_SEV
+  name: AMD SEV
+  architecture: x86_64
+  feature_kind: confidential_computing
+  status: optional
+  source_refs: [EXTREF-AMD-SEV-OVERVIEW-0001]
+  profile_affinity: [MFOS-X64-CVM-AMD-SEV-SNP]
+  required_for_profiles: [MFOS-X64-CVM-AMD-SEV-SNP]
+  optional_for_profiles: [MFOS-X64-MAX-FEATURE]
+  forbidden_in_profiles: [MFOS-X64-BASELINE, MFOS-X64-TEE-INTEL-SGX]
+  forbidden_in_components: []
+  capability_detection: {design_status: planned, method: platform_attestation}
+  build_evidence_required: true
+  binary_evidence_required: true
+  runtime_evidence_required: true
+  security_semantics_dependency: profile_required
+  fallback_behavior: profile_not_satisfied
+  attestation: {required: true, modes: [platform_specific]}
+  side_channel_risk_review_required: true
+  notes: Confidential VM family feature; profile requirements distinguish SEV, SEV-ES, and SEV-SNP.
+  review_status: draft
+- feature_id: X64_FEATURE_AMD_SEV_ES
+  name: AMD SEV-ES
+  architecture: x86_64
+  feature_kind: confidential_computing
+  status: optional
+  source_refs: [EXTREF-AMD-SEV-ES-0001]
+  profile_affinity: [MFOS-X64-CVM-AMD-SEV-SNP]
+  required_for_profiles: [MFOS-X64-CVM-AMD-SEV-SNP]
+  optional_for_profiles: [MFOS-X64-MAX-FEATURE]
+  forbidden_in_profiles: [MFOS-X64-BASELINE, MFOS-X64-TEE-INTEL-SGX]
+  forbidden_in_components: []
+  capability_detection: {design_status: planned, method: platform_attestation}
+  build_evidence_required: true
+  binary_evidence_required: true
+  runtime_evidence_required: true
+  security_semantics_dependency: profile_required
+  fallback_behavior: profile_not_satisfied
+  attestation: {required: true, modes: [platform_specific]}
+  side_channel_risk_review_required: true
+  notes: Encrypted-state planning feature required by the MFOS SEV-SNP CVM profile; not sufficient by itself for that profile.
+  review_status: draft
+- feature_id: X64_FEATURE_AMD_SEV_SNP
+  name: AMD SEV-SNP
+  architecture: x86_64
+  feature_kind: confidential_computing
+  status: optional
+  source_refs: [EXTREF-AMD-SEV-SNP-0001]
+  profile_affinity: [MFOS-X64-CVM-AMD-SEV-SNP]
+  required_for_profiles: [MFOS-X64-CVM-AMD-SEV-SNP]
+  optional_for_profiles: [MFOS-X64-MAX-FEATURE]
+  forbidden_in_profiles: [MFOS-X64-BASELINE, MFOS-X64-TEE-INTEL-SGX]
+  forbidden_in_components: []
+  capability_detection: {design_status: planned, method: platform_attestation}
+  build_evidence_required: true
+  binary_evidence_required: true
+  runtime_evidence_required: true
+  security_semantics_dependency: profile_required
+  fallback_behavior: profile_not_satisfied
+  attestation: {required: true, modes: [platform_specific]}
+  side_channel_risk_review_required: true
+  notes: Confidential VM profile feature; does not imply KVM compatibility or x86-64-v4 performance support.
+  review_status: draft
+- feature_id: X64_FEATURE_AMD_SEV_TIO
+  name: AMD SEV-TIO
+  architecture: platform
+  feature_kind: confidential_computing
+  status: future
+  source_refs: [EXTREF-AMD-SEV-TIO-0001]
+  profile_affinity: [MFOS-X64-CVM-AMD-SEV-SNP]
+  required_for_profiles: []
+  optional_for_profiles: [MFOS-X64-CVM-AMD-SEV-SNP, MFOS-X64-MAX-FEATURE]
+  forbidden_in_profiles: [MFOS-X64-BASELINE, MFOS-X64-TEE-INTEL-SGX]
+  forbidden_in_components: []
+  capability_detection: {design_status: planned, method: platform_attestation}
+  build_evidence_required: true
+  binary_evidence_required: true
+  runtime_evidence_required: true
+  security_semantics_dependency: unknown
+  fallback_behavior: spec_gap
+  attestation: {required: true, modes: [platform_specific]}
+  side_channel_risk_review_required: true
+  notes: Future trusted-I/O planning entry only; no MFOS trusted-I/O implementation is authorized.
+  review_status: draft
+- feature_id: X64_FEATURE_INTEL_SGX
+  name: Intel SGX
+  architecture: x86_64
+  feature_kind: enclave_tee
+  status: optional
+  source_refs: [EXTREF-INTEL-SGX-OVERVIEW-0001]
+  profile_affinity: [MFOS-X64-TEE-INTEL-SGX]
+  required_for_profiles: [MFOS-X64-TEE-INTEL-SGX]
+  optional_for_profiles: [MFOS-X64-MAX-FEATURE]
+  forbidden_in_profiles: [MFOS-X64-BASELINE, MFOS-X64-CVM-INTEL-TDX, MFOS-X64-CVM-AMD-SEV-SNP]
+  forbidden_in_components: []
+  capability_detection: {design_status: planned, method: cpuid}
+  build_evidence_required: true
+  binary_evidence_required: true
+  runtime_evidence_required: true
+  security_semantics_dependency: profile_required
+  fallback_behavior: profile_not_satisfied
+  attestation: {required: false, modes: [none]}
+  side_channel_risk_review_required: true
+  notes: Optional enclave/application TEE profile feature. SGX is not a Confidential VM profile and does not imply TDX.
+  review_status: draft
+- feature_id: X64_FEATURE_INTEL_SGX_DCAP_ATTESTATION
+  name: Intel SGX DCAP attestation mode
+  architecture: platform
+  feature_kind: enclave_tee
+  status: optional
+  source_refs: [EXTREF-INTEL-SGX-ATTESTATION-0001, EXTREF-INTEL-SGX-DCAP-0001]
+  profile_affinity: [MFOS-X64-TEE-INTEL-SGX]
+  required_for_profiles: []
+  optional_for_profiles: [MFOS-X64-TEE-INTEL-SGX]
+  forbidden_in_profiles: [MFOS-X64-BASELINE]
+  forbidden_in_components: []
+  capability_detection: {design_status: planned, method: platform_attestation}
+  build_evidence_required: true
+  binary_evidence_required: true
+  runtime_evidence_required: true
+  security_semantics_dependency: profile_required
+  fallback_behavior: unsupported
+  attestation: {required: true, modes: [DCAP]}
+  side_channel_risk_review_required: true
+  notes: Attestation mode is separate from SGX feature presence.
+  review_status: draft
+- feature_id: X64_FEATURE_INTEL_SGX_EPID_ATTESTATION
+  name: Intel SGX EPID attestation mode
+  architecture: platform
+  feature_kind: enclave_tee
+  status: deprecated
+  source_refs: [EXTREF-INTEL-SGX-ATTESTATION-0001]
+  profile_affinity: [MFOS-X64-TEE-INTEL-SGX]
+  required_for_profiles: []
+  optional_for_profiles: []
+  forbidden_in_profiles: [MFOS-X64-BASELINE]
+  forbidden_in_components: []
+  capability_detection: {design_status: planned, method: platform_attestation}
+  build_evidence_required: true
+  binary_evidence_required: true
+  runtime_evidence_required: true
+  security_semantics_dependency: unknown
+  fallback_behavior: unsupported
+  attestation: {required: true, modes: [EPID]}
+  side_channel_risk_review_required: true
+  notes: Legacy/compatibility note only. This does not authorize EPID support.
+  review_status: draft
+- feature_id: X64_FEATURE_INTEL_CET
+  name: Intel CET
+  architecture: x86_64
+  feature_kind: control_flow_hardening
+  status: optional
+  source_refs: [EXTREF-INTEL-CET-0001, X64-LINUX-CET-001]
+  profile_affinity: [MFOS-HARDENING-CET-CFI, MFOS-X64-MAX-FEATURE]
+  required_for_profiles: []
+  optional_for_profiles: [MFOS-HARDENING-CET-CFI, MFOS-X64-MAX-FEATURE]
+  forbidden_in_profiles: []
+  forbidden_in_components: []
+  capability_detection: {design_status: planned, method: cpuid}
+  build_evidence_required: true
+  binary_evidence_required: true
+  runtime_evidence_required: true
+  security_semantics_dependency: none
+  fallback_behavior: profile_not_satisfied
+  attestation: {required: false, modes: [none]}
+  side_channel_risk_review_required: true
+  notes: Hardening evidence feature, not a language replacement or formal proof claim.
+  review_status: draft
+- feature_id: X64_FEATURE_CET_SHADOW_STACK
+  name: CET shadow stack
+  architecture: x86_64
+  feature_kind: control_flow_hardening
+  status: optional
+  source_refs: [EXTREF-INTEL-CET-0001, X64-LINUX-CET-001]
+  profile_affinity: [MFOS-HARDENING-CET-CFI]
+  required_for_profiles: []
+  optional_for_profiles: [MFOS-HARDENING-CET-CFI]
+  forbidden_in_profiles: []
+  forbidden_in_components: []
+  capability_detection: {design_status: planned, method: cpuid}
+  build_evidence_required: true
+  binary_evidence_required: true
+  runtime_evidence_required: true
+  security_semantics_dependency: none
+  fallback_behavior: profile_not_satisfied
+  attestation: {required: false, modes: [none]}
+  side_channel_risk_review_required: true
+  notes: Component-level hardening claim requires emitted binary and runtime/platform evidence.
+  review_status: draft
+- feature_id: X64_FEATURE_CET_IBT
+  name: CET indirect branch tracking
+  architecture: x86_64
+  feature_kind: control_flow_hardening
+  status: optional
+  source_refs: [EXTREF-INTEL-CET-0001, X64-LINUX-CET-001]
+  profile_affinity: [MFOS-HARDENING-CET-CFI]
+  required_for_profiles: []
+  optional_for_profiles: [MFOS-HARDENING-CET-CFI]
+  forbidden_in_profiles: []
+  forbidden_in_components: []
+  capability_detection: {design_status: planned, method: cpuid}
+  build_evidence_required: true
+  binary_evidence_required: true
+  runtime_evidence_required: true
+  security_semantics_dependency: none
+  fallback_behavior: profile_not_satisfied
+  attestation: {required: false, modes: [none]}
+  side_channel_risk_review_required: true
+  notes: Component-level hardening claim requires emitted binary and runtime/platform evidence.
+  review_status: draft
+- feature_id: X64_FEATURE_CFI_TOOLCHAIN
+  name: CFI toolchain profile
+  architecture: multiarch
+  feature_kind: control_flow_hardening
+  status: optional
+  source_refs: [EXTREF-CLANG-CFI-0001, EXTREF-CLANG-KCFI-0001, EXTREF-GCC-CF-PROTECTION-0001, EXTREF-RUST-CF-PROTECTION-0001]
+  profile_affinity: [MFOS-HARDENING-CET-CFI]
+  required_for_profiles: [MFOS-HARDENING-CET-CFI]
+  optional_for_profiles: []
+  forbidden_in_profiles: []
+  forbidden_in_components: []
+  capability_detection: {design_status: planned, method: binary_inspection}
+  build_evidence_required: true
+  binary_evidence_required: true
+  runtime_evidence_required: false
+  security_semantics_dependency: none
+  fallback_behavior: profile_not_satisfied
+  attestation: {required: false, modes: [none]}
+  side_channel_risk_review_required: false
+  notes: Toolchain/binary evidence profile, not a CPU feature and not a memory-safety proof.
+  review_status: draft
+- feature_id: X64_FEATURE_X86_64_V4
+  name: x86-64-v4 instruction profile
+  architecture: x86_64
+  feature_kind: instruction_set
+  status: forbidden_in_baseline
+  source_refs: [EXTREF-X86-64-MICROARCH-LEVELS-0001, EXTREF-GCC-X86-64-V4-0001]
+  profile_affinity: [MFOS-X64-V4-PERFORMANCE, MFOS-X64-MAX-FEATURE]
+  required_for_profiles: [MFOS-X64-V4-PERFORMANCE]
+  optional_for_profiles: [MFOS-X64-MAX-FEATURE]
+  forbidden_in_profiles: [MFOS-X64-BASELINE]
+  forbidden_in_components: *tcb_v4_forbidden
+  capability_detection: {design_status: planned, method: cpuid}
+  build_evidence_required: true
+  binary_evidence_required: true
+  runtime_evidence_required: true
+  security_semantics_dependency: none
+  fallback_behavior: fallback_to_baseline
+  attestation: {required: false, modes: [none]}
+  side_channel_risk_review_required: true
+  notes: Separate from the profile-level entry so validators can distinguish feature and profile references.
+  review_status: draft
+- feature_id: X64_FEATURE_AVX512_CLASS
+  name: AVX-512 class vector features
+  architecture: x86_64
+  feature_kind: instruction_set
+  status: optional
+  source_refs: [EXTREF-X86-64-MICROARCH-LEVELS-0001, EXTREF-GCC-X86-64-V4-0001]
+  profile_affinity: [MFOS-X64-V4-PERFORMANCE, MFOS-X64-MAX-FEATURE]
+  required_for_profiles: []
+  optional_for_profiles: [MFOS-X64-V4-PERFORMANCE, MFOS-X64-MAX-FEATURE]
+  forbidden_in_profiles: [MFOS-X64-BASELINE]
+  forbidden_in_components: *tcb_v4_forbidden
+  capability_detection: {design_status: planned, method: cpuid}
+  build_evidence_required: true
+  binary_evidence_required: true
+  runtime_evidence_required: true
+  security_semantics_dependency: none
+  fallback_behavior: fallback_to_baseline
+  attestation: {required: false, modes: [none]}
+  side_channel_risk_review_required: true
+  notes: Optional vector performance feature class; exact membership remains source-pinned and build-evidence-gated.
+  review_status: draft
+- feature_id: X64_FEATURE_XSAVE_STATE_MANAGEMENT
+  name: XSAVE/vector-state management
+  architecture: x86_64
+  feature_kind: privilege
+  status: optional
+  source_refs: [X64-INTEL-001, X64-AMD-001]
+  profile_affinity: [MFOS-X64-V4-PERFORMANCE, MFOS-X64-MAX-FEATURE]
+  required_for_profiles: []
+  optional_for_profiles: [MFOS-X64-V4-PERFORMANCE, MFOS-X64-MAX-FEATURE]
+  forbidden_in_profiles: []
+  forbidden_in_components: []
+  capability_detection: {design_status: planned, method: cpuid}
+  build_evidence_required: true
+  binary_evidence_required: true
+  runtime_evidence_required: true
+  security_semantics_dependency: none
+  fallback_behavior: spec_gap
+  attestation: {required: false, modes: [none]}
+  side_channel_risk_review_required: true
+  notes: Required analysis topic before any TCB v4/vector use; not a blanket approval.
+  review_status: draft
+- feature_id: X64_FEATURE_NUMA_TOPOLOGY
+  name: NUMA topology awareness
+  architecture: platform
+  feature_kind: topology
+  status: optional
+  source_refs: [X64-INTEL-001, X64-AMD-001]
+  profile_affinity: [MFOS-X64-SERVER-MODERN, MFOS-X64-MAX-FEATURE]
+  required_for_profiles: []
+  optional_for_profiles: [MFOS-X64-SERVER-MODERN, MFOS-X64-MAX-FEATURE]
+  forbidden_in_profiles: []
+  forbidden_in_components: []
+  capability_detection: {design_status: planned, method: firmware_table}
+  build_evidence_required: false
+  binary_evidence_required: false
+  runtime_evidence_required: true
+  security_semantics_dependency: none
+  fallback_behavior: unsupported
+  attestation: {required: false, modes: [none]}
+  side_channel_risk_review_required: false
+  notes: Platform topology entry; does not define scheduler or policy semantics.
+  review_status: draft
+- feature_id: X64_FEATURE_TPM_OR_MEASURED_BOOT
+  name: TPM or measured boot component
+  architecture: platform
+  feature_kind: platform
+  status: optional
+  source_refs: [TCG-001, NIST-193-001]
+  profile_affinity: [MFOS-X64-SERVER-MODERN, MFOS-X64-MAX-FEATURE, MFOS-X64-CVM-INTEL-TDX, MFOS-X64-CVM-AMD-SEV-SNP]
+  required_for_profiles: []
+  optional_for_profiles: [MFOS-X64-SERVER-MODERN, MFOS-X64-MAX-FEATURE, MFOS-X64-CVM-INTEL-TDX, MFOS-X64-CVM-AMD-SEV-SNP]
+  forbidden_in_profiles: []
+  forbidden_in_components: []
+  capability_detection: {design_status: planned, method: platform_attestation}
+  build_evidence_required: false
+  binary_evidence_required: false
+  runtime_evidence_required: true
+  security_semantics_dependency: profile_required
+  fallback_behavior: profile_not_satisfied
+  attestation: {required: true, modes: [platform_specific]}
+  side_channel_risk_review_required: false
+  notes: Platform evidence component; does not replace update verification, authorization, or audit semantics.
+  review_status: draft
+spec_gaps:
+- gap_id: CPUFEAT-GAP-0001
+  summary: Exact MFOS-accepted x86-64-v2/v3/v4 feature membership remains source-pinned but is not copied into the registry; future implementation must record the external source version and binary evidence.
+- gap_id: CPUFEAT-GAP-0002
+  summary: No CPU feature detection implementation exists or is authorized by this registry.

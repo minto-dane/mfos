@@ -22,6 +22,10 @@ Status: Draft design split
 Owner area: `docs/design/specs/26-hardware-profile.md`
 
 This document defines the x64 hardware and platform profile matrix for MFOS.
+Specs `44` and `45` extend this matrix with the current architecture
+portability policy, machine-readable CPU Feature Registry, and x86-64 target
+profiles. Where this older document says x64, read it as x86-64-first planning,
+not x86-64-only architecture policy.
 
 MFOS is z/OS-inspired and source-grounded. It does not claim compatibility with IBM products, z/Architecture, z/OS APIs, RACF, JES, DFSMS, SMF, JCL, or z/Architecture storage keys. x64 PKU, PKS, CET, SMEP, SMAP, NX, IOMMU, VT-x, AMD-V, EPT, NPT, TPM, Secure Boot, and measured boot are enforcement aids and evidence sources. They do not replace MFOS authorization, audit, object model, or Guard root semantics.
 
@@ -63,7 +67,9 @@ This specification does not cover:
 - Final attestation claims.
 - Firmware vendor certification.
 - Cryptographic primitive proofs.
-- Non-x64 ports.
+- Non-x86 architecture backend implementation. Future AArch64, RISC-V, or other
+  architecture support requires separate source cards, specs, requirements,
+  registries, tests, CI, evidence, and backend work before any support claim.
 
 ## 3. Source Matrix References
 

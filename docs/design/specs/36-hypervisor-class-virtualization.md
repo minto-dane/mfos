@@ -40,6 +40,10 @@ Status: Draft Phase 0.10 requirements expansion. This document is specification-
 
 Define MFOS-owned virtualization vocabulary and requirements for future VM partition management while preserving the PXM/MFVM trust boundary. The purpose is to describe what later design phases must prove, test, and evidence before any implementation is assigned.
 
+Spec `45` owns x86-64 target profiles for TDX, SEV-SNP, and SGX. This
+virtualization planning spec must treat Intel SGX as an enclave/TEE profile, not
+as a Confidential VM or VM-wide virtualization profile.
+
 ## 2. Scope
 
 In scope: VM object model, VM partition lifecycle, vCPU and RAM accounting, virtual storage/network abstractions, capability discovery, device assignment constraints, resource pools, PXM Control API boundaries, audit obligations, performance budget placeholders, and negative-test planning.

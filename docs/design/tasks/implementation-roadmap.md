@@ -8,10 +8,18 @@ This roadmap extracts and expands Phase 0 through Phase 6 from `docs/design/mfos
 
 MFOS is source-grounded and z/OS-inspired. It MUST NOT claim compatibility with IBM z/OS, z/Architecture binaries, z/OS APIs, RACF, JES, DFSMS, SMF, workload policy, or JCL.
 
+Current Phase 1 is Dafny executable semantics plus conformance-harness
+validation. Hosted Semantic Prototype is superseded. Rust semantic-core is not
+a Phase 1 canonical semantic implementation. MFOS is x86-64-first for initial
+implementation planning and not x86-64-only. x86-64-v4 is an optional
+performance profile, not a baseline. Intel SGX is an optional enclave/TEE
+profile, not a Confidential VM profile. Future AArch64 and RISC-V support is
+design-allowed but not implemented.
+
 ## 1. Roadmap Principles
 
 1. Documentation and source grounding lead implementation.
-2. Hosted semantic prototype precedes nucleus work.
+2. Dafny executable semantics and conformance evidence precede production implementation.
 3. `securityd` is the final policy decision point for protected resources.
 4. `auditd` is evidence, not diagnostic logging.
 5. Dataset/catalog/job/spool/operator semantics are first-class, not POSIX wrappers.
@@ -31,7 +39,8 @@ Source Matrix
   -> Authorization Model
   -> Audit Schema
   -> Dataset/Catalog + Job/Spool + Operator
-  -> Hosted Vertical Slice
+  -> Dafny Executable Semantics + Conformance Harness
+  -> CPU Feature Registry + x86-64 Target Profiles
   -> Nucleus + SVC/PCALL
   -> AMF Spec/Disabled Path + Update + workload policy
   -> Enterprise-Standalone Hardening
@@ -47,18 +56,25 @@ Hard blockers:
 - No successful protected operation without audit obligation handling.
 - No PXM device passthrough without IOMMU, interrupt remapping, and teardown tests.
 - No High-Assurance claim without Guard evidence.
+- No architecture backend or hardware path without CPU Feature Registry entries,
+  target profile entries, tests, CI, and evidence.
 
 ## 3. Phase Summary
 
 | Phase | Name | Primary objective | Main outputs | Profile target |
 | --- | --- | --- | --- | --- |
 | 0 | Source and Spec Freeze | Fix source grounding, definitions, requirements, and no-fake-success gates. | Source Matrix, specs, requirement catalog, CI lint seeds. | Baseline design |
-| 1 | Hosted Semantic Prototype | Prove enterprise semantics outside the kernel. | Hosted `securityd`, `auditd`, `catalogd`, `datasetd`, `jobd`, `spoold`, `operatord`. | Baseline semantics |
-| 2 | Minimal MFOS Nucleus | Boot to operator console with typed handles and SVC/PCALL. | Nucleus, address spaces, service launcher, hosted services ported. | Baseline OS |
+| 1 | Verified Executable Semantics + Conformance Harness | Prove enterprise semantics in non-production Dafny artifacts. | Dafny modules, fixtures, oracles, golden vectors, traceability and validation reports. | Baseline semantics |
+| 2 | Minimal MFOS Nucleus | Future-gated boot to operator console with typed handles and SVC/PCALL. | Nucleus, address spaces, service launcher, service contracts. | Baseline OS |
 | 3 | Baseline Core Semantics | Complete the core vertical slice on MFOS. | Dataset/catalog/job/spool/operator/security/audit plus update/workload policy basics; AMF spec complete but production load disabled. | Baseline conformance candidate |
 | 4 | Enterprise-Standalone Hardening | Add measured boot, update hardening, provenance, remote audit, and Enterprise-AMF governance readiness. | Secure/measured boot, TPM bindings, TUF-like metadata, SBOM/provenance, AMF governance evidence. | Enterprise-Standalone candidate |
 | 5 | PXM Core Prototype | Run MFOS under partition-aware isolation with device lifecycle discipline. | PXM backend, partition APIs, IOMMU/interrupt remap tests, side partition lab. | Enterprise-PXM candidate |
 | 6 | High-Assurance Guard | Protect selected roots after partial OS compromise. | Guard roots, executable mapping policy, SVC table verification, attestation. | High-Assurance candidate |
+
+Phases 2 through 6 are future-gated roadmap planning. They are not current
+Phase 1 implementation authorization and must be rechecked against Source
+Cards, requirements, CPU Feature Registry entries, target profiles, tests, CI,
+and evidence before any production-oriented task starts.
 
 ## 4. Phase 0: Source and Spec Freeze
 
@@ -126,100 +142,112 @@ no-fake-success policy specified for CI
 - Formal model language and storage layout are not fixed.
 - CI scripts are not yet implemented.
 
-## 5. Phase 1: Hosted Semantic Prototype
+## 5. Phase 1: Verified Executable Semantics + Conformance Harness
 
-Runs on Linux/BSD/macOS for semantics only. This phase intentionally avoids kernel work.
+Runs as non-production Dafny executable semantics and conformance-harness
+validation only. This phase intentionally avoids kernel work, hosted daemons,
+service implementations, Rust semantic-core work, semantic-runner commands,
+PXM/MFVM/CVM/TEE/SGX runtime work, architecture backends, CPU feature detection,
+and production code.
 
 ### Objectives
 
-- Implement hosted `securityd`, `auditd`, `catalogd`, `datasetd`, `jobd`, `spoold`, and `operatord`.
-- Prove the first vertical slice:
+- Define and verify Dafny executable semantics for reviewed enterprise
+  semantic domains.
+- Link semantics to fixtures, oracles, golden vectors, and traceability
+  records.
+- Prove the first vertical slice at the Dafny/conformance level:
   - operator defines ALICE and dataset.
   - ALICE job reads input and writes SYSOUT.
   - BOB job is denied.
   - DENY audit is durable before result.
-- Establish parser fuzz targets for JCL-like input, DSN, operator command, policy, object schemas, and audit records.
-- Establish catalog transaction and crash recovery behavior.
+- Keep parser fuzz, service transport, catalog recovery, and runtime behavior
+  as future-gated implementation work unless represented as design-only
+  fixture/oracle obligations.
+- Maintain architecture-neutral semantics independent of x86-64 enforcement
+  features.
 
 ### Entry Criteria
 
 - Phase 0 exit criteria met for Object Model, Authorization, Audit, Dataset/Catalog, Job/Spool, and Operator specs.
 - Error model includes `UNSUPPORTED` and `SPEC_GAP`.
-- Hosted service process model chosen.
-- Test harness can run unit, integration, negative, fuzz smoke, crash-recovery, and fault-injection tests.
+- Dafny toolchain and conformance-support tooling are pinned.
+- Fixture, oracle, golden-vector, and traceability schemas are validated.
 
 ### Exit Criteria
 
 ```text
-securityd/auditd/catalogd/datasetd/jobd/spoold/operatord hosted services run
-HELLO job success
-BOB cannot read ALICE dataset
-DENY is audited before final result returns
-catalog crash recovery test passes
-JCL-like, DSN, operator, policy, object, and audit parser fuzz targets exist
-no fake success scanner runs against hosted code
+Dafny executable-semantics modules verify for reviewed domains
+HELLO job semantic vector passes through fixture/oracle/golden comparison
+BOB cannot read ALICE dataset in the semantic model
+DENY is audited before final result in the semantic model
+catalog partial-commit candidates fail closed where modeled
+semantic coverage reports disclose partial and unproved areas
+no fake success scanner runs against non-production semantic artifacts
+Rust semantic-core, hosted daemon, semantic runner, and production paths remain absent
 ```
 
 ### Dependency Ordering
 
-1. Shared object schemas and typed errors.
-2. `auditd` append-only local store and schema validation.
-3. `securityd` decision API with obligations.
-4. `catalogd` committed entry transactions.
-5. `datasetd` handle issue and stale-handle rejection.
-6. `spoold` SYSIN/SYSOUT protected resources.
-7. `jobd` parser, conversion, queue, initiator, DD resolution.
-8. `operatord` command parser and vertical slice workflow.
-9. Integration tests and fuzz registration.
+1. Shared Dafny primitives, object values, and typed errors.
+2. Authorization decision semantics with obligations.
+3. Audit record and fail-closed semantics.
+4. Dataset/catalog transaction and handle semantics.
+5. Job, spool, and operator semantic transitions.
+6. First vertical slice fixture/oracle/golden linkage.
+7. Semantic coverage and formal-claim truthfulness reporting.
+8. Validation gates for no fake success, no hosted daemon, no Rust semantic-core,
+   and no production generated-code path.
 
 ### Phase 1 Task Backlog
 
 | Task | Output | Depends on | AI-safe assignment |
 | --- | --- | --- | --- |
-| `HOST-001` | hosted `securityd` prototype | `MFOS-REQ-AUTH-*`, object schemas | One agent owns service package and tests. |
-| `HOST-002` | hosted `auditd` prototype | `MFOS-REQ-AUDIT-*` | Must finish schema before integration. |
-| `HOST-003` | hosted `catalogd` prototype | `MFOS-REQ-CATALOG-*` | Own catalog package and crash tests. |
-| `HOST-004` | hosted `datasetd` prototype | `HOST-001`, `HOST-003` | Must not bypass `securityd`. |
-| `HOST-005` | hosted `jobd` prototype | `HOST-001`, `HOST-004`, `HOST-006` | Parser work separate from executor work. |
-| `HOST-006` | hosted `spoold` prototype | `HOST-001`, `HOST-002` | Own spool package and negative tests. |
-| `HOST-007` | hosted `operatord` prototype | `HOST-001`, `HOST-002`, service APIs | Own command grammar and operator drills. |
-| `HOST-008` | minimal `workpolicyd` prototype | job classes | Non-blocking until Phase 3 except dispatch hint stub must fail closed. |
-| `HOST-009` | AMF disabled-mode contract tests | AMF spec | AMF load returns `MFOS_ERR_UNSUPPORTED`; no module mapping or registry entry. |
-| `HOST-010` | `uvsd` prototype | update manifest schema | Basic signed artifact path first. |
-| `HOST-011` | HELLO job integration | services running | Integration agent only. |
-| `HOST-012` | unauthorized dataset deny integration | services running | Must verify no handle exists. |
-| `HOST-013` | audit chain tamper test | `HOST-002` | Fault-injection agent. |
-| `HOST-014` | catalog crash recovery test | `HOST-003` | Crash-recovery agent. |
+| `DAFNY-001` | shared Dafny primitives and error taxonomy | Phase 0 semantic specs | Dafny semantics agent only. |
+| `DAFNY-002` | authorization executable semantics | `MFOS-REQ-AUTH-*`, object schemas | Own only Dafny authorization artifacts. |
+| `DAFNY-003` | audit executable semantics | `MFOS-REQ-AUDIT-*` | Own only Dafny audit artifacts. |
+| `DAFNY-004` | dataset/catalog executable semantics | `MFOS-REQ-CATALOG-*`, `MFOS-REQ-DATASET-*` | Own only Dafny dataset/catalog artifacts. |
+| `DAFNY-005` | job/spool/operator executable semantics | `MFOS-REQ-JOB-*`, `MFOS-REQ-SPOOL-*`, `MFOS-REQ-OPER-*` | Own only Dafny semantic artifacts. |
+| `CONF-001` | fixture/oracle/golden conformance linkage | Phase 0.9 artifact contracts | Conformance tooling agent only; no semantic runner command. |
+| `TRACE-001` | semantic coverage and evidence traceability reports | Dafny symbols and catalogs | Traceability agent only. |
+| `GUARDRAIL-001` | Phase 1 absence checks | AI contract and pack gates | Validator agent only. |
 
 ### Required Evidence
 
-- Hosted integration transcript for ALICE/BOB vertical slice.
-- Audit chain records for submit/open/execute/deny/complete.
-- Negative-test report showing unauthorized dataset access creates no handle.
-- Fuzz target registry.
-- Catalog recovery report.
+- Dafny verification report.
+- Fixture/oracle/golden comparison report for ALICE/BOB vertical slice.
+- Negative semantic report showing unauthorized dataset access creates no handle.
+- Semantic coverage report with partial/unproved areas disclosed.
+- No-hosted-daemon, no-Rust-semantic-core, and no-production-code validation reports.
 
 ### Phase 1 Gaps
 
-- Hosted transport and serialization may differ from kernel ABI.
-- Durable storage is a semantic approximation until nucleus storage is available.
-- AMF production load is not part of Phase 1; only disabled-mode contract behavior is tested.
-- UVS is a basic prototype only.
+- Runtime transport, service serialization, durable storage, crash recovery,
+  parser fuzzing, AMF load paths, UVS paths, and hardware enforcement are
+  outside Phase 1.
+- Dafny executable semantics are canonical for Phase 1, but Rust production
+  implementation and architecture backends remain later-gated.
+- CPU Feature Registry and target profile policy must exist before assigning
+  hardware-facing architecture backend implementation.
 
 ## 6. Phase 2: Minimal MFOS Nucleus
+
+Future-gated production-oriented planning only. This section is not current
+Phase 1 authorization.
 
 ### Objectives
 
 - Boot MFOS to operator console.
 - Implement address spaces, typed handles, SVC ABI, copy-in/copy-out, and service launcher.
-- Port hosted service semantics onto MFOS service runtime.
+- Port reviewed enterprise service contracts onto MFOS service runtime after a
+  later implementation gate.
 - Require an NX-capable platform and enforce W^X and user/supervisor separation.
 - Ensure user jobs cannot obtain protected dataset handles without `securityd`.
 - Keep AMF load disabled with `MFOS_ERR_UNSUPPORTED`.
 
 ### Entry Criteria
 
-- Phase 1 vertical slice passes in hosted mode.
+- Phase 1 Dafny/conformance vertical slice passes with reviewed evidence.
 - SVC/PCALL ABI specs are frozen enough to implement.
 - Nucleus object and capability model is approved.
 - Boot handoff and memory map assumptions are documented.
@@ -233,7 +261,7 @@ SVC ABI
 typed handles
 bounded copy-in/copy-out
 service launch and supervision
-hosted services ported or bridged
+reviewed service contracts ported or bridged after implementation gate
 NX-capable platform verified and W^X enforced
 user job cannot obtain protected dataset handle without securityd
 AMF load returns MFOS_ERR_UNSUPPORTED and creates no mapping or registry entry
@@ -303,7 +331,8 @@ undefined SVCs return SPEC_GAP
 ### Entry Criteria
 
 - Phase 2 exit criteria met.
-- Hosted semantic tests can run against nucleus-backed services.
+- Dafny/conformance semantic tests have reviewed adapters for nucleus-backed
+  service contracts.
 - Basic storage persistence is available.
 - `securityd` and `auditd` are reliable enough for protected operations.
 

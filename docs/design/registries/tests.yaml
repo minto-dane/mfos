@@ -19325,6 +19325,328 @@ entries:
   - DAFNY-GAP-0002
   created_at_utc: '2026-04-28T00:00:00Z'
   updated_at_utc: '2026-04-28T00:00:00Z'
+- test_id: TEST-MFOS-ARCH-POS-0001
+  title: Architecture portability policy positive review
+  test_type: positive
+  status: draft
+  requirement_ids: [MFOS-REQ-ARCH-0001, MFOS-REQ-ARCH-0002, MFOS-REQ-ARCH-0003, MFOS-REQ-ARCH-0004]
+  source_matrix_ids: [FBVBS-001, EXTREF-SEL4-MULTIARCH-SUPPORTED-PLATFORMS-0001, EXTREF-SEL4-ARCH-CONFIGURATION-0001]
+  owning_spec: {path: docs/design/specs/44-architecture-portability-policy.md, section: Requirements}
+  target_subsystem: architecture
+  target_artifacts: [docs/design/specs/44-architecture-portability-policy.md]
+  preconditions: [Architecture portability policy exists.]
+  steps: [Validate x86-64-first, not x86-64-only, semantic/enforcement separation, platform separation, and future non-x86 evidence gates.]
+  expected_result: Architecture policy passes validation without implementation claims.
+  expected_absence: [no production implementation claim, no non-x86 implementation claim]
+  expected_error_code: null
+  audit_expectations: [Architecture claim review record is required before support claims.]
+  fixtures: []
+  fuzz: {target_name: null, corpus_path: null, seed_manifest: null, sanitizer_profile: null, minimum_duration: null}
+  evidence_ids: [EV-MFOS-ARCH-0001]
+  ci_jobs: [validate-all]
+  spec_gap_ids: [ARCH-GAP-0002]
+  created_at_utc: '2026-04-30T00:00:00Z'
+  updated_at_utc: '2026-04-30T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-ARCH-0001
+  title: Architecture portability overclaim negative review
+  test_type: negative
+  status: draft
+  requirement_ids: [MFOS-REQ-ARCH-0001, MFOS-REQ-ARCH-0004]
+  source_matrix_ids: [FBVBS-001]
+  owning_spec: {path: docs/design/specs/44-architecture-portability-policy.md, section: Negative Tests}
+  target_subsystem: architecture
+  target_artifacts: [docs/design/specs/44-architecture-portability-policy.md]
+  preconditions: [A document claims architecture support or treats CPU features as semantics.]
+  steps: [Run architecture portability validators.]
+  expected_result: Invalid architecture or non-x86 implementation claim is rejected.
+  expected_absence: [no silent acceptance, no production implementation claim]
+  expected_error_code: MFOS_ERR_PROFILE_CLAIM_REJECTED
+  audit_expectations: [Rejected claim is review-record auditable.]
+  fixtures: []
+  fuzz: {target_name: null, corpus_path: null, seed_manifest: null, sanitizer_profile: null, minimum_duration: null}
+  evidence_ids: [EV-MFOS-ARCH-0001]
+  ci_jobs: [validate-all]
+  spec_gap_ids: [ARCH-GAP-0002]
+  created_at_utc: '2026-04-30T00:00:00Z'
+  updated_at_utc: '2026-04-30T00:00:00Z'
+  legacy_test_ids: []
+- test_id: TEST-MFOS-X64-POS-0001
+  title: x86-64 target profile positive review
+  test_type: positive
+  status: draft
+  requirement_ids: [MFOS-REQ-X64-0001, MFOS-REQ-X64-0002, MFOS-REQ-X64-0003, MFOS-REQ-X64-0004, MFOS-REQ-X64-0005]
+  source_matrix_ids: [X64-INTEL-001, X64-AMD-001]
+  owning_spec: {path: docs/design/specs/45-x86-64-target-profiles.md, section: Requirements}
+  target_subsystem: cpu-profile
+  target_artifacts: [docs/design/registries/cpu-target-profiles.yml]
+  preconditions: [CPU target profile registry exists.]
+  steps: [Validate x86-64 baseline, server-modern, maximum-feature, and optional feature gates.]
+  expected_result: x86-64 profiles are design-only and registry-linked.
+  expected_absence: [no v4 baseline, no global optional feature assumption]
+  expected_error_code: null
+  audit_expectations: [Profile claim review is auditable before release or conformance claim.]
+  fixtures: []
+  fuzz: {target_name: null, corpus_path: null, seed_manifest: null, sanitizer_profile: null, minimum_duration: null}
+  evidence_ids: [EV-MFOS-X64-0001]
+  ci_jobs: [validate-all]
+  spec_gap_ids: [X64-GAP-0001]
+  created_at_utc: '2026-04-30T00:00:00Z'
+  updated_at_utc: '2026-04-30T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-X64-0001
+  title: x86-64 profile overclaim negative review
+  test_type: negative
+  status: draft
+  requirement_ids: [MFOS-REQ-X64-0001, MFOS-REQ-X64-0004, MFOS-REQ-X64-0005]
+  source_matrix_ids: [X64-INTEL-001, X64-AMD-001]
+  owning_spec: {path: docs/design/specs/45-x86-64-target-profiles.md, section: Failure Modes}
+  target_subsystem: cpu-profile
+  target_artifacts: [docs/design/registries/cpu-target-profiles.yml]
+  preconditions: [A profile treats optional features as global or changes neutral semantics.]
+  steps: [Run x86-64 profile validator.]
+  expected_result: Invalid profile claim is rejected.
+  expected_absence: [no silent downgrade, no semantic change]
+  expected_error_code: MFOS_ERR_PROFILE_CLAIM_REJECTED
+  audit_expectations: [Rejected profile claim is review-record auditable.]
+  fixtures: []
+  fuzz: {target_name: null, corpus_path: null, seed_manifest: null, sanitizer_profile: null, minimum_duration: null}
+  evidence_ids: [EV-MFOS-X64-0001]
+  ci_jobs: [validate-all]
+  spec_gap_ids: [X64-GAP-0001]
+  created_at_utc: '2026-04-30T00:00:00Z'
+  updated_at_utc: '2026-04-30T00:00:00Z'
+  legacy_test_ids: []
+- test_id: TEST-MFOS-X64-V4-POS-0001
+  title: x86-64-v4 optional profile positive review
+  test_type: positive
+  status: draft
+  requirement_ids: [MFOS-REQ-X64-V4-0001, MFOS-REQ-X64-V4-0002, MFOS-REQ-X64-V4-0003, MFOS-REQ-X64-V4-0004, MFOS-REQ-X64-V4-0005, MFOS-REQ-X64-V4-0006]
+  source_matrix_ids: [EXTREF-X86-64-MICROARCH-LEVELS-0001, EXTREF-GLIBC-HWCAPS-X86-64-V4-0001, EXTREF-GCC-X86-64-V4-0001]
+  owning_spec: {path: docs/design/specs/45-x86-64-target-profiles.md, section: MFOS-X64-V4-PERFORMANCE}
+  target_subsystem: cpu-profile
+  target_artifacts: [docs/design/registries/cpu-target-profiles.yml]
+  preconditions: [V4 profile exists and baseline profile exists.]
+  steps: [Validate v4 is optional, artifact-separated, and evidence-gated.]
+  expected_result: v4 profile is optional performance only.
+  expected_absence: [no baseline v4 requirement, no TDX/SEV/SGX/CET/CFI implication]
+  expected_error_code: null
+  audit_expectations: [V4 profile claim review is auditable before release or conformance claim.]
+  fixtures: []
+  fuzz: {target_name: null, corpus_path: null, seed_manifest: null, sanitizer_profile: null, minimum_duration: null}
+  evidence_ids: [EV-MFOS-X64-V4-0001]
+  ci_jobs: [validate-all]
+  spec_gap_ids: [X64-GAP-0001]
+  created_at_utc: '2026-04-30T00:00:00Z'
+  updated_at_utc: '2026-04-30T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-X64-V4-0001
+  title: x86-64-v4 baseline or TCB misuse negative review
+  test_type: negative
+  status: draft
+  requirement_ids: [MFOS-REQ-X64-V4-0001, MFOS-REQ-X64-V4-0003, MFOS-REQ-X64-V4-0004, MFOS-REQ-X64-V4-0005]
+  source_matrix_ids: [EXTREF-X86-64-MICROARCH-LEVELS-0001]
+  owning_spec: {path: docs/design/specs/45-x86-64-target-profiles.md, section: Negative Tests}
+  target_subsystem: cpu-profile
+  target_artifacts: [docs/design/registries/cpu-target-profiles.yml]
+  preconditions: [A baseline or TCB path claims v4 use without required evidence.]
+  steps: [Run CPU profile validators.]
+  expected_result: Invalid v4 claim is rejected.
+  expected_absence: [no baseline v4, no unreviewed TCB vector-state use]
+  expected_error_code: MFOS_ERR_PROFILE_CLAIM_REJECTED
+  audit_expectations: [Rejected v4 claim is review-record auditable.]
+  fixtures: []
+  fuzz: {target_name: null, corpus_path: null, seed_manifest: null, sanitizer_profile: null, minimum_duration: null}
+  evidence_ids: [EV-MFOS-X64-V4-0001]
+  ci_jobs: [validate-all]
+  spec_gap_ids: [X64-GAP-0001]
+  created_at_utc: '2026-04-30T00:00:00Z'
+  updated_at_utc: '2026-04-30T00:00:00Z'
+  legacy_test_ids: []
+- test_id: TEST-MFOS-X64-CVM-POS-0001
+  title: x86-64 CVM profile positive review
+  test_type: positive
+  status: draft
+  requirement_ids: [MFOS-REQ-X64-CVM-0001, MFOS-REQ-X64-CVM-0002]
+  source_matrix_ids: [EXTREF-INTEL-TDX-OVERVIEW-0001, EXTREF-AMD-SEV-SNP-0001]
+  owning_spec: {path: docs/design/specs/45-x86-64-target-profiles.md, section: CVM profiles}
+  target_subsystem: cvm-profile
+  target_artifacts: [docs/design/registries/cpu-target-profiles.yml]
+  preconditions: [TDX and SEV-SNP profiles exist as design-only profiles.]
+  steps: [Validate CVM profiles do not imply baseline, v4, SGX, Hyper-V, or KVM compatibility.]
+  expected_result: CVM profiles are source-grounded and implementation-disabled.
+  expected_absence: [no SGX implication, no Hyper-V or KVM compatibility claim]
+  expected_error_code: null
+  audit_expectations: [CVM profile claim review is auditable before launch or secret-release work.]
+  fixtures: []
+  fuzz: {target_name: null, corpus_path: null, seed_manifest: null, sanitizer_profile: null, minimum_duration: null}
+  evidence_ids: [EV-MFOS-X64-CVM-0001]
+  ci_jobs: [validate-all]
+  spec_gap_ids: [X64-GAP-0003]
+  created_at_utc: '2026-04-30T00:00:00Z'
+  updated_at_utc: '2026-04-30T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-X64-CVM-0001
+  title: x86-64 CVM profile confusion negative review
+  test_type: negative
+  status: draft
+  requirement_ids: [MFOS-REQ-X64-CVM-0001, MFOS-REQ-X64-CVM-0002]
+  source_matrix_ids: [EXTREF-INTEL-TDX-OVERVIEW-0001, EXTREF-AMD-SEV-SNP-0001]
+  owning_spec: {path: docs/design/specs/45-x86-64-target-profiles.md, section: Failure Modes}
+  target_subsystem: cvm-profile
+  target_artifacts: [docs/design/registries/cpu-target-profiles.yml]
+  preconditions: [A CVM profile implies SGX, v4, Hyper-V, KVM, or completed implementation.]
+  steps: [Run CPU profile validators.]
+  expected_result: Invalid CVM claim is rejected.
+  expected_absence: [no silent downgrade, no external compatibility claim]
+  expected_error_code: MFOS_ERR_PROFILE_CLAIM_REJECTED
+  audit_expectations: [Rejected CVM claim is review-record auditable.]
+  fixtures: []
+  fuzz: {target_name: null, corpus_path: null, seed_manifest: null, sanitizer_profile: null, minimum_duration: null}
+  evidence_ids: [EV-MFOS-X64-CVM-0001]
+  ci_jobs: [validate-all]
+  spec_gap_ids: [X64-GAP-0003]
+  created_at_utc: '2026-04-30T00:00:00Z'
+  updated_at_utc: '2026-04-30T00:00:00Z'
+  legacy_test_ids: []
+- test_id: TEST-MFOS-X64-TEE-POS-0001
+  title: Intel SGX TEE profile positive review
+  test_type: positive
+  status: draft
+  requirement_ids: [MFOS-REQ-X64-TEE-0001, MFOS-REQ-X64-TEE-0002, MFOS-REQ-X64-TEE-0003, MFOS-REQ-X64-TEE-0004, MFOS-REQ-X64-TEE-0005]
+  source_matrix_ids: [EXTREF-INTEL-SGX-OVERVIEW-0001, EXTREF-INTEL-SGX-ATTESTATION-0001, EXTREF-INTEL-SGX-DCAP-0001]
+  owning_spec: {path: docs/design/specs/45-x86-64-target-profiles.md, section: MFOS-X64-TEE-INTEL-SGX}
+  target_subsystem: tee-profile
+  target_artifacts: [docs/design/registries/cpu-target-profiles.yml]
+  preconditions: [SGX TEE profile exists as design-only profile.]
+  steps: [Validate SGX is optional TEE, not CVM, and attestation mode is separate from feature presence.]
+  expected_result: SGX profile is source-grounded and implementation-disabled.
+  expected_absence: [no CVM classification, no baseline SGX, no TDX implication]
+  expected_error_code: null
+  audit_expectations: [TEE profile claim review is auditable before enclave runtime work.]
+  fixtures: []
+  fuzz: {target_name: null, corpus_path: null, seed_manifest: null, sanitizer_profile: null, minimum_duration: null}
+  evidence_ids: [EV-MFOS-X64-TEE-0001]
+  ci_jobs: [validate-all]
+  spec_gap_ids: [X64-GAP-0004]
+  created_at_utc: '2026-04-30T00:00:00Z'
+  updated_at_utc: '2026-04-30T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-X64-TEE-0001
+  title: Intel SGX CVM or attestation conflation negative review
+  test_type: negative
+  status: draft
+  requirement_ids: [MFOS-REQ-X64-TEE-0001, MFOS-REQ-X64-TEE-0002, MFOS-REQ-X64-TEE-0005]
+  source_matrix_ids: [EXTREF-INTEL-SGX-OVERVIEW-0001, EXTREF-INTEL-SGX-ATTESTATION-0001]
+  owning_spec: {path: docs/design/specs/45-x86-64-target-profiles.md, section: Negative Tests}
+  target_subsystem: tee-profile
+  target_artifacts: [docs/design/registries/cpu-target-profiles.yml]
+  preconditions: [SGX is classified as CVM or SGX feature presence is treated as attestation mode.]
+  steps: [Run CPU profile validators.]
+  expected_result: Invalid SGX profile claim is rejected.
+  expected_absence: [no SGX baseline, no SGX-as-CVM, no attestation-mode conflation]
+  expected_error_code: MFOS_ERR_PROFILE_CLAIM_REJECTED
+  audit_expectations: [Rejected SGX claim is review-record auditable.]
+  fixtures: []
+  fuzz: {target_name: null, corpus_path: null, seed_manifest: null, sanitizer_profile: null, minimum_duration: null}
+  evidence_ids: [EV-MFOS-X64-TEE-0001]
+  ci_jobs: [validate-all]
+  spec_gap_ids: [X64-GAP-0004]
+  created_at_utc: '2026-04-30T00:00:00Z'
+  updated_at_utc: '2026-04-30T00:00:00Z'
+  legacy_test_ids: []
+- test_id: TEST-MFOS-HARDENING-POS-0001
+  title: CET CFI hardening evidence positive review
+  test_type: positive
+  status: draft
+  requirement_ids: [MFOS-REQ-HARDENING-0001]
+  source_matrix_ids: [EXTREF-INTEL-CET-0001, EXTREF-CLANG-CFI-0001, EXTREF-GCC-CF-PROTECTION-0001]
+  owning_spec: {path: docs/design/specs/45-x86-64-target-profiles.md, section: MFOS-HARDENING-CET-CFI}
+  target_subsystem: hardening-evidence
+  target_artifacts: [docs/design/registries/cpu-target-profiles.yml]
+  preconditions: [Hardening profile exists as evidence profile.]
+  steps: [Validate hardening claims require build, toolchain, binary, and runtime/platform evidence.]
+  expected_result: Hardening profile remains evidence-gated.
+  expected_absence: [no memory-safety proof claim, no formal-verification proof claim]
+  expected_error_code: null
+  audit_expectations: [Hardening claim review is auditable before release or conformance claim.]
+  fixtures: []
+  fuzz: {target_name: null, corpus_path: null, seed_manifest: null, sanitizer_profile: null, minimum_duration: null}
+  evidence_ids: [EV-MFOS-HARDENING-0001]
+  ci_jobs: [validate-all]
+  spec_gap_ids: [X64-GAP-0005]
+  created_at_utc: '2026-04-30T00:00:00Z'
+  updated_at_utc: '2026-04-30T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-HARDENING-0001
+  title: CET CFI overclaim negative review
+  test_type: negative
+  status: draft
+  requirement_ids: [MFOS-REQ-HARDENING-0001]
+  source_matrix_ids: [EXTREF-INTEL-CET-0001, EXTREF-CLANG-CFI-0001]
+  owning_spec: {path: docs/design/specs/45-x86-64-target-profiles.md, section: Failure Modes}
+  target_subsystem: hardening-evidence
+  target_artifacts: [docs/design/registries/cpu-target-profiles.yml]
+  preconditions: [A hardening claim lacks evidence or replaces language/proof requirements.]
+  steps: [Run hardening/profile validators.]
+  expected_result: Invalid hardening claim is rejected.
+  expected_absence: [no Rust-safety replacement claim, no proof replacement claim]
+  expected_error_code: MFOS_ERR_BINARY_EVIDENCE_REJECTED
+  audit_expectations: [Rejected hardening claim is review-record auditable.]
+  fixtures: []
+  fuzz: {target_name: null, corpus_path: null, seed_manifest: null, sanitizer_profile: null, minimum_duration: null}
+  evidence_ids: [EV-MFOS-HARDENING-0001]
+  ci_jobs: [validate-all]
+  spec_gap_ids: [X64-GAP-0005]
+  created_at_utc: '2026-04-30T00:00:00Z'
+  updated_at_utc: '2026-04-30T00:00:00Z'
+  legacy_test_ids: []
+- test_id: TEST-MFOS-CPUFEAT-POS-0001
+  title: CPU Feature Registry positive review
+  test_type: positive
+  status: draft
+  requirement_ids: [MFOS-REQ-CPUFEAT-0001, MFOS-REQ-CPUFEAT-0002, MFOS-REQ-CPUFEAT-0003, MFOS-REQ-CPUFEAT-0004, MFOS-REQ-CPUFEAT-0005]
+  source_matrix_ids: [FBVBS-001, X64-INTEL-001, X64-AMD-001]
+  owning_spec: {path: docs/design/specs/45-x86-64-target-profiles.md, section: CPU Feature Registry Requirements}
+  target_subsystem: cpu-feature-registry
+  target_artifacts: [docs/design/registries/cpu-feature-registry.yml, docs/design/registries/cpu-target-profiles.yml]
+  preconditions: [CPU feature and target profile registries exist.]
+  steps: [Validate source refs, feature IDs, profile references, evidence fields, and fallback behavior.]
+  expected_result: CPU registries are machine-readable and implementation-disabled.
+  expected_absence: [no feature detector implementation, no feature status overclaim]
+  expected_error_code: null
+  audit_expectations: [CPU feature registry review is auditable before backend work.]
+  fixtures: []
+  fuzz: {target_name: null, corpus_path: null, seed_manifest: null, sanitizer_profile: null, minimum_duration: null}
+  evidence_ids: [EV-MFOS-CPUFEAT-0001]
+  ci_jobs: [validate-all]
+  spec_gap_ids: [CPUFEAT-GAP-0002]
+  created_at_utc: '2026-04-30T00:00:00Z'
+  updated_at_utc: '2026-04-30T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-CPUFEAT-0001
+  title: CPU Feature Registry overclaim negative review
+  test_type: negative
+  status: draft
+  requirement_ids: [MFOS-REQ-CPUFEAT-0002, MFOS-REQ-CPUFEAT-0004, MFOS-REQ-CPUFEAT-0005]
+  source_matrix_ids: [FBVBS-001]
+  owning_spec: {path: docs/design/specs/45-x86-64-target-profiles.md, section: Failure Modes}
+  target_subsystem: cpu-feature-registry
+  target_artifacts: [docs/design/registries/cpu-feature-registry.yml, docs/design/registries/cpu-target-profiles.yml]
+  preconditions: [A profile references a missing feature or planned feature is claimed implemented.]
+  steps: [Run CPU registry validator.]
+  expected_result: Invalid CPU feature claim is rejected.
+  expected_absence: [no missing feature ID reference, no implemented claim without evidence]
+  expected_error_code: MFOS_ERR_PROFILE_CLAIM_REJECTED
+  audit_expectations: [Rejected CPU feature claim is review-record auditable.]
+  fixtures: []
+  fuzz: {target_name: null, corpus_path: null, seed_manifest: null, sanitizer_profile: null, minimum_duration: null}
+  evidence_ids: [EV-MFOS-CPUFEAT-0001]
+  ci_jobs: [validate-all]
+  spec_gap_ids: [CPUFEAT-GAP-0002]
+  created_at_utc: '2026-04-30T00:00:00Z'
+  updated_at_utc: '2026-04-30T00:00:00Z'
+  legacy_test_ids: []
 spec_gaps:
 - gap_id: REG-GAP-0002
   summary: Actual registry-backed fixtures and test paths are recommended but not created by this seed.

@@ -3,6 +3,22 @@ report_index_kind: mfos_report_inventory
 status: current
 canonical_report_root: reports
 current:
+- path: reports/current/architecture-portability-policy-report.md
+  purpose: Architecture portability policy, x86-64-first/not-only boundary, and non-x86 claim gates.
+- path: reports/current/x86-64-target-profile-report.md
+  purpose: x86-64 target profile definitions and optional v4/SGX/CVM policy summary.
+- path: reports/current/cpu-feature-registry-report.md
+  purpose: CPU Feature Registry and CPU Target Profile Registry policy and validation summary.
+- path: reports/current/roadmap-phase-alignment-report.md
+  purpose: Current Phase 1 Dafny and roadmap cleanup summary.
+- path: reports/current/architecture-portability-red-team-review.md
+  purpose: Red-team review for architecture portability, x86-64 profiles, SGX/TEE, and roadmap alignment.
+- path: reports/current/architecture-portability-open-issues.md
+  purpose: Nonblocking architecture portability and CPU profile follow-up issues.
+- path: reports/current/pr-21-review-report.md
+  purpose: PR #21 architecture portability and x86-64 target-profile review merge decision.
+- path: reports/current/pr-21-blocker-report.md
+  purpose: PR #21 stacked-branch force-push blocker and replacement-PR decision.
 - path: reports/current/total-repo-remediation-summary.md
   purpose: Phase 0.10 total repository remediation summary.
 - path: reports/current/total-repo-remediation-summary.yml

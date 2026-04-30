@@ -208,6 +208,12 @@ Absolute rules:
   this prompt.
 - Requirement IDs, Source Matrix IDs, and evidence obligations must be mapped
   before any future code task is accepted.
+- Preserve architecture portability: MFOS is x86-64-first but not x86-64-only,
+  x86-64-v4 is optional performance profile only, SGX is enclave/TEE rather
+  than CVM, and Hyper-V/KVM references do not create compatibility claims.
+- Do not claim future AArch64, RISC-V, or other non-x86 support is implemented
+  without source cards, requirements, CPU feature registries, target profiles,
+  tests, CI, evidence, and reviewed backends.
 - No fake success.
 - No empty implementation stubs.
 - securityd client is required for protected-resource authorization.

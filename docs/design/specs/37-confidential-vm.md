@@ -45,6 +45,11 @@ Status: Draft Phase 0.10 requirements expansion. This is specification-only and 
 
 Define MFOS confidential VM concepts, trust boundaries, profile abstraction, launch/attestation/secret-release obligations, and failure modes before any implementation work is assigned.
 
+Intel TDX and AMD SEV-SNP are Confidential VM profile technologies in MFOS
+planning. Intel SGX is not a Confidential VM profile; it is governed by Spec
+`45` as an optional enclave/TEE profile. SGX feature presence, SGX attestation
+mode, TDX, and SEV-SNP must remain distinct profile concepts.
+
 ## 2. Scope
 
 In scope: ConfidentialVM object model, CVM profile abstraction, launch measurement, attestation evidence, secret release decision, private/shared memory transition planning, device assignment constraints, migration/recovery constraints, and formal proof obligations.

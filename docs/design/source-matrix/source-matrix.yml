@@ -373,6 +373,60 @@ cards:
   title: A Technical Look at Intel Control-Flow Enforcement Technology
   card_path: docs/design/source-matrix/cards/EXTREF-INTEL-CET-0001.yml
   status: draft
+- source_id: EXTREF-X86-64-MICROARCH-LEVELS-0001
+  source_type: external_reference
+  vendor: x86-64 psABI project
+  title: x86-64 psABI micro-architecture levels
+  card_path: docs/design/source-matrix/cards/EXTREF-X86-64-MICROARCH-LEVELS-0001.yml
+  status: draft
+- source_id: EXTREF-GLIBC-HWCAPS-X86-64-V4-0001
+  source_type: external_reference
+  vendor: GNU C Library project
+  title: glibc-hwcaps x86-64-v2/v3/v4 support
+  card_path: docs/design/source-matrix/cards/EXTREF-GLIBC-HWCAPS-X86-64-V4-0001.yml
+  status: draft
+- source_id: EXTREF-GCC-X86-64-V4-0001
+  source_type: external_reference
+  vendor: GNU Compiler Collection
+  title: GCC x86 options for x86-64-v4
+  card_path: docs/design/source-matrix/cards/EXTREF-GCC-X86-64-V4-0001.yml
+  status: draft
+- source_id: EXTREF-RUST-TARGET-TIER-POLICY-0001
+  source_type: external_reference
+  vendor: Rust project
+  title: rustc target tier policy
+  card_path: docs/design/source-matrix/cards/EXTREF-RUST-TARGET-TIER-POLICY-0001.yml
+  status: draft
+- source_id: EXTREF-SEL4-MULTIARCH-SUPPORTED-PLATFORMS-0001
+  source_type: external_reference
+  vendor: seL4 project
+  title: seL4 supported platforms
+  card_path: docs/design/source-matrix/cards/EXTREF-SEL4-MULTIARCH-SUPPORTED-PLATFORMS-0001.yml
+  status: draft
+- source_id: EXTREF-SEL4-ARCH-CONFIGURATION-0001
+  source_type: external_reference
+  vendor: seL4 project
+  title: seL4 configuration options
+  card_path: docs/design/source-matrix/cards/EXTREF-SEL4-ARCH-CONFIGURATION-0001.yml
+  status: draft
+- source_id: EXTREF-INTEL-SGX-OVERVIEW-0001
+  source_type: external_reference
+  vendor: Intel
+  title: Intel Software Guard Extensions overview
+  card_path: docs/design/source-matrix/cards/EXTREF-INTEL-SGX-OVERVIEW-0001.yml
+  status: draft
+- source_id: EXTREF-INTEL-SGX-ATTESTATION-0001
+  source_type: external_reference
+  vendor: Intel
+  title: Intel SGX attestation services
+  card_path: docs/design/source-matrix/cards/EXTREF-INTEL-SGX-ATTESTATION-0001.yml
+  status: draft
+- source_id: EXTREF-INTEL-SGX-DCAP-0001
+  source_type: external_reference
+  vendor: Intel
+  title: Intel SGX Data Center Attestation Primitives
+  card_path: docs/design/source-matrix/cards/EXTREF-INTEL-SGX-DCAP-0001.yml
+  status: draft
 - source_id: EXTREF-RUST-UNSAFE-REFERENCE-0001
   source_type: external_reference
   vendor: Rust project

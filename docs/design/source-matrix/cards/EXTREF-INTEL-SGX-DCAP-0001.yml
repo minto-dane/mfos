@@ -1,0 +1,60 @@
+schema_version: 1
+status: draft
+source_id: EXTREF-INTEL-SGX-DCAP-0001
+source_kind: bibliographic_reference
+source_type: external_reference
+semantic_role: design_background
+vendor: Intel
+vendor_mark_used: true
+product_family: Intel Software Guard Extensions
+document_title: Intel SGX Data Center Attestation Primitives
+document_url:
+- https://github.com/intel/confidential-computing.tee.dcap
+retrieved_at: '2026-04-30'
+reference_purpose:
+- source discovery
+- SGX DCAP attestation naming
+- enclave/TEE profile source grounding
+- independent MFOS design traceability
+review_topics:
+- SGX DCAP quote generation and verification background
+- DCAP as attestation mode
+- open-source attestation component boundary
+mfos_mapping:
+  mfos_components:
+  - CPU Feature Registry
+  - TEE profile planning
+  mfos_specs:
+  - docs/design/specs/45-x86-64-target-profiles.md
+  mfos_requirements: &id001
+  - MFOS-REQ-X64-TEE-0005
+  mapping_notes:
+  - Public-safe reference for the DCAP attestation mode entry in the CPU Feature Registry.
+mfos_divergence:
+- MFOS does not adopt the DCAP implementation, APIs, quotes, service protocol, or build process.
+- DCAP is an attestation mode, not SGX feature presence.
+prohibited_inference:
+- Do not copy code, build commands, API syntax, record layouts, or quote formats from the referenced repository.
+- Do not claim MFOS DCAP support exists.
+- Do not treat DCAP support as a Confidential VM profile.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+source_refs:
+- source_id: EXTREF-INTEL-SGX-DCAP-0001
+  source_type: external_reference
+  role: card_subject
+requirement_refs: *id001
+review_status: draft

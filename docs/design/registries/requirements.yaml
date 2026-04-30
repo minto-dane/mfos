@@ -11042,6 +11042,633 @@ entries:
   mfos_non_compatibility: *dafny_non_compatibility
   status: draft
   phase: Phase 1 Verified Executable Semantics
+- requirement_id: MFOS-REQ-ARCH-0001
+  title: Separate neutral semantics from architecture enforcement
+  normative_text: MFOS MUST separate architecture-neutral semantics from architecture-specific enforcement. CPU features, platform mechanisms, and architecture backends MUST NOT define authorization, audit, dataset, catalog, job, spool, operator, update, MFVM management-plane, conformance, or formal semantics.
+  source_refs:
+  - source_id: FBVBS-001
+    source_type: internal_transfer
+    role: architecture_governance
+  - source_id: EXTREF-SEL4-ARCH-CONFIGURATION-0001
+    source_type: external_reference
+    role: architecture_boundary_reference
+  profile_applicability: &arch_profile_applicability
+    baseline: required
+    enterprise_standalone: required
+    enterprise_pxm: required
+    high_assurance: required
+  target_components: &arch_target_components [architecture, profile-registry, ai-contract, roadmap]
+  verification: &arch_verification
+    primary: [architecture_review, registry_lint, negative_test]
+    tests:
+      positive: [TEST-MFOS-ARCH-POS-0001]
+      negative: [NEG-MFOS-ARCH-0001]
+  audit_obligation: &arch_audit
+    obligation: conditional
+    record_type: ARCHITECTURE_CLAIM_REVIEW
+    before_return: false
+    redaction_policy: NONE
+    notes: Required for architecture/profile claim review, not ordinary runtime operation.
+  failure_mode: &arch_failure_mode
+    error: MFOS_ERR_SPEC_GAP
+    fail_closed: true
+    conditions:
+    - An architecture-specific mechanism is treated as architecture-neutral enterprise semantics.
+  evidence_required: &arch_evidence
+  - evidence_type: architecture_policy_report
+    evidence_id: EV-MFOS-ARCH-0001
+  status: draft
+- requirement_id: MFOS-REQ-ARCH-0002
+  title: Initial implementation target is x86-64
+  normative_text: MFOS initial implementation target MUST be x86-64. This is an implementation planning target and MUST NOT be interpreted as making MFOS x86-64-only.
+  source_refs:
+  - source_id: X64-INTEL-001
+    source_type: external_reference
+    role: x86_64_initial_profile_reference
+  - source_id: X64-AMD-001
+    source_type: external_reference
+    role: x86_64_initial_profile_reference
+  profile_applicability: *arch_profile_applicability
+  target_components: *arch_target_components
+  verification: *arch_verification
+  audit_obligation: *arch_audit
+  failure_mode:
+    error: MFOS_ERR_PROFILE_CLAIM_REJECTED
+    fail_closed: true
+    conditions:
+    - Initial implementation planning omits the x86-64 target profile.
+    - The x86-64-first policy is represented as x86-64-only.
+  evidence_required: *arch_evidence
+  status: draft
+- requirement_id: MFOS-REQ-ARCH-0003
+  title: Future architecture backends must not rewrite semantics
+  normative_text: Future non-x86 architectures MUST be supported through explicit architecture/backend boundaries, not semantic rewrites. MFOS enterprise semantics MUST remain architecture-neutral.
+  source_refs:
+  - source_id: EXTREF-RUST-TARGET-TIER-POLICY-0001
+    source_type: external_reference
+    role: target_support_claim_discipline
+  - source_id: EXTREF-SEL4-MULTIARCH-SUPPORTED-PLATFORMS-0001
+    source_type: external_reference
+    role: multiarch_boundary_reference
+  profile_applicability: *arch_profile_applicability
+  target_components: *arch_target_components
+  verification: *arch_verification
+  audit_obligation: *arch_audit
+  failure_mode:
+    error: MFOS_ERR_SPEC_GAP
+    fail_closed: true
+    conditions:
+    - A future architecture backend changes reviewed MFOS enterprise semantics.
+  evidence_required: *arch_evidence
+  status: draft
+- requirement_id: MFOS-REQ-ARCH-0004
+  title: No non-x86 support claim without evidence
+  normative_text: MFOS MUST NOT claim non-x86 architecture support without source cards, specs, tests, CI, and evidence.
+  source_refs:
+  - source_id: EXTREF-RUST-TARGET-TIER-POLICY-0001
+    source_type: external_reference
+    role: target_support_claim_discipline
+  - source_id: FBVBS-001
+    source_type: internal_transfer
+    role: no_fake_success_claim_gate
+  profile_applicability: *arch_profile_applicability
+  target_components: *arch_target_components
+  verification: *arch_verification
+  audit_obligation: *arch_audit
+  failure_mode:
+    error: MFOS_ERR_PROFILE_CLAIM_REJECTED
+    fail_closed: true
+    conditions:
+    - AArch64, RISC-V, or another non-x86 backend is claimed as implemented without required source cards, specs, tests, CI, and evidence.
+  evidence_required: *arch_evidence
+  status: draft
+- requirement_id: MFOS-REQ-X64-0001
+  title: Define x86-64 baseline profile
+  normative_text: MFOS MUST define an x86-64 baseline profile. The baseline profile MUST NOT require x86-64-v4, TDX, SEV-SNP, SGX, or maximum-performance optional features.
+  source_refs:
+  - source_id: X64-INTEL-001
+    source_type: external_reference
+    role: x86_64_baseline_reference
+  - source_id: X64-AMD-001
+    source_type: external_reference
+    role: x86_64_baseline_reference
+  profile_applicability: &x64_profile_applicability
+    baseline: required
+    enterprise_standalone: required
+    enterprise_pxm: conditional
+    high_assurance: conditional
+  target_components: &x64_target_components [cpu-target-profiles, cpu-feature-registry, build-policy, validation]
+  verification: &x64_verification
+    primary: [registry_lint, profile_review, negative_test]
+    tests:
+      positive: [TEST-MFOS-X64-POS-0001]
+      negative: [NEG-MFOS-X64-0001]
+  audit_obligation: &x64_audit
+    obligation: conditional
+    record_type: CPU_PROFILE_CLAIM_REVIEW
+    before_return: false
+    redaction_policy: PLATFORM_FEATURES_ONLY
+    notes: Required for profile/conformance claims and build evidence, not ordinary runtime operations.
+  failure_mode: &x64_failure_mode
+    error: MFOS_ERR_PROFILE_CLAIM_REJECTED
+    fail_closed: true
+    conditions:
+    - A target profile claim lacks registry entries, source refs, tests, or evidence.
+  evidence_required: &x64_evidence
+  - evidence_type: x86_64_target_profile_report
+    evidence_id: EV-MFOS-X64-0001
+  status: draft
+- requirement_id: MFOS-REQ-X64-0002
+  title: Define modern server x86-64 profile
+  normative_text: MFOS MUST define a modern server x86-64 profile with explicit source-grounded CPU and platform feature expectations.
+  source_refs:
+  - source_id: X64-INTEL-001
+    source_type: external_reference
+    role: server_profile_reference
+  - source_id: X64-AMD-001
+    source_type: external_reference
+    role: server_profile_reference
+  - source_id: TCG-001
+    source_type: external_reference
+    role: measured_boot_reference
+  profile_applicability: *x64_profile_applicability
+  target_components: *x64_target_components
+  verification: *x64_verification
+  audit_obligation: *x64_audit
+  failure_mode: *x64_failure_mode
+  evidence_required: *x64_evidence
+  status: draft
+- requirement_id: MFOS-REQ-X64-0003
+  title: Define maximum-feature profile
+  normative_text: MFOS MUST define a maximum-feature x86-64 profile with feature detection and feature-specific evidence. No maximum-feature item may be assumed globally.
+  source_refs:
+  - source_id: X64-INTEL-001
+    source_type: external_reference
+    role: maximum_feature_reference
+  - source_id: X64-AMD-001
+    source_type: external_reference
+    role: maximum_feature_reference
+  profile_applicability: *x64_profile_applicability
+  target_components: *x64_target_components
+  verification: *x64_verification
+  audit_obligation: *x64_audit
+  failure_mode:
+    error: MFOS_ERR_UNSUPPORTED
+    fail_closed: true
+    conditions:
+    - A claimed optional feature is unavailable or lacks required evidence.
+  evidence_required: *x64_evidence
+  status: draft
+- requirement_id: MFOS-REQ-X64-0004
+  title: Capability-gate optional x86-64 features
+  normative_text: Optional x86-64 features MUST be capability-gated. Optional feature absence MUST produce fallback, unsupported, profile-not-satisfied, or fail-closed behavior as defined by the selected profile.
+  source_refs:
+  - source_id: FBVBS-001
+    source_type: internal_transfer
+    role: no_fake_success_profile_gate
+  - source_id: X64-INTEL-001
+    source_type: external_reference
+    role: cpu_feature_reference
+  profile_applicability: *x64_profile_applicability
+  target_components: *x64_target_components
+  verification: *x64_verification
+  audit_obligation: *x64_audit
+  failure_mode:
+    error: MFOS_ERR_UNSUPPORTED
+    fail_closed: true
+    conditions:
+    - Optional feature use proceeds without capability evidence.
+  evidence_required: *x64_evidence
+  status: draft
+- requirement_id: MFOS-REQ-X64-0005
+  title: Optional features do not change neutral semantics
+  normative_text: Absence of optional x86-64 features MUST NOT change architecture-neutral MFOS semantics.
+  source_refs:
+  - source_id: FBVBS-001
+    source_type: internal_transfer
+    role: semantic_boundary_governance
+  - source_id: EXTREF-SEL4-ARCH-CONFIGURATION-0001
+    source_type: external_reference
+    role: architecture_configuration_reference
+  profile_applicability: *x64_profile_applicability
+  target_components: *x64_target_components
+  verification: *x64_verification
+  audit_obligation: *x64_audit
+  failure_mode:
+    error: MFOS_ERR_SPEC_GAP
+    fail_closed: true
+    conditions:
+    - Optional x86-64 feature absence changes authorization, audit, dataset, catalog, job, spool, operator, update, or MFVM semantics.
+  evidence_required: *x64_evidence
+  status: draft
+- requirement_id: MFOS-REQ-X64-V4-0001
+  title: x86-64-v4 is optional performance profile
+  normative_text: MFOS MUST define x86-64-v4 as an optional performance profile, not as baseline.
+  source_refs:
+  - source_id: EXTREF-X86-64-MICROARCH-LEVELS-0001
+    source_type: external_reference
+    role: v4_profile_name_reference
+  profile_applicability: &x64_v4_profile_applicability
+    baseline: prohibited
+    enterprise_standalone: optional
+    enterprise_pxm: optional
+    high_assurance: optional
+  target_components: &x64_v4_target_components [cpu-target-profiles, build-policy, binary-evidence, tcb-review]
+  verification: &x64_v4_verification
+    primary: [registry_lint, binary_inspection, negative_test]
+    tests:
+      positive: [TEST-MFOS-X64-V4-POS-0001]
+      negative: [NEG-MFOS-X64-V4-0001]
+  audit_obligation: *x64_audit
+  failure_mode: &x64_v4_failure_mode
+    error: MFOS_ERR_PROFILE_CLAIM_REJECTED
+    fail_closed: true
+    conditions:
+    - x86-64-v4 is required by the baseline profile or silently selected without evidence.
+  evidence_required: &x64_v4_evidence
+  - evidence_type: v4_profile_report
+    evidence_id: EV-MFOS-X64-V4-0001
+  status: draft
+- requirement_id: MFOS-REQ-X64-V4-0002
+  title: Select v4 artifacts only after detection
+  normative_text: x86-64-v4 optimized artifacts MUST be selected only after runtime or boot-time capability detection.
+  source_refs:
+  - source_id: EXTREF-GLIBC-HWCAPS-X86-64-V4-0001
+    source_type: external_reference
+    role: optimized_artifact_selection_reference
+  profile_applicability: *x64_v4_profile_applicability
+  target_components: *x64_v4_target_components
+  verification: *x64_v4_verification
+  audit_obligation: *x64_audit
+  failure_mode: *x64_v4_failure_mode
+  evidence_required: *x64_v4_evidence
+  status: draft
+- requirement_id: MFOS-REQ-X64-V4-0003
+  title: Baseline artifacts exclude v4-only instructions
+  normative_text: Baseline MFOS artifacts MUST NOT contain x86-64-v4-only instructions.
+  source_refs:
+  - source_id: EXTREF-GCC-X86-64-V4-0001
+    source_type: external_reference
+    role: compiler_profile_reference
+  profile_applicability: *x64_v4_profile_applicability
+  target_components: *x64_v4_target_components
+  verification: *x64_v4_verification
+  audit_obligation: *x64_audit
+  failure_mode:
+    error: MFOS_ERR_BINARY_EVIDENCE_REJECTED
+    fail_closed: true
+    conditions:
+    - Baseline binary inspection finds v4-only instructions.
+  evidence_required: *x64_v4_evidence
+  status: draft
+- requirement_id: MFOS-REQ-X64-V4-0004
+  title: TCB critical paths do not use v4 by default
+  normative_text: PXM Core, PXM Guard, nucleus entry/exit, interrupt/trap, context switch, and VMX/SVM boundary code MUST NOT use x86-64-v4 instructions unless an ADR explicitly approves the exception.
+  source_refs:
+  - source_id: X64-INTEL-001
+    source_type: external_reference
+    role: tcb_x86_64_reference
+  - source_id: X64-AMD-001
+    source_type: external_reference
+    role: tcb_x86_64_reference
+  profile_applicability: *x64_v4_profile_applicability
+  target_components: *x64_v4_target_components
+  verification: *x64_v4_verification
+  audit_obligation: *x64_audit
+  failure_mode:
+    error: MFOS_ERR_ADR_REQUIRED
+    fail_closed: true
+    conditions:
+    - TCB critical path uses v4 instructions without approved ADR.
+  evidence_required: *x64_v4_evidence
+  status: draft
+- requirement_id: MFOS-REQ-X64-V4-0005
+  title: TCB v4 use requires state analysis and fallback
+  normative_text: Any approved x86-64-v4 use in TCB MUST include XSAVE/vector-state management analysis, validation evidence, and fallback behavior.
+  source_refs:
+  - source_id: X64-INTEL-001
+    source_type: external_reference
+    role: xsave_state_reference
+  - source_id: X64-AMD-001
+    source_type: external_reference
+    role: xsave_state_reference
+  profile_applicability: *x64_v4_profile_applicability
+  target_components: *x64_v4_target_components
+  verification: *x64_v4_verification
+  audit_obligation: *x64_audit
+  failure_mode:
+    error: MFOS_ERR_BINARY_EVIDENCE_REJECTED
+    fail_closed: true
+    conditions:
+    - Approved TCB v4 use lacks XSAVE/vector-state analysis, validation evidence, or fallback behavior.
+  evidence_required: *x64_v4_evidence
+  status: draft
+- requirement_id: MFOS-REQ-X64-V4-0006
+  title: v4 support has positive and negative detection tests
+  normative_text: x86-64-v4 support MUST have positive and negative profile detection tests.
+  source_refs:
+  - source_id: EXTREF-GLIBC-HWCAPS-X86-64-V4-0001
+    source_type: external_reference
+    role: optimized_artifact_selection_reference
+  profile_applicability: *x64_v4_profile_applicability
+  target_components: *x64_v4_target_components
+  verification: *x64_v4_verification
+  audit_obligation: *x64_audit
+  failure_mode: *x64_v4_failure_mode
+  evidence_required: *x64_v4_evidence
+  status: draft
+- requirement_id: MFOS-REQ-X64-CVM-0001
+  title: Intel TDX is CVM profile only
+  normative_text: Intel TDX MUST be modeled as a confidential VM profile, not as a global baseline requirement.
+  source_refs:
+  - source_id: EXTREF-INTEL-TDX-OVERVIEW-0001
+    source_type: external_reference
+    role: tdx_cvm_profile_reference
+  - source_id: EXTREF-INTEL-TDX-ATTESTATION-0001
+    source_type: external_reference
+    role: tdx_attestation_reference
+  profile_applicability: &x64_cvm_profile_applicability
+    baseline: prohibited
+    enterprise_standalone: optional
+    enterprise_pxm: conditional
+    high_assurance: conditional
+  target_components: &x64_cvm_target_components [cpu-target-profiles, cvm-planning, attestation-policy]
+  verification: &x64_cvm_verification
+    primary: [registry_lint, profile_review, negative_test]
+    tests:
+      positive: [TEST-MFOS-X64-CVM-POS-0001]
+      negative: [NEG-MFOS-X64-CVM-0001]
+  audit_obligation: &x64_cvm_audit
+    obligation: conditional
+    record_type: CVM_PROFILE_CLAIM_REVIEW
+    before_return: false
+    redaction_policy: PLATFORM_FEATURES_ONLY
+    notes: Required before any CVM profile claim or future launch/secret-release task.
+  failure_mode: &x64_cvm_failure_mode
+    error: MFOS_ERR_PROFILE_CLAIM_REJECTED
+    fail_closed: true
+    conditions:
+    - A CVM profile is treated as baseline, implemented, or externally compatible without evidence.
+  evidence_required: &x64_cvm_evidence
+  - evidence_type: cvm_profile_report
+    evidence_id: EV-MFOS-X64-CVM-0001
+  status: draft
+- requirement_id: MFOS-REQ-X64-CVM-0002
+  title: AMD SEV-SNP is CVM profile only
+  normative_text: AMD SEV-SNP MUST be modeled as a confidential VM profile, not as a global baseline requirement.
+  source_refs:
+  - source_id: EXTREF-AMD-SEV-SNP-0001
+    source_type: external_reference
+    role: sev_snp_cvm_profile_reference
+  - source_id: EXTREF-AMD-SEV-OVERVIEW-0001
+    source_type: external_reference
+    role: sev_family_reference
+  profile_applicability: *x64_cvm_profile_applicability
+  target_components: *x64_cvm_target_components
+  verification: *x64_cvm_verification
+  audit_obligation: *x64_cvm_audit
+  failure_mode: *x64_cvm_failure_mode
+  evidence_required: *x64_cvm_evidence
+  status: draft
+- requirement_id: MFOS-REQ-X64-TEE-0001
+  title: Intel SGX is optional enclave TEE profile
+  normative_text: Intel SGX MUST be modeled as an optional enclave/TEE profile, not as a baseline feature.
+  source_refs:
+  - source_id: EXTREF-INTEL-SGX-OVERVIEW-0001
+    source_type: external_reference
+    role: sgx_enclave_profile_reference
+  profile_applicability: &x64_tee_profile_applicability
+    baseline: prohibited
+    enterprise_standalone: optional
+    enterprise_pxm: optional
+    high_assurance: conditional
+  target_components: &x64_tee_target_components [cpu-target-profiles, tee-planning, attestation-policy]
+  verification: &x64_tee_verification
+    primary: [registry_lint, profile_review, negative_test]
+    tests:
+      positive: [TEST-MFOS-X64-TEE-POS-0001]
+      negative: [NEG-MFOS-X64-TEE-0001]
+  audit_obligation: &x64_tee_audit
+    obligation: conditional
+    record_type: TEE_PROFILE_CLAIM_REVIEW
+    before_return: false
+    redaction_policy: PLATFORM_FEATURES_ONLY
+    notes: Required before any enclave/TEE profile claim or future runtime task.
+  failure_mode: &x64_tee_failure_mode
+    error: MFOS_ERR_PROFILE_CLAIM_REJECTED
+    fail_closed: true
+    conditions:
+    - SGX is treated as baseline, CVM, implemented, or externally compatible without evidence.
+  evidence_required: &x64_tee_evidence
+  - evidence_type: tee_profile_report
+    evidence_id: EV-MFOS-X64-TEE-0001
+  status: draft
+- requirement_id: MFOS-REQ-X64-TEE-0002
+  title: Intel SGX is not Confidential VM
+  normative_text: Intel SGX MUST NOT be modeled as a Confidential VM profile.
+  source_refs:
+  - source_id: EXTREF-INTEL-SGX-OVERVIEW-0001
+    source_type: external_reference
+    role: sgx_enclave_profile_reference
+  - source_id: EXTREF-INTEL-TDX-OVERVIEW-0001
+    source_type: external_reference
+    role: tdx_cvm_distinction_reference
+  profile_applicability: *x64_tee_profile_applicability
+  target_components: *x64_tee_target_components
+  verification: *x64_tee_verification
+  audit_obligation: *x64_tee_audit
+  failure_mode: *x64_tee_failure_mode
+  evidence_required: *x64_tee_evidence
+  status: draft
+- requirement_id: MFOS-REQ-X64-TEE-0003
+  title: SGX enclave use requires threat and risk documentation
+  normative_text: SGX enclave use MUST require explicit threat model, attestation policy, and side-channel risk documentation.
+  source_refs:
+  - source_id: EXTREF-INTEL-SGX-ATTESTATION-0001
+    source_type: external_reference
+    role: sgx_attestation_reference
+  profile_applicability: *x64_tee_profile_applicability
+  target_components: *x64_tee_target_components
+  verification: *x64_tee_verification
+  audit_obligation: *x64_tee_audit
+  failure_mode:
+    error: MFOS_ERR_ADR_REQUIRED
+    fail_closed: true
+    conditions:
+    - SGX enclave use is proposed without threat model, attestation policy, or side-channel risk analysis.
+  evidence_required: *x64_tee_evidence
+  status: draft
+- requirement_id: MFOS-REQ-X64-TEE-0004
+  title: SGX is capability-gated and platform-enabled
+  normative_text: SGX support MUST be capability-gated and platform-enabled; absence of SGX MUST NOT affect architecture-neutral MFOS semantics.
+  source_refs:
+  - source_id: EXTREF-INTEL-SGX-OVERVIEW-0001
+    source_type: external_reference
+    role: sgx_feature_reference
+  profile_applicability: *x64_tee_profile_applicability
+  target_components: *x64_tee_target_components
+  verification: *x64_tee_verification
+  audit_obligation: *x64_tee_audit
+  failure_mode: *x64_tee_failure_mode
+  evidence_required: *x64_tee_evidence
+  status: draft
+- requirement_id: MFOS-REQ-X64-TEE-0005
+  title: SGX attestation mode separate from feature presence
+  normative_text: SGX attestation mode MUST be recorded separately from SGX feature presence.
+  source_refs:
+  - source_id: EXTREF-INTEL-SGX-ATTESTATION-0001
+    source_type: external_reference
+    role: sgx_attestation_mode_reference
+  - source_id: EXTREF-INTEL-SGX-DCAP-0001
+    source_type: external_reference
+    role: sgx_dcap_reference
+  profile_applicability: *x64_tee_profile_applicability
+  target_components: *x64_tee_target_components
+  verification: *x64_tee_verification
+  audit_obligation: *x64_tee_audit
+  failure_mode:
+    error: MFOS_ERR_PROFILE_CLAIM_REJECTED
+    fail_closed: true
+    conditions:
+    - SGX feature presence is treated as DCAP, EPID, or another attestation mode.
+  evidence_required: *x64_tee_evidence
+  status: draft
+- requirement_id: MFOS-REQ-HARDENING-0001
+  title: CET and CFI require evidence
+  normative_text: CET/CFI claims MUST require build, toolchain, binary, and runtime/platform evidence.
+  source_refs:
+  - source_id: EXTREF-INTEL-CET-0001
+    source_type: external_reference
+    role: cet_reference
+  - source_id: EXTREF-CLANG-CFI-0001
+    source_type: external_reference
+    role: cfi_reference
+  - source_id: EXTREF-GCC-CF-PROTECTION-0001
+    source_type: external_reference
+    role: compiler_hardening_reference
+  profile_applicability:
+    baseline: optional
+    enterprise_standalone: optional
+    enterprise_pxm: optional
+    high_assurance: conditional
+  target_components: [hardening-evidence, build-policy, binary-inspection]
+  verification:
+    primary: [binary_inspection, build_review, negative_test]
+    tests:
+      positive: [TEST-MFOS-HARDENING-POS-0001]
+      negative: [NEG-MFOS-HARDENING-0001]
+  audit_obligation:
+    obligation: conditional
+    record_type: HARDENING_CLAIM_REVIEW
+    before_return: false
+    redaction_policy: NONE
+    notes: Required before hardening evidence is used in profile or release claims.
+  failure_mode:
+    error: MFOS_ERR_BINARY_EVIDENCE_REJECTED
+    fail_closed: true
+    conditions:
+    - CET/CFI claim lacks build, toolchain, binary, or runtime/platform evidence.
+  evidence_required:
+  - evidence_type: hardening_evidence_report
+    evidence_id: EV-MFOS-HARDENING-0001
+  status: draft
+- requirement_id: MFOS-REQ-CPUFEAT-0001
+  title: Maintain CPU Feature Registry
+  normative_text: MFOS MUST maintain a machine-readable CPU Feature Registry.
+  source_refs:
+  - source_id: FBVBS-001
+    source_type: internal_transfer
+    role: registry_governance
+  profile_applicability: &cpufeat_profile_applicability
+    baseline: required
+    enterprise_standalone: required
+    enterprise_pxm: required
+    high_assurance: required
+  target_components: &cpufeat_target_components [cpu-feature-registry, cpu-target-profiles, validation]
+  verification: &cpufeat_verification
+    primary: [registry_lint, source_ref_lint, negative_test]
+    tests:
+      positive: [TEST-MFOS-CPUFEAT-POS-0001]
+      negative: [NEG-MFOS-CPUFEAT-0001]
+  audit_obligation: &cpufeat_audit
+    obligation: conditional
+    record_type: CPU_FEATURE_REGISTRY_REVIEW
+    before_return: false
+    redaction_policy: PLATFORM_FEATURES_ONLY
+    notes: Required before feature/profile claims and future backend implementation tasks.
+  failure_mode: &cpufeat_failure_mode
+    error: MFOS_ERR_PROFILE_CLAIM_REJECTED
+    fail_closed: true
+    conditions:
+    - CPU feature or profile claim lacks registry grounding.
+  evidence_required: &cpufeat_evidence
+  - evidence_type: cpu_feature_registry_report
+    evidence_id: EV-MFOS-CPUFEAT-0001
+  status: draft
+- requirement_id: MFOS-REQ-CPUFEAT-0002
+  title: CPU target profiles reference registry IDs
+  normative_text: CPU target profiles MUST reference CPU Feature Registry feature IDs.
+  source_refs:
+  - source_id: FBVBS-001
+    source_type: internal_transfer
+    role: registry_traceability
+  profile_applicability: *cpufeat_profile_applicability
+  target_components: *cpufeat_target_components
+  verification: *cpufeat_verification
+  audit_obligation: *cpufeat_audit
+  failure_mode: *cpufeat_failure_mode
+  evidence_required: *cpufeat_evidence
+  status: draft
+- requirement_id: MFOS-REQ-CPUFEAT-0003
+  title: Registry entries include evidence and fallback fields
+  normative_text: CPU Feature Registry entries MUST include source_refs, profile affinity, detection status, evidence requirements, and fallback behavior.
+  source_refs:
+  - source_id: FBVBS-001
+    source_type: internal_transfer
+    role: registry_traceability
+  profile_applicability: *cpufeat_profile_applicability
+  target_components: *cpufeat_target_components
+  verification: *cpufeat_verification
+  audit_obligation: *cpufeat_audit
+  failure_mode: *cpufeat_failure_mode
+  evidence_required: *cpufeat_evidence
+  status: draft
+- requirement_id: MFOS-REQ-CPUFEAT-0004
+  title: Optional features not globally available
+  normative_text: No optional CPU feature may be treated as globally available unless required by the selected conformance profile.
+  source_refs:
+  - source_id: FBVBS-001
+    source_type: internal_transfer
+    role: no_fake_success_profile_gate
+  profile_applicability: *cpufeat_profile_applicability
+  target_components: *cpufeat_target_components
+  verification: *cpufeat_verification
+  audit_obligation: *cpufeat_audit
+  failure_mode:
+    error: MFOS_ERR_UNSUPPORTED
+    fail_closed: true
+    conditions:
+    - Optional CPU feature is used without selected-profile requirement or capability evidence.
+  evidence_required: *cpufeat_evidence
+  status: draft
+- requirement_id: MFOS-REQ-CPUFEAT-0005
+  title: Feature claims distinguish lifecycle state
+  normative_text: CPU feature support claims MUST distinguish design-planned, specified, implemented, validated, and evidence-backed states.
+  source_refs:
+  - source_id: FBVBS-001
+    source_type: internal_transfer
+    role: claim_lifecycle_governance
+  profile_applicability: *cpufeat_profile_applicability
+  target_components: *cpufeat_target_components
+  verification: *cpufeat_verification
+  audit_obligation: *cpufeat_audit
+  failure_mode:
+    error: MFOS_ERR_EVIDENCE_REQUIRED
+    fail_closed: true
+    conditions:
+    - Planned or specified CPU feature is represented as implemented, validated, or evidence-backed without evidence.
+  evidence_required: *cpufeat_evidence
+  status: draft
 spec_gaps:
 - gap_id: REQ-GAP-0001
   summary: This catalog covers v0.5 priority requirements plus draft spec-gap reservations for Source Card requirement references; it is not a full deep specification of every reserved requirement.

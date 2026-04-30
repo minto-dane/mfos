@@ -1,0 +1,62 @@
+schema_version: 1
+status: draft
+source_id: EXTREF-X86-64-MICROARCH-LEVELS-0001
+source_kind: bibliographic_reference
+source_type: external_reference
+semantic_role: design_background
+vendor: x86-64 psABI project
+vendor_mark_used: false
+product_family: x86-64 psABI
+document_title: x86-64 psABI micro-architecture levels
+document_url:
+- https://gitlab.com/x86-psABIs/x86-64-ABI/-/wikis/Micro-architecture-levels
+retrieved_at: '2026-04-30'
+reference_purpose:
+- source discovery
+- CPU profile source grounding
+- non-compatibility boundary definition
+- independent MFOS design traceability
+review_topics:
+- x86-64 micro-architecture level naming
+- x86-64-v2, x86-64-v3, and x86-64-v4 profile background
+- feature-level source grounding
+mfos_mapping:
+  mfos_components:
+  - CPU Feature Registry
+  - CPU Target Profile Registry
+  - x86-64 target profile policy
+  mfos_specs:
+  - docs/design/specs/45-x86-64-target-profiles.md
+  mfos_requirements: &id001
+  - MFOS-REQ-X64-V4-0001
+  - MFOS-REQ-CPUFEAT-0001
+  mapping_notes:
+  - Public-safe reference for the existence and naming of x86-64 feature levels. Exact MFOS feature membership remains registry-gated and must not be inferred from memory.
+mfos_divergence:
+- MFOS treats x86-64-v4 as an optional performance profile, not a baseline.
+- MFOS CPU feature profiles are design registries and not an implementation detector.
+prohibited_inference:
+- Do not claim x86-64-v4 is required for MFOS baseline.
+- Do not claim MFOS support for a micro-architecture level without build, detection, binary, and validation evidence.
+- Do not reproduce external feature tables or ABI text.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+source_refs:
+- source_id: EXTREF-X86-64-MICROARCH-LEVELS-0001
+  source_type: external_reference
+  role: card_subject
+requirement_refs: *id001
+review_status: draft

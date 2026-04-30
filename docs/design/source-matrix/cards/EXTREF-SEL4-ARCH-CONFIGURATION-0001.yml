@@ -1,0 +1,61 @@
+schema_version: 1
+status: draft
+source_id: EXTREF-SEL4-ARCH-CONFIGURATION-0001
+source_kind: bibliographic_reference
+source_type: external_reference
+semantic_role: design_background
+vendor: seL4 project
+vendor_mark_used: true
+product_family: seL4 project
+document_title: seL4 configuration options
+document_url:
+- https://docs.sel4.systems/projects/sel4/configurations.html
+retrieved_at: '2026-04-30'
+reference_purpose:
+- source discovery
+- architecture configuration background
+- backend boundary planning
+- independent MFOS design traceability
+review_topics:
+- architecture-specific configuration
+- platform-specific configuration
+- build-time configuration boundaries
+mfos_mapping:
+  mfos_components:
+  - architecture portability policy
+  - CPU Target Profile Registry
+  mfos_specs:
+  - docs/design/specs/44-architecture-portability-policy.md
+  mfos_requirements: &id001
+  - MFOS-REQ-ARCH-0001
+  - MFOS-REQ-ARCH-0003
+  mapping_notes:
+  - Informative reference for treating architecture and platform configuration as explicit backend choices.
+mfos_divergence:
+- MFOS configuration profiles are MFOS-owned and do not adopt seL4 build options.
+- MFOS does not claim seL4 compatibility or proof status.
+prohibited_inference:
+- Do not copy seL4 configuration names, tables, or option syntax into MFOS.
+- Do not claim non-x86 MFOS support from seL4 configuration support.
+- Do not treat this as implementation evidence.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+source_refs:
+- source_id: EXTREF-SEL4-ARCH-CONFIGURATION-0001
+  source_type: external_reference
+  role: card_subject
+requirement_refs: *id001
+review_status: draft
