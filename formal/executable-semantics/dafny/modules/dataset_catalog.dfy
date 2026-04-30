@@ -37,11 +37,15 @@ module DatasetCatalog {
 
   function ValidateDatasetName(name: DatasetName): Result<DatasetName> {
     if DatasetNameIsMfosDsn(name) then ResultOk(name)
-    else ResultErr(ErrorRank(MFOS_ERR_INVALID_DATASET_NAME))
+    else ResultErr(ErrorRank(MFOS_ERR_INVALID_DSN))
   }
 
   predicate CatalogTransactionCanExposeCommittedEntry(state: CatalogTransactionState) {
-    state == CATALOG_TX_COMMITTED || state == CATALOG_TX_COMPLETE
+    state == CATALOG_TX_COMPLETE
+  }
+
+  predicate SystemDatasetInvariant(entry: CatalogEntry) {
+    entry.dataset.system_marker.system_dataset ==> entry.dataset.system_marker.immutable
   }
 
   predicate CatalogEntryResolvable(entry: CatalogEntry) {
@@ -53,14 +57,17 @@ module DatasetCatalog {
     ValidGeneration(entry.catalog_generation) &&
     ValidGeneration(entry.dataset_generation) &&
     entry.dataset.object_ref.generation == entry.dataset_generation &&
+    SystemDatasetInvariant(entry) &&
     SymbolicDsnValid(entry.dataset)
   }
 
   function CatalogResolutionError(entry: CatalogEntry): ErrorCode {
     if entry.state == CATALOG_INTEGRITY_FAILED ||
        entry.state == CATALOG_PARTIAL_JOURNAL ||
+       entry.transaction_state == CATALOG_TX_COMMITTED ||
        entry.transaction_state == CATALOG_TX_PARTIAL_JOURNAL ||
        entry.transaction_state == CATALOG_TX_INTEGRITY_FAILED ||
+       !SystemDatasetInvariant(entry) ||
        !entry.integrity_valid ||
        !entry.integrity_tag.verified then MFOS_ERR_INTERNAL_CORRUPTION
     else MFOS_ERR_CATALOG_NOT_FOUND
@@ -127,6 +134,7 @@ module DatasetCatalog {
 
   function DeniedDatasetOpenWithAudit(decision: SecurityDecision, prior_records: seq<AuditRecord>, next_record_id: MfosId, audit_available: bool): DatasetOpenOutcome
     requires decision.result == DENY
+    requires !IsSuccessError(decision.error_code)
     requires Authorization.RequiresAudit(decision)
     requires ValidCorrelationId(decision.context.correlation_id)
     requires ValidId(next_record_id)
@@ -165,12 +173,13 @@ module DatasetCatalog {
   }
 
   predicate ImmutableSystemDatasetBlocksModify(entry: CatalogEntry, operation: Operation) {
-    (entry.dataset.immutable_system || (entry.dataset.system_marker.system_dataset && entry.dataset.system_marker.immutable)) &&
+    (entry.dataset.immutable_system || entry.dataset.system_marker.system_dataset) &&
     (operation == OP_WRITE || operation == OP_DELETE || operation == OP_PURGE)
   }
 
   function DatasetDeleteOrModify(entry: CatalogEntry, decision: SecurityDecision): Result<CatalogEntry> {
-    if ImmutableSystemDatasetBlocksModify(entry, decision.operation) then ResultErr(ErrorRank(MFOS_ERR_IMMUTABLE))
+    if !SystemDatasetInvariant(entry) then ResultErr(ErrorRank(MFOS_ERR_INVALID_STATE))
+    else if ImmutableSystemDatasetBlocksModify(entry, decision.operation) then ResultErr(ErrorRank(MFOS_ERR_IMMUTABLE))
     else if RetentionBlocksDelete(entry, decision.operation) then ResultErr(ErrorRank(MFOS_ERR_RETENTION_DENIED))
     else if !Authorization.DecisionAllowsProtectedEffect(decision) then ResultErr(ErrorRank(DatasetOpenFailureError(entry, decision)))
     else ResultOk(entry)
@@ -189,7 +198,7 @@ module DatasetCatalog {
   lemma INV_DATASET_MALFORMED_DSN_REJECTED(name: DatasetName)
     requires !DatasetNameIsMfosDsn(name)
     ensures ValidateDatasetName(name).ResultErr?
-    ensures !IsSuccessError(MFOS_ERR_INVALID_DATASET_NAME)
+    ensures !IsSuccessError(MFOS_ERR_INVALID_DSN)
   {
   }
 
@@ -197,6 +206,7 @@ module DatasetCatalog {
     requires entry.state != CATALOG_COMMITTED ||
              !entry.integrity_valid ||
              !entry.integrity_tag.verified ||
+             !SystemDatasetInvariant(entry) ||
              !CatalogTransactionCanExposeCommittedEntry(entry.transaction_state)
     ensures !CatalogEntryResolvable(entry)
   {
@@ -208,7 +218,9 @@ module DatasetCatalog {
     ensures entry.state == CATALOG_COMMITTED
     ensures entry.integrity_valid
     ensures entry.integrity_tag.verified
+    ensures SystemDatasetInvariant(entry)
     ensures CatalogTransactionCanExposeCommittedEntry(entry.transaction_state)
+    ensures entry.transaction_state == CATALOG_TX_COMPLETE
   {
   }
 
@@ -277,15 +289,30 @@ module DatasetCatalog {
   {
   }
 
-  lemma INV_CATALOG_CRASH_MID_COMMIT_RECOVERY_EXPOSES_ONLY_SAFE_STATE(entry: CatalogEntry)
+  lemma INV_CATALOG_TX_COMMITTED_NOT_COMPLETE_CANNOT_RESOLVE(entry: CatalogEntry)
+    requires entry.transaction_state == CATALOG_TX_COMMITTED
+    ensures !CatalogEntryResolvable(entry)
+    ensures ResolveCatalog(entry).ResultErr?
+    ensures CatalogResolutionError(entry) == MFOS_ERR_INTERNAL_CORRUPTION
+  {
+  }
+
+  lemma INV_CATALOG_CRASH_MID_COMMIT_PARTIAL_STATE_CANNOT_RESOLVE(entry: CatalogEntry)
     requires entry.transaction_state == CATALOG_TX_PARTIAL_JOURNAL ||
              entry.transaction_state == CATALOG_TX_ROLLBACK_REQUIRED ||
+             entry.transaction_state == CATALOG_TX_COMMITTED ||
              entry.state == CATALOG_PARTIAL_JOURNAL ||
              entry.state == CATALOG_ROLLED_BACK ||
              entry.state == CATALOG_UNCOMMITTED
     ensures RecoverCatalogCandidate(entry).ResultErr?
     ensures !CatalogEntryResolvable(entry)
   {
+  }
+
+  lemma INV_CATALOG_CRASH_RECOVERY_COMPLETENESS_NOT_MODELED()
+    ensures !IsSuccessError(MFOS_ERR_SPEC_GAP)
+  {
+    SpecGapIsFailClosed();
   }
 
   lemma INV_DATASET_NO_HANDLE_WITHOUT_ALLOW(entry: CatalogEntry, decision: SecurityDecision, satisfied: set<DecisionObligation>)
@@ -420,6 +447,7 @@ module DatasetCatalog {
 
   lemma INV_DATASET_OPEN_DENY_WITH_AUDIT_WRITES_BEFORE_RETURN(decision: SecurityDecision, prior_records: seq<AuditRecord>, next_record_id: MfosId)
     requires decision.result == DENY
+    requires !IsSuccessError(decision.error_code)
     requires Authorization.RequiresAudit(decision)
     requires ValidCorrelationId(decision.context.correlation_id)
     requires ValidId(decision.subject.principal.principal_id)
@@ -428,6 +456,7 @@ module DatasetCatalog {
     requires ValidId(next_record_id)
     ensures DeniedDatasetOpenWithAudit(decision, prior_records, next_record_id, true).handle.None?
     ensures DeniedDatasetOpenWithAudit(decision, prior_records, next_record_id, true).error_code == decision.error_code
+    ensures !IsSuccessError(DeniedDatasetOpenWithAudit(decision, prior_records, next_record_id, true).error_code)
     ensures Audit.ExistsBeforeReturnAudit(decision, DeniedDatasetOpenWithAudit(decision, prior_records, next_record_id, true).audit_records)
     ensures Audit.RequiredAuditSatisfiedForFinalResult(decision, DeniedDatasetOpenWithAudit(decision, prior_records, next_record_id, true).audit_records)
     ensures DeniedDatasetOpenWithAudit(decision, prior_records, next_record_id, true).result_released
@@ -435,8 +464,31 @@ module DatasetCatalog {
     Audit.INV_AUDIT_DENY_TRANSITION_WRITES_BEFORE_RETURN(decision, prior_records, next_record_id);
   }
 
+  lemma INV_DATASET_DENY_DECISION_NOT_MFOS_OK(decision: SecurityDecision)
+    requires decision.result == DENY
+    requires !IsSuccessError(decision.error_code)
+    ensures decision.error_code != MFOS_OK
+    ensures !IsSuccessError(decision.error_code)
+  {
+  }
+
+  lemma INV_DATASET_AUDITED_DENY_DOES_NOT_BIND_MFOS_OK(decision: SecurityDecision, prior_records: seq<AuditRecord>, next_record_id: MfosId)
+    requires decision.result == DENY
+    requires !IsSuccessError(decision.error_code)
+    requires Authorization.RequiresAudit(decision)
+    requires ValidCorrelationId(decision.context.correlation_id)
+    requires ValidId(decision.subject.principal.principal_id)
+    requires ValidId(decision.object_ref.object_id)
+    requires ValidPolicyVersion(decision.policy_version)
+    requires ValidId(next_record_id)
+    ensures DeniedDatasetOpenWithAudit(decision, prior_records, next_record_id, true).error_code != MFOS_OK
+    ensures !IsSuccessError(DeniedDatasetOpenWithAudit(decision, prior_records, next_record_id, true).error_code)
+  {
+  }
+
   lemma INV_DATASET_OPEN_DENY_AUDIT_UNAVAILABLE_FAILS_CLOSED(decision: SecurityDecision, prior_records: seq<AuditRecord>, next_record_id: MfosId)
     requires decision.result == DENY
+    requires !IsSuccessError(decision.error_code)
     requires Authorization.RequiresAudit(decision)
     requires ValidCorrelationId(decision.context.correlation_id)
     requires ValidId(next_record_id)
@@ -466,6 +518,7 @@ module DatasetCatalog {
 
   lemma INV_DATASET_RETENTION_VIOLATION_NOT_SUCCESS(entry: CatalogEntry, decision: SecurityDecision)
     requires RetentionBlocksDelete(entry, decision.operation)
+    requires SystemDatasetInvariant(entry)
     ensures DatasetDeleteOrModify(entry, decision).ResultErr?
     ensures !IsSuccessError(MFOS_ERR_RETENTION_DENIED)
   {
@@ -473,8 +526,27 @@ module DatasetCatalog {
 
   lemma INV_DATASET_IMMUTABLE_SYSTEM_MODIFICATION_NOT_SUCCESS(entry: CatalogEntry, decision: SecurityDecision)
     requires ImmutableSystemDatasetBlocksModify(entry, decision.operation)
+    requires SystemDatasetInvariant(entry)
     ensures DatasetDeleteOrModify(entry, decision).ResultErr?
     ensures !IsSuccessError(MFOS_ERR_IMMUTABLE)
+  {
+  }
+
+  lemma INV_DATASET_SYSTEM_DATASET_REQUIRES_IMMUTABLE(entry: CatalogEntry)
+    requires entry.dataset.system_marker.system_dataset
+    requires !entry.dataset.system_marker.immutable
+    ensures !SystemDatasetInvariant(entry)
+    ensures !CatalogEntryResolvable(entry)
+    ensures ResolveCatalog(entry).ResultErr?
+    ensures CatalogResolutionError(entry) == MFOS_ERR_INTERNAL_CORRUPTION
+  {
+  }
+
+  lemma INV_DATASET_INVALID_SYSTEM_DATASET_STATE_REJECTED(entry: CatalogEntry, decision: SecurityDecision)
+    requires entry.dataset.system_marker.system_dataset
+    requires !entry.dataset.system_marker.immutable
+    ensures DatasetDeleteOrModify(entry, decision).ResultErr?
+    ensures !IsSuccessError(MFOS_ERR_INVALID_STATE)
   {
   }
 }

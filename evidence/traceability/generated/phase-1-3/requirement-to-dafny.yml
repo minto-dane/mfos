@@ -18,7 +18,8 @@ requirements:
     verification_status: verified
     evidence_ref: EV-MFOS-REQ-CATALOG-0002
     coverage_level: C4_VERIFIED_PROPERTY
-  notes: Catalog resolution returns only committed, integrity-valid entries.
+  notes: Catalog resolution returns only committed, integrity-valid, transaction-complete
+    entries.
 - requirement_id: MFOS-REQ-CATALOG-0101
   domain: dataset_catalog
   coverage_level: C4_VERIFIED_PROPERTY
@@ -33,16 +34,17 @@ requirements:
   notes: Registry mirror for committed-only catalog resolution.
 - requirement_id: MFOS-REQ-CATALOG-0102
   domain: dataset_catalog
-  coverage_level: C4_VERIFIED_PROPERTY
+  coverage_level: C2_PARTIAL_SEMANTIC
   phase_1_3_exit_blocker: false
   coverage_mappings:
   - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
-    dafny_symbol: INV_CATALOG_CRASH_MID_COMMIT_RECOVERY_EXPOSES_ONLY_SAFE_STATE
+    dafny_symbol: INV_CATALOG_CRASH_MID_COMMIT_PARTIAL_STATE_CANNOT_RESOLVE
     symbol_kind: lemma
     verification_status: verified
     evidence_ref: EV-MFOS-REQ-CATALOG-0102
-    coverage_level: C4_VERIFIED_PROPERTY
-  notes: Catalog recovery never exposes partial transaction state.
+    coverage_level: C2_PARTIAL_SEMANTIC
+  notes: Crash-mid-commit partial candidates cannot resolve; full crash recovery selection
+    is not modeled in Phase 1.3.
 - requirement_id: MFOS-REQ-DATASET-0101
   domain: dataset_catalog
   coverage_level: C4_VERIFIED_PROPERTY
@@ -55,7 +57,7 @@ requirements:
     evidence_ref: EV-MFOS-REQ-DATASET-0101
     coverage_level: C4_VERIFIED_PROPERTY
   notes: Dataset handles bind subject, operation, policy, catalog generation, and
-    dataset generation.
+    dataset generation where modeled.
 - requirement_id: MFOS-REQ-DATASET-0102
   domain: dataset_catalog
   coverage_level: C4_VERIFIED_PROPERTY

@@ -34,6 +34,7 @@ Negative semantic coverage is no longer reported as complete unless each negativ
 | `NEG-MFOS-DATASET-RETENTION-DELETE-0911` | `C3_FULL_SEMANTIC` | `RetentionBlocksDelete` |
 | `NEG-MFOS-DATASET-IMMUTABLE-SYSTEM-0912` | `C3_FULL_SEMANTIC` | `ImmutableSystemDatasetBlocksModify` |
 | `NEG-MFOS-DATASET-NOT-POSIX-FILE-0913` | `C0_NONE` | `missing` |
+| `TEST-MFOS-DATASET-CRASH-MID-COMMIT-0914` | `C2_PARTIAL_SEMANTIC` | `CatalogEntryResolvable` |
 | `NEG-MFOS-JOB-MALFORMED-CONTROL-0902` | `C0_NONE` | `missing` |
 | `NEG-MFOS-JOB-SUBMIT-NO-PRINCIPAL-0903` | `C2_PARTIAL_SEMANTIC` | `EffectivePrincipalEstablished` |
 | `NEG-MFOS-JOB-DD-BYPASS-DENIED-0907` | `C4_VERIFIED_PROPERTY` | `INV_JOB_DD_RESOLUTION_THROUGH_CATALOG_AND_AUTH` |

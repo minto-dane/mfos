@@ -72,7 +72,7 @@ phase_1_3_dataset_catalog_deepening_allowed: true
 phase_1_3_dataset_catalog_complete: true
 phase_1_3_dataset_catalog_exit_blockers_remaining: false
 phase_1_3_dataset_catalog_coverage_level: C5_CONFORMANCE_LINKED
-phase_1_3_dataset_catalog_requirement_coverage_level: C4_VERIFIED_PROPERTY
+phase_1_3_dataset_catalog_requirement_coverage_level: C2_PARTIAL_SEMANTIC
 phase_1_3_dataset_catalog_auth_audit_integration_coverage_level: C4_VERIFIED_PROPERTY
 phase_1_3_formal_claim_proof_coverage_complete: false
 phase_1_3_dafny_verification_passed: true
@@ -143,7 +143,7 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
 - Pinned Dafny 4.11.0 is installed by `scripts/install-dafny.sh`; Z3 4.14.1 is
   bundled in the pinned release.
 - `scripts/validate-dafny-semantics.sh --require-dafny` verifies the current
-  module set with `118 verified, 0 errors`.
+  module set with `126 verified, 0 errors`.
 - Phase 1.1 semantic coverage traceability now maps Phase 0.9 core catalogs to
   explicit Dafny targets per test. The first vertical slice remains
   `C5_CONFORMANCE_LINKED`; the core five domains remain mixed because several
@@ -157,9 +157,13 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
   symbolic DSN validation, committed-entry-only catalog resolution, rejected
   uncommitted/rolled-back/partial-journal/integrity-failed entries, dataset
   handle binding to authorization and generation state, stale-handle rejection,
-  retention and immutable-system denial, non-POSIX dataset semantics, and
-  Dataset/Catalog links to the Phase 1.2 Authorization/Audit model. Generated
-  Phase 1.3 traceability lives under
+  retention and immutable-system denial, non-POSIX dataset semantics, catalog
+  transaction-complete rejection, invalid `system_dataset && !immutable` marker
+  rejection, audited DENY fail-closed error binding, and Dataset/Catalog links
+  to the Phase 1.2 Authorization/Audit model. Crash-mid-commit C5 coverage is
+  narrowed to fail-closed partial candidate non-resolution; full crash recovery
+  selection is not modeled or claimed, so requirement aggregate coverage remains
+  `C2_PARTIAL_SEMANTIC`. Generated Phase 1.3 traceability lives under
   `evidence/traceability/generated/phase-1-3/`; Python remains a non-semantic
   artifact generator and structural checker.
 

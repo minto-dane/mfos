@@ -178,6 +178,13 @@ module Authorization {
   {
   }
 
+  lemma INV_AUTH_EVALUATED_DENY_IS_FAIL_CLOSED(binding: PolicyBinding, context: DecisionContext)
+    requires EvaluateSecurityDecision(binding, context).result == DENY
+    ensures !IsSuccessError(EvaluateSecurityDecision(binding, context).error_code)
+    ensures FailClosedAuthorization(EvaluateSecurityDecision(binding, context))
+  {
+  }
+
   lemma INV_AUTH_POLICY_VERSION_BOUND(binding: PolicyBinding, context: DecisionContext)
     ensures EvaluateSecurityDecision(binding, context).policy_version == binding.policy_version
   {

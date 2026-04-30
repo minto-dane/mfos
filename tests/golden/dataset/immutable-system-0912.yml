@@ -17,16 +17,16 @@ expected_decisions: &id001
 expected_audit_sequence: &id003
 - record_type: SECURITY_DECISION
   decision: DENY
-  reason_code: MFOS_ERR_POLICY_DENIED
+  reason_code: MFOS_ERR_IMMUTABLE
   before_return: true
 expected_state_transitions: &id002
 - object: PHASE09_OBJECT
   from: INITIAL
   action: EVALUATE
   to: FAILED
-  reason: MFOS_ERR_POLICY_DENIED
+  reason: MFOS_ERR_IMMUTABLE
 expected_final_state: FAILED
-expected_failure_mode: MFOS_ERR_POLICY_DENIED
+expected_failure_mode: MFOS_ERR_IMMUTABLE
 deterministic: true
 oracle:
   oracle_id: ORACLE-MFOS-DATASET-IMMUTABLE-SYSTEM-0912
@@ -36,7 +36,7 @@ oracle:
   expected_state_transitions: *id002
   expected_audit_records: *id003
   expected_failure:
-    error_code: MFOS_ERR_POLICY_DENIED
+    error_code: MFOS_ERR_IMMUTABLE
     fail_closed: true
   expected_final_state: FAILED
   evidence_required:

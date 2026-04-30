@@ -835,13 +835,13 @@ entries:
       from: INITIAL
       action: EVALUATE
       to: FAILED
-      reason: MFOS_ERR_INVALID_DATASET_NAME
+      reason: MFOS_ERR_INVALID_DSN
     audit_records:
     - record_type: SECURITY_DECISION
       decision: DENY
-      reason_code: MFOS_ERR_INVALID_DATASET_NAME
+      reason_code: MFOS_ERR_INVALID_DSN
       before_return: true
-    failure_mode: MFOS_ERR_INVALID_DATASET_NAME
+    failure_mode: MFOS_ERR_INVALID_DSN
     final_state: FAILED
   oracle_ref: tests/golden/dataset/malformed-dsn-0902.yml
   fixture_ref: tests/fixtures/dataset/malformed-dsn-0902.yml
@@ -1179,13 +1179,13 @@ entries:
       from: INITIAL
       action: EVALUATE
       to: FAILED
-      reason: MFOS_ERR_RETENTION_ACTIVE
+      reason: MFOS_ERR_RETENTION_DENIED
     audit_records:
     - record_type: SECURITY_DECISION
       decision: DENY
-      reason_code: MFOS_ERR_RETENTION_ACTIVE
+      reason_code: MFOS_ERR_RETENTION_DENIED
       before_return: true
-    failure_mode: MFOS_ERR_RETENTION_ACTIVE
+    failure_mode: MFOS_ERR_RETENTION_DENIED
     final_state: FAILED
   oracle_ref: tests/golden/dataset/retention-delete-0911.yml
   fixture_ref: tests/fixtures/dataset/retention-delete-0911.yml
@@ -1222,13 +1222,13 @@ entries:
       from: INITIAL
       action: EVALUATE
       to: FAILED
-      reason: MFOS_ERR_POLICY_DENIED
+      reason: MFOS_ERR_IMMUTABLE
     audit_records:
     - record_type: SECURITY_DECISION
       decision: DENY
-      reason_code: MFOS_ERR_POLICY_DENIED
+      reason_code: MFOS_ERR_IMMUTABLE
       before_return: true
-    failure_mode: MFOS_ERR_POLICY_DENIED
+    failure_mode: MFOS_ERR_IMMUTABLE
     final_state: FAILED
   oracle_ref: tests/golden/dataset/immutable-system-0912.yml
   fixture_ref: tests/fixtures/dataset/immutable-system-0912.yml

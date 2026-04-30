@@ -116,7 +116,7 @@ entries:
   accepted_deferred: false
   false_positive: false
   coverage_level: C5_CONFORMANCE_LINKED
-  dafny_symbol: INV_CATALOG_CRASH_MID_COMMIT_RECOVERY_EXPOSES_ONLY_SAFE_STATE
+  dafny_symbol: INV_CATALOG_CRASH_MID_COMMIT_PARTIAL_STATE_CANNOT_RESOLVE
   reason: Phase 1.3 links the scenario to a verified Dafny property and deterministic
     fixture/oracle/golden evidence.
   required_action: none
@@ -184,9 +184,9 @@ entries:
   reason: Phase 1.3 adds verified Dataset/Catalog Dafny properties for the requirement
     aggregate.
   required_action: none
-- gap_id: GAP-FORMAL-MFOS-CLAIM-BASELINE-SYSINT-0001
+- gap_id: GAP-FORMAL-MFOS-FC-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW
   artifact_kind: formal_claim
-  artifact_id: MFOS-CLAIM-BASELINE-SYSINT-0001
+  artifact_id: MFOS-FC-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW
   owner_domain: dataset_catalog
   previous_classification: accepted_deferred
   normalized_disposition: accepted_deferred_formal_proof_artifact_required
@@ -197,7 +197,8 @@ entries:
   false_positive: false
   coverage_level: C3_FULL_SEMANTIC
   dafny_symbol: INV_DATASET_HANDLE_CREATION_CANNOT_BYPASS_AUTHORIZATION
-  reason: Assurance claim exists, but no formal proof artifact is claimed.
+  reason: Formal claim remains planned; Phase 1.3 adds a Dataset/Catalog-linked Dafny
+    lemma but no proof artifact is claimed.
   required_action: Create proof artifacts before raising formal claims to C4/C5.
 - gap_id: GAP-TEST-TEST-MFOS-OPER-DEFINE-DATASET-0903
   artifact_kind: test

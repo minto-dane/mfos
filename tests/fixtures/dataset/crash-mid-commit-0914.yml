@@ -1,6 +1,6 @@
 fixture_id: FIXTURE-MFOS-DATASET-CRASH-MID-COMMIT-0914
 fixture_version: 1
-description: catalog crash mid-commit recovery
+description: catalog crash mid-commit partial candidate rejection
 target_specs:
 - docs/design/specs/08-dataset-catalog.md
 target_requirements:
@@ -33,6 +33,4 @@ not_allowed:
 - production_claim
 - external_compatibility_claim
 - host_os_semantics_dependency
-- partial_catalog_success
-- usable_partial_dataset_handle
 status: draft

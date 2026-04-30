@@ -271,14 +271,19 @@ Current Phase 1.3 judgment:
 
 ```yaml
 dataset_catalog_coverage_level: C5_CONFORMANCE_LINKED
-dataset_catalog_requirement_coverage_level: C4_VERIFIED_PROPERTY
+dataset_catalog_requirement_coverage_level: C2_PARTIAL_SEMANTIC
 dataset_catalog_auth_audit_integration_coverage_level: C4_VERIFIED_PROPERTY
 formal_claim_proof_coverage_complete: false
 dataset_catalog_exit_blockers_remaining: false
 release_ready_model_claimed: false
 ```
 
-The current Dafny module set verifies with `118 verified, 0 errors`.
+The current Dafny module set verifies with `126 verified, 0 errors`.
+
+Phase 1.3 Dataset/Catalog C5 scenario coverage is limited to the modeled
+conformance rows, including fail-closed non-resolution of crash-mid-commit
+partial candidates. Full catalog crash recovery selection is not modeled or
+claimed in Phase 1.3, so aggregate requirement coverage remains partial.
 
 ## 16. Gaps
 

@@ -267,7 +267,7 @@ entries:
     conformance evidence and Python remains a non-semantic loader/comparator.
 - test_id: TEST-MFOS-DATASET-CRASH-MID-COMMIT-0914
   domain: dataset_catalog
-  test_type: conformance
+  test_type: negative
   coverage_level: C5_CONFORMANCE_LINKED
   phase_1_3_exit_blocker: false
   required_for_dataset_catalog_aggregate: true
@@ -276,14 +276,65 @@ entries:
   golden_ref: tests/golden/dataset/crash-mid-commit-0914.yml
   coverage_mappings:
   - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
-    dafny_symbol: INV_CATALOG_CRASH_MID_COMMIT_RECOVERY_EXPOSES_ONLY_SAFE_STATE
+    dafny_symbol: INV_CATALOG_CRASH_MID_COMMIT_PARTIAL_STATE_CANNOT_RESOLVE
     symbol_kind: lemma
     verification_status: verified
     evidence_ref: EV-MFOS-DATASET-CRASH-MID-COMMIT-0914
     coverage_level: C5_CONFORMANCE_LINKED
-  negative_failure_conditions: []
-  notes: crash recovery exposes only safe catalog state; fixture/oracle/golden links
-    are deterministic conformance evidence and Python remains a non-semantic loader/comparator.
+  negative_failure_conditions:
+  - INV_CATALOG_CRASH_MID_COMMIT_PARTIAL_STATE_CANNOT_RESOLVE
+  notes: crash-mid-commit partial candidate rejection; no crash recovery completeness
+    claim; fixture/oracle/golden links are deterministic conformance evidence and
+    Python remains a non-semantic loader/comparator.
+- property_id: DATASET-CATALOG-TX-COMMITTED-NOT-COMPLETE
+  domain: dataset_catalog
+  coverage_level: C4_VERIFIED_PROPERTY
+  phase_1_3_exit_blocker: false
+  required_for_dataset_catalog_aggregate: false
+  fixture_ref: null
+  oracle_ref: null
+  golden_ref: null
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_CATALOG_TX_COMMITTED_NOT_COMPLETE_CANNOT_RESOLVE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-DATASET-CATALOG-TX-COMMITTED-NOT-COMPLETE
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: Catalog transaction state CATALOG_TX_COMMITTED is not complete and cannot
+    resolve.
+- property_id: DATASET-CATALOG-SYSTEM-DATASET-INVARIANT
+  domain: dataset_catalog
+  coverage_level: C4_VERIFIED_PROPERTY
+  phase_1_3_exit_blocker: false
+  required_for_dataset_catalog_aggregate: false
+  fixture_ref: null
+  oracle_ref: null
+  golden_ref: null
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_DATASET_SYSTEM_DATASET_REQUIRES_IMMUTABLE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-DATASET-CATALOG-SYSTEM-DATASET-INVARIANT
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: system_dataset == true && immutable == false is an invalid model state.
+- property_id: DATASET-CATALOG-DENY-NOT-MFOS-OK
+  domain: dataset_catalog
+  coverage_level: C4_VERIFIED_PROPERTY
+  phase_1_3_exit_blocker: false
+  required_for_dataset_catalog_aggregate: false
+  fixture_ref: null
+  oracle_ref: null
+  golden_ref: null
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_DATASET_AUDITED_DENY_DOES_NOT_BIND_MFOS_OK
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-DATASET-CATALOG-DENY-NOT-MFOS-OK
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: Audited Dataset/Catalog DENY cannot bind MFOS_OK.
 - integration_id: DATASET-CATALOG-AUTH-ALLOW-ONLY
   domain: dataset_catalog_auth_audit_integration
   coverage_level: C4_VERIFIED_PROPERTY
@@ -299,8 +350,8 @@ entries:
     verification_status: verified
     evidence_ref: EV-DATASET-CATALOG-AUTH-ALLOW-ONLY
     coverage_level: C4_VERIFIED_PROPERTY
-  notes: Dataset open success requires ALLOW or ALLOW_WITH_AUDIT. Dedicated Dataset/Catalog
-    conformance vectors are not used to raise this integration row to C5.
+  notes: Dataset open success requires ALLOW or ALLOW_WITH_AUDIT. This integration
+    row stays C4 because no Dataset/Catalog scenario vector raises it to C5.
 - integration_id: DATASET-CATALOG-HANDLE-NO-BYPASS
   domain: dataset_catalog_auth_audit_integration
   coverage_level: C4_VERIFIED_PROPERTY
@@ -316,8 +367,8 @@ entries:
     verification_status: verified
     evidence_ref: EV-DATASET-CATALOG-HANDLE-NO-BYPASS
     coverage_level: C4_VERIFIED_PROPERTY
-  notes: Dataset handle creation cannot bypass authorization. Dedicated Dataset/Catalog
-    conformance vectors are not used to raise this integration row to C5.
+  notes: Dataset handle creation cannot bypass authorization. This integration row
+    stays C4 because no Dataset/Catalog scenario vector raises it to C5.
 - integration_id: DATASET-CATALOG-DENY-AUDIT-BEFORE-RETURN
   domain: dataset_catalog_auth_audit_integration
   coverage_level: C4_VERIFIED_PROPERTY
@@ -334,8 +385,8 @@ entries:
     evidence_ref: EV-DATASET-CATALOG-DENY-AUDIT-BEFORE-RETURN
     coverage_level: C4_VERIFIED_PROPERTY
   notes: Dataset open DENY with audit obligation links to before-return audit evidence.
-    Dedicated Dataset/Catalog conformance vectors are not used to raise this integration
-    row to C5.
+    This integration row stays C4 because no Dataset/Catalog scenario vector raises
+    it to C5.
 - integration_id: DATASET-CATALOG-DENY-AUDIT-UNAVAILABLE
   domain: dataset_catalog_auth_audit_integration
   coverage_level: C4_VERIFIED_PROPERTY
@@ -351,9 +402,8 @@ entries:
     verification_status: verified
     evidence_ref: EV-DATASET-CATALOG-DENY-AUDIT-UNAVAILABLE
     coverage_level: C4_VERIFIED_PROPERTY
-  notes: Dataset open DENY fails closed when required audit is unavailable. Dedicated
-    Dataset/Catalog conformance vectors are not used to raise this integration row
-    to C5.
+  notes: Dataset open DENY fails closed when required audit is unavailable. This integration
+    row stays C4 because no Dataset/Catalog scenario vector raises it to C5.
 - integration_id: DATASET-CATALOG-AUDIT-NO-BYPASS
   domain: dataset_catalog_auth_audit_integration
   coverage_level: C4_VERIFIED_PROPERTY
@@ -370,5 +420,5 @@ entries:
     evidence_ref: EV-DATASET-CATALOG-AUDIT-NO-BYPASS
     coverage_level: C4_VERIFIED_PROPERTY
   notes: Dataset/Catalog fail-closed result cannot bypass required audit evidence.
-    Dedicated Dataset/Catalog conformance vectors are not used to raise this integration
-    row to C5.
+    This integration row stays C4 because no Dataset/Catalog scenario vector raises
+    it to C5.

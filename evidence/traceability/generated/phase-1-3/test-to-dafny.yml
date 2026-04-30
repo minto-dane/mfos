@@ -267,7 +267,7 @@ tests:
     conformance evidence and Python remains a non-semantic loader/comparator.
 - test_id: TEST-MFOS-DATASET-CRASH-MID-COMMIT-0914
   domain: dataset_catalog
-  test_type: conformance
+  test_type: negative
   coverage_level: C5_CONFORMANCE_LINKED
   phase_1_3_exit_blocker: false
   required_for_dataset_catalog_aggregate: true
@@ -276,11 +276,13 @@ tests:
   golden_ref: tests/golden/dataset/crash-mid-commit-0914.yml
   coverage_mappings:
   - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
-    dafny_symbol: INV_CATALOG_CRASH_MID_COMMIT_RECOVERY_EXPOSES_ONLY_SAFE_STATE
+    dafny_symbol: INV_CATALOG_CRASH_MID_COMMIT_PARTIAL_STATE_CANNOT_RESOLVE
     symbol_kind: lemma
     verification_status: verified
     evidence_ref: EV-MFOS-DATASET-CRASH-MID-COMMIT-0914
     coverage_level: C5_CONFORMANCE_LINKED
-  negative_failure_conditions: []
-  notes: crash recovery exposes only safe catalog state; fixture/oracle/golden links
-    are deterministic conformance evidence and Python remains a non-semantic loader/comparator.
+  negative_failure_conditions:
+  - INV_CATALOG_CRASH_MID_COMMIT_PARTIAL_STATE_CANNOT_RESOLVE
+  notes: crash-mid-commit partial candidate rejection; no crash recovery completeness
+    claim; fixture/oracle/golden links are deterministic conformance evidence and
+    Python remains a non-semantic loader/comparator.
