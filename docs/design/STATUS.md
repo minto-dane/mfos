@@ -18,7 +18,9 @@ Authorization/Audit conformance closure. PR #22 landed the architecture
 portability, x86-64 target-profile, CPU Feature Registry, and roadmap alignment
 policy update. PR #23 landed the post-architecture Authorization/Audit
 integration remediation. The current branch records the Phase 1.3
-Dataset/Catalog Dafny semantic deepening. Repository
+Dataset/Catalog Dafny semantic deepening and supersedes the original stacked
+PR #20 branch after protected branch rules blocked a clean force-push update.
+Repository
 visibility may be public by owner instruction, but formal public-release claims
 remain blocked pending IP/trademark attorney review.
 
@@ -102,7 +104,7 @@ hosted_semantic_prototype_allowed: false
 public_release_allowed: false
 private_internal_use_allowed: true
 requires_ip_attorney_review_before_public_release: true
-next_phase: PR #20 Phase 1.3 review and dependency closure; do not start Phase 1.4
+next_phase: PR #20 replacement review and dependency closure; do not start Phase 1.4
 ```
 
 No production nucleus, service, PXM, Guard, or other OS-body implementation was

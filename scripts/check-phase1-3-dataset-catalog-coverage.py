@@ -176,7 +176,13 @@ def validate_expected_error(source_name: str, row_id: str, golden: dict[str, Any
         errors.append(f"{source_name}:{row_id}: fail-closed row must use EXPECTED_FAIL_CLOSED")
 
 
-def validate_crash_row(source_name: str, row: dict[str, Any], golden: dict[str, Any], errors: list[str]) -> None:
+def validate_crash_row(
+    source_name: str,
+    row: dict[str, Any],
+    fixture: dict[str, Any],
+    golden: dict[str, Any],
+    errors: list[str],
+) -> None:
     row_id = row_name(row)
     if row_id != "TEST-MFOS-DATASET-CRASH-MID-COMMIT-0914":
         return
@@ -189,6 +195,18 @@ def validate_crash_row(source_name: str, row: dict[str, Any], golden: dict[str, 
     forbidden_phrases = ("recovery exposes", "committed or absent", "safe catalog state")
     if any(phrase in note for phrase in forbidden_phrases):
         errors.append(f"{source_name}:{row_id}: C5 note claims crash recovery completeness instead of partial-state non-resolution")
+    initial_state = fixture.get("initial_state") or {}
+    catalog_transaction = initial_state.get("catalog_transaction") if isinstance(initial_state, dict) else {}
+    recovery_expectation = (
+        catalog_transaction.get("recovery_expectation")
+        if isinstance(catalog_transaction, dict)
+        else None
+    )
+    if recovery_expectation != "partial_candidate_nonresolution_only":
+        errors.append(
+            f"{source_name}:{row_id}: fixture recovery_expectation must be "
+            "partial_candidate_nonresolution_only and must not claim recovery selection"
+        )
     output = golden.get("expected_normalized_output") or {}
     if isinstance(output, dict) and output.get("recovery_exposes_only_committed_or_absent") is True:
         errors.append(f"{source_name}:{row_id}: golden must not claim full recovery exposure")
@@ -282,7 +300,7 @@ def validate_c5_links(source_name: str, row: dict[str, Any], mapping: dict[str, 
         if evidence_ref and evidence_ref.startswith("EV-") and evidence_ref not in (oracle.get("evidence_required") or []):
             errors.append(f"{source_name}:{row_id}: mapping evidence_ref is not required by the embedded oracle")
     validate_expected_error(source_name, row_id, golden, errors)
-    validate_crash_row(source_name, row, golden, errors)
+    validate_crash_row(source_name, row, fixture, golden, errors)
 
 
 def validate_rows(source_name: str, rows: list[dict[str, Any]], errors: list[str]) -> None:
