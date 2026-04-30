@@ -13,10 +13,12 @@ checks passed (`CodeQL`, `CodeQL analysis (python)`, and `validate design
 registries and lint gates`). PR #15 landed the Dafny executable-semantics
 scaffold. PR #17 landed the Dafny 4.11.0 toolchain verification closure after
 PR #16 was superseded by repository branch rules. PR #18 landed Phase 1.1
-semantic coverage truthfulness remediation. PR #19 remains open, but its
-Phase 1.2 Authorization/Audit conformance closure changes are present in the
-current branch. The current branch records the Phase 1.3 Dataset/Catalog Dafny
-semantic deepening. Repository
+semantic coverage truthfulness remediation. PR #19 landed Phase 1.2
+Authorization/Audit Dafny semantics. The current branch records the Phase 1.3
+Dataset/Catalog Dafny semantic deepening. The PR #20 branch has a protected
+branch-update blocker after the PR #19 squash merge: the correct local rebase
+onto updated `dev` succeeds, but GitHub rejects force-pushes and merge commits,
+and server-side rebase reports conflicts. Repository
 visibility may be public by owner instruction, but formal public-release claims
 remain blocked pending IP/trademark attorney review.
 
@@ -87,7 +89,7 @@ hosted_semantic_prototype_allowed: false
 public_release_allowed: false
 private_internal_use_allowed: true
 requires_ip_attorney_review_before_public_release: true
-next_phase: PR #19 dependency handling, then next scoped domain deepening
+next_phase: resolve PR #20 protected-branch rebase blocker; do not start Phase 1.4
 ```
 
 No production nucleus, service, PXM, Guard, or other OS-body implementation was

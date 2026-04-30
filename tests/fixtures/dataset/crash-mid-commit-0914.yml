@@ -21,7 +21,7 @@ initial_state:
   catalog_transaction:
     candidate_state: CATALOG_PARTIAL_JOURNAL
     transaction_state: CATALOG_TX_ROLLBACK_REQUIRED
-    recovery_expectation: expose_prior_committed_or_absent_only
+    recovery_expectation: partial_candidate_nonresolution_only
 inputs:
 - input_id: INPUT-MFOS-PHASE09-0001
   operation: CRASH-MID-COMMIT

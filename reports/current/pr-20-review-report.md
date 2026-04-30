@@ -1,19 +1,22 @@
 # PR #20 Phase 1.3 Dataset/Catalog Review Report
 
-Status: remediated
+Status: remediated; dependency branch update blocked
 
 Review date: 2026-04-30
 
 PR: https://github.com/minto-dane/mfos/pull/20
 
-Decision: remediation complete; do not merge until PR #19 dependency handling is
-resolved and PR #20 is taken out of draft.
+Decision: remediation complete, but PR #20 cannot merge until its protected
+remote branch is reconciled with the updated `dev` branch and PR #20 is taken
+out of draft.
 
-PR #20 is opened against `dev`, but the branch graph shows it is stacked on PR
-#19. PR #19 remains open. The PR #19 head
-`origin/phase/1-2-authorization-audit-dafny-semantics` is an ancestor of the
-PR #20 branch, so the Phase 1.2 dependency is present locally but still requires
-merge/rebase/retarget handling before PR #20 can merge independently.
+PR #19 has merged into `dev` as
+`e6de1008900422ee09286567ce5247c0ad56ee7c`. The PR #20 branch was locally
+rebased onto updated `dev`, but GitHub rejected publishing that rebase because
+force-pushes are blocked. A non-content merge alignment was also rejected
+because merge commits are blocked, and `gh pr update-branch 20 --rebase` failed
+server-side due to conflicts. The remote PR #20 branch therefore still needs
+maintainer action before it can merge independently.
 
 ## Remediation Summary
 
@@ -24,7 +27,7 @@ or hiding gaps:
   cannot resolve.
 - Crash-mid-commit C5 coverage is narrowed to fail-closed partial candidate
   non-resolution. Full crash recovery selection is explicitly not modeled or
-  claimed.
+  claimed, including in the linked fixture `recovery_expectation`.
 - Retention, immutable, and malformed DSN goldens now match Dafny canonical
   errors.
 - `system_dataset == true && immutable == false` is an invalid model state and
@@ -92,7 +95,8 @@ Dafny result: `126 verified, 0 errors`.
 ```yaml
 pr_20_remediation_complete: true
 pr_20_merge_allowed: false
-pr_20_dependency_blocked_on_pr_19: true
+pr_20_dependency_blocked_on_pr_19: false
+pr_20_remote_branch_update_blocked: true
 pr_20_draft_blocked: true
 critical_findings_remaining: false
 major_findings_remaining: false
