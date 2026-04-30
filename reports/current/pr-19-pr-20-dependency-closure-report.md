@@ -61,10 +61,11 @@ Cannot update PR branch due to conflicts
 
 ## Current PR #20 State
 
-The correct local tree against updated `dev` is Phase 1.3-only, but the remote
-PR #20 branch remains at `10e59c4e0c5cfd9e378189ee91006dd80917e321`.
-GitHub therefore still shows PR #20 as draft and `DIRTY` after PR #19's squash
-merge.
+The remote PR #20 branch was updated linearly to
+`cebc71b6ed2ab8e911ab74fbd53d87fe1d4fa978` with the final review reports and
+the crash-mid-commit fixture/checker correction. GitHub still shows PR #20 as
+draft and `DIRTY` after PR #19's squash merge because the branch history still
+contains the old PR #19 commits.
 
 The remote PR #20 branch still contains the old PR #19 commits as history. Those
 commits cannot be dropped through normal push because force-push is blocked, and
@@ -92,7 +93,7 @@ The corrected local tree passed the full requested validation matrix, including
 ```yaml
 pr_19_merged: true
 pr_20_local_rebase_succeeded: true
-pr_20_remote_branch_updated: false
+pr_20_remote_branch_updated: true
 pr_20_rebased_or_retargeted_on_github: false
 pr_20_github_merge_state: DIRTY
 pr_20_ready_for_merge: false
