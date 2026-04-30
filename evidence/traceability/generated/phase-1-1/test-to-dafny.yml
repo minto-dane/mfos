@@ -651,8 +651,7 @@ tests:
   oracle_ref: tests/golden/dataset/malformed-dsn-0902.yml
   golden_ref: tests/golden/dataset/malformed-dsn-0902.yml
   coverage_level: C2_PARTIAL_SEMANTIC
-  coverage_justification: Downgraded because no matching invalid-DSN error property
-    exists.
+  coverage_justification: Partial symbolic DSN coverage only.
   coverage_mappings:
   - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
     dafny_symbol: SymbolicDsnValid
@@ -660,8 +659,8 @@ tests:
     verification_status: unverified
     evidence_ref: reports/current/semantic-coverage-open-issues.md
     coverage_level: C2_PARTIAL_SEMANTIC
-    note: Malformed DSN rejection and MFOS_ERR_INVALID_DATASET_NAME are not modeled
-      in Dafny.
+    note: Malformed DSN rejection now maps to MFOS_ERR_INVALID_DSN in Phase 1.3; Phase
+      1.1 still records only symbolic DSN coverage.
   negative_failure_conditions: []
   audit_expectation: explicit_audit_property_or_gap_recorded
 - test_id: TEST-MFOS-DATASET-CATALOG-COMMITTED-0903
@@ -896,7 +895,7 @@ tests:
 - test_id: TEST-MFOS-DATASET-CRASH-MID-COMMIT-0914
   catalog: tests/catalog/dataset-catalog.yml
   domain: dataset_catalog
-  negative: false
+  negative: true
   target_requirements: *id003
   fixture_ref: tests/fixtures/dataset/crash-mid-commit-0914.yml
   oracle_ref: tests/golden/dataset/crash-mid-commit-0914.yml

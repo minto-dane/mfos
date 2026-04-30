@@ -23,7 +23,7 @@ These are truthful gaps left after remediation. They are not treated as successf
 - `NEG-MFOS-AUDIT-DUPLICATE-RECORD-ID-0911`: `C0_NONE` - No Dafny mapping.
 - `NEG-MFOS-AUDIT-NON-MONOTONIC-SEQUENCE-0912`: `C2_PARTIAL_SEMANTIC` - Partial semantic coverage only.
 - `TEST-MFOS-DATASET-VALID-DSN-0901`: `C3_FULL_SEMANTIC` - Executable predicate exists; no C4 claim.
-- `NEG-MFOS-DATASET-MALFORMED-DSN-0902`: `C2_PARTIAL_SEMANTIC` - Downgraded because no matching invalid-DSN error property exists.
+- `NEG-MFOS-DATASET-MALFORMED-DSN-0902`: `C2_PARTIAL_SEMANTIC` - Partial symbolic DSN coverage only.
 - `TEST-MFOS-DATASET-CATALOG-COMMITTED-0903`: `C3_FULL_SEMANTIC` - Executable predicate exists; no C4 claim.
 - `NEG-MFOS-DATASET-RETENTION-DELETE-0911`: `C3_FULL_SEMANTIC` - Executable predicate exists; no C4 claim.
 - `NEG-MFOS-DATASET-IMMUTABLE-SYSTEM-0912`: `C3_FULL_SEMANTIC` - Executable predicate exists; no C4 claim.

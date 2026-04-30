@@ -170,7 +170,7 @@ fixtures:
   coverage_level: C5_CONFORMANCE_LINKED
   coverage_mappings:
   - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
-    dafny_symbol: INV_CATALOG_CRASH_MID_COMMIT_RECOVERY_EXPOSES_ONLY_SAFE_STATE
+    dafny_symbol: INV_CATALOG_CRASH_MID_COMMIT_PARTIAL_STATE_CANNOT_RESOLVE
     symbol_kind: lemma
     verification_status: verified
     evidence_ref: EV-MFOS-DATASET-CRASH-MID-COMMIT-0914

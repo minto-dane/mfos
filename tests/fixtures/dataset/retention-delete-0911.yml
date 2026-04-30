@@ -15,6 +15,12 @@ initial_state:
   clock: T0
   security_epoch: 1
   policy_version: 1
+  dataset:
+    retention_active: true
+    retention_policy:
+      active: true
+  decision:
+    operation: OP_DELETE
   objects:
   - object_ref: OBJ-MFOS-PHASE09-0001
     generation: 1

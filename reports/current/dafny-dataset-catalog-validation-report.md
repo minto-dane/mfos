@@ -2,7 +2,7 @@
 
 Status: current.
 
-The current Phase 1.3 Dafny module set verifies with `118 verified, 0 errors`.
+The current Phase 1.3 Dafny module set verifies with `126 verified, 0 errors`.
 
 Validated commands passed locally:
 

@@ -41,7 +41,13 @@ DATASET_TESTS: list[tuple[str, str, str]] = [
     ("NEG-MFOS-DATASET-RETENTION-DELETE-0911", "INV_DATASET_RETENTION_VIOLATION_NOT_SUCCESS", "retention delete rejection"),
     ("NEG-MFOS-DATASET-IMMUTABLE-SYSTEM-0912", "INV_DATASET_IMMUTABLE_SYSTEM_MODIFICATION_NOT_SUCCESS", "immutable system dataset modification rejection"),
     ("NEG-MFOS-DATASET-NOT-POSIX-FILE-0913", "INV_DATASET_NOT_POSIX_FILE", "dataset is not a POSIX file model"),
-    ("TEST-MFOS-DATASET-CRASH-MID-COMMIT-0914", "INV_CATALOG_CRASH_MID_COMMIT_RECOVERY_EXPOSES_ONLY_SAFE_STATE", "crash recovery exposes only safe catalog state"),
+    ("TEST-MFOS-DATASET-CRASH-MID-COMMIT-0914", "INV_CATALOG_CRASH_MID_COMMIT_PARTIAL_STATE_CANNOT_RESOLVE", "crash-mid-commit partial candidate rejection; no crash recovery completeness claim"),
+]
+
+PROPERTY_ROWS: list[tuple[str, str, str]] = [
+    ("DATASET-CATALOG-TX-COMMITTED-NOT-COMPLETE", "INV_CATALOG_TX_COMMITTED_NOT_COMPLETE_CANNOT_RESOLVE", "Catalog transaction state CATALOG_TX_COMMITTED is not complete and cannot resolve."),
+    ("DATASET-CATALOG-SYSTEM-DATASET-INVARIANT", "INV_DATASET_SYSTEM_DATASET_REQUIRES_IMMUTABLE", "system_dataset == true && immutable == false is an invalid model state."),
+    ("DATASET-CATALOG-DENY-NOT-MFOS-OK", "INV_DATASET_AUDITED_DENY_DOES_NOT_BIND_MFOS_OK", "Audited Dataset/Catalog DENY cannot bind MFOS_OK."),
 ]
 
 INTEGRATION_PROPERTIES: list[tuple[str, str, str]] = [
@@ -52,17 +58,17 @@ INTEGRATION_PROPERTIES: list[tuple[str, str, str]] = [
     ("DATASET-CATALOG-AUDIT-NO-BYPASS", "INV_DATASET_CANNOT_BYPASS_AUDIT_WHEN_OBLIGATION_EXISTS", "Dataset/Catalog fail-closed result cannot bypass required audit evidence."),
 ]
 
-REQUIREMENTS: list[tuple[str, str, str]] = [
-    ("MFOS-REQ-CATALOG-0002", "INV_CATALOG_RESOLVE_SUCCESS_IMPLIES_COMMITTED", "Catalog resolution returns only committed, integrity-valid entries."),
-    ("MFOS-REQ-CATALOG-0101", "INV_CATALOG_RESOLVE_SUCCESS_IMPLIES_COMMITTED", "Registry mirror for committed-only catalog resolution."),
-    ("MFOS-REQ-CATALOG-0102", "INV_CATALOG_CRASH_MID_COMMIT_RECOVERY_EXPOSES_ONLY_SAFE_STATE", "Catalog recovery never exposes partial transaction state."),
-    ("MFOS-REQ-DATASET-0101", "INV_DATASET_CREATE_HANDLE_BINDS_DECISION", "Dataset handles bind subject, operation, policy, catalog generation, and dataset generation."),
-    ("MFOS-REQ-DATASET-0102", "INV_DATASET_NOT_POSIX_FILE", "Dataset semantics reject POSIX file-model substitution."),
-    ("MFOS-REQ-DATASET-0103", "INV_DATASET_RETENTION_VIOLATION_NOT_SUCCESS", "Retention metadata blocks delete and purge while active."),
+REQUIREMENTS: list[tuple[str, str, str, str]] = [
+    ("MFOS-REQ-CATALOG-0002", "INV_CATALOG_RESOLVE_SUCCESS_IMPLIES_COMMITTED", "C4_VERIFIED_PROPERTY", "Catalog resolution returns only committed, integrity-valid, transaction-complete entries."),
+    ("MFOS-REQ-CATALOG-0101", "INV_CATALOG_RESOLVE_SUCCESS_IMPLIES_COMMITTED", "C4_VERIFIED_PROPERTY", "Registry mirror for committed-only catalog resolution."),
+    ("MFOS-REQ-CATALOG-0102", "INV_CATALOG_CRASH_MID_COMMIT_PARTIAL_STATE_CANNOT_RESOLVE", "C2_PARTIAL_SEMANTIC", "Crash-mid-commit partial candidates cannot resolve; full crash recovery selection is not modeled in Phase 1.3."),
+    ("MFOS-REQ-DATASET-0101", "INV_DATASET_CREATE_HANDLE_BINDS_DECISION", "C4_VERIFIED_PROPERTY", "Dataset handles bind subject, operation, policy, catalog generation, and dataset generation where modeled."),
+    ("MFOS-REQ-DATASET-0102", "INV_DATASET_NOT_POSIX_FILE", "C4_VERIFIED_PROPERTY", "Dataset semantics reject POSIX file-model substitution."),
+    ("MFOS-REQ-DATASET-0103", "INV_DATASET_RETENTION_VIOLATION_NOT_SUCCESS", "C4_VERIFIED_PROPERTY", "Retention metadata blocks delete and purge while active."),
 ]
 
 FORMAL_CLAIMS: list[tuple[str, str, str]] = [
-    ("MFOS-CLAIM-BASELINE-SYSINT-0001", "INV_DATASET_HANDLE_CREATION_CANNOT_BYPASS_AUTHORIZATION", "Assurance claim exists, but no formal proof artifact is claimed."),
+    ("MFOS-FC-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW", "INV_DATASET_HANDLE_CREATION_CANNOT_BYPASS_AUTHORIZATION", "Formal claim remains planned; Phase 1.3 adds a Dataset/Catalog-linked Dafny lemma but no proof artifact is claimed."),
 ]
 
 PREVIOUS_DATASET_GAPS = {
@@ -109,10 +115,11 @@ def test_entry(item: tuple[str, str, str]) -> dict[str, Any]:
     test_id, symbol, note = item
     linked = True
     base = slug(test_id)
+    test_type = "negative" if test_id.startswith("NEG-") or test_id == "TEST-MFOS-DATASET-CRASH-MID-COMMIT-0914" else "conformance"
     return {
         "test_id": test_id,
         "domain": "dataset_catalog",
-        "test_type": "negative" if test_id.startswith("NEG-") else "conformance",
+        "test_type": test_type,
         "coverage_level": "C5_CONFORMANCE_LINKED",
         "phase_1_3_exit_blocker": False,
         "required_for_dataset_catalog_aggregate": True,
@@ -120,7 +127,7 @@ def test_entry(item: tuple[str, str, str]) -> dict[str, Any]:
         "oracle_ref": f"tests/golden/dataset/{base}.yml" if linked else None,
         "golden_ref": f"tests/golden/dataset/{base}.yml" if linked else None,
         "coverage_mappings": [{**mapping(symbol, "C5_CONFORMANCE_LINKED"), "evidence_ref": evidence_for(test_id)}],
-        "negative_failure_conditions": [symbol] if test_id.startswith("NEG-") else [],
+        "negative_failure_conditions": [symbol] if test_type == "negative" else [],
         "notes": f"{note}; fixture/oracle/golden links are deterministic conformance evidence and Python remains a non-semantic loader/comparator.",
     }
 
@@ -137,18 +144,34 @@ def integration_entry(item: tuple[str, str, str]) -> dict[str, Any]:
         "oracle_ref": None,
         "golden_ref": None,
         "coverage_mappings": [{**mapping(symbol, "C4_VERIFIED_PROPERTY"), "evidence_ref": f"EV-{integration_id}"}],
-        "notes": note + " Dedicated Dataset/Catalog conformance vectors are not used to raise this integration row to C5.",
+        "notes": note + " This integration row stays C4 because no Dataset/Catalog scenario vector raises it to C5.",
     }
 
 
-def requirement_entry(item: tuple[str, str, str]) -> dict[str, Any]:
-    requirement_id, symbol, note = item
+def property_entry(item: tuple[str, str, str]) -> dict[str, Any]:
+    property_id, symbol, note = item
     return {
-        "requirement_id": requirement_id,
+        "property_id": property_id,
         "domain": "dataset_catalog",
         "coverage_level": "C4_VERIFIED_PROPERTY",
         "phase_1_3_exit_blocker": False,
-        "coverage_mappings": [{**mapping(symbol, "C4_VERIFIED_PROPERTY"), "evidence_ref": f"EV-{requirement_id}"}],
+        "required_for_dataset_catalog_aggregate": False,
+        "fixture_ref": None,
+        "oracle_ref": None,
+        "golden_ref": None,
+        "coverage_mappings": [{**mapping(symbol, "C4_VERIFIED_PROPERTY"), "evidence_ref": f"EV-{property_id}"}],
+        "notes": note,
+    }
+
+
+def requirement_entry(item: tuple[str, str, str, str]) -> dict[str, Any]:
+    requirement_id, symbol, level, note = item
+    return {
+        "requirement_id": requirement_id,
+        "domain": "dataset_catalog",
+        "coverage_level": level,
+        "phase_1_3_exit_blocker": False,
+        "coverage_mappings": [{**mapping(symbol, level), "evidence_ref": f"EV-{requirement_id}"}],
         "notes": note,
     }
 
@@ -301,7 +324,7 @@ Phase 1.3 deepens the non-production Dafny executable semantics for Dataset/Cata
 - Formal claims proof-backed: `{str(summary['formal_claims_proof_backed']).lower()}`
 - Dataset/Catalog exit blockers remaining: `{str(summary['dataset_catalog_exit_blockers_remaining']).lower()}`
 
-C5 rows have explicit Dafny symbols, verification evidence, and fixture/oracle/golden links under `tests/fixtures/dataset/` and `tests/golden/dataset/`. Integration rows that lack dedicated Dataset/Catalog conformance vectors remain C4 and are not used to overclaim C5. Python remains a non-semantic generator, loader, and structural checker.
+C5 rows have explicit Dafny symbols, verification evidence, fixture/oracle/golden links under `tests/fixtures/dataset/` and `tests/golden/dataset/`, and checker-enforced expected-error agreement with the linked Dafny property. The crash-mid-commit C5 row covers partial candidate non-resolution only; full recovery selection to prior committed, later committed, or absent state remains outside Phase 1.3 and is not claimed. Integration rows that lack dedicated Dataset/Catalog conformance vectors remain C4 and are not used to overclaim C5. Python remains a non-semantic generator, loader, and structural checker.
 """
 
 
@@ -342,10 +365,11 @@ def main() -> int:
     args = parser.parse_args()
 
     tests = [test_entry(item) for item in DATASET_TESTS]
+    properties = [property_entry(item) for item in PROPERTY_ROWS]
     integration = [integration_entry(item) for item in INTEGRATION_PROPERTIES]
     requirements = [requirement_entry(item) for item in REQUIREMENTS]
     claims = [formal_claim_entry(item) for item in FORMAL_CLAIMS]
-    all_rows = tests + integration + requirements + claims
+    all_rows = tests + properties + integration + requirements + claims
     levels = Counter(row["coverage_level"] for row in all_rows)
 
     common = {
@@ -360,7 +384,7 @@ def main() -> int:
     write_yaml(args.traceability_dir / "dataset-catalog-to-dafny.yml", {
         **common,
         "artifact_type": "phase_1_3_dataset_catalog_to_dafny",
-        "entries": tests + integration,
+        "entries": tests + properties + integration,
     })
     write_yaml(args.traceability_dir / "test-to-dafny.yml", {
         **common,
@@ -415,6 +439,13 @@ def main() -> int:
         "dataset_handle_requires_allow": True,
         "stale_handle_policy_rejected": True,
         "stale_handle_generation_rejected": True,
+        "catalog_transaction_c5_overclaim_fixed": True,
+        "crash_recovery_completeness_claimed": False,
+        "crash_mid_commit_partial_nonresolution_covered": True,
+        "retention_immutable_error_drift_fixed": True,
+        "system_dataset_immutability_enforced": True,
+        "deny_mfos_ok_blocked": True,
+        "coverage_checker_hardened": True,
         "python_loader_contains_dataset_catalog_semantics": False,
         "production_implementation_allowed": False,
         "rust_phase_1_canonical_semantics_allowed": False,
@@ -446,13 +477,13 @@ def main() -> int:
     write_text(args.reports_dir / "phase-1-3-entry-gate.md", render_entry_gate_markdown())
 
     write_text(args.reports_dir / "dafny-dataset-catalog-report.md",
-               "# Dafny Dataset/Catalog Report\n\nStatus: current.\n\nPhase 1.3 deepens non-production Dafny Dataset/Catalog semantics for DSN validation, committed-entry-only catalog resolution, catalog transaction rejection, dataset handle binding, stale handle rejection, retention, immutable system datasets, and the Authorization/Audit integration boundary. No catalogd, datasetd, storage implementation, Rust semantic-core, hosted daemon, or production-like semantic runner is introduced.\n")
+               "# Dafny Dataset/Catalog Report\n\nStatus: current.\n\nPhase 1.3 deepens non-production Dafny Dataset/Catalog semantics for DSN validation, committed-entry-only catalog resolution, catalog transaction-complete rejection, partial crash candidate non-resolution, dataset handle binding, stale handle rejection, retention, immutable system datasets, invalid system-dataset marker rejection, and the Authorization/Audit integration boundary. Full crash recovery selection is not modeled or claimed. No catalogd, datasetd, storage implementation, Rust semantic-core, hosted daemon, or production-like semantic runner is introduced.\n")
     write_text(args.reports_dir / "dafny-dataset-catalog-validation-report.md",
-               "# Dafny Dataset/Catalog Validation Report\n\nStatus: current.\n\nThe current Phase 1.3 Dafny module set verifies with `118 verified, 0 errors`.\n\nValidated commands passed locally:\n\n- `./scripts/validate-all.sh --check`\n- `./scripts/validate-naming-safety.sh release`\n- `./scripts/validate-artifact-hygiene.sh`\n- `./scripts/validate-component-scaffold.sh`\n- `./scripts/validate-language-formal-assurance.sh`\n- `./scripts/validate-dafny-semantics.sh --require-dafny`\n- `python3 scripts/check-semantic-coverage-mapping.py`\n- `python3 scripts/check-formal-claim-coverage.py`\n- `python3 scripts/check-phase1-gap-triage.py`\n- `python3 scripts/check-phase1-2-auth-audit-coverage.py`\n- `python3 scripts/check-phase1-3-dataset-catalog-coverage.py`\n- `python3 -m py_compile $(find scripts tools -name '*.py' -type f | sort)`\n- `git diff --check`\n")
+               "# Dafny Dataset/Catalog Validation Report\n\nStatus: current.\n\nThe current Phase 1.3 Dafny module set verifies with `126 verified, 0 errors`.\n\nValidated commands passed locally:\n\n- `./scripts/validate-all.sh --check`\n- `./scripts/validate-naming-safety.sh release`\n- `./scripts/validate-artifact-hygiene.sh`\n- `./scripts/validate-component-scaffold.sh`\n- `./scripts/validate-language-formal-assurance.sh`\n- `./scripts/validate-dafny-semantics.sh --require-dafny`\n- `python3 scripts/check-semantic-coverage-mapping.py`\n- `python3 scripts/check-formal-claim-coverage.py`\n- `python3 scripts/check-phase1-gap-triage.py`\n- `python3 scripts/check-phase1-2-auth-audit-coverage.py`\n- `python3 scripts/check-phase1-3-dataset-catalog-coverage.py`\n- `python3 -m py_compile $(find scripts tools -name '*.py' -type f | sort)`\n- `git diff --check`\n")
     write_text(args.reports_dir / "dafny-dataset-catalog-red-team-review.md",
-               "# Dafny Dataset/Catalog Red-Team Review\n\nStatus: current.\n\nCritical/Major checks addressed: handles cannot be created without ALLOW or ALLOW_WITH_AUDIT; uncommitted, rolled-back, partial-journal, and integrity-failed catalog entries cannot resolve; stale policy/catalog/dataset generations are rejected; DENY creates no handle; DENY with audit obligation links to before-return audit or audit-unavailable fail-closed behavior; Dataset is not treated as a POSIX file; coverage C5 rows require Dafny symbols, verification evidence, and fixture/oracle/golden links; formal claims remain below proof-backed levels; Python tooling remains non-semantic; no Rust semantic-core or production implementation was introduced.\n")
+               "# Dafny Dataset/Catalog Red-Team Review\n\nStatus: current.\n\nCritical/Major checks addressed: handles cannot be created without ALLOW or ALLOW_WITH_AUDIT; uncommitted, rolled-back, partial-journal, integrity-failed, and transaction-not-complete catalog entries cannot resolve; stale policy/catalog/dataset generations are rejected; DENY creates no handle; audited DENY cannot bind MFOS_OK; DENY with audit obligation links to before-return audit or audit-unavailable fail-closed behavior; Dataset is not treated as a POSIX file; retention and immutable-system goldens match Dafny canonical errors; system_dataset without immutable is invalid; crash-mid-commit coverage is narrowed to partial candidate non-resolution and does not claim full recovery selection; coverage C5 rows require Dafny symbols, verification evidence, fixture/oracle/golden links, expected-error agreement, and rank-safe aggregates; formal claims remain below proof-backed levels; Python tooling remains non-semantic; no Rust semantic-core or production implementation was introduced.\n")
     write_text(args.reports_dir / "dafny-dataset-catalog-open-issues.md",
-               "# Dafny Dataset/Catalog Open Issues\n\nStatus: current.\n\n- Dedicated Dataset/Catalog conformance vectors for audit-unavailable open denial are not added in Phase 1.3; the Dafny property is verified and the Phase 1.2 Auth/Audit conformance vector remains the supporting integration evidence.\n- Formal assurance claims remain `proof_claimed: false`; proof-backed C4/C5 formal-claim coverage is deferred.\n- PACK-07 010x catalog entries can be added in a later catalog refresh; Phase 1.3 closes the Phase 1.1 Dataset/Catalog exit blockers using the existing 090x fixture/golden corpus.\n")
+               "# Dafny Dataset/Catalog Open Issues\n\nStatus: current.\n\n- Dedicated Dataset/Catalog conformance vectors for audit-unavailable open denial are not added in Phase 1.3; the Dafny property is verified and the Phase 1.2 Auth/Audit conformance vector remains the supporting integration evidence.\n- Formal assurance claims remain `proof_claimed: false`; proof-backed C4/C5 formal-claim coverage is deferred.\n- Full catalog crash-recovery selection to prior committed, later committed, or absent state is not modeled or claimed in Phase 1.3. Phase 1.3 covers fail-closed non-resolution of partial crash candidates.\n- PACK-07 010x catalog entries can be added in a later catalog refresh; Phase 1.3 closes the Phase 1.1 Dataset/Catalog exit blockers using the existing 090x fixture/golden corpus.\n")
     return 0
 
 
