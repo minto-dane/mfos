@@ -17,6 +17,7 @@ TRIAGE = ROOT / "reports" / "current" / "phase-1-1-gap-triage.yml"
 GATE = ROOT / "reports" / "current" / "phase-1-2-entry-gate.yml"
 STATUS = ROOT / "docs" / "design" / "STATUS.md"
 REPORT_INDEX = ROOT / "reports" / "index.yml"
+PHASE_1_2_COVERAGE = ROOT / "reports" / "current" / "dafny-authorization-audit-coverage.yml"
 GAP_LEVELS = {"C0_NONE", "C1_TYPE_ONLY", "C2_PARTIAL_SEMANTIC", "C3_FULL_SEMANTIC"}
 
 
@@ -79,23 +80,32 @@ def main() -> int:
 
     entry_blockers = [item for item in triage.get("gaps", []) if item.get("phase_1_2_entry_blocker")]
     merge_blockers = [item for item in triage.get("gaps", []) if item.get("phase_1_2_merge_blocker")]
+    phase_1_2_closed = False
+    if PHASE_1_2_COVERAGE.exists():
+        phase_1_2 = load_yaml(PHASE_1_2_COVERAGE)
+        phase_1_2_closed = not bool(phase_1_2.get("authorization_audit_exit_blockers_remaining"))
+    expected_gate_merge_blockers = [] if phase_1_2_closed else merge_blockers
     if len(entry_blockers) != triage.get("phase_1_2_entry_blocker_count"):
         errors.append("phase_1_2_entry_blocker_count does not match gaps")
     if len(merge_blockers) != triage.get("phase_1_2_merge_blocker_count"):
         errors.append("phase_1_2_merge_blocker_count does not match gaps")
     if triage.get("phase_1_2_entry_allowed") and entry_blockers:
         errors.append("phase_1_2_entry_allowed is true while entry blockers exist")
-    if gate.get("merge_blockers") != merge_blockers:
+    if gate.get("merge_blockers") != expected_gate_merge_blockers:
         errors.append("entry gate merge blockers differ from triage merge blockers")
     if gate.get("entry_blockers") != entry_blockers:
         errors.append("entry gate entry blockers differ from triage entry blockers")
     if gate.get("phase_1_2_entry_allowed") != triage.get("phase_1_2_entry_allowed"):
         errors.append("entry gate allowed flag differs from triage")
 
+    phase_1_2_merge_term = "phase_1_2_authorization_audit_merge_blockers_remaining: true"
+    if phase_1_2_closed:
+        phase_1_2_merge_term = "phase_1_2_authorization_audit_merge_blockers_remaining: false"
+
     required_status_terms = [
         "phase_1_1_gap_triage_complete: true",
         "phase_1_2_authorization_audit_deepening_allowed: true",
-        "phase_1_2_authorization_audit_merge_blockers_remaining: true",
+        phase_1_2_merge_term,
     ]
     for term in required_status_terms:
         if term not in status_text:

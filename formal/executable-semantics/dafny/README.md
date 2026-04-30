@@ -64,6 +64,24 @@ rejection, principal-before-open, DD catalog/auth dependency, spool denial,
 operator confirmation, dual control, emergency metadata, and root-shell
 exclusion.
 
+## Phase 1.2 Authorization/Audit Deepening
+
+Phase 1.2 adds verified Dafny properties for Authorization, Audit, and their
+integration boundary. Generated Phase 1.2 traceability lives under
+`evidence/traceability/generated/phase-1-2/`.
+
+Coverage status:
+
+- Authorization: `C4_VERIFIED_PROPERTY`.
+- Audit: `C5_CONFORMANCE_LINKED`.
+- Authorization/Audit integration: `C5_CONFORMANCE_LINKED`.
+- Formal claim proof coverage: not claimed; the formal claim registry still
+  records planned claims without proof artifacts.
+
+The Phase 1.2 model keeps Python tooling outside MFOS business semantics and
+does not introduce production implementation, Rust semantic-core, hosted
+daemons, or production-like semantic runners.
+
 ## Pinned Verification Toolchain
 
 Phase 1 verification uses the pinned Dafny release installed by
@@ -81,4 +99,4 @@ Verification command:
 ./scripts/validate-dafny-semantics.sh --require-dafny
 ```
 
-The current module set verifies with `49 verified, 0 errors`.
+The current module set verifies with `89 verified, 0 errors`.

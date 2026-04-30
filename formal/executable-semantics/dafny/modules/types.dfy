@@ -96,9 +96,15 @@ module Types {
 
   datatype AuditRecord = AuditRecord(
     record_id: MfosId,
+    schema_version: nat,
+    component_id: MfosId,
     correlation_id: CorrelationId,
     sequence: SequenceNumber,
     record_type: MfosId,
+    subject: Subject,
+    object_ref: ObjectRef,
+    operation: Operation,
+    policy_version: PolicyVersion,
     decision_result: DecisionResult,
     error_code: ErrorCode,
     reason_code: ReasonCode,

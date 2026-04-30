@@ -37,6 +37,7 @@ CANONICAL_ROOT_FILES_ALLOWED = {
         "index.yml",
         "install-dafny.sh",
         "check-formal-claim-coverage.py",
+        "check-phase1-2-auth-audit-coverage.py",
         "check-phase1-gap-triage.py",
         "check-semantic-coverage-mapping.py",
         "validate-all.sh",
