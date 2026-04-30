@@ -46,6 +46,9 @@ current:
     check_formal_claim_coverage:
       path: scripts/check-formal-claim-coverage.py
       status: current
+    check_phase1_gap_triage:
+      path: scripts/check-phase1-gap-triage.py
+      status: current
 
 sections:
   validators:

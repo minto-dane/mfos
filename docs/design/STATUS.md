@@ -1,8 +1,8 @@
 # MFOS Design Work Status
 
-Status date: 2026-04-29
+Status date: 2026-04-30
 Workspace: `/home/nia/mfos`
-Git status: working branch `phase/1-1-semantic-coverage-closure`;
+Git status: working branch `phase/1-1-gap-triage`;
 PR #10 (`fix/phase-0.10-pxm-mfvm-expansion`), PR #11
 (`fix/pre-phase-1-total-readiness`), PR #12
 (`fix/pre-phase-1-total-readiness-second-pass`), and PR #13
@@ -12,9 +12,11 @@ fixed-point closure branch is based on the updated `origin/dev`. PR #14
 checks passed (`CodeQL`, `CodeQL analysis (python)`, and `validate design
 registries and lint gates`). PR #15 landed the Dafny executable-semantics
 scaffold. PR #17 landed the Dafny 4.11.0 toolchain verification closure after
-PR #16 was superseded by repository branch rules. Repository visibility may be public by owner
-instruction, but formal public-release claims remain blocked pending IP/trademark
-attorney review.
+PR #16 was superseded by repository branch rules. PR #18 landed Phase 1.1
+semantic coverage truthfulness remediation. The current branch records the
+Phase 1.1 gap triage and Phase 1.2 Authorization/Audit entry gate. Repository
+visibility may be public by owner instruction, but formal public-release claims
+remain blocked pending IP/trademark attorney review.
 
 ## Current Phase
 
@@ -45,6 +47,7 @@ phase_1_1_core_domain_coverage_status: mixed_verified_and_partial
 phase_1_1_formal_claim_coverage_complete: false
 phase_1_1_negative_semantics_complete: false
 phase_1_1_truthfulness_remediation_complete: true
+phase_1_1_gap_triage_complete: true
 phase_1_1_core_domains_coverage_level:
   authorization: C0_NONE
   audit: C0_NONE
@@ -52,6 +55,9 @@ phase_1_1_core_domains_coverage_level:
   job_spool: C0_NONE
   operator_console: C0_NONE
 phase_1_1_first_vertical_slice_coverage_level: C5_CONFORMANCE_LINKED
+phase_1_2_authorization_audit_deepening_allowed: true
+phase_1_2_authorization_audit_entry_blockers_remaining: false
+phase_1_2_authorization_audit_merge_blockers_remaining: true
 phase_1_semantic_evaluator_status: non_production_dafny_only
 phase_1_portable_semantic_core_allowed: false
 phase_1_rust_semantic_core_allowed: false
@@ -65,7 +71,7 @@ hosted_semantic_prototype_allowed: false
 public_release_allowed: false
 private_internal_use_allowed: true
 requires_ip_attorney_review_before_public_release: true
-next_phase: Continue Phase 1 conformance evidence closure
+next_phase: Phase 1.2 Authorization/Audit Deepening
 ```
 
 No production nucleus, service, PXM, Guard, or other OS-body implementation was
@@ -92,6 +98,10 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
   explicit Dafny targets per test. The first vertical slice remains
   `C5_CONFORMANCE_LINKED`; the core five domains remain mixed because several
   catalog entries are partial or uncovered and formal claims are not proof-backed.
+- Phase 1.1 gap triage classifies Authorization/Audit gaps as Phase 1.2
+  merge-gate work, not deferred work. Phase 1.2 may begin as non-production
+  Dafny deepening, but it may not merge until its Authorization/Audit C0/C2/C3
+  gaps are closed or explicitly re-scoped.
 
 ## Phase 1 Formal / Traceability Consistency
 

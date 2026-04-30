@@ -1,0 +1,861 @@
+schema_version: 1
+artifact_type: phase_1_1_gap_triage
+status: current
+source_reports:
+- reports/current/semantic-coverage-report.md
+- reports/current/semantic-coverage-open-issues.md
+- reports/current/negative-semantics-report.md
+source_traceability_dir: evidence/traceability/generated/phase-1-1/
+classification_counts:
+  fix_before_next_merge: 28
+  accepted_deferred: 41
+coverage_level_counts:
+  C3_FULL_SEMANTIC: 18
+  C2_PARTIAL_SEMANTIC: 14
+  C0_NONE: 37
+artifact_kind_counts:
+  test: 42
+  requirement: 16
+  formal_claim: 11
+authorization_audit_gap_count: 28
+authorization_audit_deferred_count: 0
+phase_1_2_entry_blocker_count: 0
+phase_1_2_merge_blocker_count: 28
+formal_claims_without_proof_artifacts_treated_as_c4_c5: false
+phase_1_1_semantic_coverage_complete: false
+production_implementation_allowed: false
+rust_phase_1_canonical_semantics_allowed: false
+hosted_daemon_implementation_allowed: false
+gaps:
+- gap_id: GAP-TEST-TEST-MFOS-AUTH-ALLOW-0901
+  artifact_kind: test
+  artifact_id: TEST-MFOS-AUTH-ALLOW-0901
+  domain: authorization
+  coverage_level: C3_FULL_SEMANTIC
+  classification: fix_before_next_merge
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: true
+  priority: P1 phase_1_2_merge_gate
+  reason: Phase 1.2 Authorization/Audit Deepening must close or explicitly re-scope
+    this gap before its PR can merge.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-TEST-MFOS-AUTH-ALLOW-WITH-AUDIT-0903
+  artifact_kind: test
+  artifact_id: TEST-MFOS-AUTH-ALLOW-WITH-AUDIT-0903
+  domain: authorization
+  coverage_level: C3_FULL_SEMANTIC
+  classification: fix_before_next_merge
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: true
+  priority: P1 phase_1_2_merge_gate
+  reason: Phase 1.2 Authorization/Audit Deepening must close or explicitly re-scope
+    this gap before its PR can merge.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-TEST-MFOS-AUTH-REQUIRE-MFA-0904
+  artifact_kind: test
+  artifact_id: TEST-MFOS-AUTH-REQUIRE-MFA-0904
+  domain: authorization
+  coverage_level: C2_PARTIAL_SEMANTIC
+  classification: fix_before_next_merge
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: true
+  priority: P1 phase_1_2_merge_gate
+  reason: Phase 1.2 Authorization/Audit Deepening must close or explicitly re-scope
+    this gap before its PR can merge.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-TEST-MFOS-AUTH-REQUIRE-DUAL-CONTROL-0905
+  artifact_kind: test
+  artifact_id: TEST-MFOS-AUTH-REQUIRE-DUAL-CONTROL-0905
+  domain: authorization
+  coverage_level: C2_PARTIAL_SEMANTIC
+  classification: fix_before_next_merge
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: true
+  priority: P1 phase_1_2_merge_gate
+  reason: Phase 1.2 Authorization/Audit Deepening must close or explicitly re-scope
+    this gap before its PR can merge.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-TEST-MFOS-AUTH-REQUIRE-BREAK-GLASS-0906
+  artifact_kind: test
+  artifact_id: TEST-MFOS-AUTH-REQUIRE-BREAK-GLASS-0906
+  domain: authorization
+  coverage_level: C2_PARTIAL_SEMANTIC
+  classification: fix_before_next_merge
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: true
+  priority: P1 phase_1_2_merge_gate
+  reason: Phase 1.2 Authorization/Audit Deepening must close or explicitly re-scope
+    this gap before its PR can merge.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-TEST-MFOS-AUTH-REQUIRE-GUARD-APPROVAL-0907
+  artifact_kind: test
+  artifact_id: TEST-MFOS-AUTH-REQUIRE-GUARD-APPROVAL-0907
+  domain: authorization
+  coverage_level: C2_PARTIAL_SEMANTIC
+  classification: fix_before_next_merge
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: true
+  priority: P1 phase_1_2_merge_gate
+  reason: Phase 1.2 Authorization/Audit Deepening must close or explicitly re-scope
+    this gap before its PR can merge.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-TEST-MFOS-AUTH-REQUIRE-OPERATOR-CONFIRMATION-0908
+  artifact_kind: test
+  artifact_id: TEST-MFOS-AUTH-REQUIRE-OPERATOR-CONFIRMATION-0908
+  domain: authorization
+  coverage_level: C2_PARTIAL_SEMANTIC
+  classification: fix_before_next_merge
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: true
+  priority: P1 phase_1_2_merge_gate
+  reason: Phase 1.2 Authorization/Audit Deepening must close or explicitly re-scope
+    this gap before its PR can merge.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-NEG-MFOS-AUTH-STALE-POLICY-0920
+  artifact_kind: test
+  artifact_id: NEG-MFOS-AUTH-STALE-POLICY-0920
+  domain: authorization
+  coverage_level: C3_FULL_SEMANTIC
+  classification: fix_before_next_merge
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: true
+  priority: P1 phase_1_2_merge_gate
+  reason: Phase 1.2 Authorization/Audit Deepening must close or explicitly re-scope
+    this gap before its PR can merge.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-NEG-MFOS-AUTH-EXPIRED-DELEGATION-0921
+  artifact_kind: test
+  artifact_id: NEG-MFOS-AUTH-EXPIRED-DELEGATION-0921
+  domain: authorization
+  coverage_level: C0_NONE
+  classification: fix_before_next_merge
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: true
+  priority: P1 phase_1_2_merge_gate
+  reason: Phase 1.2 Authorization/Audit Deepening must close or explicitly re-scope
+    this gap before its PR can merge.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-NEG-MFOS-AUTH-BREAK-GLASS-NO-REASON-0922
+  artifact_kind: test
+  artifact_id: NEG-MFOS-AUTH-BREAK-GLASS-NO-REASON-0922
+  domain: authorization
+  coverage_level: C2_PARTIAL_SEMANTIC
+  classification: fix_before_next_merge
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: true
+  priority: P1 phase_1_2_merge_gate
+  reason: Phase 1.2 Authorization/Audit Deepening must close or explicitly re-scope
+    this gap before its PR can merge.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-NEG-MFOS-AUTH-BREAK-GLASS-NO-EXPIRY-0923
+  artifact_kind: test
+  artifact_id: NEG-MFOS-AUTH-BREAK-GLASS-NO-EXPIRY-0923
+  domain: authorization
+  coverage_level: C2_PARTIAL_SEMANTIC
+  classification: fix_before_next_merge
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: true
+  priority: P1 phase_1_2_merge_gate
+  reason: Phase 1.2 Authorization/Audit Deepening must close or explicitly re-scope
+    this gap before its PR can merge.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-NEG-MFOS-AUTH-POLICY-LINT-WILDCARD-0924
+  artifact_kind: test
+  artifact_id: NEG-MFOS-AUTH-POLICY-LINT-WILDCARD-0924
+  domain: authorization
+  coverage_level: C0_NONE
+  classification: fix_before_next_merge
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: true
+  priority: P1 phase_1_2_merge_gate
+  reason: Phase 1.2 Authorization/Audit Deepening must close or explicitly re-scope
+    this gap before its PR can merge.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-TEST-MFOS-AUDIT-MINIMUM-FIELDS-0902
+  artifact_kind: test
+  artifact_id: TEST-MFOS-AUDIT-MINIMUM-FIELDS-0902
+  domain: audit
+  coverage_level: C3_FULL_SEMANTIC
+  classification: fix_before_next_merge
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: true
+  priority: P1 phase_1_2_merge_gate
+  reason: Phase 1.2 Authorization/Audit Deepening must close or explicitly re-scope
+    this gap before its PR can merge.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-NEG-MFOS-AUDIT-MISSING-CORRELATION-0903
+  artifact_kind: test
+  artifact_id: NEG-MFOS-AUDIT-MISSING-CORRELATION-0903
+  domain: audit
+  coverage_level: C2_PARTIAL_SEMANTIC
+  classification: fix_before_next_merge
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: true
+  priority: P1 phase_1_2_merge_gate
+  reason: Phase 1.2 Authorization/Audit Deepening must close or explicitly re-scope
+    this gap before its PR can merge.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-TEST-MFOS-AUDIT-HASH-CHAIN-VALID-0904
+  artifact_kind: test
+  artifact_id: TEST-MFOS-AUDIT-HASH-CHAIN-VALID-0904
+  domain: audit
+  coverage_level: C3_FULL_SEMANTIC
+  classification: fix_before_next_merge
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: true
+  priority: P1 phase_1_2_merge_gate
+  reason: Phase 1.2 Authorization/Audit Deepening must close or explicitly re-scope
+    this gap before its PR can merge.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-NEG-MFOS-AUDIT-HASH-CHAIN-TAMPERED-0905
+  artifact_kind: test
+  artifact_id: NEG-MFOS-AUDIT-HASH-CHAIN-TAMPERED-0905
+  domain: audit
+  coverage_level: C2_PARTIAL_SEMANTIC
+  classification: fix_before_next_merge
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: true
+  priority: P1 phase_1_2_merge_gate
+  reason: Phase 1.2 Authorization/Audit Deepening must close or explicitly re-scope
+    this gap before its PR can merge.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-NEG-MFOS-AUDIT-UNAUTHORIZED-QUERY-0907
+  artifact_kind: test
+  artifact_id: NEG-MFOS-AUDIT-UNAUTHORIZED-QUERY-0907
+  domain: audit
+  coverage_level: C0_NONE
+  classification: fix_before_next_merge
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: true
+  priority: P1 phase_1_2_merge_gate
+  reason: Phase 1.2 Authorization/Audit Deepening must close or explicitly re-scope
+    this gap before its PR can merge.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-NEG-MFOS-AUDIT-REDACTION-FAILURE-0910
+  artifact_kind: test
+  artifact_id: NEG-MFOS-AUDIT-REDACTION-FAILURE-0910
+  domain: audit
+  coverage_level: C0_NONE
+  classification: fix_before_next_merge
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: true
+  priority: P1 phase_1_2_merge_gate
+  reason: Phase 1.2 Authorization/Audit Deepening must close or explicitly re-scope
+    this gap before its PR can merge.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-NEG-MFOS-AUDIT-DUPLICATE-RECORD-ID-0911
+  artifact_kind: test
+  artifact_id: NEG-MFOS-AUDIT-DUPLICATE-RECORD-ID-0911
+  domain: audit
+  coverage_level: C0_NONE
+  classification: fix_before_next_merge
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: true
+  priority: P1 phase_1_2_merge_gate
+  reason: Phase 1.2 Authorization/Audit Deepening must close or explicitly re-scope
+    this gap before its PR can merge.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-NEG-MFOS-AUDIT-NON-MONOTONIC-SEQUENCE-0912
+  artifact_kind: test
+  artifact_id: NEG-MFOS-AUDIT-NON-MONOTONIC-SEQUENCE-0912
+  domain: audit
+  coverage_level: C2_PARTIAL_SEMANTIC
+  classification: fix_before_next_merge
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: true
+  priority: P1 phase_1_2_merge_gate
+  reason: Phase 1.2 Authorization/Audit Deepening must close or explicitly re-scope
+    this gap before its PR can merge.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-TEST-MFOS-DATASET-VALID-DSN-0901
+  artifact_kind: test
+  artifact_id: TEST-MFOS-DATASET-VALID-DSN-0901
+  domain: dataset_catalog
+  coverage_level: C3_FULL_SEMANTIC
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Outside Phase 1.2 Authorization/Audit Deepening scope; retain as truthful
+    deferred gap for later domain deepening.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-NEG-MFOS-DATASET-MALFORMED-DSN-0902
+  artifact_kind: test
+  artifact_id: NEG-MFOS-DATASET-MALFORMED-DSN-0902
+  domain: dataset_catalog
+  coverage_level: C2_PARTIAL_SEMANTIC
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Outside Phase 1.2 Authorization/Audit Deepening scope; retain as truthful
+    deferred gap for later domain deepening.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-TEST-MFOS-DATASET-CATALOG-COMMITTED-0903
+  artifact_kind: test
+  artifact_id: TEST-MFOS-DATASET-CATALOG-COMMITTED-0903
+  domain: dataset_catalog
+  coverage_level: C3_FULL_SEMANTIC
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Outside Phase 1.2 Authorization/Audit Deepening scope; retain as truthful
+    deferred gap for later domain deepening.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-NEG-MFOS-DATASET-RETENTION-DELETE-0911
+  artifact_kind: test
+  artifact_id: NEG-MFOS-DATASET-RETENTION-DELETE-0911
+  domain: dataset_catalog
+  coverage_level: C3_FULL_SEMANTIC
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Outside Phase 1.2 Authorization/Audit Deepening scope; retain as truthful
+    deferred gap for later domain deepening.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-NEG-MFOS-DATASET-IMMUTABLE-SYSTEM-0912
+  artifact_kind: test
+  artifact_id: NEG-MFOS-DATASET-IMMUTABLE-SYSTEM-0912
+  domain: dataset_catalog
+  coverage_level: C3_FULL_SEMANTIC
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Outside Phase 1.2 Authorization/Audit Deepening scope; retain as truthful
+    deferred gap for later domain deepening.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-NEG-MFOS-DATASET-NOT-POSIX-FILE-0913
+  artifact_kind: test
+  artifact_id: NEG-MFOS-DATASET-NOT-POSIX-FILE-0913
+  domain: dataset_catalog
+  coverage_level: C0_NONE
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Outside Phase 1.2 Authorization/Audit Deepening scope; retain as truthful
+    deferred gap for later domain deepening.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-TEST-MFOS-DATASET-CRASH-MID-COMMIT-0914
+  artifact_kind: test
+  artifact_id: TEST-MFOS-DATASET-CRASH-MID-COMMIT-0914
+  domain: dataset_catalog
+  coverage_level: C2_PARTIAL_SEMANTIC
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Outside Phase 1.2 Authorization/Audit Deepening scope; retain as truthful
+    deferred gap for later domain deepening.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-TEST-MFOS-JOB-HELLO-JOB-0901
+  artifact_kind: test
+  artifact_id: TEST-MFOS-JOB-HELLO-JOB-0901
+  domain: job_spool
+  coverage_level: C3_FULL_SEMANTIC
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Outside Phase 1.2 Authorization/Audit Deepening scope; retain as truthful
+    deferred gap for later domain deepening.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-NEG-MFOS-JOB-MALFORMED-CONTROL-0902
+  artifact_kind: test
+  artifact_id: NEG-MFOS-JOB-MALFORMED-CONTROL-0902
+  domain: job_spool
+  coverage_level: C0_NONE
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Outside Phase 1.2 Authorization/Audit Deepening scope; retain as truthful
+    deferred gap for later domain deepening.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-NEG-MFOS-JOB-SUBMIT-NO-PRINCIPAL-0903
+  artifact_kind: test
+  artifact_id: NEG-MFOS-JOB-SUBMIT-NO-PRINCIPAL-0903
+  domain: job_spool
+  coverage_level: C2_PARTIAL_SEMANTIC
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Outside Phase 1.2 Authorization/Audit Deepening scope; retain as truthful
+    deferred gap for later domain deepening.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-TEST-MFOS-JOB-STEP-FAILURE-RC-0909
+  artifact_kind: test
+  artifact_id: TEST-MFOS-JOB-STEP-FAILURE-RC-0909
+  domain: job_spool
+  coverage_level: C2_PARTIAL_SEMANTIC
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Outside Phase 1.2 Authorization/Audit Deepening scope; retain as truthful
+    deferred gap for later domain deepening.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-TEST-MFOS-JOB-SPOOL-CREATE-0911
+  artifact_kind: test
+  artifact_id: TEST-MFOS-JOB-SPOOL-CREATE-0911
+  domain: job_spool
+  coverage_level: C3_FULL_SEMANTIC
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Outside Phase 1.2 Authorization/Audit Deepening scope; retain as truthful
+    deferred gap for later domain deepening.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-TEST-MFOS-JOB-SPOOL-BROWSE-OWNER-0912
+  artifact_kind: test
+  artifact_id: TEST-MFOS-JOB-SPOOL-BROWSE-OWNER-0912
+  domain: job_spool
+  coverage_level: C3_FULL_SEMANTIC
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Outside Phase 1.2 Authorization/Audit Deepening scope; retain as truthful
+    deferred gap for later domain deepening.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-NEG-MFOS-JOB-SPOOL-EXPORT-NO-AUDIT-0915
+  artifact_kind: test
+  artifact_id: NEG-MFOS-JOB-SPOOL-EXPORT-NO-AUDIT-0915
+  domain: job_spool
+  coverage_level: C0_NONE
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Outside Phase 1.2 Authorization/Audit Deepening scope; retain as truthful
+    deferred gap for later domain deepening.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-NEG-MFOS-JOB-CANCEL-NO-AUTHORITY-0916
+  artifact_kind: test
+  artifact_id: NEG-MFOS-JOB-CANCEL-NO-AUTHORITY-0916
+  domain: job_spool
+  coverage_level: C0_NONE
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Outside Phase 1.2 Authorization/Audit Deepening scope; retain as truthful
+    deferred gap for later domain deepening.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-NEG-MFOS-JOB-STEP-NO-AUDIT-CORRELATION-0917
+  artifact_kind: test
+  artifact_id: NEG-MFOS-JOB-STEP-NO-AUDIT-CORRELATION-0917
+  domain: job_spool
+  coverage_level: C0_NONE
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Outside Phase 1.2 Authorization/Audit Deepening scope; retain as truthful
+    deferred gap for later domain deepening.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-TEST-MFOS-OPER-DISPLAY-SYSTEM-0901
+  artifact_kind: test
+  artifact_id: TEST-MFOS-OPER-DISPLAY-SYSTEM-0901
+  domain: operator_console
+  coverage_level: C3_FULL_SEMANTIC
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Outside Phase 1.2 Authorization/Audit Deepening scope; retain as truthful
+    deferred gap for later domain deepening.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-TEST-MFOS-OPER-DEFINE-USER-0902
+  artifact_kind: test
+  artifact_id: TEST-MFOS-OPER-DEFINE-USER-0902
+  domain: operator_console
+  coverage_level: C3_FULL_SEMANTIC
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Outside Phase 1.2 Authorization/Audit Deepening scope; retain as truthful
+    deferred gap for later domain deepening.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-TEST-MFOS-OPER-DEFINE-DATASET-0903
+  artifact_kind: test
+  artifact_id: TEST-MFOS-OPER-DEFINE-DATASET-0903
+  domain: operator_console
+  coverage_level: C3_FULL_SEMANTIC
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Outside Phase 1.2 Authorization/Audit Deepening scope; retain as truthful
+    deferred gap for later domain deepening.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-TEST-MFOS-OPER-SUBMIT-JOB-0904
+  artifact_kind: test
+  artifact_id: TEST-MFOS-OPER-SUBMIT-JOB-0904
+  domain: operator_console
+  coverage_level: C3_FULL_SEMANTIC
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Outside Phase 1.2 Authorization/Audit Deepening scope; retain as truthful
+    deferred gap for later domain deepening.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-NEG-MFOS-OPER-AUTOMATION-BYPASS-0910
+  artifact_kind: test
+  artifact_id: NEG-MFOS-OPER-AUTOMATION-BYPASS-0910
+  domain: operator_console
+  coverage_level: C0_NONE
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Outside Phase 1.2 Authorization/Audit Deepening scope; retain as truthful
+    deferred gap for later domain deepening.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-TEST-NEG-MFOS-OPER-MALFORMED-COMMAND-0911
+  artifact_kind: test
+  artifact_id: NEG-MFOS-OPER-MALFORMED-COMMAND-0911
+  domain: operator_console
+  coverage_level: C0_NONE
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Outside Phase 1.2 Authorization/Audit Deepening scope; retain as truthful
+    deferred gap for later domain deepening.
+  source: evidence/traceability/generated/phase-1-1/test-to-dafny.yml
+- gap_id: GAP-REQ-MFOS-REQ-AUDIT-0001
+  artifact_kind: requirement
+  artifact_id: MFOS-REQ-AUDIT-0001
+  domain: audit
+  coverage_level: C0_NONE
+  classification: fix_before_next_merge
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: true
+  priority: P1 phase_1_2_merge_gate
+  reason: Requirement aggregate remains below complete coverage because linked Authorization/Audit
+    tests include C0/C2/C3 gaps; Phase 1.2 must close or re-scope before merge.
+  source: evidence/traceability/generated/phase-1-1/requirement-to-dafny.yml
+- gap_id: GAP-REQ-MFOS-REQ-AUDIT-0002
+  artifact_kind: requirement
+  artifact_id: MFOS-REQ-AUDIT-0002
+  domain: audit
+  coverage_level: C0_NONE
+  classification: fix_before_next_merge
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: true
+  priority: P1 phase_1_2_merge_gate
+  reason: Requirement aggregate remains below complete coverage because linked Authorization/Audit
+    tests include C0/C2/C3 gaps; Phase 1.2 must close or re-scope before merge.
+  source: evidence/traceability/generated/phase-1-1/requirement-to-dafny.yml
+- gap_id: GAP-REQ-MFOS-REQ-AUDIT-0101
+  artifact_kind: requirement
+  artifact_id: MFOS-REQ-AUDIT-0101
+  domain: audit
+  coverage_level: C0_NONE
+  classification: fix_before_next_merge
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: true
+  priority: P1 phase_1_2_merge_gate
+  reason: Requirement aggregate remains below complete coverage because linked Authorization/Audit
+    tests include C0/C2/C3 gaps; Phase 1.2 must close or re-scope before merge.
+  source: evidence/traceability/generated/phase-1-1/requirement-to-dafny.yml
+- gap_id: GAP-REQ-MFOS-REQ-AUTH-0001
+  artifact_kind: requirement
+  artifact_id: MFOS-REQ-AUTH-0001
+  domain: authorization
+  coverage_level: C0_NONE
+  classification: fix_before_next_merge
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: true
+  priority: P1 phase_1_2_merge_gate
+  reason: Requirement aggregate remains below complete coverage because linked Authorization/Audit
+    tests include C0/C2/C3 gaps; Phase 1.2 must close or re-scope before merge.
+  source: evidence/traceability/generated/phase-1-1/requirement-to-dafny.yml
+- gap_id: GAP-REQ-MFOS-REQ-AUTH-0003
+  artifact_kind: requirement
+  artifact_id: MFOS-REQ-AUTH-0003
+  domain: authorization
+  coverage_level: C0_NONE
+  classification: fix_before_next_merge
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: true
+  priority: P1 phase_1_2_merge_gate
+  reason: Requirement aggregate remains below complete coverage because linked Authorization/Audit
+    tests include C0/C2/C3 gaps; Phase 1.2 must close or re-scope before merge.
+  source: evidence/traceability/generated/phase-1-1/requirement-to-dafny.yml
+- gap_id: GAP-REQ-MFOS-REQ-AUTH-0101
+  artifact_kind: requirement
+  artifact_id: MFOS-REQ-AUTH-0101
+  domain: authorization
+  coverage_level: C0_NONE
+  classification: fix_before_next_merge
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: true
+  priority: P1 phase_1_2_merge_gate
+  reason: Requirement aggregate remains below complete coverage because linked Authorization/Audit
+    tests include C0/C2/C3 gaps; Phase 1.2 must close or re-scope before merge.
+  source: evidence/traceability/generated/phase-1-1/requirement-to-dafny.yml
+- gap_id: GAP-REQ-MFOS-REQ-CATALOG-0002
+  artifact_kind: requirement
+  artifact_id: MFOS-REQ-CATALOG-0002
+  domain: non_phase_1_2_domain
+  coverage_level: C0_NONE
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Requirement aggregate belongs to non-Authorization/Audit domains and is
+    outside Phase 1.2 entry scope.
+  source: evidence/traceability/generated/phase-1-1/requirement-to-dafny.yml
+- gap_id: GAP-REQ-MFOS-REQ-CATALOG-0101
+  artifact_kind: requirement
+  artifact_id: MFOS-REQ-CATALOG-0101
+  domain: non_phase_1_2_domain
+  coverage_level: C0_NONE
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Requirement aggregate belongs to non-Authorization/Audit domains and is
+    outside Phase 1.2 entry scope.
+  source: evidence/traceability/generated/phase-1-1/requirement-to-dafny.yml
+- gap_id: GAP-REQ-MFOS-REQ-DATASET-0101
+  artifact_kind: requirement
+  artifact_id: MFOS-REQ-DATASET-0101
+  domain: non_phase_1_2_domain
+  coverage_level: C0_NONE
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Requirement aggregate belongs to non-Authorization/Audit domains and is
+    outside Phase 1.2 entry scope.
+  source: evidence/traceability/generated/phase-1-1/requirement-to-dafny.yml
+- gap_id: GAP-REQ-MFOS-REQ-DATASET-0102
+  artifact_kind: requirement
+  artifact_id: MFOS-REQ-DATASET-0102
+  domain: non_phase_1_2_domain
+  coverage_level: C0_NONE
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Requirement aggregate belongs to non-Authorization/Audit domains and is
+    outside Phase 1.2 entry scope.
+  source: evidence/traceability/generated/phase-1-1/requirement-to-dafny.yml
+- gap_id: GAP-REQ-MFOS-REQ-JOB-0101
+  artifact_kind: requirement
+  artifact_id: MFOS-REQ-JOB-0101
+  domain: non_phase_1_2_domain
+  coverage_level: C0_NONE
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Requirement aggregate belongs to non-Authorization/Audit domains and is
+    outside Phase 1.2 entry scope.
+  source: evidence/traceability/generated/phase-1-1/requirement-to-dafny.yml
+- gap_id: GAP-REQ-MFOS-REQ-JOB-0102
+  artifact_kind: requirement
+  artifact_id: MFOS-REQ-JOB-0102
+  domain: non_phase_1_2_domain
+  coverage_level: C0_NONE
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Requirement aggregate belongs to non-Authorization/Audit domains and is
+    outside Phase 1.2 entry scope.
+  source: evidence/traceability/generated/phase-1-1/requirement-to-dafny.yml
+- gap_id: GAP-REQ-MFOS-REQ-OPER-0101
+  artifact_kind: requirement
+  artifact_id: MFOS-REQ-OPER-0101
+  domain: non_phase_1_2_domain
+  coverage_level: C0_NONE
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Requirement aggregate belongs to non-Authorization/Audit domains and is
+    outside Phase 1.2 entry scope.
+  source: evidence/traceability/generated/phase-1-1/requirement-to-dafny.yml
+- gap_id: GAP-REQ-MFOS-REQ-OPER-0102
+  artifact_kind: requirement
+  artifact_id: MFOS-REQ-OPER-0102
+  domain: non_phase_1_2_domain
+  coverage_level: C0_NONE
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Requirement aggregate belongs to non-Authorization/Audit domains and is
+    outside Phase 1.2 entry scope.
+  source: evidence/traceability/generated/phase-1-1/requirement-to-dafny.yml
+- gap_id: GAP-REQ-MFOS-REQ-OPER-0103
+  artifact_kind: requirement
+  artifact_id: MFOS-REQ-OPER-0103
+  domain: non_phase_1_2_domain
+  coverage_level: C0_NONE
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Requirement aggregate belongs to non-Authorization/Audit domains and is
+    outside Phase 1.2 entry scope.
+  source: evidence/traceability/generated/phase-1-1/requirement-to-dafny.yml
+- gap_id: GAP-REQ-MFOS-REQ-SPOOL-0101
+  artifact_kind: requirement
+  artifact_id: MFOS-REQ-SPOOL-0101
+  domain: non_phase_1_2_domain
+  coverage_level: C0_NONE
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_domain_deepening
+  reason: Requirement aggregate belongs to non-Authorization/Audit domains and is
+    outside Phase 1.2 entry scope.
+  source: evidence/traceability/generated/phase-1-1/requirement-to-dafny.yml
+- gap_id: GAP-CLAIM-MFOS-FC-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW
+  artifact_kind: formal_claim
+  artifact_id: MFOS-FC-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW
+  domain: authorization
+  coverage_level: C3_FULL_SEMANTIC
+  classification: fix_before_next_merge
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: true
+  priority: P1 phase_1_2_merge_gate
+  reason: Dafny lemma coverage exists, but formal claim proof artifacts are not recorded;
+    Phase 1.2 may begin but must not merge proof-backed claims without artifacts.
+  source: evidence/traceability/generated/phase-1-1/formal-claim-to-dafny.yml
+- gap_id: GAP-CLAIM-MFOS-FC-AUDIT-DENY-BEFORE-RETURN
+  artifact_kind: formal_claim
+  artifact_id: MFOS-FC-AUDIT-DENY-BEFORE-RETURN
+  domain: audit
+  coverage_level: C3_FULL_SEMANTIC
+  classification: fix_before_next_merge
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: true
+  priority: P1 phase_1_2_merge_gate
+  reason: Dafny lemma coverage exists, but formal claim proof artifacts are not recorded;
+    Phase 1.2 may begin but must not merge proof-backed claims without artifacts.
+  source: evidence/traceability/generated/phase-1-1/formal-claim-to-dafny.yml
+- gap_id: GAP-CLAIM-MFOS-FC-UPDATE-NO-ROLLBACK
+  artifact_kind: formal_claim
+  artifact_id: MFOS-FC-UPDATE-NO-ROLLBACK
+  domain: non_phase_1_2_domain
+  coverage_level: C0_NONE
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_formal_program
+  reason: Formal claim is outside Phase 1.2 Authorization/Audit scope and remains
+    non-proof-backed.
+  source: evidence/traceability/generated/phase-1-1/formal-claim-to-dafny.yml
+- gap_id: GAP-CLAIM-MFOS-FC-PARTITION-MEMORY-OWNERSHIP
+  artifact_kind: formal_claim
+  artifact_id: MFOS-FC-PARTITION-MEMORY-OWNERSHIP
+  domain: non_phase_1_2_domain
+  coverage_level: C0_NONE
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_formal_program
+  reason: Formal claim is outside Phase 1.2 Authorization/Audit scope and remains
+    non-proof-backed.
+  source: evidence/traceability/generated/phase-1-1/formal-claim-to-dafny.yml
+- gap_id: GAP-CLAIM-MFOS-FC-PXM-CAPABILITY-REQUIRED-FOR-RESOURCE-OPERATION
+  artifact_kind: formal_claim
+  artifact_id: MFOS-FC-PXM-CAPABILITY-REQUIRED-FOR-RESOURCE-OPERATION
+  domain: non_phase_1_2_domain
+  coverage_level: C0_NONE
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_formal_program
+  reason: Formal claim is outside Phase 1.2 Authorization/Audit scope and remains
+    non-proof-backed.
+  source: evidence/traceability/generated/phase-1-1/formal-claim-to-dafny.yml
+- gap_id: GAP-CLAIM-MFOS-FC-MFVM-CANNOT-BYPASS-PXM
+  artifact_kind: formal_claim
+  artifact_id: MFOS-FC-MFVM-CANNOT-BYPASS-PXM
+  domain: non_phase_1_2_domain
+  coverage_level: C0_NONE
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_formal_program
+  reason: Formal claim is outside Phase 1.2 Authorization/Audit scope and remains
+    non-proof-backed.
+  source: evidence/traceability/generated/phase-1-1/formal-claim-to-dafny.yml
+- gap_id: GAP-CLAIM-MFOS-FC-CVM-LAUNCH-REQUIRES-MEASUREMENT
+  artifact_kind: formal_claim
+  artifact_id: MFOS-FC-CVM-LAUNCH-REQUIRES-MEASUREMENT
+  domain: non_phase_1_2_domain
+  coverage_level: C0_NONE
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_formal_program
+  reason: Formal claim is outside Phase 1.2 Authorization/Audit scope and remains
+    non-proof-backed.
+  source: evidence/traceability/generated/phase-1-1/formal-claim-to-dafny.yml
+- gap_id: GAP-CLAIM-MFOS-FC-CVM-SECRET-RELEASE-REQUIRES-ATTESTATION
+  artifact_kind: formal_claim
+  artifact_id: MFOS-FC-CVM-SECRET-RELEASE-REQUIRES-ATTESTATION
+  domain: non_phase_1_2_domain
+  coverage_level: C0_NONE
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_formal_program
+  reason: Formal claim is outside Phase 1.2 Authorization/Audit scope and remains
+    non-proof-backed.
+  source: evidence/traceability/generated/phase-1-1/formal-claim-to-dafny.yml
+- gap_id: GAP-CLAIM-MFOS-FC-PRIVATE-SHARED-MEMORY-TRANSITION-VALIDITY
+  artifact_kind: formal_claim
+  artifact_id: MFOS-FC-PRIVATE-SHARED-MEMORY-TRANSITION-VALIDITY
+  domain: non_phase_1_2_domain
+  coverage_level: C0_NONE
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_formal_program
+  reason: Formal claim is outside Phase 1.2 Authorization/Audit scope and remains
+    non-proof-backed.
+  source: evidence/traceability/generated/phase-1-1/formal-claim-to-dafny.yml
+- gap_id: GAP-CLAIM-MFOS-FC-CLUSTER-POLICY-DISTRIBUTION-INTEGRITY
+  artifact_kind: formal_claim
+  artifact_id: MFOS-FC-CLUSTER-POLICY-DISTRIBUTION-INTEGRITY
+  domain: non_phase_1_2_domain
+  coverage_level: C0_NONE
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_formal_program
+  reason: Formal claim is outside Phase 1.2 Authorization/Audit scope and remains
+    non-proof-backed.
+  source: evidence/traceability/generated/phase-1-1/formal-claim-to-dafny.yml
+- gap_id: GAP-CLAIM-MFOS-FC-CLUSTER-ATTESTATION-COLLECTION-INTEGRITY
+  artifact_kind: formal_claim
+  artifact_id: MFOS-FC-CLUSTER-ATTESTATION-COLLECTION-INTEGRITY
+  domain: non_phase_1_2_domain
+  coverage_level: C0_NONE
+  classification: accepted_deferred
+  phase_1_2_entry_blocker: false
+  phase_1_2_merge_blocker: false
+  priority: P2 later_formal_program
+  reason: Formal claim is outside Phase 1.2 Authorization/Audit scope and remains
+    non-proof-backed.
+  source: evidence/traceability/generated/phase-1-1/formal-claim-to-dafny.yml
+phase_1_2_entry_allowed: true
+phase_1_2_merge_allowed: false
+authorization_audit_entry_blockers_remaining: false
+authorization_audit_merge_blockers_remaining: true

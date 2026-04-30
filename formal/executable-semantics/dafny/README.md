@@ -52,7 +52,8 @@ symbols. Generated traceability lives under
 
 Coverage status:
 
-- Core five domains: `C4_VERIFIED_PROPERTY`.
+- Core five domains: mixed verified and partial; aggregate status is `C0_NONE`
+  because remaining C0/C2/C3 gaps are truthfully retained.
 - First vertical slice: `C5_CONFORMANCE_LINKED`.
 - Release-ready production model: not claimed.
 

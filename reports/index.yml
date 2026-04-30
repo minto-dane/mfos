@@ -158,6 +158,14 @@ current:
 - path: reports/current/semantic-coverage-open-issues.md
   purpose: Nonblocking Phase 1.1 semantic coverage open issues.
   generated_by: scripts/generators/generate-semantic-coverage.py
+- path: reports/current/phase-1-1-gap-triage.md
+  purpose: Classification of remaining Phase 1.1 C0/C2/C3 semantic coverage gaps.
+- path: reports/current/phase-1-1-gap-triage.yml
+  purpose: Machine-readable Phase 1.1 gap triage and classification ledger.
+- path: reports/current/phase-1-2-entry-gate.md
+  purpose: Phase 1.2 Authorization/Audit Deepening entry gate decision.
+- path: reports/current/phase-1-2-entry-gate.yml
+  purpose: Machine-readable Phase 1.2 entry gate decision and merge blockers.
 sections:
 - path: reports/phases/phase-0-6/
   purpose: Phase 0.6 canonicalization and enforcement closure.
