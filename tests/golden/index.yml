@@ -1,34 +1,76 @@
 schema_version: 1
 artifact_index_kind: mfos_golden_vector_inventory
 status: current
-
 current:
   authorization:
     path: tests/golden/auth/
     status: current
     origin_phase: phase-0-9
+    artifact_type: golden_vector_set
+    schema: schemas/oracle.schema.yml
+    file_count: 16
+    paired_fixture_path: tests/fixtures/auth/
+    traceability_ref: evidence/traceability/generated/phase-0-9/fixture-to-oracle.yml
+    validation_contract: scripts/validators/validate-golden-vectors.py
+    loader_contract: scripts/validators/validate-fixture-golden-loader.py
   audit:
     path: tests/golden/audit/
     status: current
     origin_phase: phase-0-9
+    artifact_type: golden_vector_set
+    schema: schemas/oracle.schema.yml
+    file_count: 12
+    paired_fixture_path: tests/fixtures/audit/
+    traceability_ref: evidence/traceability/generated/phase-0-9/fixture-to-oracle.yml
+    validation_contract: scripts/validators/validate-golden-vectors.py
+    loader_contract: scripts/validators/validate-fixture-golden-loader.py
   dataset_catalog:
     path: tests/golden/dataset/
     status: current
     origin_phase: phase-0-9
+    artifact_type: golden_vector_set
+    schema: schemas/oracle.schema.yml
+    file_count: 14
+    paired_fixture_path: tests/fixtures/dataset/
+    traceability_ref: evidence/traceability/generated/phase-0-9/fixture-to-oracle.yml
+    validation_contract: scripts/validators/validate-golden-vectors.py
+    loader_contract: scripts/validators/validate-fixture-golden-loader.py
   job_spool:
     path: tests/golden/job/
     status: current
     origin_phase: phase-0-9
+    artifact_type: golden_vector_set
+    schema: schemas/oracle.schema.yml
+    file_count: 17
+    paired_fixture_path: tests/fixtures/job/
+    traceability_ref: evidence/traceability/generated/phase-0-9/fixture-to-oracle.yml
+    validation_contract: scripts/validators/validate-golden-vectors.py
+    loader_contract: scripts/validators/validate-fixture-golden-loader.py
   operator_console:
     path: tests/golden/oper/
     status: current
     origin_phase: phase-0-9
+    artifact_type: golden_vector_set
+    schema: schemas/oracle.schema.yml
+    file_count: 13
+    paired_fixture_path: tests/fixtures/oper/
+    traceability_ref: evidence/traceability/generated/phase-0-9/fixture-to-oracle.yml
+    validation_contract: scripts/validators/validate-golden-vectors.py
+    loader_contract: scripts/validators/validate-fixture-golden-loader.py
   first_vertical_slice:
     path: tests/golden/first-vertical-slice/
     status: current
     origin_phase: phase-0-9
-
+    artifact_type: golden_vector_set
+    schema: schemas/oracle.schema.yml
+    file_count: 2
+    paired_fixture_path: tests/fixtures/first-vertical-slice/
+    traceability_ref: evidence/traceability/generated/phase-0-9/fixture-to-oracle.yml
+    validation_contract: scripts/validators/validate-golden-vectors.py
+    loader_contract: scripts/validators/validate-fixture-golden-loader.py
 policy:
   phase_specific_filenames_allowed_in_root: false
   deterministic_outputs_required: true
   implementation_allowed: false
+archive:
+  current_archive_state: no historical fixture/golden domain archives present under this root

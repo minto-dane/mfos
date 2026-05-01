@@ -11,7 +11,7 @@ The fixed-point closure pass generated a repository graph, issue ledger, loop hi
 Allowed at fixed-point closure time: Dafny executable-semantics scaffold,
 schema validation, deterministic normalization for loader-visible artifacts,
 and traceability repair. Active Phase 1 scope is now superseded by
-`reports/current/dafny-semantics-report.md`.
+`reports/current/dafny/dafny-semantics-report.md`.
 
 Forbidden: production implementation, Rust semantic-core, semantic runner, hosted daemon, service implementation, nucleus/PXM/Guard/MFVM/CVM/cluster implementation, and Dafny-generated production code.
 

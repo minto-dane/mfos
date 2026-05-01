@@ -26,7 +26,7 @@ COVERAGE_LEVELS = [
 ]
 COVERAGE_RANK = {level: rank for rank, level in enumerate(COVERAGE_LEVELS)}
 
-DAFNY_EVIDENCE = "reports/current/dafny-verification-report.md"
+DAFNY_EVIDENCE = "reports/current/dafny/dafny-verification-report.md"
 OPEN_ISSUES = "reports/generated/phase-1-1/semantic-coverage-open-issues.md"
 
 CATALOGS = {

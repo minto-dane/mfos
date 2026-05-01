@@ -5,42 +5,49 @@ status: current
 current:
   source_to_requirement:
     path: evidence/traceability/current/source-to-requirement.yml
+    matrix_kind: source_to_requirement
     status: current
     lifecycle_status: current
     artifact_review_status: draft
     generated_by: scripts/generators/generate-traceability.py
   requirement_to_spec:
     path: evidence/traceability/current/requirement-to-spec.yml
+    matrix_kind: requirement_to_spec
     status: current
     lifecycle_status: current
     artifact_review_status: draft
     generated_by: scripts/generators/generate-traceability.py
   requirement_to_test:
     path: evidence/traceability/current/requirement-to-test.yml
+    matrix_kind: requirement_to_test
     status: current
     lifecycle_status: current
     artifact_review_status: draft
     generated_by: scripts/generators/generate-traceability.py
   requirement_to_evidence:
     path: evidence/traceability/current/requirement-to-evidence.yml
+    matrix_kind: requirement_to_evidence
     status: current
     lifecycle_status: current
     artifact_review_status: draft
     generated_by: scripts/generators/generate-traceability.py
   claim_to_requirement:
     path: evidence/traceability/current/claim-to-requirement.yml
+    matrix_kind: claim_to_requirement
     status: current
     lifecycle_status: current
     artifact_review_status: draft
     generated_by: scripts/generators/generate-traceability.py
   pack_to_artifacts:
     path: evidence/traceability/current/pack-to-artifacts.yml
+    matrix_kind: pack_to_artifacts
     status: current
     lifecycle_status: current
     artifact_review_status: draft
     generated_by: scripts/generators/generate-traceability.py
   gap_report:
     path: evidence/traceability/current/gap-report.yml
+    matrix_kind: gap_report
     status: current
     lifecycle_status: current
     artifact_review_status: draft
@@ -54,12 +61,24 @@ generated:
     status: generated
     origin_phase: phase-0-9
     generated_by: scripts/phases/phase-0-9/generate-traceability.py
+    contains:
+      - evidence/traceability/generated/phase-0-9/fixture-to-oracle.yml
+      - evidence/traceability/generated/phase-0-9/gap-report.yml
+      - evidence/traceability/generated/phase-0-9/requirement-to-fuzz-target.yml
+      - evidence/traceability/generated/phase-0-9/requirement-to-test.yml
+      - evidence/traceability/generated/phase-0-9/test-to-fixture.yml
   phase_1_1:
     path: evidence/traceability/generated/phase-1-1/
     status: generated
     origin_phase: phase-1.1
     generated_by: scripts/generators/generate-semantic-coverage.py
     coverage_summary: reports/generated/phase-1-1/semantic-coverage.yml
+    contains:
+      - evidence/traceability/generated/phase-1-1/fixture-to-dafny.yml
+      - evidence/traceability/generated/phase-1-1/formal-claim-to-dafny.yml
+      - evidence/traceability/generated/phase-1-1/oracle-to-dafny.yml
+      - evidence/traceability/generated/phase-1-1/requirement-to-dafny.yml
+      - evidence/traceability/generated/phase-1-1/test-to-dafny.yml
   phase_1_2:
     path: evidence/traceability/generated/phase-1-2/
     status: generated
@@ -67,12 +86,25 @@ generated:
     generated_by: scripts/generators/generate-auth-audit-coverage.py
     coverage_summary: reports/generated/phase-1-2/dafny-authorization-audit-coverage.yml
     audit_unavailable_conformance_linked: true
+    contains:
+      - evidence/traceability/generated/phase-1-2/audit-to-dafny.yml
+      - evidence/traceability/generated/phase-1-2/auth-audit-integration-to-dafny.yml
+      - evidence/traceability/generated/phase-1-2/authorization-to-dafny.yml
+      - evidence/traceability/generated/phase-1-2/formal-claim-to-dafny.yml
+      - evidence/traceability/generated/phase-1-2/requirement-to-dafny.yml
+      - evidence/traceability/generated/phase-1-2/test-to-dafny.yml
   phase_1_3:
     path: evidence/traceability/generated/phase-1-3/
     status: generated
     origin_phase: phase-1.3
     generated_by: scripts/generators/generate-dataset-catalog-coverage.py
     coverage_summary: reports/generated/phase-1-3/dafny-dataset-catalog-coverage.yml
+    contains:
+      - evidence/traceability/generated/phase-1-3/dataset-catalog-to-dafny.yml
+      - evidence/traceability/generated/phase-1-3/fixture-to-dafny.yml
+      - evidence/traceability/generated/phase-1-3/formal-claim-to-dafny.yml
+      - evidence/traceability/generated/phase-1-3/requirement-to-dafny.yml
+      - evidence/traceability/generated/phase-1-3/test-to-dafny.yml
 
 archive:
   phase_0_8:

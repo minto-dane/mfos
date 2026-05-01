@@ -70,8 +70,8 @@ corresponding `implementation/*` locations to be canonical
 
 ## Documentation Checks
 
-`reports/current/directory-ownership-audit.md` and
-`reports/current/directory-ownership-audit.yml` record the top-level paths as
+`reports/current/directory-ownership/directory-ownership-audit.md` and
+`reports/current/directory-ownership/directory-ownership-audit.yml` record the top-level paths as
 `retired/absent` or `retired_absent`, with future code directed to
 `implementation/services`, `implementation/nucleus`, `implementation/pxm`, and
 `implementation/guard`.

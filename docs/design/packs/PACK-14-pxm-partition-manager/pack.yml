@@ -65,7 +65,7 @@ outputs:
 - schemas/mfos/pxm-control-request.schema.yml
 - schemas/mfos/pxm-capability.schema.yml
 - formal/registry.yml
-- reports/current/pxm-mfvm-requirements-docs-expansion-report.md
+- reports/current/platform/pxm-mfvm-requirements-docs-expansion-report.md
 source_refs:
 - EXTREF-IBM-Z-LPAR-INTRODUCTION-0001
 - EXTREF-IBM-Z-DPM-0001

@@ -19,6 +19,7 @@ phase_allowed_from: phase-0
 depends_on:
   - docs/design/specs
   - docs/design/prompts/ai-prompts.md
+bridge_projections:
   - packs/pack-index.yml
 allowed_contents:
   - pack contract YAML

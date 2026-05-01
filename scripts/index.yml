@@ -1,7 +1,6 @@
 schema_version: 1
 artifact_index_kind: mfos_script_inventory
 status: current
-
 current:
   metadata:
     path: scripts/.mfos-dir.yml
@@ -10,72 +9,149 @@ current:
     validate_all:
       path: scripts/validate-all.sh
       status: current
+      role: root_entrypoint
+      namespace: validation_suite
+      root_allowed: true
     validate_artifact_hygiene:
       path: scripts/validate-artifact-hygiene.sh
       status: current
+      role: root_entrypoint
+      namespace: validation_suite
+      root_allowed: true
     validate_component_scaffold:
       path: scripts/validate-component-scaffold.sh
       status: current
+      role: root_entrypoint
+      namespace: validation_suite
+      root_allowed: true
     validate_naming_safety:
       path: scripts/validate-naming-safety.sh
       status: current
+      role: root_entrypoint
+      namespace: validation_suite
+      root_allowed: true
     validate_language_formal_assurance:
-      path: scripts/validate-language-formal-assurance.sh
+      path: scripts/validators/validate-language-formal-assurance.sh
       status: current
+      role: root_wrapper
+      namespace: formal_assurance
+      root_allowed: true
+      wrapper: scripts/validate-language-formal-assurance.sh
+      wrapper_target: scripts/validators/validate-language-formal-assurance.sh
     validate_dafny_semantics_scaffold:
       path: scripts/validate-dafny-semantics-scaffold.sh
       status: current
+      role: root_entrypoint
+      namespace: dafny
+      root_allowed: true
     validate_dafny_semantics:
       path: scripts/validate-dafny-semantics.sh
       status: current
+      role: root_entrypoint
+      namespace: dafny
+      root_allowed: true
     install_dafny:
       path: scripts/install-dafny.sh
       status: current
+      role: root_entrypoint
+      namespace: toolchain
+      root_allowed: true
     validate_schema_files:
       path: scripts/validators/validate-schema-files.py
       status: current
+      role: canonical_script
+      namespace: validation_suite
+      root_allowed: false
     validate_dafny_semantics_artifacts:
       path: scripts/validators/validate-dafny-semantics.py
       status: current
+      role: canonical_script
+      namespace: validation_suite
+      root_allowed: false
     validate_fixture_golden_loader:
       path: scripts/validators/validate-fixture-golden-loader.py
       status: current
+      role: canonical_script
+      namespace: validation_suite
+      root_allowed: false
     check_semantic_coverage_mapping:
       path: scripts/checks/semantic-coverage/check-semantic-coverage-mapping.py
       wrapper: scripts/check-semantic-coverage-mapping.py
       status: current
+      wrapper_target: scripts/checks/semantic-coverage/check-semantic-coverage-mapping.py
+      role: root_wrapper
+      namespace: semantic_coverage
+      root_allowed: true
     check_formal_claim_coverage:
       path: scripts/checks/formal-claims/check-formal-claim-coverage.py
       wrapper: scripts/check-formal-claim-coverage.py
       status: current
+      wrapper_target: scripts/checks/formal-claims/check-formal-claim-coverage.py
+      role: root_wrapper
+      namespace: formal_claims
+      root_allowed: true
     check_phase1_gap_triage:
       path: scripts/phases/phase-1/check-phase1-gap-triage.py
       wrapper: scripts/check-phase1-gap-triage.py
       status: current
+      wrapper_target: scripts/phases/phase-1/check-phase1-gap-triage.py
+      role: root_wrapper
+      namespace: phase_1
+      root_allowed: true
     check_phase1_2_auth_audit_coverage:
       path: scripts/phases/phase-1/check-phase1-2-auth-audit-coverage.py
       wrapper: scripts/check-phase1-2-auth-audit-coverage.py
       status: current
+      wrapper_target: scripts/phases/phase-1/check-phase1-2-auth-audit-coverage.py
+      role: root_wrapper
+      namespace: phase_1
+      root_allowed: true
     check_phase1_3_dataset_catalog_coverage:
       path: scripts/phases/phase-1/check-phase1-3-dataset-catalog-coverage.py
       wrapper: scripts/check-phase1-3-dataset-catalog-coverage.py
       status: current
+      wrapper_target: scripts/phases/phase-1/check-phase1-3-dataset-catalog-coverage.py
+      role: root_wrapper
+      namespace: phase_1
+      root_allowed: true
     check_dafny_verification_counts:
       path: scripts/checks/check-dafny-verification-counts.py
       status: current
+      role: canonical_script
+      namespace: validation_suite
+      root_allowed: false
     check_architecture_portability_policy:
-      path: scripts/check-architecture-portability-policy.py
+      path: scripts/checks/check-architecture-portability-policy.py
       status: current
+      wrapper: scripts/check-architecture-portability-policy.py
+      wrapper_target: scripts/checks/check-architecture-portability-policy.py
+      role: root_wrapper
+      namespace: architecture
+      root_allowed: true
     check_x64_profile_policy:
-      path: scripts/check-x64-profile-policy.py
+      path: scripts/checks/check-x64-profile-policy.py
       status: current
+      wrapper: scripts/check-x64-profile-policy.py
+      wrapper_target: scripts/checks/check-x64-profile-policy.py
+      role: root_wrapper
+      namespace: architecture
+      root_allowed: true
     check_cpu_feature_registry:
-      path: scripts/check-cpu-feature-registry.py
+      path: scripts/checks/check-cpu-feature-registry.py
       status: current
+      wrapper: scripts/check-cpu-feature-registry.py
+      wrapper_target: scripts/checks/check-cpu-feature-registry.py
+      role: root_wrapper
+      namespace: architecture
+      root_allowed: true
     check_roadmap_phase_alignment:
-      path: scripts/check-roadmap-phase-alignment.py
+      path: scripts/checks/check-roadmap-phase-alignment.py
       status: current
-
+      wrapper: scripts/check-roadmap-phase-alignment.py
+      wrapper_target: scripts/checks/check-roadmap-phase-alignment.py
+      role: root_wrapper
+      namespace: readiness
+      root_allowed: true
 sections:
   validators:
     path: scripts/validators/
@@ -113,8 +189,14 @@ sections:
   artifact_hygiene_checks:
     path: scripts/checks/artifact-hygiene/
     status: current
+    artifact_layout:
+      path: scripts/checks/artifact-hygiene/check-artifact-layout.py
+      status: current
     artifact_lifecycle_boundaries:
       path: scripts/checks/artifact-hygiene/check-artifact-lifecycle-boundaries.py
+      status: current
+    phase_name_policy:
+      path: scripts/checks/artifact-hygiene/check-phase-name-policy.py
       status: current
     reports_current_policy:
       path: scripts/checks/artifact-hygiene/check-reports-current-policy.py
@@ -125,8 +207,29 @@ sections:
     generated_artifact_placement:
       path: scripts/checks/artifact-hygiene/check-generated-artifact-placement.py
       status: current
+    artifact_indexes:
+      path: scripts/checks/artifact-hygiene/check-artifact-indexes.py
+      status: current
     index_integrity:
       path: scripts/checks/artifact-hygiene/check-index-integrity.py
+      status: current
+    current_domain_structure:
+      path: scripts/checks/artifact-hygiene/check-current-domain-structure.py
+      status: current
+    report_domain_indexes:
+      path: scripts/checks/artifact-hygiene/check-report-domain-indexes.py
+      status: current
+    flat_directory_pressure:
+      path: scripts/checks/artifact-hygiene/check-flat-directory-pressure.py
+      status: current
+    script_namespace_ownership:
+      path: scripts/checks/artifact-hygiene/check-script-namespace-ownership.py
+      status: current
+    cross_directory_duplicates:
+      path: scripts/checks/artifact-hygiene/check-cross-directory-duplicates.py
+      status: current
+    orphaned_artifacts:
+      path: scripts/checks/artifact-hygiene/check-orphaned-artifacts.py
       status: current
   naming_safety_checks:
     path: scripts/checks/naming-safety/
@@ -173,6 +276,26 @@ sections:
       path: scripts/phases/phase-0-9/
       status: current
       origin_phase: phase-0-9
+      generate_traceability:
+        path: scripts/phases/phase-0-9/generate-traceability.py
+        status: current
+        origin_phase: phase-0-9
+      check_no_implementation:
+        path: scripts/phases/phase-0-9/check-no-implementation.py
+        status: current
+        origin_phase: phase-0-9
+      validate:
+        path: scripts/phases/phase-0-9/validate.sh
+        status: current
+        origin_phase: phase-0-9
+    phase_0_8:
+      path: scripts/phases/phase-0-8/
+      status: historical
+      origin_phase: phase-0-8
+      check_traceability:
+        path: scripts/phases/phase-0-8/check-traceability.py
+        status: historical
+        origin_phase: phase-0-8
   root_wrappers:
     path: scripts/
     status: current
@@ -180,30 +303,88 @@ sections:
     semantic_coverage_mapping:
       path: scripts/check-semantic-coverage-mapping.py
       target: scripts/checks/semantic-coverage/check-semantic-coverage-mapping.py
+      wrapper_target: scripts/checks/semantic-coverage/check-semantic-coverage-mapping.py
+      role: root_wrapper
+      namespace: semantic_coverage
+      root_allowed: true
       status: current
     formal_claim_coverage:
       path: scripts/check-formal-claim-coverage.py
       target: scripts/checks/formal-claims/check-formal-claim-coverage.py
+      wrapper_target: scripts/checks/formal-claims/check-formal-claim-coverage.py
+      role: root_wrapper
+      namespace: formal_claims
+      root_allowed: true
       status: current
     phase1_gap_triage:
       path: scripts/check-phase1-gap-triage.py
       target: scripts/phases/phase-1/check-phase1-gap-triage.py
+      wrapper_target: scripts/phases/phase-1/check-phase1-gap-triage.py
+      role: root_wrapper
+      namespace: phase_1
+      root_allowed: true
       status: current
     phase1_2_auth_audit_coverage:
       path: scripts/check-phase1-2-auth-audit-coverage.py
       target: scripts/phases/phase-1/check-phase1-2-auth-audit-coverage.py
+      wrapper_target: scripts/phases/phase-1/check-phase1-2-auth-audit-coverage.py
+      role: root_wrapper
+      namespace: phase_1
+      root_allowed: true
       status: current
     phase1_3_dataset_catalog_coverage:
       path: scripts/check-phase1-3-dataset-catalog-coverage.py
       target: scripts/phases/phase-1/check-phase1-3-dataset-catalog-coverage.py
+      wrapper_target: scripts/phases/phase-1/check-phase1-3-dataset-catalog-coverage.py
+      role: root_wrapper
+      namespace: phase_1
+      root_allowed: true
       status: current
-
+    architecture_portability_policy:
+      path: scripts/check-architecture-portability-policy.py
+      target: scripts/checks/check-architecture-portability-policy.py
+      wrapper_target: scripts/checks/check-architecture-portability-policy.py
+      role: root_wrapper
+      namespace: architecture
+      root_allowed: true
+      status: current
+    x64_profile_policy:
+      path: scripts/check-x64-profile-policy.py
+      target: scripts/checks/check-x64-profile-policy.py
+      wrapper_target: scripts/checks/check-x64-profile-policy.py
+      role: root_wrapper
+      namespace: architecture
+      root_allowed: true
+      status: current
+    cpu_feature_registry:
+      path: scripts/check-cpu-feature-registry.py
+      target: scripts/checks/check-cpu-feature-registry.py
+      wrapper_target: scripts/checks/check-cpu-feature-registry.py
+      role: root_wrapper
+      namespace: architecture
+      root_allowed: true
+      status: current
+    roadmap_phase_alignment:
+      path: scripts/check-roadmap-phase-alignment.py
+      target: scripts/checks/check-roadmap-phase-alignment.py
+      wrapper_target: scripts/checks/check-roadmap-phase-alignment.py
+      role: root_wrapper
+      namespace: readiness
+      root_allowed: true
+      status: current
+    validate_language_formal_assurance:
+      path: scripts/validate-language-formal-assurance.sh
+      target: scripts/validators/validate-language-formal-assurance.sh
+      wrapper_target: scripts/validators/validate-language-formal-assurance.sh
+      role: root_wrapper
+      namespace: formal_assurance
+      root_allowed: true
+      status: current
 archive:
   phase_0_8:
     path: scripts/phases/phase-0-8/
     status: historical
     origin_phase: phase-0-8
-
 policy:
   root_entrypoints_only: true
   phase_specific_filenames_allowed_in_root: false

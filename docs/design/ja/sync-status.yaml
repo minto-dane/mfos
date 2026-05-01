@@ -1,9 +1,8 @@
 registry_kind: japanese_sync_status
 schema_version: 2
 status: draft
-phase: "0.7"
-updated_at_utc: "2026-04-27T00:00:00Z"
-
+phase: '0.7'
+updated_at_utc: '2026-05-01T00:00:00Z'
 canonical_language: en
 mirror_language: ja
 semantic_authority: english_canonical
@@ -12,19 +11,18 @@ japanese_mirror_status: incomplete
 complete_mirror_claimed: false
 japanese_may_override_canonical: false
 large_spec_translation_included: false
-
 blocking:
   phase_0_7: false
   production_release_docs: true
-  reason_not_blocking_phase_0_7: Japanese mirrors are explanatory only and do not override English canonical artifacts.
-  reason_blocking_release_docs: Complete Japanese documentation must not be claimed until all in-scope mirror units are current and linted.
-
+  reason_not_blocking_phase_0_7: Japanese mirrors are explanatory only and do not
+    override English canonical artifacts.
+  reason_blocking_release_docs: Complete Japanese documentation must not be claimed
+    until all in-scope mirror units are current and linted.
 manifest:
   translation_units_path: docs/design/ja/translation-units.yaml
   sync_policy_path: docs/design/ja/SYNC-POLICY.md
   canonical_policy_path: docs/design/specs/32-language-localization.md
   governance_policy_path: governance/language-policy.md
-
 unit_summary:
   canonical_markdown_units: 60
   current_units: 0
@@ -35,7 +33,6 @@ unit_summary:
   source_hash_algorithm: sha256
   source_hashes_recorded: true
   granularity: document_level_placeholder
-
 sync_rules:
   english_canonical_wins: true
   japanese_semantic_edits_require_english_patch_first: true
@@ -43,27 +40,27 @@ sync_rules:
   normative_keywords_preserved_in_english: true
   japanese_current_requires_matching_source_hash: true
   japanese_complete_claim_requires_zero_missing_partial_stale_blocked: true
-
 known_gaps:
-  - gap_id: JA-SYNC-GAP-0001
-    severity: high
-    status: open
-    summary: Complete Japanese mirror tree is not created.
-  - gap_id: JA-SYNC-GAP-0002
-    severity: medium
-    status: partially_closed
-    summary: Document-level source hashes are recorded, but section-level translation unit hashing is not implemented.
-  - gap_id: JA-SYNC-GAP-0003
-    severity: medium
-    status: open
-    summary: language-lint CI is not wired.
-  - gap_id: JA-SYNC-GAP-0004
-    severity: medium
-    status: open
-    summary: Japanese mirrors have not been semantically reviewed as complete translations.
-
+- gap_id: JA-SYNC-GAP-0001
+  severity: high
+  status: open
+  summary: Complete Japanese mirror tree is not created.
+- gap_id: JA-SYNC-GAP-0002
+  severity: medium
+  status: partially_closed
+  summary: Document-level source hashes are recorded, but section-level translation
+    unit hashing is not implemented.
+- gap_id: JA-SYNC-GAP-0003
+  severity: medium
+  status: open
+  summary: language-lint CI is not wired.
+- gap_id: JA-SYNC-GAP-0004
+  severity: medium
+  status: open
+  summary: Japanese mirrors have not been semantically reviewed as complete translations.
 required_next_actions:
-  - Implement section-level translation unit extraction and hashes.
-  - Create reviewed Japanese mirrors for selected high-value docs.
-  - Add CI check that Japanese mirrors preserve IDs, normative keywords, machine-readable keys, and source hashes.
-  - Keep incomplete mirror status until every in-scope unit is current.
+- Implement section-level translation unit extraction and hashes.
+- Create reviewed Japanese mirrors for selected high-value docs.
+- Add CI check that Japanese mirrors preserve IDs, normative keywords, machine-readable
+  keys, and source hashes.
+- Keep incomplete mirror status until every in-scope unit is current.

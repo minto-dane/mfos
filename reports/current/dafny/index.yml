@@ -1,0 +1,50 @@
+schema_version: 1
+artifact_index_kind: mfos_current_report_domain_index
+status: current
+domain: dafny
+artifacts:
+- path: reports/current/dafny/dafny-loader-nonsemantic-review.md
+  status: current
+  lifecycle: current
+- path: reports/current/dafny/dafny-module-hygiene-report.md
+  status: current
+  lifecycle: current
+- path: reports/current/dafny/dafny-semantics-open-issues.md
+  status: current
+  lifecycle: current
+- path: reports/current/dafny/dafny-semantics-red-team-review.md
+  status: current
+  lifecycle: current
+- path: reports/current/dafny/dafny-semantics-report.md
+  status: current
+  lifecycle: current
+- path: reports/current/dafny/dafny-semantics-validation-report.md
+  status: current
+  lifecycle: current
+- path: reports/current/dafny/dafny-toolchain-open-issues.md
+  status: current
+  lifecycle: current
+- path: reports/current/dafny/dafny-toolchain-red-team-review.md
+  status: current
+  lifecycle: current
+- path: reports/current/dafny/dafny-toolchain-report.md
+  status: current
+  lifecycle: current
+- path: reports/current/dafny/dafny-verification-report.md
+  status: current
+  lifecycle: current
+- path: reports/current/dafny/fixture-oracle-loader-report.md
+  status: current
+  lifecycle: current
+- path: reports/current/dafny/model-consistency-report.md
+  status: current
+  lifecycle: current
+- path: reports/current/dafny/policy-denial-error-taxonomy.md
+  status: current
+  lifecycle: current
+policy:
+  lifecycle: current
+  phase_specific_reports_allowed: false
+  generated_reports_allowed: false
+  archive_reports_allowed: false
+  implementation_allowed: false

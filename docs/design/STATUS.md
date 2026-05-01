@@ -21,7 +21,9 @@ policy update. PR #23 landed the post-architecture Authorization/Audit
 integration remediation. PR #24 landed the Phase 1.3 Dataset/Catalog Dafny
 semantic deepening and superseded the original stacked PR #20 branch after
 protected branch rules blocked a clean force-push update. PR #25 landed the
-post-merge integration sweep and Phase 1.4 planning readiness record.
+post-merge integration sweep and Phase 1.4 planning readiness record. PR #26
+landed artifact lifecycle remediation, wrapper canonicalization, artifact
+hygiene enforcement, and retirement of top-level implementation bridges.
 Repository
 visibility may be public by owner instruction, but formal public-release claims
 remain blocked pending IP/trademark attorney review.
@@ -97,6 +99,9 @@ artifact_lifecycle_remediation_complete: true
 reports_current_phase_files_remaining: false
 duplicate_directory_ownership_classified: true
 broad_artifact_hygiene_allowlist_removed: true
+repository_information_architecture_refactor_in_progress: true
+reports_current_domain_sharded: true
+reports_current_top_level_domain_reports_allowed: false
 phase_1_semantic_evaluator_status: non_production_dafny_only
 phase_1_portable_semantic_core_allowed: false
 phase_1_rust_semantic_core_allowed: false
@@ -199,7 +204,15 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
 ## Artifact Lifecycle Boundaries
 
 - `reports/current/` is limited to cross-phase current status summaries,
-  readiness reports, policy summaries, and stable current aggregate reports.
+  readiness reports, policy summaries, and stable current aggregate reports
+  grouped under non-phase domain subdirectories.
+- The information architecture refactor shards current reports by stable domain:
+  architecture, artifact-hygiene, artifact-lifecycle, CI, Dafny,
+  directory-ownership, formal-assurance, naming-safety, platform, policy,
+  readiness, remediation, scaffold, source-grounding, and fixedpoint.
+- Top-level current report bodies are limited to repository information
+  architecture control reports and domain indexes; unrelated domain-prefixed
+  reports must not accumulate directly under `reports/current/`.
 - Phase-specific reports live under `reports/phases/<phase-id>/`; the Phase
   1.4 planning package is under `reports/phases/phase-1-4/`.
 - Generated Phase 1.1, Phase 1.2, and Phase 1.3 reports live under
@@ -207,8 +220,11 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
 - Superseded gap triage, fixed-point readiness, and PR review reports live under
   `reports/archive/`.
 - Duplicate implementation and bridge roots are classified in
-  `reports/current/directory-ownership-audit.yml`; future implementation code
+  `reports/current/directory-ownership/directory-ownership-audit.yml`; future implementation code
   remains gated under `implementation/` and is not authorized in Phase 1.
+- Artifact hygiene now includes flat-directory pressure, current-domain
+  structure, report-domain index, script namespace ownership, and duplicate
+  responsibility checks.
 
 ## Phase 1 Formal / Traceability Consistency
 
@@ -360,7 +376,8 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
   obligation, SPEC_GAP/UNSUPPORTED misuse, pack, claim, and spec-front-matter
   checks.
 - Added generated traceability matrices under `evidence/traceability/`.
-- Added pack contracts under `packs/pack-index.yml`; every pack keeps
+- Added canonical pack contracts under `docs/design/packs/` with a bridge
+  projection under `packs/pack-index.yml`; every pack keeps
   `implementation_allowed.production: false`.
 - Added an assurance claim tree under `docs/design/assurance/claim-tree.yml`.
 - Added Japanese mirror tracking seeds under `docs/design/ja/`.
@@ -729,7 +746,7 @@ Current PR and readiness reports:
 
 - `reports/phases/phase-0-9/pr-5-review-report.md`
 - `reports/phases/phase-0-9/pr-5-post-gap-validation.md`
-- `reports/current/policy-denial-error-taxonomy.md`
+- `reports/current/dafny/policy-denial-error-taxonomy.md`
 - `reports/phases/phase-1/readiness-report.md`
 - `reports/phases/phase-1/open-issues.md`
 - `reports/current/source-grounding/conditional-refreeze-plan.md`
@@ -737,12 +754,13 @@ Current PR and readiness reports:
 - `reports/phases/phase-1/pre-phase1-readiness-audit.md`
 - `reports/phases/phase-1/pre-phase1-readiness-red-team-review.md`
 - `reports/phases/phase-1/pre-phase1-readiness-final-report.md`
-- `reports/current/architecture-portability-policy-report.md`
-- `reports/current/x86-64-target-profile-report.md`
-- `reports/current/cpu-feature-registry-report.md`
-- `reports/current/roadmap-phase-alignment-report.md`
-- `reports/current/architecture-portability-red-team-review.md`
-- `reports/current/architecture-portability-open-issues.md`
+- `reports/current/architecture/architecture-portability-policy-report.md`
+- `reports/current/repository-information-architecture-report.md`
+- `reports/current/architecture/x86-64-target-profile-report.md`
+- `reports/current/architecture/cpu-feature-registry-report.md`
+- `reports/current/readiness/roadmap-phase-alignment-report.md`
+- `reports/current/architecture/architecture-portability-red-team-review.md`
+- `reports/current/architecture/architecture-portability-open-issues.md`
 - `reports/phases/phase-1/pre-phase-1-total-readiness.md`
 
 Historical phase reports are under `reports/phases/`. Cross-phase audits are

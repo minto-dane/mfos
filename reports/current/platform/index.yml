@@ -1,0 +1,29 @@
+schema_version: 1
+artifact_index_kind: mfos_current_report_domain_index
+status: current
+domain: platform
+artifacts:
+- path: reports/current/platform/datacenter-cluster-remediation.md
+  status: current
+  lifecycle: current
+- path: reports/current/platform/pxm-mfvm-open-issues.md
+  status: current
+  lifecycle: current
+- path: reports/current/platform/pxm-mfvm-requirements-docs-expansion-report.md
+  status: current
+  lifecycle: current
+- path: reports/current/platform/pxm-mfvm-requirements-docs-expansion-report.yml
+  status: current
+  lifecycle: current
+- path: reports/current/platform/pxm-mfvm-requirements-docs-red-team-review.md
+  status: current
+  lifecycle: current
+- path: reports/current/platform/virtualization-confidential-vm-remediation.md
+  status: current
+  lifecycle: current
+policy:
+  lifecycle: current
+  phase_specific_reports_allowed: false
+  generated_reports_allowed: false
+  archive_reports_allowed: false
+  implementation_allowed: false

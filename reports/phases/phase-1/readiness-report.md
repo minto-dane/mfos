@@ -7,11 +7,11 @@ in `docs/design/STATUS.md`,
 `docs/design/specs/43-dafny-executable-semantics-policy.md`, and the active
 reports under:
 
-- `reports/current/dafny-semantics-report.md`
-- `reports/current/dafny-semantics-validation-report.md`
-- `reports/current/dafny-verification-report.md`
-- `reports/current/fixture-oracle-loader-report.md`
-- `reports/current/model-consistency-report.md`
+- `reports/current/dafny/dafny-semantics-report.md`
+- `reports/current/dafny/dafny-semantics-validation-report.md`
+- `reports/current/dafny/dafny-verification-report.md`
+- `reports/current/dafny/fixture-oracle-loader-report.md`
+- `reports/current/dafny/model-consistency-report.md`
 
 Current Phase 1 permits non-production Dafny executable-semantics artifacts and
 conformance-harness structural checks. It still forbids Rust semantic-core

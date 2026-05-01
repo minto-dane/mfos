@@ -34,7 +34,7 @@ def walk_refs(value: Any) -> list[tuple[str, str]]:
     refs: list[tuple[str, str]] = []
     if isinstance(value, dict):
         for key, child in value.items():
-            if key in {"path", "wrapper", "target", "generated_by", "generator", "superseded_by", "machine_readable", "machine_readable_path"}:
+            if key in {"path", "wrapper", "target", "wrapper_target", "generated_by", "generator", "superseded_by", "machine_readable", "machine_readable_path", "contains"}:
                 if isinstance(child, str):
                     refs.append((key, child))
                 elif isinstance(child, list):

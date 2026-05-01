@@ -62,7 +62,7 @@ inputs:
 - docs/design/specs/38-datacenter-cluster-operations.md
 outputs:
 - tests/catalog/performance-secure-operations.yml
-- reports/current/pxm-mfvm-requirements-docs-expansion-report.md
+- reports/current/platform/pxm-mfvm-requirements-docs-expansion-report.md
 source_refs:
 - EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
 - EXTREF-NIST-SSDF-0001

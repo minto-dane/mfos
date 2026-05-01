@@ -5,6 +5,8 @@ maturity: M3_CONTRACTED
 status: bridge
 canonical: false
 description: Top-level bridge for pack index; canonical pack contracts are under docs/design/packs.
+canonical_source: docs/design/packs
+bridge_only: true
 implementation_allowed:
   production: false
   hosted_daemon: false
@@ -19,7 +21,7 @@ phase_allowed_from: phase-0
 depends_on:
   - docs/design/packs
 allowed_contents:
-  - pack bridge index
+  - pack bridge index/projection
   - future promoted pack contracts
 forbidden_contents:
   - implementation code

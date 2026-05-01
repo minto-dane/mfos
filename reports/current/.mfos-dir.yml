@@ -4,7 +4,7 @@ role: validation
 maturity: M4_POPULATED
 status: current
 canonical: false
-description: Cross-phase current reports, audits, readiness metadata, policy summaries, and stable current aggregates.
+description: Domain-sharded current report packages, navigation metadata, and repository information architecture outputs.
 implementation_allowed:
   production: false
   hosted_daemon: false
@@ -19,14 +19,13 @@ phase_allowed_from: phase-0
 depends_on:
   - reports/index.yml
 allowed_contents:
-  - cross-phase current reports
-  - current policy summaries
-  - current readiness summaries
-  - stable aggregate reports
+  - domain subdirectories with README.md and index.yml
+  - repository information architecture root reports
   - report package indexes
   - README files
   - index files
 forbidden_contents:
+  - unsharded top-level domain reports
   - phase-specific report filenames
   - phase gate reports
   - generated report outputs

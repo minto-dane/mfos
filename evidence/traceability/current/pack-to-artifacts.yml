@@ -251,7 +251,7 @@ entries:
   - schemas/mfos/pxm-control-request.schema.yml
   - schemas/mfos/pxm-capability.schema.yml
   - formal/registry.yml
-  - reports/current/pxm-mfvm-requirements-docs-expansion-report.md
+  - reports/current/platform/pxm-mfvm-requirements-docs-expansion-report.md
   tests:
   - TEST-MFOS-PXM-0101
   - TEST-MFOS-PXM-0102
@@ -494,7 +494,7 @@ entries:
   outputs:
   - formal/registry.yml
   - tests/catalog/automated-reasoning.yml
-  - reports/current/pxm-mfvm-requirements-docs-red-team-review.md
+  - reports/current/platform/pxm-mfvm-requirements-docs-red-team-review.md
   tests:
   - TEST-MFOS-FORMAL-0101
   - NEG-MFOS-FORMAL-0108
@@ -507,7 +507,7 @@ entries:
   - docs/design/specs/38-datacenter-cluster-operations.md
   outputs:
   - tests/catalog/performance-secure-operations.yml
-  - reports/current/pxm-mfvm-requirements-docs-expansion-report.md
+  - reports/current/platform/pxm-mfvm-requirements-docs-expansion-report.md
   tests:
   - TEST-MFOS-PERF-0101
   - TEST-MFOS-OPS-0101
@@ -529,7 +529,7 @@ entries:
   - formal/executable-semantics/dafny/modules/
   - tools/semantic-fixture-normalizer/
   - tools/dafny-conformance-harness/
-  - reports/current/dafny-semantics-report.md
+  - reports/current/dafny/dafny-semantics-report.md
   tests:
   - TEST-MFOS-DAFNY-0001
   - NEG-MFOS-DAFNY-0001

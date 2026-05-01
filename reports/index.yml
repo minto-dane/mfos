@@ -3,169 +3,216 @@ report_index_kind: mfos_report_inventory
 status: current
 canonical_report_root: reports
 current:
-- path: reports/current/architecture-portability-policy-report.md
-  purpose: Architecture portability policy, x86-64-first/not-only boundary, and non-x86 claim gates.
-- path: reports/current/x86-64-target-profile-report.md
+- path: reports/current/architecture/architecture-portability-policy-report.md
+  purpose: Architecture portability policy, x86-64-first/not-only boundary, and non-x86
+    claim gates.
+- path: reports/current/architecture/x86-64-target-profile-report.md
   purpose: x86-64 target profile definitions and optional v4/SGX/CVM policy summary.
-- path: reports/current/cpu-feature-registry-report.md
-  purpose: CPU Feature Registry and CPU Target Profile Registry policy and validation summary.
-- path: reports/current/roadmap-phase-alignment-report.md
+- path: reports/current/architecture/cpu-feature-registry-report.md
+  purpose: CPU Feature Registry and CPU Target Profile Registry policy and validation
+    summary.
+- path: reports/current/readiness/roadmap-phase-alignment-report.md
   purpose: Current Phase 1 Dafny and roadmap cleanup summary.
-- path: reports/current/architecture-portability-red-team-review.md
-  purpose: Red-team review for architecture portability, x86-64 profiles, SGX/TEE, and roadmap alignment.
-- path: reports/current/architecture-portability-open-issues.md
+- path: reports/current/architecture/architecture-portability-red-team-review.md
+  purpose: Red-team review for architecture portability, x86-64 profiles, SGX/TEE,
+    and roadmap alignment.
+- path: reports/current/architecture/architecture-portability-open-issues.md
   purpose: Nonblocking architecture portability and CPU profile follow-up issues.
-- path: reports/current/total-repo-remediation-summary.md
+- path: reports/current/remediation/total-repo-remediation-summary.md
   purpose: Phase 0.10 total repository remediation summary.
-- path: reports/current/total-repo-remediation-summary.yml
+- path: reports/current/remediation/total-repo-remediation-summary.yml
   purpose: Machine-readable Phase 0.10 total repository remediation summary.
-- path: reports/current/live-repo-structure-audit.md
+- path: reports/current/scaffold/live-repo-structure-audit.md
   purpose: Live repository structure audit for the total remediation pass.
-- path: reports/current/source-grounding-remediation.md
+- path: reports/current/source-grounding/source-grounding-remediation.md
   purpose: Source grounding remediation and conditional semantic-freeze status.
-- path: reports/current/legal-naming-remediation.md
+- path: reports/current/naming-safety/legal-naming-remediation.md
   purpose: Legal and naming-safety remediation status.
-- path: reports/current/requirements-schema-remediation.md
+- path: reports/current/remediation/requirements-schema-remediation.md
   purpose: Requirement and schema remediation status.
-- path: reports/current/spec-doc-remediation.md
+- path: reports/current/remediation/spec-doc-remediation.md
   purpose: Spec and documentation remediation status.
-- path: reports/current/test-fixture-golden-remediation.md
+- path: reports/current/remediation/test-fixture-golden-remediation.md
   purpose: Test, fixture, and golden-vector remediation status.
-- path: reports/current/evidence-traceability-remediation.md
+- path: reports/current/remediation/evidence-traceability-remediation.md
   purpose: Evidence and traceability remediation status.
-- path: reports/current/ci-workflow-remediation.md
+- path: reports/current/ci/ci-workflow-remediation.md
   purpose: CI and workflow remediation status.
-- path: reports/current/component-scaffold-remediation.md
+- path: reports/current/remediation/component-scaffold-remediation.md
   purpose: Component scaffold metadata remediation status.
-- path: reports/current/virtualization-confidential-vm-remediation.md
+- path: reports/current/platform/virtualization-confidential-vm-remediation.md
   purpose: Virtualization and confidential workload remediation status.
-- path: reports/current/datacenter-cluster-remediation.md
+- path: reports/current/platform/datacenter-cluster-remediation.md
   purpose: Datacenter and cluster remediation status.
-- path: reports/current/language-formal-assurance-remediation.md
+- path: reports/current/formal-assurance/language-formal-assurance-remediation.md
   purpose: Language, formal assurance, and secure-operations remediation status.
-- path: reports/current/language-formal-assurance-policy-report.md
-  purpose: Policy/spec/registry boundary for language, formal assurance, and secure operations.
-- path: reports/current/language-formal-assurance-red-team-review.md
-  purpose: Red-team review for language/formal-assurance policy and semantic-evaluator gates.
-- path: reports/current/language-formal-assurance-open-issues.md
+- path: reports/current/formal-assurance/language-formal-assurance-policy-report.md
+  purpose: Policy/spec/registry boundary for language, formal assurance, and secure
+    operations.
+- path: reports/current/formal-assurance/language-formal-assurance-red-team-review.md
+  purpose: Red-team review for language/formal-assurance policy and semantic-evaluator
+    gates.
+- path: reports/current/formal-assurance/language-formal-assurance-open-issues.md
   purpose: Open issues for language/formal-assurance semantic-evaluator readiness.
-- path: reports/current/total-remediation-red-team-review.md
+- path: reports/current/remediation/total-remediation-red-team-review.md
   purpose: Total remediation red-team review.
-- path: reports/current/total-remediation-open-issues.md
+- path: reports/current/remediation/total-remediation-open-issues.md
   purpose: Nonblocking total remediation open issues.
-- path: reports/current/policy-denial-error-taxonomy.md
+- path: reports/current/dafny/policy-denial-error-taxonomy.md
   purpose: Phase 0.9 policy-denial error mapping decision.
-- path: reports/current/artifact-hygiene-audit.md
+- path: reports/current/artifact-hygiene/artifact-hygiene-audit.md
   purpose: Repository artifact hygiene audit.
-- path: reports/current/artifact-hygiene-audit.yml
+- path: reports/current/artifact-hygiene/artifact-hygiene-audit.yml
   purpose: Machine-readable repository artifact hygiene audit.
-- path: reports/current/artifact-hygiene-red-team-review.md
+- path: reports/current/artifact-hygiene/artifact-hygiene-red-team-review.md
   purpose: Repository artifact hygiene red-team review.
-- path: reports/current/artifact-hygiene-open-issues.md
+- path: reports/current/artifact-hygiene/artifact-hygiene-open-issues.md
   purpose: Nonblocking artifact hygiene follow-up issues.
-- path: reports/current/artifact-hygiene-followup-report.md
+- path: reports/current/artifact-hygiene/artifact-hygiene-followup-report.md
   purpose: Follow-up closure for scripts, fuzz plan, task, and report hygiene.
-- path: reports/current/reports-current-lifecycle-audit.md
+- path: reports/current/artifact-lifecycle/reports-current-lifecycle-audit.md
   purpose: Current report lifecycle audit and placement decision ledger.
-- path: reports/current/reports-current-lifecycle-audit.yml
-  purpose: Machine-readable current report lifecycle audit and placement decision ledger.
-- path: reports/current/directory-ownership-audit.md
+- path: reports/current/artifact-lifecycle/reports-current-lifecycle-audit.yml
+  purpose: Machine-readable current report lifecycle audit and placement decision
+    ledger.
+- path: reports/current/directory-ownership/directory-ownership-audit.md
   purpose: Directory ownership and duplicate scaffold audit.
-- path: reports/current/directory-ownership-audit.yml
+- path: reports/current/directory-ownership/directory-ownership-audit.yml
   purpose: Machine-readable directory ownership and duplicate scaffold audit.
-- path: reports/current/artifact-lifecycle-remediation-report.md
+- path: reports/current/artifact-lifecycle/artifact-lifecycle-remediation-report.md
   purpose: Artifact lifecycle and directory ownership remediation summary.
-- path: reports/current/artifact-lifecycle-red-team-review.md
+- path: reports/current/artifact-lifecycle/artifact-lifecycle-red-team-review.md
   purpose: Red-team review for artifact lifecycle and directory ownership remediation.
-- path: reports/current/artifact-lifecycle-open-issues.md
+- path: reports/current/artifact-lifecycle/artifact-lifecycle-open-issues.md
   purpose: Remaining nonblocking artifact lifecycle and directory ownership gaps.
-- path: reports/current/repository-scaffold-audit.md
+- path: reports/current/scaffold/repository-scaffold-audit.md
   purpose: Human repository scaffold completeness audit.
-- path: reports/current/repository-scaffold-audit.yml
+- path: reports/current/scaffold/repository-scaffold-audit.yml
   purpose: Machine-readable repository scaffold completeness audit.
-- path: reports/current/empty-directory-inventory.yml
+- path: reports/current/directory-ownership/empty-directory-inventory.yml
   purpose: Machine-readable empty directory inventory.
-- path: reports/current/directory-maturity-matrix.yml
+- path: reports/current/directory-ownership/directory-maturity-matrix.yml
   purpose: Directory role and maturity matrix.
-- path: reports/current/repository-scaffold-risk-matrix.yml
+- path: reports/current/scaffold/repository-scaffold-risk-matrix.yml
   purpose: Repository scaffold risk matrix.
-- path: reports/current/repository-scaffold-open-issues.md
+- path: reports/current/scaffold/repository-scaffold-open-issues.md
   purpose: Open scaffold issues and nonblocking follow-ups.
-- path: reports/current/repository-scaffold-next-actions.yml
+- path: reports/current/scaffold/repository-scaffold-next-actions.yml
   purpose: Recommended scaffold follow-up tasks.
-- path: reports/current/repository-scaffold-red-team-review.md
+- path: reports/current/scaffold/repository-scaffold-red-team-review.md
   purpose: Repository scaffold red-team review.
-- path: reports/current/source-scaffold-audit.md
+- path: reports/current/source-grounding/source-scaffold-audit.md
   purpose: Source/source-matrix scaffold audit.
-- path: reports/current/source-grounding/
-  purpose: Phase 0.9.7 source-grounding adequacy audit package.
 - path: reports/current/source-grounding/conditional-refreeze-plan.md
   purpose: Conditional semantic-refreeze and Phase 1 permission boundary.
 - path: reports/current/source-grounding/source-grounding-red-team-review.md
   purpose: Source-grounding red-team findings.
-- path: reports/current/source-population-audit.md
+- path: reports/current/source-grounding/source-population-audit.md
   purpose: Public-safe sources/ workbench population audit.
-- path: reports/current/source-population-audit.yml
+- path: reports/current/source-grounding/source-population-audit.yml
   purpose: Machine-readable sources/ workbench population audit.
-- path: reports/current/source-population-red-team-review.md
+- path: reports/current/source-grounding/source-population-red-team-review.md
   purpose: Red-team review for populated sources/ workbench.
-- path: reports/current/source-name-legal-safe-harbor-audit.md
+- path: reports/current/naming-safety/source-name-legal-safe-harbor-audit.md
   purpose: Source workbench and IBM/external naming legal-risk engineering audit.
-- path: reports/current/source-name-legal-safe-harbor-audit.yml
+- path: reports/current/naming-safety/source-name-legal-safe-harbor-audit.yml
   purpose: Machine-readable source naming legal-risk engineering audit.
-- path: reports/current/docs-spec-scaffold-audit.md
+- path: reports/current/scaffold/docs-spec-scaffold-audit.md
   purpose: Docs/spec scaffold audit.
-- path: reports/current/implementation-scaffold-audit.md
+- path: reports/current/scaffold/implementation-scaffold-audit.md
   purpose: Implementation scaffold audit.
-- path: reports/current/test-evidence-scaffold-audit.md
+- path: reports/current/scaffold/test-evidence-scaffold-audit.md
   purpose: Test/fuzz/evidence scaffold audit.
-- path: reports/current/scripts-ci-scaffold-audit.md
+- path: reports/current/ci/scripts-ci-scaffold-audit.md
   purpose: Scripts and CI scaffold audit.
-- path: reports/current/ai-pack-scaffold-audit.md
+- path: reports/current/scaffold/ai-pack-scaffold-audit.md
   purpose: AI/packs/prompts scaffold audit.
-- path: reports/current/pxm-mfvm-requirements-docs-expansion-report.md
+- path: reports/current/platform/pxm-mfvm-requirements-docs-expansion-report.md
   purpose: Phase 0.10 PXM/MFVM requirements and docs expansion report.
-- path: reports/current/pxm-mfvm-requirements-docs-expansion-report.yml
+- path: reports/current/platform/pxm-mfvm-requirements-docs-expansion-report.yml
   purpose: Machine-readable Phase 0.10 PXM/MFVM expansion summary.
-- path: reports/current/pxm-mfvm-requirements-docs-red-team-review.md
+- path: reports/current/platform/pxm-mfvm-requirements-docs-red-team-review.md
   purpose: Red-team review for Phase 0.10 PXM/MFVM expansion.
-- path: reports/current/pxm-mfvm-open-issues.md
+- path: reports/current/platform/pxm-mfvm-open-issues.md
   purpose: Open issues for PXM/MFVM/CVM/cluster/formal planning.
-- path: reports/current/fixedpoint/
-  purpose: Fixed-point repository closure package before Phase 1.
-- path: reports/current/dafny-semantics-report.md
-  purpose: Phase 1 Dafny executable-semantics implementation boundary and invariant summary.
-- path: reports/current/dafny-semantics-validation-report.md
+- path: reports/current/dafny/dafny-semantics-report.md
+  purpose: Phase 1 Dafny executable-semantics implementation boundary and invariant
+    summary.
+- path: reports/current/dafny/dafny-semantics-validation-report.md
   purpose: Phase 1 Dafny semantics local validation status.
-- path: reports/current/dafny-verification-report.md
+- path: reports/current/dafny/dafny-verification-report.md
   purpose: Dafny verification result and proof evidence boundary.
-- path: reports/current/dafny-toolchain-report.md
+- path: reports/current/dafny/dafny-toolchain-report.md
   purpose: Pinned Dafny toolchain version, install method, and CI usage.
-- path: reports/current/dafny-module-hygiene-report.md
+- path: reports/current/dafny/dafny-module-hygiene-report.md
   purpose: Dafny module naming and case-duplicate hygiene review.
-- path: reports/current/dafny-loader-nonsemantic-review.md
+- path: reports/current/dafny/dafny-loader-nonsemantic-review.md
   purpose: Python fixture loader and conformance harness nonsemantic boundary review.
-- path: reports/current/dafny-toolchain-red-team-review.md
+- path: reports/current/dafny/dafny-toolchain-red-team-review.md
   purpose: Red-team review for Dafny toolchain and verification closure.
-- path: reports/current/dafny-toolchain-open-issues.md
+- path: reports/current/dafny/dafny-toolchain-open-issues.md
   purpose: Nonblocking open issues after Dafny toolchain verification closure.
-- path: reports/current/fixture-oracle-loader-report.md
+- path: reports/current/dafny/fixture-oracle-loader-report.md
   purpose: Fixture/oracle/golden loader and conformance-support harness boundary.
-- path: reports/current/model-consistency-report.md
+- path: reports/current/dafny/model-consistency-report.md
   purpose: Dafny, TLA+, and Alloy consistency policy and current model gaps.
-- path: reports/current/dafny-semantics-red-team-review.md
+- path: reports/current/dafny/dafny-semantics-red-team-review.md
   purpose: Red-team review for Phase 1 Dafny executable-semantics artifacts.
-- path: reports/current/dafny-semantics-open-issues.md
+- path: reports/current/dafny/dafny-semantics-open-issues.md
   purpose: Nonblocking Phase 1 Dafny semantic artifact open issues.
-- path: reports/current/post-merge-integration-sweep-report.md
+- path: reports/current/readiness/post-merge-integration-sweep-report.md
   purpose: Final post-merge integration sweep and Phase 1.4 planning readiness decision.
-- path: reports/current/pr-26-targeted-lifecycle-review.md
-  purpose: Targeted lifecycle review for PR #26 readiness after artifact lifecycle remediation.
-- path: reports/current/top-level-implementation-bridge-retirement-review.md
-  purpose: Review of top-level services/nucleus/pxm/guard bridge retirement into implementation component roots.
+- path: reports/current/repository-information-architecture-report.md
+  purpose: Repository information architecture refactor report and final judgment.
+- path: reports/current/repository-information-architecture-migration.yml
+  purpose: Machine-readable migration map for repository information architecture
+    refactor.
+- path: reports/current/repository-information-architecture-open-issues.md
+  purpose: Open issues for repository information architecture follow-up.
+- path: reports/current/repository-information-architecture-red-team-review.md
+  purpose: Red-team review for repository information architecture refactor.
+- path: reports/current/fixedpoint/final-red-team-review.md
+  purpose: 'Fixed-point closure package artifact: final red team review.'
+- path: reports/current/fixedpoint/final-summary.md
+  purpose: 'Fixed-point closure package artifact: final summary.'
+- path: reports/current/fixedpoint/issue-ledger.md
+  purpose: 'Fixed-point closure package artifact: issue ledger.'
+- path: reports/current/fixedpoint/issue-ledger.yml
+  purpose: 'Fixed-point closure package artifact: issue ledger.'
+- path: reports/current/fixedpoint/loop-history.yml
+  purpose: 'Fixed-point closure package artifact: loop history.'
+- path: reports/current/fixedpoint/repository-graph.md
+  purpose: 'Fixed-point closure package artifact: repository graph.'
+- path: reports/current/fixedpoint/repository-graph.yml
+  purpose: 'Fixed-point closure package artifact: repository graph.'
+- path: reports/current/fixedpoint/validation-report.md
+  purpose: 'Fixed-point closure package artifact: validation report.'
+- path: reports/current/fixedpoint/validation-report.yml
+  purpose: 'Fixed-point closure package artifact: validation report.'
+- path: reports/current/source-grounding/conditional-refreeze-plan.yml
+  purpose: 'Source-grounding current package artifact: conditional refreeze plan.'
+- path: reports/current/source-grounding/requirement-grounding-audit.md
+  purpose: 'Source-grounding current package artifact: requirement grounding audit.'
+- path: reports/current/source-grounding/requirement-grounding-audit.yml
+  purpose: 'Source-grounding current package artifact: requirement grounding audit.'
+- path: reports/current/source-grounding/source-card-grounding-audit.md
+  purpose: 'Source-grounding current package artifact: source card grounding audit.'
+- path: reports/current/source-grounding/source-card-grounding-audit.yml
+  purpose: 'Source-grounding current package artifact: source card grounding audit.'
+- path: reports/current/source-grounding/source-grounding-open-issues.md
+  purpose: 'Source-grounding current package artifact: source grounding open issues.'
+- path: reports/current/source-grounding/sources-directory-decision.md
+  purpose: 'Source-grounding current package artifact: sources directory decision.'
+- path: reports/current/source-grounding/sources-directory-decision.yml
+  purpose: 'Source-grounding current package artifact: sources directory decision.'
+- path: reports/current/source-grounding/spec-section-grounding-audit.md
+  purpose: 'Source-grounding current package artifact: spec section grounding audit.'
+- path: reports/current/source-grounding/spec-section-grounding-audit.yml
+  purpose: 'Source-grounding current package artifact: spec section grounding audit.'
 sections:
 - path: reports/current/
-  purpose: Cross-phase current status summaries, readiness reports, policy summaries, and stable current aggregate reports.
+  purpose: Cross-phase current status summaries, readiness reports, policy summaries,
+    and stable current aggregate reports.
 - path: reports/phases/phase-0-6/
   purpose: Phase 0.6 canonicalization and enforcement closure.
 - path: reports/phases/phase-0-7/
@@ -194,6 +241,35 @@ sections:
   purpose: Superseded reports retained for traceability.
 - path: reports/archive/pr-reviews/
   purpose: Historical PR review reports retained for traceability.
+- path: reports/current/architecture/
+  purpose: Current architecture portability, CPU target, and hardware profile reports.
+- path: reports/current/artifact-hygiene/
+  purpose: Current artifact hygiene audit, follow-up, and red-team reports.
+- path: reports/current/artifact-lifecycle/
+  purpose: Current report lifecycle and artifact lifecycle remediation reports.
+- path: reports/current/ci/
+  purpose: Current CI and scripts/CI scaffold reports.
+- path: reports/current/dafny/
+  purpose: Current Dafny executable-semantics, toolchain, verification, and model
+    consistency reports.
+- path: reports/current/directory-ownership/
+  purpose: Current directory ownership, maturity, and empty-directory reports.
+- path: reports/current/formal-assurance/
+  purpose: Current language and formal assurance policy reports.
+- path: reports/current/naming-safety/
+  purpose: Current legal naming and source safe-harbor reports.
+- path: reports/current/platform/
+  purpose: Current PXM, MFVM, CVM, virtualization, and cluster planning reports.
+- path: reports/current/readiness/
+  purpose: Current readiness and roadmap alignment reports.
+- path: reports/current/remediation/
+  purpose: Current cross-repository remediation summaries and follow-up reports.
+- path: reports/current/scaffold/
+  purpose: Current repository scaffold audits and matrices.
+- path: reports/current/fixedpoint/
+  purpose: Current fixed-point closure package.
+- path: reports/current/source-grounding/
+  purpose: Current source-grounding adequacy package.
 generated_reports:
 - path: reports/generated/traceability.md
   generator: scripts/generators/generate-traceability.py
@@ -277,11 +353,13 @@ phase_reports:
 - path: reports/phases/phase-1/pre-phase1-readiness-open-issues.md
   purpose: Nonblocking Pre-Phase-1 readiness open issues.
 - path: reports/phases/phase-1/pre-phase1-readiness-final-report.md
-  purpose: Final Pre-Phase-1 readiness judgement for Dafny scaffold and loader-only validation.
+  purpose: Final Pre-Phase-1 readiness judgement for Dafny scaffold and loader-only
+    validation.
 - path: reports/phases/phase-1/pre-phase1/package/
   purpose: Repeated recursive Pre-Phase-1 readiness audit package.
 - path: reports/phases/phase-1-4/planning-report.md
-  purpose: Phase 1.4 Job/Spool/Operator planning-only scope, coverage, artifacts, and validator package.
+  purpose: Phase 1.4 Job/Spool/Operator planning-only scope, coverage, artifacts,
+    and validator package.
 - path: reports/phases/phase-1-4/entry-gate.md
   purpose: Phase 1.4 Job/Spool/Operator future implementation entry gate.
 - path: reports/phases/phase-1-4/exit-gate.md
@@ -292,15 +370,18 @@ phase_reports:
   purpose: Phase 1.4 Job/Spool/Operator planning-only deferred issue ledger.
 archive:
 - path: reports/archive/superseded/phase-0-9-readiness.md
-  purpose: Superseded Phase 0.9 readiness report retained after Phase 0.9 freeze and Phase 1 readiness records.
+  purpose: Superseded Phase 0.9 readiness report retained after Phase 0.9 freeze and
+    Phase 1 readiness records.
   status: historical
   origin_phase: phase-0-9
 - path: reports/archive/superseded/phase-1-1/gap-triage.md
-  purpose: Superseded Phase 1.1 classification of C0/C2/C3 semantic coverage gaps before Phase 1.2 closure.
+  purpose: Superseded Phase 1.1 classification of C0/C2/C3 semantic coverage gaps
+    before Phase 1.2 closure.
   status: historical
   origin_phase: phase-1-1
 - path: reports/archive/superseded/phase-1-1/gap-triage.yml
-  purpose: Superseded machine-readable Phase 1.1 gap triage and classification ledger before Phase 1.2 closure.
+  purpose: Superseded machine-readable Phase 1.1 gap triage and classification ledger
+    before Phase 1.2 closure.
   status: historical
   origin_phase: phase-1-1
 - path: reports/archive/superseded/fixedpoint/phase-1-ready-report.md
@@ -312,33 +393,44 @@ archive:
   status: historical
   origin_phase: phase-1
 - path: reports/archive/pr-reviews/pr-19-review-report.md
-  purpose: PR #19 Phase 1.2 Authorization/Audit review merge decision.
+  purpose: PR 19 Phase 1.2 Authorization/Audit review merge decision.
   status: historical
   origin_phase: phase-1-2
 - path: reports/archive/pr-reviews/pr-19-post-pr21-review-report.md
-  purpose: Post-architecture-portability review and remediation report for merged PR #19.
+  purpose: Post-architecture-portability review and remediation report for merged
+    PR 19.
   status: historical
   origin_phase: phase-1-2
 - path: reports/archive/pr-reviews/pr-19-pr-20-dependency-closure-report.md
-  purpose: Dependency closure result for PR #19 merge and PR #20 branch update.
+  purpose: Dependency closure result for PR 19 merge and PR 20 branch update.
   status: historical
   origin_phase: phase-1-2
 - path: reports/archive/pr-reviews/pr-20-review-report.md
-  purpose: PR #20 Phase 1.3 Dataset/Catalog review merge decision.
+  purpose: PR 20 Phase 1.3 Dataset/Catalog review merge decision.
   status: historical
   origin_phase: phase-1-3
 - path: reports/archive/pr-reviews/pr-20-final-review-report.md
-  purpose: Final PR #20 Phase 1.3 Dataset/Catalog review after PR #19 dependency handling.
+  purpose: Final PR 20 review after remediation.
   status: historical
   origin_phase: phase-1-3
 - path: reports/archive/pr-reviews/pr-21-review-report.md
-  purpose: PR #21 architecture portability and x86-64 target-profile review merge decision.
+  purpose: PR 21 architecture portability review report.
   status: historical
   origin_phase: phase-1
 - path: reports/archive/pr-reviews/pr-21-blocker-report.md
-  purpose: PR #21 stacked-branch force-push blocker and replacement-PR decision.
+  purpose: PR 21 blocker closure report.
   status: historical
   origin_phase: phase-1
+- path: reports/archive/pr-reviews/pr-26-targeted-lifecycle-review.md
+  purpose: Targeted lifecycle review for PR 26 readiness after artifact lifecycle
+    remediation.
+  status: historical
+  origin_phase: phase-1-4-planning
+- path: reports/archive/pr-reviews/pr-26-top-level-implementation-bridge-retirement-review.md
+  purpose: Review of top-level services/nucleus/pxm/guard bridge retirement into implementation
+    component roots.
+  status: historical
+  origin_phase: phase-1-4-planning
 policy:
   new_cross_phase_reports_default_location: reports/current/
   generated_reports_location: reports/generated/

@@ -1,0 +1,38 @@
+schema_version: 1
+artifact_index_kind: mfos_current_report_domain_index
+status: current
+domain: remediation
+artifacts:
+- path: reports/current/remediation/component-scaffold-remediation.md
+  status: current
+  lifecycle: current
+- path: reports/current/remediation/evidence-traceability-remediation.md
+  status: current
+  lifecycle: current
+- path: reports/current/remediation/requirements-schema-remediation.md
+  status: current
+  lifecycle: current
+- path: reports/current/remediation/spec-doc-remediation.md
+  status: current
+  lifecycle: current
+- path: reports/current/remediation/test-fixture-golden-remediation.md
+  status: current
+  lifecycle: current
+- path: reports/current/remediation/total-remediation-open-issues.md
+  status: current
+  lifecycle: current
+- path: reports/current/remediation/total-remediation-red-team-review.md
+  status: current
+  lifecycle: current
+- path: reports/current/remediation/total-repo-remediation-summary.md
+  status: current
+  lifecycle: current
+- path: reports/current/remediation/total-repo-remediation-summary.yml
+  status: current
+  lifecycle: current
+policy:
+  lifecycle: current
+  phase_specific_reports_allowed: false
+  generated_reports_allowed: false
+  archive_reports_allowed: false
+  implementation_allowed: false

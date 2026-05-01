@@ -1,0 +1,17 @@
+schema_version: 1
+artifact_index_kind: mfos_current_report_domain_index
+status: current
+domain: readiness
+artifacts:
+- path: reports/current/readiness/post-merge-integration-sweep-report.md
+  status: current
+  lifecycle: current
+- path: reports/current/readiness/roadmap-phase-alignment-report.md
+  status: current
+  lifecycle: current
+policy:
+  lifecycle: current
+  phase_specific_reports_allowed: false
+  generated_reports_allowed: false
+  archive_reports_allowed: false
+  implementation_allowed: false

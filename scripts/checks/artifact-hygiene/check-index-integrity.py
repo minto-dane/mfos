@@ -33,7 +33,7 @@ def walk_paths(value: Any) -> list[str]:
     refs: list[str] = []
     if isinstance(value, dict):
         for key, child in value.items():
-            if key in {"path", "wrapper", "target", "generated_by", "generator", "superseded_by", "machine_readable", "machine_readable_path"}:
+            if key in {"path", "wrapper", "target", "wrapper_target", "generated_by", "generator", "superseded_by", "machine_readable", "machine_readable_path", "contains"}:
                 if isinstance(child, str):
                     refs.append(child)
                 elif isinstance(child, list):

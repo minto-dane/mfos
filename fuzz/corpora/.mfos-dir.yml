@@ -1,0 +1,36 @@
+directory_id: MFOS-DIR-FUZZ-CORPORA
+path: fuzz/corpora
+role: test_current
+maturity: M4_POPULATED
+status: current
+canonical: true
+description: Current fuzz seed-plan manifest packages. This directory contains metadata only, not fuzz engines or crash artifacts.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  rust_semantic_core: false
+  semantic_runner: false
+  generated_production_code: false
+  validation_only: true
+  dafny_executable_semantics: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+depends_on:
+- docs/design/specs/35-fuzz-corpus-plan.md
+- fuzz/targets/fuzz-target-plan.yml
+allowed_contents:
+- seed plan manifests
+- README files
+- index files
+forbidden_contents:
+- fuzz engines
+- crash artifacts
+- copied external syntax
+- byte-level corpora before Phase 1 approval
+- production code
+review_status: draft
+phase_allowed_from: phase-0
+required_before_agent_assignment:
+- fuzz target id
+- seed plan
+- requirement refs

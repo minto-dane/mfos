@@ -1,0 +1,44 @@
+schema_version: 1
+artifact_index_kind: mfos_current_report_domain_index
+status: current
+domain: scaffold
+artifacts:
+- path: reports/current/scaffold/ai-pack-scaffold-audit.md
+  status: current
+  lifecycle: current
+- path: reports/current/scaffold/docs-spec-scaffold-audit.md
+  status: current
+  lifecycle: current
+- path: reports/current/scaffold/implementation-scaffold-audit.md
+  status: current
+  lifecycle: current
+- path: reports/current/scaffold/live-repo-structure-audit.md
+  status: current
+  lifecycle: current
+- path: reports/current/scaffold/repository-scaffold-audit.md
+  status: current
+  lifecycle: current
+- path: reports/current/scaffold/repository-scaffold-audit.yml
+  status: current
+  lifecycle: current
+- path: reports/current/scaffold/repository-scaffold-next-actions.yml
+  status: current
+  lifecycle: current
+- path: reports/current/scaffold/repository-scaffold-open-issues.md
+  status: current
+  lifecycle: current
+- path: reports/current/scaffold/repository-scaffold-red-team-review.md
+  status: current
+  lifecycle: current
+- path: reports/current/scaffold/repository-scaffold-risk-matrix.yml
+  status: current
+  lifecycle: current
+- path: reports/current/scaffold/test-evidence-scaffold-audit.md
+  status: current
+  lifecycle: current
+policy:
+  lifecycle: current
+  phase_specific_reports_allowed: false
+  generated_reports_allowed: false
+  archive_reports_allowed: false
+  implementation_allowed: false

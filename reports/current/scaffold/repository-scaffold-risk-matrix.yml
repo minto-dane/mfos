@@ -1,0 +1,44 @@
+schema_version: 1
+report_id: REPORT-MFOS-REPOSITORY-SCAFFOLD-RISK-MATRIX-0001
+status: current
+generated_at: '2026-05-01'
+risks:
+- risk_id: SCAF-RISK-0001
+  severity: minor
+  title: Implementation scaffold could be mistaken for implementation-ready work
+  affected_paths:
+  - implementation/
+  - implementation/services/
+  - implementation/nucleus/
+  - implementation/pxm/
+  - implementation/guard/
+  recommended_action: keep_metadata_only_until_reviewed_gate
+  priority: P1 before implementation work
+  status: mitigated_by_metadata
+  phase_1_blocker: false
+  notes: Implementation subtrees contain README/index/.mfos metadata only; no production
+    code or hosted daemon implementation is present.
+- risk_id: SCAF-RISK-0002
+  severity: minor
+  title: sources/ remains a bridge/workbench rather than canonical source authority
+  affected_paths:
+  - sources/
+  recommended_action: continue source parity and public-safety validation
+  priority: P2 before public release claims
+  status: accepted_deferred
+  phase_1_blocker: false
+  notes: Canonical source matrix remains docs/design/source-matrix/.
+- risk_id: SCAF-RISK-0003
+  severity: minor
+  title: Top-level build and AI scaffolds remain metadata-only planned areas
+  affected_paths:
+  - build/
+  - ai/
+  recommended_action: require reviewed implementation gates before executable artifacts
+  priority: P2 before implementation work
+  status: accepted_deferred
+  phase_1_blocker: false
+  notes: Metadata explicitly blocks production implementation, hosted daemons, semantic
+    runners, Rust semantic core, and Phase 1.4 implementation.
+production_implementation_detected: false
+phase_1_4_implementation_started: false

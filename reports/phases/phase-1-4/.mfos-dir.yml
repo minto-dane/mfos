@@ -18,7 +18,7 @@ implementation_allowed:
 phase_allowed_from: phase-1-4-planning
 depends_on:
   - reports/index.yml
-  - reports/current/post-merge-integration-sweep-report.md
+  - reports/current/readiness/post-merge-integration-sweep-report.md
 allowed_contents:
   - planning reports
   - entry gates

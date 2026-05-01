@@ -1,34 +1,70 @@
 schema_version: 1
 artifact_index_kind: mfos_fixture_inventory
 status: current
-
 current:
   authorization:
     path: tests/fixtures/auth/
     status: current
     origin_phase: phase-0-9
+    artifact_type: fixture_set
+    schema: schemas/test-fixture.schema.yml
+    file_count: 16
+    paired_golden_path: tests/golden/auth/
+    traceability_ref: evidence/traceability/generated/phase-0-9/fixture-to-oracle.yml
+    validation_contract: scripts/validators/validate-fixtures.py
   audit:
     path: tests/fixtures/audit/
     status: current
     origin_phase: phase-0-9
+    artifact_type: fixture_set
+    schema: schemas/test-fixture.schema.yml
+    file_count: 12
+    paired_golden_path: tests/golden/audit/
+    traceability_ref: evidence/traceability/generated/phase-0-9/fixture-to-oracle.yml
+    validation_contract: scripts/validators/validate-fixtures.py
   dataset_catalog:
     path: tests/fixtures/dataset/
     status: current
     origin_phase: phase-0-9
+    artifact_type: fixture_set
+    schema: schemas/test-fixture.schema.yml
+    file_count: 14
+    paired_golden_path: tests/golden/dataset/
+    traceability_ref: evidence/traceability/generated/phase-0-9/fixture-to-oracle.yml
+    validation_contract: scripts/validators/validate-fixtures.py
   job_spool:
     path: tests/fixtures/job/
     status: current
     origin_phase: phase-0-9
+    artifact_type: fixture_set
+    schema: schemas/test-fixture.schema.yml
+    file_count: 17
+    paired_golden_path: tests/golden/job/
+    traceability_ref: evidence/traceability/generated/phase-0-9/fixture-to-oracle.yml
+    validation_contract: scripts/validators/validate-fixtures.py
   operator_console:
     path: tests/fixtures/oper/
     status: current
     origin_phase: phase-0-9
+    artifact_type: fixture_set
+    schema: schemas/test-fixture.schema.yml
+    file_count: 13
+    paired_golden_path: tests/golden/oper/
+    traceability_ref: evidence/traceability/generated/phase-0-9/fixture-to-oracle.yml
+    validation_contract: scripts/validators/validate-fixtures.py
   first_vertical_slice:
     path: tests/fixtures/first-vertical-slice/
     status: current
     origin_phase: phase-0-9
-
+    artifact_type: fixture_set
+    schema: schemas/test-fixture.schema.yml
+    file_count: 2
+    paired_golden_path: tests/golden/first-vertical-slice/
+    traceability_ref: evidence/traceability/generated/phase-0-9/fixture-to-oracle.yml
+    validation_contract: scripts/validators/validate-fixtures.py
 policy:
   phase_specific_filenames_allowed_in_root: false
   deterministic_fixtures_required: true
   implementation_allowed: false
+archive:
+  current_archive_state: no historical fixture/golden domain archives present under this root

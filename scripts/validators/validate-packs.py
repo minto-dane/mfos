@@ -14,6 +14,7 @@ from lib.mfos_lint import Finding, ROOT, emit, load_yaml, mode_arg
 
 
 PACK_INDEX = ROOT / "packs/pack-index.yml"
+CANONICAL_PACK_ROOT = ROOT / "docs/design/packs"
 REQUIRED = {
     "pack_id",
     "title",
@@ -36,6 +37,7 @@ REQUIRED = {
     "implementation_allowed",
     "prompt",
 }
+CANONICAL_SYNC_FIELDS = REQUIRED - {"implementation_allowed"}
 
 
 def main() -> int:
@@ -56,7 +58,13 @@ def main() -> int:
         findings.append(Finding("ERROR", PACK_INDEX, "entries must be a non-empty list"))
         return emit(findings, args.mode, "Pack validation OK")
 
+    if data.get("bridge_only") is not True:
+        findings.append(Finding("ERROR", PACK_INDEX, "top-level pack-index.yml must declare bridge_only: true"))
+    if data.get("canonical_source") != "docs/design/packs":
+        findings.append(Finding("ERROR", PACK_INDEX, "top-level pack-index.yml must declare canonical_source: docs/design/packs"))
+
     seen: set[str] = set()
+    by_id: dict[str, dict[str, object]] = {}
     for entry in entries:
         if not isinstance(entry, dict):
             findings.append(Finding("ERROR", PACK_INDEX, "pack entry is not a mapping"))
@@ -65,6 +73,7 @@ def main() -> int:
         if pid in seen:
             findings.append(Finding("ERROR", PACK_INDEX, f"duplicate pack_id: {pid}"))
         seen.add(pid)
+        by_id[pid] = entry
         missing = sorted(REQUIRED - set(entry))
         if missing:
             findings.append(Finding("ERROR", PACK_INDEX, f"{pid}: missing fields: {', '.join(missing)}"))
@@ -95,6 +104,31 @@ def main() -> int:
             findings.append(Finding("ERROR", PACK_INDEX, f"PACK-07 missing dependencies: {', '.join(missing_deps)}"))
     else:
         findings.append(Finding("ERROR", PACK_INDEX, "PACK-07 missing"))
+
+    for canonical_path in sorted(CANONICAL_PACK_ROOT.glob("PACK-*/pack.yml")):
+        canonical = load_yaml(canonical_path)
+        if not isinstance(canonical, dict):
+            findings.append(Finding("ERROR", canonical_path, "canonical pack contract must be a mapping"))
+            continue
+        pid = str(canonical.get("pack_id", "<missing>"))
+        bridge = by_id.get(pid)
+        if bridge is None:
+            findings.append(Finding("ERROR", PACK_INDEX, f"{pid}: canonical pack is missing from bridge projection"))
+            continue
+        for field in sorted(CANONICAL_SYNC_FIELDS):
+            canonical_value = canonical.get(field)
+            bridge_value = bridge.get(field)
+            if isinstance(canonical_value, list) and isinstance(bridge_value, list):
+                if sorted(str(item) for item in canonical_value) != sorted(str(item) for item in bridge_value):
+                    findings.append(Finding("ERROR", PACK_INDEX, f"{pid}: bridge projection drifts from canonical {canonical_path.relative_to(ROOT)} field {field}"))
+            elif canonical_value != bridge_value:
+                findings.append(Finding("ERROR", PACK_INDEX, f"{pid}: bridge projection drifts from canonical {canonical_path.relative_to(ROOT)} field {field}"))
+        canonical_impl = canonical.get("implementation_allowed")
+        bridge_impl = bridge.get("implementation_allowed")
+        if isinstance(canonical_impl, dict) and isinstance(bridge_impl, dict):
+            for key, value in canonical_impl.items():
+                if bridge_impl.get(key) != value:
+                    findings.append(Finding("ERROR", PACK_INDEX, f"{pid}: bridge implementation_allowed.{key} drifts from canonical {canonical_path.relative_to(ROOT)}"))
 
     return emit(findings, args.mode, f"Pack validation OK: {len(entries)} packs checked")
 

@@ -19,7 +19,7 @@ phase_1_forbidden_scope:
 - nucleus/PXM/Guard/MFVM/CVM/cluster implementation
 - Dafny-generated production code
 source_grounding_status: conditional; no SG6/SG7 semantic-freeze claim; active Phase
-  1 scope is recorded in reports/current/dafny-semantics-report.md
+  1 scope is recorded in reports/current/dafny/dafny-semantics-report.md
 dafny_policy_status: present and validated
 artifact_hygiene_status: validated
 component_scaffold_status: validated

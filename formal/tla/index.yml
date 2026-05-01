@@ -1,0 +1,24 @@
+schema_version: 1
+artifact_index_kind: mfos_tla_design_model_index
+status: current
+implementation_allowed: false
+production_claimed: false
+phase_1_4_implementation_started: false
+models:
+  - path: formal/tla/audit-append
+  - path: formal/tla/authorization
+  - path: formal/tla/catalog-transaction
+  - path: formal/tla/dataset-open
+  - path: formal/tla/job-lifecycle
+  - path: formal/tla/operator-command
+  - path: formal/tla/spool-access
+policy:
+  model_scope: abstract design-model safety checking only
+  not_authorized:
+    - production implementation
+    - Rust semantic core
+    - semantic runner
+    - hosted daemon
+    - hosted semantic prototype
+    - Phase 1.4 Dafny implementation
+    - product readiness claims

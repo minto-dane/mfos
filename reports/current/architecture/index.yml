@@ -1,0 +1,26 @@
+schema_version: 1
+artifact_index_kind: mfos_current_report_domain_index
+status: current
+domain: architecture
+artifacts:
+- path: reports/current/architecture/architecture-portability-open-issues.md
+  status: current
+  lifecycle: current
+- path: reports/current/architecture/architecture-portability-policy-report.md
+  status: current
+  lifecycle: current
+- path: reports/current/architecture/architecture-portability-red-team-review.md
+  status: current
+  lifecycle: current
+- path: reports/current/architecture/cpu-feature-registry-report.md
+  status: current
+  lifecycle: current
+- path: reports/current/architecture/x86-64-target-profile-report.md
+  status: current
+  lifecycle: current
+policy:
+  lifecycle: current
+  phase_specific_reports_allowed: false
+  generated_reports_allowed: false
+  archive_reports_allowed: false
+  implementation_allowed: false

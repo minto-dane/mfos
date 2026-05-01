@@ -31,7 +31,7 @@ exit_code: 0
 verification_summary: Dafny program verifier finished with 136 verified, 0 errors
 started_at_utc: '2026-04-30T00:00:00Z'
 completed_at_utc: '2026-04-30T00:00:00Z'
-verification_output_path: reports/current/dafny-verification-report.md
+verification_output_path: reports/current/dafny/dafny-verification-report.md
 assumptions:
   - The pinned Ubuntu 22.04 x64 Dafny release is the Phase 1 verification toolchain.
   - Verification covers current Phase 1 Dafny modules only.

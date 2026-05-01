@@ -1,0 +1,9 @@
+schema_version: 1
+report_id: REPORT-MFOS-EMPTY-DIRECTORY-INVENTORY-0001
+status: current
+generated_at: '2026-05-01'
+empty_directory_count: 0
+empty_directories: []
+policy:
+  empty_directories_are_not_implementation_claims: true
+  production_implementation_allowed: false
