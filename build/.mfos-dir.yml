@@ -1,0 +1,42 @@
+directory_id: MFOS-DIR-BUILD
+path: build
+role: planned
+maturity: M1_PLACEHOLDER
+status: planned
+canonical: false
+description: Metadata-only build policy scaffold. Build outputs, toolchains,
+  images, caches, and lab artifacts are ignored by default and must not be
+  committed here.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  rust_semantic_core: false
+  dafny_executable_semantics: false
+  semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+  generated_production_code: false
+  validation_only: true
+phase_allowed_from: post-pre-implementation-gate
+depends_on:
+- docs/design/specs/21-ai-implementation-contract.md
+allowed_contents:
+- .mfos-dir.yml
+- README files
+- .gitignore
+- index.yml if introduced
+forbidden_contents:
+- tracked build outputs
+- toolchain downloads or installs
+- image outputs
+- cache, temporary, or out directories
+- production build scripts
+- release artifacts
+- hosted daemon launchers
+- semantic runner implementation
+- Phase 1.4 implementation artifacts
+required_before_agent_assignment:
+- approved implementation gate
+- component scope
+- reproducibility plan
+review_status: draft

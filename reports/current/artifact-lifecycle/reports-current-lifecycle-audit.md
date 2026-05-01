@@ -3,8 +3,8 @@
 Status: current.
 
 Scope: every artifact under `reports/current/` was reviewed for lifecycle
-placement. `reports/current/` is reserved for cross-phase current status,
-readiness, policy, red-team, open-issue, and stable aggregate reports.
+placement and, after the repository information architecture refactor, grouped
+by stable responsibility domain.
 
 ## Result
 
@@ -14,11 +14,13 @@ readiness, policy, red-team, open-issue, and stable aggregate reports.
 - Superseded gap triage, fixed-point readiness, and PR review reports were
   moved under `reports/archive/`.
 - Pre-Phase-1 readiness reports were moved under `reports/phases/phase-1/`.
-- Stable current packages remain under `reports/current/fixedpoint/` and
-  `reports/current/source-grounding/`, with explicit metadata.
+- Stable current packages now live under domain subdirectories listed in
+  `reports/current/index.yml`, including `fixedpoint/` and `source-grounding/`.
+- Top-level current report bodies are limited to repository information
+  architecture outputs.
 
 ## Policy
 
 `reports/current/phase-*`, `reports/current/pre-phase*`, generated report
-outputs, and archived/superseded reports are forbidden.
-
+outputs, archived/superseded reports, PR review artifacts, and unsharded
+top-level domain reports are forbidden.

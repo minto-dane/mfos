@@ -2,7 +2,7 @@
 
 Superseded active-scope note: the fixed-point readiness decision allowed Phase
 1 to begin. The active Phase 1 scope is now recorded in
-`reports/current/dafny-semantics-report.md`.
+`reports/current/dafny/dafny-semantics-report.md`.
 
 Phase 1 remains non-production. Rust semantic-core, future semantic-runner
 command implementation, hosted daemon, service implementation,

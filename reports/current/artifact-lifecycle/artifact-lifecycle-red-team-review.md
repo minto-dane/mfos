@@ -25,4 +25,4 @@ Critical: none.
 Major: none after remediation.
 
 Residual nonblocking gaps are tracked in
-`reports/current/artifact-lifecycle-open-issues.md`.
+`reports/current/artifact-lifecycle/artifact-lifecycle-open-issues.md`.

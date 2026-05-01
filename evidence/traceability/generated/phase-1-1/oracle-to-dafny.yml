@@ -54,7 +54,7 @@ oracles:
     dafny_symbol: PolicyDeniedMappingForDatasetRead
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Dataset read denial maps to MFOS_ERR_POLICY_DENIED and DATASET_READ_NOT_PERMITTED.
 - oracle_ref: tests/golden/auth/allow-with-audit-0903.yml
@@ -171,7 +171,7 @@ oracles:
     dafny_symbol: INV_AUTH_UNSUPPORTED_NOT_SUCCESS
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: UNSUPPORTED is fail-closed and never a success result.
 - oracle_ref: tests/golden/auth/spec-gap-0910.yml
@@ -187,7 +187,7 @@ oracles:
     dafny_symbol: INV_AUTH_SPEC_GAP_NOT_SUCCESS
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: SPEC_GAP is fail-closed and never a success result.
 - oracle_ref: tests/golden/auth/stale-policy-0920.yml
@@ -286,7 +286,7 @@ oracles:
     dafny_symbol: INV_AUTH_NO_HANDLE_WITHOUT_ALLOW
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Protected handles cannot be created without ALLOW or ALLOW_WITH_AUDIT.
 - oracle_ref: tests/golden/audit/deny-before-return-0901.yml
@@ -302,7 +302,7 @@ oracles:
     dafny_symbol: INV_AUDIT_DENY_TRANSITION_WRITES_BEFORE_RETURN
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Denied operation finalization appends before-return audit evidence when
       audit is available.
@@ -384,7 +384,7 @@ oracles:
     dafny_symbol: INV_AUDIT_DENY_TRANSITION_FAILS_CLOSED_WHEN_UNAVAILABLE
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Denied operation finalization fails closed when required audit is unavailable.
 - oracle_ref: tests/golden/audit/unauthorized-query-0907.yml
@@ -416,7 +416,7 @@ oracles:
     dafny_symbol: INV_AUDIT_SPOOL_NOT_EVIDENCE
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Spool entries are not audit evidence.
 - oracle_ref: tests/golden/audit/log-line-not-record-0909.yml
@@ -432,7 +432,7 @@ oracles:
     dafny_symbol: INV_AUDIT_LOG_LINE_NOT_RECORD
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Diagnostic log lines are not audit records.
 - oracle_ref: tests/golden/audit/redaction-failure-0910.yml
@@ -546,7 +546,7 @@ oracles:
     dafny_symbol: INV_CATALOG_UNCOMMITTED_CANNOT_RESOLVE
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Uncommitted entries cannot resolve.
 - oracle_ref: tests/golden/dataset/catalog-rolled-back-0905.yml
@@ -562,7 +562,7 @@ oracles:
     dafny_symbol: INV_CATALOG_ROLLED_BACK_CANNOT_RESOLVE
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Rolled-back entries cannot resolve.
 - oracle_ref: tests/golden/dataset/catalog-partial-journal-0906.yml
@@ -578,7 +578,7 @@ oracles:
     dafny_symbol: INV_CATALOG_PARTIAL_JOURNAL_CANNOT_RESOLVE
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Partial-journal entries cannot resolve.
 - oracle_ref: tests/golden/dataset/catalog-integrity-failed-0907.yml
@@ -594,7 +594,7 @@ oracles:
     dafny_symbol: INV_CATALOG_INTEGRITY_FAILED_CANNOT_RESOLVE
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Integrity-failed entries cannot resolve.
 - oracle_ref: tests/golden/dataset/unauthorized-open-0908.yml
@@ -610,7 +610,7 @@ oracles:
     dafny_symbol: INV_DATASET_NO_HANDLE_WITHOUT_ALLOW
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Dataset handle creation requires an allow decision.
 - oracle_ref: tests/golden/dataset/stale-handle-policy-0909.yml
@@ -626,7 +626,7 @@ oracles:
     dafny_symbol: INV_DATASET_STALE_HANDLE_AFTER_POLICY_CHANGE_REJECTED
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Policy-version-stale handles are rejected.
 - oracle_ref: tests/golden/dataset/stale-handle-catalog-0910.yml
@@ -642,7 +642,7 @@ oracles:
     dafny_symbol: INV_DATASET_STALE_HANDLE_AFTER_GENERATION_CHANGE_REJECTED
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Generation-stale handles are rejected.
 - oracle_ref: tests/golden/dataset/retention-delete-0911.yml
@@ -774,7 +774,7 @@ oracles:
     dafny_symbol: INV_JOB_EFFECTIVE_PRINCIPAL_BEFORE_OPEN
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Dataset open is blocked until effective principal is established.
 - oracle_ref: tests/golden/job/dd-catalog-resolution-0905.yml
@@ -790,7 +790,7 @@ oracles:
     dafny_symbol: INV_JOB_DD_RESOLUTION_THROUGH_CATALOG_AND_AUTH
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Dataset DD resolution requires catalog resolution and authorization.
 - oracle_ref: tests/golden/job/dd-authorization-0906.yml
@@ -806,7 +806,7 @@ oracles:
     dafny_symbol: INV_JOB_DD_RESOLUTION_THROUGH_CATALOG_AND_AUTH
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Dataset DD resolution requires authorization.
 - oracle_ref: tests/golden/job/dd-bypass-denied-0907.yml
@@ -822,7 +822,7 @@ oracles:
     dafny_symbol: INV_JOB_DD_RESOLUTION_THROUGH_CATALOG_AND_AUTH
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: DD resolution cannot bypass catalog and authorization.
 - oracle_ref: tests/golden/job/unauthorized-dataset-0908.yml
@@ -838,7 +838,7 @@ oracles:
     dafny_symbol: INV_DATASET_NO_HANDLE_WITHOUT_ALLOW
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Dataset handle creation requires an allow decision.
 - oracle_ref: tests/golden/job/step-failure-rc-0909.yml
@@ -870,7 +870,7 @@ oracles:
     dafny_symbol: INV_JOB_INVALID_LIFECYCLE_REJECTED
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Invalid lifecycle transitions are rejected.
 - oracle_ref: tests/golden/job/spool-create-0911.yml
@@ -918,7 +918,7 @@ oracles:
     dafny_symbol: INV_SPOOL_BROWSE_BY_NON_OWNER_DENIED
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Non-owner spool browse is denied.
 - oracle_ref: tests/golden/job/spool-purge-denied-0914.yml
@@ -934,7 +934,7 @@ oracles:
     dafny_symbol: INV_SPOOL_PURGE_WITHOUT_AUTHORITY_DENIED
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Spool purge without authority is denied.
 - oracle_ref: tests/golden/job/spool-export-no-audit-0915.yml
@@ -1062,7 +1062,7 @@ oracles:
     dafny_symbol: INV_OPERATOR_NO_COMMAND_WITHOUT_AUTH
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Operator command cannot execute without authorization.
 - oracle_ref: tests/golden/oper/destructive-no-confirm-0906.yml
@@ -1078,7 +1078,7 @@ oracles:
     dafny_symbol: INV_OPERATOR_DESTRUCTIVE_WITHOUT_CONFIRMATION_DENIED
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Destructive command without confirmation is denied.
 - oracle_ref: tests/golden/oper/dual-control-single-0907.yml
@@ -1094,7 +1094,7 @@ oracles:
     dafny_symbol: INV_OPERATOR_DUAL_CONTROL_SINGLE_APPROVAL_DENIED
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Dual-control command with one approval is denied.
 - oracle_ref: tests/golden/oper/emergency-no-reason-0908.yml
@@ -1110,7 +1110,7 @@ oracles:
     dafny_symbol: INV_OPERATOR_EMERGENCY_WITHOUT_REASON_OR_EXPIRY_DENIED
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Emergency mode without reason is denied.
 - oracle_ref: tests/golden/oper/emergency-no-expiry-0909.yml
@@ -1126,7 +1126,7 @@ oracles:
     dafny_symbol: INV_OPERATOR_EMERGENCY_WITHOUT_REASON_OR_EXPIRY_DENIED
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Emergency mode without expiry is denied.
 - oracle_ref: tests/golden/oper/automation-bypass-0910.yml
@@ -1174,7 +1174,7 @@ oracles:
     dafny_symbol: INV_OPERATOR_NO_COMMAND_WITHOUT_AUDIT
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Audited operator commands require audit evidence.
 - oracle_ref: tests/golden/oper/root-shell-first-ui-0913.yml
@@ -1190,7 +1190,7 @@ oracles:
     dafny_symbol: INV_OPERATOR_ROOT_SHELL_NOT_FIRST_UI
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Root shell cannot be modeled as the first privileged UI.
 - oracle_ref: tests/golden/first-vertical-slice/hello-job.yml
@@ -1206,7 +1206,7 @@ oracles:
     dafny_symbol: HelloJobContract
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Hello-job final state, return code, handle-after-allow, spool output, and
       audit sequence are verified and fixture-linked.
@@ -1223,7 +1223,7 @@ oracles:
     dafny_symbol: BobDeniedAliceDatasetContract
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Bob-denied path verifies no handle, policy denial code, before-final audit,
       and failure summary, and is fixture-linked.

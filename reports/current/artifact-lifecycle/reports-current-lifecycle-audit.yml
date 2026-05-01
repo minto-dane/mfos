@@ -4,20 +4,32 @@ status: current
 scope: reports/current
 reports_current_policy:
   allowed:
-    - cross-phase current status summaries
-    - current readiness reports
-    - current policy summaries
-    - stable current aggregate reports
+    - domain-sharded current report packages
+    - repository information architecture root reports
     - current report package indexes
   forbidden:
+    - unsharded top-level domain reports
     - phase-specific filenames
     - phase gate reports
     - generated report outputs
     - archive or superseded reports
+    - PR review artifacts
 decisions:
   keep_in_current:
     - reports/current/
+    - reports/current/architecture/
+    - reports/current/artifact-hygiene/
+    - reports/current/artifact-lifecycle/
+    - reports/current/ci/
+    - reports/current/dafny/
+    - reports/current/directory-ownership/
     - reports/current/fixedpoint/
+    - reports/current/formal-assurance/
+    - reports/current/naming-safety/
+    - reports/current/platform/
+    - reports/current/readiness/
+    - reports/current/remediation/
+    - reports/current/scaffold/
     - reports/current/source-grounding/
   move_to_reports_phases:
     - from: reports/current/phase-1-4-planning-report.md
@@ -87,5 +99,6 @@ decisions:
 post_remediation_state:
   reports_current_phase_specific_filenames_remaining: false
   reports_current_generated_reports_remaining: false
+  reports_current_unsharded_domain_reports_remaining: false
   reports_index_updated: true
   validators_enforce_boundary: true

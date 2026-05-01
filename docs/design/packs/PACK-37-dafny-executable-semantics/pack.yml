@@ -32,7 +32,7 @@ outputs:
   - formal/executable-semantics/dafny/modules/
   - tools/semantic-fixture-normalizer/
   - tools/dafny-conformance-harness/
-  - reports/current/dafny-semantics-report.md
+  - reports/current/dafny/dafny-semantics-report.md
 source_refs:
   - EXTREF-DAFNY-REFERENCE-0001
   - EXTREF-AWS-AUTOMATED-REASONING-0001

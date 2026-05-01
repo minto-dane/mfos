@@ -10747,7 +10747,7 @@ entries:
   conformance_claim_ids: []
   release_ids: []
   artifact:
-    path: reports/current/dafny-verification-report.md
+    path: reports/current/dafny/dafny-verification-report.md
     media_type: text/markdown
     sha384: null
     size_bytes: null
@@ -10779,7 +10779,7 @@ entries:
   source_matrix_ids: [FBVBS-001, EXTREF-SEL4-MULTIARCH-SUPPORTED-PLATFORMS-0001, EXTREF-SEL4-ARCH-CONFIGURATION-0001]
   conformance_claim_ids: []
   release_ids: []
-  artifact: {path: reports/current/architecture-portability-policy-report.md, media_type: text/markdown, sha384: null, size_bytes: null}
+  artifact: {path: reports/current/architecture/architecture-portability-policy-report.md, media_type: text/markdown, sha384: null, size_bytes: null}
   produced_by: {tool: codex-docs, version: null, ci_job: null, operator: codex}
   produced_at_utc: '2026-04-30T00:00:00Z'
   retention: {class: draft, retain_until_utc: null}
@@ -10796,7 +10796,7 @@ entries:
   source_matrix_ids: [X64-INTEL-001, X64-AMD-001]
   conformance_claim_ids: []
   release_ids: []
-  artifact: {path: reports/current/x86-64-target-profile-report.md, media_type: text/markdown, sha384: null, size_bytes: null}
+  artifact: {path: reports/current/architecture/x86-64-target-profile-report.md, media_type: text/markdown, sha384: null, size_bytes: null}
   produced_by: {tool: codex-docs, version: null, ci_job: null, operator: codex}
   produced_at_utc: '2026-04-30T00:00:00Z'
   retention: {class: draft, retain_until_utc: null}
@@ -10813,7 +10813,7 @@ entries:
   source_matrix_ids: [EXTREF-X86-64-MICROARCH-LEVELS-0001, EXTREF-GLIBC-HWCAPS-X86-64-V4-0001, EXTREF-GCC-X86-64-V4-0001]
   conformance_claim_ids: []
   release_ids: []
-  artifact: {path: reports/current/x86-64-target-profile-report.md, media_type: text/markdown, sha384: null, size_bytes: null}
+  artifact: {path: reports/current/architecture/x86-64-target-profile-report.md, media_type: text/markdown, sha384: null, size_bytes: null}
   produced_by: {tool: codex-docs, version: null, ci_job: null, operator: codex}
   produced_at_utc: '2026-04-30T00:00:00Z'
   retention: {class: draft, retain_until_utc: null}
@@ -10830,7 +10830,7 @@ entries:
   source_matrix_ids: [EXTREF-INTEL-TDX-OVERVIEW-0001, EXTREF-AMD-SEV-SNP-0001]
   conformance_claim_ids: []
   release_ids: []
-  artifact: {path: reports/current/x86-64-target-profile-report.md, media_type: text/markdown, sha384: null, size_bytes: null}
+  artifact: {path: reports/current/architecture/x86-64-target-profile-report.md, media_type: text/markdown, sha384: null, size_bytes: null}
   produced_by: {tool: codex-docs, version: null, ci_job: null, operator: codex}
   produced_at_utc: '2026-04-30T00:00:00Z'
   retention: {class: draft, retain_until_utc: null}
@@ -10847,7 +10847,7 @@ entries:
   source_matrix_ids: [EXTREF-INTEL-SGX-OVERVIEW-0001, EXTREF-INTEL-SGX-ATTESTATION-0001, EXTREF-INTEL-SGX-DCAP-0001]
   conformance_claim_ids: []
   release_ids: []
-  artifact: {path: reports/current/x86-64-target-profile-report.md, media_type: text/markdown, sha384: null, size_bytes: null}
+  artifact: {path: reports/current/architecture/x86-64-target-profile-report.md, media_type: text/markdown, sha384: null, size_bytes: null}
   produced_by: {tool: codex-docs, version: null, ci_job: null, operator: codex}
   produced_at_utc: '2026-04-30T00:00:00Z'
   retention: {class: draft, retain_until_utc: null}
@@ -10864,7 +10864,7 @@ entries:
   source_matrix_ids: [EXTREF-INTEL-CET-0001, EXTREF-CLANG-CFI-0001, EXTREF-GCC-CF-PROTECTION-0001]
   conformance_claim_ids: []
   release_ids: []
-  artifact: {path: reports/current/x86-64-target-profile-report.md, media_type: text/markdown, sha384: null, size_bytes: null}
+  artifact: {path: reports/current/architecture/x86-64-target-profile-report.md, media_type: text/markdown, sha384: null, size_bytes: null}
   produced_by: {tool: codex-docs, version: null, ci_job: null, operator: codex}
   produced_at_utc: '2026-04-30T00:00:00Z'
   retention: {class: draft, retain_until_utc: null}
@@ -10881,7 +10881,7 @@ entries:
   source_matrix_ids: [FBVBS-001, X64-INTEL-001, X64-AMD-001]
   conformance_claim_ids: []
   release_ids: []
-  artifact: {path: reports/current/cpu-feature-registry-report.md, media_type: text/markdown, sha384: null, size_bytes: null}
+  artifact: {path: reports/current/architecture/cpu-feature-registry-report.md, media_type: text/markdown, sha384: null, size_bytes: null}
   produced_by: {tool: codex-docs, version: null, ci_job: null, operator: codex}
   produced_at_utc: '2026-04-30T00:00:00Z'
   retention: {class: draft, retain_until_utc: null}

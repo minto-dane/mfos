@@ -1,25 +1,49 @@
 schema_version: 1
-artifact_index_kind: mfos_current_report_scaffold
+artifact_index_kind: mfos_current_report_domain_inventory
 status: current
-metadata:
-  path: reports/current/.mfos-dir.yml
-  artifact_type: scaffold_metadata
-  status: current
 current_authority:
   report_inventory: reports/index.yml
-current:
-  report_files:
-    path_glob: reports/current/*.{md,yml}
-    artifact_type: report
-    status: current
-implementation_allowed:
-  production: false
-  hosted_daemon: false
-  rust_semantic_core: false
-  dafny_executable_semantics: false
-  semantic_runner: false
-  generated_production_code: false
-  validation_only: true
+domains:
+- path: reports/current/architecture/
+  index: reports/current/architecture/index.yml
+- path: reports/current/artifact-hygiene/
+  index: reports/current/artifact-hygiene/index.yml
+- path: reports/current/artifact-lifecycle/
+  index: reports/current/artifact-lifecycle/index.yml
+- path: reports/current/ci/
+  index: reports/current/ci/index.yml
+- path: reports/current/dafny/
+  index: reports/current/dafny/index.yml
+- path: reports/current/directory-ownership/
+  index: reports/current/directory-ownership/index.yml
+- path: reports/current/fixedpoint/
+  index: reports/current/fixedpoint/index.yml
+- path: reports/current/formal-assurance/
+  index: reports/current/formal-assurance/index.yml
+- path: reports/current/naming-safety/
+  index: reports/current/naming-safety/index.yml
+- path: reports/current/platform/
+  index: reports/current/platform/index.yml
+- path: reports/current/readiness/
+  index: reports/current/readiness/index.yml
+- path: reports/current/remediation/
+  index: reports/current/remediation/index.yml
+- path: reports/current/scaffold/
+  index: reports/current/scaffold/index.yml
+- path: reports/current/source-grounding/
+  index: reports/current/source-grounding/index.yml
+root_artifacts:
+- path: reports/current/repository-information-architecture-report.md
+  status: current
+- path: reports/current/repository-information-architecture-migration.yml
+  status: current
+- path: reports/current/repository-information-architecture-open-issues.md
+  status: current
+- path: reports/current/repository-information-architecture-red-team-review.md
+  status: current
 policy:
-  validation_only: true
-  production_implementation_allowed: false
+  top_level_domain_reports_allowed: false
+  phase_specific_reports_allowed: false
+  generated_reports_allowed: false
+  archive_reports_allowed: false
+  implementation_allowed: false

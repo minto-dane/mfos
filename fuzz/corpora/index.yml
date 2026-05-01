@@ -1,0 +1,63 @@
+schema_version: 1
+artifact_index_kind: mfos_fuzz_corpus_inventory
+status: current
+current:
+- path: fuzz/corpora/audit-record/
+  seed_plan: fuzz/corpora/audit-record/seed-plan.yml
+  target_name: audit_record
+  target_plan_ref: fuzz/targets/fuzz-target-plan.yml
+  seed_category_count: 13
+  implementation_allowed: false
+- path: fuzz/corpora/dataset-handle/
+  seed_plan: fuzz/corpora/dataset-handle/seed-plan.yml
+  target_name: dataset_handle
+  target_plan_ref: fuzz/targets/fuzz-target-plan.yml
+  seed_category_count: 13
+  implementation_allowed: false
+- path: fuzz/corpora/dsn/
+  seed_plan: fuzz/corpora/dsn/seed-plan.yml
+  target_name: dsn
+  target_plan_ref: fuzz/targets/fuzz-target-plan.yml
+  seed_category_count: 13
+  implementation_allowed: false
+- path: fuzz/corpora/job-control-stream/
+  seed_plan: fuzz/corpora/job-control-stream/seed-plan.yml
+  target_name: job_control_stream
+  target_plan_ref: fuzz/targets/fuzz-target-plan.yml
+  seed_category_count: 13
+  implementation_allowed: false
+- path: fuzz/corpora/job-fixture/
+  seed_plan: fuzz/corpora/job-fixture/seed-plan.yml
+  target_name: job_fixture
+  target_plan_ref: fuzz/targets/fuzz-target-plan.yml
+  seed_category_count: 13
+  implementation_allowed: false
+- path: fuzz/corpora/operator-command/
+  seed_plan: fuzz/corpora/operator-command/seed-plan.yml
+  target_name: operator_command
+  target_plan_ref: fuzz/targets/fuzz-target-plan.yml
+  seed_category_count: 13
+  implementation_allowed: false
+- path: fuzz/corpora/policy-language/
+  seed_plan: fuzz/corpora/policy-language/seed-plan.yml
+  target_name: policy_language
+  target_plan_ref: fuzz/targets/fuzz-target-plan.yml
+  seed_category_count: 13
+  implementation_allowed: false
+- path: fuzz/corpora/semantic-fixture/
+  seed_plan: fuzz/corpora/semantic-fixture/seed-plan.yml
+  target_name: semantic_fixture
+  target_plan_ref: fuzz/targets/fuzz-target-plan.yml
+  seed_category_count: 13
+  implementation_allowed: false
+- path: fuzz/corpora/spool-fixture/
+  seed_plan: fuzz/corpora/spool-fixture/seed-plan.yml
+  target_name: spool_fixture
+  target_plan_ref: fuzz/targets/fuzz-target-plan.yml
+  seed_category_count: 13
+  implementation_allowed: false
+policy:
+  generated_crash_artifacts_allowed: false
+  byte_level_corpus_files_allowed_in_phase09: false
+  fuzz_engines_allowed: false
+  implementation_allowed: false

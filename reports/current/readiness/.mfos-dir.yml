@@ -1,0 +1,35 @@
+directory_id: MFOS-DIR-REPORTS-CURRENT-READINESS
+path: reports/current/readiness
+role: validation
+maturity: M4_POPULATED
+status: current
+canonical: false
+description: Readiness, roadmap alignment, and post-merge integration reports.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  rust_semantic_core: false
+  semantic_runner: false
+  generated_production_code: false
+  validation_only: true
+  dafny_executable_semantics: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+depends_on:
+- reports/index.yml
+- reports/current/index.yml
+forbidden_contents:
+- phase-specific reports
+- generated reports
+- archive reports
+- production code
+phase_allowed_from: phase-0
+allowed_contents:
+- current report artifacts
+- README files
+- index files
+required_before_agent_assignment:
+- report scope
+- domain owner
+- evidence refs
+review_status: draft

@@ -1,0 +1,6 @@
+# build/ is metadata-only in this phase.
+*
+!/.gitignore
+!/.mfos-dir.yml
+!/README.md
+!/index.yml

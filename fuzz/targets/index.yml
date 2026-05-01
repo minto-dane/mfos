@@ -1,21 +1,22 @@
 schema_version: 1
 artifact_index_kind: mfos_fuzz_target_inventory
 status: current
-
 current:
   fuzz_target_plan:
     path: fuzz/targets/fuzz-target-plan.yml
     status: current
     lifecycle_status: current
     artifact_review_status: draft
-
+    target_count: 9
+    all_targets_have_seed_plan: true
 archive:
   phase_0_8:
     path: fuzz/targets/archive/phase-0-8/
     status: historical
     origin_phase: phase-0-8
-
 policy:
   phase_specific_filenames_allowed_in_root: false
   runner_or_fuzzer_implementation_allowed: false
   empty_parser_target_dirs_are_bootstrap_scaffold_only: true
+corpora_inventory: fuzz/corpora/index.yml
+validation_contract: scripts/validators/validate-fuzz-corpus-plan.py

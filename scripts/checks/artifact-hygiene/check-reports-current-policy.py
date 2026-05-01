@@ -36,7 +36,7 @@ def collect_paths(value: Any) -> set[str]:
 
 def covered(path: Path, indexed: set[str]) -> bool:
     rel = str(path.relative_to(ROOT))
-    return rel in indexed or any(rel.startswith(prefix + "/") for prefix in indexed)
+    return rel in indexed
 
 
 def yaml_top(path: Path) -> dict[str, Any]:

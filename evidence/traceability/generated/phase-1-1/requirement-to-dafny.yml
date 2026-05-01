@@ -46,7 +46,7 @@ requirements:
     dafny_symbol: INV_AUDIT_DENY_TRANSITION_WRITES_BEFORE_RETURN
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Denied operation finalization appends before-return audit evidence when
       audit is available.
@@ -73,7 +73,7 @@ requirements:
     dafny_symbol: INV_AUDIT_DENY_TRANSITION_FAILS_CLOSED_WHEN_UNAVAILABLE
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Denied operation finalization fails closed when required audit is unavailable.
   - &id005
@@ -89,7 +89,7 @@ requirements:
     dafny_symbol: INV_AUDIT_SPOOL_NOT_EVIDENCE
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Spool entries are not audit evidence.
   - &id007
@@ -97,7 +97,7 @@ requirements:
     dafny_symbol: INV_AUDIT_LOG_LINE_NOT_RECORD
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Diagnostic log lines are not audit records.
   coverage_basis: Worst linked-test level; C4/C5 require explicit verified symbols
@@ -163,7 +163,7 @@ requirements:
     dafny_symbol: HelloJobContract
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Hello-job final state, return code, handle-after-allow, spool output, and
       audit sequence are verified and fixture-linked.
@@ -172,7 +172,7 @@ requirements:
     dafny_symbol: BobDeniedAliceDatasetContract
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Bob-denied path verifies no handle, policy denial code, before-final audit,
       and failure summary, and is fixture-linked.
@@ -212,7 +212,7 @@ requirements:
     dafny_symbol: PolicyDeniedMappingForDatasetRead
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Dataset read denial maps to MFOS_ERR_POLICY_DENIED and DATASET_READ_NOT_PERMITTED.
   - &id010
@@ -220,7 +220,7 @@ requirements:
     dafny_symbol: INV_AUTH_UNSUPPORTED_NOT_SUCCESS
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: UNSUPPORTED is fail-closed and never a success result.
   - &id011
@@ -228,7 +228,7 @@ requirements:
     dafny_symbol: INV_AUTH_SPEC_GAP_NOT_SUCCESS
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: SPEC_GAP is fail-closed and never a success result.
   - &id012
@@ -253,7 +253,7 @@ requirements:
     dafny_symbol: INV_AUTH_NO_HANDLE_WITHOUT_ALLOW
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Protected handles cannot be created without ALLOW or ALLOW_WITH_AUDIT.
   coverage_basis: Worst linked-test level; C4/C5 require explicit verified symbols
@@ -366,7 +366,7 @@ requirements:
     dafny_symbol: INV_CATALOG_UNCOMMITTED_CANNOT_RESOLVE
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Uncommitted entries cannot resolve.
   - &id020
@@ -374,7 +374,7 @@ requirements:
     dafny_symbol: INV_CATALOG_ROLLED_BACK_CANNOT_RESOLVE
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Rolled-back entries cannot resolve.
   - &id021
@@ -382,7 +382,7 @@ requirements:
     dafny_symbol: INV_CATALOG_PARTIAL_JOURNAL_CANNOT_RESOLVE
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Partial-journal entries cannot resolve.
   - &id022
@@ -390,7 +390,7 @@ requirements:
     dafny_symbol: INV_CATALOG_INTEGRITY_FAILED_CANNOT_RESOLVE
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Integrity-failed entries cannot resolve.
   - &id023
@@ -398,7 +398,7 @@ requirements:
     dafny_symbol: INV_DATASET_NO_HANDLE_WITHOUT_ALLOW
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Dataset handle creation requires an allow decision.
   - &id024
@@ -406,7 +406,7 @@ requirements:
     dafny_symbol: INV_DATASET_STALE_HANDLE_AFTER_POLICY_CHANGE_REJECTED
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Policy-version-stale handles are rejected.
   - &id025
@@ -414,7 +414,7 @@ requirements:
     dafny_symbol: INV_DATASET_STALE_HANDLE_AFTER_GENERATION_CHANGE_REJECTED
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Generation-stale handles are rejected.
   - &id026
@@ -597,7 +597,7 @@ requirements:
     dafny_symbol: INV_JOB_EFFECTIVE_PRINCIPAL_BEFORE_OPEN
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Dataset open is blocked until effective principal is established.
   - &id033
@@ -605,7 +605,7 @@ requirements:
     dafny_symbol: INV_JOB_DD_RESOLUTION_THROUGH_CATALOG_AND_AUTH
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: DD resolution cannot bypass catalog and authorization.
   - &id034
@@ -613,7 +613,7 @@ requirements:
     dafny_symbol: INV_DATASET_NO_HANDLE_WITHOUT_ALLOW
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Dataset handle creation requires an allow decision.
   - &id035
@@ -629,7 +629,7 @@ requirements:
     dafny_symbol: INV_JOB_INVALID_LIFECYCLE_REJECTED
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Invalid lifecycle transitions are rejected.
   - &id037
@@ -653,7 +653,7 @@ requirements:
     dafny_symbol: INV_SPOOL_BROWSE_BY_NON_OWNER_DENIED
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Non-owner spool browse is denied.
   - &id040
@@ -661,7 +661,7 @@ requirements:
     dafny_symbol: INV_SPOOL_PURGE_WITHOUT_AUTHORITY_DENIED
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Spool purge without authority is denied.
   coverage_basis: Worst linked-test level; C4/C5 require explicit verified symbols
@@ -737,7 +737,7 @@ requirements:
     dafny_symbol: INV_OPERATOR_NO_COMMAND_WITHOUT_AUTH
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Operator command cannot execute without authorization.
   - &id043
@@ -745,7 +745,7 @@ requirements:
     dafny_symbol: INV_OPERATOR_DESTRUCTIVE_WITHOUT_CONFIRMATION_DENIED
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Destructive command without confirmation is denied.
   - &id044
@@ -753,7 +753,7 @@ requirements:
     dafny_symbol: INV_OPERATOR_DUAL_CONTROL_SINGLE_APPROVAL_DENIED
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Dual-control command with one approval is denied.
   - &id045
@@ -761,7 +761,7 @@ requirements:
     dafny_symbol: INV_OPERATOR_EMERGENCY_WITHOUT_REASON_OR_EXPIRY_DENIED
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Emergency mode without expiry is denied.
   - &id046
@@ -777,7 +777,7 @@ requirements:
     dafny_symbol: INV_OPERATOR_NO_COMMAND_WITHOUT_AUDIT
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Audited operator commands require audit evidence.
   - &id048
@@ -785,7 +785,7 @@ requirements:
     dafny_symbol: INV_OPERATOR_ROOT_SHELL_NOT_FIRST_UI
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: reports/current/dafny-verification-report.md
+    evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Root shell cannot be modeled as the first privileged UI.
   - *id015

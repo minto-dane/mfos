@@ -79,8 +79,9 @@ def main() -> int:
             allowed_paths = [str(path) for path in task.get("allowed_paths", []) if isinstance(path, str)]
             if status == "ready" and task_type in {"hosted_prototype", "service"}:
                 findings.append(Finding("ERROR", TASK_REGISTRY, f"{task_id}: hosted/service implementation task must not be ready in Phase 1"))
-            if status == "ready" and any(path.startswith("services/") for path in allowed_paths):
-                findings.append(Finding("ERROR", TASK_REGISTRY, f"{task_id}: ready task must not target retired services/ bridge"))
+            retired_prefixes = tuple(f"{root}/" for root in ("services", "nucleus", "pxm", "guard"))
+            if status == "ready" and any(path.startswith(retired_prefixes) for path in allowed_paths):
+                findings.append(Finding("ERROR", TASK_REGISTRY, f"{task_id}: ready task must not target retired top-level implementation bridge"))
 
     return emit(findings, args.mode, "Directory ownership check OK")
 

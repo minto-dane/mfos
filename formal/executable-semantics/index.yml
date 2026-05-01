@@ -1,10 +1,10 @@
 schema_version: 1
 artifact_index_kind: mfos_executable_semantics_scaffold
-status: planned
+status: current
 metadata:
   path: formal/executable-semantics/.mfos-dir.yml
   artifact_type: scaffold_metadata
-  status: planned
+  status: current
 policy_refs:
   - docs/design/specs/33-semantic-runner-contract.md
   - docs/design/specs/43-dafny-executable-semantics-policy.md
@@ -16,5 +16,8 @@ implementation_allowed:
   semantic_runner: false
   validation_only: true
 policy:
-  executable_semantics_artifacts_present: false
+  executable_semantics_artifacts_present: true
+  executable_semantics_artifact_scope: non-production Dafny artifacts under formal/executable-semantics/dafny/ only
   semantic_runner_present: false
+  phase_1_4_implementation_started: false
+  phase_1_4_product_implementation_allowed: false

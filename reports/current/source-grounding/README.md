@@ -12,11 +12,14 @@ Key outputs:
 - `source-card-grounding-audit.*`
 - `spec-section-grounding-audit.*`
 - `requirement-grounding-audit.*`
-- `reports/phases/phase-1/pack-readiness-recheck.*`
 - `conditional-refreeze-plan.*`
 - `sources-directory-decision.*`
 - `source-grounding-red-team-review.md`
 - `source-grounding-open-issues.md`
+
+Related phase reports remain outside this current package; for example,
+`reports/phases/phase-1/pack-readiness-recheck.*` is Phase 1 material, not a
+current source-grounding output.
 
 Phase 0.9.7 conclusion:
 

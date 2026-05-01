@@ -41,10 +41,10 @@ issues:
   severity: Major
   category: reports
   paths:
-  - reports/current/empty-directory-inventory.yml
-  - reports/current/directory-maturity-matrix.yml
-  - reports/current/repository-scaffold-risk-matrix.yml
-  - reports/current/repository-scaffold-next-actions.yml
+  - reports/current/directory-ownership/empty-directory-inventory.yml
+  - reports/current/directory-ownership/directory-maturity-matrix.yml
+  - reports/current/scaffold/repository-scaffold-risk-matrix.yml
+  - reports/current/scaffold/repository-scaffold-next-actions.yml
   root_cause: Current scaffold reports were not regenerated after hosted prototype
     paths were removed.
   risk: Agents could target removed hosted prototype paths.

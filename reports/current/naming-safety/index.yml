@@ -1,0 +1,20 @@
+schema_version: 1
+artifact_index_kind: mfos_current_report_domain_index
+status: current
+domain: naming-safety
+artifacts:
+- path: reports/current/naming-safety/legal-naming-remediation.md
+  status: current
+  lifecycle: current
+- path: reports/current/naming-safety/source-name-legal-safe-harbor-audit.md
+  status: current
+  lifecycle: current
+- path: reports/current/naming-safety/source-name-legal-safe-harbor-audit.yml
+  status: current
+  lifecycle: current
+policy:
+  lifecycle: current
+  phase_specific_reports_allowed: false
+  generated_reports_allowed: false
+  archive_reports_allowed: false
+  implementation_allowed: false

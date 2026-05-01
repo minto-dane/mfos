@@ -1,0 +1,721 @@
+schema_version: 1
+artifact_type: repository_information_architecture_migration_map
+status: current
+date: '2026-05-01'
+entries:
+- old_path: reports/current/ai-pack-scaffold-audit.md
+  new_path: reports/current/scaffold/ai-pack-scaffold-audit.md
+  reason: AI/pack scaffold audit belongs with scaffold current reports.
+  lifecycle: current
+  domain: scaffold
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/architecture-portability-open-issues.md
+  new_path: reports/current/architecture/architecture-portability-open-issues.md
+  reason: Architecture portability open issues belong with architecture current reports.
+  lifecycle: current
+  domain: architecture
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/architecture-portability-policy-report.md
+  new_path: reports/current/architecture/architecture-portability-policy-report.md
+  reason: Architecture portability policy belongs with architecture current reports.
+  lifecycle: current
+  domain: architecture
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/architecture-portability-red-team-review.md
+  new_path: reports/current/architecture/architecture-portability-red-team-review.md
+  reason: Architecture portability red-team review belongs with architecture current
+    reports.
+  lifecycle: current
+  domain: architecture
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/artifact-hygiene-audit.md
+  new_path: reports/current/artifact-hygiene/artifact-hygiene-audit.md
+  reason: Artifact hygiene audit belongs with artifact-hygiene current reports.
+  lifecycle: current
+  domain: artifact_hygiene
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/artifact-hygiene-audit.yml
+  new_path: reports/current/artifact-hygiene/artifact-hygiene-audit.yml
+  reason: Machine-readable artifact hygiene audit belongs with artifact-hygiene current
+    reports.
+  lifecycle: current
+  domain: artifact_hygiene
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/artifact-hygiene-followup-report.md
+  new_path: reports/current/artifact-hygiene/artifact-hygiene-followup-report.md
+  reason: Artifact hygiene follow-up belongs with artifact-hygiene current reports.
+  lifecycle: current
+  domain: artifact_hygiene
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/artifact-hygiene-open-issues.md
+  new_path: reports/current/artifact-hygiene/artifact-hygiene-open-issues.md
+  reason: Artifact hygiene open issues belong with artifact-hygiene current reports.
+  lifecycle: current
+  domain: artifact_hygiene
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/artifact-hygiene-red-team-review.md
+  new_path: reports/current/artifact-hygiene/artifact-hygiene-red-team-review.md
+  reason: Artifact hygiene red-team review belongs with artifact-hygiene current reports.
+  lifecycle: current
+  domain: artifact_hygiene
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/artifact-lifecycle-open-issues.md
+  new_path: reports/current/artifact-lifecycle/artifact-lifecycle-open-issues.md
+  reason: Artifact lifecycle open issues belong with artifact-lifecycle current reports.
+  lifecycle: current
+  domain: artifact_lifecycle
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/artifact-lifecycle-red-team-review.md
+  new_path: reports/current/artifact-lifecycle/artifact-lifecycle-red-team-review.md
+  reason: Artifact lifecycle red-team review belongs with artifact-lifecycle current
+    reports.
+  lifecycle: current
+  domain: artifact_lifecycle
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/artifact-lifecycle-remediation-report.md
+  new_path: reports/current/artifact-lifecycle/artifact-lifecycle-remediation-report.md
+  reason: Artifact lifecycle remediation report belongs with artifact-lifecycle current
+    reports.
+  lifecycle: current
+  domain: artifact_lifecycle
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/ci-workflow-remediation.md
+  new_path: reports/current/ci/ci-workflow-remediation.md
+  reason: CI workflow remediation belongs with CI current reports.
+  lifecycle: current
+  domain: ci
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/component-scaffold-remediation.md
+  new_path: reports/current/remediation/component-scaffold-remediation.md
+  reason: Component scaffold remediation belongs with cross-repository remediation
+    reports.
+  lifecycle: current
+  domain: remediation
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/cpu-feature-registry-report.md
+  new_path: reports/current/architecture/cpu-feature-registry-report.md
+  reason: CPU target and feature registry report belongs with architecture current
+    reports.
+  lifecycle: current
+  domain: architecture
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/dafny-loader-nonsemantic-review.md
+  new_path: reports/current/dafny/dafny-loader-nonsemantic-review.md
+  reason: Dafny loader boundary review belongs with Dafny current reports.
+  lifecycle: current
+  domain: dafny
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/dafny-module-hygiene-report.md
+  new_path: reports/current/dafny/dafny-module-hygiene-report.md
+  reason: Dafny module hygiene report belongs with Dafny current reports.
+  lifecycle: current
+  domain: dafny
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/dafny-semantics-open-issues.md
+  new_path: reports/current/dafny/dafny-semantics-open-issues.md
+  reason: Dafny semantics open issues belong with Dafny current reports.
+  lifecycle: current
+  domain: dafny
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/dafny-semantics-red-team-review.md
+  new_path: reports/current/dafny/dafny-semantics-red-team-review.md
+  reason: Dafny semantics red-team review belongs with Dafny current reports.
+  lifecycle: current
+  domain: dafny
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/dafny-semantics-report.md
+  new_path: reports/current/dafny/dafny-semantics-report.md
+  reason: Dafny semantics report belongs with Dafny current reports.
+  lifecycle: current
+  domain: dafny
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/dafny-semantics-validation-report.md
+  new_path: reports/current/dafny/dafny-semantics-validation-report.md
+  reason: Dafny validation report belongs with Dafny current reports.
+  lifecycle: current
+  domain: dafny
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/dafny-toolchain-open-issues.md
+  new_path: reports/current/dafny/dafny-toolchain-open-issues.md
+  reason: Dafny toolchain open issues belong with Dafny current reports.
+  lifecycle: current
+  domain: dafny
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/dafny-toolchain-red-team-review.md
+  new_path: reports/current/dafny/dafny-toolchain-red-team-review.md
+  reason: Dafny toolchain red-team review belongs with Dafny current reports.
+  lifecycle: current
+  domain: dafny
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/dafny-toolchain-report.md
+  new_path: reports/current/dafny/dafny-toolchain-report.md
+  reason: Dafny toolchain report belongs with Dafny current reports.
+  lifecycle: current
+  domain: dafny
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/dafny-verification-report.md
+  new_path: reports/current/dafny/dafny-verification-report.md
+  reason: Dafny verification report belongs with Dafny current reports.
+  lifecycle: current
+  domain: dafny
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/datacenter-cluster-remediation.md
+  new_path: reports/current/platform/datacenter-cluster-remediation.md
+  reason: Datacenter/cluster remediation belongs with platform current reports.
+  lifecycle: current
+  domain: platform
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/directory-maturity-matrix.yml
+  new_path: reports/current/directory-ownership/directory-maturity-matrix.yml
+  reason: Directory maturity matrix belongs with directory-ownership current reports.
+  lifecycle: current
+  domain: directory_ownership
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/directory-ownership-audit.md
+  new_path: reports/current/directory-ownership/directory-ownership-audit.md
+  reason: Directory ownership audit belongs with directory-ownership current reports.
+  lifecycle: current
+  domain: directory_ownership
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/directory-ownership-audit.yml
+  new_path: reports/current/directory-ownership/directory-ownership-audit.yml
+  reason: Machine-readable directory ownership audit belongs with directory-ownership
+    current reports.
+  lifecycle: current
+  domain: directory_ownership
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/docs-spec-scaffold-audit.md
+  new_path: reports/current/scaffold/docs-spec-scaffold-audit.md
+  reason: Docs/spec scaffold audit belongs with scaffold current reports.
+  lifecycle: current
+  domain: scaffold
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/empty-directory-inventory.yml
+  new_path: reports/current/directory-ownership/empty-directory-inventory.yml
+  reason: Empty directory inventory belongs with directory-ownership current reports.
+  lifecycle: current
+  domain: directory_ownership
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/evidence-traceability-remediation.md
+  new_path: reports/current/remediation/evidence-traceability-remediation.md
+  reason: Evidence traceability remediation belongs with cross-repository remediation
+    reports.
+  lifecycle: current
+  domain: remediation
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/fixture-oracle-loader-report.md
+  new_path: reports/current/dafny/fixture-oracle-loader-report.md
+  reason: Fixture/oracle loader report belongs with Dafny conformance support reports.
+  lifecycle: current
+  domain: dafny
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/implementation-scaffold-audit.md
+  new_path: reports/current/scaffold/implementation-scaffold-audit.md
+  reason: Implementation scaffold audit belongs with scaffold current reports.
+  lifecycle: current
+  domain: scaffold
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/language-formal-assurance-open-issues.md
+  new_path: reports/current/formal-assurance/language-formal-assurance-open-issues.md
+  reason: Formal assurance open issues belong with formal-assurance current reports.
+  lifecycle: current
+  domain: formal_assurance
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/language-formal-assurance-policy-report.md
+  new_path: reports/current/formal-assurance/language-formal-assurance-policy-report.md
+  reason: Formal assurance policy report belongs with formal-assurance current reports.
+  lifecycle: current
+  domain: formal_assurance
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/language-formal-assurance-red-team-review.md
+  new_path: reports/current/formal-assurance/language-formal-assurance-red-team-review.md
+  reason: Formal assurance red-team review belongs with formal-assurance current reports.
+  lifecycle: current
+  domain: formal_assurance
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/language-formal-assurance-remediation.md
+  new_path: reports/current/formal-assurance/language-formal-assurance-remediation.md
+  reason: Formal assurance remediation belongs with formal-assurance current reports.
+  lifecycle: current
+  domain: formal_assurance
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/legal-naming-remediation.md
+  new_path: reports/current/naming-safety/legal-naming-remediation.md
+  reason: Legal naming remediation belongs with naming-safety current reports.
+  lifecycle: current
+  domain: naming_safety
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/live-repo-structure-audit.md
+  new_path: reports/current/scaffold/live-repo-structure-audit.md
+  reason: Live repo structure audit belongs with scaffold current reports.
+  lifecycle: current
+  domain: scaffold
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/model-consistency-report.md
+  new_path: reports/current/dafny/model-consistency-report.md
+  reason: Model consistency report belongs with Dafny/formal current reports.
+  lifecycle: current
+  domain: dafny
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/policy-denial-error-taxonomy.md
+  new_path: reports/current/dafny/policy-denial-error-taxonomy.md
+  reason: Policy denial taxonomy belongs with Dafny current reports because it defines Phase 1 executable-semantics error boundaries.
+  lifecycle: current
+  domain: dafny
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/post-merge-integration-sweep-report.md
+  new_path: reports/current/readiness/post-merge-integration-sweep-report.md
+  reason: Post-merge integration sweep belongs with readiness current reports.
+  lifecycle: current
+  domain: readiness
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/pr-26-targeted-lifecycle-review.md
+  new_path: reports/archive/pr-reviews/pr-26-targeted-lifecycle-review.md
+  reason: 'PR #26 targeted lifecycle review is historical after PR #26 merge.'
+  lifecycle: archive
+  domain: pr_review
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/pxm-mfvm-open-issues.md
+  new_path: reports/current/platform/pxm-mfvm-open-issues.md
+  reason: PXM/MFVM open issues belong with platform current reports.
+  lifecycle: current
+  domain: platform
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/pxm-mfvm-requirements-docs-expansion-report.md
+  new_path: reports/current/platform/pxm-mfvm-requirements-docs-expansion-report.md
+  reason: PXM/MFVM requirements expansion report belongs with platform current reports.
+  lifecycle: current
+  domain: platform
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/pxm-mfvm-requirements-docs-expansion-report.yml
+  new_path: reports/current/platform/pxm-mfvm-requirements-docs-expansion-report.yml
+  reason: Machine-readable PXM/MFVM requirements expansion report belongs with platform
+    current reports.
+  lifecycle: current
+  domain: platform
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/pxm-mfvm-requirements-docs-red-team-review.md
+  new_path: reports/current/platform/pxm-mfvm-requirements-docs-red-team-review.md
+  reason: PXM/MFVM red-team review belongs with platform current reports.
+  lifecycle: current
+  domain: platform
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/reports-current-lifecycle-audit.md
+  new_path: reports/current/artifact-lifecycle/reports-current-lifecycle-audit.md
+  reason: Current report lifecycle audit belongs with artifact-lifecycle current reports.
+  lifecycle: current
+  domain: artifact_lifecycle
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/reports-current-lifecycle-audit.yml
+  new_path: reports/current/artifact-lifecycle/reports-current-lifecycle-audit.yml
+  reason: Machine-readable current report lifecycle audit belongs with artifact-lifecycle
+    current reports.
+  lifecycle: current
+  domain: artifact_lifecycle
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/repository-scaffold-audit.md
+  new_path: reports/current/scaffold/repository-scaffold-audit.md
+  reason: Repository scaffold audit belongs with scaffold current reports.
+  lifecycle: current
+  domain: scaffold
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/repository-scaffold-audit.yml
+  new_path: reports/current/scaffold/repository-scaffold-audit.yml
+  reason: Machine-readable repository scaffold audit belongs with scaffold current
+    reports.
+  lifecycle: current
+  domain: scaffold
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/repository-scaffold-next-actions.yml
+  new_path: reports/current/scaffold/repository-scaffold-next-actions.yml
+  reason: Repository scaffold next actions belong with scaffold current reports.
+  lifecycle: current
+  domain: scaffold
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/repository-scaffold-open-issues.md
+  new_path: reports/current/scaffold/repository-scaffold-open-issues.md
+  reason: Repository scaffold open issues belong with scaffold current reports.
+  lifecycle: current
+  domain: scaffold
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/repository-scaffold-red-team-review.md
+  new_path: reports/current/scaffold/repository-scaffold-red-team-review.md
+  reason: Repository scaffold red-team review belongs with scaffold current reports.
+  lifecycle: current
+  domain: scaffold
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/repository-scaffold-risk-matrix.yml
+  new_path: reports/current/scaffold/repository-scaffold-risk-matrix.yml
+  reason: Repository scaffold risk matrix belongs with scaffold current reports.
+  lifecycle: current
+  domain: scaffold
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/requirements-schema-remediation.md
+  new_path: reports/current/remediation/requirements-schema-remediation.md
+  reason: Requirement/schema remediation belongs with cross-repository remediation
+    reports.
+  lifecycle: current
+  domain: remediation
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/roadmap-phase-alignment-report.md
+  new_path: reports/current/readiness/roadmap-phase-alignment-report.md
+  reason: Roadmap phase-alignment report belongs with readiness current reports.
+  lifecycle: current
+  domain: readiness
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/scripts-ci-scaffold-audit.md
+  new_path: reports/current/ci/scripts-ci-scaffold-audit.md
+  reason: Scripts/CI scaffold audit belongs with CI current reports.
+  lifecycle: current
+  domain: ci
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/source-grounding-remediation.md
+  new_path: reports/current/source-grounding/source-grounding-remediation.md
+  reason: Source grounding remediation belongs with the existing source-grounding
+    package.
+  lifecycle: current
+  domain: source_grounding
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/source-name-legal-safe-harbor-audit.md
+  new_path: reports/current/naming-safety/source-name-legal-safe-harbor-audit.md
+  reason: Source naming legal safe-harbor audit belongs with naming-safety current
+    reports.
+  lifecycle: current
+  domain: naming_safety
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/source-name-legal-safe-harbor-audit.yml
+  new_path: reports/current/naming-safety/source-name-legal-safe-harbor-audit.yml
+  reason: Machine-readable source naming legal safe-harbor audit belongs with naming-safety
+    current reports.
+  lifecycle: current
+  domain: naming_safety
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/source-population-audit.md
+  new_path: reports/current/source-grounding/source-population-audit.md
+  reason: Source population audit belongs with the existing source-grounding package.
+  lifecycle: current
+  domain: source_grounding
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/source-population-audit.yml
+  new_path: reports/current/source-grounding/source-population-audit.yml
+  reason: Machine-readable source population audit belongs with the existing source-grounding
+    package.
+  lifecycle: current
+  domain: source_grounding
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/source-population-red-team-review.md
+  new_path: reports/current/source-grounding/source-population-red-team-review.md
+  reason: Source population red-team review belongs with the existing source-grounding
+    package.
+  lifecycle: current
+  domain: source_grounding
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/source-scaffold-audit.md
+  new_path: reports/current/source-grounding/source-scaffold-audit.md
+  reason: Source scaffold audit belongs with the existing source-grounding package.
+  lifecycle: current
+  domain: source_grounding
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/spec-doc-remediation.md
+  new_path: reports/current/remediation/spec-doc-remediation.md
+  reason: Spec/doc remediation belongs with cross-repository remediation reports.
+  lifecycle: current
+  domain: remediation
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/test-evidence-scaffold-audit.md
+  new_path: reports/current/scaffold/test-evidence-scaffold-audit.md
+  reason: Test/evidence scaffold audit belongs with scaffold current reports.
+  lifecycle: current
+  domain: scaffold
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/test-fixture-golden-remediation.md
+  new_path: reports/current/remediation/test-fixture-golden-remediation.md
+  reason: Test/fixture/golden remediation belongs with cross-repository remediation
+    reports.
+  lifecycle: current
+  domain: remediation
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/top-level-implementation-bridge-retirement-review.md
+  new_path: reports/archive/pr-reviews/pr-26-top-level-implementation-bridge-retirement-review.md
+  reason: 'PR #26 bridge retirement review is historical after PR #26 merge.'
+  lifecycle: archive
+  domain: pr_review
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/total-remediation-open-issues.md
+  new_path: reports/current/remediation/total-remediation-open-issues.md
+  reason: Total remediation open issues belong with cross-repository remediation reports.
+  lifecycle: current
+  domain: remediation
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/total-remediation-red-team-review.md
+  new_path: reports/current/remediation/total-remediation-red-team-review.md
+  reason: Total remediation red-team review belongs with cross-repository remediation
+    reports.
+  lifecycle: current
+  domain: remediation
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/total-repo-remediation-summary.md
+  new_path: reports/current/remediation/total-repo-remediation-summary.md
+  reason: Total repository remediation summary belongs with cross-repository remediation
+    reports.
+  lifecycle: current
+  domain: remediation
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/total-repo-remediation-summary.yml
+  new_path: reports/current/remediation/total-repo-remediation-summary.yml
+  reason: Machine-readable total repository remediation summary belongs with cross-repository
+    remediation reports.
+  lifecycle: current
+  domain: remediation
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/virtualization-confidential-vm-remediation.md
+  new_path: reports/current/platform/virtualization-confidential-vm-remediation.md
+  reason: Virtualization/confidential VM remediation belongs with platform current
+    reports.
+  lifecycle: current
+  domain: platform
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/x86-64-target-profile-report.md
+  new_path: reports/current/architecture/x86-64-target-profile-report.md
+  reason: x86-64 target profile report belongs with architecture current reports.
+  lifecycle: current
+  domain: architecture
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved
+- old_path: reports/current/policy/policy-denial-error-taxonomy.md
+  new_path: reports/current/dafny/policy-denial-error-taxonomy.md
+  reason: Policy-denial taxonomy is a Phase 1 executable-semantics boundary report
+    and belongs with Dafny current reports; this removes a one-file policy domain.
+  lifecycle: current
+  domain: dafny
+  references_updated: true
+  index_updated: true
+  generated_by: null
+  status: moved

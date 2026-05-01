@@ -11033,7 +11033,7 @@ entries:
   source_refs: *dafny_source_refs
   profile_applicability: *dafny_profile_applicability
   target_components:
-  - reports/current/dafny-verification-report.md
+  - reports/current/dafny/dafny-verification-report.md
   - scripts/validate-dafny-semantics.sh
   verification: *semspec_verification
   audit_obligation: *dafny_audit_obligation

@@ -214,7 +214,7 @@ controlling policy is
 
 The Phase 1 Dafny verification toolchain is pinned by
 `scripts/install-dafny.sh` to Dafny 4.11.0 with bundled Z3 4.14.1. Current
-module verification is recorded in `reports/current/dafny-verification-report.md`.
+module verification is recorded in `reports/current/dafny/dafny-verification-report.md`.
 
 Allowed Phase 1 work:
 

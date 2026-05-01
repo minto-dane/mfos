@@ -15,6 +15,7 @@ from lib.mfos_lint import Finding, ROOT, emit, load_yaml, mode_arg
 
 REQUIRED_METADATA_DIRS = [
     Path("ai"),
+    Path("build"),
     Path("ci"),
     Path("claims"),
     Path("docs/design/source-matrix"),

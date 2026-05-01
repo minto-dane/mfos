@@ -12,7 +12,8 @@ Machine-checkable design enforcement around this canon consists of:
 - Traceability matrices under ../../evidence/traceability/.
 - Report index under ../../reports/index.yml and categorized reports under
   ../../reports/.
-- Pack contracts under ../../packs/pack-index.yml.
+- Canonical pack contracts under packs/; the top-level ../../packs/
+  directory is a bridge index/projection.
 - Assurance claim tree under assurance/claim-tree.yml.
 ```
 

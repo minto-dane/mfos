@@ -1,0 +1,23 @@
+schema_version: 1
+artifact_index_kind: mfos_current_report_domain_index
+status: current
+domain: directory-ownership
+artifacts:
+- path: reports/current/directory-ownership/directory-maturity-matrix.yml
+  status: current
+  lifecycle: current
+- path: reports/current/directory-ownership/directory-ownership-audit.md
+  status: current
+  lifecycle: current
+- path: reports/current/directory-ownership/directory-ownership-audit.yml
+  status: current
+  lifecycle: current
+- path: reports/current/directory-ownership/empty-directory-inventory.yml
+  status: current
+  lifecycle: current
+policy:
+  lifecycle: current
+  phase_specific_reports_allowed: false
+  generated_reports_allowed: false
+  archive_reports_allowed: false
+  implementation_allowed: false

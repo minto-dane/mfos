@@ -1,0 +1,37 @@
+directory_id: MFOS-DIR-FORMAL-TLA
+path: formal/tla
+role: formal_model_scaffold
+maturity: M3_CONTRACTED
+status: current
+canonical: true
+description: Current abstract TLA+ design-model tree for MFOS state-machine safety artifacts.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  rust_semantic_core: false
+  dafny_executable_semantics: false
+  semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+  generated_production_code: false
+  validation_only: true
+phase_allowed_from: phase-0
+depends_on:
+  - formal/model-registry.yml
+  - docs/design/specs/24-formal-methods.md
+allowed_contents:
+  - TLA+ design models
+  - TLC cfg files
+  - abstract state-machine metadata
+  - README files
+forbidden_contents:
+  - implementation code
+  - production proof claims
+  - semantic runner implementation
+  - hosted daemon code
+  - Phase 1.4 Dafny implementation
+required_before_agent_assignment:
+  - model registry entry
+  - proof obligation ID
+  - evidence path
+review_status: draft

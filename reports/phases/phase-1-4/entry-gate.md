@@ -26,7 +26,7 @@ hosted_daemon_implementation_allowed: false
 
 A future implementation PR may enter Phase 1.4 only if all items below pass:
 
-1. `reports/current/post-merge-integration-sweep-report.md` remains present
+1. `reports/current/readiness/post-merge-integration-sweep-report.md` remains present
    and records `post_merge_integration_sweep_passed: true`.
 2. Phase 1.2 Authorization/Audit coverage validation passes.
 3. Phase 1.3 Dataset/Catalog coverage validation passes.

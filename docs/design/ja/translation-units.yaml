@@ -8,18 +8,19 @@ semantic_authority: english_canonical
 default_japanese_role: explanatory
 complete_mirror_claimed: false
 large_spec_translation_included: false
-conflict_rule: English canonical artifacts win unless a reviewed bilingual parity update changes both artifacts.
+conflict_rule: English canonical artifacts win unless a reviewed bilingual parity
+  update changes both artifacts.
 normalization:
   algorithm: sha256
   line_endings: LF
   trim_trailing_whitespace: true
   preserve_code_blocks_exactly: true
 status_values:
-  - current
-  - partial
-  - stale
-  - blocked
-  - missing
+- current
+- partial
+- stale
+- blocked
+- missing
 summary:
   canonical_markdown_units: 60
   current_units: 0
@@ -28,725 +29,725 @@ summary:
   stale_units: 0
   blocked_units: 0
 units:
-  - unit_id: TU-DOC-0001-README
-    canonical_path: docs/design/README.md
-    canonical_hash: sha256:4aa446be27925637102b92fc65a56770f333efff7487be9a0a43253f404eaed8
-    japanese_path: docs/design/ja/README.md
-    existing_japanese_paths:
-      - docs/design/ja/README.md
-    mirror_role: explanatory_index_not_complete_mirror
-    sync_status: partial
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0002-STATUS
-    canonical_path: docs/design/STATUS.md
-    canonical_hash: sha256:3a1e23ebfab84df091af372585d8abc08a625f051d4afee889245a1573a91904
-    japanese_path: docs/design/ja/STATUS.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0003-ASSURANCE-ASSURANCE-CASE-TEMPLATE
-    canonical_path: docs/design/assurance/assurance-case-template.md
-    canonical_hash: sha256:f9aa742655ee638b3e9796e2b8b24e6484c56818337a10d98805793d523e8658
-    japanese_path: docs/design/ja/assurance/assurance-case-template.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0004-ASSURANCE-CLAIM-REGISTRY-SPEC
-    canonical_path: docs/design/assurance/claim-registry-spec.md
-    canonical_hash: sha256:05e45639422b4717ac95d556f4719c81bc20208d0bc9405c6e4a32b832fde1d4
-    japanese_path: docs/design/ja/assurance/claim-registry-spec.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0005-ASSURANCE-EVIDENCE-ARCHIVE-SPEC
-    canonical_path: docs/design/assurance/evidence-archive-spec.md
-    canonical_hash: sha256:1bcc2a2e06cce786f45d1fb0fe7e3cd521806b3bde7f51e6211cf8aa7e308470
-    japanese_path: docs/design/ja/assurance/evidence-archive-spec.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0006-ASSURANCE-FORMAL-MODEL-PLAN
-    canonical_path: docs/design/assurance/formal-model-plan.md
-    canonical_hash: sha256:0bcd5a97295c2c7208d35fe89f2afc566e986cff43f65879172544775bcc8fd5
-    japanese_path: docs/design/ja/assurance/formal-model-plan.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0007-ASSURANCE-OPERATOR-RUNBOOKS
-    canonical_path: docs/design/assurance/operator-runbooks.md
-    canonical_hash: sha256:8ae90b6d2e2ba6e85ea7620745d48712884f60e43138d486c1fc30a83ddcdb43
-    japanese_path: docs/design/ja/assurance/operator-runbooks.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0008-ASSURANCE-OPERATOR-TRAINING-DRILLS
-    canonical_path: docs/design/assurance/operator-training-drills.md
-    canonical_hash: sha256:25942b40c8945f341d1cb85e4567fdd749b483cebc1d3f82b8697f454ad29108
-    japanese_path: docs/design/ja/assurance/operator-training-drills.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0009-ASSURANCE-RELEASE-REVIEW-WORKFLOW
-    canonical_path: docs/design/assurance/release-review-workflow.md
-    canonical_hash: sha256:2e680c23065f87f354065abc9bcc6076661540f591fe9db72665436e0fc55312
-    japanese_path: docs/design/ja/assurance/release-review-workflow.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0010-MFOS-DESIGN
-    canonical_path: docs/design/mfos-design.md
-    canonical_hash: sha256:051741c29c0ff04d86a9c5047cf080f80a02b416e307195e28796d273e376923
-    japanese_path: docs/design/ja/mfos-design.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0011-PACKS-PACKS
-    canonical_path: docs/design/packs/PACKS.md
-    canonical_hash: sha256:f1fa2ed692127e60b4404b06afdb53432bf71045102835f97185aef733b679cd
-    japanese_path: docs/design/ja/packs/PACKS.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0012-PROMPTS-AI-PROMPTS
-    canonical_path: docs/design/prompts/ai-prompts.md
-    canonical_hash: sha256:285ece76d84a5a056a6ab79d7eb6ec5099cc3aa9cdb78d0751cbfa0b16f81efa
-    japanese_path: docs/design/ja/prompts/ai-prompts.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0013-REGISTRIES-README
-    canonical_path: docs/design/registries/README.md
-    canonical_hash: sha256:f181eb26b559d981b208ce17fed1d4570fac252aae748abc2cc8509903e9745b
-    japanese_path: docs/design/ja/registries/README.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0014-REGISTRIES-REQUIREMENTS-SCHEMA
-    canonical_path: docs/design/registries/requirements-schema.md
-    canonical_hash: sha256:c6a0813f8d9d1a6dc0f0e88b3462202b631be6a428e8fc1de373429c0423f74a
-    japanese_path: docs/design/ja/registries/requirements-schema.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0015-SOURCE-MATRIX-SOURCE-CARD-SCHEMA
-    canonical_path: docs/design/source-matrix/source-card-schema.md
-    canonical_hash: sha256:967438be27a393bca99718d22a981aa5106f1afa3529bce17e1c125481b0f64d
-    japanese_path: docs/design/ja/source-matrix/source-card-schema.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0016-SOURCE-MATRIX-SOURCE-LINT-SPEC
-    canonical_path: docs/design/source-matrix/source-lint-spec.md
-    canonical_hash: sha256:80f95129bf17671e93a0078bac6eb1a3ab66e95338af9e6ac679c6567e88258b
-    japanese_path: docs/design/ja/source-matrix/source-lint-spec.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0017-SOURCE-MATRIX-SOURCE-MATRIX
-    canonical_path: docs/design/source-matrix/source-matrix.md
-    canonical_hash: sha256:af0dec1f05ebb366b61ba90f74bbdea89d1f61ce9b316801413750418c6746a0
-    japanese_path: docs/design/ja/source-matrix/source-matrix.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0018-SOURCE-MATRIX-TRACEABILITY-INDEX
-    canonical_path: docs/design/source-matrix/traceability-index.md
-    canonical_hash: sha256:a7dcbb5a412654b2e0e08172729739f64f395d55cb98ac3b08577b831285c90c
-    japanese_path: docs/design/ja/source-matrix/traceability-index.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0019-SOURCE-MATRIX-TRACEABILITY-POLICY
-    canonical_path: docs/design/source-matrix/traceability-policy.md
-    canonical_hash: sha256:7cbfbdbacc258b564b3d50694dc7c9cf08fecdd94a351bba1575738832833789
-    japanese_path: docs/design/ja/source-matrix/traceability-policy.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0020-SPECS-00-NORMATIVE-LANGUAGE
-    canonical_path: docs/design/specs/00-normative-language.md
-    canonical_hash: sha256:d6b714cf52e855a0c2229ca972c11ffd10c1916b09c93e6ed0adfff0b46f4b17
-    japanese_path: docs/design/ja/specs/00-normative-language.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0021-SPECS-01-GLOSSARY
-    canonical_path: docs/design/specs/01-glossary.md
-    canonical_hash: sha256:e3487e2490d4dc01e8f3df36f7a43b0472c09d100cdcdca72b199a448dc76b91
-    japanese_path: docs/design/ja/specs/01-glossary.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0022-SPECS-02-SOURCE-MATRIX
-    canonical_path: docs/design/specs/02-source-matrix.md
-    canonical_hash: sha256:2f43db986ee5fdf5d74ea384999c6265d2072e2685768015c66fc676b340f0dc
-    japanese_path: docs/design/ja/specs/02-source-matrix.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0023-SPECS-03-SYSTEM-INTEGRITY
-    canonical_path: docs/design/specs/03-system-integrity.md
-    canonical_hash: sha256:3790fd1582eda880238a23143de27a875029baac088a7d66f33fc1253dd2d87e
-    japanese_path: docs/design/ja/specs/03-system-integrity.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0024-SPECS-04-THREAT-MODEL
-    canonical_path: docs/design/specs/04-threat-model.md
-    canonical_hash: sha256:23c87c3d12914a7033306c6fea83d3ed571ce03eb5108719f332b1e36f33d1ef
-    japanese_path: docs/design/ja/specs/04-threat-model.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0025-SPECS-05-OBJECT-MODEL
-    canonical_path: docs/design/specs/05-object-model.md
-    canonical_hash: sha256:1441163be653430b6a2ef391339d5d499c389fb11b4c3ee3816b068c8ba8e511
-    japanese_path: docs/design/ja/specs/05-object-model.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0026-SPECS-06-AUTHORIZATION
-    canonical_path: docs/design/specs/06-authorization.md
-    canonical_hash: sha256:437e9f1f7313ba67a9b488adf31b770482df61e90f9880593ce09f54c5c603d9
-    japanese_path: docs/design/ja/specs/06-authorization.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0027-SPECS-07-AUDIT
-    canonical_path: docs/design/specs/07-audit.md
-    canonical_hash: sha256:66f9de06cc24f134ddb46b4db1cc9781c15b9289e1c44bd6e63def6fbc17b3f7
-    japanese_path: docs/design/ja/specs/07-audit.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0028-SPECS-08-DATASET-CATALOG
-    canonical_path: docs/design/specs/08-dataset-catalog.md
-    canonical_hash: sha256:3c2b49079fd9f5cec996cebd7c6e1406a26cbed021d4df4d8bcbff465aaace64
-    japanese_path: docs/design/ja/specs/08-dataset-catalog.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0029-SPECS-09-JOB-SPOOL
-    canonical_path: docs/design/specs/09-job-spool.md
-    canonical_hash: sha256:e090a90785047a5b214794948b96d63e2a9933ba5eda940f02decdc34af0c398
-    japanese_path: docs/design/ja/specs/09-job-spool.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0030-SPECS-10-OPERATOR-CONSOLE
-    canonical_path: docs/design/specs/10-operator-console.md
-    canonical_hash: sha256:7d1681c1924861a00912e9a20523706c3ebad8043677a4aad4c2174adb044510
-    japanese_path: docs/design/ja/specs/10-operator-console.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0031-SPECS-11-WORKLOAD-POLICY
-    canonical_path: docs/design/specs/11-workload-policy.md
-    canonical_hash: sha256:b1bfa5ca1e8c6c08ad7732bb4d5d795f66fcbcbb4d5618cd58f0f1285405cebd
-    japanese_path: docs/design/ja/specs/11-workload-policy.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0032-SPECS-12-AMF
-    canonical_path: docs/design/specs/12-amf.md
-    canonical_hash: sha256:fe41a9b4ac0fc4c262e46442b2caa5b49ff4bd0b32e7539de1674848beb62982
-    japanese_path: docs/design/ja/specs/12-amf.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0033-SPECS-13-UPDATE
-    canonical_path: docs/design/specs/13-update.md
-    canonical_hash: sha256:2c47f10f92b8bf4497e49e80380a6c18d299eb631383dd96792f209c3a4ae19f
-    japanese_path: docs/design/ja/specs/13-update.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0034-SPECS-14-NUCLEUS
-    canonical_path: docs/design/specs/14-nucleus.md
-    canonical_hash: sha256:584d70a5a0cd92c493f51e26f892ff4ea481894a5817d082e1e6ccb43fb92808
-    japanese_path: docs/design/ja/specs/14-nucleus.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0035-SPECS-15-SVC-PCALL
-    canonical_path: docs/design/specs/15-svc-pcall.md
-    canonical_hash: sha256:0e80282a83cf1417d77af17b91bfa4a96d2cfdb242da9d239544459dffbe8249
-    japanese_path: docs/design/ja/specs/15-svc-pcall.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0036-SPECS-16-PXM
-    canonical_path: docs/design/specs/16-pxm.md
-    canonical_hash: sha256:e9bf8c031d65e27afa5ffb04c54cafe0a7434063a28e07e9650d8a6d897b28b5
-    japanese_path: docs/design/ja/specs/16-pxm.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0037-SPECS-17-GUARD
-    canonical_path: docs/design/specs/17-guard.md
-    canonical_hash: sha256:f5ea987bd409cbacb58d8dc7b561c49bcd2da847e2d0854ec61ee594cb754949
-    japanese_path: docs/design/ja/specs/17-guard.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0038-SPECS-18-LINUX-GATEWAY
-    canonical_path: docs/design/specs/18-linux-gateway.md
-    canonical_hash: sha256:7a2686f7b4331f92c79c0b64141588acc5857dd743c78bd540d0d90e5fc514a2
-    japanese_path: docs/design/ja/specs/18-linux-gateway.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0039-SPECS-19-ASSURANCE-CASE
-    canonical_path: docs/design/specs/19-assurance-case.md
-    canonical_hash: sha256:f572a471f36f15ba3fbcbbed71031760c7ce66e457a20aac328885b0765fbfa7
-    japanese_path: docs/design/ja/specs/19-assurance-case.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0040-SPECS-20-CONFORMANCE
-    canonical_path: docs/design/specs/20-conformance.md
-    canonical_hash: sha256:90e291b8a337b271acda3a3324cb8c6852e07f3c0ab3095525a6306477dbcdbe
-    japanese_path: docs/design/ja/specs/20-conformance.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0041-SPECS-21-AI-IMPLEMENTATION-CONTRACT
-    canonical_path: docs/design/specs/21-ai-implementation-contract.md
-    canonical_hash: sha256:48cf2679041c95bb42b9b0fd1298fc92b2436bba107647052f45bc2e17a0346d
-    japanese_path: docs/design/ja/specs/21-ai-implementation-contract.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0042-SPECS-22-PRODUCTION-READINESS
-    canonical_path: docs/design/specs/22-production-readiness.md
-    canonical_hash: sha256:e3862391195173479064904cc4911d99b49bfecd60c6d2b767afef26c9c3dcc7
-    japanese_path: docs/design/ja/specs/22-production-readiness.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0043-SPECS-23-REQUIREMENTS-CATALOG
-    canonical_path: docs/design/specs/23-requirements-catalog.md
-    canonical_hash: sha256:744f382b537f51cc7a01c4f87ed90ad874698c7daf96f80d0e60fcec6b28c5eb
-    japanese_path: docs/design/ja/specs/23-requirements-catalog.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0044-SPECS-24-FORMAL-METHODS
-    canonical_path: docs/design/specs/24-formal-methods.md
-    canonical_hash: sha256:200ee3d0493c0510ee2296aee1a41ae74bdcbd58ca87bc4853ece4d176cc026d
-    japanese_path: docs/design/ja/specs/24-formal-methods.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0045-SPECS-25-OPERATIONS-RECOVERY
-    canonical_path: docs/design/specs/25-operations-recovery.md
-    canonical_hash: sha256:c76e3ef6c8677b6d9309501bce223f0a438065cd35937fcc4f58a0af83e2dd70
-    japanese_path: docs/design/ja/specs/25-operations-recovery.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0046-SPECS-26-HARDWARE-PROFILE
-    canonical_path: docs/design/specs/26-hardware-profile.md
-    canonical_hash: sha256:a6a15c6eea07693c036dca79ab23f8f47062bb5db733d7cc152d36617a5d69b6
-    japanese_path: docs/design/ja/specs/26-hardware-profile.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0047-SPECS-27-SPEC-FRONT-MATTER
-    canonical_path: docs/design/specs/27-spec-front-matter.md
-    canonical_hash: sha256:ac8948363c465febab75eada68a3e1bc90cd993884c95e7129ca9e6dd01fb182
-    japanese_path: docs/design/ja/specs/27-spec-front-matter.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0048-SPECS-28-MACHINE-READABLE-REGISTRIES
-    canonical_path: docs/design/specs/28-machine-readable-registries.md
-    canonical_hash: sha256:9102e78ac7001255f8b7b1e3b0dd9affa455f12f1ec791558046cc4d5d301af9
-    japanese_path: docs/design/ja/specs/28-machine-readable-registries.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0049-SPECS-29-TEST-STRATEGY
-    canonical_path: docs/design/specs/29-test-strategy.md
-    canonical_hash: sha256:ab4d066c7f0dc176bd28b3477830344c54073f5877ca95f073b92dc5680c78ab
-    japanese_path: docs/design/ja/specs/29-test-strategy.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0050-SPECS-30-ATTESTATION-MEASURED-BOOT
-    canonical_path: docs/design/specs/30-attestation-measured-boot.md
-    canonical_hash: sha256:9e4aaa9c388046ef30d13b07f0f554425cf9b693f93303476419a8c5471472db
-    japanese_path: docs/design/ja/specs/30-attestation-measured-boot.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0051-SPECS-31-RELEASE-DISTRIBUTION-ROLLBACK
-    canonical_path: docs/design/specs/31-release-distribution-rollback.md
-    canonical_hash: sha256:32279b0cadf7d9af96fed9ee5424eef1685afc564e91c9c5a2ee7da5fd6674b7
-    japanese_path: docs/design/ja/specs/31-release-distribution-rollback.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0052-SPECS-32-LANGUAGE-LOCALIZATION
-    canonical_path: docs/design/specs/32-language-localization.md
-    canonical_hash: sha256:ce0b19cf8f5dcadcb6f6aa7f31bb52faf0fcf255b7d88bfe4dc3e32ce457acf5
-    japanese_path: docs/design/ja/specs/32-language-localization.md
-    existing_japanese_paths:
-      - docs/design/ja/SYNC-POLICY.md
-    mirror_role: auxiliary_policy_summary_not_complete_mirror
-    sync_status: partial
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0053-SPECS-33-POLICY-LINT
-    canonical_path: docs/design/specs/33-policy-lint.md
-    canonical_hash: sha256:d0e89a2ef1315ad1fe532b4ac53b8a55b77ba0b1f48d8215139233200712fb2e
-    japanese_path: docs/design/ja/specs/33-policy-lint.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0054-SPECS-INDEX
-    canonical_path: docs/design/specs/INDEX.md
-    canonical_hash: sha256:1ebaf63e6d63def9592be00ece3754b51f8a4b18644f80738bed48caece5f6bd
-    japanese_path: docs/design/ja/specs/INDEX.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0055-TASKS-IMPLEMENTATION-ROADMAP
-    canonical_path: docs/design/tasks/implementation-roadmap.md
-    canonical_hash: sha256:a06ae1cf27c2adfd06e4e39d1a26c14725b16ab7d708cfeb4c58d2b5b40169a5
-    japanese_path: docs/design/ja/tasks/implementation-roadmap.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0056-TASKS-JAPANESE-DOC-SYNC
-    canonical_path: docs/design/tasks/japanese-doc-sync.md
-    canonical_hash: sha256:124798ea14ab700027cc7cf7e7d4e4610f923d79fc592e698edc2e99cb58fb20
-    japanese_path: docs/design/ja/tasks/japanese-doc-sync.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0057-TASKS-PHASE-0-7-SYSTEM-INTEGRITY-DEEP-SPEC
-    canonical_path: docs/design/tasks/archive/phase-0-7/system-integrity-deep-spec.md
-    canonical_hash: sha256:2480d87259fc7a43f18c817d89096b089b3e0600a01098040fa17d89c1b0dd96
-    japanese_path: docs/design/ja/tasks/archive/phase-0-7/system-integrity-deep-spec.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0058-TASKS-SPEC-FRONT-MATTER-MIGRATION
-    canonical_path: docs/design/tasks/spec-front-matter-migration.md
-    canonical_hash: sha256:e51123049346589bb4910c85706a76815e06e23f279d189127da0dade0c0d16c
-    japanese_path: docs/design/ja/tasks/spec-front-matter-migration.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0059-TASKS-TEST-TAXONOMY
-    canonical_path: docs/design/tasks/test-taxonomy.md
-    canonical_hash: sha256:105acf729f67c028b9fb5af060eb590cf235b4d1c66ada13109887fd0a60ab5c
-    japanese_path: docs/design/ja/tasks/test-taxonomy.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
-  - unit_id: TU-DOC-0060-TASKS-WORK-BREAKDOWN
-    canonical_path: docs/design/tasks/work-breakdown.md
-    canonical_hash: sha256:31b2b6d46acab291e78efed5adb621cca92c69ab2e8ad70e622e402b784b8f01
-    japanese_path: docs/design/ja/tasks/work-breakdown.md
-    existing_japanese_paths: []
-    mirror_role: structural_mirror_target
-    sync_status: missing
-    semantic_sync_required: true
-    japanese_may_override_canonical: false
-    source_hash_status: recorded
-    translation_scope: document_level_placeholder
-    notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0001-README
+  canonical_path: docs/design/README.md
+  canonical_hash: sha256:7f5c068d6e4f03b39f2fed292e9187ec9bdbf1030d8c4b29253c9c39e8f69813
+  japanese_path: docs/design/ja/README.md
+  existing_japanese_paths:
+  - docs/design/ja/README.md
+  mirror_role: explanatory_index_not_complete_mirror
+  sync_status: partial
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0002-STATUS
+  canonical_path: docs/design/STATUS.md
+  canonical_hash: sha256:bd87768865970bf812929afad96515f1a972f197fd1916fdb446c0b2f8d59d2d
+  japanese_path: docs/design/ja/STATUS.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0003-ASSURANCE-ASSURANCE-CASE-TEMPLATE
+  canonical_path: docs/design/assurance/assurance-case-template.md
+  canonical_hash: sha256:6df9635ff7d3ca6af3a60c20188110f7a827dc518d9072ea6a4d5dd0e5372586
+  japanese_path: docs/design/ja/assurance/assurance-case-template.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0004-ASSURANCE-CLAIM-REGISTRY-SPEC
+  canonical_path: docs/design/assurance/claim-registry-spec.md
+  canonical_hash: sha256:7433f9984cd35b8a13206510dab16d3e5898460bf0db038908476f299793ca0f
+  japanese_path: docs/design/ja/assurance/claim-registry-spec.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0005-ASSURANCE-EVIDENCE-ARCHIVE-SPEC
+  canonical_path: docs/design/assurance/evidence-archive-spec.md
+  canonical_hash: sha256:1bcc2a2e06cce786f45d1fb0fe7e3cd521806b3bde7f51e6211cf8aa7e308470
+  japanese_path: docs/design/ja/assurance/evidence-archive-spec.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0006-ASSURANCE-FORMAL-MODEL-PLAN
+  canonical_path: docs/design/assurance/formal-model-plan.md
+  canonical_hash: sha256:7b0d5fa8c2a2b4181121b0a34c32a776fd4db3500cafc8df90e6700f4df8b3b1
+  japanese_path: docs/design/ja/assurance/formal-model-plan.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0007-ASSURANCE-OPERATOR-RUNBOOKS
+  canonical_path: docs/design/assurance/operator-runbooks.md
+  canonical_hash: sha256:9742ce6a7939c0c068586c232632acf07de8fbd3582d6b9280dc215915897e35
+  japanese_path: docs/design/ja/assurance/operator-runbooks.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0008-ASSURANCE-OPERATOR-TRAINING-DRILLS
+  canonical_path: docs/design/assurance/operator-training-drills.md
+  canonical_hash: sha256:4e9c7104f09dc7eba6cf6653263599f9c313d4429fbcf3f11e440d95668fda7e
+  japanese_path: docs/design/ja/assurance/operator-training-drills.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0009-ASSURANCE-RELEASE-REVIEW-WORKFLOW
+  canonical_path: docs/design/assurance/release-review-workflow.md
+  canonical_hash: sha256:2e680c23065f87f354065abc9bcc6076661540f591fe9db72665436e0fc55312
+  japanese_path: docs/design/ja/assurance/release-review-workflow.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0010-MFOS-DESIGN
+  canonical_path: docs/design/mfos-design.md
+  canonical_hash: sha256:7b69a994b1046023b5b35ba4c7c0cd9aeeb8ee8fb0cc0ae8eaf662b74372372e
+  japanese_path: docs/design/ja/mfos-design.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0011-PACKS-PACKS
+  canonical_path: docs/design/packs/PACKS.md
+  canonical_hash: sha256:d726389cb39e717cb1903cf3b69dd6b1ccd361a8ecc65eb2adb8962efe7cc4a2
+  japanese_path: docs/design/ja/packs/PACKS.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0012-PROMPTS-AI-PROMPTS
+  canonical_path: docs/design/prompts/ai-prompts.md
+  canonical_hash: sha256:57ff1ac9b4851a78a6a446ad1be0b16a459961fd3a46fbafe825b04c1bb51d20
+  japanese_path: docs/design/ja/prompts/ai-prompts.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0013-REGISTRIES-README
+  canonical_path: docs/design/registries/README.md
+  canonical_hash: sha256:8947656c043062def40a1cf34ce039c571005a763b2cb04baf27394a6915abd7
+  japanese_path: docs/design/ja/registries/README.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0014-REGISTRIES-REQUIREMENTS-SCHEMA
+  canonical_path: docs/design/registries/requirements-schema.md
+  canonical_hash: sha256:37233e159f261b5bc02d1e9a331d7c37ecff04e46c812ddb9108b16c8112920a
+  japanese_path: docs/design/ja/registries/requirements-schema.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0015-SOURCE-MATRIX-SOURCE-CARD-SCHEMA
+  canonical_path: docs/design/source-matrix/source-card-schema.md
+  canonical_hash: sha256:552f313249645e062ec48cb10b980c2d0f459af70bb72668ea000870b4686020
+  japanese_path: docs/design/ja/source-matrix/source-card-schema.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0016-SOURCE-MATRIX-SOURCE-LINT-SPEC
+  canonical_path: docs/design/source-matrix/source-lint-spec.md
+  canonical_hash: sha256:3fbe3b288d3aa21df2b51670a265389cc04325d1abf56dd03b7eda77b7e727db
+  japanese_path: docs/design/ja/source-matrix/source-lint-spec.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0017-SOURCE-MATRIX-SOURCE-MATRIX
+  canonical_path: docs/design/source-matrix/source-matrix.md
+  canonical_hash: sha256:fc494ca1bee5b32cf14d32666433b2e580ff9756e11e00dc7885914d343e2e70
+  japanese_path: docs/design/ja/source-matrix/source-matrix.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0018-SOURCE-MATRIX-TRACEABILITY-INDEX
+  canonical_path: docs/design/source-matrix/traceability-index.md
+  canonical_hash: sha256:e1cc1d17ebc75c02450be06e4c58183000a6ec3b004aa221ab6d8ddc8edd7686
+  japanese_path: docs/design/ja/source-matrix/traceability-index.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0019-SOURCE-MATRIX-TRACEABILITY-POLICY
+  canonical_path: docs/design/source-matrix/traceability-policy.md
+  canonical_hash: sha256:2498deced162c99da5d0ecdeda6a6a91e863b31c0226b0c52fc192936a905946
+  japanese_path: docs/design/ja/source-matrix/traceability-policy.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0020-SPECS-00-NORMATIVE-LANGUAGE
+  canonical_path: docs/design/specs/00-normative-language.md
+  canonical_hash: sha256:57a8bf461ac489eab96f2ebf222959c068c4b69a74fbc0cef0e356e543d903ef
+  japanese_path: docs/design/ja/specs/00-normative-language.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0021-SPECS-01-GLOSSARY
+  canonical_path: docs/design/specs/01-glossary.md
+  canonical_hash: sha256:4b9402cc57b097964e58c47700df8b305a0c6db8467877591746328389d37179
+  japanese_path: docs/design/ja/specs/01-glossary.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0022-SPECS-02-SOURCE-MATRIX
+  canonical_path: docs/design/specs/02-source-matrix.md
+  canonical_hash: sha256:5c1e4d77c816b005e8623b710cd03a9954b2b5818db660f7a46085baf1e3bc9d
+  japanese_path: docs/design/ja/specs/02-source-matrix.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0023-SPECS-03-SYSTEM-INTEGRITY
+  canonical_path: docs/design/specs/03-system-integrity.md
+  canonical_hash: sha256:c94b456dea3d5898921b86f541ca796bb8bdce6d119103101be6e80e0c5b809f
+  japanese_path: docs/design/ja/specs/03-system-integrity.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0024-SPECS-04-THREAT-MODEL
+  canonical_path: docs/design/specs/04-threat-model.md
+  canonical_hash: sha256:7ddc7595c52c7c581350958ac9c9c21c4e4a0bfa4e1af26bffe70e7e73bd1546
+  japanese_path: docs/design/ja/specs/04-threat-model.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0025-SPECS-05-OBJECT-MODEL
+  canonical_path: docs/design/specs/05-object-model.md
+  canonical_hash: sha256:6152d5de189b9ea6155d69fa1cb1f591bce897de5a3287f4fbde24ff0158b701
+  japanese_path: docs/design/ja/specs/05-object-model.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0026-SPECS-06-AUTHORIZATION
+  canonical_path: docs/design/specs/06-authorization.md
+  canonical_hash: sha256:3d8af8674b9e2df714f0f39c431c1c9e9f52af04d3e36275d7b33b71644164e0
+  japanese_path: docs/design/ja/specs/06-authorization.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0027-SPECS-07-AUDIT
+  canonical_path: docs/design/specs/07-audit.md
+  canonical_hash: sha256:11f246e3da87078777bb39fa7667c4d886ed541423da277fdd1a29874a6e0619
+  japanese_path: docs/design/ja/specs/07-audit.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0028-SPECS-08-DATASET-CATALOG
+  canonical_path: docs/design/specs/08-dataset-catalog.md
+  canonical_hash: sha256:43b0c99fec12c4c760945018a0466472174124519b7c35363aff6e3bbc75ca09
+  japanese_path: docs/design/ja/specs/08-dataset-catalog.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0029-SPECS-09-JOB-SPOOL
+  canonical_path: docs/design/specs/09-job-spool.md
+  canonical_hash: sha256:85a975f327ca677837add012f4e3dae00ca768ba2800a024fed12f45db327870
+  japanese_path: docs/design/ja/specs/09-job-spool.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0030-SPECS-10-OPERATOR-CONSOLE
+  canonical_path: docs/design/specs/10-operator-console.md
+  canonical_hash: sha256:458673ab04ffd81837013ae509936afef2628892f40249382a2cd9736d380d4c
+  japanese_path: docs/design/ja/specs/10-operator-console.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0031-SPECS-11-WORKLOAD-POLICY
+  canonical_path: docs/design/specs/11-workload-policy.md
+  canonical_hash: sha256:5b5faa2f829e6f1bd7580e67c056cf38f21a737c404642fdb4c035670f4b8f8b
+  japanese_path: docs/design/ja/specs/11-workload-policy.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0032-SPECS-12-AMF
+  canonical_path: docs/design/specs/12-amf.md
+  canonical_hash: sha256:791d9e6bf06810b220ce52f03b5ab748ab610eaa5f198cb346f287718f7279d4
+  japanese_path: docs/design/ja/specs/12-amf.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0033-SPECS-13-UPDATE
+  canonical_path: docs/design/specs/13-update.md
+  canonical_hash: sha256:5b9fdddb1ae8f006fbe275886a5e7f6ba7f73b6507d36992f18b8f19ae8c3ae4
+  japanese_path: docs/design/ja/specs/13-update.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0034-SPECS-14-NUCLEUS
+  canonical_path: docs/design/specs/14-nucleus.md
+  canonical_hash: sha256:23c916c363fca36083d19cac839153364c63554cc741c52cba297442977f2267
+  japanese_path: docs/design/ja/specs/14-nucleus.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0035-SPECS-15-SVC-PCALL
+  canonical_path: docs/design/specs/15-svc-pcall.md
+  canonical_hash: sha256:ab298e0051e2f61587dd5402a4ead647de9b948e6522bee873e722a63812e47f
+  japanese_path: docs/design/ja/specs/15-svc-pcall.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0036-SPECS-16-PXM
+  canonical_path: docs/design/specs/16-pxm.md
+  canonical_hash: sha256:94cc2690f1c81a3c2fc58ac03b23dd7e66ad584f8c5220a2329824f780d99273
+  japanese_path: docs/design/ja/specs/16-pxm.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0037-SPECS-17-GUARD
+  canonical_path: docs/design/specs/17-guard.md
+  canonical_hash: sha256:156038b28a4167987f761429e1e51b53f55ec07acea8a58cb44c3e5aa583393a
+  japanese_path: docs/design/ja/specs/17-guard.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0038-SPECS-18-LINUX-GATEWAY
+  canonical_path: docs/design/specs/18-linux-gateway.md
+  canonical_hash: sha256:ced033239e61bad487944e42fc0d1a115dc627dc37842722a8240f8238476bd3
+  japanese_path: docs/design/ja/specs/18-linux-gateway.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0039-SPECS-19-ASSURANCE-CASE
+  canonical_path: docs/design/specs/19-assurance-case.md
+  canonical_hash: sha256:3c3a6334b10b0d868e8771bd77f0b07f7e126dba64fab7f96aa7de285afde123
+  japanese_path: docs/design/ja/specs/19-assurance-case.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0040-SPECS-20-CONFORMANCE
+  canonical_path: docs/design/specs/20-conformance.md
+  canonical_hash: sha256:1781f6860c5914e6ac31cff46547dc07e12f5f20e25d74ae1451649276815bd6
+  japanese_path: docs/design/ja/specs/20-conformance.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0041-SPECS-21-AI-IMPLEMENTATION-CONTRACT
+  canonical_path: docs/design/specs/21-ai-implementation-contract.md
+  canonical_hash: sha256:d8b6eeca49d4d75a973dcdd50e620745f65ee99788467a04d6a540d15a696ef6
+  japanese_path: docs/design/ja/specs/21-ai-implementation-contract.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0042-SPECS-22-PRODUCTION-READINESS
+  canonical_path: docs/design/specs/22-production-readiness.md
+  canonical_hash: sha256:59fb29941cf4fde9809df408ce900374b07a1164ef656a9fa298e930c8cfb65a
+  japanese_path: docs/design/ja/specs/22-production-readiness.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0043-SPECS-23-REQUIREMENTS-CATALOG
+  canonical_path: docs/design/specs/23-requirements-catalog.md
+  canonical_hash: sha256:035aee96e1958d480809509af0a1ba4c5bf55476e48f0d6f8a87e866c925d57f
+  japanese_path: docs/design/ja/specs/23-requirements-catalog.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0044-SPECS-24-FORMAL-METHODS
+  canonical_path: docs/design/specs/24-formal-methods.md
+  canonical_hash: sha256:71cddf05bffa4125ebc02cd901e98975ab77193d3b9ef2ad4ab7f75c2839fc00
+  japanese_path: docs/design/ja/specs/24-formal-methods.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0045-SPECS-25-OPERATIONS-RECOVERY
+  canonical_path: docs/design/specs/25-operations-recovery.md
+  canonical_hash: sha256:ebb7dbaf89cd486a1be0503d49df14dc8cb73c039c6359967d4d1a0243f9dc52
+  japanese_path: docs/design/ja/specs/25-operations-recovery.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0046-SPECS-26-HARDWARE-PROFILE
+  canonical_path: docs/design/specs/26-hardware-profile.md
+  canonical_hash: sha256:75dfc6676e17c1b6c76c30225b2d8d6af110bbfa1a0283c3079874e918f555b1
+  japanese_path: docs/design/ja/specs/26-hardware-profile.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0047-SPECS-27-SPEC-FRONT-MATTER
+  canonical_path: docs/design/specs/27-spec-front-matter.md
+  canonical_hash: sha256:e6dc7ad9a8b70b7aa1b8699bc4dd1ee9249825582d81366d28d5326fd55a8f76
+  japanese_path: docs/design/ja/specs/27-spec-front-matter.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0048-SPECS-28-MACHINE-READABLE-REGISTRIES
+  canonical_path: docs/design/specs/28-machine-readable-registries.md
+  canonical_hash: sha256:998ece3f294736f06e306164f53ab95208ae7a3b23ef6b2aa6e722d4ac7ee173
+  japanese_path: docs/design/ja/specs/28-machine-readable-registries.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0049-SPECS-29-TEST-STRATEGY
+  canonical_path: docs/design/specs/29-test-strategy.md
+  canonical_hash: sha256:9a2cbf3c032333e699da9add652391a0886b32f24998940c3fb6e1cc8e70538b
+  japanese_path: docs/design/ja/specs/29-test-strategy.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0050-SPECS-30-ATTESTATION-MEASURED-BOOT
+  canonical_path: docs/design/specs/30-attestation-measured-boot.md
+  canonical_hash: sha256:578c57502cc48f5bdd9400648c09bafd8a291b9deb0f25975cd5cf81e52b16ff
+  japanese_path: docs/design/ja/specs/30-attestation-measured-boot.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0051-SPECS-31-RELEASE-DISTRIBUTION-ROLLBACK
+  canonical_path: docs/design/specs/31-release-distribution-rollback.md
+  canonical_hash: sha256:d38df5aa6565f8194b084829895764d520cee3ff4524770c5b9973ab71214b36
+  japanese_path: docs/design/ja/specs/31-release-distribution-rollback.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0052-SPECS-32-LANGUAGE-LOCALIZATION
+  canonical_path: docs/design/specs/32-language-localization.md
+  canonical_hash: sha256:ce0b19cf8f5dcadcb6f6aa7f31bb52faf0fcf255b7d88bfe4dc3e32ce457acf5
+  japanese_path: docs/design/ja/specs/32-language-localization.md
+  existing_japanese_paths:
+  - docs/design/ja/SYNC-POLICY.md
+  mirror_role: auxiliary_policy_summary_not_complete_mirror
+  sync_status: partial
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0053-SPECS-33-POLICY-LINT
+  canonical_path: docs/design/specs/33-policy-lint.md
+  canonical_hash: sha256:2fa33a6e44e71caef764d71fa08de9d2b97c6866813a360d4668b42761689fef
+  japanese_path: docs/design/ja/specs/33-policy-lint.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0054-SPECS-INDEX
+  canonical_path: docs/design/specs/INDEX.md
+  canonical_hash: sha256:ec04601f7b1017b9687bf3f0f85ea68e3f4e85fd1fb8db969f95d81b68ec6075
+  japanese_path: docs/design/ja/specs/INDEX.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0055-TASKS-IMPLEMENTATION-ROADMAP
+  canonical_path: docs/design/tasks/implementation-roadmap.md
+  canonical_hash: sha256:0164f95edf1890562686b58abe5f4e8e30e34734ccec33fcfeb831bc6b4b42dd
+  japanese_path: docs/design/ja/tasks/implementation-roadmap.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0056-TASKS-JAPANESE-DOC-SYNC
+  canonical_path: docs/design/tasks/japanese-doc-sync.md
+  canonical_hash: sha256:124798ea14ab700027cc7cf7e7d4e4610f923d79fc592e698edc2e99cb58fb20
+  japanese_path: docs/design/ja/tasks/japanese-doc-sync.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0057-TASKS-PHASE-0-7-SYSTEM-INTEGRITY-DEEP-SPEC
+  canonical_path: docs/design/tasks/archive/phase-0-7/system-integrity-deep-spec.md
+  canonical_hash: sha256:db1492221582192c57390de8f38b659d44c55e2c69b9b1ef4c2b617084061d97
+  japanese_path: docs/design/ja/tasks/archive/phase-0-7/system-integrity-deep-spec.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0058-TASKS-SPEC-FRONT-MATTER-MIGRATION
+  canonical_path: docs/design/tasks/spec-front-matter-migration.md
+  canonical_hash: sha256:2337080d8cd1d101b69fd658880dfbd7e250081bc626134d45c4a8a8617dfb6c
+  japanese_path: docs/design/ja/tasks/spec-front-matter-migration.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0059-TASKS-TEST-TAXONOMY
+  canonical_path: docs/design/tasks/test-taxonomy.md
+  canonical_hash: sha256:a32333317effbb5eadad7f9b6aff8fd23eb15d5abdae563a188db56fdf4709c2
+  japanese_path: docs/design/ja/tasks/test-taxonomy.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.
+- unit_id: TU-DOC-0060-TASKS-WORK-BREAKDOWN
+  canonical_path: docs/design/tasks/work-breakdown.md
+  canonical_hash: sha256:d6ee7c7542ed4270cc753d9cfb0d97c2faf96eaee58da947110453d9a765e2f8
+  japanese_path: docs/design/ja/tasks/work-breakdown.md
+  existing_japanese_paths: []
+  mirror_role: structural_mirror_target
+  sync_status: missing
+  semantic_sync_required: true
+  japanese_may_override_canonical: false
+  source_hash_status: recorded
+  translation_scope: document_level_placeholder
+  notes: No large-spec translation is included in Phase 0.7 mirror mechanics.

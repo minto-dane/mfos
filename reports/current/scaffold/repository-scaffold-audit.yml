@@ -1,17 +1,17 @@
 schema_version: 1
 report_id: REPORT-MFOS-REPOSITORY-SCAFFOLD-AUDIT-0001
 status: current
-generated_at: '2026-04-28'
+generated_at: '2026-05-01'
 scope: repository_scaffold_completeness
 counts:
-  directories_scanned: 408
-  files_scanned: 556
-  empty_directories: 239
-  missing_requested_roots: 10
-  source_cards: 37
-  split_specs: 40
+  directories_scanned: 285
+  files_scanned: 1473
+  empty_directories: 0
+  missing_requested_roots: 0
+  source_cards: 74
+  split_specs: 51
   implementation_source_files_detected: 0
-  validation_scripts: 38
+  validation_scripts: 95
   github_workflows: 2
 phase_1_should_remain_allowed: true
 phase_1_blockers_found: false
@@ -22,40 +22,38 @@ canonical_path_decision:
   design_canon: docs/design/
   source_cards: docs/design/source-matrix/cards/
   requirements: docs/design/registries/requirements.yaml
+  implementation_future_root: implementation/
+  retired_top_level_implementation_roots:
+  - services/
+  - nucleus/
+  - pxm/
+  - guard/
   top_level_bridges:
   - specs/
   - requirements/
   - source-matrix/
   - sources/
+  - packs/
 domain_summaries:
   source_scaffold:
     canonical_source_matrix: docs/design/source-matrix/source-matrix.yml
-    source_card_count: 37
-    top_level_sources_role: planned scaffold, mostly empty
-    legacy_public_fields_in_source_cards: []
+    source_card_count: 74
+    top_level_sources_role: bridge/workbench, not canonical source-card authority
     reference_cache_private_only: true
   docs_specs:
     canonical_path: docs/design/specs/
-    split_specs: 40
-    missing_front_matter: []
-    thin_specs: []
+    split_specs: 51
     top_level_specs_role: bridge/planned promotion target
-  requirements_schemas_claims:
-    requirements_canonical: docs/design/registries/requirements.yaml
-    top_level_requirements_role: bridge plus by-domain mirror/current split work
-    schemas_role: validation schemas populated and partially validated
-    claims_role: planned top-level profile directories; claim tree canonical under
-      docs/design/assurance/claim-tree.yml
   tests_fuzz_evidence:
     phase_specific_catalogs_in_root: false
     fixture_index: tests/fixtures/index.yml
     golden_index: tests/golden/index.yml
     traceability_index: evidence/traceability/index.yml
-    fuzz_seed_plan_present: true
+    fuzz_corpus_index: fuzz/corpora/index.yml
   implementation:
     production_code_detected: false
     implementation_source_files: []
-    role: implementation_future / Phase 1+ scaffold
+    role: implementation_future scaffold only
   scripts_ci:
     validate_all: scripts/validate-all.sh
     artifact_hygiene_in_validate_all: true
@@ -64,26 +62,7 @@ domain_summaries:
     - .github/workflows/design-validation.yml
   ai_packs_prompts:
     pack_index: packs/pack-index.yml
+    pack_index_role: bridge projection
     docs_pack_contracts: docs/design/packs/
     ai_contract: ai/contracts/ai-implementation-contract.md
-missing_requested_paths:
-- path: runtime
-  status: missing
-- path: services
-  status: missing
-- path: nucleus
-  status: missing
-- path: pxm
-  status: missing
-- path: guard
-  status: missing
-- path: interfaces
-  status: missing
-- path: tools
-  status: missing
-- path: research-notes
-  status: missing
-- path: migration
-  status: missing
-- path: archive
-  status: missing
+missing_requested_paths: []

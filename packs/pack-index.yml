@@ -2,6 +2,9 @@ registry_kind: pack_contracts
 schema_version: 1
 status: draft
 updated_at_utc: '2026-04-28T00:00:00Z'
+canonical_source: docs/design/packs
+bridge_only: true
+description: Bridge projection used by validators and traceability tools; canonical pack contracts live under docs/design/packs/.
 defaults:
   scope:
   - design and validation
@@ -679,6 +682,7 @@ entries:
   - formal/tla/operator-command/state-machine.yml
   failure_modes:
   - MFOS_ERR_OPERATOR_CONFIRMATION_REQUIRED
+  - MFOS_ERR_POLICY_DENIED
   - MFOS_ERR_SPEC_GAP
   - MFOS_ERR_UNAUTHENTICATED
   - MFOS_ERR_UNSUPPORTED
@@ -1040,7 +1044,7 @@ entries:
   - schemas/mfos/pxm-control-request.schema.yml
   - schemas/mfos/pxm-capability.schema.yml
   - formal/registry.yml
-  - reports/current/pxm-mfvm-requirements-docs-expansion-report.md
+  - reports/current/platform/pxm-mfvm-requirements-docs-expansion-report.md
   source_refs:
   - EXTREF-IBM-Z-LPAR-INTRODUCTION-0001
   - EXTREF-IBM-Z-DPM-0001
@@ -2249,7 +2253,7 @@ entries:
   outputs:
   - formal/registry.yml
   - tests/catalog/automated-reasoning.yml
-  - reports/current/pxm-mfvm-requirements-docs-red-team-review.md
+  - reports/current/platform/pxm-mfvm-requirements-docs-red-team-review.md
   source_refs:
   - EXTREF-AWS-AUTOMATED-REASONING-0001
   - EXTREF-KANI-RUST-VERIFIER-0001
@@ -2330,7 +2334,7 @@ entries:
   - docs/design/specs/38-datacenter-cluster-operations.md
   outputs:
   - tests/catalog/performance-secure-operations.yml
-  - reports/current/pxm-mfvm-requirements-docs-expansion-report.md
+  - reports/current/platform/pxm-mfvm-requirements-docs-expansion-report.md
   source_refs:
   - EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
   - EXTREF-NIST-SSDF-0001
@@ -2372,8 +2376,9 @@ entries:
   - job-fixture
   - spool-fixture
   spec_gaps:
-  - Dafny toolchain is not pinned in this pack.
-  - Dafny verification is blocked where the toolchain is unavailable.
+  - Dafny verification evidence is available for the current module set only.
+  - Conformance harness comparison remains structural until reviewed Dafny model output
+    is emitted.
   implementation_allowed:
     hosted_semantic_prototype: false
     production: false
@@ -2411,7 +2416,7 @@ entries:
   - formal/executable-semantics/dafny/modules/
   - tools/semantic-fixture-normalizer/
   - tools/dafny-conformance-harness/
-  - reports/current/dafny-semantics-report.md
+  - reports/current/dafny/dafny-semantics-report.md
   source_refs:
   - EXTREF-DAFNY-REFERENCE-0001
   - EXTREF-AWS-AUTOMATED-REASONING-0001

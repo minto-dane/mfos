@@ -1,8 +1,5 @@
 # reports/current/
 
-Active report and readiness metadata for the current remediation window.
+Active cross-phase report packages are grouped by stable responsibility domains. The top level is reserved for navigation metadata and repository information architecture outputs. Phase-specific reports belong under `reports/phases/`; generated reports belong under `reports/generated/`; historical reports belong under `reports/archive/`.
 
-The authoritative report inventory remains `reports/index.yml`. Files here are
-validation and review artifacts only; they do not authorize production code,
-hosted daemons, Rust semantic-core work, new Dafny semantic scope beyond the
-reviewed Phase 1 policy, or a semantic runner.
+These artifacts are validation and review records only; they do not authorize production code, hosted daemons, Rust semantic-core work, new Phase 1.4 implementation, or semantic-runner commands.

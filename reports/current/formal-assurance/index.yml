@@ -1,0 +1,23 @@
+schema_version: 1
+artifact_index_kind: mfos_current_report_domain_index
+status: current
+domain: formal-assurance
+artifacts:
+- path: reports/current/formal-assurance/language-formal-assurance-open-issues.md
+  status: current
+  lifecycle: current
+- path: reports/current/formal-assurance/language-formal-assurance-policy-report.md
+  status: current
+  lifecycle: current
+- path: reports/current/formal-assurance/language-formal-assurance-red-team-review.md
+  status: current
+  lifecycle: current
+- path: reports/current/formal-assurance/language-formal-assurance-remediation.md
+  status: current
+  lifecycle: current
+policy:
+  lifecycle: current
+  phase_specific_reports_allowed: false
+  generated_reports_allowed: false
+  archive_reports_allowed: false
+  implementation_allowed: false

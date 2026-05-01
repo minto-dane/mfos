@@ -1,10 +1,11 @@
 directory_id: MFOS-DIR-FORMAL-EXECUTABLE-SEMANTICS
 path: formal/executable-semantics
-role: planned
-maturity: M1_PLACEHOLDER
-status: planned
+role: formal_model_scaffold
+maturity: M4_POPULATED
+status: current
 canonical: false
-description: Executable semantics scaffold metadata. No Dafny executable semantics or runner implementation is present.
+description: Parent scaffold for executable-semantics metadata. Phase 1 Dafny source artifacts are allowed only in the reviewed
+  child path formal/executable-semantics/dafny/ and remain non-production conformance artifacts.
 implementation_allowed:
   production: false
   hosted_daemon: false
@@ -17,22 +18,27 @@ implementation_allowed:
   validation_only: true
 phase_allowed_from: post-pre-implementation-gate
 depends_on:
-  - docs/design/specs/33-semantic-runner-contract.md
-  - docs/design/specs/39-language-and-verification-policy.md
-  - docs/design/specs/43-dafny-executable-semantics-policy.md
+- docs/design/specs/33-semantic-runner-contract.md
+- docs/design/specs/39-language-and-verification-policy.md
+- docs/design/specs/43-dafny-executable-semantics-policy.md
 allowed_contents:
-  - README files
-  - index files
-  - executable semantics planning metadata
+- README files
+- index files
+- executable semantics planning metadata
+- reviewed child metadata for formal/executable-semantics/dafny/
 forbidden_contents:
-  - Dafny executable semantics implementation
-  - Rust semantic core implementation
-  - semantic runner implementation
-  - implementation code
-  - generated binaries
+- Dafny executable semantics outside formal/executable-semantics/dafny/
+- Rust semantic core implementation
+- semantic runner implementation
+- hosted daemon implementation
+- hosted semantic prototype implementation
+- implementation code
+- generated production code
+- generated binaries
+- Phase 1.4 implementation claims
 required_before_agent_assignment:
-  - pre-implementation gate
-  - semantics policy approval
-  - requirement refs
-  - negative tests
+- pre-implementation gate
+- semantics policy approval
+- requirement refs
+- negative tests
 review_status: draft

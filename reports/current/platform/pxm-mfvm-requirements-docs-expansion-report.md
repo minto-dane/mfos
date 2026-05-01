@@ -1,7 +1,7 @@
 # PXM/MFVM Requirements Docs Expansion Report
 
 Status date: 2026-04-28
-Status: draft expansion complete pending final validation
+Status: current expansion complete
 
 ## Summary
 
