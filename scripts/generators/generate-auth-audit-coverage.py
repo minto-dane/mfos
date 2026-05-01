@@ -13,7 +13,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[2]
 TRACEABILITY_DIR = ROOT / "evidence" / "traceability" / "generated" / "phase-1-2"
-REPORTS_DIR = ROOT / "reports" / "current"
+REPORTS_DIR = ROOT / "reports" / "generated" / "phase-1-2"
 
 COVERAGE_LEVELS = [
     "C0_NONE",
@@ -469,10 +469,10 @@ def main() -> int:
     write_text(args.reports_dir / "dafny-authorization-audit-coverage-report.md", render_coverage_markdown(summary))
 
     gap_data = build_gap_normalization(tests, reqs, claims)
-    write_yaml(args.reports_dir / "phase-1-2-gap-normalization.yml", gap_data)
-    write_text(args.reports_dir / "phase-1-2-gap-normalization.md", render_gap_markdown(gap_data))
+    write_yaml(args.reports_dir / "gap-normalization.yml", gap_data)
+    write_text(args.reports_dir / "gap-normalization.md", render_gap_markdown(gap_data))
 
-    write_yaml(args.reports_dir / "phase-1-2-entry-gate.yml", {
+    write_yaml(args.reports_dir / "entry-gate.yml", {
         "schema_version": 1,
         "artifact_type": "phase_1_2_entry_gate",
         "status": "current",
@@ -486,9 +486,9 @@ def main() -> int:
         "entry_blockers": [],
         "merge_blockers": [],
         "formal_claim_proof_coverage_complete": False,
-        "source": "reports/current/phase-1-2-gap-normalization.yml",
+        "source": "reports/generated/phase-1-2/gap-normalization.yml",
     })
-    write_text(args.reports_dir / "phase-1-2-entry-gate.md", render_entry_gate_markdown())
+    write_text(args.reports_dir / "entry-gate.md", render_entry_gate_markdown())
 
     write_text(args.reports_dir / "dafny-authorization-audit-report.md",
                "# Dafny Authorization/Audit Report\n\nStatus: current.\n\nPhase 1.2 adds verified Dafny properties for authorization decisions, audit records, and the authorization/audit integration boundary. The audit-unavailable integration row now has real fixture/oracle/golden linkage and remains tied to the verified fail-closed Dafny transition. No production implementation, Rust semantic-core, hosted daemon, or production-like semantic runner is introduced.\n")

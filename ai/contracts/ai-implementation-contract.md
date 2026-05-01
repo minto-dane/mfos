@@ -3,6 +3,10 @@
 Status: Draft  
 Canonical language: English
 
+This is a reviewed AI workflow contract downstream of
+`docs/design/specs/21-ai-implementation-contract.md`; the spec remains the
+normative policy owner.
+
 AI agents must treat implementation as downstream of Source Cards,
 requirements, specs, tests, evidence, and pack contracts.
 

@@ -13,7 +13,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[2]
 TRACEABILITY_DIR = ROOT / "evidence" / "traceability" / "generated" / "phase-1-3"
-REPORTS_DIR = ROOT / "reports" / "current"
+REPORTS_DIR = ROOT / "reports" / "generated" / "phase-1-3"
 
 COVERAGE_LEVELS = [
     "C0_NONE",
@@ -118,7 +118,7 @@ def mapping(symbol: str, level: str) -> dict[str, Any]:
         "dafny_symbol": symbol,
         "symbol_kind": "lemma",
         "verification_status": "verified",
-        "evidence_ref": "reports/current/dafny-dataset-catalog-validation-report.md",
+        "evidence_ref": "reports/generated/phase-1-3/dafny-dataset-catalog-validation-report.md",
         "coverage_level": level,
     }
 
@@ -477,7 +477,7 @@ def main() -> int:
     write_yaml(args.reports_dir / "dafny-dataset-catalog-gap-normalization.yml", gap_data)
     write_text(args.reports_dir / "dafny-dataset-catalog-gap-normalization.md", render_gap_markdown(gap_data))
 
-    write_yaml(args.reports_dir / "phase-1-3-entry-gate.yml", {
+    write_yaml(args.reports_dir / "entry-gate.yml", {
         "schema_version": 1,
         "artifact_type": "phase_1_3_entry_gate",
         "status": "current",
@@ -490,14 +490,14 @@ def main() -> int:
         "entry_blockers": [],
         "merge_blockers": [],
         "formal_claim_proof_coverage_complete": False,
-        "source": "reports/current/dafny-dataset-catalog-gap-normalization.yml",
+        "source": "reports/generated/phase-1-3/dafny-dataset-catalog-gap-normalization.yml",
     })
-    write_text(args.reports_dir / "phase-1-3-entry-gate.md", render_entry_gate_markdown())
+    write_text(args.reports_dir / "entry-gate.md", render_entry_gate_markdown())
 
     write_text(args.reports_dir / "dafny-dataset-catalog-report.md",
                "# Dafny Dataset/Catalog Report\n\nStatus: current.\n\nPhase 1.3 deepens non-production Dafny Dataset/Catalog semantics for DSN validation, committed-entry-only catalog resolution, catalog transaction-complete rejection, partial crash candidate non-resolution, dataset handle binding, stale handle rejection, retention, immutable system datasets, invalid system-dataset marker rejection, and the Authorization/Audit integration boundary. Full crash recovery selection is not modeled or claimed. No catalogd, datasetd, storage implementation, Rust semantic-core, hosted daemon, or production-like semantic runner is introduced.\n")
     write_text(args.reports_dir / "dafny-dataset-catalog-validation-report.md",
-               "# Dafny Dataset/Catalog Validation Report\n\nStatus: current.\n\nThe current Phase 1.3 Dafny module set verifies with `136 verified, 0 errors`.\n\nValidated commands passed locally:\n\n- `./scripts/validate-all.sh --check`\n- `./scripts/validate-naming-safety.sh release`\n- `./scripts/validate-artifact-hygiene.sh`\n- `./scripts/validate-component-scaffold.sh`\n- `./scripts/validate-language-formal-assurance.sh`\n- `./scripts/validate-dafny-semantics.sh --require-dafny`\n- `python3 scripts/check-semantic-coverage-mapping.py`\n- `python3 scripts/check-formal-claim-coverage.py`\n- `python3 scripts/check-phase1-gap-triage.py`\n- `python3 scripts/check-phase1-2-auth-audit-coverage.py`\n- `python3 scripts/check-phase1-3-dataset-catalog-coverage.py`\n- `python3 -m py_compile $(find scripts tools -name '*.py' -type f | sort)`\n- `git diff --check`\n")
+               "# Dafny Dataset/Catalog Validation Report\n\nStatus: current.\n\nThe current Phase 1.3 Dafny module set verifies with `136 verified, 0 errors`.\n\nValidated commands passed locally:\n\n- `./scripts/validate-all.sh --check`\n- `./scripts/validate-naming-safety.sh release`\n- `./scripts/validate-artifact-hygiene.sh`\n- `./scripts/validate-component-scaffold.sh`\n- `./scripts/validate-language-formal-assurance.sh`\n- `./scripts/validate-dafny-semantics.sh --require-dafny`\n- `python3 scripts/checks/semantic-coverage/check-semantic-coverage-mapping.py`\n- `python3 scripts/checks/formal-claims/check-formal-claim-coverage.py`\n- `python3 scripts/phases/phase-1/check-phase1-gap-triage.py`\n- `python3 scripts/phases/phase-1/check-phase1-2-auth-audit-coverage.py`\n- `python3 scripts/phases/phase-1/check-phase1-3-dataset-catalog-coverage.py`\n- `python3 -m py_compile $(find scripts tools -name '*.py' -type f | sort)`\n- `git diff --check`\n")
     write_text(args.reports_dir / "dafny-dataset-catalog-red-team-review.md",
                "# Dafny Dataset/Catalog Red-Team Review\n\nStatus: current.\n\nCritical/Major checks addressed: handles cannot be created without ALLOW or ALLOW_WITH_AUDIT; uncommitted, rolled-back, partial-journal, integrity-failed, and transaction-not-complete catalog entries cannot resolve; stale policy/catalog/dataset generations are rejected; DENY creates no handle; audited DENY cannot bind MFOS_OK; DENY with audit obligation links to before-return audit or audit-unavailable fail-closed behavior; Dataset is not treated as a POSIX file; retention and immutable-system goldens match Dafny canonical errors; system_dataset without immutable is invalid; crash-mid-commit coverage is narrowed to partial candidate non-resolution and does not claim full recovery selection; coverage C5 rows require Dafny symbols, verification evidence, fixture/oracle/golden links, expected-error agreement, and rank-safe aggregates; formal claims remain below proof-backed levels; Python tooling remains non-semantic; no Rust semantic-core or production implementation was introduced.\n")
     write_text(args.reports_dir / "dafny-dataset-catalog-open-issues.md",

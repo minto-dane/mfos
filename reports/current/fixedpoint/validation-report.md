@@ -20,7 +20,8 @@ All required local validation commands passed with zero reported warnings or err
 
 ## Notes
 
-- `reports/current/fixedpoint/` is an explicit phase-name policy exception for this closure package.
+- `reports/current/fixedpoint/` is not a phase-name policy exception. The superseded
+  phase-1-ready-report artifacts are archived under `reports/archive/superseded/fixedpoint/`.
 - The repository graph does not republish noncanonical legacy Source IDs as active `source_refs`.
 
 ## GitHub Checks

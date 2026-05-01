@@ -36,7 +36,7 @@ None.
 ## P1 Before Phase 1
 
 - Add component-level scaffold metadata for Phase 1 target directories before assigning implementation agents.
-- Keep Phase 1 scoped to loader-only artifact validation and traceability repair; do not treat empty service/nucleus/PXM/Guard directories as ready.
+- Keep Phase 1 scoped to loader-only artifact validation and traceability repair; do not treat reserved implementation service/nucleus/PXM/Guard directories as ready.
 
 ## Supporting Files
 

@@ -37,7 +37,7 @@ formal_claims:
     dafny_symbol: INV_AUTH_NO_HANDLE_WITHOUT_ALLOW
     symbol_kind: lemma
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C3_FULL_SEMANTIC
     note: Dafny lemma exists, but formal registry is still planned/draft and proof_claimed
       is false.
@@ -54,7 +54,7 @@ formal_claims:
     dafny_symbol: INV_AUDIT_DENY_TRANSITION_WRITES_BEFORE_RETURN
     symbol_kind: lemma
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C3_FULL_SEMANTIC
     note: Dafny lemma exists, but formal registry is still planned/draft and proof_claimed
       is false.
@@ -71,7 +71,7 @@ formal_claims:
     dafny_symbol: null
     symbol_kind: null
     verification_status: missing
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C0_NONE
     note: Formal claim is outside Phase 1.1 Dafny semantic coverage.
   production_claimed: false
@@ -87,7 +87,7 @@ formal_claims:
     dafny_symbol: null
     symbol_kind: null
     verification_status: missing
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C0_NONE
     note: Formal claim is outside Phase 1.1 Dafny semantic coverage.
   production_claimed: false
@@ -103,7 +103,7 @@ formal_claims:
     dafny_symbol: null
     symbol_kind: null
     verification_status: missing
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C0_NONE
     note: Formal claim is outside Phase 1.1 Dafny semantic coverage.
   production_claimed: false
@@ -120,7 +120,7 @@ formal_claims:
     dafny_symbol: null
     symbol_kind: null
     verification_status: missing
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C0_NONE
     note: Formal claim is outside Phase 1.1 Dafny semantic coverage.
   production_claimed: false
@@ -136,7 +136,7 @@ formal_claims:
     dafny_symbol: null
     symbol_kind: null
     verification_status: missing
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C0_NONE
     note: Formal claim is outside Phase 1.1 Dafny semantic coverage.
   production_claimed: false
@@ -152,7 +152,7 @@ formal_claims:
     dafny_symbol: null
     symbol_kind: null
     verification_status: missing
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C0_NONE
     note: Formal claim is outside Phase 1.1 Dafny semantic coverage.
   production_claimed: false
@@ -168,7 +168,7 @@ formal_claims:
     dafny_symbol: null
     symbol_kind: null
     verification_status: missing
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C0_NONE
     note: Formal claim is outside Phase 1.1 Dafny semantic coverage.
   production_claimed: false
@@ -184,7 +184,7 @@ formal_claims:
     dafny_symbol: null
     symbol_kind: null
     verification_status: missing
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C0_NONE
     note: Formal claim is outside Phase 1.1 Dafny semantic coverage.
   production_claimed: false
@@ -200,7 +200,7 @@ formal_claims:
     dafny_symbol: null
     symbol_kind: null
     verification_status: missing
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C0_NONE
     note: Formal claim is outside Phase 1.1 Dafny semantic coverage.
   production_claimed: false

@@ -1,0 +1,91 @@
+schema_version: 1
+artifact_type: reports_current_lifecycle_audit
+status: current
+scope: reports/current
+reports_current_policy:
+  allowed:
+    - cross-phase current status summaries
+    - current readiness reports
+    - current policy summaries
+    - stable current aggregate reports
+    - current report package indexes
+  forbidden:
+    - phase-specific filenames
+    - phase gate reports
+    - generated report outputs
+    - archive or superseded reports
+decisions:
+  keep_in_current:
+    - reports/current/
+    - reports/current/fixedpoint/
+    - reports/current/source-grounding/
+  move_to_reports_phases:
+    - from: reports/current/phase-1-4-planning-report.md
+      to: reports/phases/phase-1-4/planning-report.md
+    - from: reports/current/phase-1-4-entry-gate.md
+      to: reports/phases/phase-1-4/entry-gate.md
+    - from: reports/current/phase-1-4-exit-gate.md
+      to: reports/phases/phase-1-4/exit-gate.md
+    - from: reports/current/phase-1-4-red-team-plan.md
+      to: reports/phases/phase-1-4/red-team-plan.md
+    - from: reports/current/phase-1-4-open-issues.md
+      to: reports/phases/phase-1-4/open-issues.md
+    - from: reports/current/pre-phase1-readiness-audit.md
+      to: reports/phases/phase-1/pre-phase1-readiness-audit.md
+    - from: reports/current/pre-phase1-readiness-audit.yml
+      to: reports/phases/phase-1/pre-phase1-readiness-audit.yml
+    - from: reports/current/pre-phase1-readiness-red-team-review.md
+      to: reports/phases/phase-1/pre-phase1-readiness-red-team-review.md
+    - from: reports/current/pre-phase1-readiness-open-issues.md
+      to: reports/phases/phase-1/pre-phase1-readiness-open-issues.md
+    - from: reports/current/pre-phase1-readiness-final-report.md
+      to: reports/phases/phase-1/pre-phase1-readiness-final-report.md
+    - from: reports/current/pre-phase1/
+      to: reports/phases/phase-1/pre-phase1/package/
+  move_to_reports_generated:
+    - from: reports/current/semantic-coverage-report.md
+      to: reports/generated/phase-1-1/semantic-coverage-report.md
+    - from: reports/current/semantic-coverage.yml
+      to: reports/generated/phase-1-1/semantic-coverage.yml
+    - from: reports/current/negative-semantics-report.md
+      to: reports/generated/phase-1-1/negative-semantics-report.md
+    - from: reports/current/semantic-coverage-red-team-review.md
+      to: reports/generated/phase-1-1/semantic-coverage-red-team-review.md
+    - from: reports/current/semantic-coverage-open-issues.md
+      to: reports/generated/phase-1-1/semantic-coverage-open-issues.md
+    - from: reports/current/phase-1-2-entry-gate.md
+      to: reports/generated/phase-1-2/entry-gate.md
+    - from: reports/current/phase-1-2-entry-gate.yml
+      to: reports/generated/phase-1-2/entry-gate.yml
+    - from: reports/current/phase-1-2-gap-normalization.md
+      to: reports/generated/phase-1-2/gap-normalization.md
+    - from: reports/current/phase-1-2-gap-normalization.yml
+      to: reports/generated/phase-1-2/gap-normalization.yml
+    - from: reports/current/dafny-authorization-audit-*
+      to: reports/generated/phase-1-2/
+    - from: reports/current/phase-1-3-entry-gate.md
+      to: reports/generated/phase-1-3/entry-gate.md
+    - from: reports/current/phase-1-3-entry-gate.yml
+      to: reports/generated/phase-1-3/entry-gate.yml
+    - from: reports/current/dafny-dataset-catalog-*
+      to: reports/generated/phase-1-3/
+  move_to_reports_archive:
+    - from: reports/current/phase-1-1-gap-triage.md
+      to: reports/archive/superseded/phase-1-1/gap-triage.md
+    - from: reports/current/phase-1-1-gap-triage.yml
+      to: reports/archive/superseded/phase-1-1/gap-triage.yml
+    - from: reports/current/fixedpoint/phase-1-ready-report.md
+      to: reports/archive/superseded/fixedpoint/phase-1-ready-report.md
+    - from: reports/current/fixedpoint/phase-1-ready-report.yml
+      to: reports/archive/superseded/fixedpoint/phase-1-ready-report.yml
+    - from: reports/current/pr-*-review-report.md
+      to: reports/archive/pr-reviews/
+    - from: reports/current/pr-*-blocker-report.md
+      to: reports/archive/pr-reviews/
+    - from: reports/current/pr-*-dependency-closure-report.md
+      to: reports/archive/pr-reviews/
+post_remediation_state:
+  reports_current_phase_specific_filenames_remaining: false
+  reports_current_generated_reports_remaining: false
+  reports_index_updated: true
+  validators_enforce_boundary: true

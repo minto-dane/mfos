@@ -1,0 +1,34 @@
+directory_id: MFOS-DIR-REPORTS-ARCHIVE
+path: reports/archive
+role: validation
+maturity: M7_ARCHIVED
+status: historical
+canonical: false
+description: Superseded, historical, and PR-review reports retained for audit history.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  rust_semantic_core: false
+  dafny_executable_semantics: false
+  semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+  generated_production_code: false
+  validation_only: true
+phase_allowed_from: phase-0
+depends_on:
+  - reports/index.yml
+allowed_contents:
+  - superseded reports
+  - historical PR review reports
+  - archived decision records
+forbidden_contents:
+  - current gate authority
+  - production code
+  - generated binaries
+  - active implementation instructions
+required_before_agent_assignment:
+  - archive reason
+  - origin phase
+  - superseding path when applicable
+review_status: draft

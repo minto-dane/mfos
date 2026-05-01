@@ -1,0 +1,41 @@
+directory_id: MFOS-DIR-IMPLEMENTATION-NUCLEUS
+path: implementation/nucleus
+role: implementation_future
+maturity: M2_CLASSIFIED
+status: planned
+canonical: true
+description: Canonical reserved future MFOS nucleus implementation area.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  rust_semantic_core: false
+  dafny_executable_semantics: false
+  semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+  generated_production_code: false
+  validation_only: true
+phase_allowed_from: post-pre-implementation-gate
+depends_on:
+  - implementation/.mfos-dir.yml
+  - implementation/nucleus/index.yml
+  - docs/design/specs/14-nucleus.md
+allowed_contents:
+  - README files
+  - future component metadata
+  - reviewed gate records
+forbidden_contents:
+  - implementation code
+  - production code
+  - hosted daemon code
+  - semantic runner implementation
+  - Rust semantic-core implementation
+  - generated production code
+  - generated binaries
+required_before_agent_assignment:
+  - pre-implementation gate
+  - source refs
+  - requirement refs
+  - negative tests
+  - evidence plan
+review_status: draft

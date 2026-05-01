@@ -1,0 +1,35 @@
+directory_id: MFOS-DIR-REPORTS-GENERATED
+path: reports/generated
+role: generated
+maturity: M4_POPULATED
+status: generated
+canonical: false
+description: Deterministic generated report outputs from local validation and coverage scripts.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  rust_semantic_core: false
+  dafny_executable_semantics: false
+  semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+  generated_production_code: false
+  validation_only: true
+phase_allowed_from: phase-0
+depends_on:
+  - reports/index.yml
+  - scripts/generators
+allowed_contents:
+  - deterministic generated reports
+  - generated coverage summaries
+  - generated traceability reports
+forbidden_contents:
+  - hand-authored gate decisions
+  - production code
+  - generated binaries
+  - unreviewed proof claims
+required_before_agent_assignment:
+  - generator path
+  - reports/index.yml entry
+  - deterministic input set
+review_status: draft

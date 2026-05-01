@@ -4,7 +4,7 @@ role: implementation_future
 maturity: M2_CLASSIFIED
 status: planned
 canonical: true
-description: Grouped OS-body implementation scaffold. Presence of directories does not authorize implementation.
+description: Canonical future layout root for grouped OS-body implementation scaffolds; this is not current implementation authority.
 implementation_allowed:
   production: false
   hosted_daemon: false

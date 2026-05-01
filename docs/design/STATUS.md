@@ -20,7 +20,8 @@ portability, x86-64 target-profile, CPU Feature Registry, and roadmap alignment
 policy update. PR #23 landed the post-architecture Authorization/Audit
 integration remediation. PR #24 landed the Phase 1.3 Dataset/Catalog Dafny
 semantic deepening and superseded the original stacked PR #20 branch after
-protected branch rules blocked a clean force-push update.
+protected branch rules blocked a clean force-push update. PR #25 landed the
+post-merge integration sweep and Phase 1.4 planning readiness record.
 Repository
 visibility may be public by owner instruction, but formal public-release claims
 remain blocked pending IP/trademark attorney review.
@@ -82,6 +83,20 @@ phase_1_3_dataset_catalog_requirement_coverage_level: C2_PARTIAL_SEMANTIC
 phase_1_3_dataset_catalog_auth_audit_integration_coverage_level: C4_VERIFIED_PROPERTY
 phase_1_3_formal_claim_proof_coverage_complete: false
 phase_1_3_dafny_verification_passed: true
+phase_1_4_job_spool_operator_planning_complete: true
+phase_1_4_job_spool_operator_implementation_started: false
+phase_1_4_job_spool_operator_entry_gate_defined: true
+phase_1_4_job_spool_operator_exit_gate_defined: true
+phase_1_4_job_spool_operator_required_properties_listed: true
+phase_1_4_job_spool_operator_required_conformance_artifacts_listed: true
+phase_1_4_job_spool_operator_validator_planned: true
+phase_1_4_job_spool_operator_validator_scaffolded: false
+phase_1_4_job_spool_operator_coverage_claimed: false
+phase_1_4_job_spool_operator_semantics_complete: false
+artifact_lifecycle_remediation_complete: true
+reports_current_phase_files_remaining: false
+duplicate_directory_ownership_classified: true
+broad_artifact_hygiene_allowlist_removed: true
 phase_1_semantic_evaluator_status: non_production_dafny_only
 phase_1_portable_semantic_core_allowed: false
 phase_1_rust_semantic_core_allowed: false
@@ -108,7 +123,7 @@ hosted_semantic_prototype_allowed: false
 public_release_allowed: false
 private_internal_use_allowed: true
 requires_ip_attorney_review_before_public_release: true
-next_phase: Phase 1.4 planning may begin after post-merge integration sweep; implementation remains gated
+next_phase: review Phase 1.4 Job/Spool/Operator planning package; implementation remains gated
 ```
 
 No production nucleus, service, PXM, Guard, or other OS-body implementation was
@@ -172,6 +187,28 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
   `C2_PARTIAL_SEMANTIC`. Generated Phase 1.3 traceability lives under
   `evidence/traceability/generated/phase-1-3/`; Python remains a non-semantic
   artifact generator and structural checker.
+- Phase 1.4 Job/Spool/Operator work is currently planning-only. The planning
+  package defines scope, entry gate, exit gate, required Dafny property rows,
+  required fixture/oracle/golden vectors, C4/C5 coverage rules, planned
+  structural validators, red-team checks, and deferred gaps. It does not
+  implement or claim Phase 1.4 semantics, does not create generated Phase 1.4
+  traceability, and does not introduce production code, Rust semantic-core,
+  hosted daemons, semantic-runner commands, or `jobd`/`spoold`/`operatord`
+  behavior.
+
+## Artifact Lifecycle Boundaries
+
+- `reports/current/` is limited to cross-phase current status summaries,
+  readiness reports, policy summaries, and stable current aggregate reports.
+- Phase-specific reports live under `reports/phases/<phase-id>/`; the Phase
+  1.4 planning package is under `reports/phases/phase-1-4/`.
+- Generated Phase 1.1, Phase 1.2, and Phase 1.3 reports live under
+  `reports/generated/phase-*`.
+- Superseded gap triage, fixed-point readiness, and PR review reports live under
+  `reports/archive/`.
+- Duplicate implementation and bridge roots are classified in
+  `reports/current/directory-ownership-audit.yml`; future implementation code
+  remains gated under `implementation/` and is not authorized in Phase 1.
 
 ## Phase 1 Formal / Traceability Consistency
 
@@ -198,7 +235,7 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
   `reports/current/fixedpoint/loop-history.yml`,
   `reports/current/fixedpoint/validation-report.yml`,
   `reports/current/fixedpoint/final-red-team-review.md`, and
-  `reports/current/fixedpoint/phase-1-ready-report.yml`.
+  `reports/archive/superseded/fixedpoint/phase-1-ready-report.yml`.
 - Closed the fixed-point Critical finding caused by ambiguous `forbidden_scope`
   booleans in readiness YAML.
 - Closed Major findings for stale Source Card refs, stale pack test refs,
@@ -697,9 +734,9 @@ Current PR and readiness reports:
 - `reports/phases/phase-1/open-issues.md`
 - `reports/current/source-grounding/conditional-refreeze-plan.md`
 - `reports/phases/phase-1/pack-readiness-recheck.md`
-- `reports/current/pre-phase1-readiness-audit.md`
-- `reports/current/pre-phase1-readiness-red-team-review.md`
-- `reports/current/pre-phase1-readiness-final-report.md`
+- `reports/phases/phase-1/pre-phase1-readiness-audit.md`
+- `reports/phases/phase-1/pre-phase1-readiness-red-team-review.md`
+- `reports/phases/phase-1/pre-phase1-readiness-final-report.md`
 - `reports/current/architecture-portability-policy-report.md`
 - `reports/current/x86-64-target-profile-report.md`
 - `reports/current/cpu-feature-registry-report.md`

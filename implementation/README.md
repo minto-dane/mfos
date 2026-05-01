@@ -1,6 +1,7 @@
 # implementation/
 
-This directory contains future implementation work for MFOS.
+This directory is the canonical future layout root for MFOS implementation
+scaffolds. Its presence does not authorize current implementation work.
 
 It is grouped here so OS body code does not sit at the same top-level as
 documentation, requirements, tests, and evidence. MFOS is not a single
@@ -31,8 +32,9 @@ implementation/guard/src/
 implementation/tools/mfctl/src/
 ```
 
-Do not infer production readiness from the presence of a directory. Production
-claims require requirements, source IDs, tests, audit obligations, and evidence.
+Do not infer implementation authority or production readiness from the presence
+of a directory. Production claims require requirements, source IDs, tests, audit
+obligations, and evidence.
 
 Phase 1 is limited to Dafny executable-semantics scaffold work and loader-only
 artifact validation under `formal/executable-semantics/dafny/`. Phase 1 does

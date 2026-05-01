@@ -39,19 +39,38 @@ current:
     origin_phase: phase-0-9
   negative:
     path: tests/catalog/negative.yml
-    artifact_type: test_catalog
+    artifact_type: test_catalog_projection
     status: current
     origin_phase: phase-0-9
+    canonical_owner: false
+    derived_from:
+    - tests/catalog/authorization.yml
+    - tests/catalog/audit.yml
+    - tests/catalog/dataset-catalog.yml
+    - tests/catalog/job-spool.yml
   failure_modes:
     path: tests/catalog/failure-modes.yml
-    artifact_type: test_catalog
+    artifact_type: test_catalog_projection
     status: current
     origin_phase: phase-0-9
+    canonical_owner: false
+    derived_from:
+    - tests/catalog/authorization.yml
+    - tests/catalog/audit.yml
+    - tests/catalog/dataset-catalog.yml
+    - tests/catalog/job-spool.yml
   conformance_index:
     path: tests/catalog/conformance-index.yml
-    artifact_type: test_catalog
+    artifact_type: test_catalog_projection
     status: current
     origin_phase: phase-0-9
+    canonical_owner: false
+    derived_from:
+    - tests/catalog/authorization.yml
+    - tests/catalog/dataset-catalog.yml
+    - tests/catalog/first-vertical-slice.yml
+    - tests/catalog/job-spool.yml
+    - tests/catalog/operator-console.yml
   pxm:
     path: tests/catalog/pxm.yml
     artifact_type: test_catalog

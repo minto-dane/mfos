@@ -1,0 +1,122 @@
+schema_version: 1
+artifact_type: directory_ownership_audit
+status: current
+duplicate_directory_ownership_classified: true
+entries:
+  - path_a: implementation/services/
+    path_b: services/
+    overlap_type: canonical_future_service_implementation_vs_retired_top_level_bridge
+    canonical_owner: implementation/services/
+    noncanonical_role: retired_absent
+    required_metadata: moved to implementation/services/
+    required_index_update: top-level bridge retired; implementation/services/index.yml added
+    risk: low
+    action: keep services/ absent; future code belongs under implementation/services/ after reviewed gate
+  - path_a: implementation/runtime/
+    path_b: runtime/
+    overlap_type: future_runtime_implementation_vs_absent_top_level_root
+    canonical_owner: implementation/runtime/
+    noncanonical_role: absent
+    required_metadata: present
+    required_index_update: none
+    risk: low
+    action: do not create top-level runtime/
+  - path_a: implementation/nucleus/
+    path_b: nucleus/
+    overlap_type: canonical_future_implementation_vs_retired_top_level_bridge
+    canonical_owner: implementation/nucleus/
+    noncanonical_role: retired_absent
+    required_metadata: moved to implementation/nucleus/
+    required_index_update: none
+    risk: low
+    action: keep top-level nucleus/ absent
+  - path_a: implementation/pxm/
+    path_b: pxm/
+    overlap_type: canonical_future_implementation_vs_retired_top_level_bridge
+    canonical_owner: implementation/pxm/
+    noncanonical_role: retired_absent
+    required_metadata: moved to implementation/pxm/
+    required_index_update: none
+    risk: low
+    action: keep top-level pxm/ absent
+  - path_a: implementation/guard/
+    path_b: guard/
+    overlap_type: canonical_future_implementation_vs_retired_top_level_bridge
+    canonical_owner: implementation/guard/
+    noncanonical_role: retired_absent
+    required_metadata: moved to implementation/guard/
+    required_index_update: none
+    risk: low
+    action: keep top-level guard/ absent
+  - path_a: tools/
+    path_b: implementation/tools/
+    overlap_type: current_validation_tools_vs_future_product_tools
+    canonical_owner: tools/
+    noncanonical_role: planned_scaffold
+    required_metadata: present
+    required_index_update: none
+    risk: medium
+    action: clarify implementation/tools/ as future MFOS tool implementation scaffold
+  - path_a: formal/executable-semantics/dafny/
+    path_b: implementation/executable-spec/
+    overlap_type: canonical_dafny_semantics_vs_absent_duplicate_root
+    canonical_owner: formal/executable-semantics/dafny/
+    noncanonical_role: absent
+    required_metadata: present
+    required_index_update: none
+    risk: medium
+    action: do not create implementation/executable-spec root
+  - path_a: docs/design/source-matrix/
+    path_b: source-matrix/
+    overlap_type: canonical_source_matrix_vs_bridge
+    canonical_owner: docs/design/source-matrix/
+    noncanonical_role: bridge
+    required_metadata: present
+    required_index_update: none
+    risk: high
+    action: require ADR and parity before migration
+  - path_a: docs/design/source-matrix/cards/
+    path_b: sources/
+    overlap_type: canonical_source_cards_vs_public_safe_workbench
+    canonical_owner: docs/design/source-matrix/
+    noncanonical_role: bridge_workbench
+    required_metadata: present
+    required_index_update: deferred parity refresh
+    risk: high
+    action: keep sources/ noncanonical until migration ADR
+  - path_a: docs/design/specs/
+    path_b: specs/
+    overlap_type: canonical_specs_vs_bridge
+    canonical_owner: docs/design/specs/
+    noncanonical_role: bridge
+    required_metadata: present
+    required_index_update: none
+    risk: medium
+    action: no normative specs under specs/ before ADR-backed promotion
+  - path_a: docs/design/packs/
+    path_b: packs/
+    overlap_type: canonical_pack_contracts_vs_bridge_index
+    canonical_owner: docs/design/packs/
+    noncanonical_role: bridge
+    required_metadata: present
+    required_index_update: metadata added
+    risk: medium
+    action: keep packs/ as bridge/review aid until migration
+  - path_a: docs/design/prompts/ai-prompts.md
+    path_b: prompts/
+    overlap_type: canonical_prompt_document_vs_bridge
+    canonical_owner: docs/design/prompts/ai-prompts.md
+    noncanonical_role: bridge
+    required_metadata: present
+    required_index_update: metadata added
+    risk: medium
+    action: keep prompt canon in docs/design/prompts
+  - path_a: docs/design/specs/21-ai-implementation-contract.md
+    path_b: ai/contracts/
+    overlap_type: canonical_policy_spec_vs_ai_workflow_contract_mirror
+    canonical_owner: docs/design/specs/21-ai-implementation-contract.md
+    noncanonical_role: reviewed_mirror
+    required_metadata: present
+    required_index_update: metadata added
+    risk: medium
+    action: clarify ai/contracts/ as downstream workflow contract area

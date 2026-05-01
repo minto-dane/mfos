@@ -1,0 +1,37 @@
+directory_id: MFOS-DIR-DESIGN-PACKS
+path: docs/design/packs
+role: canonical_registry
+maturity: M4_POPULATED
+status: current
+canonical: true
+description: Canonical design pack contracts and pack index material.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  rust_semantic_core: false
+  dafny_executable_semantics: false
+  semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+  generated_production_code: false
+  validation_only: true
+phase_allowed_from: phase-0
+depends_on:
+  - docs/design/specs
+  - docs/design/prompts/ai-prompts.md
+  - packs/pack-index.yml
+allowed_contents:
+  - pack contract YAML
+  - pack index documentation
+  - specification-only implementation_allowed blocks
+forbidden_contents:
+  - production code
+  - hosted daemon code
+  - semantic runner implementation
+  - production authorization
+required_before_agent_assignment:
+  - pack contract
+  - source refs
+  - requirement refs
+  - negative tests
+review_status: draft

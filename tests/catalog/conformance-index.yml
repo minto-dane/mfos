@@ -6,6 +6,15 @@ phase: '0.9'
 status: current
 implementation_allowed: false
 runner_implementation_allowed: false
+canonical_owner: false
+derived_view: true
+projection_of:
+- tests/catalog/authorization.yml
+- tests/catalog/dataset-catalog.yml
+- tests/catalog/first-vertical-slice.yml
+- tests/catalog/job-spool.yml
+- tests/catalog/operator-console.yml
+ownership_note: Domain catalogs own current test semantics; this catalog is a current conformance projection kept for Phase 0.9 traceability.
 entries:
 - test_id: TEST-MFOS-AUTH-ALLOW-0901
   test_name: ALLOW decision

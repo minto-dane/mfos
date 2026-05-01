@@ -36,7 +36,7 @@ fixtures:
     dafny_symbol: EvaluateSecurityDecision
     symbol_kind: function
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C3_FULL_SEMANTIC
     note: ALLOW evaluation is executable, but no test-specific verified lemma is declared.
 - fixture_ref: tests/fixtures/auth/deny-0902.yml
@@ -64,7 +64,7 @@ fixtures:
     dafny_symbol: EvaluateSecurityDecision
     symbol_kind: function
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C3_FULL_SEMANTIC
     note: ALLOW_WITH_AUDIT is executable; audit linkage is covered in audit/FVS properties.
 - fixture_ref: tests/fixtures/auth/require-mfa-0904.yml
@@ -78,7 +78,7 @@ fixtures:
     dafny_symbol: EvaluateSecurityDecision
     symbol_kind: function
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C2_PARTIAL_SEMANTIC
     note: REQUIRE_MFA is represented as a decision result, but MFA workflow semantics
       are not modeled.
@@ -93,7 +93,7 @@ fixtures:
     dafny_symbol: EvaluateSecurityDecision
     symbol_kind: function
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C2_PARTIAL_SEMANTIC
     note: REQUIRE_DUAL_CONTROL is represented, but authorization-side dual-control
       workflow semantics are not modeled.
@@ -108,7 +108,7 @@ fixtures:
     dafny_symbol: EvaluateSecurityDecision
     symbol_kind: function
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C2_PARTIAL_SEMANTIC
     note: REQUIRE_BREAK_GLASS is represented, but reason/expiry workflow semantics
       are not modeled in authorization.dfy.
@@ -123,7 +123,7 @@ fixtures:
     dafny_symbol: EvaluateSecurityDecision
     symbol_kind: function
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C2_PARTIAL_SEMANTIC
     note: REQUIRE_GUARD_APPROVAL is represented, but Guard approval workflow semantics
       are not modeled.
@@ -138,7 +138,7 @@ fixtures:
     dafny_symbol: EvaluateSecurityDecision
     symbol_kind: function
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C2_PARTIAL_SEMANTIC
     note: REQUIRE_OPERATOR_CONFIRMATION is represented, but authorization-side confirmation
       workflow semantics are not modeled.
@@ -181,7 +181,7 @@ fixtures:
     dafny_symbol: EvaluateSecurityDecision
     symbol_kind: function
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C3_FULL_SEMANTIC
     note: Policy-version mismatch branch exists, but no dedicated stale-policy lemma
       is declared.
@@ -196,7 +196,7 @@ fixtures:
     dafny_symbol: null
     symbol_kind: null
     verification_status: missing
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C0_NONE
     note: Delegation expiry semantics are not modeled in Phase 1.1 Dafny.
 - fixture_ref: tests/fixtures/auth/break-glass-no-reason-0922.yml
@@ -210,7 +210,7 @@ fixtures:
     dafny_symbol: DecisionObligation
     symbol_kind: datatype
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C2_PARTIAL_SEMANTIC
     note: Break-glass obligation datatype exists; missing reason semantics are not
       modeled here.
@@ -225,7 +225,7 @@ fixtures:
     dafny_symbol: DecisionObligation
     symbol_kind: datatype
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C2_PARTIAL_SEMANTIC
     note: Break-glass obligation datatype exists; missing expiry semantics are not
       modeled here.
@@ -240,7 +240,7 @@ fixtures:
     dafny_symbol: null
     symbol_kind: null
     verification_status: missing
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C0_NONE
     note: Policy lint wildcard semantics are not modeled in Phase 1.1 Dafny.
 - fixture_ref: tests/fixtures/auth/unauthorized-handle-0925.yml
@@ -283,7 +283,7 @@ fixtures:
     dafny_symbol: AuditRecordMinimumFields
     symbol_kind: predicate
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C3_FULL_SEMANTIC
     note: Minimum field predicate exists without a test-specific lemma.
 - fixture_ref: tests/fixtures/audit/missing-correlation-0903.yml
@@ -297,7 +297,7 @@ fixtures:
     dafny_symbol: AuditRecordMinimumFields
     symbol_kind: predicate
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C2_PARTIAL_SEMANTIC
     note: Correlation validity participates in the predicate, but no missing-correlation
       negative lemma exists.
@@ -312,7 +312,7 @@ fixtures:
     dafny_symbol: ValidHashChain
     symbol_kind: predicate
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C3_FULL_SEMANTIC
     note: Hash-chain predicate exists without dedicated verified test lemma.
 - fixture_ref: tests/fixtures/audit/hash-chain-tampered-0905.yml
@@ -326,7 +326,7 @@ fixtures:
     dafny_symbol: ValidHashChain
     symbol_kind: predicate
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C2_PARTIAL_SEMANTIC
     note: Tamper rejection is not expressed as a dedicated lemma.
 - fixture_ref: tests/fixtures/audit/audit-unavailable-0906.yml
@@ -354,7 +354,7 @@ fixtures:
     dafny_symbol: null
     symbol_kind: null
     verification_status: missing
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C0_NONE
     note: Audit query authorization is not modeled in Phase 1.1 Dafny.
 - fixture_ref: tests/fixtures/audit/spool-not-evidence-0908.yml
@@ -396,7 +396,7 @@ fixtures:
     dafny_symbol: null
     symbol_kind: null
     verification_status: missing
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C0_NONE
     note: Redaction failure semantics are not modeled in Phase 1.1 Dafny.
 - fixture_ref: tests/fixtures/audit/duplicate-record-id-0911.yml
@@ -410,7 +410,7 @@ fixtures:
     dafny_symbol: null
     symbol_kind: null
     verification_status: missing
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C0_NONE
     note: Duplicate audit record-id semantics are not modeled in Phase 1.1 Dafny.
 - fixture_ref: tests/fixtures/audit/non-monotonic-sequence-0912.yml
@@ -424,7 +424,7 @@ fixtures:
     dafny_symbol: ValidHashChain
     symbol_kind: predicate
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C2_PARTIAL_SEMANTIC
     note: Sequence monotonicity is part of hash-chain validity, but no dedicated negative
       lemma exists.
@@ -439,7 +439,7 @@ fixtures:
     dafny_symbol: SymbolicDsnValid
     symbol_kind: predicate
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C3_FULL_SEMANTIC
     note: Symbolic DSN validity predicate exists; no dedicated positive lemma.
 - fixture_ref: tests/fixtures/dataset/malformed-dsn-0902.yml
@@ -453,7 +453,7 @@ fixtures:
     dafny_symbol: SymbolicDsnValid
     symbol_kind: predicate
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C2_PARTIAL_SEMANTIC
     note: Malformed DSN rejection now maps to MFOS_ERR_INVALID_DSN in Phase 1.3; Phase
       1.1 still records only symbolic DSN coverage.
@@ -468,7 +468,7 @@ fixtures:
     dafny_symbol: CatalogEntryResolvable
     symbol_kind: predicate
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C3_FULL_SEMANTIC
     note: Committed entry resolution predicate exists; no dedicated positive lemma.
 - fixture_ref: tests/fixtures/dataset/catalog-uncommitted-0904.yml
@@ -580,7 +580,7 @@ fixtures:
     dafny_symbol: RetentionBlocksDelete
     symbol_kind: predicate
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C3_FULL_SEMANTIC
     note: Retention delete-block predicate exists without a dedicated verified lemma.
 - fixture_ref: tests/fixtures/dataset/immutable-system-0912.yml
@@ -594,7 +594,7 @@ fixtures:
     dafny_symbol: ImmutableSystemDatasetBlocksModify
     symbol_kind: predicate
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C3_FULL_SEMANTIC
     note: Immutable-system modify-block predicate exists without a dedicated verified
       lemma.
@@ -609,7 +609,7 @@ fixtures:
     dafny_symbol: null
     symbol_kind: null
     verification_status: missing
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C0_NONE
     note: Non-POSIX-file distinction is documented as a non-objective, not executable
       Dafny semantics.
@@ -624,7 +624,7 @@ fixtures:
     dafny_symbol: CatalogEntryResolvable
     symbol_kind: predicate
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C2_PARTIAL_SEMANTIC
     note: Crash-mid-commit recovery success is not modeled as a transition property.
 - fixture_ref: tests/fixtures/job/hello-job-0901.yml
@@ -638,7 +638,7 @@ fixtures:
     dafny_symbol: ValidJobTransition
     symbol_kind: predicate
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C3_FULL_SEMANTIC
     note: Job lifecycle predicate exists; end-to-end hello-job proof is in first vertical
       slice.
@@ -653,7 +653,7 @@ fixtures:
     dafny_symbol: null
     symbol_kind: null
     verification_status: missing
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C0_NONE
     note: Malformed control stream parsing is outside Phase 1.1 Dafny semantics.
 - fixture_ref: tests/fixtures/job/submit-no-principal-0903.yml
@@ -667,7 +667,7 @@ fixtures:
     dafny_symbol: EffectivePrincipalEstablished
     symbol_kind: predicate
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C2_PARTIAL_SEMANTIC
     note: Effective principal predicate exists; submit-time failure property is not
       modeled.
@@ -752,7 +752,7 @@ fixtures:
     dafny_symbol: JobStep
     symbol_kind: datatype
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C2_PARTIAL_SEMANTIC
     note: Return-code state exists as data, but failure RC semantics are not modeled.
 - fixture_ref: tests/fixtures/job/invalid-lifecycle-0910.yml
@@ -780,7 +780,7 @@ fixtures:
     dafny_symbol: SpoolEntryProtected
     symbol_kind: predicate
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C3_FULL_SEMANTIC
     note: Protected spool-entry predicate exists without a create-transition lemma.
 - fixture_ref: tests/fixtures/job/spool-browse-owner-0912.yml
@@ -794,7 +794,7 @@ fixtures:
     dafny_symbol: SpoolBrowseAllowed
     symbol_kind: predicate
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C3_FULL_SEMANTIC
     note: Owner browse predicate exists without a dedicated positive lemma.
 - fixture_ref: tests/fixtures/job/spool-browse-nonowner-0913.yml
@@ -836,7 +836,7 @@ fixtures:
     dafny_symbol: null
     symbol_kind: null
     verification_status: missing
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C0_NONE
     note: Spool export audit requirement is not modeled in Phase 1.1 Dafny.
 - fixture_ref: tests/fixtures/job/cancel-no-authority-0916.yml
@@ -850,7 +850,7 @@ fixtures:
     dafny_symbol: null
     symbol_kind: null
     verification_status: missing
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C0_NONE
     note: Job cancel authority is not modeled in job_spool.dfy.
 - fixture_ref: tests/fixtures/job/step-no-audit-correlation-0917.yml
@@ -864,7 +864,7 @@ fixtures:
     dafny_symbol: null
     symbol_kind: null
     verification_status: missing
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C0_NONE
     note: Job step audit correlation semantics are not modeled in Phase 1.1 Dafny.
 - fixture_ref: tests/fixtures/oper/display-system-0901.yml
@@ -878,7 +878,7 @@ fixtures:
     dafny_symbol: OperatorCommandAuthorized
     symbol_kind: predicate
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C3_FULL_SEMANTIC
     note: Operator authorization predicate exists without a dedicated positive lemma.
 - fixture_ref: tests/fixtures/oper/define-user-0902.yml
@@ -892,7 +892,7 @@ fixtures:
     dafny_symbol: OperatorCommandAuthorized
     symbol_kind: predicate
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C3_FULL_SEMANTIC
     note: Operator authorization predicate exists without a dedicated positive lemma.
 - fixture_ref: tests/fixtures/oper/define-dataset-0903.yml
@@ -906,7 +906,7 @@ fixtures:
     dafny_symbol: OperatorCommandAuthorized
     symbol_kind: predicate
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C3_FULL_SEMANTIC
     note: Operator authorization predicate exists without a dedicated positive lemma.
 - fixture_ref: tests/fixtures/oper/submit-job-0904.yml
@@ -920,7 +920,7 @@ fixtures:
     dafny_symbol: OperatorCommandAuthorized
     symbol_kind: predicate
     verification_status: unverified
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C3_FULL_SEMANTIC
     note: Operator authorization predicate exists without a dedicated positive lemma.
 - fixture_ref: tests/fixtures/oper/cancel-job-denied-0905.yml
@@ -1004,7 +1004,7 @@ fixtures:
     dafny_symbol: null
     symbol_kind: null
     verification_status: missing
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C0_NONE
     note: Automation bypass restriction is not modeled in Phase 1.1 Dafny.
 - fixture_ref: tests/fixtures/oper/malformed-command-0911.yml
@@ -1018,7 +1018,7 @@ fixtures:
     dafny_symbol: null
     symbol_kind: null
     verification_status: missing
-    evidence_ref: reports/current/semantic-coverage-open-issues.md
+    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C0_NONE
     note: Operator command parser semantics are not modeled in Phase 1.1 Dafny.
 - fixture_ref: tests/fixtures/oper/command-no-audit-0912.yml

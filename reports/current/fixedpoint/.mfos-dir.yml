@@ -1,0 +1,36 @@
+directory_id: MFOS-DIR-REPORTS-CURRENT-FIXEDPOINT
+path: reports/current/fixedpoint
+role: validation
+maturity: M4_POPULATED
+status: current
+canonical: false
+description: Fixed-point closure package; not a live implementation authorization gate.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  rust_semantic_core: false
+  dafny_executable_semantics: false
+  semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+  generated_production_code: false
+  validation_only: true
+phase_allowed_from: phase-0
+depends_on:
+  - reports/current/.mfos-dir.yml
+  - reports/current/fixedpoint/index.yml
+allowed_contents:
+  - fixed-point closure reports
+  - validation summaries
+  - issue ledgers
+  - repository graphs
+forbidden_contents:
+  - production authorization
+  - semantic runner implementation
+  - hosted daemon code
+  - generated binaries
+required_before_agent_assignment:
+  - closure scope
+  - validation evidence
+  - report index entry
+review_status: draft

@@ -1,0 +1,14 @@
+schema_version: 1
+artifact_type: phase_1_2_entry_gate
+status: current
+phase_1_2_name: Authorization/Audit Deepening
+phase_1_2_allowed: true
+phase_1_2_entry_allowed: true
+phase_1_2_merge_allowed: true
+authorization_audit_blockers_remaining: false
+authorization_audit_entry_blockers_remaining: false
+authorization_audit_merge_blockers_remaining: false
+entry_blockers: []
+merge_blockers: []
+formal_claim_proof_coverage_complete: false
+source: reports/generated/phase-1-2/gap-normalization.yml

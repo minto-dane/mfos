@@ -46,7 +46,7 @@ Minor findings remediated in the final report branch:
 
 - `docs/design/STATUS.md` still described the temporary Phase 1.3 replacement
   branch and next action.
-- `reports/current/dafny-dataset-catalog-coverage.yml` used an unscoped
+- `reports/generated/phase-1-3/dafny-dataset-catalog-coverage.yml` used an unscoped
   Dataset/Catalog completion flag beside lower-scoped requirement and
   integration coverage.
 
@@ -70,11 +70,11 @@ The required post-merge validation set passed locally on the integrated state.
 - `./scripts/validate-component-scaffold.sh`: PASS
 - `./scripts/validate-language-formal-assurance.sh`: PASS
 - `./scripts/validate-dafny-semantics.sh --require-dafny`: PASS
-- `python3 scripts/check-semantic-coverage-mapping.py`: PASS
-- `python3 scripts/check-formal-claim-coverage.py`: PASS
-- `python3 scripts/check-phase1-gap-triage.py`: PASS
-- `python3 scripts/check-phase1-2-auth-audit-coverage.py`: PASS
-- `python3 scripts/check-phase1-3-dataset-catalog-coverage.py`: PASS
+- `python3 scripts/checks/semantic-coverage/check-semantic-coverage-mapping.py`: PASS
+- `python3 scripts/checks/formal-claims/check-formal-claim-coverage.py`: PASS
+- `python3 scripts/phases/phase-1/check-phase1-gap-triage.py`: PASS
+- `python3 scripts/phases/phase-1/check-phase1-2-auth-audit-coverage.py`: PASS
+- `python3 scripts/phases/phase-1/check-phase1-3-dataset-catalog-coverage.py`: PASS
 - `python3 scripts/checks/check-architecture-portability-policy.py`: PASS
 - `python3 scripts/checks/check-x64-profile-policy.py`: PASS
 - `python3 scripts/checks/check-cpu-feature-registry.py`: PASS

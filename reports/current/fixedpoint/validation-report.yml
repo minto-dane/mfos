@@ -32,8 +32,8 @@ github_checks:
   - CodeQL analysis (python)
   - validate design registries and lint gates
 notes:
-- Phase-name policy explicitly permits reports/current/fixedpoint/ because the fixed-point
-  package requires phase-1-ready-report artifacts.
+- Phase-name policy no longer permits broad phase-specific filenames under reports/current/fixedpoint/.
+  The fixed-point phase-1-ready-report artifacts are archived under reports/archive/superseded/fixedpoint/.
 - Repository graph omits noncanonical legacy Source IDs from active source_refs outside
   alias-map context.
 log_excerpt_lines:

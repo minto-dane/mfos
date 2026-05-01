@@ -6,30 +6,46 @@ current:
   source_to_requirement:
     path: evidence/traceability/current/source-to-requirement.yml
     status: current
+    lifecycle_status: current
+    artifact_review_status: draft
     generated_by: scripts/generators/generate-traceability.py
   requirement_to_spec:
     path: evidence/traceability/current/requirement-to-spec.yml
     status: current
+    lifecycle_status: current
+    artifact_review_status: draft
     generated_by: scripts/generators/generate-traceability.py
   requirement_to_test:
     path: evidence/traceability/current/requirement-to-test.yml
     status: current
+    lifecycle_status: current
+    artifact_review_status: draft
     generated_by: scripts/generators/generate-traceability.py
   requirement_to_evidence:
     path: evidence/traceability/current/requirement-to-evidence.yml
     status: current
+    lifecycle_status: current
+    artifact_review_status: draft
     generated_by: scripts/generators/generate-traceability.py
   claim_to_requirement:
     path: evidence/traceability/current/claim-to-requirement.yml
     status: current
+    lifecycle_status: current
+    artifact_review_status: draft
     generated_by: scripts/generators/generate-traceability.py
   pack_to_artifacts:
     path: evidence/traceability/current/pack-to-artifacts.yml
     status: current
+    lifecycle_status: current
+    artifact_review_status: draft
     generated_by: scripts/generators/generate-traceability.py
   gap_report:
     path: evidence/traceability/current/gap-report.yml
     status: current
+    lifecycle_status: current
+    artifact_review_status: draft
+    scope: current_traceability_matrices_only
+    excludes_generated_phase_gap_reports: true
     generated_by: scripts/generators/generate-traceability.py
 
 generated:
@@ -43,19 +59,20 @@ generated:
     status: generated
     origin_phase: phase-1.1
     generated_by: scripts/generators/generate-semantic-coverage.py
+    coverage_summary: reports/generated/phase-1-1/semantic-coverage.yml
   phase_1_2:
     path: evidence/traceability/generated/phase-1-2/
     status: generated
     origin_phase: phase-1.2
     generated_by: scripts/generators/generate-auth-audit-coverage.py
-    coverage_summary: reports/current/dafny-authorization-audit-coverage.yml
+    coverage_summary: reports/generated/phase-1-2/dafny-authorization-audit-coverage.yml
     audit_unavailable_conformance_linked: true
   phase_1_3:
     path: evidence/traceability/generated/phase-1-3/
     status: generated
     origin_phase: phase-1.3
     generated_by: scripts/generators/generate-dataset-catalog-coverage.py
-    coverage_summary: reports/current/dafny-dataset-catalog-coverage.yml
+    coverage_summary: reports/generated/phase-1-3/dafny-dataset-catalog-coverage.yml
 
 archive:
   phase_0_8:

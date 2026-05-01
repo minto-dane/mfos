@@ -3,20 +3,18 @@
 
 from __future__ import annotations
 
-from pathlib import Path
+import re
 import sys
+from pathlib import Path
 
 _SCRIPT_ROOT = next((p for p in Path(__file__).resolve().parents if (p / "lib").is_dir()), None)
 if _SCRIPT_ROOT is not None and str(_SCRIPT_ROOT) not in sys.path:
     sys.path.insert(0, str(_SCRIPT_ROOT))
 
-import re
-from pathlib import Path
-
 from lib.mfos_lint import Finding, ROOT, emit, mode_arg
 
 
-PHASE_RE = re.compile(r"phase-\d+(?:-\d+)*", re.IGNORECASE)
+PHASE_RE = re.compile(r"(?:pre[-_]?phase[-_]?\d+|phase[-_]\d+(?:[-_]\d+)*)", re.IGNORECASE)
 
 CANONICAL_ROOTS = [
     Path("specs"),
@@ -27,7 +25,6 @@ CANONICAL_ROOTS = [
     Path("tests/fixtures"),
     Path("tests/golden"),
     Path("packs"),
-    Path("services"),
     Path("runtime"),
     Path("interfaces"),
     Path("implementation"),
@@ -42,7 +39,7 @@ CANONICAL_ROOTS = [
 ALLOWED_PREFIXES = (
     "reports/phases/",
     "reports/archive/",
-    "reports/current/fixedpoint/",
+    "reports/generated/",
     "evidence/archive/",
     "evidence/traceability/archive/",
     "evidence/traceability/generated/",
@@ -58,21 +55,10 @@ ALLOWED_PREFIXES = (
     "tests/golden/archive/",
 )
 
-ALLOWED_EXACT = {
-    "reports/current/phase-1-1-gap-triage.md",
-    "reports/current/phase-1-1-gap-triage.yml",
-    "reports/current/phase-1-2-entry-gate.md",
-    "reports/current/phase-1-2-entry-gate.yml",
-    "reports/current/phase-1-2-gap-normalization.md",
-    "reports/current/phase-1-2-gap-normalization.yml",
-    "reports/current/phase-1-3-entry-gate.md",
-    "reports/current/phase-1-3-entry-gate.yml",
-}
-
 
 def is_allowed(path: Path) -> bool:
     rel = str(path.relative_to(ROOT))
-    return rel in ALLOWED_EXACT or rel.startswith(ALLOWED_PREFIXES)
+    return rel.startswith(ALLOWED_PREFIXES)
 
 
 def in_canonical_root(path: Path) -> bool:
@@ -89,6 +75,14 @@ def in_canonical_root(path: Path) -> bool:
     return False
 
 
+def has_phase_component(path: Path) -> bool:
+    try:
+        rel = path.relative_to(ROOT)
+    except ValueError:
+        return False
+    return any(PHASE_RE.fullmatch(part) for part in rel.parts)
+
+
 def main() -> int:
     parser = mode_arg()
     args = parser.parse_args()
@@ -97,12 +91,10 @@ def main() -> int:
     for path in sorted(ROOT.rglob("*")):
         if ".git" in path.parts or "__pycache__" in path.parts:
             continue
-        if not path.is_file():
-            continue
         if not in_canonical_root(path) or is_allowed(path):
             continue
-        if PHASE_RE.search(path.name):
-            findings.append(Finding("ERROR", path, "phase-specific filename in canonical artifact directory"))
+        if PHASE_RE.search(path.name) or has_phase_component(path):
+            findings.append(Finding("ERROR", path, "phase-specific path in canonical artifact directory"))
 
     return emit(findings, args.mode, "Phase-name policy check OK")
 

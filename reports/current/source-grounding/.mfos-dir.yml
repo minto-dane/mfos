@@ -1,0 +1,34 @@
+directory_id: MFOS-DIR-REPORTS-CURRENT-SOURCE-GROUNDING
+path: reports/current/source-grounding
+role: validation
+maturity: M4_POPULATED
+status: current
+canonical: false
+description: Current source-grounding audit package; it does not migrate canonical source authority.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  rust_semantic_core: false
+  dafny_executable_semantics: false
+  semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+  generated_production_code: false
+  validation_only: true
+phase_allowed_from: phase-0
+depends_on:
+  - reports/current/.mfos-dir.yml
+  - docs/design/source-matrix
+allowed_contents:
+  - source-grounding reports
+  - source audit indexes
+  - conditional refreeze plans
+forbidden_contents:
+  - copied external documents
+  - source authority migration without ADR
+  - production code
+required_before_agent_assignment:
+  - source-card IDs
+  - audit scope
+  - report index entry
+review_status: draft
