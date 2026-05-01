@@ -61,6 +61,9 @@ PATTERNS = [
     re.compile(r"\bKVM[- ]compatible\b", re.IGNORECASE),
     re.compile(r"\bTDX[- ]certified\b", re.IGNORECASE),
     re.compile(r"\bSEV(?:[- ]ES|[- ]SNP)?[- ]certified\b", re.IGNORECASE),
+    re.compile(r"\bSGX[- ](?:compatible|certified|approved)\b", re.IGNORECASE),
+    re.compile(r"\bCET[- ](?:compatible|certified|approved)\b", re.IGNORECASE),
+    re.compile(r"\bCFI[- ](?:compatible|certified|approved)\b", re.IGNORECASE),
 ]
 
 SAFE_MARKERS = (

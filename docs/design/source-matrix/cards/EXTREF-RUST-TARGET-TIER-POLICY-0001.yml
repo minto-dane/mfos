@@ -1,0 +1,61 @@
+schema_version: 1
+status: draft
+source_id: EXTREF-RUST-TARGET-TIER-POLICY-0001
+source_kind: bibliographic_reference
+source_type: external_reference
+semantic_role: design_background
+vendor: Rust project
+vendor_mark_used: true
+product_family: Rust
+document_title: rustc target tier policy
+document_url:
+- https://doc.rust-lang.org/rustc/target-tier-policy.html
+retrieved_at: '2026-04-30'
+reference_purpose:
+- source discovery
+- future target policy background
+- architecture backend evidence planning
+- independent MFOS design traceability
+review_topics:
+- target support tier distinctions
+- target-specific documentation expectations
+- future architecture support claim discipline
+mfos_mapping:
+  mfos_components:
+  - architecture portability policy
+  - future backend planning
+  mfos_specs:
+  - docs/design/specs/44-architecture-portability-policy.md
+  mfos_requirements: &id001
+  - MFOS-REQ-ARCH-0003
+  - MFOS-REQ-ARCH-0004
+  mapping_notes:
+  - Used only as process background for target claim discipline. Phase 1 does not authorize Rust semantic-core work.
+mfos_divergence:
+- MFOS target support states are MFOS-owned and evidence-gated.
+- Rust target tier status does not imply an MFOS architecture backend exists.
+prohibited_inference:
+- Do not claim AArch64, RISC-V, or any non-x86 MFOS support from Rust target availability.
+- Do not use this card to authorize Phase 1 Rust semantic-core work.
+- Do not copy Rust policy text into MFOS requirements.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+source_refs:
+- source_id: EXTREF-RUST-TARGET-TIER-POLICY-0001
+  source_type: external_reference
+  role: card_subject
+requirement_refs: *id001
+review_status: draft

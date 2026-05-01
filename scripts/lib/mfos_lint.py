@@ -23,7 +23,7 @@ SPECS_DIR = ROOT / "docs/design/specs"
 SOURCE_ID_RE = re.compile(
     r"\b(?:EXTREF-[A-Z0-9-]+-\d{4}|(?:X64|MS|TCG|NIST|SEL4|SLSA|TUF|FBVBS)(?:-[A-Z0-9]+)*-\d{3})\b"
 )
-REQ_ID_RE = re.compile(r"\bMFOS-REQ-[A-Z0-9]+-(?:\d{4}|\*)\b")
+REQ_ID_RE = re.compile(r"\bMFOS-REQ-[A-Z0-9]+(?:-[A-Z0-9]+)*-(?:\d{4}|\*)\b")
 TEST_ID_RE = re.compile(r"\b(?:TEST|NEG)-MFOS-[A-Z0-9]+-[A-Z0-9-]*\d{4}\b")
 EVID_ID_RE = re.compile(r"\bEV-MFOS-[A-Z0-9]+-[A-Z0-9-]*\d{4}\b")
 

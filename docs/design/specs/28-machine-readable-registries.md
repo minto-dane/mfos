@@ -75,7 +75,12 @@ registries contain:
 If any item is missing, the assigned implementation agent MUST produce a
 `SPEC_GAP_REPORT` instead of code.
 
-Hosted semantic prototype work is allowed only when the pack explicitly records:
+The historical Hosted Semantic Prototype profile is superseded for current
+Phase 1 work. Current Phase 1 is limited to non-production Dafny executable
+semantics and conformance-harness validation. A later reviewed gate may define a
+new hosted prototype profile only after this spec, the AI contract, pack
+contracts, and roadmap are updated. Until that later gate exists, this
+historical label is inactive:
 
 ```yaml
 implementation_profile: hosted_semantic_prototype
@@ -146,6 +151,8 @@ docs/design/registries/
   ai-output.yaml
   tasks.yaml
   conformance-claims.yaml
+  cpu-feature-registry.yml
+  cpu-target-profiles.yml
   registry-index.yaml
 ```
 

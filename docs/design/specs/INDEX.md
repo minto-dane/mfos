@@ -66,6 +66,19 @@ source_refs:
 - EXTREF-GITHUB-CODEQL-0001
 - EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001
 - EXTREF-NIST-SSDF-0001
+- EXTREF-X86-64-MICROARCH-LEVELS-0001
+- EXTREF-GLIBC-HWCAPS-X86-64-V4-0001
+- EXTREF-GCC-X86-64-V4-0001
+- EXTREF-RUST-TARGET-TIER-POLICY-0001
+- EXTREF-SEL4-MULTIARCH-SUPPORTED-PLATFORMS-0001
+- EXTREF-SEL4-ARCH-CONFIGURATION-0001
+- EXTREF-INTEL-SGX-OVERVIEW-0001
+- EXTREF-INTEL-SGX-ATTESTATION-0001
+- EXTREF-INTEL-SGX-DCAP-0001
+- EXTREF-CLANG-CFI-0001
+- EXTREF-CLANG-KCFI-0001
+- EXTREF-GCC-CF-PROTECTION-0001
+- EXTREF-RUST-CF-PROTECTION-0001
 requirement_refs: []
 claim_refs: []
 test_refs: []
@@ -80,7 +93,7 @@ Status: Draft index
 Owner: MFOS architecture
 Scope: `docs/design/specs/*.md`
 
-This index lists the current MFOS split specifications and routes implementation agents to the correct source material. It covers the numbered specs from `00` through `43`, including executable-spec artifacts, deferred planning scaffolds, and the Dafny executable-semantics scaffold policy. Phase provenance and implementation gates are kept in the routing addenda below rather than in the high-level index summary.
+This index lists the current MFOS split specifications and routes implementation agents to the correct source material. It covers the numbered specs from `00` through `45`, including executable-spec artifacts, deferred planning scaffolds, the Dafny executable-semantics scaffold policy, and architecture portability / x86-64 target-profile policy. Phase provenance and implementation gates are kept in the routing addenda below rather than in the high-level index summary.
 
 MFOS is source-grounded and z/OS-inspired. This index does not claim z/OS compatibility, IBM product compatibility, z/Architecture compatibility, RACF compatibility, JES compatibility, DFSMS compatibility, SMF compatibility, Windows VBS compatibility, or Linux compatibility.
 
@@ -165,6 +178,8 @@ blocked.
 
 | [42-mfvm.md](42-mfvm.md) | Defines MFVM as an MFOS-based VM management subsystem, less trusted than PXM, using PXM Control API and MFOS governance services. | MFVM control plane, PXM request planning, VM management governance | EXTREF-MICROSOFT-HYPERV-OVERVIEW-0001, EXTREF-MICROSOFT-HYPERV-TLFS-0001, EXTREF-LINUX-KVM-API-0001, EXTREF-LINUX-KVM-CAPABILITIES-0001, EXTREF-LINUX-KVM-VFIO-0001, EXTREF-INTEL-TDX-OVERVIEW-0001, EXTREF-AMD-SEV-SNP-0001, EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001, FBVBS-001 | registered draft `MFOS-REQ-MFVM-*`, `MFOS-REQ-VIRT-*`, `MFOS-REQ-CVM-*`, and `MFOS-REQ-CLUSTER-*` planning requirements | 16, 36, 37, 38, 41 | Draft. No MFVM implementation, PXM implementation, VM runtime, hosted daemon, semantic runner, or production work is authorized. |
 | [43-dafny-executable-semantics-policy.md](43-dafny-executable-semantics-policy.md) | Defines Phase 1 Dafny executable-semantics policy, non-production model artifacts, and conformance-harness boundaries. | Dafny executable-semantics artifacts, fixture/oracle/golden comparison, verification status reporting | EXTREF-DAFNY-REFERENCE-0001, EXTREF-AWS-AUTOMATED-REASONING-0001, EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001, EXTREF-NIST-SSDF-0001, FBVBS-001 | registered draft `MFOS-REQ-DAFNY-*` and `MFOS-REQ-SEMSPEC-*` requirements | 31, 33, 39, 40 | Current Phase 1 policy. No semantic runner, Rust semantic-core, hosted daemon, production implementation, PXM/MFVM/CVM/cluster implementation, or production generated-code path is authorized. |
+| [44-architecture-portability-policy.md](44-architecture-portability-policy.md) | Defines x86-64-first but not x86-64-only architecture policy, architecture-neutral semantics, architecture-specific enforcement, platform concerns, and future non-x86 claim gates. | architecture policy, CPU/backend boundaries, roadmap and AI guardrails | FBVBS-001, X64-INTEL-001, X64-AMD-001, EXTREF-RUST-TARGET-TIER-POLICY-0001, EXTREF-SEL4-MULTIARCH-SUPPORTED-PLATFORMS-0001, EXTREF-SEL4-ARCH-CONFIGURATION-0001, EXTREF-NIST-SECURE-SYSTEMS-ENGINEERING-0001 | registered draft `MFOS-REQ-ARCH-*` and `MFOS-REQ-CPUFEAT-*` requirements | 26, 28, 39, 43 | Current documentation policy. No AArch64/RISC-V implementation, architecture backend, CPU feature detector, hardware path, hosted daemon, or production work is authorized. |
+| [45-x86-64-target-profiles.md](45-x86-64-target-profiles.md) | Defines x86-64 baseline, server-modern, v4 performance, max-feature, TDX CVM, SEV-SNP CVM, SGX TEE, and CET/CFI hardening evidence profiles. | CPU Feature Registry, CPU Target Profile Registry, validation policy, profile evidence | X64-INTEL-001, X64-AMD-001, X64-LINUX-CET-001, TCG-001, NIST-193-001, EXTREF-X86-64-MICROARCH-LEVELS-0001, EXTREF-GLIBC-HWCAPS-X86-64-V4-0001, EXTREF-GCC-X86-64-V4-0001, EXTREF-INTEL-TDX-OVERVIEW-0001, EXTREF-INTEL-TDX-ATTESTATION-0001, EXTREF-AMD-SEV-OVERVIEW-0001, EXTREF-AMD-SEV-ES-0001, EXTREF-AMD-SEV-SNP-0001, EXTREF-AMD-SEV-TIO-0001, EXTREF-INTEL-SGX-OVERVIEW-0001, EXTREF-INTEL-SGX-ATTESTATION-0001, EXTREF-INTEL-SGX-DCAP-0001, EXTREF-INTEL-CET-0001, EXTREF-CLANG-CFI-0001, EXTREF-CLANG-KCFI-0001, EXTREF-GCC-CF-PROTECTION-0001, EXTREF-RUST-CF-PROTECTION-0001, EXTREF-LINUX-KVM-API-0001, EXTREF-MICROSOFT-HYPERV-TLFS-0001 | registered draft `MFOS-REQ-X64-*`, `MFOS-REQ-X64-V4-*`, `MFOS-REQ-X64-CVM-*`, `MFOS-REQ-X64-TEE-*`, `MFOS-REQ-HARDENING-*`, and `MFOS-REQ-CPUFEAT-*` requirements | 26, 28, 30, 36, 37, 39, 44 | Current documentation policy. x86-64-v4 is optional, SGX is TEE not CVM, Hyper-V/KVM compatibility is not claimed, and no hardware/runtime implementation is authorized. |
 
 ## Numbering Gaps
 
@@ -200,6 +215,7 @@ Recommended read and implementation order:
 17. Language/localization and policy lint: `32`, `33`
 18. Deferred virtualization, confidential workload, cluster, verification, and secure-operations scaffolds: `36`, `37`, `38`, `39`, `40`, `41`
 19. MFVM and Phase 1 Dafny executable-semantics policy: `42`, `43`
+20. Architecture portability and x86-64 target profiles: `44`, `45`
 
 ## Implementation Target Matrix
 
@@ -228,7 +244,8 @@ Recommended read and implementation order:
 | Formal models | 03, 04, 05, 06, 07, 08, 09, 10, 12, 13, 16, 17, 19, 20, 24 |
 | Operations and recovery | 03, 04, 06, 07, 08, 09, 10, 13, 16, 17, 19, 20, 22, 23, 25 |
 | Hardware/profile qualification | 03, 04, 14, 16, 17, 22, 26, 30 |
-| Spec and registry tooling | 00, 01, 02, 21, 22, 23, 27, 28 |
+| Architecture portability and CPU target profiles | 26, 28, 30, 36, 37, 39, 44, 45 |
+| Spec and registry tooling | 00, 01, 02, 21, 22, 23, 27, 28, 44, 45 |
 | Test strategy and taxonomy | 03, 04, 19, 20, 21, 22, 23, 24, 29 |
 | Attestation and measured boot | 07, 13, 16, 17, 22, 26, 30 |
 | Release pipeline | 00, 01, 02, 04, 07, 13, 19, 20, 21, 22, 23, 25, 30, 31 |
@@ -240,7 +257,8 @@ Recommended read and implementation order:
 | Language and verification policy planning | 03, 04, 21, 22, 24, 39 |
 | Automated reasoning program planning | 19, 20, 24, 39, 40 |
 | Performance and secure operations planning | 11, 13, 22, 25, 26, 30, 31, 38, 41 |
-| Dafny executable-semantics loader-only scaffold | 31, 33, 39, 40, 43 |
+| Dafny executable semantics and conformance harness | 31, 33, 39, 40, 43 |
+| CPU Feature Registry and x86-64 target-profile validation | 26, 28, 44, 45 |
 
 ## Global Gaps To Track
 
@@ -287,3 +305,8 @@ evaluator work is conditional and requires a later reviewed domain gate; Rust
 semantic-core, future semantic-runner commands, hosted daemon,
 PXM/MFVM/CVM/cluster evaluator, and production work remain blocked until later
 gates close.
+Specs `44` and `45` add architecture-portability and x86-64 target-profile
+policy. They make MFOS x86-64-first, not x86-64-only; keep x86-64-v4 optional;
+model TDX and SEV-SNP as Confidential VM profiles; model SGX as an optional
+enclave/TEE profile; and require machine-readable CPU feature/profile
+registries before hardware-facing backend implementation.

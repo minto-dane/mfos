@@ -22,7 +22,7 @@ Where:
 AREA:
   SRC, GLOSS, THR, SI, OBJ, SEC, AUD, CAT, DATA, JOB, SPL,
   OPER, workload policy, AMF, UVS, NUC, SVC, PCALL, PXM, GRD, LGW,
-  AI, QUAL, CONF, PROD, FM
+  AI, QUAL, CONF, PROD, FM, ARCH, X64, CPUFEAT
 
 CLASS:
   UNIT
@@ -118,6 +118,9 @@ evidence/
 | `THR` | `MFOS-REQ-THR-*` | threat model source IDs | negative, fault, formal, conformance | B/ES/EPXM/HA | threat-to-test matrix |
 | `CONF` | `MFOS-REQ-CONF-*` | `FBVBS-001` | conformance, release-gate | B/ES/EPXM/HA | conformance statement |
 | `PROD` | `MFOS-REQ-PROD-*`, `PROD-*` | production gate source IDs | release-gate, negative, supply-chain | B/ES/EPXM/HA production | production gate package |
+| `ARCH` | `MFOS-REQ-ARCH-*` | architecture portability source IDs | conformance, negative, release-gate | design policy | architecture portability report |
+| `X64` | `MFOS-REQ-X64-*`, `MFOS-REQ-X64-V4-*`, `MFOS-REQ-X64-CVM-*`, `MFOS-REQ-X64-TEE-*` | x86-64 target-profile source IDs | conformance, negative, release-gate | x86-64 target profiles | target profile report |
+| `CPUFEAT` | `MFOS-REQ-CPUFEAT-*`, `MFOS-REQ-HARDENING-*` | CPU Feature Registry source IDs | conformance, negative, release-gate | feature/profile registries | CPU registry validation report |
 
 Seed tests:
 
@@ -127,6 +130,9 @@ Seed tests:
 | `SRC-UNIT-0001` | Require Source Matrix ID for source-grounded concept entries. | `MFOS-REQ-SOURCE-0001` | `CI-002` |
 | `THR-NEG-0001` | Verify every listed abuse case maps to at least one negative test. | `MFOS-REQ-THR-0009` | `CI-006` |
 | `CONF-CONF-0001` | Verify a release names exactly one claimed profile. | `MFOS-REQ-CONF-0001` | `CI-014` |
+| `ARCH-NEG-0001` | Reject non-x86 implementation claims without source cards, requirements, tests, CI, and evidence. | `MFOS-REQ-ARCH-0004` | architecture portability validator |
+| `X64-NEG-0001` | Reject baseline profiles that require x86-64-v4, TDX, SEV-SNP, or SGX. | `MFOS-REQ-X64-0001`, `MFOS-REQ-X64-V4-0001`, `MFOS-REQ-X64-TEE-0002` | x86-64 profile validator |
+| `CPUFEAT-CONF-0001` | Verify CPU target profiles reference existing CPU Feature Registry IDs. | `MFOS-REQ-CPUFEAT-0002` | CPU feature registry validator |
 
 ### 4.2 System Integrity, Object Model, Authorization, and Audit
 

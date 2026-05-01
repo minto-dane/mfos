@@ -1,0 +1,61 @@
+schema_version: 1
+status: draft
+source_id: EXTREF-GLIBC-HWCAPS-X86-64-V4-0001
+source_kind: bibliographic_reference
+source_type: external_reference
+semantic_role: design_background
+vendor: GNU C Library project
+vendor_mark_used: true
+product_family: GNU C Library
+document_title: glibc-hwcaps x86-64-v2/v3/v4 support
+document_url:
+- https://sourceware.org/pipermail/glibc-cvs/2020q4/071146.html
+retrieved_at: '2026-04-30'
+reference_purpose:
+- source discovery
+- CPU profile source grounding
+- optional optimized artifact planning
+- independent MFOS design traceability
+review_topics:
+- glibc-hwcaps subdirectory mechanism background
+- x86-64-v4 optimized artifact separation
+- runtime selection as design background
+mfos_mapping:
+  mfos_components:
+  - CPU Target Profile Registry
+  - release artifact policy
+  mfos_specs:
+  - docs/design/specs/45-x86-64-target-profiles.md
+  mfos_requirements: &id001
+  - MFOS-REQ-X64-V4-0002
+  - MFOS-REQ-X64-V4-0003
+  mapping_notes:
+  - Public-safe reference for optimized artifact routing concepts. MFOS must define its own artifact layout and detection policy.
+mfos_divergence:
+- MFOS does not adopt glibc loader behavior or path names as an MFOS interface.
+- MFOS baseline artifacts must remain separate from any v4-optimized artifact.
+prohibited_inference:
+- Do not copy glibc source, command syntax, directory layout requirements, or tables into MFOS.
+- Do not claim Linux or glibc compatibility.
+- Do not treat hwcaps support as evidence that MFOS v4 support is implemented.
+legal_controls:
+  public_safe: true
+  no_copied_text: true
+  no_long_quotes: true
+  no_tables_copied: true
+  no_diagrams_copied: true
+  no_record_layouts_copied: true
+  no_command_syntax_copied: true
+  no_macro_signatures_copied: true
+  no_message_tables_copied: true
+  attribution_required: true
+  trademark_reference_only: true
+  external_affiliation_claimed: false
+  compatibility_claimed: false
+  substitute_for_source: false
+source_refs:
+- source_id: EXTREF-GLIBC-HWCAPS-X86-64-V4-0001
+  source_type: external_reference
+  role: card_subject
+requirement_refs: *id001
+review_status: draft

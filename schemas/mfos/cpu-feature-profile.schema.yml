@@ -1,0 +1,190 @@
+schema_id: MFOS-SCHEMA-CPU-FEATURE-PROFILE-0001
+title: CPUFeatureAndTargetProfileRegistry
+status: draft
+phase: Phase 1 documentation policy
+implementation_allowed: false
+type: object
+required:
+- registry_kind
+- schema_version
+- registry_id
+- status
+- source_matrix_ref
+- non_compatibility_statement
+- implementation_allowed
+- entries
+- spec_gaps
+properties:
+  registry_kind:
+    enum:
+    - cpu_feature_registry
+    - cpu_target_profiles
+  schema_version:
+    type: integer
+  registry_id:
+    type: string
+  status:
+    enum:
+    - draft
+    - review
+    - ready
+    - frozen
+    - deprecated
+    - superseded
+  generated_from:
+    type: array
+  updated_at_utc:
+    type: string
+  updated_by:
+    type: string
+  non_compatibility_statement:
+    type: string
+  source_matrix_ref:
+    type: object
+  schema_ref:
+    type: object
+  implementation_allowed:
+    const: false
+  design_only:
+    const: true
+  registry_rules:
+    type: array
+  entries:
+    type: array
+    items:
+      anyOf:
+      - $ref: '#/$defs/cpu_feature_entry'
+      - $ref: '#/$defs/cpu_target_profile_entry'
+  spec_gaps:
+    type: array
+  registry_hash:
+    type: object
+  registry_signature:
+    type: object
+additionalProperties: false
+$defs:
+  string_list:
+    type: array
+    items:
+      type: string
+  boolean_field:
+    type: boolean
+  capability_detection:
+    type: object
+    required: [design_status, method]
+    additionalProperties: false
+    properties:
+      design_status:
+        enum: [planned, specified, implemented]
+      method:
+        enum: [cpuid, firmware_table, platform_attestation, build_profile, binary_inspection, unknown]
+  attestation:
+    type: object
+    required: [required, modes]
+    additionalProperties: false
+    properties:
+      required:
+        type: boolean
+      modes:
+        type: array
+        items:
+          enum: [DCAP, EPID, platform_specific, none]
+  cpu_feature_entry:
+    type: object
+    additionalProperties: false
+    required:
+    - feature_id
+    - name
+    - architecture
+    - feature_kind
+    - status
+    - source_refs
+    - profile_affinity
+    - required_for_profiles
+    - optional_for_profiles
+    - forbidden_in_profiles
+    - forbidden_in_components
+    - capability_detection
+    - build_evidence_required
+    - binary_evidence_required
+    - runtime_evidence_required
+    - security_semantics_dependency
+    - fallback_behavior
+    - attestation
+    - side_channel_risk_review_required
+    - notes
+    - review_status
+    properties:
+      feature_id: {type: string}
+      name: {type: string}
+      architecture: {enum: [x86_64, aarch64, riscv64, multiarch, platform]}
+      feature_kind:
+        enum: [instruction_set, privilege, memory_protection, virtualization, confidential_computing, enclave_tee, control_flow_hardening, crypto, platform, topology, other]
+      status: {enum: [planned, required, optional, forbidden_in_baseline, future, deprecated]}
+      source_refs: {$ref: '#/$defs/string_list'}
+      profile_affinity: {$ref: '#/$defs/string_list'}
+      required_for_profiles: {$ref: '#/$defs/string_list'}
+      optional_for_profiles: {$ref: '#/$defs/string_list'}
+      forbidden_in_profiles: {$ref: '#/$defs/string_list'}
+      forbidden_in_components: {$ref: '#/$defs/string_list'}
+      capability_detection: {$ref: '#/$defs/capability_detection'}
+      build_evidence_required: {$ref: '#/$defs/boolean_field'}
+      binary_evidence_required: {$ref: '#/$defs/boolean_field'}
+      runtime_evidence_required: {$ref: '#/$defs/boolean_field'}
+      security_semantics_dependency: {enum: [none, profile_required, forbidden, unknown]}
+      fallback_behavior: {enum: [not_required, fallback_to_baseline, fail_closed, profile_not_satisfied, unsupported, spec_gap]}
+      attestation: {$ref: '#/$defs/attestation'}
+      side_channel_risk_review_required: {$ref: '#/$defs/boolean_field'}
+      notes: {type: string}
+      review_status: {type: string}
+  cpu_target_profile_entry:
+    type: object
+    additionalProperties: false
+    required:
+    - profile_id
+    - profile_kind
+    - architecture
+    - purpose
+    - required_features
+    - optional_features
+    - forbidden_features
+    - required_platform_features
+    - required_build_evidence
+    - required_binary_evidence
+    - required_runtime_evidence
+    - fallback_behavior
+    - not_claimed
+    - source_refs
+    - requirements
+    - tests
+    - evidence_required
+    - review_status
+    properties:
+      profile_id: {type: string}
+      profile_kind: {enum: [baseline, server, performance, best_effort, confidential_vm, enclave_tee, hardening_evidence]}
+      architecture: {enum: [x86_64, aarch64, riscv64, multiarch, platform]}
+      purpose: {type: string}
+      required_features: {$ref: '#/$defs/string_list'}
+      optional_features: {$ref: '#/$defs/string_list'}
+      forbidden_features: {$ref: '#/$defs/string_list'}
+      required_platform_features: {$ref: '#/$defs/string_list'}
+      required_build_evidence: {$ref: '#/$defs/string_list'}
+      required_binary_evidence: {$ref: '#/$defs/string_list'}
+      required_runtime_evidence: {$ref: '#/$defs/string_list'}
+      fallback_behavior: {type: string}
+      not_claimed: {$ref: '#/$defs/string_list'}
+      source_refs: {$ref: '#/$defs/string_list'}
+      requirements: {$ref: '#/$defs/string_list'}
+      tests: {$ref: '#/$defs/string_list'}
+      evidence_required: {$ref: '#/$defs/string_list'}
+      review_status: {type: string}
+source_refs:
+- FBVBS-001
+- X64-INTEL-001
+- X64-AMD-001
+- EXTREF-X86-64-MICROARCH-LEVELS-0001
+requirement_refs:
+- MFOS-REQ-ARCH-*
+- MFOS-REQ-X64-*
+- MFOS-REQ-CPUFEAT-*
+spec_gap_policy: implementation_must_not_infer_or_fill_gaps
