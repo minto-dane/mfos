@@ -21,6 +21,13 @@ and future implementation scaffolds.
   blocked future implementation tasks.
 - Added lifecycle, current-report, generated-placement, index-integrity, and
   directory-ownership validators.
+- Canonicalized substantive coverage and phase checkers under `scripts/checks/`
+  and `scripts/phases/phase-1/`; root `scripts/check-*.py` entrypoints are
+  thin wrappers only.
+- Artifact hygiene owns report placement, index integrity, generated-artifact
+  placement, and directory lifecycle boundaries. Phase 1.4 no-implementation
+  boundaries remain enforced by component, Phase 1, generated-Dafny, and Dafny
+  verification validators rather than artifact-hygiene checks.
 
 ## Validation
 
@@ -32,11 +39,11 @@ Passed locally:
 - `./scripts/validate-component-scaffold.sh`
 - `./scripts/validate-language-formal-assurance.sh`
 - `./scripts/validate-dafny-semantics.sh --require-dafny`
-- `python3 scripts/check-semantic-coverage-mapping.py`
-- `python3 scripts/check-formal-claim-coverage.py`
-- `python3 scripts/check-phase1-gap-triage.py`
-- `python3 scripts/check-phase1-2-auth-audit-coverage.py`
-- `python3 scripts/check-phase1-3-dataset-catalog-coverage.py`
+- `python3 scripts/checks/semantic-coverage/check-semantic-coverage-mapping.py`
+- `python3 scripts/checks/formal-claims/check-formal-claim-coverage.py`
+- `python3 scripts/phases/phase-1/check-phase1-gap-triage.py`
+- `python3 scripts/phases/phase-1/check-phase1-2-auth-audit-coverage.py`
+- `python3 scripts/phases/phase-1/check-phase1-3-dataset-catalog-coverage.py`
 - `python3 scripts/check-architecture-portability-policy.py`
 - `python3 scripts/check-x64-profile-policy.py`
 - `python3 scripts/check-cpu-feature-registry.py`

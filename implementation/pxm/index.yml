@@ -3,7 +3,7 @@ artifact_index_kind: mfos_future_component_scaffold
 status: planned
 component: pxm
 metadata:
-  path: pxm/.mfos-dir.yml
+  path: implementation/pxm/.mfos-dir.yml
   artifact_type: scaffold_metadata
   status: planned
 implementation_allowed:
@@ -12,7 +12,12 @@ implementation_allowed:
   rust_semantic_core: false
   dafny_executable_semantics: false
   semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+  generated_production_code: false
   validation_only: true
 policy:
+  canonical_path: implementation/pxm/
+  retired_top_level_path: pxm/
   implementation_files_present: false
   pre_implementation_gate_required: true

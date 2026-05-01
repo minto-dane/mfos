@@ -159,6 +159,10 @@ current:
   purpose: Nonblocking Phase 1 Dafny semantic artifact open issues.
 - path: reports/current/post-merge-integration-sweep-report.md
   purpose: Final post-merge integration sweep and Phase 1.4 planning readiness decision.
+- path: reports/current/pr-26-targeted-lifecycle-review.md
+  purpose: Targeted lifecycle review for PR #26 readiness after artifact lifecycle remediation.
+- path: reports/current/top-level-implementation-bridge-retirement-review.md
+  purpose: Review of top-level services/nucleus/pxm/guard bridge retirement into implementation component roots.
 sections:
 - path: reports/current/
   purpose: Cross-phase current status summaries, readiness reports, policy summaries, and stable current aggregate reports.
@@ -287,6 +291,10 @@ phase_reports:
 - path: reports/phases/phase-1-4/open-issues.md
   purpose: Phase 1.4 Job/Spool/Operator planning-only deferred issue ledger.
 archive:
+- path: reports/archive/superseded/phase-0-9-readiness.md
+  purpose: Superseded Phase 0.9 readiness report retained after Phase 0.9 freeze and Phase 1 readiness records.
+  status: historical
+  origin_phase: phase-0-9
 - path: reports/archive/superseded/phase-1-1/gap-triage.md
   purpose: Superseded Phase 1.1 classification of C0/C2/C3 semantic coverage gaps before Phase 1.2 closure.
   status: historical

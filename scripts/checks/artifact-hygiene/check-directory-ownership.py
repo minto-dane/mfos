@@ -16,16 +16,12 @@ from lib.mfos_lint import Finding, ROOT, emit, load_yaml, mode_arg
 
 EXPECTED = {
     "implementation": (True, "implementation_future"),
-    "implementation/services": (False, "implementation_future"),
+    "implementation/services": (True, "implementation_future"),
     "implementation/runtime": (False, "implementation_future"),
-    "implementation/nucleus": (False, "implementation_future"),
-    "implementation/pxm": (False, "implementation_future"),
-    "implementation/guard": (False, "implementation_future"),
+    "implementation/nucleus": (True, "implementation_future"),
+    "implementation/pxm": (True, "implementation_future"),
+    "implementation/guard": (True, "implementation_future"),
     "implementation/tools": (False, "implementation_future"),
-    "services": (False, "implementation_future"),
-    "nucleus": (False, "implementation_future"),
-    "pxm": (False, "implementation_future"),
-    "guard": (False, "implementation_future"),
     "tools": (True, "validation"),
     "docs/design/specs": (True, "canonical_current"),
     "specs": (False, "bridge"),
@@ -38,8 +34,7 @@ EXPECTED = {
     "formal/executable-semantics/dafny": (True, "canonical_current"),
 }
 
-METADATA_ONLY_ROOTS = {Path("services"), Path("nucleus"), Path("pxm"), Path("guard")}
-METADATA_ALLOWED = {"README.md", ".mfos-dir.yml", "index.yml"}
+RETIRED_TOP_LEVEL_IMPLEMENTATION_ROOTS = {Path("services"), Path("nucleus"), Path("pxm"), Path("guard")}
 TASK_REGISTRY = ROOT / "docs/design/registries/tasks.yaml"
 
 
@@ -68,13 +63,10 @@ def main() -> int:
         if data.get("role") != role:
             findings.append(Finding("ERROR", meta, f"role must be {role!r}"))
 
-    for rel in METADATA_ONLY_ROOTS:
+    for rel in RETIRED_TOP_LEVEL_IMPLEMENTATION_ROOTS:
         directory = ROOT / rel
-        for child in sorted(directory.iterdir() if directory.exists() else []):
-            if child.is_file() and child.name not in METADATA_ALLOWED:
-                findings.append(Finding("ERROR", child, "top-level bridge scaffold must remain metadata-only"))
-            if child.is_dir():
-                findings.append(Finding("ERROR", child, "top-level bridge scaffold must not contain implementation subdirectories"))
+        if directory.exists():
+            findings.append(Finding("ERROR", directory, "retired top-level implementation bridge must not exist"))
 
     if TASK_REGISTRY.exists():
         registry = metadata(TASK_REGISTRY)
@@ -88,7 +80,7 @@ def main() -> int:
             if status == "ready" and task_type in {"hosted_prototype", "service"}:
                 findings.append(Finding("ERROR", TASK_REGISTRY, f"{task_id}: hosted/service implementation task must not be ready in Phase 1"))
             if status == "ready" and any(path.startswith("services/") for path in allowed_paths):
-                findings.append(Finding("ERROR", TASK_REGISTRY, f"{task_id}: ready task must not target noncanonical services/ bridge"))
+                findings.append(Finding("ERROR", TASK_REGISTRY, f"{task_id}: ready task must not target retired services/ bridge"))
 
     return emit(findings, args.mode, "Directory ownership check OK")
 

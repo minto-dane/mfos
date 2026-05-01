@@ -41,19 +41,24 @@ current:
       path: scripts/validators/validate-fixture-golden-loader.py
       status: current
     check_semantic_coverage_mapping:
-      path: scripts/check-semantic-coverage-mapping.py
+      path: scripts/checks/semantic-coverage/check-semantic-coverage-mapping.py
+      wrapper: scripts/check-semantic-coverage-mapping.py
       status: current
     check_formal_claim_coverage:
-      path: scripts/check-formal-claim-coverage.py
+      path: scripts/checks/formal-claims/check-formal-claim-coverage.py
+      wrapper: scripts/check-formal-claim-coverage.py
       status: current
     check_phase1_gap_triage:
-      path: scripts/check-phase1-gap-triage.py
+      path: scripts/phases/phase-1/check-phase1-gap-triage.py
+      wrapper: scripts/check-phase1-gap-triage.py
       status: current
     check_phase1_2_auth_audit_coverage:
-      path: scripts/check-phase1-2-auth-audit-coverage.py
+      path: scripts/phases/phase-1/check-phase1-2-auth-audit-coverage.py
+      wrapper: scripts/check-phase1-2-auth-audit-coverage.py
       status: current
     check_phase1_3_dataset_catalog_coverage:
-      path: scripts/check-phase1-3-dataset-catalog-coverage.py
+      path: scripts/phases/phase-1/check-phase1-3-dataset-catalog-coverage.py
+      wrapper: scripts/check-phase1-3-dataset-catalog-coverage.py
       status: current
     check_dafny_verification_counts:
       path: scripts/checks/check-dafny-verification-counts.py
@@ -92,6 +97,18 @@ sections:
       status: current
     dafny_verification_counts:
       path: scripts/checks/check-dafny-verification-counts.py
+      status: current
+  semantic_coverage_checks:
+    path: scripts/checks/semantic-coverage/
+    status: current
+    semantic_coverage_mapping:
+      path: scripts/checks/semantic-coverage/check-semantic-coverage-mapping.py
+      status: current
+  formal_claim_checks:
+    path: scripts/checks/formal-claims/
+    status: current
+    formal_claim_coverage:
+      path: scripts/checks/formal-claims/check-formal-claim-coverage.py
       status: current
   artifact_hygiene_checks:
     path: scripts/checks/artifact-hygiene/
@@ -139,10 +156,47 @@ sections:
     path: scripts/phases/
     status: current
     note: Contains phase-scoped validators; phase-specific filenames are allowed only under this directory.
+    phase_1:
+      path: scripts/phases/phase-1/
+      status: current
+      origin_phase: phase-1
+      gap_triage:
+        path: scripts/phases/phase-1/check-phase1-gap-triage.py
+        status: current
+      phase_1_2_auth_audit_coverage:
+        path: scripts/phases/phase-1/check-phase1-2-auth-audit-coverage.py
+        status: current
+      phase_1_3_dataset_catalog_coverage:
+        path: scripts/phases/phase-1/check-phase1-3-dataset-catalog-coverage.py
+        status: current
     phase_0_9:
       path: scripts/phases/phase-0-9/
       status: current
       origin_phase: phase-0-9
+  root_wrappers:
+    path: scripts/
+    status: current
+    policy: thin fixed-target wrappers only; substantive logic lives under scripts/checks/ or scripts/phases/
+    semantic_coverage_mapping:
+      path: scripts/check-semantic-coverage-mapping.py
+      target: scripts/checks/semantic-coverage/check-semantic-coverage-mapping.py
+      status: current
+    formal_claim_coverage:
+      path: scripts/check-formal-claim-coverage.py
+      target: scripts/checks/formal-claims/check-formal-claim-coverage.py
+      status: current
+    phase1_gap_triage:
+      path: scripts/check-phase1-gap-triage.py
+      target: scripts/phases/phase-1/check-phase1-gap-triage.py
+      status: current
+    phase1_2_auth_audit_coverage:
+      path: scripts/check-phase1-2-auth-audit-coverage.py
+      target: scripts/phases/phase-1/check-phase1-2-auth-audit-coverage.py
+      status: current
+    phase1_3_dataset_catalog_coverage:
+      path: scripts/check-phase1-3-dataset-catalog-coverage.py
+      target: scripts/phases/phase-1/check-phase1-3-dataset-catalog-coverage.py
+      status: current
 
 archive:
   phase_0_8:

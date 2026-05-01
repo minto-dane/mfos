@@ -7,5 +7,5 @@ from pathlib import Path
 import runpy
 
 
-ROOT = Path(__file__).resolve().parent.parent
-runpy.run_path(str(ROOT / "scripts/checks/check-cpu-feature-registry.py"), run_name="__main__")
+TARGET = Path(__file__).resolve().parent / "checks/check-cpu-feature-registry.py"
+runpy.run_path(str(TARGET), run_name="__main__")

@@ -10,8 +10,6 @@ _SCRIPT_ROOT = next((p for p in Path(__file__).resolve().parents if (p / "lib").
 if _SCRIPT_ROOT is not None and str(_SCRIPT_ROOT) not in sys.path:
     sys.path.insert(0, str(_SCRIPT_ROOT))
 
-from pathlib import Path
-
 from lib.mfos_lint import Finding, ROOT, emit, mode_arg
 
 
@@ -56,6 +54,39 @@ CANONICAL_ROOT_FILES_ALLOWED = {
     Path("tasks"): {"README.md", "index.yml"},
 }
 
+ROOT_CHECK_WRAPPERS = {
+    "check-architecture-portability-policy.py": "checks/check-architecture-portability-policy.py",
+    "check-cpu-feature-registry.py": "checks/check-cpu-feature-registry.py",
+    "check-formal-claim-coverage.py": "checks/formal-claims/check-formal-claim-coverage.py",
+    "check-phase1-2-auth-audit-coverage.py": "phases/phase-1/check-phase1-2-auth-audit-coverage.py",
+    "check-phase1-3-dataset-catalog-coverage.py": "phases/phase-1/check-phase1-3-dataset-catalog-coverage.py",
+    "check-phase1-gap-triage.py": "phases/phase-1/check-phase1-gap-triage.py",
+    "check-roadmap-phase-alignment.py": "checks/check-roadmap-phase-alignment.py",
+    "check-semantic-coverage-mapping.py": "checks/semantic-coverage/check-semantic-coverage-mapping.py",
+    "check-x64-profile-policy.py": "checks/check-x64-profile-policy.py",
+}
+
+
+def validate_root_check_wrappers(findings: list[Finding]) -> None:
+    scripts_root = ROOT / "scripts"
+    for path in sorted(scripts_root.glob("check-*.py")):
+        expected_target = ROOT_CHECK_WRAPPERS.get(path.name)
+        if expected_target is None:
+            findings.append(Finding("ERROR", path, "root check script is not an indexed thin wrapper"))
+            continue
+        text = path.read_text(encoding="utf-8")
+        if "def " in text or "class " in text:
+            findings.append(Finding("ERROR", path, "root check wrapper must not contain substantive definitions"))
+        if "runpy.run_path" not in text:
+            findings.append(Finding("ERROR", path, "root check wrapper must dispatch through fixed runpy target"))
+        if expected_target not in text:
+            findings.append(Finding("ERROR", path, f"root check wrapper must target scripts/{expected_target}"))
+
+    for name in sorted(ROOT_CHECK_WRAPPERS):
+        path = scripts_root / name
+        if not path.exists():
+            findings.append(Finding("ERROR", path, "indexed root check wrapper missing"))
+
 
 def main() -> int:
     parser = mode_arg()
@@ -95,6 +126,8 @@ def main() -> int:
 
         for path in sorted((ROOT / "docs/design/tasks").glob(pattern)):
             findings.append(Finding("ERROR", path, "phase-specific design task must be under docs/design/tasks/archive/<phase>/"))
+
+    validate_root_check_wrappers(findings)
 
     for path in sorted(ROOT.rglob("__pycache__")):
         if ".git" not in path.parts:

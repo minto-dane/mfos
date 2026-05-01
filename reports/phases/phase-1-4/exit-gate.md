@@ -78,11 +78,11 @@ future Phase 1.4 coverage checker:
 ./scripts/validate-component-scaffold.sh
 ./scripts/validate-language-formal-assurance.sh
 ./scripts/validate-dafny-semantics.sh --require-dafny
-python3 scripts/check-semantic-coverage-mapping.py
-python3 scripts/check-formal-claim-coverage.py
-python3 scripts/check-phase1-gap-triage.py
-python3 scripts/check-phase1-2-auth-audit-coverage.py
-python3 scripts/check-phase1-3-dataset-catalog-coverage.py
+python3 scripts/checks/semantic-coverage/check-semantic-coverage-mapping.py
+python3 scripts/checks/formal-claims/check-formal-claim-coverage.py
+python3 scripts/phases/phase-1/check-phase1-gap-triage.py
+python3 scripts/phases/phase-1/check-phase1-2-auth-audit-coverage.py
+python3 scripts/phases/phase-1/check-phase1-3-dataset-catalog-coverage.py
 python3 scripts/check-phase1-4-job-spool-operator-coverage.py
 python3 scripts/checks/check-architecture-portability-policy.py
 python3 scripts/checks/check-x64-profile-policy.py

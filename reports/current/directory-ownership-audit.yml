@@ -5,13 +5,13 @@ duplicate_directory_ownership_classified: true
 entries:
   - path_a: implementation/services/
     path_b: services/
-    overlap_type: future_service_implementation_vs_top_level_bridge
+    overlap_type: canonical_future_service_implementation_vs_retired_top_level_bridge
     canonical_owner: implementation/services/
-    noncanonical_role: metadata_only_bridge
-    required_metadata: present
-    required_index_update: tasks registry gated; directory metadata added
-    risk: high
-    action: keep services/ metadata-only; future code belongs under implementation/services/ after reviewed gate
+    noncanonical_role: retired_absent
+    required_metadata: moved to implementation/services/
+    required_index_update: top-level bridge retired; implementation/services/index.yml added
+    risk: low
+    action: keep services/ absent; future code belongs under implementation/services/ after reviewed gate
   - path_a: implementation/runtime/
     path_b: runtime/
     overlap_type: future_runtime_implementation_vs_absent_top_level_root
@@ -23,31 +23,31 @@ entries:
     action: do not create top-level runtime/
   - path_a: implementation/nucleus/
     path_b: nucleus/
-    overlap_type: future_implementation_vs_top_level_bridge
+    overlap_type: canonical_future_implementation_vs_retired_top_level_bridge
     canonical_owner: implementation/nucleus/
-    noncanonical_role: metadata_only_bridge
-    required_metadata: present
+    noncanonical_role: retired_absent
+    required_metadata: moved to implementation/nucleus/
     required_index_update: none
-    risk: medium
-    action: keep top-level nucleus/ metadata-only
+    risk: low
+    action: keep top-level nucleus/ absent
   - path_a: implementation/pxm/
     path_b: pxm/
-    overlap_type: future_implementation_vs_top_level_bridge
+    overlap_type: canonical_future_implementation_vs_retired_top_level_bridge
     canonical_owner: implementation/pxm/
-    noncanonical_role: metadata_only_bridge
-    required_metadata: present
+    noncanonical_role: retired_absent
+    required_metadata: moved to implementation/pxm/
     required_index_update: none
-    risk: medium
-    action: keep top-level pxm/ metadata-only
+    risk: low
+    action: keep top-level pxm/ absent
   - path_a: implementation/guard/
     path_b: guard/
-    overlap_type: future_implementation_vs_top_level_bridge
+    overlap_type: canonical_future_implementation_vs_retired_top_level_bridge
     canonical_owner: implementation/guard/
-    noncanonical_role: metadata_only_bridge
-    required_metadata: present
+    noncanonical_role: retired_absent
+    required_metadata: moved to implementation/guard/
     required_index_update: none
-    risk: medium
-    action: keep top-level guard/ metadata-only
+    risk: low
+    action: keep top-level guard/ absent
   - path_a: tools/
     path_b: implementation/tools/
     overlap_type: current_validation_tools_vs_future_product_tools

@@ -89,7 +89,7 @@ entries:
       - implementation/services/datasetd/
       - tests/integration/hosted/
       - tests/negative/dataset/
-    prohibited_paths:
+    retired_top_level_paths:
       - services/securityd/
       - services/auditd/
       - services/catalogd/
@@ -140,7 +140,7 @@ entries:
       - implementation/services/auditd/
       - tests/negative/audit/
       - tests/integration/audit/
-    prohibited_paths:
+    retired_top_level_paths:
       - services/auditd/
     requirement_ids:
       - MFOS-REQ-AUDIT-0002

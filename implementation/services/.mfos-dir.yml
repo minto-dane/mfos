@@ -3,8 +3,8 @@ path: implementation/services
 role: implementation_future
 maturity: M2_CLASSIFIED
 status: planned
-canonical: false
-description: Reserved future MFOS service implementation area for securityd, auditd, catalogd, datasetd, jobd, spoold, and operatord.
+canonical: true
+description: Canonical reserved future MFOS service implementation area for securityd, auditd, catalogd, datasetd, jobd, spoold, and operatord.
 implementation_allowed:
   production: false
   hosted_daemon: false
@@ -18,6 +18,7 @@ implementation_allowed:
 phase_allowed_from: post-pre-implementation-gate
 depends_on:
   - implementation/.mfos-dir.yml
+  - implementation/services/index.yml
   - docs/design/specs/21-ai-implementation-contract.md
 allowed_contents:
   - README files

@@ -18,6 +18,7 @@ from lib.mfos_lint import Finding, ROOT, emit, load_yaml, mode_arg
 
 INDEXES = [
     ROOT / "reports/index.yml",
+    ROOT / "reports/current/fixedpoint/index.yml",
     ROOT / "scripts/index.yml",
     ROOT / "fuzz/targets/index.yml",
     ROOT / "tasks/index.yml",
@@ -33,7 +34,7 @@ def walk_refs(value: Any) -> list[tuple[str, str]]:
     refs: list[tuple[str, str]] = []
     if isinstance(value, dict):
         for key, child in value.items():
-            if key in {"path", "generated_by", "generator", "superseded_by"}:
+            if key in {"path", "wrapper", "target", "generated_by", "generator", "superseded_by", "machine_readable", "machine_readable_path"}:
                 if isinstance(child, str):
                     refs.append((key, child))
                 elif isinstance(child, list):

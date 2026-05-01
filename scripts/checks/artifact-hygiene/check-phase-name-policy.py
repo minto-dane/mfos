@@ -25,7 +25,6 @@ CANONICAL_ROOTS = [
     Path("tests/fixtures"),
     Path("tests/golden"),
     Path("packs"),
-    Path("services"),
     Path("runtime"),
     Path("interfaces"),
     Path("implementation"),
@@ -76,6 +75,14 @@ def in_canonical_root(path: Path) -> bool:
     return False
 
 
+def has_phase_component(path: Path) -> bool:
+    try:
+        rel = path.relative_to(ROOT)
+    except ValueError:
+        return False
+    return any(PHASE_RE.fullmatch(part) for part in rel.parts)
+
+
 def main() -> int:
     parser = mode_arg()
     args = parser.parse_args()
@@ -84,12 +91,10 @@ def main() -> int:
     for path in sorted(ROOT.rglob("*")):
         if ".git" in path.parts or "__pycache__" in path.parts:
             continue
-        if not path.is_file():
-            continue
         if not in_canonical_root(path) or is_allowed(path):
             continue
-        if PHASE_RE.search(path.name):
-            findings.append(Finding("ERROR", path, "phase-specific filename in canonical artifact directory"))
+        if PHASE_RE.search(path.name) or has_phase_component(path):
+            findings.append(Finding("ERROR", path, "phase-specific path in canonical artifact directory"))
 
     return emit(findings, args.mode, "Phase-name policy check OK")
 
