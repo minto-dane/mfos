@@ -11518,6 +11518,516 @@ entries:
   audit_linkage: {audit_record_ids: [], correlation_ids: []}
   spec_gap_ids: []
   legacy_evidence_ids: []
+- evidence_id: EV-MFOS-DATASET-VALID-DSN-0901
+  title: Phase 1.3 generated traceability evidence for TEST-MFOS-DATASET-VALID-DSN-0901
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['TEST-MFOS-DATASET-VALID-DSN-0901']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-3/dataset-catalog-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-dataset-catalog-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-05-01T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-DATASET-MALFORMED-DSN-0902
+  title: Phase 1.3 generated traceability evidence for NEG-MFOS-DATASET-MALFORMED-DSN-0902
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['NEG-MFOS-DATASET-MALFORMED-DSN-0902']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-3/dataset-catalog-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-dataset-catalog-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-05-01T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-DATASET-CATALOG-COMMITTED-0903
+  title: Phase 1.3 generated traceability evidence for TEST-MFOS-DATASET-CATALOG-COMMITTED-0903
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['TEST-MFOS-DATASET-CATALOG-COMMITTED-0903']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-3/dataset-catalog-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-dataset-catalog-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-05-01T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-DATASET-CATALOG-UNCOMMITTED-0904
+  title: Phase 1.3 generated traceability evidence for NEG-MFOS-DATASET-CATALOG-UNCOMMITTED-0904
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['NEG-MFOS-DATASET-CATALOG-UNCOMMITTED-0904']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-3/dataset-catalog-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-dataset-catalog-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-05-01T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-DATASET-CATALOG-ROLLED-BACK-0905
+  title: Phase 1.3 generated traceability evidence for NEG-MFOS-DATASET-CATALOG-ROLLED-BACK-0905
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['NEG-MFOS-DATASET-CATALOG-ROLLED-BACK-0905']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-3/dataset-catalog-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-dataset-catalog-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-05-01T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-DATASET-CATALOG-PARTIAL-JOURNAL-0906
+  title: Phase 1.3 generated traceability evidence for NEG-MFOS-DATASET-CATALOG-PARTIAL-JOURNAL-0906
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['NEG-MFOS-DATASET-CATALOG-PARTIAL-JOURNAL-0906']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-3/dataset-catalog-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-dataset-catalog-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-05-01T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-DATASET-CATALOG-INTEGRITY-FAILED-0907
+  title: Phase 1.3 generated traceability evidence for NEG-MFOS-DATASET-CATALOG-INTEGRITY-FAILED-0907
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['NEG-MFOS-DATASET-CATALOG-INTEGRITY-FAILED-0907']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-3/dataset-catalog-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-dataset-catalog-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-05-01T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-DATASET-UNAUTHORIZED-OPEN-0908
+  title: Phase 1.3 generated traceability evidence for NEG-MFOS-DATASET-UNAUTHORIZED-OPEN-0908
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['NEG-MFOS-DATASET-UNAUTHORIZED-OPEN-0908']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-3/dataset-catalog-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-dataset-catalog-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-05-01T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-DATASET-STALE-HANDLE-POLICY-0909
+  title: Phase 1.3 generated traceability evidence for NEG-MFOS-DATASET-STALE-HANDLE-POLICY-0909
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['NEG-MFOS-DATASET-STALE-HANDLE-POLICY-0909']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-3/dataset-catalog-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-dataset-catalog-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-05-01T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-DATASET-STALE-HANDLE-CATALOG-0910
+  title: Phase 1.3 generated traceability evidence for NEG-MFOS-DATASET-STALE-HANDLE-CATALOG-0910
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['NEG-MFOS-DATASET-STALE-HANDLE-CATALOG-0910']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-3/dataset-catalog-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-dataset-catalog-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-05-01T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-DATASET-RETENTION-DELETE-0911
+  title: Phase 1.3 generated traceability evidence for NEG-MFOS-DATASET-RETENTION-DELETE-0911
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['NEG-MFOS-DATASET-RETENTION-DELETE-0911']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-3/dataset-catalog-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-dataset-catalog-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-05-01T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-DATASET-IMMUTABLE-SYSTEM-0912
+  title: Phase 1.3 generated traceability evidence for NEG-MFOS-DATASET-IMMUTABLE-SYSTEM-0912
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['NEG-MFOS-DATASET-IMMUTABLE-SYSTEM-0912']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-3/dataset-catalog-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-dataset-catalog-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-05-01T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-DATASET-NOT-POSIX-FILE-0913
+  title: Phase 1.3 generated traceability evidence for NEG-MFOS-DATASET-NOT-POSIX-FILE-0913
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['NEG-MFOS-DATASET-NOT-POSIX-FILE-0913']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-3/dataset-catalog-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-dataset-catalog-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-05-01T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-DATASET-CRASH-MID-COMMIT-0914
+  title: Phase 1.3 generated traceability evidence for TEST-MFOS-DATASET-CRASH-MID-COMMIT-0914
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['TEST-MFOS-DATASET-CRASH-MID-COMMIT-0914']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-3/dataset-catalog-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-dataset-catalog-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-05-01T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-REQ-CATALOG-0002
+  title: Phase 1.3 generated traceability evidence for MFOS-REQ-CATALOG-0002
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: ['MFOS-REQ-CATALOG-0002']
+  test_ids: []
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-3/requirement-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-dataset-catalog-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-05-01T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-REQ-CATALOG-0101
+  title: Phase 1.3 generated traceability evidence for MFOS-REQ-CATALOG-0101
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: ['MFOS-REQ-CATALOG-0101']
+  test_ids: []
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-3/requirement-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-dataset-catalog-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-05-01T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-REQ-CATALOG-0102
+  title: Phase 1.3 generated traceability evidence for MFOS-REQ-CATALOG-0102
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: ['MFOS-REQ-CATALOG-0102']
+  test_ids: []
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-3/requirement-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-dataset-catalog-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-05-01T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-REQ-DATASET-0101
+  title: Phase 1.3 generated traceability evidence for MFOS-REQ-DATASET-0101
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: ['MFOS-REQ-DATASET-0101']
+  test_ids: []
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-3/requirement-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-dataset-catalog-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-05-01T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-REQ-DATASET-0102
+  title: Phase 1.3 generated traceability evidence for MFOS-REQ-DATASET-0102
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: ['MFOS-REQ-DATASET-0102']
+  test_ids: []
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-3/requirement-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-dataset-catalog-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-05-01T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-REQ-DATASET-0103
+  title: Phase 1.3 generated traceability evidence for MFOS-REQ-DATASET-0103
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: ['MFOS-REQ-DATASET-0103']
+  test_ids: []
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-3/requirement-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-dataset-catalog-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-05-01T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-DATASET-CATALOG-AUDIT-NO-BYPASS-0001
+  title: Phase 1.3 generated traceability evidence for DATASET-CATALOG-AUDIT-NO-BYPASS
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: []
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-3/dataset-catalog-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-dataset-catalog-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-05-01T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-DATASET-CATALOG-AUTH-ALLOW-ONLY-0001
+  title: Phase 1.3 generated traceability evidence for DATASET-CATALOG-AUTH-ALLOW-ONLY
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: []
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-3/dataset-catalog-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-dataset-catalog-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-05-01T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-DATASET-CATALOG-DENY-AUDIT-BEFORE-RETURN-0001
+  title: Phase 1.3 generated traceability evidence for DATASET-CATALOG-DENY-AUDIT-BEFORE-RETURN
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: []
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-3/dataset-catalog-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-dataset-catalog-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-05-01T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-DATASET-CATALOG-DENY-AUDIT-UNAVAILABLE-0001
+  title: Phase 1.3 generated traceability evidence for DATASET-CATALOG-DENY-AUDIT-UNAVAILABLE
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: []
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-3/dataset-catalog-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-dataset-catalog-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-05-01T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-DATASET-CATALOG-DENY-NOT-MFOS-OK-0001
+  title: Phase 1.3 generated traceability evidence for DATASET-CATALOG-DENY-NOT-MFOS-OK
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: []
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-3/dataset-catalog-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-dataset-catalog-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-05-01T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-DATASET-CATALOG-HANDLE-NO-BYPASS-0001
+  title: Phase 1.3 generated traceability evidence for DATASET-CATALOG-HANDLE-NO-BYPASS
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: []
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-3/dataset-catalog-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-dataset-catalog-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-05-01T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-DATASET-CATALOG-SYSTEM-DATASET-INVARIANT-0001
+  title: Phase 1.3 generated traceability evidence for DATASET-CATALOG-SYSTEM-DATASET-INVARIANT
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: []
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-3/dataset-catalog-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-dataset-catalog-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-05-01T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-DATASET-CATALOG-TX-COMMITTED-NOT-COMPLETE-0001
+  title: Phase 1.3 generated traceability evidence for DATASET-CATALOG-TX-COMMITTED-NOT-COMPLETE
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: []
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-3/dataset-catalog-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-dataset-catalog-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-05-01T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-DATASET-CATALOG-HANDLE-REQUIRES-RESOLVABLE-0001
+  title: Phase 1.3 generated traceability evidence for DATASET-CATALOG-HANDLE-REQUIRES-RESOLVABLE
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: []
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-3/dataset-catalog-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-dataset-catalog-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-05-01T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-DATASET-CATALOG-MODIFY-REQUIRES-RESOLVABLE-0001
+  title: Phase 1.3 generated traceability evidence for DATASET-CATALOG-MODIFY-REQUIRES-RESOLVABLE
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: []
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-3/dataset-catalog-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-dataset-catalog-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-05-01T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
 spec_gaps:
 - gap_id: REG-GAP-0005
   summary: Evidence artifact storage layout and retention policy are not final.

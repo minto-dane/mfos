@@ -89,9 +89,17 @@ module Types {
     obligations: set<DecisionObligation>
   )
 
+  datatype DatasetName = DatasetName(name_id: MfosId, canonical: bool, posix_path_like: bool)
+  datatype IntegrityTag = IntegrityTag(tag_id: MfosId, verified: bool)
+  datatype RetentionPolicy = RetentionPolicy(policy_id: MfosId, active: bool)
+  datatype ImmutableSystemDataset = ImmutableSystemDataset(system_dataset: bool, immutable: bool)
+
   datatype ObjectGenerationBinding = ObjectGenerationBinding(
     object_ref: ObjectRef,
-    policy_version: PolicyVersion
+    policy_version: PolicyVersion,
+    catalog_generation: Generation,
+    dataset_generation: Generation,
+    integrity_tag: IntegrityTag
   )
 
   datatype AuditRecord = AuditRecord(
@@ -115,22 +123,47 @@ module Types {
     record_hash: nat
   )
 
-  datatype Dataset = Dataset(name_id: MfosId, object_ref: ObjectRef, immutable_system: bool, retention_active: bool)
+  datatype Dataset = Dataset(
+    name_id: MfosId,
+    dataset_name: DatasetName,
+    object_ref: ObjectRef,
+    retention_policy: RetentionPolicy,
+    immutable_system: bool,
+    retention_active: bool,
+    system_marker: ImmutableSystemDataset
+  )
 
   datatype CatalogEntryState =
     CATALOG_MISSING
   | CATALOG_STAGED
+  | CATALOG_UNCOMMITTED
   | CATALOG_COMMITTED
   | CATALOG_ROLLED_BACK
   | CATALOG_PARTIAL_JOURNAL
   | CATALOG_INTEGRITY_FAILED
+  | CATALOG_DELETED
+  | CATALOG_RETIRED
+
+  datatype CatalogTransactionState =
+    CATALOG_TX_BEGIN
+  | CATALOG_TX_DSN_VALIDATED
+  | CATALOG_TX_AUTHORIZED
+  | CATALOG_TX_PREPARED
+  | CATALOG_TX_JOURNALED
+  | CATALOG_TX_COMMITTED
+  | CATALOG_TX_COMPLETE
+  | CATALOG_TX_ROLLBACK_REQUIRED
+  | CATALOG_TX_PARTIAL_JOURNAL
+  | CATALOG_TX_INTEGRITY_FAILED
 
   datatype CatalogEntry = CatalogEntry(
     dataset: Dataset,
     state: CatalogEntryState,
+    transaction_state: CatalogTransactionState,
     catalog_generation: Generation,
     dataset_generation: Generation,
-    integrity_valid: bool
+    integrity_valid: bool,
+    integrity_tag: IntegrityTag
   )
 
   datatype DatasetHandle = DatasetHandle(
@@ -141,6 +174,8 @@ module Types {
     policy_version: PolicyVersion,
     catalog_generation: Generation,
     dataset_generation: Generation,
+    policy_binding: PolicyBinding,
+    object_generation_binding: ObjectGenerationBinding,
     active: bool
   )
 

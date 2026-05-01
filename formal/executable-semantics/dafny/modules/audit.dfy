@@ -65,6 +65,7 @@ module Audit {
 
   predicate DenyBeforeReturn(decision: SecurityDecision, record: AuditRecord) {
     decision.result == DENY &&
+    !IsSuccessError(decision.error_code) &&
     BeforeReturnAuditForDecision(decision, record)
   }
 
@@ -117,6 +118,7 @@ module Audit {
 
   function FinalizeDeniedOperation(decision: SecurityDecision, prior_records: seq<AuditRecord>, next_record_id: MfosId, audit_available: bool): AuditFinalization
     requires decision.result == DENY
+    requires !IsSuccessError(decision.error_code)
     requires Authorization.RequiresAudit(decision)
     requires ValidCorrelationId(decision.context.correlation_id)
     requires ValidId(next_record_id)
@@ -165,6 +167,7 @@ module Audit {
 
   lemma INV_AUDIT_DENY_TRANSITION_WRITES_BEFORE_RETURN(decision: SecurityDecision, prior_records: seq<AuditRecord>, next_record_id: MfosId)
     requires decision.result == DENY
+    requires !IsSuccessError(decision.error_code)
     requires Authorization.RequiresAudit(decision)
     requires ValidCorrelationId(decision.context.correlation_id)
     requires ValidId(decision.subject.principal.principal_id)
@@ -174,6 +177,7 @@ module Audit {
     ensures FinalizeDeniedOperation(decision, prior_records, next_record_id, true).final_result == DENY
     ensures FinalizeDeniedOperation(decision, prior_records, next_record_id, true).final_error == decision.error_code
     ensures !DecisionIsSuccess(FinalizeDeniedOperation(decision, prior_records, next_record_id, true).final_result)
+    ensures !IsSuccessError(FinalizeDeniedOperation(decision, prior_records, next_record_id, true).final_error)
     ensures ExistsBeforeReturnAudit(decision, FinalizeDeniedOperation(decision, prior_records, next_record_id, true).records_after)
     ensures RequiredAuditSatisfiedForFinalResult(decision, FinalizeDeniedOperation(decision, prior_records, next_record_id, true).records_after)
   {
@@ -187,6 +191,7 @@ module Audit {
 
   lemma INV_AUDIT_DENY_TRANSITION_FAILS_CLOSED_WHEN_UNAVAILABLE(decision: SecurityDecision, prior_records: seq<AuditRecord>, next_record_id: MfosId)
     requires decision.result == DENY
+    requires !IsSuccessError(decision.error_code)
     requires Authorization.RequiresAudit(decision)
     requires ValidCorrelationId(decision.context.correlation_id)
     requires ValidId(next_record_id)
@@ -319,6 +324,7 @@ module Audit {
 
   lemma INV_AUTH_AUDIT_DENY_WITH_OBLIGATION_LINKS_RECORD(decision: SecurityDecision, prior_records: seq<AuditRecord>, next_record_id: MfosId)
     requires decision.result == DENY
+    requires !IsSuccessError(decision.error_code)
     requires Authorization.RequiresAudit(decision)
     requires ValidCorrelationId(decision.context.correlation_id)
     requires ValidId(decision.subject.principal.principal_id)
@@ -333,6 +339,7 @@ module Audit {
 
   lemma INV_AUTH_AUDIT_REQUIRED_UNAVAILABLE_PREVENTS_SUCCESS(decision: SecurityDecision, prior_records: seq<AuditRecord>, next_record_id: MfosId)
     requires decision.result == DENY
+    requires !IsSuccessError(decision.error_code)
     requires Authorization.RequiresAudit(decision)
     requires ValidCorrelationId(decision.context.correlation_id)
     requires ValidId(next_record_id)

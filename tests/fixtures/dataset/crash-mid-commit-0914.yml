@@ -1,6 +1,6 @@
 fixture_id: FIXTURE-MFOS-DATASET-CRASH-MID-COMMIT-0914
 fixture_version: 1
-description: catalog crash mid-commit recovery
+description: catalog crash mid-commit partial candidate rejection
 target_specs:
 - docs/design/specs/08-dataset-catalog.md
 target_requirements:
@@ -18,6 +18,10 @@ initial_state:
   objects:
   - object_ref: OBJ-MFOS-PHASE09-0001
     generation: 1
+  catalog_transaction:
+    candidate_state: CATALOG_PARTIAL_JOURNAL
+    transaction_state: CATALOG_TX_ROLLBACK_REQUIRED
+    recovery_expectation: partial_candidate_nonresolution_only
 inputs:
 - input_id: INPUT-MFOS-PHASE09-0001
   operation: CRASH-MID-COMMIT

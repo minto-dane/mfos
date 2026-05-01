@@ -82,6 +82,29 @@ The Phase 1.2 model keeps Python tooling outside MFOS business semantics and
 does not introduce production implementation, Rust semantic-core, hosted
 daemons, or production-like semantic runners.
 
+## Phase 1.3 Dataset/Catalog Deepening
+
+Phase 1.3 deepens the non-production Dafny executable semantics for
+Dataset/Catalog and its Authorization/Audit integration boundary. Generated
+Phase 1.3 traceability lives under
+`evidence/traceability/generated/phase-1-3/`.
+
+Coverage status:
+
+- Dataset/Catalog conformance scenarios: `C5_CONFORMANCE_LINKED`.
+- Dataset/Catalog requirement rows: `C2_PARTIAL_SEMANTIC` aggregate because full crash recovery selection is not modeled in Phase 1.3.
+- Dataset/Catalog Authorization/Audit integration: `C4_VERIFIED_PROPERTY`.
+- Formal claim proof coverage: not claimed; formal claims remain below
+  proof-backed C4/C5 levels.
+
+Crash-mid-commit coverage is narrowed to fail-closed partial candidate
+non-resolution. The model does not claim a crash recovery algorithm or recovery
+selection completeness.
+
+The Phase 1.3 model keeps Python tooling outside MFOS business semantics and
+does not introduce catalogd, datasetd, storage, production implementation, Rust
+semantic-core, hosted daemons, or production-like semantic runners.
+
 ## Pinned Verification Toolchain
 
 Phase 1 verification uses the pinned Dafny release installed by
@@ -99,4 +122,4 @@ Verification command:
 ./scripts/validate-dafny-semantics.sh --require-dafny
 ```
 
-The current module set verifies with `97 verified, 0 errors`.
+The current module set verifies with `136 verified, 0 errors`.

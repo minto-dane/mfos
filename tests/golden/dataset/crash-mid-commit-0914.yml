@@ -6,27 +6,28 @@ normalized_input:
   operation: CRASH-MID-COMMIT
   deterministic_seed: SEED-MFOS-PHASE09-0001
 expected_normalized_output:
-  outcome: EXPECTED_ALLOW
-  final_state: COMPLETE
+  outcome: EXPECTED_FAIL_CLOSED
+  final_state: FAILED
+  partial_catalog_success: false
 expected_decisions: &id001
 - decision_id: DECISION-MFOS-PHASE09-0001
-  result: ALLOW
+  result: DENY
   policy_version: 1
   obligations:
   - AUDIT_SECURITY_DECISION
 expected_audit_sequence: &id003
 - record_type: SECURITY_DECISION
-  decision: ALLOW
-  reason_code: OK
-  before_return: false
+  decision: DENY
+  reason_code: MFOS_ERR_INTERNAL_CORRUPTION
+  before_return: true
 expected_state_transitions: &id002
 - object: PHASE09_OBJECT
   from: INITIAL
   action: EVALUATE
-  to: COMPLETE
-  reason: EXPECTED
-expected_final_state: COMPLETE
-expected_failure_mode: null
+  to: FAILED
+  reason: MFOS_ERR_INTERNAL_CORRUPTION
+expected_final_state: FAILED
+expected_failure_mode: MFOS_ERR_INTERNAL_CORRUPTION
 deterministic: true
 oracle:
   oracle_id: ORACLE-MFOS-DATASET-CRASH-MID-COMMIT-0914
@@ -36,9 +37,12 @@ oracle:
   expected_state_transitions: *id002
   expected_audit_records: *id003
   expected_failure:
-    error_code: null
-    fail_closed: false
-  expected_final_state: COMPLETE
+    error_code: MFOS_ERR_INTERNAL_CORRUPTION
+    fail_closed: true
+  expected_recovery:
+    partial_catalog_success: false
+    usable_partial_dataset_handle: false
+  expected_final_state: FAILED
   evidence_required:
   - EV-MFOS-DATASET-CRASH-MID-COMMIT-0914
   status: draft

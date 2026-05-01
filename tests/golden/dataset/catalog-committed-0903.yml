@@ -27,6 +27,11 @@ expected_state_transitions: &id002
   reason: EXPECTED
 expected_final_state: COMPLETE
 expected_failure_mode: null
+expected_catalog_transaction:
+  candidate_state: CATALOG_COMMITTED
+  transaction_state: CATALOG_TX_COMPLETE
+  integrity_valid: true
+  integrity_tag_verified: true
 deterministic: true
 oracle:
   oracle_id: ORACLE-MFOS-DATASET-CATALOG-COMMITTED-0903
@@ -38,6 +43,11 @@ oracle:
   expected_failure:
     error_code: null
     fail_closed: false
+  expected_catalog_transaction:
+    candidate_state: CATALOG_COMMITTED
+    transaction_state: CATALOG_TX_COMPLETE
+    integrity_valid: true
+    integrity_tag_verified: true
   expected_final_state: COMPLETE
   evidence_required:
   - EV-MFOS-DATASET-CATALOG-COMMITTED-0903

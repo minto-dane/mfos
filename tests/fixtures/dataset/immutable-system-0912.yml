@@ -15,6 +15,13 @@ initial_state:
   clock: T0
   security_epoch: 1
   policy_version: 1
+  dataset:
+    immutable_system: true
+    system_marker:
+      system_dataset: true
+      immutable: true
+  decision:
+    operation: OP_WRITE
   objects:
   - object_ref: OBJ-MFOS-PHASE09-0001
     generation: 1

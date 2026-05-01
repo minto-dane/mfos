@@ -15,6 +15,9 @@ initial_state:
   clock: T0
   security_epoch: 1
   policy_version: 1
+  catalog_entry:
+    state: CATALOG_PARTIAL_JOURNAL
+    transaction_state: CATALOG_TX_PARTIAL_JOURNAL
   objects:
   - object_ref: OBJ-MFOS-PHASE09-0001
     generation: 1

@@ -55,7 +55,7 @@ phase_1_1_core_domain_coverage_status: mixed_verified_and_partial
 phase_1_1_formal_claim_coverage_complete: false
 negative_semantics_complete: false
 audit_deny_before_return_transition_backed: true
-dafny_verification_result: 97 verified, 0 errors
+dafny_verification_result: 136 verified, 0 errors
 production_implementation_allowed: false
 rust_phase_1_canonical_semantics_allowed: false
 hosted_daemon_implementation_allowed: false

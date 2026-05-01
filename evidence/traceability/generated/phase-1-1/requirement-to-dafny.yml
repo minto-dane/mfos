@@ -351,8 +351,8 @@ requirements:
     verification_status: unverified
     evidence_ref: reports/current/semantic-coverage-open-issues.md
     coverage_level: C2_PARTIAL_SEMANTIC
-    note: Malformed DSN rejection and MFOS_ERR_INVALID_DATASET_NAME are not modeled
-      in Dafny.
+    note: Malformed DSN rejection now maps to MFOS_ERR_INVALID_DSN in Phase 1.3; Phase
+      1.1 still records only symbolic DSN coverage.
   - &id018
     dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
     dafny_symbol: CatalogEntryResolvable

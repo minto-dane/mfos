@@ -1,0 +1,84 @@
+schema_version: 1
+status: generated
+origin_phase: phase-1.3
+generated_by: scripts/generators/generate-dataset-catalog-coverage.py
+production_implementation_allowed: false
+rust_semantic_core_allowed: false
+hosted_daemon_allowed: false
+artifact_type: phase_1_3_requirement_to_dafny
+requirements:
+- requirement_id: MFOS-REQ-CATALOG-0002
+  domain: dataset_catalog
+  coverage_level: C4_VERIFIED_PROPERTY
+  phase_1_3_exit_blocker: false
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_CATALOG_RESOLVE_SUCCESS_IMPLIES_COMMITTED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-REQ-CATALOG-0002
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: Catalog resolution returns only committed, integrity-valid, transaction-complete
+    entries.
+- requirement_id: MFOS-REQ-CATALOG-0101
+  domain: dataset_catalog
+  coverage_level: C4_VERIFIED_PROPERTY
+  phase_1_3_exit_blocker: false
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_CATALOG_RESOLVE_SUCCESS_IMPLIES_COMMITTED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-REQ-CATALOG-0101
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: Registry mirror for committed-only catalog resolution.
+- requirement_id: MFOS-REQ-CATALOG-0102
+  domain: dataset_catalog
+  coverage_level: C2_PARTIAL_SEMANTIC
+  phase_1_3_exit_blocker: false
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_CATALOG_CRASH_MID_COMMIT_PARTIAL_STATE_CANNOT_RESOLVE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-REQ-CATALOG-0102
+    coverage_level: C2_PARTIAL_SEMANTIC
+  notes: Crash-mid-commit partial candidates cannot resolve; full crash recovery selection
+    is not modeled in Phase 1.3.
+- requirement_id: MFOS-REQ-DATASET-0101
+  domain: dataset_catalog
+  coverage_level: C4_VERIFIED_PROPERTY
+  phase_1_3_exit_blocker: false
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_DATASET_CREATE_HANDLE_BINDS_DECISION
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-REQ-DATASET-0101
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: Dataset handles bind subject, operation, policy, catalog generation, and
+    dataset generation where modeled.
+- requirement_id: MFOS-REQ-DATASET-0102
+  domain: dataset_catalog
+  coverage_level: C4_VERIFIED_PROPERTY
+  phase_1_3_exit_blocker: false
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_DATASET_NOT_POSIX_FILE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-REQ-DATASET-0102
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: Dataset semantics reject POSIX file-model substitution.
+- requirement_id: MFOS-REQ-DATASET-0103
+  domain: dataset_catalog
+  coverage_level: C4_VERIFIED_PROPERTY
+  phase_1_3_exit_blocker: false
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_DATASET_RETENTION_VIOLATION_NOT_SUCCESS
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-REQ-DATASET-0103
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: Retention metadata blocks delete and purge while active.

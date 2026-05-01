@@ -157,6 +157,7 @@ entries:
   - EV-MFOS-AUDIT-CAT-DENY-0002
   - EV-MFOS-CATALOG-CRASH-0002
   - EV-MFOS-CATALOG-TX-0002
+  - EV-MFOS-REQ-CATALOG-0002
 - requirement_id: MFOS-REQ-CATALOG-0003
   evidence:
   - EV-MFOS-CATALOG-REQ-RESERVED-0003
@@ -166,9 +167,11 @@ entries:
 - requirement_id: MFOS-REQ-CATALOG-0101
   evidence:
   - EV-MFOS-CATALOG-0101
+  - EV-MFOS-REQ-CATALOG-0101
 - requirement_id: MFOS-REQ-CATALOG-0102
   evidence:
   - EV-MFOS-CATALOG-0102
+  - EV-MFOS-REQ-CATALOG-0102
 - requirement_id: MFOS-REQ-CLUSTER-0101
   evidence:
   - EV-MFOS-CLUSTER-0101
@@ -290,12 +293,15 @@ entries:
 - requirement_id: MFOS-REQ-DATASET-0101
   evidence:
   - EV-MFOS-DATASET-0101
+  - EV-MFOS-REQ-DATASET-0101
 - requirement_id: MFOS-REQ-DATASET-0102
   evidence:
   - EV-MFOS-DATASET-0102
+  - EV-MFOS-REQ-DATASET-0102
 - requirement_id: MFOS-REQ-DATASET-0103
   evidence:
   - EV-MFOS-DATASET-0103
+  - EV-MFOS-REQ-DATASET-0103
 - requirement_id: MFOS-REQ-FORMAL-0001
   evidence:
   - EV-MFOS-FORMAL-0001

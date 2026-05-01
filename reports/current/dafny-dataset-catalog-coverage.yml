@@ -1,0 +1,36 @@
+schema_version: 1
+artifact_type: dafny_dataset_catalog_coverage
+status: current
+origin_phase: phase-1.3
+phase_1_3_dataset_catalog_complete: true
+dataset_catalog_coverage_level: C5_CONFORMANCE_LINKED
+dataset_catalog_requirement_coverage_level: C2_PARTIAL_SEMANTIC
+dataset_catalog_auth_audit_integration_coverage_level: C4_VERIFIED_PROPERTY
+coverage_level_distribution:
+  C5_CONFORMANCE_LINKED: 14
+  C4_VERIFIED_PROPERTY: 15
+  C2_PARTIAL_SEMANTIC: 1
+  C3_FULL_SEMANTIC: 1
+formal_claims_proof_backed: false
+formal_claim_coverage_level: C3_FULL_SEMANTIC
+dataset_catalog_exit_blockers_remaining: false
+catalog_committed_only_verified: true
+uncommitted_resolution_blocked: true
+rolled_back_resolution_blocked: true
+partial_journal_resolution_blocked: true
+integrity_failed_resolution_blocked: true
+dataset_handle_requires_allow: true
+stale_handle_policy_rejected: true
+stale_handle_generation_rejected: true
+catalog_transaction_c5_overclaim_fixed: true
+crash_recovery_completeness_claimed: false
+crash_mid_commit_partial_nonresolution_covered: true
+retention_immutable_error_drift_fixed: true
+system_dataset_immutability_enforced: true
+deny_mfos_ok_blocked: true
+coverage_checker_hardened: true
+python_loader_contains_dataset_catalog_semantics: false
+production_implementation_allowed: false
+rust_phase_1_canonical_semantics_allowed: false
+hosted_daemon_implementation_allowed: false
+c5_rows_ready: true
