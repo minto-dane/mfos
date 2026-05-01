@@ -122,4 +122,4 @@ Verification command:
 ./scripts/validate-dafny-semantics.sh --require-dafny
 ```
 
-The current module set verifies with `126 verified, 0 errors`.
+The current module set verifies with `136 verified, 0 errors`.

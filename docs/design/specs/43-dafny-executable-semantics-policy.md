@@ -278,7 +278,7 @@ dataset_catalog_exit_blockers_remaining: false
 release_ready_model_claimed: false
 ```
 
-The current Dafny module set verifies with `126 verified, 0 errors`.
+The current Dafny module set verifies with `136 verified, 0 errors`.
 
 Phase 1.3 Dataset/Catalog C5 scenario coverage is limited to the modeled
 conformance rows, including fail-closed non-resolution of crash-mid-commit

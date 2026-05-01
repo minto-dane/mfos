@@ -17,6 +17,7 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 TRACEABILITY_DIR = ROOT / "evidence" / "traceability" / "generated" / "phase-1-3"
 REPORTS_DIR = ROOT / "reports" / "current"
+EVIDENCE_REGISTRY = ROOT / "docs/design/registries/evidence.yaml"
 TRACE_FILES = [
     "dataset-catalog-to-dafny.yml",
     "test-to-dafny.yml",
@@ -83,6 +84,8 @@ REQUIRED_PROPERTY_SYMBOLS = {
     "INV_CATALOG_TX_COMMITTED_NOT_COMPLETE_CANNOT_RESOLVE",
     "INV_DATASET_SYSTEM_DATASET_REQUIRES_IMMUTABLE",
     "INV_DATASET_AUDITED_DENY_DOES_NOT_BIND_MFOS_OK",
+    "INV_DATASET_HANDLE_REQUIRES_RESOLVABLE_ENTRY",
+    "INV_DATASET_DELETE_OR_MODIFY_REJECTS_NONRESOLVABLE",
 }
 CRASH_PARTIAL_SYMBOL = "INV_CATALOG_CRASH_MID_COMMIT_PARTIAL_STATE_CANNOT_RESOLVE"
 CRASH_RECOVERY_COMPLETENESS_SYMBOL = "INV_CATALOG_CRASH_MID_COMMIT_RECOVERY_EXPOSES_ONLY_SAFE_STATE"
@@ -292,6 +295,23 @@ def validate_c5_links(source_name: str, row: dict[str, Any], mapping: dict[str, 
         errors.append(f"{source_name}:{row_id}: golden expected_audit_sequence must mirror embedded oracle expected_audit_records")
     if golden.get("expected_final_state") != oracle.get("expected_final_state"):
         errors.append(f"{source_name}:{row_id}: golden expected_final_state must mirror embedded oracle")
+    if row_id == "TEST-MFOS-DATASET-CATALOG-COMMITTED-0903":
+        tx = ((fixture.get("initial_state") or {}).get("catalog_transaction") or {})
+        if tx.get("candidate_state") != "CATALOG_COMMITTED":
+            errors.append(f"{source_name}:{row_id}: committed fixture must declare CATALOG_COMMITTED candidate_state")
+        if tx.get("transaction_state") != "CATALOG_TX_COMPLETE":
+            errors.append(f"{source_name}:{row_id}: committed fixture must declare CATALOG_TX_COMPLETE")
+        if tx.get("integrity_valid") is not True or tx.get("integrity_tag_verified") is not True:
+            errors.append(f"{source_name}:{row_id}: committed fixture must declare valid integrity state")
+        expected_tx = golden.get("expected_catalog_transaction")
+        oracle_tx = oracle.get("expected_catalog_transaction")
+        if expected_tx != oracle_tx or expected_tx != {
+            "candidate_state": "CATALOG_COMMITTED",
+            "transaction_state": "CATALOG_TX_COMPLETE",
+            "integrity_valid": True,
+            "integrity_tag_verified": True,
+        }:
+            errors.append(f"{source_name}:{row_id}: committed golden/oracle must mirror transaction-complete evidence")
     failure = oracle.get("expected_failure")
     if isinstance(failure, dict) and golden.get("expected_failure_mode") != failure.get("error_code"):
         errors.append(f"{source_name}:{row_id}: golden expected_failure_mode must mirror embedded oracle expected_failure.error_code")
@@ -303,7 +323,7 @@ def validate_c5_links(source_name: str, row: dict[str, Any], mapping: dict[str, 
     validate_crash_row(source_name, row, fixture, golden, errors)
 
 
-def validate_rows(source_name: str, rows: list[dict[str, Any]], errors: list[str]) -> None:
+def validate_rows(source_name: str, rows: list[dict[str, Any]], errors: list[str], known_evidence: set[str] | None = None) -> None:
     for row in rows:
         row_id = row_name(row)
         row_level = row.get("coverage_level")
@@ -324,6 +344,8 @@ def validate_rows(source_name: str, rows: list[dict[str, Any]], errors: list[str
                 errors.append(f"{source_name}:{row_id}: C4/C5 mapping not verified")
             if not mapping.get("evidence_ref"):
                 errors.append(f"{source_name}:{row_id}: semantic mapping lacks evidence_ref")
+            elif str(mapping.get("evidence_ref")).startswith("EV-") and known_evidence is not None and mapping.get("evidence_ref") not in known_evidence:
+                errors.append(f"{source_name}:{row_id}: semantic mapping evidence_ref is not registered: {mapping.get('evidence_ref')}")
             if level_rank(mapping.get("coverage_level")) < level_rank(row_level):
                 errors.append(f"{source_name}:{row_id}: mapping coverage level is below row coverage level")
             module_path = ROOT / str(mapping.get("dafny_module", ""))
@@ -374,6 +396,12 @@ def validate_mapping_content() -> list[str]:
     errors: list[str] = []
     coverage = load_yaml(REPORTS_DIR / "dafny-dataset-catalog-coverage.yml")
     gate = load_yaml(REPORTS_DIR / "phase-1-3-entry-gate.yml")
+    evidence_registry = load_yaml(EVIDENCE_REGISTRY)
+    known_evidence = {
+        entry.get("evidence_id")
+        for entry in evidence_registry.get("entries", [])
+        if isinstance(entry, dict)
+    }
     if coverage.get("dataset_catalog_exit_blockers_remaining"):
         errors.append("Phase 1.3 coverage still reports Dataset/Catalog exit blockers")
     if gate.get("merge_blockers") or gate.get("dataset_catalog_merge_blockers_remaining"):
@@ -406,10 +434,10 @@ def validate_mapping_content() -> list[str]:
         errors.append("Phase 1.3 Dataset/Catalog required property symbols missing: " + ", ".join(missing_properties))
     if CRASH_RECOVERY_COMPLETENESS_SYMBOL in symbols:
         errors.append("Phase 1.3 must not claim crash recovery completeness without a recovery model")
-    validate_rows("dataset-catalog-to-dafny.yml", dataset_rows, errors)
+    validate_rows("dataset-catalog-to-dafny.yml", dataset_rows, errors, known_evidence)
 
     test_data = load_yaml(TRACEABILITY_DIR / "test-to-dafny.yml")
-    validate_rows("test-to-dafny.yml", test_data.get("tests") or [], errors)
+    validate_rows("test-to-dafny.yml", test_data.get("tests") or [], errors, known_evidence)
 
     req_data = load_yaml(TRACEABILITY_DIR / "requirement-to-dafny.yml")
     req_rows = req_data.get("requirements") or []
@@ -417,10 +445,10 @@ def validate_mapping_content() -> list[str]:
     for row in req_rows:
         if row_name(row) == "MFOS-REQ-CATALOG-0102" and level_rank(row.get("coverage_level")) >= level_rank("C4_VERIFIED_PROPERTY"):
             errors.append("MFOS-REQ-CATALOG-0102 must not be C4/C5 until crash recovery selection is modeled")
-    validate_rows("requirement-to-dafny.yml", req_rows, errors)
+    validate_rows("requirement-to-dafny.yml", req_rows, errors, known_evidence)
 
     fixture_data = load_yaml(TRACEABILITY_DIR / "fixture-to-dafny.yml")
-    validate_rows("fixture-to-dafny.yml", fixture_data.get("fixtures") or [], errors)
+    validate_rows("fixture-to-dafny.yml", fixture_data.get("fixtures") or [], errors, known_evidence)
 
     formal = load_yaml(TRACEABILITY_DIR / "formal-claim-to-dafny.yml")
     formal_rows = formal.get("formal_claims", []) or []
@@ -436,7 +464,7 @@ def validate_mapping_content() -> list[str]:
             errors.append(f"{claim.get('claim_id')}: formal claim must not be C4/C5/C6 without proof artifacts")
         if claim.get("proof_claimed") or claim.get("proof_artifact_refs"):
             errors.append(f"{claim.get('claim_id')}: Phase 1.3 must not invent proof artifacts")
-    validate_rows("formal-claim-to-dafny.yml", formal_rows, errors)
+    validate_rows("formal-claim-to-dafny.yml", formal_rows, errors, known_evidence)
 
     integration_rows = [row for row in dataset_rows if row.get("domain") == "dataset_catalog_auth_audit_integration"]
     expect_summary_not_above("dataset_catalog_auth_audit_integration_coverage_level", coverage.get("dataset_catalog_auth_audit_integration_coverage_level"), integration_rows, errors)

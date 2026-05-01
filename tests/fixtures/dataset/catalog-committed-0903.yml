@@ -18,6 +18,13 @@ initial_state:
   objects:
   - object_ref: OBJ-MFOS-PHASE09-0001
     generation: 1
+  catalog_transaction:
+    candidate_state: CATALOG_COMMITTED
+    transaction_state: CATALOG_TX_COMPLETE
+    integrity_valid: true
+    integrity_tag_verified: true
+    catalog_generation: 1
+    dataset_generation: 1
 inputs:
 - input_id: INPUT-MFOS-PHASE09-0001
   operation: CATALOG-COMMITTED

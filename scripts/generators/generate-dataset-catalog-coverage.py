@@ -48,6 +48,8 @@ PROPERTY_ROWS: list[tuple[str, str, str]] = [
     ("DATASET-CATALOG-TX-COMMITTED-NOT-COMPLETE", "INV_CATALOG_TX_COMMITTED_NOT_COMPLETE_CANNOT_RESOLVE", "Catalog transaction state CATALOG_TX_COMMITTED is not complete and cannot resolve."),
     ("DATASET-CATALOG-SYSTEM-DATASET-INVARIANT", "INV_DATASET_SYSTEM_DATASET_REQUIRES_IMMUTABLE", "system_dataset == true && immutable == false is an invalid model state."),
     ("DATASET-CATALOG-DENY-NOT-MFOS-OK", "INV_DATASET_AUDITED_DENY_DOES_NOT_BIND_MFOS_OK", "Audited Dataset/Catalog DENY cannot bind MFOS_OK."),
+    ("DATASET-CATALOG-HANDLE-REQUIRES-RESOLVABLE", "INV_DATASET_HANDLE_REQUIRES_RESOLVABLE_ENTRY", "Dataset handle validation rejects non-resolvable catalog entries."),
+    ("DATASET-CATALOG-MODIFY-REQUIRES-RESOLVABLE", "INV_DATASET_DELETE_OR_MODIFY_REJECTS_NONRESOLVABLE", "Dataset delete/modify rejects non-resolvable catalog entries."),
 ]
 
 INTEGRATION_PROPERTIES: list[tuple[str, str, str]] = [
@@ -100,6 +102,16 @@ def evidence_for(test_id: str) -> str:
     return "EV-" + clean
 
 
+def evidence_for_property(property_id: str) -> str:
+    return "EV-MFOS-" + property_id + "-0001"
+
+
+def evidence_for_claim(claim_id: str) -> str:
+    if claim_id == "MFOS-FC-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW":
+        return "EV-MFOS-FORMAL-CLAIM-AUTHORIZATION-0001"
+    return "EV-MFOS-FORMAL-CLAIM-0001"
+
+
 def mapping(symbol: str, level: str) -> dict[str, Any]:
     return {
         "dafny_module": DATASET_MODULE,
@@ -143,7 +155,7 @@ def integration_entry(item: tuple[str, str, str]) -> dict[str, Any]:
         "fixture_ref": None,
         "oracle_ref": None,
         "golden_ref": None,
-        "coverage_mappings": [{**mapping(symbol, "C4_VERIFIED_PROPERTY"), "evidence_ref": f"EV-{integration_id}"}],
+        "coverage_mappings": [{**mapping(symbol, "C4_VERIFIED_PROPERTY"), "evidence_ref": evidence_for_property(integration_id)}],
         "notes": note + " This integration row stays C4 because no Dataset/Catalog scenario vector raises it to C5.",
     }
 
@@ -159,7 +171,7 @@ def property_entry(item: tuple[str, str, str]) -> dict[str, Any]:
         "fixture_ref": None,
         "oracle_ref": None,
         "golden_ref": None,
-        "coverage_mappings": [{**mapping(symbol, "C4_VERIFIED_PROPERTY"), "evidence_ref": f"EV-{property_id}"}],
+        "coverage_mappings": [{**mapping(symbol, "C4_VERIFIED_PROPERTY"), "evidence_ref": evidence_for_property(property_id)}],
         "notes": note,
     }
 
@@ -187,7 +199,7 @@ def formal_claim_entry(item: tuple[str, str, str]) -> dict[str, Any]:
         "phase_1_3_exit_blocker": False,
         "accepted_deferred": True,
         "reason": note,
-        "coverage_mappings": [{**mapping(symbol, "C3_FULL_SEMANTIC"), "evidence_ref": f"EV-{claim_id}"}],
+        "coverage_mappings": [{**mapping(symbol, "C3_FULL_SEMANTIC"), "evidence_ref": evidence_for_claim(claim_id)}],
     }
 
 
@@ -479,7 +491,7 @@ def main() -> int:
     write_text(args.reports_dir / "dafny-dataset-catalog-report.md",
                "# Dafny Dataset/Catalog Report\n\nStatus: current.\n\nPhase 1.3 deepens non-production Dafny Dataset/Catalog semantics for DSN validation, committed-entry-only catalog resolution, catalog transaction-complete rejection, partial crash candidate non-resolution, dataset handle binding, stale handle rejection, retention, immutable system datasets, invalid system-dataset marker rejection, and the Authorization/Audit integration boundary. Full crash recovery selection is not modeled or claimed. No catalogd, datasetd, storage implementation, Rust semantic-core, hosted daemon, or production-like semantic runner is introduced.\n")
     write_text(args.reports_dir / "dafny-dataset-catalog-validation-report.md",
-               "# Dafny Dataset/Catalog Validation Report\n\nStatus: current.\n\nThe current Phase 1.3 Dafny module set verifies with `126 verified, 0 errors`.\n\nValidated commands passed locally:\n\n- `./scripts/validate-all.sh --check`\n- `./scripts/validate-naming-safety.sh release`\n- `./scripts/validate-artifact-hygiene.sh`\n- `./scripts/validate-component-scaffold.sh`\n- `./scripts/validate-language-formal-assurance.sh`\n- `./scripts/validate-dafny-semantics.sh --require-dafny`\n- `python3 scripts/check-semantic-coverage-mapping.py`\n- `python3 scripts/check-formal-claim-coverage.py`\n- `python3 scripts/check-phase1-gap-triage.py`\n- `python3 scripts/check-phase1-2-auth-audit-coverage.py`\n- `python3 scripts/check-phase1-3-dataset-catalog-coverage.py`\n- `python3 -m py_compile $(find scripts tools -name '*.py' -type f | sort)`\n- `git diff --check`\n")
+               "# Dafny Dataset/Catalog Validation Report\n\nStatus: current.\n\nThe current Phase 1.3 Dafny module set verifies with `136 verified, 0 errors`.\n\nValidated commands passed locally:\n\n- `./scripts/validate-all.sh --check`\n- `./scripts/validate-naming-safety.sh release`\n- `./scripts/validate-artifact-hygiene.sh`\n- `./scripts/validate-component-scaffold.sh`\n- `./scripts/validate-language-formal-assurance.sh`\n- `./scripts/validate-dafny-semantics.sh --require-dafny`\n- `python3 scripts/check-semantic-coverage-mapping.py`\n- `python3 scripts/check-formal-claim-coverage.py`\n- `python3 scripts/check-phase1-gap-triage.py`\n- `python3 scripts/check-phase1-2-auth-audit-coverage.py`\n- `python3 scripts/check-phase1-3-dataset-catalog-coverage.py`\n- `python3 -m py_compile $(find scripts tools -name '*.py' -type f | sort)`\n- `git diff --check`\n")
     write_text(args.reports_dir / "dafny-dataset-catalog-red-team-review.md",
                "# Dafny Dataset/Catalog Red-Team Review\n\nStatus: current.\n\nCritical/Major checks addressed: handles cannot be created without ALLOW or ALLOW_WITH_AUDIT; uncommitted, rolled-back, partial-journal, integrity-failed, and transaction-not-complete catalog entries cannot resolve; stale policy/catalog/dataset generations are rejected; DENY creates no handle; audited DENY cannot bind MFOS_OK; DENY with audit obligation links to before-return audit or audit-unavailable fail-closed behavior; Dataset is not treated as a POSIX file; retention and immutable-system goldens match Dafny canonical errors; system_dataset without immutable is invalid; crash-mid-commit coverage is narrowed to partial candidate non-resolution and does not claim full recovery selection; coverage C5 rows require Dafny symbols, verification evidence, fixture/oracle/golden links, expected-error agreement, and rank-safe aggregates; formal claims remain below proof-backed levels; Python tooling remains non-semantic; no Rust semantic-core or production implementation was introduced.\n")
     write_text(args.reports_dir / "dafny-dataset-catalog-open-issues.md",

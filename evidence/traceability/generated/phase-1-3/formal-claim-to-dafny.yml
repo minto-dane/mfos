@@ -21,5 +21,5 @@ formal_claims:
     dafny_symbol: INV_DATASET_HANDLE_CREATION_CANNOT_BYPASS_AUTHORIZATION
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: EV-MFOS-FC-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW
+    evidence_ref: EV-MFOS-FORMAL-CLAIM-AUTHORIZATION-0001
     coverage_level: C3_FULL_SEMANTIC

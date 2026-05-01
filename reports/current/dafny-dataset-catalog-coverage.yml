@@ -8,7 +8,7 @@ dataset_catalog_requirement_coverage_level: C2_PARTIAL_SEMANTIC
 dataset_catalog_auth_audit_integration_coverage_level: C4_VERIFIED_PROPERTY
 coverage_level_distribution:
   C5_CONFORMANCE_LINKED: 14
-  C4_VERIFIED_PROPERTY: 13
+  C4_VERIFIED_PROPERTY: 15
   C2_PARTIAL_SEMANTIC: 1
   C3_FULL_SEMANTIC: 1
 formal_claims_proof_backed: false

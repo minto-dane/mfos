@@ -62,10 +62,12 @@ module DatasetCatalog {
   }
 
   function CatalogResolutionError(entry: CatalogEntry): ErrorCode {
-    if entry.state == CATALOG_INTEGRITY_FAILED ||
+    if !SymbolicDsnValid(entry.dataset) then MFOS_ERR_INVALID_DSN
+    else if entry.state == CATALOG_INTEGRITY_FAILED ||
        entry.state == CATALOG_PARTIAL_JOURNAL ||
        entry.transaction_state == CATALOG_TX_COMMITTED ||
        entry.transaction_state == CATALOG_TX_PARTIAL_JOURNAL ||
+       entry.transaction_state == CATALOG_TX_ROLLBACK_REQUIRED ||
        entry.transaction_state == CATALOG_TX_INTEGRITY_FAILED ||
        !SystemDatasetInvariant(entry) ||
        !entry.integrity_valid ||
@@ -156,6 +158,7 @@ module DatasetCatalog {
   }
 
   predicate HandleFresh(handle: DatasetHandle, active_policy: PolicyVersion, entry: CatalogEntry) {
+    CatalogEntryResolvable(entry) &&
     handle.active &&
     handle.policy_version == active_policy &&
     handle.catalog_generation == entry.catalog_generation &&
@@ -179,6 +182,7 @@ module DatasetCatalog {
 
   function DatasetDeleteOrModify(entry: CatalogEntry, decision: SecurityDecision): Result<CatalogEntry> {
     if !SystemDatasetInvariant(entry) then ResultErr(ErrorRank(MFOS_ERR_INVALID_STATE))
+    else if !CatalogEntryResolvable(entry) then ResultErr(ErrorRank(CatalogResolutionError(entry)))
     else if ImmutableSystemDatasetBlocksModify(entry, decision.operation) then ResultErr(ErrorRank(MFOS_ERR_IMMUTABLE))
     else if RetentionBlocksDelete(entry, decision.operation) then ResultErr(ErrorRank(MFOS_ERR_RETENTION_DENIED))
     else if !Authorization.DecisionAllowsProtectedEffect(decision) then ResultErr(ErrorRank(DatasetOpenFailureError(entry, decision)))
@@ -260,6 +264,7 @@ module DatasetCatalog {
 
   lemma INV_CATALOG_INTEGRITY_FAILED_CANNOT_RESOLVE(entry: CatalogEntry)
     requires entry.state == CATALOG_INTEGRITY_FAILED || !entry.integrity_valid || !entry.integrity_tag.verified
+    requires SymbolicDsnValid(entry.dataset)
     ensures !CatalogEntryResolvable(entry)
     ensures ResolveCatalog(entry).ResultErr?
     ensures CatalogResolutionError(entry) == MFOS_ERR_INTERNAL_CORRUPTION
@@ -268,6 +273,7 @@ module DatasetCatalog {
 
   lemma INV_CATALOG_PARTIAL_JOURNAL_CANNOT_RESOLVE(entry: CatalogEntry)
     requires entry.state == CATALOG_PARTIAL_JOURNAL
+    requires SymbolicDsnValid(entry.dataset)
     ensures !CatalogEntryResolvable(entry)
     ensures ResolveCatalog(entry).ResultErr?
     ensures CatalogResolutionError(entry) == MFOS_ERR_INTERNAL_CORRUPTION
@@ -276,6 +282,7 @@ module DatasetCatalog {
 
   lemma INV_CATALOG_TX_PARTIAL_JOURNAL_CANNOT_RESOLVE(entry: CatalogEntry)
     requires entry.transaction_state == CATALOG_TX_PARTIAL_JOURNAL
+    requires SymbolicDsnValid(entry.dataset)
     ensures !CatalogEntryResolvable(entry)
     ensures ResolveCatalog(entry).ResultErr?
     ensures CatalogResolutionError(entry) == MFOS_ERR_INTERNAL_CORRUPTION
@@ -286,11 +293,13 @@ module DatasetCatalog {
     requires entry.transaction_state == CATALOG_TX_ROLLBACK_REQUIRED
     ensures !CatalogEntryResolvable(entry)
     ensures ResolveCatalog(entry).ResultErr?
+    ensures CatalogResolutionError(entry) == MFOS_ERR_INTERNAL_CORRUPTION || CatalogResolutionError(entry) == MFOS_ERR_INVALID_DSN
   {
   }
 
   lemma INV_CATALOG_TX_COMMITTED_NOT_COMPLETE_CANNOT_RESOLVE(entry: CatalogEntry)
     requires entry.transaction_state == CATALOG_TX_COMMITTED
+    requires SymbolicDsnValid(entry.dataset)
     ensures !CatalogEntryResolvable(entry)
     ensures ResolveCatalog(entry).ResultErr?
     ensures CatalogResolutionError(entry) == MFOS_ERR_INTERNAL_CORRUPTION
@@ -306,6 +315,7 @@ module DatasetCatalog {
              entry.state == CATALOG_UNCOMMITTED
     ensures RecoverCatalogCandidate(entry).ResultErr?
     ensures !CatalogEntryResolvable(entry)
+    ensures entry.transaction_state == CATALOG_TX_ROLLBACK_REQUIRED && SymbolicDsnValid(entry.dataset) ==> CatalogResolutionError(entry) == MFOS_ERR_INTERNAL_CORRUPTION
   {
   }
 
@@ -445,6 +455,13 @@ module DatasetCatalog {
   {
   }
 
+  lemma INV_DATASET_HANDLE_REQUIRES_RESOLVABLE_ENTRY(handle: DatasetHandle, active_policy: PolicyVersion, entry: CatalogEntry)
+    requires !CatalogEntryResolvable(entry)
+    ensures !HandleFresh(handle, active_policy, entry)
+    ensures ValidateDatasetHandle(handle, active_policy, entry).ResultErr?
+  {
+  }
+
   lemma INV_DATASET_OPEN_DENY_WITH_AUDIT_WRITES_BEFORE_RETURN(decision: SecurityDecision, prior_records: seq<AuditRecord>, next_record_id: MfosId)
     requires decision.result == DENY
     requires !IsSuccessError(decision.error_code)
@@ -464,11 +481,10 @@ module DatasetCatalog {
     Audit.INV_AUDIT_DENY_TRANSITION_WRITES_BEFORE_RETURN(decision, prior_records, next_record_id);
   }
 
-  lemma INV_DATASET_DENY_DECISION_NOT_MFOS_OK(decision: SecurityDecision)
+  lemma INV_DATASET_DENY_DECISION_NOT_MFOS_OK(entry: CatalogEntry, decision: SecurityDecision)
     requires decision.result == DENY
-    requires !IsSuccessError(decision.error_code)
-    ensures decision.error_code != MFOS_OK
-    ensures !IsSuccessError(decision.error_code)
+    ensures DatasetOpenFailureError(entry, decision) != MFOS_OK
+    ensures !IsSuccessError(DatasetOpenFailureError(entry, decision))
   {
   }
 
@@ -503,7 +519,7 @@ module DatasetCatalog {
   lemma INV_DATASET_CANNOT_BYPASS_AUDIT_WHEN_OBLIGATION_EXISTS(decision: SecurityDecision, records: seq<AuditRecord>)
     requires DecisionIsFailClosed(decision.result)
     requires Authorization.RequiresAudit(decision)
-    requires !Audit.ExistsBeforeReturnAudit(decision, records)
+    requires !Audit.ExistsBeforeReturnAuditForDecision(decision, records)
     ensures !Audit.RequiredAuditSatisfiedForFinalResult(decision, records)
   {
     Audit.INV_AUTH_FAIL_CLOSED_RESULTS_CANNOT_BYPASS_AUDIT(decision, records);
@@ -514,6 +530,12 @@ module DatasetCatalog {
     ensures !IsSuccessError(MFOS_ERR_UNSUPPORTED)
   {
     UnsupportedIsFailClosed();
+  }
+
+  lemma INV_DATASET_DELETE_OR_MODIFY_REJECTS_NONRESOLVABLE(entry: CatalogEntry, decision: SecurityDecision)
+    requires !CatalogEntryResolvable(entry)
+    ensures DatasetDeleteOrModify(entry, decision).ResultErr?
+  {
   }
 
   lemma INV_DATASET_RETENTION_VIOLATION_NOT_SUCCESS(entry: CatalogEntry, decision: SecurityDecision)
@@ -535,6 +557,7 @@ module DatasetCatalog {
   lemma INV_DATASET_SYSTEM_DATASET_REQUIRES_IMMUTABLE(entry: CatalogEntry)
     requires entry.dataset.system_marker.system_dataset
     requires !entry.dataset.system_marker.immutable
+    requires SymbolicDsnValid(entry.dataset)
     ensures !SystemDatasetInvariant(entry)
     ensures !CatalogEntryResolvable(entry)
     ensures ResolveCatalog(entry).ResultErr?

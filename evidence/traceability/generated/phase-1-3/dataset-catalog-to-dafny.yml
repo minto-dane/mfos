@@ -299,7 +299,7 @@ entries:
     dafny_symbol: INV_CATALOG_TX_COMMITTED_NOT_COMPLETE_CANNOT_RESOLVE
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: EV-DATASET-CATALOG-TX-COMMITTED-NOT-COMPLETE
+    evidence_ref: EV-MFOS-DATASET-CATALOG-TX-COMMITTED-NOT-COMPLETE-0001
     coverage_level: C4_VERIFIED_PROPERTY
   notes: Catalog transaction state CATALOG_TX_COMMITTED is not complete and cannot
     resolve.
@@ -316,7 +316,7 @@ entries:
     dafny_symbol: INV_DATASET_SYSTEM_DATASET_REQUIRES_IMMUTABLE
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: EV-DATASET-CATALOG-SYSTEM-DATASET-INVARIANT
+    evidence_ref: EV-MFOS-DATASET-CATALOG-SYSTEM-DATASET-INVARIANT-0001
     coverage_level: C4_VERIFIED_PROPERTY
   notes: system_dataset == true && immutable == false is an invalid model state.
 - property_id: DATASET-CATALOG-DENY-NOT-MFOS-OK
@@ -332,9 +332,41 @@ entries:
     dafny_symbol: INV_DATASET_AUDITED_DENY_DOES_NOT_BIND_MFOS_OK
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: EV-DATASET-CATALOG-DENY-NOT-MFOS-OK
+    evidence_ref: EV-MFOS-DATASET-CATALOG-DENY-NOT-MFOS-OK-0001
     coverage_level: C4_VERIFIED_PROPERTY
   notes: Audited Dataset/Catalog DENY cannot bind MFOS_OK.
+- property_id: DATASET-CATALOG-HANDLE-REQUIRES-RESOLVABLE
+  domain: dataset_catalog
+  coverage_level: C4_VERIFIED_PROPERTY
+  phase_1_3_exit_blocker: false
+  required_for_dataset_catalog_aggregate: false
+  fixture_ref: null
+  oracle_ref: null
+  golden_ref: null
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_DATASET_HANDLE_REQUIRES_RESOLVABLE_ENTRY
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-DATASET-CATALOG-HANDLE-REQUIRES-RESOLVABLE-0001
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: Dataset handle validation rejects non-resolvable catalog entries.
+- property_id: DATASET-CATALOG-MODIFY-REQUIRES-RESOLVABLE
+  domain: dataset_catalog
+  coverage_level: C4_VERIFIED_PROPERTY
+  phase_1_3_exit_blocker: false
+  required_for_dataset_catalog_aggregate: false
+  fixture_ref: null
+  oracle_ref: null
+  golden_ref: null
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/dataset_catalog.dfy
+    dafny_symbol: INV_DATASET_DELETE_OR_MODIFY_REJECTS_NONRESOLVABLE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-DATASET-CATALOG-MODIFY-REQUIRES-RESOLVABLE-0001
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: Dataset delete/modify rejects non-resolvable catalog entries.
 - integration_id: DATASET-CATALOG-AUTH-ALLOW-ONLY
   domain: dataset_catalog_auth_audit_integration
   coverage_level: C4_VERIFIED_PROPERTY
@@ -348,7 +380,7 @@ entries:
     dafny_symbol: INV_DATASET_OPEN_SUCCESS_REQUIRES_ALLOW_OR_ALLOW_WITH_AUDIT
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: EV-DATASET-CATALOG-AUTH-ALLOW-ONLY
+    evidence_ref: EV-MFOS-DATASET-CATALOG-AUTH-ALLOW-ONLY-0001
     coverage_level: C4_VERIFIED_PROPERTY
   notes: Dataset open success requires ALLOW or ALLOW_WITH_AUDIT. This integration
     row stays C4 because no Dataset/Catalog scenario vector raises it to C5.
@@ -365,7 +397,7 @@ entries:
     dafny_symbol: INV_DATASET_HANDLE_CREATION_CANNOT_BYPASS_AUTHORIZATION
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: EV-DATASET-CATALOG-HANDLE-NO-BYPASS
+    evidence_ref: EV-MFOS-DATASET-CATALOG-HANDLE-NO-BYPASS-0001
     coverage_level: C4_VERIFIED_PROPERTY
   notes: Dataset handle creation cannot bypass authorization. This integration row
     stays C4 because no Dataset/Catalog scenario vector raises it to C5.
@@ -382,7 +414,7 @@ entries:
     dafny_symbol: INV_DATASET_OPEN_DENY_WITH_AUDIT_WRITES_BEFORE_RETURN
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: EV-DATASET-CATALOG-DENY-AUDIT-BEFORE-RETURN
+    evidence_ref: EV-MFOS-DATASET-CATALOG-DENY-AUDIT-BEFORE-RETURN-0001
     coverage_level: C4_VERIFIED_PROPERTY
   notes: Dataset open DENY with audit obligation links to before-return audit evidence.
     This integration row stays C4 because no Dataset/Catalog scenario vector raises
@@ -400,7 +432,7 @@ entries:
     dafny_symbol: INV_DATASET_OPEN_DENY_AUDIT_UNAVAILABLE_FAILS_CLOSED
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: EV-DATASET-CATALOG-DENY-AUDIT-UNAVAILABLE
+    evidence_ref: EV-MFOS-DATASET-CATALOG-DENY-AUDIT-UNAVAILABLE-0001
     coverage_level: C4_VERIFIED_PROPERTY
   notes: Dataset open DENY fails closed when required audit is unavailable. This integration
     row stays C4 because no Dataset/Catalog scenario vector raises it to C5.
@@ -417,7 +449,7 @@ entries:
     dafny_symbol: INV_DATASET_CANNOT_BYPASS_AUDIT_WHEN_OBLIGATION_EXISTS
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: EV-DATASET-CATALOG-AUDIT-NO-BYPASS
+    evidence_ref: EV-MFOS-DATASET-CATALOG-AUDIT-NO-BYPASS-0001
     coverage_level: C4_VERIFIED_PROPERTY
   notes: Dataset/Catalog fail-closed result cannot bypass required audit evidence.
     This integration row stays C4 because no Dataset/Catalog scenario vector raises

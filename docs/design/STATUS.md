@@ -145,7 +145,7 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
 - Pinned Dafny 4.11.0 is installed by `scripts/install-dafny.sh`; Z3 4.14.1 is
   bundled in the pinned release.
 - `scripts/validate-dafny-semantics.sh --require-dafny` verifies the current
-  module set with `126 verified, 0 errors`.
+  module set with `136 verified, 0 errors`.
 - Phase 1.1 semantic coverage traceability now maps Phase 0.9 core catalogs to
   explicit Dafny targets per test. The first vertical slice remains
   `C5_CONFORMANCE_LINKED`; the core five domains remain mixed because several
