@@ -55,6 +55,9 @@ current:
     check_phase1_3_dataset_catalog_coverage:
       path: scripts/check-phase1-3-dataset-catalog-coverage.py
       status: current
+    check_dafny_verification_counts:
+      path: scripts/checks/check-dafny-verification-counts.py
+      status: current
 
 sections:
   validators:
@@ -74,6 +77,9 @@ sections:
       status: current
     semantic_fixture_normalizer_boundary:
       path: scripts/checks/check-semantic-fixture-normalizer.py
+      status: current
+    dafny_verification_counts:
+      path: scripts/checks/check-dafny-verification-counts.py
       status: current
   artifact_hygiene_checks:
     path: scripts/checks/artifact-hygiene/

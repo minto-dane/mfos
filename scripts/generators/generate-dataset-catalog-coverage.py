@@ -330,13 +330,15 @@ Status: current.
 
 Phase 1.3 deepens the non-production Dafny executable semantics for Dataset/Catalog and its Authorization/Audit boundary.
 
-- Dataset/Catalog conformance coverage: `{summary['dataset_catalog_coverage_level']}`
+- Dataset/Catalog phase-scope complete: `{str(summary['phase_1_3_dataset_catalog_phase_scope_complete']).lower()}`
+- Dataset/Catalog completion scope: `{summary['phase_1_3_dataset_catalog_complete_scope']}`
+- Dataset/Catalog conformance coverage: `{summary['dataset_catalog_coverage_level']}` over `{summary['dataset_catalog_coverage_scope']}`
 - Requirement coverage: `{summary['dataset_catalog_requirement_coverage_level']}`
 - Authorization/Audit integration coverage: `{summary['dataset_catalog_auth_audit_integration_coverage_level']}`
 - Formal claims proof-backed: `{str(summary['formal_claims_proof_backed']).lower()}`
 - Dataset/Catalog exit blockers remaining: `{str(summary['dataset_catalog_exit_blockers_remaining']).lower()}`
 
-C5 rows have explicit Dafny symbols, verification evidence, fixture/oracle/golden links under `tests/fixtures/dataset/` and `tests/golden/dataset/`, and checker-enforced expected-error agreement with the linked Dafny property. The crash-mid-commit C5 row covers partial candidate non-resolution only; full recovery selection to prior committed, later committed, or absent state remains outside Phase 1.3 and is not claimed. Integration rows that lack dedicated Dataset/Catalog conformance vectors remain C4 and are not used to overclaim C5. Python remains a non-semantic generator, loader, and structural checker.
+C5 rows have explicit Dafny symbols, verification evidence, fixture/oracle/golden links under `tests/fixtures/dataset/` and `tests/golden/dataset/`, and checker-enforced expected-error agreement with the linked Dafny property. The C5 conformance summary is scoped to required Dataset/Catalog aggregate rows, not full-domain completion. The crash-mid-commit C5 row covers partial candidate non-resolution only; full recovery selection to prior committed, later committed, or absent state remains outside Phase 1.3 and is not claimed. Integration rows that lack dedicated Dataset/Catalog conformance vectors remain C4 and are not used to overclaim C5. Python remains a non-semantic generator, loader, and structural checker.
 """
 
 
@@ -435,9 +437,13 @@ def main() -> int:
         "artifact_type": "dafny_dataset_catalog_coverage",
         "status": "current",
         "origin_phase": "phase-1.3",
-        "phase_1_3_dataset_catalog_complete": True,
+        "phase_1_3_dataset_catalog_phase_scope_complete": True,
+        "phase_1_3_dataset_catalog_complete_scope": "phase_1_3_exit_criteria_and_required_conformance_rows",
+        "phase_1_3_dataset_catalog_full_domain_complete": False,
         "dataset_catalog_coverage_level": aggregate_level(required_tests),
+        "dataset_catalog_coverage_scope": "required_dataset_catalog_aggregate_rows",
         "dataset_catalog_requirement_coverage_level": aggregate_level(requirements),
+        "dataset_catalog_full_requirement_coverage_complete": False,
         "dataset_catalog_auth_audit_integration_coverage_level": aggregate_level(integration),
         "coverage_level_distribution": dict(levels),
         "formal_claims_proof_backed": False,

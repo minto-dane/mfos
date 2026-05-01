@@ -1,8 +1,9 @@
 # MFOS Design Work Status
 
-Status date: 2026-04-30
+Status date: 2026-05-01
 Workspace: `/home/nia/mfos`
-Git status: working branch `phase/1-3-dataset-catalog-dafny-semantics-clean`;
+Git status: `dev` contains the integrated Phase 1 architecture portability,
+Authorization/Audit, and Dataset/Catalog chain;
 PR #10 (`fix/phase-0.10-pxm-mfvm-expansion`), PR #11
 (`fix/pre-phase-1-total-readiness`), PR #12
 (`fix/pre-phase-1-total-readiness-second-pass`), and PR #13
@@ -17,9 +18,9 @@ semantic coverage truthfulness remediation. PR #19 landed Phase 1.2
 Authorization/Audit conformance closure. PR #22 landed the architecture
 portability, x86-64 target-profile, CPU Feature Registry, and roadmap alignment
 policy update. PR #23 landed the post-architecture Authorization/Audit
-integration remediation. The current branch records the Phase 1.3
-Dataset/Catalog Dafny semantic deepening and supersedes the original stacked
-PR #20 branch after protected branch rules blocked a clean force-push update.
+integration remediation. PR #24 landed the Phase 1.3 Dataset/Catalog Dafny
+semantic deepening and superseded the original stacked PR #20 branch after
+protected branch rules blocked a clean force-push update.
 Repository
 visibility may be public by owner instruction, but formal public-release claims
 remain blocked pending IP/trademark attorney review.
@@ -71,9 +72,12 @@ phase_1_2_auth_audit_integration_coverage_level: C5_CONFORMANCE_LINKED
 phase_1_2_formal_claim_proof_coverage_complete: false
 phase_1_2_dafny_verification_passed: true
 phase_1_3_dataset_catalog_deepening_allowed: true
-phase_1_3_dataset_catalog_complete: true
+phase_1_3_dataset_catalog_phase_scope_complete: true
+phase_1_3_dataset_catalog_complete_scope: phase_1_3_exit_criteria_and_required_conformance_rows
+phase_1_3_dataset_catalog_full_domain_complete: false
 phase_1_3_dataset_catalog_exit_blockers_remaining: false
 phase_1_3_dataset_catalog_coverage_level: C5_CONFORMANCE_LINKED
+phase_1_3_dataset_catalog_coverage_scope: required_dataset_catalog_aggregate_rows
 phase_1_3_dataset_catalog_requirement_coverage_level: C2_PARTIAL_SEMANTIC
 phase_1_3_dataset_catalog_auth_audit_integration_coverage_level: C4_VERIFIED_PROPERTY
 phase_1_3_formal_claim_proof_coverage_complete: false
@@ -104,7 +108,7 @@ hosted_semantic_prototype_allowed: false
 public_release_allowed: false
 private_internal_use_allowed: true
 requires_ip_attorney_review_before_public_release: true
-next_phase: PR #20 replacement review and dependency closure; do not start Phase 1.4
+next_phase: Phase 1.4 planning may begin after post-merge integration sweep; implementation remains gated
 ```
 
 No production nucleus, service, PXM, Guard, or other OS-body implementation was
