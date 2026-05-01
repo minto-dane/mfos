@@ -18,6 +18,9 @@ artifacts:
 - path: reports/current/artifact-hygiene/artifact-hygiene-red-team-review.md
   status: current
   lifecycle: current
+- path: reports/current/artifact-hygiene/pr-27-repository-information-architecture-review.md
+  status: current
+  lifecycle: current
 policy:
   lifecycle: current
   phase_specific_reports_allowed: false

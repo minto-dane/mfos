@@ -32,7 +32,13 @@ No Critical or Major findings remain after remediation.
 - PR #26 review artifacts moved to `reports/archive/pr-reviews/`.
 - New validators prevent flat current-report namespaces, missing domain
   indexes, stale per-file report indexing, root script namespace drift,
-  undeclared duplicate path responsibility, and pack bridge drift.
+  undeclared duplicate path responsibility, build-output accumulation,
+  reports/current lifecycle metadata regression, and pack bridge drift.
+- `build/` is metadata-only: generated output is ignored by default and tracked
+  build files outside the root metadata allowlist fail validation.
+- Reports/current domain packages cannot hide archive, superseded, generated,
+  historical, phase-specific, or migration-only lifecycle artifacts by indexing
+  them as current.
 - No Phase 1.4 implementation, production code, Rust semantic-core, hosted
   daemon, service implementation, semantic-runner command, CPU feature
   detection, or architecture backend was introduced.

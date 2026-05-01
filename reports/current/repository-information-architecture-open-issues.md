@@ -10,5 +10,11 @@ Status: current.
   registry governance PR.
 - Japanese mirrors remain incomplete and explanatory even though source hashes
   were refreshed.
-- Formal/TLA and build metadata can be deepened in a follow-up boundary
-  metadata pass.
+- Formal/TLA metadata can be deepened in a follow-up boundary metadata pass.
+- The repository information architecture migration map contains a duplicate
+  destination for `reports/current/dafny/policy-denial-error-taxonomy.md`; one
+  entry references a non-base `reports/current/policy/` source.
+- `ai/outputs` is explicitly untrusted by README and ignore policy, but a child
+  `.mfos-dir.yml` would make the non-canonical boundary machine-readable.
+- Script flat-directory pressure outside `reports/current` is currently a
+  warning in draft-mode validation; release mode still fails warnings.

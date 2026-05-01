@@ -66,6 +66,8 @@ current:
   purpose: Machine-readable repository artifact hygiene audit.
 - path: reports/current/artifact-hygiene/artifact-hygiene-red-team-review.md
   purpose: Repository artifact hygiene red-team review.
+- path: reports/current/artifact-hygiene/pr-27-repository-information-architecture-review.md
+  purpose: PR 27 repository information architecture review and merge decision.
 - path: reports/current/artifact-hygiene/artifact-hygiene-open-issues.md
   purpose: Nonblocking artifact hygiene follow-up issues.
 - path: reports/current/artifact-hygiene/artifact-hygiene-followup-report.md

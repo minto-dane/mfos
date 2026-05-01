@@ -4,8 +4,9 @@ role: planned
 maturity: M1_PLACEHOLDER
 status: planned
 canonical: false
-description: Reserved build metadata scaffold. Build profiles and reproducibility metadata do not authorize product implementation
-  or hosted semantic execution.
+description: Metadata-only build policy scaffold. Build outputs, toolchains,
+  images, caches, and lab artifacts are ignored by default and must not be
+  committed here.
 implementation_allowed:
   production: false
   hosted_daemon: false
@@ -20,11 +21,15 @@ phase_allowed_from: post-pre-implementation-gate
 depends_on:
 - docs/design/specs/21-ai-implementation-contract.md
 allowed_contents:
+- .mfos-dir.yml
 - README files
-- future build metadata
-- future reproducibility reports
-- future lab configuration metadata
+- .gitignore
+- index.yml if introduced
 forbidden_contents:
+- tracked build outputs
+- toolchain downloads or installs
+- image outputs
+- cache, temporary, or out directories
 - production build scripts
 - release artifacts
 - hosted daemon launchers
