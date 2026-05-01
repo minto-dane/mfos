@@ -67,6 +67,11 @@ ALLOWED_EXACT = {
     "reports/current/phase-1-2-gap-normalization.yml",
     "reports/current/phase-1-3-entry-gate.md",
     "reports/current/phase-1-3-entry-gate.yml",
+    "reports/current/phase-1-4-planning-report.md",
+    "reports/current/phase-1-4-entry-gate.md",
+    "reports/current/phase-1-4-exit-gate.md",
+    "reports/current/phase-1-4-red-team-plan.md",
+    "reports/current/phase-1-4-open-issues.md",
 }
 
 
