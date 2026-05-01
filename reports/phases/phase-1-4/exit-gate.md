@@ -13,7 +13,7 @@ A future Phase 1.4 implementation PR may claim exit only when all items below
 are true:
 
 1. Every required Job/Spool/Operator property in
-   `reports/current/phase-1-4-planning-report.md` is represented by an exact
+   `reports/phases/phase-1-4/planning-report.md` is represented by an exact
    Dafny property symbol.
 2. The pinned Dafny verification gate passes and verifies the changed module
    set.

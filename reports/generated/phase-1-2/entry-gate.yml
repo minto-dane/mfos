@@ -11,4 +11,4 @@ authorization_audit_merge_blockers_remaining: false
 entry_blockers: []
 merge_blockers: []
 formal_claim_proof_coverage_complete: false
-source: reports/current/phase-1-2-gap-normalization.yml
+source: reports/generated/phase-1-2/gap-normalization.yml

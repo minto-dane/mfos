@@ -13,7 +13,7 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 CLAIM_REGISTRY = ROOT / "formal" / "claim-registry.yml"
 FORMAL_COVERAGE = ROOT / "evidence" / "traceability" / "generated" / "phase-1-1" / "formal-claim-to-dafny.yml"
-SUMMARY = ROOT / "reports" / "current" / "semantic-coverage.yml"
+SUMMARY = ROOT / "reports" / "generated" / "phase-1-1" / "semantic-coverage.yml"
 PROOF_LEVELS = {"C4_VERIFIED_PROPERTY", "C5_CONFORMANCE_LINKED", "C6_RELEASE_READY_MODEL"}
 
 

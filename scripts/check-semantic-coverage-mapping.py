@@ -15,7 +15,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 TRACEABILITY_DIR = ROOT / "evidence" / "traceability" / "generated" / "phase-1-1"
-REPORTS_DIR = ROOT / "reports" / "current"
+REPORTS_DIR = ROOT / "reports" / "generated" / "phase-1-1"
 LEVEL_RANK = {
     "C0_NONE": 0,
     "C1_TYPE_ONLY": 1,

@@ -11,7 +11,7 @@ No Critical or Major issues remain.
    `fix/total-repo-remediation`; those reports are historical context and are
    indexed as current remediation records, not the active branch state. The
    active branch state is recorded in `docs/design/STATUS.md` and
-   `reports/current/pre-phase1-readiness-final-report.md`.
+   `reports/phases/phase-1/pre-phase1-readiness-final-report.md`.
 2. Source-grounding remains conditional for semantic evaluator work. This does
    not block Phase 1 Dafny scaffold and loader-only artifact validation, but it
    continues to block semantic evaluator and production claims.

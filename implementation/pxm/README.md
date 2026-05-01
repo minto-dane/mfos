@@ -1,8 +1,8 @@
 # pxm/
 
-PXM partition manager. PXM provides partition lifecycle and isolation. It must
-not interpret MFOS job, dataset, catalog, spool, security, audit, or workload policy
-semantics.
+Reserved future PXM partition-manager implementation area. PXM provides
+partition lifecycle and isolation. It must not interpret MFOS job, dataset,
+catalog, spool, security, audit, or workload policy semantics.
 
 No Phase 1 implementation work belongs here. Phase 1 is limited to Dafny
 executable-semantics scaffold work and loader-only artifact validation under

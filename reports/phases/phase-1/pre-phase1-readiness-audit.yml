@@ -20,8 +20,8 @@ second_pass_readiness_pr:
 iteration_3_readiness_pr:
   pr: 13
   status: merged
-second_pass_package: reports/current/pre-phase1/
-iteration_3_package: reports/current/pre-phase1/
+second_pass_package: reports/phases/phase-1/pre-phase1/package/
+iteration_3_package: reports/phases/phase-1/pre-phase1/package/
 fixedpoint_package: reports/current/fixedpoint/
 critical_findings_remaining: false
 major_findings_remaining: false

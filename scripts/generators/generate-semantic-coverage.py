@@ -13,7 +13,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_TRACEABILITY_DIR = ROOT / "evidence" / "traceability" / "generated" / "phase-1-1"
-DEFAULT_REPORTS_DIR = ROOT / "reports" / "current"
+DEFAULT_REPORTS_DIR = ROOT / "reports" / "generated" / "phase-1-1"
 
 COVERAGE_LEVELS = [
     "C0_NONE",
@@ -27,7 +27,7 @@ COVERAGE_LEVELS = [
 COVERAGE_RANK = {level: rank for rank, level in enumerate(COVERAGE_LEVELS)}
 
 DAFNY_EVIDENCE = "reports/current/dafny-verification-report.md"
-OPEN_ISSUES = "reports/current/semantic-coverage-open-issues.md"
+OPEN_ISSUES = "reports/generated/phase-1-1/semantic-coverage-open-issues.md"
 
 CATALOGS = {
     "authorization": "tests/catalog/authorization.yml",

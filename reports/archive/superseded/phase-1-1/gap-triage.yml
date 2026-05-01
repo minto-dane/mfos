@@ -2,9 +2,9 @@ schema_version: 1
 artifact_type: phase_1_1_gap_triage
 status: superseded_by_phase_1_2_authorization_audit_closure
 source_reports:
-- reports/current/semantic-coverage-report.md
-- reports/current/semantic-coverage-open-issues.md
-- reports/current/negative-semantics-report.md
+- reports/generated/phase-1-1/semantic-coverage-report.md
+- reports/generated/phase-1-1/semantic-coverage-open-issues.md
+- reports/generated/phase-1-1/negative-semantics-report.md
 source_traceability_dir: evidence/traceability/generated/phase-1-1/
 classification_counts:
   fix_before_next_merge: 28

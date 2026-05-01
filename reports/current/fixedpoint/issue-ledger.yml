@@ -225,7 +225,7 @@ issues:
   severity: Critical
   category: phase_gate
   paths:
-  - reports/current/pre-phase1-readiness-audit.yml
+  - reports/phases/phase-1/pre-phase1-readiness-audit.yml
   - reports/phases/phase-1/pre-phase-1-total-readiness.yml
   root_cause: YAML used false values under a forbidden_scope mapping, which could
     be read as not forbidden.

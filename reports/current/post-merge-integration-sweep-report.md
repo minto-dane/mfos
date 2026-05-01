@@ -46,7 +46,7 @@ Minor findings remediated in the final report branch:
 
 - `docs/design/STATUS.md` still described the temporary Phase 1.3 replacement
   branch and next action.
-- `reports/current/dafny-dataset-catalog-coverage.yml` used an unscoped
+- `reports/generated/phase-1-3/dafny-dataset-catalog-coverage.yml` used an unscoped
   Dataset/Catalog completion flag beside lower-scoped requirement and
   integration coverage.
 

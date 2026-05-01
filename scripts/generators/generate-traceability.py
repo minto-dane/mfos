@@ -172,7 +172,28 @@ def main() -> int:
     write_yaml(OUT / "requirement-to-evidence.yml", envelope | {"entries": [{"requirement_id": rid, "evidence": sorted(evidence_by_req.get(rid, []))} for rid in sorted(req_ids)]})
     write_yaml(OUT / "claim-to-requirement.yml", envelope | {"entries": [{"claim_id": cid, "requirements": rids} for cid, rids in sorted(claim_to_req.items())]})
     write_yaml(OUT / "pack-to-artifacts.yml", envelope | {"entries": [{"pack_id": pid, **refs} for pid, refs in sorted(pack_to_refs.items())]})
-    write_yaml(OUT / "gap-report.yml", envelope | {"report_kind": "traceability_gap_report", "summary": {"gap_groups": len(gaps), "high_gap_groups": sum(1 for g in gaps if g.get("severity") == "high")}, "gaps": gaps})
+    write_yaml(
+        OUT / "gap-report.yml",
+        envelope
+        | {
+            "report_kind": "traceability_gap_report",
+            "lifecycle_scope": "current_traceability_matrices_only",
+            "scope_note": (
+                "This current report covers only evidence/traceability/current matrices. "
+                "Generated phase-specific gap reports remain separate and must not be treated "
+                "as globally closed by this summary."
+            ),
+            "generated_phase_gap_reports_excluded": True,
+            "excluded_generated_gap_reports": [
+                "evidence/traceability/generated/phase-0-9/gap-report.yml",
+            ],
+            "summary": {
+                "gap_groups": len(gaps),
+                "high_gap_groups": sum(1 for g in gaps if g.get("severity") == "high"),
+            },
+            "gaps": gaps,
+        },
+    )
 
     lines = [
         "# MFOS Draft Traceability Report",

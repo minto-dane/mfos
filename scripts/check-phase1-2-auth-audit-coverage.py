@@ -16,7 +16,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 TRACEABILITY_DIR = ROOT / "evidence" / "traceability" / "generated" / "phase-1-2"
-REPORTS_DIR = ROOT / "reports" / "current"
+REPORTS_DIR = ROOT / "reports" / "generated" / "phase-1-2"
 EVIDENCE_REGISTRY = ROOT / "docs/design/registries/evidence.yaml"
 TRACE_FILES = [
     "authorization-to-dafny.yml",
@@ -27,12 +27,12 @@ TRACE_FILES = [
     "formal-claim-to-dafny.yml",
 ]
 REPORT_FILES = [
-    "phase-1-2-entry-gate.yml",
-    "phase-1-2-entry-gate.md",
+    "entry-gate.yml",
+    "entry-gate.md",
     "dafny-authorization-audit-coverage.yml",
     "dafny-authorization-audit-coverage-report.md",
-    "phase-1-2-gap-normalization.yml",
-    "phase-1-2-gap-normalization.md",
+    "gap-normalization.yml",
+    "gap-normalization.md",
     "dafny-authorization-audit-report.md",
     "dafny-authorization-audit-validation-report.md",
     "dafny-authorization-audit-red-team-review.md",
@@ -301,7 +301,7 @@ def compare_generated() -> list[str]:
 def validate_mapping_content() -> list[str]:
     errors: list[str] = []
     coverage = load_yaml(REPORTS_DIR / "dafny-authorization-audit-coverage.yml")
-    gate = load_yaml(REPORTS_DIR / "phase-1-2-entry-gate.yml")
+    gate = load_yaml(REPORTS_DIR / "entry-gate.yml")
     evidence_registry = load_yaml(EVIDENCE_REGISTRY)
     known_evidence = {
         entry.get("evidence_id")
@@ -393,7 +393,7 @@ def validate_mapping_content() -> list[str]:
                     + ", ".join(below_c5)
                 )
 
-    gap = load_yaml(REPORTS_DIR / "phase-1-2-gap-normalization.yml")
+    gap = load_yaml(REPORTS_DIR / "gap-normalization.yml")
     if gap.get("exit_blockers_remaining"):
         errors.append("gap normalization still reports exit blockers")
     for entry in gap.get("entries", []):

@@ -48,4 +48,4 @@ Major findings corrected during this pass:
 ## Residual Minor Issues
 
 Residual minor issues are tracked in
-`reports/current/pre-phase1-readiness-open-issues.md`.
+`reports/phases/phase-1/pre-phase1-readiness-open-issues.md`.

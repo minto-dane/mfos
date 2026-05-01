@@ -1,7 +1,7 @@
 # runtime/
 
-Shared runtime types, ABIs, generated IDs, and serialization support. This
-directory is downstream of specs and requirements.
+Reserved future area for shared runtime types, ABIs, generated IDs, and
+serialization support. This directory is downstream of specs and requirements.
 
 No Phase 1 implementation work belongs here. Phase 1 is limited to Dafny
 executable-semantics scaffold work and loader-only artifact validation under

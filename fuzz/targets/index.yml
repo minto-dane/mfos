@@ -6,6 +6,8 @@ current:
   fuzz_target_plan:
     path: fuzz/targets/fuzz-target-plan.yml
     status: current
+    lifecycle_status: current
+    artifact_review_status: draft
 
 archive:
   phase_0_8:

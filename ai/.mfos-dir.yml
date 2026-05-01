@@ -4,7 +4,7 @@ role: ai_work
 maturity: M3_CONTRACTED
 status: current
 canonical: true
-description: AI contracts, reviewed prompts, and task packets. Outputs are not trusted without review.
+description: Canonical for AI workflow artifacts only; AI outputs are not implementation evidence or implementation ownership without review.
 implementation_allowed:
   production: false
   hosted_daemon: false

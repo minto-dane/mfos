@@ -16,7 +16,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 TRACEABILITY_DIR = ROOT / "evidence" / "traceability" / "generated" / "phase-1-3"
-REPORTS_DIR = ROOT / "reports" / "current"
+REPORTS_DIR = ROOT / "reports" / "generated" / "phase-1-3"
 EVIDENCE_REGISTRY = ROOT / "docs/design/registries/evidence.yaml"
 TRACE_FILES = [
     "dataset-catalog-to-dafny.yml",
@@ -26,8 +26,8 @@ TRACE_FILES = [
     "formal-claim-to-dafny.yml",
 ]
 REPORT_FILES = [
-    "phase-1-3-entry-gate.yml",
-    "phase-1-3-entry-gate.md",
+    "entry-gate.yml",
+    "entry-gate.md",
     "dafny-dataset-catalog-gap-normalization.yml",
     "dafny-dataset-catalog-gap-normalization.md",
     "dafny-dataset-catalog-report.md",
@@ -395,7 +395,7 @@ def validate_python_boundary(errors: list[str]) -> None:
 def validate_mapping_content() -> list[str]:
     errors: list[str] = []
     coverage = load_yaml(REPORTS_DIR / "dafny-dataset-catalog-coverage.yml")
-    gate = load_yaml(REPORTS_DIR / "phase-1-3-entry-gate.yml")
+    gate = load_yaml(REPORTS_DIR / "entry-gate.yml")
     evidence_registry = load_yaml(EVIDENCE_REGISTRY)
     known_evidence = {
         entry.get("evidence_id")

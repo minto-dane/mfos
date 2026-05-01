@@ -93,6 +93,10 @@ phase_1_4_job_spool_operator_validator_planned: true
 phase_1_4_job_spool_operator_validator_scaffolded: false
 phase_1_4_job_spool_operator_coverage_claimed: false
 phase_1_4_job_spool_operator_semantics_complete: false
+artifact_lifecycle_remediation_complete: true
+reports_current_phase_files_remaining: false
+duplicate_directory_ownership_classified: true
+broad_artifact_hygiene_allowlist_removed: true
 phase_1_semantic_evaluator_status: non_production_dafny_only
 phase_1_portable_semantic_core_allowed: false
 phase_1_rust_semantic_core_allowed: false
@@ -192,6 +196,20 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
   hosted daemons, semantic-runner commands, or `jobd`/`spoold`/`operatord`
   behavior.
 
+## Artifact Lifecycle Boundaries
+
+- `reports/current/` is limited to cross-phase current status summaries,
+  readiness reports, policy summaries, and stable current aggregate reports.
+- Phase-specific reports live under `reports/phases/<phase-id>/`; the Phase
+  1.4 planning package is under `reports/phases/phase-1-4/`.
+- Generated Phase 1.1, Phase 1.2, and Phase 1.3 reports live under
+  `reports/generated/phase-*`.
+- Superseded gap triage, fixed-point readiness, and PR review reports live under
+  `reports/archive/`.
+- Duplicate implementation and bridge roots are classified in
+  `reports/current/directory-ownership-audit.yml`; future implementation code
+  remains gated under `implementation/` and is not authorized in Phase 1.
+
 ## Phase 1 Formal / Traceability Consistency
 
 - Added Phase 1 model consistency reporting to record TLA+, Alloy, formal
@@ -217,7 +235,7 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
   `reports/current/fixedpoint/loop-history.yml`,
   `reports/current/fixedpoint/validation-report.yml`,
   `reports/current/fixedpoint/final-red-team-review.md`, and
-  `reports/current/fixedpoint/phase-1-ready-report.yml`.
+  `reports/archive/superseded/fixedpoint/phase-1-ready-report.yml`.
 - Closed the fixed-point Critical finding caused by ambiguous `forbidden_scope`
   booleans in readiness YAML.
 - Closed Major findings for stale Source Card refs, stale pack test refs,
@@ -716,9 +734,9 @@ Current PR and readiness reports:
 - `reports/phases/phase-1/open-issues.md`
 - `reports/current/source-grounding/conditional-refreeze-plan.md`
 - `reports/phases/phase-1/pack-readiness-recheck.md`
-- `reports/current/pre-phase1-readiness-audit.md`
-- `reports/current/pre-phase1-readiness-red-team-review.md`
-- `reports/current/pre-phase1-readiness-final-report.md`
+- `reports/phases/phase-1/pre-phase1-readiness-audit.md`
+- `reports/phases/phase-1/pre-phase1-readiness-red-team-review.md`
+- `reports/phases/phase-1/pre-phase1-readiness-final-report.md`
 - `reports/current/architecture-portability-policy-report.md`
 - `reports/current/x86-64-target-profile-report.md`
 - `reports/current/cpu-feature-registry-report.md`

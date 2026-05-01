@@ -2493,7 +2493,7 @@ directory_graph:
   has_mfos_dir_metadata: false
   empty: false
   classification: current
-- path: reports/current/pre-phase1
+- path: reports/phases/phase-1/pre-phase1/package
   parent: reports/current
   children_count: 0
   file_count: 9
@@ -4862,9 +4862,9 @@ file_reference_graph:
   - reports/audits
   - reports/current
   - reports/current/policy-denial-error-taxonomy.md
-  - reports/current/pre-phase1-readiness-audit.md
-  - reports/current/pre-phase1-readiness-final-report.md
-  - reports/current/pre-phase1-readiness-red-team-review.md
+  - reports/phases/phase-1/pre-phase1-readiness-audit.md
+  - reports/phases/phase-1/pre-phase1-readiness-final-report.md
+  - reports/phases/phase-1/pre-phase1-readiness-red-team-review.md
   - reports/current/source-grounding
   - reports/current/source-grounding/conditional-refreeze-plan.md
   - reports/generated
@@ -4917,7 +4917,7 @@ file_reference_graph:
   - reports/audits/repo/repo-audit.yml
   - reports/current/artifact-hygiene-audit.yml
   - reports/current/docs-spec-scaffold-audit.md
-  - reports/current/pre-phase1-readiness-open-issues.md
+  - reports/phases/phase-1/pre-phase1-readiness-open-issues.md
   - reports/current/total-repo-remediation-summary.md
   - reports/naming-safety/naming-safety-red-team-review.yml
   - reports/phases/phase-0-7/phase-0-7-system-integrity-progress.md
@@ -6433,7 +6433,7 @@ file_reference_graph:
   - docs/design/specs/22-production-readiness.md
   - docs/design/specs/28-machine-readable-registries.md
   - evidence/traceability/archive/phase-0-8/requirement-to-evidence.yml
-  - reports/current/pre-phase1-readiness-final-report.md
+  - reports/phases/phase-1/pre-phase1-readiness-final-report.md
   referenced_by:
   - docs/design/registries/tasks.yaml
   - docs/design/specs/28-machine-readable-registries.md
@@ -15036,7 +15036,7 @@ file_reference_graph:
   - formal/executable-semantics/dafny/.mfos-dir.yml
   - formal/executable-semantics/index.yml
   - implementation/.mfos-dir.yml
-  - reports/current/pre-phase1-readiness-audit.md
+  - reports/phases/phase-1/pre-phase1-readiness-audit.md
   - reports/current/source-grounding/spec-section-grounding-audit.yml
   - reports/generated/traceability.md
   - reports/phases/phase-0-9/phase-0-9-executable-spec-freeze-report.md
@@ -15362,7 +15362,7 @@ file_reference_graph:
   - packs/pack-index.yml
   - reports/current/language-formal-assurance-policy-report.md
   - reports/current/language-formal-assurance-remediation.md
-  - reports/current/pre-phase1-readiness-audit.md
+  - reports/phases/phase-1/pre-phase1-readiness-audit.md
   - reports/current/pxm-mfvm-requirements-docs-expansion-report.md
   - reports/current/source-grounding/source-card-grounding-audit.yml
   - reports/generated/traceability.md
@@ -15659,8 +15659,8 @@ file_reference_graph:
   - docs/design/tasks/spec-front-matter-migration.md
   - reports/audits/repo/repo-audit.md
   - reports/audits/repo/repo-audit.yml
-  - reports/current/pre-phase1/iteration-3-audit.md
-  - reports/current/pre-phase1/iteration-3-audit.yml
+  - reports/phases/phase-1/pre-phase1/package/iteration-3-audit.md
+  - reports/phases/phase-1/pre-phase1/package/iteration-3-audit.yml
   - reports/current/spec-doc-remediation.md
   - reports/current/total-repo-remediation-summary.md
   - reports/phases/phase-0-8/phase-0-8-open-issues.md
@@ -16076,9 +16076,9 @@ file_reference_graph:
   - docs/design/tasks/index.yml
   - evidence/traceability/current/pack-to-artifacts.yml
   - packs/pack-index.yml
-  - reports/current/pre-phase1-readiness-audit.md
-  - reports/current/pre-phase1/iteration-3-audit.md
-  - reports/current/pre-phase1/iteration-3-audit.yml
+  - reports/phases/phase-1/pre-phase1-readiness-audit.md
+  - reports/phases/phase-1/pre-phase1/package/iteration-3-audit.md
+  - reports/phases/phase-1/pre-phase1/package/iteration-3-audit.yml
   generated_by: null
   validates: false
   indexed_by:
@@ -20559,7 +20559,7 @@ file_reference_graph:
   referenced_by:
   - reports/audits/repo/repo-audit.md
   - reports/audits/repo/repo-audit.yml
-  - reports/current/pre-phase1-readiness-audit.md
+  - reports/phases/phase-1/pre-phase1-readiness-audit.md
   - reports/naming-safety/mfos-owned-name-audit.yml
   generated_by: null
   validates: false
@@ -20635,7 +20635,7 @@ file_reference_graph:
   - formal/executable-semantics/dafny
   referenced_by:
   - reports/audits/repo/repo-audit.yml
-  - reports/current/pre-phase1-readiness-audit.md
+  - reports/phases/phase-1/pre-phase1-readiness-audit.md
   generated_by: null
   validates: false
   indexed_by: []
@@ -20708,7 +20708,7 @@ file_reference_graph:
   referenced_by:
   - reports/audits/repo/repo-audit.md
   - reports/audits/repo/repo-audit.yml
-  - reports/current/pre-phase1-readiness-audit.md
+  - reports/phases/phase-1/pre-phase1-readiness-audit.md
   generated_by: null
   validates: false
   indexed_by: []
@@ -23012,7 +23012,7 @@ file_reference_graph:
   - packs/pack-index.yml
   - reports/current/directory-maturity-matrix.yml
   - reports/current/empty-directory-inventory.yml
-  - reports/current/pre-phase1-readiness-audit.yml
+  - reports/phases/phase-1/pre-phase1-readiness-audit.yml
   - reports/current/repository-scaffold-next-actions.yml
   - reports/current/repository-scaffold-risk-matrix.yml
   - reports/current/source-grounding/source-card-grounding-audit.md
@@ -23245,7 +23245,7 @@ file_reference_graph:
   requirement_refs: []
   test_refs: []
   evidence_refs: []
-- file: reports/current/pre-phase1-readiness-audit.md
+- file: reports/phases/phase-1/pre-phase1-readiness-audit.md
   references_to_other_files:
   - docs/design/specs/33-semantic-runner-contract.md
   - docs/design/specs/39-language-and-verification-policy.md
@@ -23254,7 +23254,7 @@ file_reference_graph:
   - implementation/README.md
   - implementation/prototypes/README.md
   - implementation/services/README.md
-  - reports/current/pre-phase1-readiness-final-report.md
+  - reports/phases/phase-1/pre-phase1-readiness-final-report.md
   - scripts/bootstrap/bootstrap-tree.sh
   - scripts/validate-all.sh
   - scripts/validate-artifact-hygiene.sh
@@ -23280,10 +23280,10 @@ file_reference_graph:
   requirement_refs: []
   test_refs: []
   evidence_refs: []
-- file: reports/current/pre-phase1-readiness-audit.yml
+- file: reports/phases/phase-1/pre-phase1-readiness-audit.yml
   references_to_other_files:
   - reports/current/fixedpoint
-  - reports/current/pre-phase1
+  - reports/phases/phase-1/pre-phase1/package
   referenced_by:
   - reports/current/fixedpoint/issue-ledger.yml
   - reports/index.yml
@@ -23298,11 +23298,11 @@ file_reference_graph:
   requirement_refs: []
   test_refs: []
   evidence_refs: []
-- file: reports/current/pre-phase1-readiness-final-report.md
+- file: reports/phases/phase-1/pre-phase1-readiness-final-report.md
   references_to_other_files:
   - formal/executable-semantics/dafny
-  - reports/current/pre-phase1
-  - reports/current/pre-phase1/iteration-3-audit.md
+  - reports/phases/phase-1/pre-phase1/package
+  - reports/phases/phase-1/pre-phase1/package/iteration-3-audit.md
   - scripts/phases/phase-0-9/validate.sh
   - scripts/validate-all.sh
   - scripts/validate-artifact-hygiene.sh
@@ -23314,8 +23314,8 @@ file_reference_graph:
   referenced_by:
   - docs/design/STATUS.md
   - docs/design/registries/evidence.yaml
-  - reports/current/pre-phase1-readiness-audit.md
-  - reports/current/pre-phase1-readiness-open-issues.md
+  - reports/phases/phase-1/pre-phase1-readiness-audit.md
+  - reports/phases/phase-1/pre-phase1-readiness-open-issues.md
   - reports/index.yml
   generated_by: null
   validates: false
@@ -23332,13 +23332,13 @@ file_reference_graph:
   requirement_refs: []
   test_refs: []
   evidence_refs: []
-- file: reports/current/pre-phase1-readiness-open-issues.md
+- file: reports/phases/phase-1/pre-phase1-readiness-open-issues.md
   references_to_other_files:
   - docs/design/STATUS.md
-  - reports/current/pre-phase1-readiness-final-report.md
+  - reports/phases/phase-1/pre-phase1-readiness-final-report.md
   - schemas/mfos
   referenced_by:
-  - reports/current/pre-phase1-readiness-red-team-review.md
+  - reports/phases/phase-1/pre-phase1-readiness-red-team-review.md
   - reports/index.yml
   generated_by: null
   validates: false
@@ -23352,9 +23352,9 @@ file_reference_graph:
   requirement_refs: []
   test_refs: []
   evidence_refs: []
-- file: reports/current/pre-phase1-readiness-red-team-review.md
+- file: reports/phases/phase-1/pre-phase1-readiness-red-team-review.md
   references_to_other_files:
-  - reports/current/pre-phase1-readiness-open-issues.md
+  - reports/phases/phase-1/pre-phase1-readiness-open-issues.md
   referenced_by:
   - docs/design/STATUS.md
   - reports/index.yml
@@ -23371,7 +23371,7 @@ file_reference_graph:
   - MFOS-REQ-DAFNY-*
   test_refs: []
   evidence_refs: []
-- file: reports/current/pre-phase1/README.md
+- file: reports/phases/phase-1/pre-phase1/package/README.md
   references_to_other_files: []
   referenced_by: []
   generated_by: null
@@ -23388,11 +23388,11 @@ file_reference_graph:
   requirement_refs: []
   test_refs: []
   evidence_refs: []
-- file: reports/current/pre-phase1/deep-directory-audit.md
+- file: reports/phases/phase-1/pre-phase1/package/deep-directory-audit.md
   references_to_other_files:
   - schemas/mfos
   referenced_by:
-  - reports/current/pre-phase1/index.yml
+  - reports/phases/phase-1/pre-phase1/package/index.yml
   generated_by: null
   validates: false
   indexed_by: []
@@ -23408,10 +23408,10 @@ file_reference_graph:
   - MFOS-REQ-DAFNY-*
   test_refs: []
   evidence_refs: []
-- file: reports/current/pre-phase1/deep-directory-audit.yml
+- file: reports/phases/phase-1/pre-phase1/package/deep-directory-audit.yml
   references_to_other_files: []
   referenced_by:
-  - reports/current/pre-phase1/index.yml
+  - reports/phases/phase-1/pre-phase1/package/index.yml
   generated_by: null
   validates: false
   indexed_by: []
@@ -23422,15 +23422,15 @@ file_reference_graph:
   requirement_refs: []
   test_refs: []
   evidence_refs: []
-- file: reports/current/pre-phase1/index.yml
+- file: reports/phases/phase-1/pre-phase1/package/index.yml
   references_to_other_files:
-  - reports/current/pre-phase1/deep-directory-audit.md
-  - reports/current/pre-phase1/deep-directory-audit.yml
-  - reports/current/pre-phase1/iteration-3-audit.md
-  - reports/current/pre-phase1/iteration-3-audit.yml
-  - reports/current/pre-phase1/iteration-3-red-team-review.md
-  - reports/current/pre-phase1/second-pass-remediation.md
-  - reports/current/pre-phase1/second-pass-remediation.yml
+  - reports/phases/phase-1/pre-phase1/package/deep-directory-audit.md
+  - reports/phases/phase-1/pre-phase1/package/deep-directory-audit.yml
+  - reports/phases/phase-1/pre-phase1/package/iteration-3-audit.md
+  - reports/phases/phase-1/pre-phase1/package/iteration-3-audit.yml
+  - reports/phases/phase-1/pre-phase1/package/iteration-3-red-team-review.md
+  - reports/phases/phase-1/pre-phase1/package/second-pass-remediation.md
+  - reports/phases/phase-1/pre-phase1/package/second-pass-remediation.yml
   referenced_by: []
   generated_by: null
   validates: false
@@ -23441,7 +23441,7 @@ file_reference_graph:
   requirement_refs: []
   test_refs: []
   evidence_refs: []
-- file: reports/current/pre-phase1/iteration-3-audit.md
+- file: reports/phases/phase-1/pre-phase1/package/iteration-3-audit.md
   references_to_other_files:
   - docs/design/specs/INDEX.md
   - docs/design/tasks/work-breakdown.md
@@ -23454,8 +23454,8 @@ file_reference_graph:
   - scripts/validate-language-formal-assurance.sh
   - scripts/validate-naming-safety.sh
   referenced_by:
-  - reports/current/pre-phase1-readiness-final-report.md
-  - reports/current/pre-phase1/index.yml
+  - reports/phases/phase-1/pre-phase1-readiness-final-report.md
+  - reports/phases/phase-1/pre-phase1/package/index.yml
   generated_by: null
   validates: false
   indexed_by: []
@@ -23472,13 +23472,13 @@ file_reference_graph:
   - MFOS-REQ-DAFNY-*
   test_refs: []
   evidence_refs: []
-- file: reports/current/pre-phase1/iteration-3-audit.yml
+- file: reports/phases/phase-1/pre-phase1/package/iteration-3-audit.yml
   references_to_other_files:
   - docs/design/specs/INDEX.md
   - docs/design/tasks/work-breakdown.md
   - scripts/bootstrap/bootstrap-tree.sh
   referenced_by:
-  - reports/current/pre-phase1/index.yml
+  - reports/phases/phase-1/pre-phase1/package/index.yml
   generated_by: null
   validates: false
   indexed_by: []
@@ -23490,10 +23490,10 @@ file_reference_graph:
   requirement_refs: []
   test_refs: []
   evidence_refs: []
-- file: reports/current/pre-phase1/iteration-3-red-team-review.md
+- file: reports/phases/phase-1/pre-phase1/package/iteration-3-red-team-review.md
   references_to_other_files: []
   referenced_by:
-  - reports/current/pre-phase1/index.yml
+  - reports/phases/phase-1/pre-phase1/package/index.yml
   generated_by: null
   validates: false
   indexed_by: []
@@ -23505,11 +23505,11 @@ file_reference_graph:
   requirement_refs: []
   test_refs: []
   evidence_refs: []
-- file: reports/current/pre-phase1/second-pass-remediation.md
+- file: reports/phases/phase-1/pre-phase1/package/second-pass-remediation.md
   references_to_other_files:
   - schemas/mfos
   referenced_by:
-  - reports/current/pre-phase1/index.yml
+  - reports/phases/phase-1/pre-phase1/package/index.yml
   generated_by: null
   validates: false
   indexed_by: []
@@ -23525,10 +23525,10 @@ file_reference_graph:
   - MFOS-REQ-DAFNY-*
   test_refs: []
   evidence_refs: []
-- file: reports/current/pre-phase1/second-pass-remediation.yml
+- file: reports/phases/phase-1/pre-phase1/package/second-pass-remediation.yml
   references_to_other_files: []
   referenced_by:
-  - reports/current/pre-phase1/index.yml
+  - reports/phases/phase-1/pre-phase1/package/index.yml
   generated_by: null
   validates: false
   indexed_by: []
@@ -25894,12 +25894,12 @@ file_reference_graph:
   - reports/current/legal-naming-remediation.md
   - reports/current/live-repo-structure-audit.md
   - reports/current/policy-denial-error-taxonomy.md
-  - reports/current/pre-phase1
-  - reports/current/pre-phase1-readiness-audit.md
-  - reports/current/pre-phase1-readiness-audit.yml
-  - reports/current/pre-phase1-readiness-final-report.md
-  - reports/current/pre-phase1-readiness-open-issues.md
-  - reports/current/pre-phase1-readiness-red-team-review.md
+  - reports/phases/phase-1/pre-phase1/package
+  - reports/phases/phase-1/pre-phase1-readiness-audit.md
+  - reports/phases/phase-1/pre-phase1-readiness-audit.yml
+  - reports/phases/phase-1/pre-phase1-readiness-final-report.md
+  - reports/phases/phase-1/pre-phase1-readiness-open-issues.md
+  - reports/phases/phase-1/pre-phase1-readiness-red-team-review.md
   - reports/current/pxm-mfvm-open-issues.md
   - reports/current/pxm-mfvm-requirements-docs-expansion-report.md
   - reports/current/pxm-mfvm-requirements-docs-expansion-report.yml
@@ -27924,7 +27924,7 @@ file_reference_graph:
 - file: reports/phases/phase-1/pre-phase-1-total-readiness.yml
   references_to_other_files:
   - reports/current/fixedpoint
-  - reports/current/pre-phase1
+  - reports/phases/phase-1/pre-phase1/package
   referenced_by:
   - reports/current/fixedpoint/issue-ledger.yml
   - reports/index.yml
@@ -29988,9 +29988,9 @@ file_reference_graph:
   - tests/conformance/enterprise-standalone
   - tests/conformance/high-assurance
   referenced_by:
-  - reports/current/pre-phase1-readiness-audit.md
-  - reports/current/pre-phase1/iteration-3-audit.md
-  - reports/current/pre-phase1/iteration-3-audit.yml
+  - reports/phases/phase-1/pre-phase1-readiness-audit.md
+  - reports/phases/phase-1/pre-phase1/package/iteration-3-audit.md
+  - reports/phases/phase-1/pre-phase1/package/iteration-3-audit.yml
   - reports/naming-safety/naming-path-fix-report.md
   - reports/naming-safety/naming-safety-refactor-report.md
   generated_by: null
@@ -30838,8 +30838,8 @@ file_reference_graph:
   referenced_by:
   - docs/design/STATUS.md
   - reports/current/artifact-hygiene-followup-report.md
-  - reports/current/pre-phase1-readiness-final-report.md
-  - reports/current/pre-phase1/iteration-3-audit.md
+  - reports/phases/phase-1/pre-phase1-readiness-final-report.md
+  - reports/phases/phase-1/pre-phase1/package/iteration-3-audit.md
   - reports/phases/phase-0-9/phase-0-9-validation-report.md
   - scripts/phases/phase-0-9/check-no-implementation.py
   - scripts/validate-all.sh
@@ -30888,9 +30888,9 @@ file_reference_graph:
   - reports/current/artifact-hygiene-audit.yml
   - reports/current/artifact-hygiene-followup-report.md
   - reports/current/ci-workflow-remediation.md
-  - reports/current/pre-phase1-readiness-audit.md
-  - reports/current/pre-phase1-readiness-final-report.md
-  - reports/current/pre-phase1/iteration-3-audit.md
+  - reports/phases/phase-1/pre-phase1-readiness-audit.md
+  - reports/phases/phase-1/pre-phase1-readiness-final-report.md
+  - reports/phases/phase-1/pre-phase1/package/iteration-3-audit.md
   - reports/current/repository-scaffold-audit.yml
   - reports/current/scripts-ci-scaffold-audit.md
   - reports/naming-safety/naming-safety-red-team-review.md
@@ -30931,9 +30931,9 @@ file_reference_graph:
   - docs/design/STATUS.md
   - reports/current/artifact-hygiene-audit.yml
   - reports/current/artifact-hygiene-followup-report.md
-  - reports/current/pre-phase1-readiness-audit.md
-  - reports/current/pre-phase1-readiness-final-report.md
-  - reports/current/pre-phase1/iteration-3-audit.md
+  - reports/phases/phase-1/pre-phase1-readiness-audit.md
+  - reports/phases/phase-1/pre-phase1-readiness-final-report.md
+  - reports/phases/phase-1/pre-phase1/package/iteration-3-audit.md
   - scripts/README.md
   - scripts/index.yml
   - scripts/validate-all.sh
@@ -30954,9 +30954,9 @@ file_reference_graph:
   - .github/workflows/design-validation.yml
   - README.md
   - reports/current/ci-workflow-remediation.md
-  - reports/current/pre-phase1-readiness-audit.md
-  - reports/current/pre-phase1-readiness-final-report.md
-  - reports/current/pre-phase1/iteration-3-audit.md
+  - reports/phases/phase-1/pre-phase1-readiness-audit.md
+  - reports/phases/phase-1/pre-phase1-readiness-final-report.md
+  - reports/phases/phase-1/pre-phase1/package/iteration-3-audit.md
   - reports/current/total-repo-remediation-summary.md
   - scripts/README.md
   - scripts/index.yml
@@ -30978,9 +30978,9 @@ file_reference_graph:
   - .github/workflows/design-validation.yml
   - README.md
   - docs/design/STATUS.md
-  - reports/current/pre-phase1-readiness-audit.md
-  - reports/current/pre-phase1-readiness-final-report.md
-  - reports/current/pre-phase1/iteration-3-audit.md
+  - reports/phases/phase-1/pre-phase1-readiness-audit.md
+  - reports/phases/phase-1/pre-phase1-readiness-final-report.md
+  - reports/phases/phase-1/pre-phase1/package/iteration-3-audit.md
   - scripts/index.yml
   - scripts/validate-all.sh
   generated_by: null
@@ -30999,9 +30999,9 @@ file_reference_graph:
   - scripts/validators/validate-language-formal-assurance.sh
   referenced_by:
   - README.md
-  - reports/current/pre-phase1-readiness-audit.md
-  - reports/current/pre-phase1-readiness-final-report.md
-  - reports/current/pre-phase1/iteration-3-audit.md
+  - reports/phases/phase-1/pre-phase1-readiness-audit.md
+  - reports/phases/phase-1/pre-phase1-readiness-final-report.md
+  - reports/phases/phase-1/pre-phase1/package/iteration-3-audit.md
   - scripts/index.yml
   generated_by: null
   validates: true
@@ -31027,9 +31027,9 @@ file_reference_graph:
   - docs/design/STATUS.md
   - reports/current/artifact-hygiene-audit.yml
   - reports/current/artifact-hygiene-followup-report.md
-  - reports/current/pre-phase1-readiness-audit.md
-  - reports/current/pre-phase1-readiness-final-report.md
-  - reports/current/pre-phase1/iteration-3-audit.md
+  - reports/phases/phase-1/pre-phase1-readiness-audit.md
+  - reports/phases/phase-1/pre-phase1-readiness-final-report.md
+  - reports/phases/phase-1/pre-phase1/package/iteration-3-audit.md
   - reports/current/source-name-legal-safe-harbor-audit.md
   - reports/current/source-name-legal-safe-harbor-audit.yml
   - reports/naming-safety/naming-safety-red-team-review.md
@@ -31309,7 +31309,7 @@ file_reference_graph:
   referenced_by:
   - reports/current/fixedpoint/issue-ledger.yml
   - reports/current/fixedpoint/loop-history.yml
-  - reports/current/pre-phase1-readiness-final-report.md
+  - reports/phases/phase-1/pre-phase1-readiness-final-report.md
   - scripts/index.yml
   - scripts/validate-all.sh
   generated_by: null
@@ -42507,7 +42507,7 @@ artifact_lifecycle_graph:
   - scripts/validate-all.sh
   generation_script: null
   phase_scope: null
-- artifact: reports/current/pre-phase1-readiness-audit.md
+- artifact: reports/phases/phase-1/pre-phase1-readiness-audit.md
   lifecycle: current
   owner_index:
   - reports/index.yml
@@ -42515,7 +42515,7 @@ artifact_lifecycle_graph:
   - scripts/validate-all.sh
   generation_script: null
   phase_scope: null
-- artifact: reports/current/pre-phase1-readiness-audit.yml
+- artifact: reports/phases/phase-1/pre-phase1-readiness-audit.yml
   lifecycle: current
   owner_index:
   - reports/index.yml
@@ -42523,7 +42523,7 @@ artifact_lifecycle_graph:
   - scripts/validate-all.sh
   generation_script: null
   phase_scope: null
-- artifact: reports/current/pre-phase1-readiness-final-report.md
+- artifact: reports/phases/phase-1/pre-phase1-readiness-final-report.md
   lifecycle: current
   owner_index:
   - reports/index.yml
@@ -42531,7 +42531,7 @@ artifact_lifecycle_graph:
   - scripts/validate-all.sh
   generation_script: null
   phase_scope: null
-- artifact: reports/current/pre-phase1-readiness-open-issues.md
+- artifact: reports/phases/phase-1/pre-phase1-readiness-open-issues.md
   lifecycle: current
   owner_index:
   - reports/index.yml
@@ -42539,7 +42539,7 @@ artifact_lifecycle_graph:
   - scripts/validate-all.sh
   generation_script: null
   phase_scope: null
-- artifact: reports/current/pre-phase1-readiness-red-team-review.md
+- artifact: reports/phases/phase-1/pre-phase1-readiness-red-team-review.md
   lifecycle: current
   owner_index:
   - reports/index.yml
@@ -42547,63 +42547,63 @@ artifact_lifecycle_graph:
   - scripts/validate-all.sh
   generation_script: null
   phase_scope: null
-- artifact: reports/current/pre-phase1/README.md
+- artifact: reports/phases/phase-1/pre-phase1/package/README.md
   lifecycle: current
   owner_index: null
   validators:
   - scripts/validate-all.sh
   generation_script: null
   phase_scope: null
-- artifact: reports/current/pre-phase1/deep-directory-audit.md
+- artifact: reports/phases/phase-1/pre-phase1/package/deep-directory-audit.md
   lifecycle: current
   owner_index: null
   validators:
   - scripts/validate-all.sh
   generation_script: null
   phase_scope: null
-- artifact: reports/current/pre-phase1/deep-directory-audit.yml
+- artifact: reports/phases/phase-1/pre-phase1/package/deep-directory-audit.yml
   lifecycle: current
   owner_index: null
   validators:
   - scripts/validate-all.sh
   generation_script: null
   phase_scope: null
-- artifact: reports/current/pre-phase1/index.yml
+- artifact: reports/phases/phase-1/pre-phase1/package/index.yml
   lifecycle: current
   owner_index: null
   validators:
   - scripts/validate-all.sh
   generation_script: null
   phase_scope: null
-- artifact: reports/current/pre-phase1/iteration-3-audit.md
+- artifact: reports/phases/phase-1/pre-phase1/package/iteration-3-audit.md
   lifecycle: current
   owner_index: null
   validators:
   - scripts/validate-all.sh
   generation_script: null
   phase_scope: null
-- artifact: reports/current/pre-phase1/iteration-3-audit.yml
+- artifact: reports/phases/phase-1/pre-phase1/package/iteration-3-audit.yml
   lifecycle: current
   owner_index: null
   validators:
   - scripts/validate-all.sh
   generation_script: null
   phase_scope: null
-- artifact: reports/current/pre-phase1/iteration-3-red-team-review.md
+- artifact: reports/phases/phase-1/pre-phase1/package/iteration-3-red-team-review.md
   lifecycle: current
   owner_index: null
   validators:
   - scripts/validate-all.sh
   generation_script: null
   phase_scope: null
-- artifact: reports/current/pre-phase1/second-pass-remediation.md
+- artifact: reports/phases/phase-1/pre-phase1/package/second-pass-remediation.md
   lifecycle: current
   owner_index: null
   validators:
   - scripts/validate-all.sh
   generation_script: null
   phase_scope: null
-- artifact: reports/current/pre-phase1/second-pass-remediation.yml
+- artifact: reports/phases/phase-1/pre-phase1/package/second-pass-remediation.yml
   lifecycle: current
   owner_index: null
   validators:
@@ -48394,72 +48394,72 @@ phase_readiness_graph:
   allowed_for_phase_1: false
   forbidden_for_phase_1: false
   blocker_status: none
-- artifact: reports/current/pre-phase1-readiness-audit.md
+- artifact: reports/phases/phase-1/pre-phase1-readiness-audit.md
   required_for_phase_1: false
   allowed_for_phase_1: false
   forbidden_for_phase_1: false
   blocker_status: none
-- artifact: reports/current/pre-phase1-readiness-audit.yml
+- artifact: reports/phases/phase-1/pre-phase1-readiness-audit.yml
   required_for_phase_1: false
   allowed_for_phase_1: false
   forbidden_for_phase_1: false
   blocker_status: none
-- artifact: reports/current/pre-phase1-readiness-final-report.md
+- artifact: reports/phases/phase-1/pre-phase1-readiness-final-report.md
   required_for_phase_1: false
   allowed_for_phase_1: false
   forbidden_for_phase_1: false
   blocker_status: none
-- artifact: reports/current/pre-phase1-readiness-open-issues.md
+- artifact: reports/phases/phase-1/pre-phase1-readiness-open-issues.md
   required_for_phase_1: false
   allowed_for_phase_1: false
   forbidden_for_phase_1: false
   blocker_status: none
-- artifact: reports/current/pre-phase1-readiness-red-team-review.md
+- artifact: reports/phases/phase-1/pre-phase1-readiness-red-team-review.md
   required_for_phase_1: false
   allowed_for_phase_1: false
   forbidden_for_phase_1: false
   blocker_status: none
-- artifact: reports/current/pre-phase1/README.md
+- artifact: reports/phases/phase-1/pre-phase1/package/README.md
   required_for_phase_1: false
   allowed_for_phase_1: false
   forbidden_for_phase_1: false
   blocker_status: none
-- artifact: reports/current/pre-phase1/deep-directory-audit.md
+- artifact: reports/phases/phase-1/pre-phase1/package/deep-directory-audit.md
   required_for_phase_1: false
   allowed_for_phase_1: false
   forbidden_for_phase_1: false
   blocker_status: none
-- artifact: reports/current/pre-phase1/deep-directory-audit.yml
+- artifact: reports/phases/phase-1/pre-phase1/package/deep-directory-audit.yml
   required_for_phase_1: false
   allowed_for_phase_1: false
   forbidden_for_phase_1: false
   blocker_status: none
-- artifact: reports/current/pre-phase1/index.yml
+- artifact: reports/phases/phase-1/pre-phase1/package/index.yml
   required_for_phase_1: false
   allowed_for_phase_1: false
   forbidden_for_phase_1: false
   blocker_status: none
-- artifact: reports/current/pre-phase1/iteration-3-audit.md
+- artifact: reports/phases/phase-1/pre-phase1/package/iteration-3-audit.md
   required_for_phase_1: false
   allowed_for_phase_1: false
   forbidden_for_phase_1: false
   blocker_status: none
-- artifact: reports/current/pre-phase1/iteration-3-audit.yml
+- artifact: reports/phases/phase-1/pre-phase1/package/iteration-3-audit.yml
   required_for_phase_1: false
   allowed_for_phase_1: false
   forbidden_for_phase_1: false
   blocker_status: none
-- artifact: reports/current/pre-phase1/iteration-3-red-team-review.md
+- artifact: reports/phases/phase-1/pre-phase1/package/iteration-3-red-team-review.md
   required_for_phase_1: false
   allowed_for_phase_1: false
   forbidden_for_phase_1: false
   blocker_status: none
-- artifact: reports/current/pre-phase1/second-pass-remediation.md
+- artifact: reports/phases/phase-1/pre-phase1/package/second-pass-remediation.md
   required_for_phase_1: false
   allowed_for_phase_1: false
   forbidden_for_phase_1: false
   blocker_status: none
-- artifact: reports/current/pre-phase1/second-pass-remediation.yml
+- artifact: reports/phases/phase-1/pre-phase1/package/second-pass-remediation.yml
   required_for_phase_1: false
   allowed_for_phase_1: false
   forbidden_for_phase_1: false

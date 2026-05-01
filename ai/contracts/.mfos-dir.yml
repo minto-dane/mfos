@@ -1,0 +1,32 @@
+directory_id: MFOS-DIR-AI-CONTRACTS
+path: ai/contracts
+role: ai_work
+maturity: M3_CONTRACTED
+status: draft
+canonical: false
+description: Reviewed AI contract documents downstream of the canonical AI implementation contract spec.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  rust_semantic_core: false
+  dafny_executable_semantics: false
+  semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+  generated_production_code: false
+  validation_only: true
+phase_allowed_from: phase-0
+depends_on:
+  - docs/design/specs/21-ai-implementation-contract.md
+allowed_contents:
+  - AI implementation contracts
+  - reviewed assignment constraints
+forbidden_contents:
+  - production code
+  - unreviewed generated implementation
+  - external documentation copies
+required_before_agent_assignment:
+  - canonical spec ref
+  - review scope
+  - no-production boundary
+review_status: draft

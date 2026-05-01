@@ -16,11 +16,14 @@ current:
     machine_readable: reports/current/fixedpoint/validation-report.yml
   final_red_team_review:
     path: reports/current/fixedpoint/final-red-team-review.md
-  phase_1_ready_report:
-    path: reports/current/fixedpoint/phase-1-ready-report.md
-    machine_readable: reports/current/fixedpoint/phase-1-ready-report.yml
   final_summary:
     path: reports/current/fixedpoint/final-summary.md
+archive:
+  phase_1_ready_report:
+    path: reports/archive/superseded/fixedpoint/phase-1-ready-report.md
+    machine_readable: reports/archive/superseded/fixedpoint/phase-1-ready-report.yml
+    status: historical
+    origin_phase: phase-1
 policy:
   implementation_allowed: false
   public_release_allowed: false

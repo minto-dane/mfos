@@ -79,4 +79,4 @@ Local validation passed after remediation:
 - `./scripts/validate-dafny-semantics-scaffold.sh --check`
 
 Final py_compile and whitespace validation are recorded in
-`reports/current/pre-phase1-readiness-final-report.md`.
+`reports/phases/phase-1/pre-phase1-readiness-final-report.md`.

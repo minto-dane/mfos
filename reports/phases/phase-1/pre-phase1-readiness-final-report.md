@@ -33,10 +33,10 @@ implementation, PXM/MFVM/CVM/cluster implementation, or production code.
 - Updated reports and STATUS to record that PR #10 landed before this
   readiness branch was rebased onto `origin/dev`.
 - Completed a second recursive readiness pass, captured in
-  `reports/current/pre-phase1/`, and fixed all Critical/Major findings from
+  `reports/phases/phase-1/pre-phase1/package/`, and fixed all Critical/Major findings from
   that pass.
 - Completed an iteration-3 recursive readiness pass, captured in
-  `reports/current/pre-phase1/iteration-3-audit.md`, and fixed the remaining
+  `reports/phases/phase-1/pre-phase1/package/iteration-3-audit.md`, and fixed the remaining
   hosted-prototype routing and stale requirement-namespace wording found during
   that pass.
 

@@ -4,7 +4,7 @@ role: validation
 maturity: M4_POPULATED
 status: current
 canonical: false
-description: Active reports, audits, and readiness metadata for the current remediation window.
+description: Cross-phase current reports, audits, readiness metadata, policy summaries, and stable current aggregates.
 implementation_allowed:
   production: false
   hosted_daemon: false
@@ -19,11 +19,18 @@ phase_allowed_from: phase-0
 depends_on:
   - reports/index.yml
 allowed_contents:
-  - current reports
+  - cross-phase current reports
+  - current policy summaries
+  - current readiness summaries
+  - stable aggregate reports
   - report package indexes
   - README files
   - index files
 forbidden_contents:
+  - phase-specific report filenames
+  - phase gate reports
+  - generated report outputs
+  - archived or superseded reports
   - production code
   - hosted daemon code
   - semantic runner implementation

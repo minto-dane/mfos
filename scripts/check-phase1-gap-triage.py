@@ -13,11 +13,11 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 TRACE = ROOT / "evidence" / "traceability" / "generated" / "phase-1-1"
-TRIAGE = ROOT / "reports" / "current" / "phase-1-1-gap-triage.yml"
-GATE = ROOT / "reports" / "current" / "phase-1-2-entry-gate.yml"
+TRIAGE = ROOT / "reports" / "archive" / "superseded" / "phase-1-1" / "gap-triage.yml"
+GATE = ROOT / "reports" / "generated" / "phase-1-2" / "entry-gate.yml"
 STATUS = ROOT / "docs" / "design" / "STATUS.md"
 REPORT_INDEX = ROOT / "reports" / "index.yml"
-PHASE_1_2_COVERAGE = ROOT / "reports" / "current" / "dafny-authorization-audit-coverage.yml"
+PHASE_1_2_COVERAGE = ROOT / "reports" / "generated" / "phase-1-2" / "dafny-authorization-audit-coverage.yml"
 GAP_LEVELS = {"C0_NONE", "C1_TYPE_ONLY", "C2_PARTIAL_SEMANTIC", "C3_FULL_SEMANTIC"}
 
 
@@ -111,10 +111,10 @@ def main() -> int:
         if term not in status_text:
             errors.append(f"STATUS.md missing {term}")
     for path in (
-        "reports/current/phase-1-1-gap-triage.md",
-        "reports/current/phase-1-1-gap-triage.yml",
-        "reports/current/phase-1-2-entry-gate.md",
-        "reports/current/phase-1-2-entry-gate.yml",
+        "reports/archive/superseded/phase-1-1/gap-triage.md",
+        "reports/archive/superseded/phase-1-1/gap-triage.yml",
+        "reports/generated/phase-1-2/entry-gate.md",
+        "reports/generated/phase-1-2/entry-gate.yml",
     ):
         if path not in report_index:
             errors.append(f"reports/index.yml missing {path}")

@@ -1,0 +1,37 @@
+directory_id: MFOS-DIR-REPORTS-PHASES
+path: reports/phases
+role: validation
+maturity: M4_POPULATED
+status: current
+canonical: false
+description: Phase-scoped readiness, planning, gate, and historical phase reports.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  rust_semantic_core: false
+  dafny_executable_semantics: false
+  semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+  generated_production_code: false
+  validation_only: true
+phase_allowed_from: phase-0
+depends_on:
+  - reports/index.yml
+allowed_contents:
+  - phase reports
+  - phase gate records
+  - phase readiness reports
+  - README files
+  - index files
+forbidden_contents:
+  - production code
+  - hosted daemon code
+  - semantic runner implementation
+  - generated binaries
+required_before_agent_assignment:
+  - report ID
+  - phase ID
+  - review scope
+  - evidence refs
+review_status: draft

@@ -1,8 +1,8 @@
 # nucleus/
 
-MFOS nucleus implementation area. Production nucleus work should wait until the
-relevant system-integrity, object, authorization, audit, SVC/PCALL, and hardware
-profile specs are reviewed.
+Reserved future MFOS nucleus implementation area. Production nucleus work should
+wait until the relevant system-integrity, object, authorization, audit,
+SVC/PCALL, and hardware profile specs are reviewed.
 
 No Phase 1 implementation work belongs here. Phase 1 is limited to Dafny
 executable-semantics scaffold work and loader-only artifact validation under

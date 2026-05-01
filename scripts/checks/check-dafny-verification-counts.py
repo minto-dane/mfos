@@ -22,13 +22,13 @@ CURRENT_COUNT_PATHS = [
     ROOT / "docs/design/STATUS.md",
     ROOT / "docs/design/specs/43-dafny-executable-semantics-policy.md",
     ROOT / "formal/executable-semantics/dafny/README.md",
-    ROOT / "reports/current/dafny-dataset-catalog-validation-report.md",
+    ROOT / "reports/generated/phase-1-3/dafny-dataset-catalog-validation-report.md",
     ROOT / "reports/current/dafny-semantics-report.md",
     ROOT / "reports/current/dafny-semantics-validation-report.md",
     ROOT / "reports/current/dafny-verification-report.md",
     ROOT / "reports/current/post-merge-integration-sweep-report.md",
-    ROOT / "reports/current/semantic-coverage-report.md",
-    ROOT / "reports/current/semantic-coverage.yml",
+    ROOT / "reports/generated/phase-1-1/semantic-coverage-report.md",
+    ROOT / "reports/generated/phase-1-1/semantic-coverage.yml",
     ROOT / "scripts/generators/generate-dataset-catalog-coverage.py",
     ROOT / "scripts/generators/generate-semantic-coverage.py",
 ]
@@ -36,10 +36,10 @@ CURRENT_COUNT_PATHS = [
 HISTORICAL_ALLOWLIST = [
     (ROOT / "docs/design/specs/43-dafny-executable-semantics-policy.md", 49),
     (ROOT / "docs/design/specs/43-dafny-executable-semantics-policy.md", 97),
-    (ROOT / "reports/current/pr-19-review-report.md", 97),
-    (ROOT / "reports/current/pr-19-post-pr21-review-report.md", 97),
-    (ROOT / "reports/current/pr-19-pr-20-dependency-closure-report.md", 97),
-    (ROOT / "reports/current/dafny-authorization-audit-validation-report.md", 97),
+    (ROOT / "reports/archive/pr-reviews/pr-19-review-report.md", 97),
+    (ROOT / "reports/archive/pr-reviews/pr-19-post-pr21-review-report.md", 97),
+    (ROOT / "reports/archive/pr-reviews/pr-19-pr-20-dependency-closure-report.md", 97),
+    (ROOT / "reports/generated/phase-1-2/dafny-authorization-audit-validation-report.md", 97),
     (ROOT / "scripts/generators/generate-auth-audit-coverage.py", 97),
 ]
 

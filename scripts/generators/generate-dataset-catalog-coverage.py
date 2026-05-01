@@ -13,7 +13,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[2]
 TRACEABILITY_DIR = ROOT / "evidence" / "traceability" / "generated" / "phase-1-3"
-REPORTS_DIR = ROOT / "reports" / "current"
+REPORTS_DIR = ROOT / "reports" / "generated" / "phase-1-3"
 
 COVERAGE_LEVELS = [
     "C0_NONE",
@@ -118,7 +118,7 @@ def mapping(symbol: str, level: str) -> dict[str, Any]:
         "dafny_symbol": symbol,
         "symbol_kind": "lemma",
         "verification_status": "verified",
-        "evidence_ref": "reports/current/dafny-dataset-catalog-validation-report.md",
+        "evidence_ref": "reports/generated/phase-1-3/dafny-dataset-catalog-validation-report.md",
         "coverage_level": level,
     }
 
@@ -477,7 +477,7 @@ def main() -> int:
     write_yaml(args.reports_dir / "dafny-dataset-catalog-gap-normalization.yml", gap_data)
     write_text(args.reports_dir / "dafny-dataset-catalog-gap-normalization.md", render_gap_markdown(gap_data))
 
-    write_yaml(args.reports_dir / "phase-1-3-entry-gate.yml", {
+    write_yaml(args.reports_dir / "entry-gate.yml", {
         "schema_version": 1,
         "artifact_type": "phase_1_3_entry_gate",
         "status": "current",
@@ -490,9 +490,9 @@ def main() -> int:
         "entry_blockers": [],
         "merge_blockers": [],
         "formal_claim_proof_coverage_complete": False,
-        "source": "reports/current/dafny-dataset-catalog-gap-normalization.yml",
+        "source": "reports/generated/phase-1-3/dafny-dataset-catalog-gap-normalization.yml",
     })
-    write_text(args.reports_dir / "phase-1-3-entry-gate.md", render_entry_gate_markdown())
+    write_text(args.reports_dir / "entry-gate.md", render_entry_gate_markdown())
 
     write_text(args.reports_dir / "dafny-dataset-catalog-report.md",
                "# Dafny Dataset/Catalog Report\n\nStatus: current.\n\nPhase 1.3 deepens non-production Dafny Dataset/Catalog semantics for DSN validation, committed-entry-only catalog resolution, catalog transaction-complete rejection, partial crash candidate non-resolution, dataset handle binding, stale handle rejection, retention, immutable system datasets, invalid system-dataset marker rejection, and the Authorization/Audit integration boundary. Full crash recovery selection is not modeled or claimed. No catalogd, datasetd, storage implementation, Rust semantic-core, hosted daemon, or production-like semantic runner is introduced.\n")

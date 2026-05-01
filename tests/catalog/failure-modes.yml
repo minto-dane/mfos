@@ -6,6 +6,14 @@ phase: '0.9'
 status: current
 implementation_allowed: false
 runner_implementation_allowed: false
+canonical_owner: false
+derived_view: true
+projection_of:
+- tests/catalog/authorization.yml
+- tests/catalog/audit.yml
+- tests/catalog/dataset-catalog.yml
+- tests/catalog/job-spool.yml
+ownership_note: Domain catalogs own current test semantics; this catalog is a current failure-mode projection kept for Phase 0.9 traceability.
 entries:
 - test_id: NEG-MFOS-AUTH-DENY-0902
   test_name: DENY decision

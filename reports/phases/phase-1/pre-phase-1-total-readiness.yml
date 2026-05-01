@@ -13,7 +13,7 @@ previous_readiness_dependency:
   branch: fix/pre-phase-1-total-readiness
   base: dev
   status: merged
-second_pass_package: reports/current/pre-phase1/
+second_pass_package: reports/phases/phase-1/pre-phase1/package/
 fixedpoint_package: reports/current/fixedpoint/
 allowed_scope:
   dafny_executable_semantics_scaffold: true

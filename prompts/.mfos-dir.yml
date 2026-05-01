@@ -1,0 +1,33 @@
+directory_id: MFOS-DIR-PROMPTS-BRIDGE
+path: prompts
+role: bridge
+maturity: M2_CLASSIFIED
+status: bridge
+canonical: false
+description: Top-level prompt bridge; canonical prompt content remains under docs/design/prompts.
+implementation_allowed:
+  production: false
+  hosted_daemon: false
+  rust_semantic_core: false
+  dafny_executable_semantics: false
+  semantic_runner: false
+  portable_semantic_core: false
+  hosted_semantic_prototype: false
+  generated_production_code: false
+  validation_only: true
+phase_allowed_from: phase-0
+depends_on:
+  - docs/design/prompts/ai-prompts.md
+  - ai/contracts
+allowed_contents:
+  - prompt bridge README files
+  - future reviewed prompt pointers
+forbidden_contents:
+  - unreviewed implementation prompts
+  - production code
+  - source text copies
+required_before_agent_assignment:
+  - canonical prompt ref
+  - AI contract ref
+  - review scope
+review_status: draft

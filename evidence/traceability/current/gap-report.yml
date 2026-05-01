@@ -5,6 +5,11 @@ generated_by: scripts/generators/generate-traceability.py
 non_compatibility_statement: MFOS is z/OS-inspired and does not claim z/OS compatibility
   or IBM product compatibility.
 report_kind: traceability_gap_report
+lifecycle_scope: current_traceability_matrices_only
+scope_note: This current report covers only evidence/traceability/current matrices. Generated phase-specific gap reports remain separate and must not be treated as globally closed by this summary.
+generated_phase_gap_reports_excluded: true
+excluded_generated_gap_reports:
+- evidence/traceability/generated/phase-0-9/gap-report.yml
 summary:
   gap_groups: 0
   high_gap_groups: 0

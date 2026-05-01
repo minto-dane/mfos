@@ -50,8 +50,8 @@ The future implementation PR must read and reconcile:
 - `formal/executable-semantics/dafny/modules/first_vertical_slice.dfy`
 - `docs/design/specs/09-job-spool.md`
 - `docs/design/specs/10-operator-console.md`
-- `reports/current/dafny-authorization-audit-coverage-report.md`
-- `reports/current/dafny-dataset-catalog-coverage-report.md`
+- `reports/generated/phase-1-2/dafny-authorization-audit-coverage-report.md`
+- `reports/generated/phase-1-3/dafny-dataset-catalog-coverage-report.md`
 - `tests/catalog/job-spool.yml`
 - `tests/catalog/operator-console.yml`
 - `tests/catalog/first-vertical-slice.yml`

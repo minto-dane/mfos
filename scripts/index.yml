@@ -58,6 +58,18 @@ current:
     check_dafny_verification_counts:
       path: scripts/checks/check-dafny-verification-counts.py
       status: current
+    check_architecture_portability_policy:
+      path: scripts/check-architecture-portability-policy.py
+      status: current
+    check_x64_profile_policy:
+      path: scripts/check-x64-profile-policy.py
+      status: current
+    check_cpu_feature_registry:
+      path: scripts/check-cpu-feature-registry.py
+      status: current
+    check_roadmap_phase_alignment:
+      path: scripts/check-roadmap-phase-alignment.py
+      status: current
 
 sections:
   validators:
@@ -84,17 +96,38 @@ sections:
   artifact_hygiene_checks:
     path: scripts/checks/artifact-hygiene/
     status: current
+    artifact_lifecycle_boundaries:
+      path: scripts/checks/artifact-hygiene/check-artifact-lifecycle-boundaries.py
+      status: current
+    reports_current_policy:
+      path: scripts/checks/artifact-hygiene/check-reports-current-policy.py
+      status: current
+    directory_ownership:
+      path: scripts/checks/artifact-hygiene/check-directory-ownership.py
+      status: current
+    generated_artifact_placement:
+      path: scripts/checks/artifact-hygiene/check-generated-artifact-placement.py
+      status: current
+    index_integrity:
+      path: scripts/checks/artifact-hygiene/check-index-integrity.py
+      status: current
   naming_safety_checks:
     path: scripts/checks/naming-safety/
     status: current
   generators:
     path: scripts/generators/
     status: current
+    semantic_coverage:
+      path: scripts/generators/generate-semantic-coverage.py
+      status: current
     auth_audit_coverage:
       path: scripts/generators/generate-auth-audit-coverage.py
       status: current
     dataset_catalog_coverage:
       path: scripts/generators/generate-dataset-catalog-coverage.py
+      status: current
+    traceability:
+      path: scripts/generators/generate-traceability.py
       status: current
   library:
     path: scripts/lib/
@@ -106,18 +139,16 @@ sections:
     path: scripts/phases/
     status: current
     note: Contains phase-scoped validators; phase-specific filenames are allowed only under this directory.
+    phase_0_9:
+      path: scripts/phases/phase-0-9/
+      status: current
+      origin_phase: phase-0-9
 
 archive:
   phase_0_8:
     path: scripts/phases/phase-0-8/
     status: historical
     origin_phase: phase-0-8
-
-generated:
-  phase_0_9:
-    path: scripts/phases/phase-0-9/
-    status: current
-    origin_phase: phase-0-9
 
 policy:
   root_entrypoints_only: true
