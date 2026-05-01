@@ -138,7 +138,8 @@ no-fake-success policy specified for CI
 
 ### Phase 0 Gaps
 
-- Threat model split spec is still a blocker for complete abuse-case traceability.
+- Threat model split spec exists; complete abuse-case traceability remains a
+  follow-up evidence-linking task.
 - Formal model language and storage layout are not fixed.
 - CI scripts are not yet implemented.
 
@@ -759,7 +760,7 @@ PROD-015  Recovery drill completed
 
 | Gap ID | Gap | Impact |
 | --- | --- | --- |
-| `ROADMAP-GAP-001` | Threat model split spec is not present in the current split set. | Blocks complete abuse-case traceability. |
+| `ROADMAP-GAP-001` | Threat model split spec exists, but abuse-case traceability is not fully linked through requirements, tests, and evidence. | Blocks complete abuse-case traceability. |
 | `ROADMAP-GAP-002` | Formal model file ownership and language choices are not assigned. | Blocks formal evidence scheduling. |
 | `ROADMAP-GAP-003` | CI lint scripts are specified but not implemented. | Blocks automated enforcement. |
 | `ROADMAP-GAP-004` | Hosted service transport and serialization are not fixed. | May cause rework before nucleus port. |

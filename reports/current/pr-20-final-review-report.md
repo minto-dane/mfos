@@ -1,6 +1,6 @@
 # PR #20 Final Review Report
 
-Status: clean replacement branch validation passed locally
+Status: replacement PR #24 merged
 
 Review date: 2026-05-01
 
@@ -35,8 +35,8 @@ Replacement branch: `phase/1-3-dataset-catalog-dafny-semantics-clean`
 ## GitHub Result
 
 The original PR #20 branch remains superseded by the clean replacement branch
-because its protected history cannot be rewritten safely. The replacement PR is
-opened and merged only after local validation and GitHub checks pass.
+because its protected history could not be rewritten safely. Replacement PR #24
+merged after local validation and GitHub checks passed.
 
 ## Final Judgment
 
@@ -44,6 +44,7 @@ opened and merged only after local validation and GitHub checks pass.
 pr_20_phase_1_3_review_passed_locally: true
 replacement_branch_created: true
 replacement_branch_validation_passed_locally: true
+replacement_pr_24_merged: true
 coverage_overclaim_remaining: false
 production_boundary_violated: false
 original_pr_20_superseded: true

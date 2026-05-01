@@ -5,8 +5,8 @@ This report is generated from the current registry contents. It does not claim t
 ## Summary
 
 - Requirements: `248`
-- Tests: `465`
-- Evidence records: `309`
+- Tests: `507`
+- Evidence records: `339`
 - Claims: `9`
 - Missing cross-registry links: `0`
 
@@ -17,6 +17,10 @@ Draft-mode validation reports missing links as warnings. Release-mode validation
 No missing links.
 
 ## Requirement Evidence Links Missing From evidence.yaml
+
+No missing links.
+
+## Evidence Test Links Missing From tests.yaml
 
 No missing links.
 

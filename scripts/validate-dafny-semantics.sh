@@ -38,12 +38,18 @@ if [[ "${#DAFNY_MODULES[@]}" -eq 0 ]]; then
   exit 1
 fi
 
+DAFNY_OUTPUT="$(mktemp)"
+trap 'rm -f "$DAFNY_OUTPUT"' EXIT
+
 if [[ -n "${DAFNY:-}" && -x "${DAFNY:-}" ]]; then
-  "$DAFNY" verify "${DAFNY_MODULES[@]}"
+  "$DAFNY" verify "${DAFNY_MODULES[@]}" | tee "$DAFNY_OUTPUT"
+  python3 scripts/checks/check-dafny-verification-counts.py --mode "$MODE" --dafny-output "$DAFNY_OUTPUT"
 elif [[ -x "$PINNED_DAFNY" ]]; then
-  "$PINNED_DAFNY" verify "${DAFNY_MODULES[@]}"
+  "$PINNED_DAFNY" verify "${DAFNY_MODULES[@]}" | tee "$DAFNY_OUTPUT"
+  python3 scripts/checks/check-dafny-verification-counts.py --mode "$MODE" --dafny-output "$DAFNY_OUTPUT"
 elif command -v dafny >/dev/null 2>&1; then
-  dafny verify "${DAFNY_MODULES[@]}"
+  dafny verify "${DAFNY_MODULES[@]}" | tee "$DAFNY_OUTPUT"
+  python3 scripts/checks/check-dafny-verification-counts.py --mode "$MODE" --dafny-output "$DAFNY_OUTPUT"
 else
   echo "Dafny verification skipped: blocked_by_missing_toolchain"
   if [[ "$REQUIRE_DAFNY" == "1" ]]; then

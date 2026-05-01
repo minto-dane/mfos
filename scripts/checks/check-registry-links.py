@@ -129,6 +129,7 @@ def build_report(
     claim_count: int,
     req_test_missing: dict[str, list[str]],
     req_evidence_missing: dict[str, list[str]],
+    evidence_test_missing: dict[str, list[str]],
     claim_test_missing: dict[str, list[str]],
     claim_evidence_missing: dict[str, list[str]],
 ) -> str:
@@ -149,6 +150,7 @@ def build_report(
     total_missing = (
         sum(len(set(v)) for v in req_test_missing.values())
         + sum(len(set(v)) for v in req_evidence_missing.values())
+        + sum(len(set(v)) for v in evidence_test_missing.values())
         + sum(len(set(v)) for v in claim_test_missing.values())
         + sum(len(set(v)) for v in claim_evidence_missing.values())
     )
@@ -171,6 +173,7 @@ def build_report(
     ]
     lines.extend(section("Requirement Test Links Missing From tests.yaml", req_test_missing))
     lines.extend(section("Requirement Evidence Links Missing From evidence.yaml", req_evidence_missing))
+    lines.extend(section("Evidence Test Links Missing From tests.yaml", evidence_test_missing))
     lines.extend(section("Claim Test Links Missing From tests.yaml", claim_test_missing))
     lines.extend(section("Claim Evidence Links Missing From evidence.yaml", claim_evidence_missing))
     return "\n".join(lines).rstrip() + "\n"
@@ -192,6 +195,7 @@ def main() -> int:
 
     req_test_missing: dict[str, list[str]] = defaultdict(list)
     req_evidence_missing: dict[str, list[str]] = defaultdict(list)
+    evidence_test_missing: dict[str, list[str]] = defaultdict(list)
     claim_test_missing: dict[str, list[str]] = defaultdict(list)
     claim_evidence_missing: dict[str, list[str]] = defaultdict(list)
 
@@ -209,6 +213,18 @@ def main() -> int:
             findings.append(finding)
             ref = finding.message.rsplit(": ", 1)[-1]
             req_evidence_missing[rid].append(ref)
+
+    for evidence in evidence_entries:
+        eid = str(evidence["evidence_id"])
+        evidence_tests = evidence.get("test_ids", [])
+        if isinstance(evidence_tests, list):
+            test_refs = [item for item in evidence_tests if isinstance(item, str)]
+        else:
+            test_refs = collect_matching_ids(evidence_tests, TEST_ID_RE)
+        for finding in missing_links(eid, EVIDENCE, "test_ids", test_refs, known_tests):
+            findings.append(finding)
+            ref = finding.message.rsplit(": ", 1)[-1]
+            evidence_test_missing[eid].append(ref)
 
     for claim in claim_entries:
         cid = str(claim["claim_id"])
@@ -242,6 +258,7 @@ def main() -> int:
                 claim_count=len(claim_entries),
                 req_test_missing=req_test_missing,
                 req_evidence_missing=req_evidence_missing,
+                evidence_test_missing=evidence_test_missing,
                 claim_test_missing=claim_test_missing,
                 claim_evidence_missing=claim_evidence_missing,
             ),

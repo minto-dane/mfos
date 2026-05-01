@@ -1,6 +1,6 @@
 # PR #19 / PR #20 Dependency Closure Report
 
-Status: replacement branch created
+Status: dependency closure merged through replacement PR #24
 
 Review date: 2026-05-01
 
@@ -30,6 +30,9 @@ conflicts. The resulting diff is limited to Phase 1.3 Dataset/Catalog Dafny
 semantics, generated traceability, coverage/reporting artifacts, validation
 scripts, and dataset fixture/golden/catalog updates.
 
+Replacement PR #24 merged after local validation and GitHub checks passed. The
+original PR #20 was closed as superseded.
+
 ## Boundary Result
 
 No production implementation, Rust semantic-core, hosted daemon,
@@ -45,7 +48,8 @@ pr_19_post_pr21_remediation_merged: true
 original_pr_20_branch_cleanly_retargeted: false
 replacement_branch_created: true
 replacement_branch_validation_passed_locally: true
+replacement_pr_24_merged: true
 critical_findings_remaining: false
 major_findings_remaining: false
-recommended_next_action: publish replacement PR, close original PR #20 as superseded, then merge after GitHub checks pass
+recommended_next_action: run final post-merge integration sweep on dev
 ```

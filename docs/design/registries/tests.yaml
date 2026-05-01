@@ -19647,6 +19647,1869 @@ entries:
   created_at_utc: '2026-04-30T00:00:00Z'
   updated_at_utc: '2026-04-30T00:00:00Z'
   legacy_test_ids: []
+# Phase 0.9 catalog mirrors for evidence/test registry closure.
+- test_id: NEG-MFOS-AUDIT-AUDIT-UNAVAILABLE-0906
+  title: Phase 0.9 catalog mirror - audit unavailable deny-required fail-closed
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-AUDIT-0001
+  - MFOS-REQ-AUDIT-0002
+  - MFOS-REQ-AUDIT-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+  - EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  owning_spec:
+    path: tests/catalog/audit.yml
+    section: entries
+  target_subsystem: audit
+  target_artifacts:
+  - path: tests/catalog/audit.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/audit.yml entry NEG-MFOS-AUDIT-AUDIT-UNAVAILABLE-0906
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/audit/audit-unavailable-0906.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-AUDIT-AUDIT-UNAVAILABLE-0906
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: TEST-MFOS-AUDIT-DENY-BEFORE-RETURN-0901
+  title: Phase 0.9 catalog mirror - deny-before-return
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-AUDIT-0001
+  - MFOS-REQ-AUDIT-0002
+  - MFOS-REQ-AUDIT-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+  - EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  owning_spec:
+    path: tests/catalog/audit.yml
+    section: entries
+  target_subsystem: audit
+  target_artifacts:
+  - path: tests/catalog/audit.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/audit.yml entry TEST-MFOS-AUDIT-DENY-BEFORE-RETURN-0901
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_POLICY_DENIED
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/audit/deny-before-return-0901.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-AUDIT-DENY-BEFORE-RETURN-0901
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-AUDIT-DUPLICATE-RECORD-ID-0911
+  title: Phase 0.9 catalog mirror - duplicate record_id
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-AUDIT-0001
+  - MFOS-REQ-AUDIT-0002
+  - MFOS-REQ-AUDIT-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+  - EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  owning_spec:
+    path: tests/catalog/audit.yml
+    section: entries
+  target_subsystem: audit
+  target_artifacts:
+  - path: tests/catalog/audit.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/audit.yml entry NEG-MFOS-AUDIT-DUPLICATE-RECORD-ID-0911
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_AUDIT_RECORD_DUPLICATE
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/audit/duplicate-record-id-0911.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-AUDIT-DUPLICATE-RECORD-ID-0911
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-AUDIT-HASH-CHAIN-TAMPERED-0905
+  title: Phase 0.9 catalog mirror - hash chain tampered
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-AUDIT-0001
+  - MFOS-REQ-AUDIT-0002
+  - MFOS-REQ-AUDIT-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+  - EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  owning_spec:
+    path: tests/catalog/audit.yml
+    section: entries
+  target_subsystem: audit
+  target_artifacts:
+  - path: tests/catalog/audit.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/audit.yml entry NEG-MFOS-AUDIT-HASH-CHAIN-TAMPERED-0905
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_AUDIT_CHAIN_INVALID
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/audit/hash-chain-tampered-0905.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-AUDIT-HASH-CHAIN-TAMPERED-0905
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: TEST-MFOS-AUDIT-HASH-CHAIN-VALID-0904
+  title: Phase 0.9 catalog mirror - hash chain valid
+  test_type: conformance
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-AUDIT-0001
+  - MFOS-REQ-AUDIT-0002
+  - MFOS-REQ-AUDIT-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+  - EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  owning_spec:
+    path: tests/catalog/audit.yml
+    section: entries
+  target_subsystem: audit
+  target_artifacts:
+  - path: tests/catalog/audit.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/audit.yml entry TEST-MFOS-AUDIT-HASH-CHAIN-VALID-0904
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: null
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/audit/hash-chain-valid-0904.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-AUDIT-HASH-CHAIN-VALID-0904
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-AUDIT-LOG-LINE-NOT-RECORD-0909
+  title: Phase 0.9 catalog mirror - log line treated as audit record
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-AUDIT-0001
+  - MFOS-REQ-AUDIT-0002
+  - MFOS-REQ-AUDIT-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+  - EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  owning_spec:
+    path: tests/catalog/audit.yml
+    section: entries
+  target_subsystem: audit
+  target_artifacts:
+  - path: tests/catalog/audit.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/audit.yml entry NEG-MFOS-AUDIT-LOG-LINE-NOT-RECORD-0909
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_INVALID_AUDIT_RECORD
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/audit/log-line-not-record-0909.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-AUDIT-LOG-LINE-NOT-RECORD-0909
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: TEST-MFOS-AUDIT-MINIMUM-FIELDS-0902
+  title: Phase 0.9 catalog mirror - audit record minimum fields
+  test_type: conformance
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-AUDIT-0001
+  - MFOS-REQ-AUDIT-0002
+  - MFOS-REQ-AUDIT-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+  - EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  owning_spec:
+    path: tests/catalog/audit.yml
+    section: entries
+  target_subsystem: audit
+  target_artifacts:
+  - path: tests/catalog/audit.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/audit.yml entry TEST-MFOS-AUDIT-MINIMUM-FIELDS-0902
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: null
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/audit/minimum-fields-0902.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-AUDIT-MINIMUM-FIELDS-0902
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-AUDIT-MISSING-CORRELATION-0903
+  title: Phase 0.9 catalog mirror - missing correlation ID
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-AUDIT-0001
+  - MFOS-REQ-AUDIT-0002
+  - MFOS-REQ-AUDIT-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+  - EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  owning_spec:
+    path: tests/catalog/audit.yml
+    section: entries
+  target_subsystem: audit
+  target_artifacts:
+  - path: tests/catalog/audit.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/audit.yml entry NEG-MFOS-AUDIT-MISSING-CORRELATION-0903
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_INVALID_AUDIT_RECORD
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/audit/missing-correlation-0903.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-AUDIT-MISSING-CORRELATION-0903
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-AUDIT-NON-MONOTONIC-SEQUENCE-0912
+  title: Phase 0.9 catalog mirror - non-monotonic audit sequence
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-AUDIT-0001
+  - MFOS-REQ-AUDIT-0002
+  - MFOS-REQ-AUDIT-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+  - EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  owning_spec:
+    path: tests/catalog/audit.yml
+    section: entries
+  target_subsystem: audit
+  target_artifacts:
+  - path: tests/catalog/audit.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/audit.yml entry NEG-MFOS-AUDIT-NON-MONOTONIC-SEQUENCE-0912
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_AUDIT_SEQUENCE_INVALID
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/audit/non-monotonic-sequence-0912.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-AUDIT-NON-MONOTONIC-SEQUENCE-0912
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-AUDIT-REDACTION-FAILURE-0910
+  title: Phase 0.9 catalog mirror - redaction failure
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-AUDIT-0001
+  - MFOS-REQ-AUDIT-0002
+  - MFOS-REQ-AUDIT-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+  - EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  owning_spec:
+    path: tests/catalog/audit.yml
+    section: entries
+  target_subsystem: audit
+  target_artifacts:
+  - path: tests/catalog/audit.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/audit.yml entry NEG-MFOS-AUDIT-REDACTION-FAILURE-0910
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_REDACTION_POLICY_FAILED
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/audit/redaction-failure-0910.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-AUDIT-REDACTION-FAILURE-0910
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-AUDIT-SPOOL-NOT-EVIDENCE-0908
+  title: Phase 0.9 catalog mirror - spool treated as audit evidence
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-AUDIT-0001
+  - MFOS-REQ-AUDIT-0002
+  - MFOS-REQ-AUDIT-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+  - EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  owning_spec:
+    path: tests/catalog/audit.yml
+    section: entries
+  target_subsystem: audit
+  target_artifacts:
+  - path: tests/catalog/audit.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/audit.yml entry NEG-MFOS-AUDIT-SPOOL-NOT-EVIDENCE-0908
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_INVALID_EVIDENCE
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/audit/spool-not-evidence-0908.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-AUDIT-SPOOL-NOT-EVIDENCE-0908
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-AUDIT-UNAUTHORIZED-QUERY-0907
+  title: Phase 0.9 catalog mirror - unauthorized audit query
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-AUDIT-0001
+  - MFOS-REQ-AUDIT-0002
+  - MFOS-REQ-AUDIT-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-SMF-INTRODUCTION-0001
+  - EXTREF-IBM-ZOS-SMF-RACF-TYPE-80-0001
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  owning_spec:
+    path: tests/catalog/audit.yml
+    section: entries
+  target_subsystem: audit
+  target_artifacts:
+  - path: tests/catalog/audit.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/audit.yml entry NEG-MFOS-AUDIT-UNAUTHORIZED-QUERY-0907
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_POLICY_DENIED
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/audit/unauthorized-query-0907.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-AUDIT-UNAUTHORIZED-QUERY-0907
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: TEST-MFOS-AUTH-ALLOW-0901
+  title: Phase 0.9 catalog mirror - ALLOW decision
+  test_type: conformance
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-AUTH-0001
+  - MFOS-REQ-AUTH-0003
+  - MFOS-REQ-AUTH-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  owning_spec:
+    path: tests/catalog/authorization.yml
+    section: entries
+  target_subsystem: authorization
+  target_artifacts:
+  - path: tests/catalog/authorization.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/authorization.yml entry TEST-MFOS-AUTH-ALLOW-0901
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: null
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/auth/allow-0901.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-AUTH-ALLOW-0901
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: TEST-MFOS-AUTH-ALLOW-WITH-AUDIT-0903
+  title: Phase 0.9 catalog mirror - ALLOW_WITH_AUDIT decision
+  test_type: conformance
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-AUTH-0001
+  - MFOS-REQ-AUTH-0003
+  - MFOS-REQ-AUTH-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  owning_spec:
+    path: tests/catalog/authorization.yml
+    section: entries
+  target_subsystem: authorization
+  target_artifacts:
+  - path: tests/catalog/authorization.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/authorization.yml entry TEST-MFOS-AUTH-ALLOW-WITH-AUDIT-0903
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: null
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/auth/allow-with-audit-0903.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-AUTH-ALLOW-WITH-AUDIT-0903
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-AUTH-BREAK-GLASS-NO-EXPIRY-0923
+  title: Phase 0.9 catalog mirror - break-glass without expiry
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-AUTH-0001
+  - MFOS-REQ-AUTH-0003
+  - MFOS-REQ-AUTH-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  owning_spec:
+    path: tests/catalog/authorization.yml
+    section: entries
+  target_subsystem: authorization
+  target_artifacts:
+  - path: tests/catalog/authorization.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/authorization.yml entry NEG-MFOS-AUTH-BREAK-GLASS-NO-EXPIRY-0923
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_POLICY_DENIED
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/auth/break-glass-no-expiry-0923.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-AUTH-BREAK-GLASS-NO-EXPIRY-0923
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-AUTH-BREAK-GLASS-NO-REASON-0922
+  title: Phase 0.9 catalog mirror - break-glass without reason
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-AUTH-0001
+  - MFOS-REQ-AUTH-0003
+  - MFOS-REQ-AUTH-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  owning_spec:
+    path: tests/catalog/authorization.yml
+    section: entries
+  target_subsystem: authorization
+  target_artifacts:
+  - path: tests/catalog/authorization.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/authorization.yml entry NEG-MFOS-AUTH-BREAK-GLASS-NO-REASON-0922
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_POLICY_DENIED
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/auth/break-glass-no-reason-0922.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-AUTH-BREAK-GLASS-NO-REASON-0922
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-AUTH-DENY-0902
+  title: Phase 0.9 catalog mirror - DENY decision
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-AUTH-0001
+  - MFOS-REQ-AUTH-0003
+  - MFOS-REQ-AUTH-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  owning_spec:
+    path: tests/catalog/authorization.yml
+    section: entries
+  target_subsystem: authorization
+  target_artifacts:
+  - path: tests/catalog/authorization.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/authorization.yml entry NEG-MFOS-AUTH-DENY-0902
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_POLICY_DENIED
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/auth/deny-0902.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-AUTH-DENY-0902
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-AUTH-EXPIRED-DELEGATION-0921
+  title: Phase 0.9 catalog mirror - expired delegation
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-AUTH-0001
+  - MFOS-REQ-AUTH-0003
+  - MFOS-REQ-AUTH-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  owning_spec:
+    path: tests/catalog/authorization.yml
+    section: entries
+  target_subsystem: authorization
+  target_artifacts:
+  - path: tests/catalog/authorization.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/authorization.yml entry NEG-MFOS-AUTH-EXPIRED-DELEGATION-0921
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_POLICY_DENIED
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/auth/expired-delegation-0921.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-AUTH-EXPIRED-DELEGATION-0921
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-AUTH-POLICY-LINT-WILDCARD-0924
+  title: Phase 0.9 catalog mirror - overly broad default access
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-AUTH-0001
+  - MFOS-REQ-AUTH-0003
+  - MFOS-REQ-AUTH-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  owning_spec:
+    path: tests/catalog/authorization.yml
+    section: entries
+  target_subsystem: authorization
+  target_artifacts:
+  - path: tests/catalog/authorization.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/authorization.yml entry NEG-MFOS-AUTH-POLICY-LINT-WILDCARD-0924
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_POLICY_LINT_FAILED
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/auth/policy-lint-wildcard-0924.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-AUTH-POLICY-LINT-WILDCARD-0924
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: TEST-MFOS-AUTH-REQUIRE-BREAK-GLASS-0906
+  title: Phase 0.9 catalog mirror - REQUIRE_BREAK_GLASS decision
+  test_type: conformance
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-AUTH-0001
+  - MFOS-REQ-AUTH-0003
+  - MFOS-REQ-AUTH-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  owning_spec:
+    path: tests/catalog/authorization.yml
+    section: entries
+  target_subsystem: authorization
+  target_artifacts:
+  - path: tests/catalog/authorization.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/authorization.yml entry TEST-MFOS-AUTH-REQUIRE-BREAK-GLASS-0906
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: null
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/auth/require-break-glass-0906.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-AUTH-REQUIRE-BREAK-GLASS-0906
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: TEST-MFOS-AUTH-REQUIRE-DUAL-CONTROL-0905
+  title: Phase 0.9 catalog mirror - REQUIRE_DUAL_CONTROL decision
+  test_type: conformance
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-AUTH-0001
+  - MFOS-REQ-AUTH-0003
+  - MFOS-REQ-AUTH-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  owning_spec:
+    path: tests/catalog/authorization.yml
+    section: entries
+  target_subsystem: authorization
+  target_artifacts:
+  - path: tests/catalog/authorization.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/authorization.yml entry TEST-MFOS-AUTH-REQUIRE-DUAL-CONTROL-0905
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: null
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/auth/require-dual-control-0905.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-AUTH-REQUIRE-DUAL-CONTROL-0905
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: TEST-MFOS-AUTH-REQUIRE-GUARD-APPROVAL-0907
+  title: Phase 0.9 catalog mirror - REQUIRE_GUARD_APPROVAL decision
+  test_type: conformance
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-AUTH-0001
+  - MFOS-REQ-AUTH-0003
+  - MFOS-REQ-AUTH-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  owning_spec:
+    path: tests/catalog/authorization.yml
+    section: entries
+  target_subsystem: authorization
+  target_artifacts:
+  - path: tests/catalog/authorization.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/authorization.yml entry TEST-MFOS-AUTH-REQUIRE-GUARD-APPROVAL-0907
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: null
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/auth/require-guard-approval-0907.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-AUTH-REQUIRE-GUARD-APPROVAL-0907
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: TEST-MFOS-AUTH-REQUIRE-MFA-0904
+  title: Phase 0.9 catalog mirror - REQUIRE_MFA decision
+  test_type: conformance
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-AUTH-0001
+  - MFOS-REQ-AUTH-0003
+  - MFOS-REQ-AUTH-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  owning_spec:
+    path: tests/catalog/authorization.yml
+    section: entries
+  target_subsystem: authorization
+  target_artifacts:
+  - path: tests/catalog/authorization.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/authorization.yml entry TEST-MFOS-AUTH-REQUIRE-MFA-0904
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: null
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/auth/require-mfa-0904.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-AUTH-REQUIRE-MFA-0904
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: TEST-MFOS-AUTH-REQUIRE-OPERATOR-CONFIRMATION-0908
+  title: Phase 0.9 catalog mirror - REQUIRE_OPERATOR_CONFIRMATION decision
+  test_type: conformance
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-AUTH-0001
+  - MFOS-REQ-AUTH-0003
+  - MFOS-REQ-AUTH-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  owning_spec:
+    path: tests/catalog/authorization.yml
+    section: entries
+  target_subsystem: authorization
+  target_artifacts:
+  - path: tests/catalog/authorization.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/authorization.yml entry TEST-MFOS-AUTH-REQUIRE-OPERATOR-CONFIRMATION-0908
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: null
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/auth/require-operator-confirmation-0908.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-AUTH-REQUIRE-OPERATOR-CONFIRMATION-0908
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-AUTH-SPEC-GAP-0910
+  title: Phase 0.9 catalog mirror - SPEC_GAP fails closed
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-AUTH-0001
+  - MFOS-REQ-AUTH-0003
+  - MFOS-REQ-AUTH-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  owning_spec:
+    path: tests/catalog/authorization.yml
+    section: entries
+  target_subsystem: authorization
+  target_artifacts:
+  - path: tests/catalog/authorization.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/authorization.yml entry NEG-MFOS-AUTH-SPEC-GAP-0910
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_SPEC_GAP
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/auth/spec-gap-0910.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-AUTH-SPEC-GAP-0910
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-AUTH-STALE-POLICY-0920
+  title: Phase 0.9 catalog mirror - stale policy version
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-AUTH-0001
+  - MFOS-REQ-AUTH-0003
+  - MFOS-REQ-AUTH-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  owning_spec:
+    path: tests/catalog/authorization.yml
+    section: entries
+  target_subsystem: authorization
+  target_artifacts:
+  - path: tests/catalog/authorization.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/authorization.yml entry NEG-MFOS-AUTH-STALE-POLICY-0920
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_POLICY_VERSION_MISMATCH
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/auth/stale-policy-0920.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-AUTH-STALE-POLICY-0920
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-AUTH-UNAUTHORIZED-HANDLE-0925
+  title: Phase 0.9 catalog mirror - unauthorized protected-resource handle creation
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-AUTH-0001
+  - MFOS-REQ-AUTH-0003
+  - MFOS-REQ-AUTH-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  owning_spec:
+    path: tests/catalog/authorization.yml
+    section: entries
+  target_subsystem: authorization
+  target_artifacts:
+  - path: tests/catalog/authorization.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/authorization.yml entry NEG-MFOS-AUTH-UNAUTHORIZED-HANDLE-0925
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_POLICY_DENIED
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/auth/unauthorized-handle-0925.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-AUTH-UNAUTHORIZED-HANDLE-0925
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-AUTH-UNSUPPORTED-0909
+  title: Phase 0.9 catalog mirror - UNSUPPORTED fails closed
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-AUTH-0001
+  - MFOS-REQ-AUTH-0003
+  - MFOS-REQ-AUTH-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  owning_spec:
+    path: tests/catalog/authorization.yml
+    section: entries
+  target_subsystem: authorization
+  target_artifacts:
+  - path: tests/catalog/authorization.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/authorization.yml entry NEG-MFOS-AUTH-UNSUPPORTED-0909
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_UNSUPPORTED
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/auth/unsupported-0909.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-AUTH-UNSUPPORTED-0909
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: TEST-MFOS-DATASET-VALID-DSN-0901
+  title: Phase 0.9 catalog mirror - valid dataset name
+  test_type: positive
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-DATASET-0101
+  - MFOS-REQ-DATASET-0102
+  - MFOS-REQ-CATALOG-0002
+  - MFOS-REQ-CATALOG-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  owning_spec:
+    path: tests/catalog/dataset-catalog.yml
+    section: entries
+  target_subsystem: dataset_catalog
+  target_artifacts:
+  - path: tests/catalog/dataset-catalog.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/dataset-catalog.yml entry TEST-MFOS-DATASET-VALID-DSN-0901
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: null
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/dataset/valid-dsn-0901.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-DATASET-VALID-DSN-0901
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-DATASET-MALFORMED-DSN-0902
+  title: Phase 0.9 catalog mirror - malformed dataset name
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-DATASET-0101
+  - MFOS-REQ-DATASET-0102
+  - MFOS-REQ-CATALOG-0002
+  - MFOS-REQ-CATALOG-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  owning_spec:
+    path: tests/catalog/dataset-catalog.yml
+    section: entries
+  target_subsystem: dataset_catalog
+  target_artifacts:
+  - path: tests/catalog/dataset-catalog.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/dataset-catalog.yml entry NEG-MFOS-DATASET-MALFORMED-DSN-0902
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_INVALID_DSN
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/dataset/malformed-dsn-0902.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-DATASET-MALFORMED-DSN-0902
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: TEST-MFOS-DATASET-CATALOG-COMMITTED-0903
+  title: Phase 0.9 catalog mirror - committed catalog entry resolves
+  test_type: conformance
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-DATASET-0101
+  - MFOS-REQ-DATASET-0102
+  - MFOS-REQ-CATALOG-0002
+  - MFOS-REQ-CATALOG-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  owning_spec:
+    path: tests/catalog/dataset-catalog.yml
+    section: entries
+  target_subsystem: dataset_catalog
+  target_artifacts:
+  - path: tests/catalog/dataset-catalog.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/dataset-catalog.yml entry TEST-MFOS-DATASET-CATALOG-COMMITTED-0903
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: null
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/dataset/catalog-committed-0903.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-DATASET-CATALOG-COMMITTED-0903
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-DATASET-CATALOG-UNCOMMITTED-0904
+  title: Phase 0.9 catalog mirror - uncommitted catalog entry denied
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-DATASET-0101
+  - MFOS-REQ-DATASET-0102
+  - MFOS-REQ-CATALOG-0002
+  - MFOS-REQ-CATALOG-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  owning_spec:
+    path: tests/catalog/dataset-catalog.yml
+    section: entries
+  target_subsystem: dataset_catalog
+  target_artifacts:
+  - path: tests/catalog/dataset-catalog.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/dataset-catalog.yml entry NEG-MFOS-DATASET-CATALOG-UNCOMMITTED-0904
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_CATALOG_NOT_FOUND
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/dataset/catalog-uncommitted-0904.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-DATASET-CATALOG-UNCOMMITTED-0904
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-DATASET-CATALOG-ROLLED-BACK-0905
+  title: Phase 0.9 catalog mirror - rolled-back catalog entry denied
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-DATASET-0101
+  - MFOS-REQ-DATASET-0102
+  - MFOS-REQ-CATALOG-0002
+  - MFOS-REQ-CATALOG-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  owning_spec:
+    path: tests/catalog/dataset-catalog.yml
+    section: entries
+  target_subsystem: dataset_catalog
+  target_artifacts:
+  - path: tests/catalog/dataset-catalog.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/dataset-catalog.yml entry NEG-MFOS-DATASET-CATALOG-ROLLED-BACK-0905
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_CATALOG_NOT_FOUND
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/dataset/catalog-rolled-back-0905.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-DATASET-CATALOG-ROLLED-BACK-0905
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-DATASET-CATALOG-PARTIAL-JOURNAL-0906
+  title: Phase 0.9 catalog mirror - partially written journal entry denied
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-DATASET-0101
+  - MFOS-REQ-DATASET-0102
+  - MFOS-REQ-CATALOG-0002
+  - MFOS-REQ-CATALOG-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  owning_spec:
+    path: tests/catalog/dataset-catalog.yml
+    section: entries
+  target_subsystem: dataset_catalog
+  target_artifacts:
+  - path: tests/catalog/dataset-catalog.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/dataset-catalog.yml entry NEG-MFOS-DATASET-CATALOG-PARTIAL-JOURNAL-0906
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_INTERNAL_CORRUPTION
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/dataset/catalog-partial-journal-0906.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-DATASET-CATALOG-PARTIAL-JOURNAL-0906
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-DATASET-CATALOG-INTEGRITY-FAILED-0907
+  title: Phase 0.9 catalog mirror - integrity-failed catalog entry denied
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-DATASET-0101
+  - MFOS-REQ-DATASET-0102
+  - MFOS-REQ-CATALOG-0002
+  - MFOS-REQ-CATALOG-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  owning_spec:
+    path: tests/catalog/dataset-catalog.yml
+    section: entries
+  target_subsystem: dataset_catalog
+  target_artifacts:
+  - path: tests/catalog/dataset-catalog.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/dataset-catalog.yml entry NEG-MFOS-DATASET-CATALOG-INTEGRITY-FAILED-0907
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_INTERNAL_CORRUPTION
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/dataset/catalog-integrity-failed-0907.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-DATASET-CATALOG-INTEGRITY-FAILED-0907
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-DATASET-UNAUTHORIZED-OPEN-0908
+  title: Phase 0.9 catalog mirror - unauthorized dataset open
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-DATASET-0101
+  - MFOS-REQ-DATASET-0102
+  - MFOS-REQ-CATALOG-0002
+  - MFOS-REQ-CATALOG-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  owning_spec:
+    path: tests/catalog/dataset-catalog.yml
+    section: entries
+  target_subsystem: dataset_catalog
+  target_artifacts:
+  - path: tests/catalog/dataset-catalog.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/dataset-catalog.yml entry NEG-MFOS-DATASET-UNAUTHORIZED-OPEN-0908
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_POLICY_DENIED
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/dataset/unauthorized-open-0908.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-DATASET-UNAUTHORIZED-OPEN-0908
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-DATASET-STALE-HANDLE-POLICY-0909
+  title: Phase 0.9 catalog mirror - stale handle after policy change
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-DATASET-0101
+  - MFOS-REQ-DATASET-0102
+  - MFOS-REQ-CATALOG-0002
+  - MFOS-REQ-CATALOG-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  owning_spec:
+    path: tests/catalog/dataset-catalog.yml
+    section: entries
+  target_subsystem: dataset_catalog
+  target_artifacts:
+  - path: tests/catalog/dataset-catalog.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/dataset-catalog.yml entry NEG-MFOS-DATASET-STALE-HANDLE-POLICY-0909
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_POLICY_VERSION_MISMATCH
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/dataset/stale-handle-policy-0909.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-DATASET-STALE-HANDLE-POLICY-0909
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-DATASET-STALE-HANDLE-CATALOG-0910
+  title: Phase 0.9 catalog mirror - stale handle after catalog generation change
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-DATASET-0101
+  - MFOS-REQ-DATASET-0102
+  - MFOS-REQ-CATALOG-0002
+  - MFOS-REQ-CATALOG-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  owning_spec:
+    path: tests/catalog/dataset-catalog.yml
+    section: entries
+  target_subsystem: dataset_catalog
+  target_artifacts:
+  - path: tests/catalog/dataset-catalog.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/dataset-catalog.yml entry NEG-MFOS-DATASET-STALE-HANDLE-CATALOG-0910
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_STALE_HANDLE
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/dataset/stale-handle-catalog-0910.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-DATASET-STALE-HANDLE-CATALOG-0910
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-DATASET-RETENTION-DELETE-0911
+  title: Phase 0.9 catalog mirror - dataset delete before retention expiry
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-DATASET-0101
+  - MFOS-REQ-DATASET-0102
+  - MFOS-REQ-CATALOG-0002
+  - MFOS-REQ-CATALOG-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  owning_spec:
+    path: tests/catalog/dataset-catalog.yml
+    section: entries
+  target_subsystem: dataset_catalog
+  target_artifacts:
+  - path: tests/catalog/dataset-catalog.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/dataset-catalog.yml entry NEG-MFOS-DATASET-RETENTION-DELETE-0911
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_RETENTION_DENIED
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/dataset/retention-delete-0911.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-DATASET-RETENTION-DELETE-0911
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-DATASET-IMMUTABLE-SYSTEM-0912
+  title: Phase 0.9 catalog mirror - immutable system dataset modification denied
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-DATASET-0101
+  - MFOS-REQ-DATASET-0102
+  - MFOS-REQ-CATALOG-0002
+  - MFOS-REQ-CATALOG-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  owning_spec:
+    path: tests/catalog/dataset-catalog.yml
+    section: entries
+  target_subsystem: dataset_catalog
+  target_artifacts:
+  - path: tests/catalog/dataset-catalog.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/dataset-catalog.yml entry NEG-MFOS-DATASET-IMMUTABLE-SYSTEM-0912
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_IMMUTABLE
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/dataset/immutable-system-0912.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-DATASET-IMMUTABLE-SYSTEM-0912
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: NEG-MFOS-DATASET-NOT-POSIX-FILE-0913
+  title: Phase 0.9 catalog mirror - dataset treated as POSIX file denied
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-DATASET-0101
+  - MFOS-REQ-DATASET-0102
+  - MFOS-REQ-CATALOG-0002
+  - MFOS-REQ-CATALOG-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  owning_spec:
+    path: tests/catalog/dataset-catalog.yml
+    section: entries
+  target_subsystem: dataset_catalog
+  target_artifacts:
+  - path: tests/catalog/dataset-catalog.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/dataset-catalog.yml entry NEG-MFOS-DATASET-NOT-POSIX-FILE-0913
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_UNSUPPORTED
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/dataset/not-posix-file-0913.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-DATASET-NOT-POSIX-FILE-0913
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
+- test_id: TEST-MFOS-DATASET-CRASH-MID-COMMIT-0914
+  title: Phase 0.9 catalog mirror - catalog crash mid-commit partial candidate rejection
+  test_type: negative
+  status: draft
+  requirement_ids:
+  - MFOS-REQ-DATASET-0101
+  - MFOS-REQ-DATASET-0102
+  - MFOS-REQ-CATALOG-0002
+  - MFOS-REQ-CATALOG-0101
+  source_matrix_ids:
+  - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  - EXTREF-IBM-ZOS-SYSTEM-INTEGRITY-0001
+  - EXTREF-IBM-ZOS-SECURITY-SERVER-0001
+  owning_spec:
+    path: tests/catalog/dataset-catalog.yml
+    section: entries
+  target_subsystem: dataset_catalog
+  target_artifacts:
+  - path: tests/catalog/dataset-catalog.yml
+  preconditions:
+  - Phase 0.9 catalog artifact validation only; semantic execution is deferred.
+  steps:
+  - Validate the catalog entry and linked fixture, oracle, and golden artifacts.
+  expected_result: See tests/catalog/dataset-catalog.yml entry TEST-MFOS-DATASET-CRASH-MID-COMMIT-0914
+    and linked oracle/golden artifacts.
+  expected_absence: []
+  expected_error_code: MFOS_ERR_INTERNAL_CORRUPTION
+  audit_expectations:
+  - See catalog entry audit expectations and linked golden artifacts.
+  fixtures:
+  - path: tests/fixtures/dataset/crash-mid-commit-0914.yml
+  fuzz:
+    target_name: null
+    corpus_path: null
+    seed_manifest: null
+    sanitizer_profile: null
+    minimum_duration: null
+  evidence_ids:
+  - EV-MFOS-DATASET-CRASH-MID-COMMIT-0914
+  ci_jobs:
+  - phase1-loader-validation
+  spec_gap_ids: []
+  created_at_utc: '2026-05-01T00:00:00Z'
+  updated_at_utc: '2026-05-01T00:00:00Z'
+  legacy_test_ids: []
 spec_gaps:
 - gap_id: REG-GAP-0002
   summary: Actual registry-backed fixtures and test paths are recommended but not created by this seed.

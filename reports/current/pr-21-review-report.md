@@ -1,14 +1,15 @@
 # PR #21 Review Report
 
-Status date: 2026-04-30
-Status: current.
+Status date: 2026-05-01
+Status: superseded by merged replacement PR #22.
 
 ## Scope
 
 PR #21 was reconstructed locally as a clean architecture-portability commit on
 top of `origin/dev` after discovering that the remote branch had been stacked on
 PR #20/PR #19 history. The previous stacked tip is preserved locally as
-`backup/pr21-stacked-a775`.
+`backup/pr21-stacked-a775`. The reviewed content merged through replacement PR
+#22: <https://github.com/minto-dane/mfos/pull/22>.
 
 Reviewed scope:
 
@@ -55,13 +56,15 @@ Focused validators after remediation:
 - CPU feature registry: pass.
 - Naming safety: pass.
 
-Full validation must pass again before PR #21 is marked ready and merged.
+Full validation passed on the replacement branch before PR #22 was marked ready
+and merged.
 
 ## Merge Decision
 
 PR #21 has no remaining Critical or Major review findings after local
-remediation. It remains non-production documentation, registry, schema,
-validator, and report work only.
+remediation. The stale PR #21 branch was not merged; replacement PR #22 carried
+the reviewed non-production documentation, registry, schema, validator, and
+report work into `dev`.
 
 Production implementation remains false.
 Rust Phase 1 semantic-core remains forbidden.
