@@ -38,7 +38,7 @@ AUTH_TESTS: list[dict[str, Any]] = [
     ("TEST-MFOS-AUTH-REQUIRE-OPERATOR-CONFIRMATION-0908", "authorization", "INV_AUTH_REQUIRE_OPERATOR_CONFIRMATION_PENDING", "C4_VERIFIED_PROPERTY"),
     ("NEG-MFOS-AUTH-UNSUPPORTED-0909", "authorization", "INV_AUTH_UNSUPPORTED_NOT_SUCCESS", "C5_CONFORMANCE_LINKED"),
     ("NEG-MFOS-AUTH-SPEC-GAP-0910", "authorization", "INV_AUTH_SPEC_GAP_NOT_SUCCESS", "C5_CONFORMANCE_LINKED"),
-    ("NEG-MFOS-AUTH-STALE-POLICY-0920", "authorization", "INV_AUTH_STALE_POLICY_VERSION_DENIED", "C5_CONFORMANCE_LINKED"),
+    ("NEG-MFOS-AUTH-STALE-POLICY-0920", "authorization", "INV_AUTH_STALE_POLICY_VERSION_DENIED", "C4_VERIFIED_PROPERTY"),
     ("NEG-MFOS-AUTH-EXPIRED-DELEGATION-0921", "authorization", "INV_AUTH_EXPIRED_DELEGATION_REJECTED", "C4_VERIFIED_PROPERTY"),
     ("NEG-MFOS-AUTH-BREAK-GLASS-NO-REASON-0922", "authorization", "INV_AUTH_REQUIRE_BREAK_GLASS_NOT_SUCCESS_WITHOUT_REASON", "C5_CONFORMANCE_LINKED"),
     ("NEG-MFOS-AUTH-BREAK-GLASS-NO-EXPIRY-0923", "authorization", "INV_AUTH_REQUIRE_BREAK_GLASS_NOT_SUCCESS_WITHOUT_EXPIRY", "C5_CONFORMANCE_LINKED"),
@@ -67,6 +67,7 @@ REQUIREMENTS = [
     ("MFOS-REQ-AUTH-0101", "authorization", "INV_AUTH_DECISION_BINDS_REQUEST", "C4_VERIFIED_PROPERTY"),
     ("MFOS-REQ-AUDIT-0001", "authorization", "INV_AUTH_ALLOW_WITH_AUDIT_MAPPING", "C3_FULL_SEMANTIC"),
     ("MFOS-REQ-AUDIT-0002", "audit", "INV_AUDIT_RECORD_HAS_REQUIRED_BINDINGS", "C4_VERIFIED_PROPERTY"),
+    ("MFOS-REQ-AUDIT-0005", "auth_audit_integration", "INV_AUDIT_ALLOW_WITH_AUDIT_FAILS_CLOSED_WHEN_UNAVAILABLE", "C4_VERIFIED_PROPERTY"),
     ("MFOS-REQ-AUDIT-0101", "audit", "INV_AUDIT_HASH_CHAIN_MISMATCH_TAMPER", "C4_VERIFIED_PROPERTY"),
 ]
 
@@ -75,10 +76,16 @@ FORMAL_CLAIMS = [
     ("MFOS-FC-AUDIT-DENY-BEFORE-RETURN", "auth_audit_integration", "INV_AUDIT_DENY_TRANSITION_WRITES_BEFORE_RETURN"),
 ]
 
+CLAIM_EVIDENCE_REFS = {
+    "MFOS-FC-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW": "EV-MFOS-FORMAL-CLAIM-AUTHORIZATION-0001",
+    "MFOS-FC-AUDIT-DENY-BEFORE-RETURN": "EV-MFOS-FORMAL-CLAIM-AUDIT-0001",
+}
+
 TEST_REQUIREMENT_REFS = {
     "NEG-MFOS-AUDIT-AUDIT-UNAVAILABLE-0906": [
         "MFOS-REQ-AUDIT-0001",
         "MFOS-REQ-AUDIT-0002",
+        "MFOS-REQ-AUDIT-0005",
         "MFOS-REQ-AUDIT-0101",
     ],
 }
@@ -122,6 +129,10 @@ def module_for(domain: str) -> str:
 def evidence_for(test_id: str) -> str:
     clean = test_id.removeprefix("TEST-").removeprefix("NEG-")
     return "EV-" + clean
+
+
+def claim_evidence_for(claim_id: str) -> str:
+    return CLAIM_EVIDENCE_REFS[claim_id]
 
 
 def test_entry(test_tuple: tuple[str, str, str, str]) -> dict[str, Any]:
@@ -205,7 +216,7 @@ def formal_claim_entry(claim_tuple: tuple[str, str, str]) -> dict[str, Any]:
                 "dafny_symbol": symbol,
                 "symbol_kind": "lemma",
                 "verification_status": "verified",
-                "evidence_ref": f"EV-{claim_id}",
+                "evidence_ref": claim_evidence_for(claim_id),
                 "coverage_level": "C3_FULL_SEMANTIC",
             }
         ],
@@ -482,7 +493,7 @@ def main() -> int:
     write_text(args.reports_dir / "dafny-authorization-audit-report.md",
                "# Dafny Authorization/Audit Report\n\nStatus: current.\n\nPhase 1.2 adds verified Dafny properties for authorization decisions, audit records, and the authorization/audit integration boundary. The audit-unavailable integration row now has real fixture/oracle/golden linkage and remains tied to the verified fail-closed Dafny transition. No production implementation, Rust semantic-core, hosted daemon, or production-like semantic runner is introduced.\n")
     write_text(args.reports_dir / "dafny-authorization-audit-validation-report.md",
-               "# Dafny Authorization/Audit Validation Report\n\nStatus: current.\n\nDafny verification and repository validators are required before this branch can merge. The latest recorded local result is `89 verified, 0 errors`; final command output is recorded in the PR summary.\n")
+               "# Dafny Authorization/Audit Validation Report\n\nStatus: current.\n\nDafny verification and repository validators are required before this branch can merge. The latest recorded local result is `97 verified, 0 errors`; final command output is recorded in the PR summary.\n")
     write_text(args.reports_dir / "dafny-authorization-audit-red-team-review.md",
                "# Dafny Authorization/Audit Red-Team Review\n\nStatus: current.\n\nCritical/Major findings addressed: deny-before-return is transition-backed with unavailable-audit no-release behavior; audit-unavailable now has a deterministic fixture/oracle/golden vector that expects fail-closed behavior, no fabricated audit record, and no released result; SPEC_GAP, UNSUPPORTED, and DENY are not success; coverage files keep formal claims below proof-backed levels; Python tooling remains non-semantic; no production or Rust semantic-core artifacts were introduced.\n\nRemaining risk: formal claims require separate proof artifacts before C4/C5 claim-level coverage may be asserted.\n")
     write_text(args.reports_dir / "dafny-authorization-audit-open-issues.md",

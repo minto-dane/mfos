@@ -251,7 +251,7 @@ authorization_audit_exit_blockers_remaining: false
 release_ready_model_claimed: false
 ```
 
-The current Dafny module set verifies with `89 verified, 0 errors`.
+The current Dafny module set verifies with `97 verified, 0 errors`.
 
 ## 15. Gaps
 

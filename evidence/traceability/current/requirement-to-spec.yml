@@ -45,6 +45,18 @@ entries:
   - docs/design/specs/12-amf.md
   - docs/design/specs/23-requirements-catalog.md
   - docs/design/specs/28-machine-readable-registries.md
+- requirement_id: MFOS-REQ-ARCH-0001
+  specs:
+  - docs/design/specs/44-architecture-portability-policy.md
+- requirement_id: MFOS-REQ-ARCH-0002
+  specs:
+  - docs/design/specs/44-architecture-portability-policy.md
+- requirement_id: MFOS-REQ-ARCH-0003
+  specs:
+  - docs/design/specs/44-architecture-portability-policy.md
+- requirement_id: MFOS-REQ-ARCH-0004
+  specs:
+  - docs/design/specs/44-architecture-portability-policy.md
 - requirement_id: MFOS-REQ-ASSURANCE-0001
   specs:
   - docs/design/specs/39-language-and-verification-policy.md
@@ -314,6 +326,26 @@ entries:
   - docs/design/specs/40-automated-reasoning-program.md
   - docs/design/specs/41-performance-and-secure-operations.md
   - docs/design/specs/42-mfvm.md
+- requirement_id: MFOS-REQ-CPUFEAT-0001
+  specs:
+  - docs/design/specs/44-architecture-portability-policy.md
+  - docs/design/specs/45-x86-64-target-profiles.md
+- requirement_id: MFOS-REQ-CPUFEAT-0002
+  specs:
+  - docs/design/specs/44-architecture-portability-policy.md
+  - docs/design/specs/45-x86-64-target-profiles.md
+- requirement_id: MFOS-REQ-CPUFEAT-0003
+  specs:
+  - docs/design/specs/44-architecture-portability-policy.md
+  - docs/design/specs/45-x86-64-target-profiles.md
+- requirement_id: MFOS-REQ-CPUFEAT-0004
+  specs:
+  - docs/design/specs/44-architecture-portability-policy.md
+  - docs/design/specs/45-x86-64-target-profiles.md
+- requirement_id: MFOS-REQ-CPUFEAT-0005
+  specs:
+  - docs/design/specs/44-architecture-portability-policy.md
+  - docs/design/specs/45-x86-64-target-profiles.md
 - requirement_id: MFOS-REQ-CVM-0101
   specs:
   - docs/design/specs/16-pxm.md
@@ -574,6 +606,9 @@ entries:
   - docs/design/specs/17-guard.md
   - docs/design/specs/19-assurance-case.md
   - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-HARDENING-0001
+  specs:
+  - docs/design/specs/45-x86-64-target-profiles.md
 - requirement_id: MFOS-REQ-JOB-0001
   specs:
   - docs/design/specs/09-job-spool.md
@@ -935,6 +970,36 @@ entries:
   specs:
   - docs/design/specs/00-normative-language.md
   - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-SEMSPEC-0001
+  specs:
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
+- requirement_id: MFOS-REQ-SEMSPEC-0002
+  specs:
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
+- requirement_id: MFOS-REQ-SEMSPEC-0003
+  specs:
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
+- requirement_id: MFOS-REQ-SEMSPEC-0004
+  specs:
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
+- requirement_id: MFOS-REQ-SEMSPEC-0005
+  specs:
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
+- requirement_id: MFOS-REQ-SEMSPEC-0006
+  specs:
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
+- requirement_id: MFOS-REQ-SEMSPEC-0007
+  specs:
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
+- requirement_id: MFOS-REQ-SEMSPEC-0008
+  specs:
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
+- requirement_id: MFOS-REQ-SEMSPEC-0009
+  specs:
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
+- requirement_id: MFOS-REQ-SEMSPEC-0010
+  specs:
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
 - requirement_id: MFOS-REQ-SOURCE-0001
   specs:
   - docs/design/specs/00-normative-language.md
@@ -1229,3 +1294,57 @@ entries:
   specs:
   - docs/design/specs/11-workload-policy.md
   - docs/design/specs/23-requirements-catalog.md
+- requirement_id: MFOS-REQ-X64-0001
+  specs:
+  - docs/design/specs/45-x86-64-target-profiles.md
+- requirement_id: MFOS-REQ-X64-0002
+  specs:
+  - docs/design/specs/45-x86-64-target-profiles.md
+- requirement_id: MFOS-REQ-X64-0003
+  specs:
+  - docs/design/specs/45-x86-64-target-profiles.md
+- requirement_id: MFOS-REQ-X64-0004
+  specs:
+  - docs/design/specs/45-x86-64-target-profiles.md
+- requirement_id: MFOS-REQ-X64-0005
+  specs:
+  - docs/design/specs/45-x86-64-target-profiles.md
+- requirement_id: MFOS-REQ-X64-CVM-0001
+  specs:
+  - docs/design/specs/45-x86-64-target-profiles.md
+- requirement_id: MFOS-REQ-X64-CVM-0002
+  specs:
+  - docs/design/specs/45-x86-64-target-profiles.md
+- requirement_id: MFOS-REQ-X64-TEE-0001
+  specs:
+  - docs/design/specs/45-x86-64-target-profiles.md
+- requirement_id: MFOS-REQ-X64-TEE-0002
+  specs:
+  - docs/design/specs/45-x86-64-target-profiles.md
+- requirement_id: MFOS-REQ-X64-TEE-0003
+  specs:
+  - docs/design/specs/45-x86-64-target-profiles.md
+- requirement_id: MFOS-REQ-X64-TEE-0004
+  specs:
+  - docs/design/specs/45-x86-64-target-profiles.md
+- requirement_id: MFOS-REQ-X64-TEE-0005
+  specs:
+  - docs/design/specs/45-x86-64-target-profiles.md
+- requirement_id: MFOS-REQ-X64-V4-0001
+  specs:
+  - docs/design/specs/45-x86-64-target-profiles.md
+- requirement_id: MFOS-REQ-X64-V4-0002
+  specs:
+  - docs/design/specs/45-x86-64-target-profiles.md
+- requirement_id: MFOS-REQ-X64-V4-0003
+  specs:
+  - docs/design/specs/45-x86-64-target-profiles.md
+- requirement_id: MFOS-REQ-X64-V4-0004
+  specs:
+  - docs/design/specs/45-x86-64-target-profiles.md
+- requirement_id: MFOS-REQ-X64-V4-0005
+  specs:
+  - docs/design/specs/45-x86-64-target-profiles.md
+- requirement_id: MFOS-REQ-X64-V4-0006
+  specs:
+  - docs/design/specs/45-x86-64-target-profiles.md

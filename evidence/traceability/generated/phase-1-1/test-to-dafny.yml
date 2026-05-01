@@ -112,7 +112,7 @@ tests:
     note: REQUIRE_MFA is represented as a decision result, but MFA workflow semantics
       are not modeled.
   negative_failure_conditions: []
-  audit_expectation: explicit_audit_property_or_gap_recorded
+  audit_expectation: not_required
 - test_id: TEST-MFOS-AUTH-REQUIRE-DUAL-CONTROL-0905
   catalog: tests/catalog/authorization.yml
   domain: authorization
@@ -134,7 +134,7 @@ tests:
     note: REQUIRE_DUAL_CONTROL is represented, but authorization-side dual-control
       workflow semantics are not modeled.
   negative_failure_conditions: []
-  audit_expectation: explicit_audit_property_or_gap_recorded
+  audit_expectation: not_required
 - test_id: TEST-MFOS-AUTH-REQUIRE-BREAK-GLASS-0906
   catalog: tests/catalog/authorization.yml
   domain: authorization
@@ -156,7 +156,7 @@ tests:
     note: REQUIRE_BREAK_GLASS is represented, but reason/expiry workflow semantics
       are not modeled in authorization.dfy.
   negative_failure_conditions: []
-  audit_expectation: explicit_audit_property_or_gap_recorded
+  audit_expectation: not_required
 - test_id: TEST-MFOS-AUTH-REQUIRE-GUARD-APPROVAL-0907
   catalog: tests/catalog/authorization.yml
   domain: authorization
@@ -178,7 +178,7 @@ tests:
     note: REQUIRE_GUARD_APPROVAL is represented, but Guard approval workflow semantics
       are not modeled.
   negative_failure_conditions: []
-  audit_expectation: explicit_audit_property_or_gap_recorded
+  audit_expectation: not_required
 - test_id: TEST-MFOS-AUTH-REQUIRE-OPERATOR-CONFIRMATION-0908
   catalog: tests/catalog/authorization.yml
   domain: authorization
@@ -200,7 +200,7 @@ tests:
     note: REQUIRE_OPERATOR_CONFIRMATION is represented, but authorization-side confirmation
       workflow semantics are not modeled.
   negative_failure_conditions: []
-  audit_expectation: explicit_audit_property_or_gap_recorded
+  audit_expectation: not_required
 - test_id: NEG-MFOS-AUTH-UNSUPPORTED-0909
   catalog: tests/catalog/authorization.yml
   domain: authorization

@@ -43,7 +43,7 @@ record, no result release, and no protected-resource release.
 
 - No production implementation, Rust semantic-core, hosted daemon,
   production-like semantic runner, or service implementation was introduced.
-- Dafny verification passes with `89 verified, 0 errors`.
+- Dafny verification passes with `97 verified, 0 errors`.
 - Deny-before-return remains transition-backed by `FinalizeDeniedOperation` and
   `INV_AUDIT_DENY_TRANSITION_WRITES_BEFORE_RETURN`.
 - Audit-unavailable fail-closed behavior is transition-backed by
@@ -66,7 +66,7 @@ Final requested validation was rerun after remediation:
 | `./scripts/validate-artifact-hygiene.sh` | PASS |
 | `./scripts/validate-component-scaffold.sh` | PASS |
 | `./scripts/validate-language-formal-assurance.sh` | PASS |
-| `./scripts/validate-dafny-semantics.sh --require-dafny` | PASS, `89 verified, 0 errors` |
+| `./scripts/validate-dafny-semantics.sh --require-dafny` | PASS, `97 verified, 0 errors` |
 | `python3 scripts/check-semantic-coverage-mapping.py` | PASS |
 | `python3 scripts/check-formal-claim-coverage.py` | PASS |
 | `python3 scripts/check-phase1-gap-triage.py` | PASS |

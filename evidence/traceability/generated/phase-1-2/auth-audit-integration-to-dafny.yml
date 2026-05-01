@@ -44,4 +44,5 @@ entries:
   requirement_refs:
   - MFOS-REQ-AUDIT-0001
   - MFOS-REQ-AUDIT-0002
+  - MFOS-REQ-AUDIT-0005
   - MFOS-REQ-AUDIT-0101

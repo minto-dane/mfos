@@ -340,9 +340,13 @@ entries:
 - pack_id: PACK-24
   requirements:
   - MFOS-REQ-NUCLEUS-0008
+  - MFOS-REQ-ARCH-*
+  - MFOS-REQ-X64-*
   inputs:
   - docs/design/specs/26-hardware-profile.md
   - docs/design/specs/30-attestation-measured-boot.md
+  - docs/design/specs/44-architecture-portability-policy.md
+  - docs/design/specs/45-x86-64-target-profiles.md
   outputs:
   - build/profiles
   - evidence/attestations
@@ -350,9 +354,13 @@ entries:
 - pack_id: PACK-25
   requirements:
   - MFOS-REQ-QUALITY-*
+  - MFOS-REQ-CPUFEAT-*
   inputs:
   - docs/design/specs/27-spec-front-matter.md
   - docs/design/specs/28-machine-readable-registries.md
+  - docs/design/registries/cpu-feature-registry.yml
+  - docs/design/registries/cpu-target-profiles.yml
+  - schemas/mfos/cpu-feature-profile.schema.yml
   outputs:
   - schemas
   - scripts
@@ -505,3 +513,23 @@ entries:
   - TEST-MFOS-OPS-0101
   - NEG-MFOS-OPS-0103
   - NEG-MFOS-OPS-0104
+- pack_id: PACK-37
+  requirements:
+  - MFOS-REQ-DAFNY-*
+  - MFOS-REQ-SEMSPEC-*
+  inputs:
+  - docs/design/specs/31-executable-spec-test-harness.md
+  - docs/design/specs/32-conformance-fixture-format.md
+  - docs/design/specs/33-semantic-runner-contract.md
+  - docs/design/specs/34-oracle-definition-format.md
+  - docs/design/specs/43-dafny-executable-semantics-policy.md
+  - tests/fixtures/
+  - tests/golden/
+  outputs:
+  - formal/executable-semantics/dafny/modules/
+  - tools/semantic-fixture-normalizer/
+  - tools/dafny-conformance-harness/
+  - reports/current/dafny-semantics-report.md
+  tests:
+  - TEST-MFOS-DAFNY-0001
+  - NEG-MFOS-DAFNY-0001

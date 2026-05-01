@@ -51,6 +51,11 @@ if [[ "$GENERATE_TRACEABILITY" == "1" ]]; then
 else
   ./scripts/phases/phase-0-9/validate.sh --check
 fi
+mapfile -t PYTHON_SOURCES < <(find scripts tools -name '*.py' -type f | sort)
+if [[ "${#PYTHON_SOURCES[@]}" -gt 0 ]]; then
+  python3 -m py_compile "${PYTHON_SOURCES[@]}"
+  find scripts tools -type d -name __pycache__ -prune -exec rm -rf {} +
+fi
 ./scripts/validate-artifact-hygiene.sh "$MODE"
 ./scripts/validate-component-scaffold.sh "$MODE"
 python3 scripts/checks/check-phase1-red-team.py --mode "$MODE"

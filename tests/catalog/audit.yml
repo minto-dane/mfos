@@ -88,6 +88,7 @@ entries:
     - record_type: SECURITY_DECISION
       decision: ALLOW
       reason_code: OK
+      timestamp_present: true
       before_return: false
     failure_mode: null
     final_state: COMPLETE

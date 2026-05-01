@@ -1,6 +1,6 @@
 schema_version: 1
 artifact_type: phase_1_1_gap_triage
-status: current
+status: superseded_by_phase_1_2_authorization_audit_closure
 source_reports:
 - reports/current/semantic-coverage-report.md
 - reports/current/semantic-coverage-open-issues.md

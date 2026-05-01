@@ -75,7 +75,7 @@ def collect_tests(node: Any, out: dict[str, dict[str, Any]]) -> None:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--mode", default="draft", choices=["draft", "release"])
+    parser.add_argument("--mode", default="draft", choices=["draft", "review", "release"])
     args = parser.parse_args()
 
     errors: list[str] = []

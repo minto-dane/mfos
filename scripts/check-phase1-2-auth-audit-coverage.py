@@ -17,6 +17,7 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 TRACEABILITY_DIR = ROOT / "evidence" / "traceability" / "generated" / "phase-1-2"
 REPORTS_DIR = ROOT / "reports" / "current"
+EVIDENCE_REGISTRY = ROOT / "docs/design/registries/evidence.yaml"
 TRACE_FILES = [
     "authorization-to-dafny.yml",
     "audit-to-dafny.yml",
@@ -61,7 +62,21 @@ DOMAIN_TRACE_FILES = {
 }
 AUDIT_UNAVAILABLE_TEST_ID = "NEG-MFOS-AUDIT-AUDIT-UNAVAILABLE-0906"
 AUDIT_UNAVAILABLE_SYMBOL = "INV_AUDIT_DENY_TRANSITION_FAILS_CLOSED_WHEN_UNAVAILABLE"
+AUDIT_ALLOW_WITH_AUDIT_UNAVAILABLE_SYMBOL = "INV_AUDIT_ALLOW_WITH_AUDIT_FAILS_CLOSED_WHEN_UNAVAILABLE"
 AUDIT_UNAVAILABLE_ERROR = "MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE"
+AUDIT_UNAVAILABLE_REQUIRED_REQS = {
+    "MFOS-REQ-AUDIT-0001",
+    "MFOS-REQ-AUDIT-0002",
+    "MFOS-REQ-AUDIT-0005",
+    "MFOS-REQ-AUDIT-0101",
+}
+PENDING_AUTH_TESTS = {
+    "TEST-MFOS-AUTH-REQUIRE-MFA-0904": "REQUIRE_MFA",
+    "TEST-MFOS-AUTH-REQUIRE-DUAL-CONTROL-0905": "REQUIRE_DUAL_CONTROL",
+    "TEST-MFOS-AUTH-REQUIRE-BREAK-GLASS-0906": "REQUIRE_BREAK_GLASS",
+    "TEST-MFOS-AUTH-REQUIRE-GUARD-APPROVAL-0907": "REQUIRE_GUARD_APPROVAL",
+    "TEST-MFOS-AUTH-REQUIRE-OPERATOR-CONFIRMATION-0908": "REQUIRE_OPERATOR_CONFIRMATION",
+}
 
 
 def load_yaml(path: Path) -> dict[str, Any]:
@@ -145,6 +160,10 @@ def validate_audit_unavailable_conformance(row: dict[str, Any], errors: list[str
     if row.get("coverage_level") != "C5_CONFORMANCE_LINKED":
         errors.append(f"{AUDIT_UNAVAILABLE_TEST_ID}: audit-unavailable integration must be C5 after conformance closure")
         return
+    requirement_refs = set(row.get("requirement_refs") or [])
+    if not AUDIT_UNAVAILABLE_REQUIRED_REQS.issubset(requirement_refs):
+        missing = sorted(AUDIT_UNAVAILABLE_REQUIRED_REQS - requirement_refs)
+        errors.append(f"{AUDIT_UNAVAILABLE_TEST_ID}: missing audit-unavailable requirement refs: {', '.join(missing)}")
     mappings = row.get("coverage_mappings")
     mapping = mappings[0] if isinstance(mappings, list) and mappings else {}
     if mapping.get("dafny_symbol") != AUDIT_UNAVAILABLE_SYMBOL:
@@ -238,6 +257,11 @@ def validate_audit_unavailable_conformance(row: dict[str, Any], errors: list[str
     if oracle.get("expected_no_audit_evidence_fabricated") is not True:
         errors.append(f"{AUDIT_UNAVAILABLE_TEST_ID}: oracle must assert expected_no_audit_evidence_fabricated")
 
+    audit_module = ROOT / "formal/executable-semantics/dafny/modules/audit.dfy"
+    module_text = audit_module.read_text(encoding="utf-8") if audit_module.exists() else ""
+    if not exact_dafny_symbol_declared(module_text, AUDIT_ALLOW_WITH_AUDIT_UNAVAILABLE_SYMBOL, "lemma"):
+        errors.append(f"{AUDIT_UNAVAILABLE_TEST_ID}: required-audit unavailable protected-effect lemma missing: {AUDIT_ALLOW_WITH_AUDIT_UNAVAILABLE_SYMBOL}")
+
 
 def compare_generated() -> list[str]:
     errors: list[str] = []
@@ -278,6 +302,12 @@ def validate_mapping_content() -> list[str]:
     errors: list[str] = []
     coverage = load_yaml(REPORTS_DIR / "dafny-authorization-audit-coverage.yml")
     gate = load_yaml(REPORTS_DIR / "phase-1-2-entry-gate.yml")
+    evidence_registry = load_yaml(EVIDENCE_REGISTRY)
+    known_evidence = {
+        entry.get("evidence_id")
+        for entry in evidence_registry.get("entries", [])
+        if isinstance(entry, dict)
+    }
     if coverage.get("authorization_audit_exit_blockers_remaining"):
         errors.append("Phase 1.2 coverage still reports Authorization/Audit exit blockers")
     if gate.get("merge_blockers") or gate.get("authorization_audit_merge_blockers_remaining"):
@@ -288,6 +318,48 @@ def validate_mapping_content() -> list[str]:
         errors.append("Phase 1.2 coverage must not claim proof-backed formal claims")
     if coverage.get("python_loader_contains_semantics"):
         errors.append("Python loader/harness semantics flag must remain false")
+
+    auth_catalog = load_yaml(ROOT / "tests/catalog/authorization.yml")
+    catalog_entries = {
+        entry.get("test_id"): entry
+        for entry in auth_catalog.get("entries", [])
+        if isinstance(entry, dict)
+    }
+    for test_id, expected_result in PENDING_AUTH_TESTS.items():
+        entry = catalog_entries.get(test_id)
+        if not isinstance(entry, dict):
+            errors.append(f"{test_id}: missing authorization catalog entry")
+            continue
+        expected = entry.get("expected") if isinstance(entry.get("expected"), dict) else {}
+        decisions = expected.get("decisions") if isinstance(expected.get("decisions"), list) else []
+        results = {item.get("result") for item in decisions if isinstance(item, dict)}
+        if expected_result not in results or results & {"ALLOW", "ALLOW_WITH_AUDIT"}:
+            errors.append(f"{test_id}: pending authorization catalog must use {expected_result} and no success result")
+        if expected.get("final_state") != "PENDING":
+            errors.append(f"{test_id}: pending authorization catalog final_state must be PENDING")
+        if expected.get("audit_records") not in ([], None):
+            errors.append(f"{test_id}: pending authorization catalog must not fabricate audit records")
+        golden_path = ROOT / str(entry.get("golden_ref", ""))
+        if not golden_path.exists():
+            errors.append(f"{test_id}: pending authorization golden missing: {golden_path}")
+            continue
+        golden = load_yaml(golden_path)
+        golden_results = {
+            item.get("result")
+            for item in (golden.get("expected_decisions") or [])
+            if isinstance(item, dict)
+        }
+        if expected_result not in golden_results or golden_results & {"ALLOW", "ALLOW_WITH_AUDIT"}:
+            errors.append(f"{test_id}: pending authorization golden must use {expected_result} and no success result")
+        if golden.get("expected_final_state") != "PENDING":
+            errors.append(f"{test_id}: pending authorization golden final state must be PENDING")
+        if golden.get("expected_audit_sequence") not in ([], None):
+            errors.append(f"{test_id}: pending authorization golden must not fabricate audit records")
+
+    minimum_fields_golden = load_yaml(ROOT / "tests/golden/audit/minimum-fields-0902.yml")
+    minimum_records = minimum_fields_golden.get("expected_audit_sequence") or []
+    if not any(isinstance(record, dict) and record.get("timestamp_present") is True for record in minimum_records):
+        errors.append("TEST-MFOS-AUDIT-MINIMUM-FIELDS-0902: golden must include timestamp evidence")
 
     domain_rows: dict[str, list[dict[str, Any]]] = {}
     for domain, file_name in DOMAIN_TRACE_FILES.items():
@@ -349,6 +421,8 @@ def validate_mapping_content() -> list[str]:
                         errors.append(f"{name}:{row_id}: C4/C5 mapping not verified")
                     if not mapping.get("evidence_ref"):
                         errors.append(f"{name}:{row_id}: semantic mapping lacks evidence_ref")
+                    elif mapping.get("evidence_ref") not in known_evidence:
+                        errors.append(f"{name}:{row_id}: semantic mapping evidence_ref is not registered: {mapping.get('evidence_ref')}")
                     if level_rank(mapping.get("coverage_level")) < level_rank(row_level):
                         errors.append(f"{name}:{row_id}: mapping coverage level is below row coverage level")
                     module_path = ROOT / str(mapping.get("dafny_module", ""))

@@ -20,7 +20,7 @@ formal_claims:
     dafny_symbol: INV_AUTH_EVALUATED_DECISION_NO_HANDLE_UNLESS_ALLOW
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: EV-MFOS-FC-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW
+    evidence_ref: EV-MFOS-FORMAL-CLAIM-AUTHORIZATION-0001
     coverage_level: C3_FULL_SEMANTIC
 - claim_id: MFOS-FC-AUDIT-DENY-BEFORE-RETURN
   domain: auth_audit_integration
@@ -36,5 +36,5 @@ formal_claims:
     dafny_symbol: INV_AUDIT_DENY_TRANSITION_WRITES_BEFORE_RETURN
     symbol_kind: lemma
     verification_status: verified
-    evidence_ref: EV-MFOS-FC-AUDIT-DENY-BEFORE-RETURN
+    evidence_ref: EV-MFOS-FORMAL-CLAIM-AUDIT-0001
     coverage_level: C3_FULL_SEMANTIC

@@ -9,8 +9,8 @@ authorization_coverage_level: C4_VERIFIED_PROPERTY
 audit_coverage_level: C5_CONFORMANCE_LINKED
 auth_audit_integration_coverage_level: C5_CONFORMANCE_LINKED
 coverage_level_distribution:
-  C5_CONFORMANCE_LINKED: 20
-  C4_VERIFIED_PROPERTY: 13
+  C5_CONFORMANCE_LINKED: 19
+  C4_VERIFIED_PROPERTY: 15
   C3_FULL_SEMANTIC: 3
 accepted_deferred_non_exit_count: 3
 formal_claims_proof_backed: false
