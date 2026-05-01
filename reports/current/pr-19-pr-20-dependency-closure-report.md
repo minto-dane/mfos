@@ -6,6 +6,7 @@ Review date: 2026-05-01
 
 PR #19: https://github.com/minto-dane/mfos/pull/19
 Original PR #20: https://github.com/minto-dane/mfos/pull/20
+Replacement PR: https://github.com/minto-dane/mfos/pull/24
 Replacement branch: `phase/1-3-dataset-catalog-dafny-semantics-clean`
 
 ## PR #19 Result

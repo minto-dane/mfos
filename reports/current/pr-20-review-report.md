@@ -5,6 +5,7 @@ Status: clean replacement branch review passed locally
 Review date: 2026-05-01
 
 Original PR: https://github.com/minto-dane/mfos/pull/20
+Replacement PR: https://github.com/minto-dane/mfos/pull/24
 Replacement branch: `phase/1-3-dataset-catalog-dafny-semantics-clean`
 
 ## Decision
