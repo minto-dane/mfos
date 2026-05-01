@@ -10889,6 +10889,635 @@ entries:
   audit_linkage: {audit_record_ids: [], correlation_ids: []}
   spec_gap_ids: [CPUFEAT-GAP-0002]
   legacy_evidence_ids: []
+- evidence_id: EV-MFOS-AUDIT-AUDIT-UNAVAILABLE-0906
+  title: Phase 1.2 generated traceability evidence for NEG-MFOS-AUDIT-AUDIT-UNAVAILABLE-0906
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['NEG-MFOS-AUDIT-AUDIT-UNAVAILABLE-0906']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/auth-audit-integration-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-AUDIT-DENY-BEFORE-RETURN-0901
+  title: Phase 1.2 generated traceability evidence for TEST-MFOS-AUDIT-DENY-BEFORE-RETURN-0901
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['TEST-MFOS-AUDIT-DENY-BEFORE-RETURN-0901']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/auth-audit-integration-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-AUDIT-DUPLICATE-RECORD-ID-0911
+  title: Phase 1.2 generated traceability evidence for NEG-MFOS-AUDIT-DUPLICATE-RECORD-ID-0911
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['NEG-MFOS-AUDIT-DUPLICATE-RECORD-ID-0911']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/audit-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-AUDIT-HASH-CHAIN-TAMPERED-0905
+  title: Phase 1.2 generated traceability evidence for NEG-MFOS-AUDIT-HASH-CHAIN-TAMPERED-0905
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['NEG-MFOS-AUDIT-HASH-CHAIN-TAMPERED-0905']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/audit-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-AUDIT-HASH-CHAIN-VALID-0904
+  title: Phase 1.2 generated traceability evidence for TEST-MFOS-AUDIT-HASH-CHAIN-VALID-0904
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['TEST-MFOS-AUDIT-HASH-CHAIN-VALID-0904']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/audit-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-AUDIT-LOG-LINE-NOT-RECORD-0909
+  title: Phase 1.2 generated traceability evidence for NEG-MFOS-AUDIT-LOG-LINE-NOT-RECORD-0909
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['NEG-MFOS-AUDIT-LOG-LINE-NOT-RECORD-0909']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/audit-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-AUDIT-MINIMUM-FIELDS-0902
+  title: Phase 1.2 generated traceability evidence for TEST-MFOS-AUDIT-MINIMUM-FIELDS-0902
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['TEST-MFOS-AUDIT-MINIMUM-FIELDS-0902']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/audit-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-AUDIT-MISSING-CORRELATION-0903
+  title: Phase 1.2 generated traceability evidence for NEG-MFOS-AUDIT-MISSING-CORRELATION-0903
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['NEG-MFOS-AUDIT-MISSING-CORRELATION-0903']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/audit-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-AUDIT-NON-MONOTONIC-SEQUENCE-0912
+  title: Phase 1.2 generated traceability evidence for NEG-MFOS-AUDIT-NON-MONOTONIC-SEQUENCE-0912
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['NEG-MFOS-AUDIT-NON-MONOTONIC-SEQUENCE-0912']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/audit-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-AUDIT-REDACTION-FAILURE-0910
+  title: Phase 1.2 generated traceability evidence for NEG-MFOS-AUDIT-REDACTION-FAILURE-0910
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['NEG-MFOS-AUDIT-REDACTION-FAILURE-0910']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/audit-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-AUDIT-SPOOL-NOT-EVIDENCE-0908
+  title: Phase 1.2 generated traceability evidence for NEG-MFOS-AUDIT-SPOOL-NOT-EVIDENCE-0908
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['NEG-MFOS-AUDIT-SPOOL-NOT-EVIDENCE-0908']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/audit-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-AUDIT-UNAUTHORIZED-QUERY-0907
+  title: Phase 1.2 generated traceability evidence for NEG-MFOS-AUDIT-UNAUTHORIZED-QUERY-0907
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['NEG-MFOS-AUDIT-UNAUTHORIZED-QUERY-0907']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/audit-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-AUTH-ALLOW-0901
+  title: Phase 1.2 generated traceability evidence for TEST-MFOS-AUTH-ALLOW-0901
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['TEST-MFOS-AUTH-ALLOW-0901']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/authorization-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-AUTH-ALLOW-WITH-AUDIT-0903
+  title: Phase 1.2 generated traceability evidence for TEST-MFOS-AUTH-ALLOW-WITH-AUDIT-0903
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['TEST-MFOS-AUTH-ALLOW-WITH-AUDIT-0903']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/authorization-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-AUTH-BREAK-GLASS-NO-EXPIRY-0923
+  title: Phase 1.2 generated traceability evidence for NEG-MFOS-AUTH-BREAK-GLASS-NO-EXPIRY-0923
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['NEG-MFOS-AUTH-BREAK-GLASS-NO-EXPIRY-0923']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/authorization-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-AUTH-BREAK-GLASS-NO-REASON-0922
+  title: Phase 1.2 generated traceability evidence for NEG-MFOS-AUTH-BREAK-GLASS-NO-REASON-0922
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['NEG-MFOS-AUTH-BREAK-GLASS-NO-REASON-0922']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/authorization-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-AUTH-DENY-0902
+  title: Phase 1.2 generated traceability evidence for NEG-MFOS-AUTH-DENY-0902
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['NEG-MFOS-AUTH-DENY-0902']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/authorization-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-AUTH-EXPIRED-DELEGATION-0921
+  title: Phase 1.2 generated traceability evidence for NEG-MFOS-AUTH-EXPIRED-DELEGATION-0921
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['NEG-MFOS-AUTH-EXPIRED-DELEGATION-0921']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/authorization-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-AUTH-POLICY-LINT-WILDCARD-0924
+  title: Phase 1.2 generated traceability evidence for NEG-MFOS-AUTH-POLICY-LINT-WILDCARD-0924
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['NEG-MFOS-AUTH-POLICY-LINT-WILDCARD-0924']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/authorization-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-AUTH-REQUIRE-BREAK-GLASS-0906
+  title: Phase 1.2 generated traceability evidence for TEST-MFOS-AUTH-REQUIRE-BREAK-GLASS-0906
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['TEST-MFOS-AUTH-REQUIRE-BREAK-GLASS-0906']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/authorization-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-AUTH-REQUIRE-DUAL-CONTROL-0905
+  title: Phase 1.2 generated traceability evidence for TEST-MFOS-AUTH-REQUIRE-DUAL-CONTROL-0905
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['TEST-MFOS-AUTH-REQUIRE-DUAL-CONTROL-0905']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/authorization-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-AUTH-REQUIRE-GUARD-APPROVAL-0907
+  title: Phase 1.2 generated traceability evidence for TEST-MFOS-AUTH-REQUIRE-GUARD-APPROVAL-0907
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['TEST-MFOS-AUTH-REQUIRE-GUARD-APPROVAL-0907']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/authorization-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-AUTH-REQUIRE-MFA-0904
+  title: Phase 1.2 generated traceability evidence for TEST-MFOS-AUTH-REQUIRE-MFA-0904
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['TEST-MFOS-AUTH-REQUIRE-MFA-0904']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/authorization-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-AUTH-REQUIRE-OPERATOR-CONFIRMATION-0908
+  title: Phase 1.2 generated traceability evidence for TEST-MFOS-AUTH-REQUIRE-OPERATOR-CONFIRMATION-0908
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['TEST-MFOS-AUTH-REQUIRE-OPERATOR-CONFIRMATION-0908']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/authorization-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-AUTH-SPEC-GAP-0910
+  title: Phase 1.2 generated traceability evidence for NEG-MFOS-AUTH-SPEC-GAP-0910
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['NEG-MFOS-AUTH-SPEC-GAP-0910']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/authorization-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-AUTH-STALE-POLICY-0920
+  title: Phase 1.2 generated traceability evidence for NEG-MFOS-AUTH-STALE-POLICY-0920
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['NEG-MFOS-AUTH-STALE-POLICY-0920']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/authorization-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-AUTH-UNAUTHORIZED-HANDLE-0925
+  title: Phase 1.2 generated traceability evidence for NEG-MFOS-AUTH-UNAUTHORIZED-HANDLE-0925
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['NEG-MFOS-AUTH-UNAUTHORIZED-HANDLE-0925']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/authorization-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-AUTH-UNSUPPORTED-0909
+  title: Phase 1.2 generated traceability evidence for NEG-MFOS-AUTH-UNSUPPORTED-0909
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: ['NEG-MFOS-AUTH-UNSUPPORTED-0909']
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/authorization-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-FORMAL-CLAIM-AUDIT-0001
+  title: Phase 1.2 generated traceability evidence for MFOS-FC-AUDIT-DENY-BEFORE-RETURN
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: []
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: ['MFOS-FC-AUDIT-DENY-BEFORE-RETURN']
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/formal-claim-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-FORMAL-CLAIM-AUTHORIZATION-0001
+  title: Phase 1.2 generated traceability evidence for MFOS-FC-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: []
+  test_ids: []
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: ['MFOS-FC-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW']
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/formal-claim-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-REQ-AUDIT-0001
+  title: Phase 1.2 generated traceability evidence for MFOS-REQ-AUDIT-0001
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: ['MFOS-REQ-AUDIT-0001']
+  test_ids: []
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/requirement-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-REQ-AUDIT-0002
+  title: Phase 1.2 generated traceability evidence for MFOS-REQ-AUDIT-0002
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: ['MFOS-REQ-AUDIT-0002']
+  test_ids: []
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/requirement-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-REQ-AUDIT-0005
+  title: Phase 1.2 generated traceability evidence for MFOS-REQ-AUDIT-0005
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: ['MFOS-REQ-AUDIT-0005']
+  test_ids: []
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/requirement-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-REQ-AUDIT-0101
+  title: Phase 1.2 generated traceability evidence for MFOS-REQ-AUDIT-0101
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: ['MFOS-REQ-AUDIT-0101']
+  test_ids: []
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/requirement-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-REQ-AUTH-0001
+  title: Phase 1.2 generated traceability evidence for MFOS-REQ-AUTH-0001
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: ['MFOS-REQ-AUTH-0001']
+  test_ids: []
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/requirement-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-REQ-AUTH-0003
+  title: Phase 1.2 generated traceability evidence for MFOS-REQ-AUTH-0003
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: ['MFOS-REQ-AUTH-0003']
+  test_ids: []
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/requirement-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
+- evidence_id: EV-MFOS-REQ-AUTH-0101
+  title: Phase 1.2 generated traceability evidence for MFOS-REQ-AUTH-0101
+  evidence_type: design_traceability_record
+  status: draft
+  requirement_ids: ['MFOS-REQ-AUTH-0101']
+  test_ids: []
+  source_matrix_ids: [FBVBS-001]
+  conformance_claim_ids: []
+  release_ids: []
+  artifact: {path: evidence/traceability/generated/phase-1-2/requirement-to-dafny.yml, media_type: application/yaml, sha384: null, size_bytes: null}
+  produced_by: {tool: scripts/generators/generate-auth-audit-coverage.py, version: null, ci_job: null, operator: codex}
+  produced_at_utc: '2026-04-30T00:00:00Z'
+  retention: {class: draft, retain_until_utc: null}
+  verification: {verifier: null, verified_at_utc: null, verification_method: null, result: not_checked}
+  audit_linkage: {audit_record_ids: [], correlation_ids: []}
+  spec_gap_ids: []
+  legacy_evidence_ids: []
 spec_gaps:
 - gap_id: REG-GAP-0005
   summary: Evidence artifact storage layout and retention policy are not final.

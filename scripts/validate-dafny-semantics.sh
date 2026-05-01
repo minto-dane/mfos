@@ -12,7 +12,7 @@ for arg in "$@"; do
     --require-dafny)
       REQUIRE_DAFNY="1"
       ;;
-    draft|release)
+    draft|review|release)
       MODE="$arg"
       ;;
     *)

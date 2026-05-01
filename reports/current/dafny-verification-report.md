@@ -1,7 +1,7 @@
 # Phase 1 Dafny Verification Report
 
 Status: current
-Date: 2026-04-29
+Date: 2026-04-30
 
 ## Result
 
@@ -28,9 +28,9 @@ module_list:
   - formal/executable-semantics/dafny/modules/operator_console.dfy
   - formal/executable-semantics/dafny/modules/types.dfy
 exit_code: 0
-verification_summary: Dafny program verifier finished with 49 verified, 0 errors
-started_at_utc: '2026-04-29T00:00:00Z'
-completed_at_utc: '2026-04-29T00:00:00Z'
+verification_summary: Dafny program verifier finished with 97 verified, 0 errors
+started_at_utc: '2026-04-30T00:00:00Z'
+completed_at_utc: '2026-04-30T00:00:00Z'
 verification_output_path: reports/current/dafny-verification-report.md
 assumptions:
   - The pinned Ubuntu 22.04 x64 Dafny release is the Phase 1 verification toolchain.
@@ -46,7 +46,7 @@ validator_required_behavior: MFOS_REQUIRE_DAFNY=1 or --require-dafny fails when 
 The pinned Dafny toolchain was installed locally by `scripts/install-dafny.sh`.
 `scripts/validate-dafny-semantics.sh --require-dafny` ran all current modules
 under `formal/executable-semantics/dafny/modules/*.dfy` and completed with
-`49 verified, 0 errors`.
+`97 verified, 0 errors`.
 
 ## Evidence Boundary
 

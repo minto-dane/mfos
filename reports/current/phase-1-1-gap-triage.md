@@ -1,5 +1,7 @@
 # Phase 1.1 Gap Triage
 
+Status: superseded by Phase 1.2 Authorization/Audit closure for PR #19.
+
 This triage classifies every remaining C0/C2/C3 Phase 1.1 semantic coverage gap after PR #18 merge. It does not implement Phase 1.2 and does not raise any coverage level.
 
 ## Summary

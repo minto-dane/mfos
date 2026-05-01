@@ -2,7 +2,7 @@
 
 Status date: 2026-04-30
 Workspace: `/home/nia/mfos`
-Git status: working branch `docs/architecture-portability-x64-target-profiles`;
+Git status: working branch `dev`;
 PR #10 (`fix/phase-0.10-pxm-mfvm-expansion`), PR #11
 (`fix/pre-phase-1-total-readiness`), PR #12
 (`fix/pre-phase-1-total-readiness-second-pass`), and PR #13
@@ -133,7 +133,7 @@ started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
 - Pinned Dafny 4.11.0 is installed by `scripts/install-dafny.sh`; Z3 4.14.1 is
   bundled in the pinned release.
 - `scripts/validate-dafny-semantics.sh --require-dafny` verifies the current
-  module set with `89 verified, 0 errors`.
+  module set with `97 verified, 0 errors`.
 - Phase 1.1 semantic coverage traceability now maps Phase 0.9 core catalogs to
   explicit Dafny targets per test. The first vertical slice remains
   `C5_CONFORMANCE_LINKED`; the core five domains remain mixed because several

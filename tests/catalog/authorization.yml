@@ -117,7 +117,7 @@ entries:
   expected:
     decisions:
     - decision_id: DECISION-MFOS-PHASE09-0001
-      result: ALLOW
+      result: ALLOW_WITH_AUDIT
       policy_version: 1
       obligations:
       - AUDIT_SECURITY_DECISION
@@ -129,9 +129,9 @@ entries:
       reason: EXPECTED
     audit_records:
     - record_type: SECURITY_DECISION
-      decision: ALLOW
+      decision: ALLOW_WITH_AUDIT
       reason_code: OK
-      before_return: false
+      before_return: true
     failure_mode: null
     final_state: COMPLETE
   oracle_ref: tests/golden/auth/allow-with-audit-0903.yml
@@ -160,29 +160,25 @@ entries:
   expected:
     decisions:
     - decision_id: DECISION-MFOS-PHASE09-0001
-      result: ALLOW
+      result: REQUIRE_MFA
       policy_version: 1
       obligations:
-      - AUDIT_SECURITY_DECISION
+      - OBLIGATION_MFA
     state_transitions:
     - object: PHASE09_OBJECT
       from: INITIAL
       action: EVALUATE
-      to: COMPLETE
-      reason: EXPECTED
-    audit_records:
-    - record_type: SECURITY_DECISION
-      decision: ALLOW
-      reason_code: OK
-      before_return: false
+      to: PENDING
+      reason: REQUIRE_MFA
+    audit_records: []
     failure_mode: null
-    final_state: COMPLETE
+    final_state: PENDING
   oracle_ref: tests/golden/auth/require-mfa-0904.yml
   fixture_ref: tests/fixtures/auth/require-mfa-0904.yml
   golden_ref: tests/golden/auth/require-mfa-0904.yml
   negative: false
-  security_sensitive: true
-  audit_obligation_required: true
+  security_sensitive: false
+  audit_obligation_required: false
   evidence_required:
   - EV-MFOS-AUTH-REQUIRE-MFA-0904
   status: draft
@@ -203,29 +199,25 @@ entries:
   expected:
     decisions:
     - decision_id: DECISION-MFOS-PHASE09-0001
-      result: ALLOW
+      result: REQUIRE_DUAL_CONTROL
       policy_version: 1
       obligations:
-      - AUDIT_SECURITY_DECISION
+      - OBLIGATION_DUAL_CONTROL
     state_transitions:
     - object: PHASE09_OBJECT
       from: INITIAL
       action: EVALUATE
-      to: COMPLETE
-      reason: EXPECTED
-    audit_records:
-    - record_type: SECURITY_DECISION
-      decision: ALLOW
-      reason_code: OK
-      before_return: false
+      to: PENDING
+      reason: REQUIRE_DUAL_CONTROL
+    audit_records: []
     failure_mode: null
-    final_state: COMPLETE
+    final_state: PENDING
   oracle_ref: tests/golden/auth/require-dual-control-0905.yml
   fixture_ref: tests/fixtures/auth/require-dual-control-0905.yml
   golden_ref: tests/golden/auth/require-dual-control-0905.yml
   negative: false
-  security_sensitive: true
-  audit_obligation_required: true
+  security_sensitive: false
+  audit_obligation_required: false
   evidence_required:
   - EV-MFOS-AUTH-REQUIRE-DUAL-CONTROL-0905
   status: draft
@@ -246,29 +238,26 @@ entries:
   expected:
     decisions:
     - decision_id: DECISION-MFOS-PHASE09-0001
-      result: ALLOW
+      result: REQUIRE_BREAK_GLASS
       policy_version: 1
       obligations:
-      - AUDIT_SECURITY_DECISION
+      - OBLIGATION_BREAK_GLASS_REASON
+      - OBLIGATION_BREAK_GLASS_EXPIRY
     state_transitions:
     - object: PHASE09_OBJECT
       from: INITIAL
       action: EVALUATE
-      to: COMPLETE
-      reason: EXPECTED
-    audit_records:
-    - record_type: SECURITY_DECISION
-      decision: ALLOW
-      reason_code: OK
-      before_return: false
+      to: PENDING
+      reason: REQUIRE_BREAK_GLASS
+    audit_records: []
     failure_mode: null
-    final_state: COMPLETE
+    final_state: PENDING
   oracle_ref: tests/golden/auth/require-break-glass-0906.yml
   fixture_ref: tests/fixtures/auth/require-break-glass-0906.yml
   golden_ref: tests/golden/auth/require-break-glass-0906.yml
   negative: false
-  security_sensitive: true
-  audit_obligation_required: true
+  security_sensitive: false
+  audit_obligation_required: false
   evidence_required:
   - EV-MFOS-AUTH-REQUIRE-BREAK-GLASS-0906
   status: draft
@@ -289,29 +278,25 @@ entries:
   expected:
     decisions:
     - decision_id: DECISION-MFOS-PHASE09-0001
-      result: ALLOW
+      result: REQUIRE_GUARD_APPROVAL
       policy_version: 1
       obligations:
-      - AUDIT_SECURITY_DECISION
+      - OBLIGATION_GUARD_APPROVAL
     state_transitions:
     - object: PHASE09_OBJECT
       from: INITIAL
       action: EVALUATE
-      to: COMPLETE
-      reason: EXPECTED
-    audit_records:
-    - record_type: SECURITY_DECISION
-      decision: ALLOW
-      reason_code: OK
-      before_return: false
+      to: PENDING
+      reason: REQUIRE_GUARD_APPROVAL
+    audit_records: []
     failure_mode: null
-    final_state: COMPLETE
+    final_state: PENDING
   oracle_ref: tests/golden/auth/require-guard-approval-0907.yml
   fixture_ref: tests/fixtures/auth/require-guard-approval-0907.yml
   golden_ref: tests/golden/auth/require-guard-approval-0907.yml
   negative: false
-  security_sensitive: true
-  audit_obligation_required: true
+  security_sensitive: false
+  audit_obligation_required: false
   evidence_required:
   - EV-MFOS-AUTH-REQUIRE-GUARD-APPROVAL-0907
   status: draft
@@ -332,29 +317,25 @@ entries:
   expected:
     decisions:
     - decision_id: DECISION-MFOS-PHASE09-0001
-      result: ALLOW
+      result: REQUIRE_OPERATOR_CONFIRMATION
       policy_version: 1
       obligations:
-      - AUDIT_SECURITY_DECISION
+      - OBLIGATION_OPERATOR_CONFIRMATION
     state_transitions:
     - object: PHASE09_OBJECT
       from: INITIAL
       action: EVALUATE
-      to: COMPLETE
-      reason: EXPECTED
-    audit_records:
-    - record_type: SECURITY_DECISION
-      decision: ALLOW
-      reason_code: OK
-      before_return: false
+      to: PENDING
+      reason: REQUIRE_OPERATOR_CONFIRMATION
+    audit_records: []
     failure_mode: null
-    final_state: COMPLETE
+    final_state: PENDING
   oracle_ref: tests/golden/auth/require-operator-confirmation-0908.yml
   fixture_ref: tests/fixtures/auth/require-operator-confirmation-0908.yml
   golden_ref: tests/golden/auth/require-operator-confirmation-0908.yml
   negative: false
-  security_sensitive: true
-  audit_obligation_required: true
+  security_sensitive: false
+  audit_obligation_required: false
   evidence_required:
   - EV-MFOS-AUTH-REQUIRE-OPERATOR-CONFIRMATION-0908
   status: draft

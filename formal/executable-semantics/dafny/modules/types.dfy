@@ -100,6 +100,7 @@ module Types {
     component_id: MfosId,
     correlation_id: CorrelationId,
     sequence: SequenceNumber,
+    timestamp: TimestampSymbolic,
     record_type: MfosId,
     subject: Subject,
     object_ref: ObjectRef,

@@ -35,6 +35,18 @@ entries:
   - EV-MFOS-AUDIT-AMF-UNSUPPORTED-0021
   - EV-MFOS-CI-AMF-0021
   - EV-MFOS-SYSINT-AMF-BOUNDARY-0017
+- requirement_id: MFOS-REQ-ARCH-0001
+  evidence:
+  - EV-MFOS-ARCH-0001
+- requirement_id: MFOS-REQ-ARCH-0002
+  evidence:
+  - EV-MFOS-ARCH-0001
+- requirement_id: MFOS-REQ-ARCH-0003
+  evidence:
+  - EV-MFOS-ARCH-0001
+- requirement_id: MFOS-REQ-ARCH-0004
+  evidence:
+  - EV-MFOS-ARCH-0001
 - requirement_id: MFOS-REQ-ASSURANCE-0001
   evidence:
   - EV-MFOS-ASSURANCE-0001
@@ -53,6 +65,7 @@ entries:
 - requirement_id: MFOS-REQ-AUDIT-0001
   evidence:
   - EV-MFOS-AUDIT-REQ-RESERVED-0001
+  - EV-MFOS-REQ-AUDIT-0001
 - requirement_id: MFOS-REQ-AUDIT-0002
   evidence:
   - EV-MFOS-AUDIT-0001
@@ -60,6 +73,7 @@ entries:
   - EV-MFOS-AUDIT-ORDER-0002
   - EV-MFOS-AUDIT-SAMPLE-0002
   - EV-MFOS-GUARD-AUDIT-0007
+  - EV-MFOS-REQ-AUDIT-0002
   - EV-MFOS-SYSINT-AUDIT-SUBSTITUTE-0013
 - requirement_id: MFOS-REQ-AUDIT-0003
   evidence:
@@ -72,9 +86,11 @@ entries:
   - EV-MFOS-AUDIT-BOOT-0005
   - EV-MFOS-AUDIT-FAILPOL-0005
   - EV-MFOS-AUDIT-RECOVERY-0005
+  - EV-MFOS-REQ-AUDIT-0005
 - requirement_id: MFOS-REQ-AUDIT-0101
   evidence:
   - EV-MFOS-AUDIT-0101
+  - EV-MFOS-REQ-AUDIT-0101
 - requirement_id: MFOS-REQ-AUDIT-0102
   evidence:
   - EV-MFOS-AUDIT-0102
@@ -92,6 +108,7 @@ entries:
   - EV-MFOS-AUTH-ARCH-0001
   - EV-MFOS-AUTH-AUDIT-0001
   - EV-MFOS-AUTH-PDP-0001
+  - EV-MFOS-REQ-AUTH-0001
 - requirement_id: MFOS-REQ-AUTH-0002
   evidence:
   - EV-MFOS-AUTH-AUDIT-0002
@@ -100,6 +117,7 @@ entries:
 - requirement_id: MFOS-REQ-AUTH-0003
   evidence:
   - EV-MFOS-AUTH-REQ-RESERVED-0003
+  - EV-MFOS-REQ-AUTH-0003
 - requirement_id: MFOS-REQ-AUTH-0004
   evidence:
   - EV-MFOS-AUDIT-DATA-DENY-0001
@@ -121,6 +139,7 @@ entries:
 - requirement_id: MFOS-REQ-AUTH-0101
   evidence:
   - EV-MFOS-AUTH-0101
+  - EV-MFOS-REQ-AUTH-0101
 - requirement_id: MFOS-REQ-AUTH-0102
   evidence:
   - EV-MFOS-AUTH-0102
@@ -174,6 +193,21 @@ entries:
 - requirement_id: MFOS-REQ-CLUSTER-0108
   evidence:
   - EV-MFOS-CLUSTER-0108
+- requirement_id: MFOS-REQ-CPUFEAT-0001
+  evidence:
+  - EV-MFOS-CPUFEAT-0001
+- requirement_id: MFOS-REQ-CPUFEAT-0002
+  evidence:
+  - EV-MFOS-CPUFEAT-0001
+- requirement_id: MFOS-REQ-CPUFEAT-0003
+  evidence:
+  - EV-MFOS-CPUFEAT-0001
+- requirement_id: MFOS-REQ-CPUFEAT-0004
+  evidence:
+  - EV-MFOS-CPUFEAT-0001
+- requirement_id: MFOS-REQ-CPUFEAT-0005
+  evidence:
+  - EV-MFOS-CPUFEAT-0001
 - requirement_id: MFOS-REQ-CVM-0101
   evidence:
   - EV-MFOS-CVM-0101
@@ -304,6 +338,9 @@ entries:
 - requirement_id: MFOS-REQ-GUARD-0008
   evidence:
   - EV-MFOS-GUARD-REQ-RESERVED-0008
+- requirement_id: MFOS-REQ-HARDENING-0001
+  evidence:
+  - EV-MFOS-HARDENING-0001
 - requirement_id: MFOS-REQ-JOB-0001
   evidence:
   - EV-MFOS-JOB-REQ-RESERVED-0001
@@ -526,6 +563,36 @@ entries:
 - requirement_id: MFOS-REQ-QUALITY-0010
   evidence:
   - EV-MFOS-QUALITY-REQ-RESERVED-0010
+- requirement_id: MFOS-REQ-SEMSPEC-0001
+  evidence:
+  - EV-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-SEMSPEC-0002
+  evidence:
+  - EV-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-SEMSPEC-0003
+  evidence:
+  - EV-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-SEMSPEC-0004
+  evidence:
+  - EV-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-SEMSPEC-0005
+  evidence:
+  - EV-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-SEMSPEC-0006
+  evidence:
+  - EV-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-SEMSPEC-0007
+  evidence:
+  - EV-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-SEMSPEC-0008
+  evidence:
+  - EV-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-SEMSPEC-0009
+  evidence:
+  - EV-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-SEMSPEC-0010
+  evidence:
+  - EV-MFOS-DAFNY-0001
 - requirement_id: MFOS-REQ-SOURCE-0001
   evidence:
   - EV-MFOS-SOURCE-REQ-RESERVED-0001
@@ -711,3 +778,57 @@ entries:
 - requirement_id: MFOS-REQ-WPOL-0010
   evidence:
   - EV-MFOS-WPOL-REQ-RESERVED-0010
+- requirement_id: MFOS-REQ-X64-0001
+  evidence:
+  - EV-MFOS-X64-0001
+- requirement_id: MFOS-REQ-X64-0002
+  evidence:
+  - EV-MFOS-X64-0001
+- requirement_id: MFOS-REQ-X64-0003
+  evidence:
+  - EV-MFOS-X64-0001
+- requirement_id: MFOS-REQ-X64-0004
+  evidence:
+  - EV-MFOS-X64-0001
+- requirement_id: MFOS-REQ-X64-0005
+  evidence:
+  - EV-MFOS-X64-0001
+- requirement_id: MFOS-REQ-X64-CVM-0001
+  evidence:
+  - EV-MFOS-X64-CVM-0001
+- requirement_id: MFOS-REQ-X64-CVM-0002
+  evidence:
+  - EV-MFOS-X64-CVM-0001
+- requirement_id: MFOS-REQ-X64-TEE-0001
+  evidence:
+  - EV-MFOS-X64-TEE-0001
+- requirement_id: MFOS-REQ-X64-TEE-0002
+  evidence:
+  - EV-MFOS-X64-TEE-0001
+- requirement_id: MFOS-REQ-X64-TEE-0003
+  evidence:
+  - EV-MFOS-X64-TEE-0001
+- requirement_id: MFOS-REQ-X64-TEE-0004
+  evidence:
+  - EV-MFOS-X64-TEE-0001
+- requirement_id: MFOS-REQ-X64-TEE-0005
+  evidence:
+  - EV-MFOS-X64-TEE-0001
+- requirement_id: MFOS-REQ-X64-V4-0001
+  evidence:
+  - EV-MFOS-X64-V4-0001
+- requirement_id: MFOS-REQ-X64-V4-0002
+  evidence:
+  - EV-MFOS-X64-V4-0001
+- requirement_id: MFOS-REQ-X64-V4-0003
+  evidence:
+  - EV-MFOS-X64-V4-0001
+- requirement_id: MFOS-REQ-X64-V4-0004
+  evidence:
+  - EV-MFOS-X64-V4-0001
+- requirement_id: MFOS-REQ-X64-V4-0005
+  evidence:
+  - EV-MFOS-X64-V4-0001
+- requirement_id: MFOS-REQ-X64-V4-0006
+  evidence:
+  - EV-MFOS-X64-V4-0001

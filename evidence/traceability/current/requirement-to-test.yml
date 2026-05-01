@@ -44,6 +44,20 @@ entries:
   - NEG-MFOS-AMF-RX-MAPPING-DISABLED-0021
   - NEG-MFOS-SYSINT-AMF-BOUNDARY-0017
   - TEST-MFOS-AMF-DISABLED-QUERY-0021
+- requirement_id: MFOS-REQ-ARCH-0001
+  tests:
+  - NEG-MFOS-ARCH-0001
+  - TEST-MFOS-ARCH-POS-0001
+- requirement_id: MFOS-REQ-ARCH-0002
+  tests:
+  - TEST-MFOS-ARCH-POS-0001
+- requirement_id: MFOS-REQ-ARCH-0003
+  tests:
+  - TEST-MFOS-ARCH-POS-0001
+- requirement_id: MFOS-REQ-ARCH-0004
+  tests:
+  - NEG-MFOS-ARCH-0001
+  - TEST-MFOS-ARCH-POS-0001
 - requirement_id: MFOS-REQ-ASSURANCE-0001
   tests:
   - NEG-MFOS-ASSURANCE-0001
@@ -235,6 +249,24 @@ entries:
   tests:
   - NEG-MFOS-CLUSTER-0108
   - TEST-MFOS-CLUSTER-0108
+- requirement_id: MFOS-REQ-CPUFEAT-0001
+  tests:
+  - TEST-MFOS-CPUFEAT-POS-0001
+- requirement_id: MFOS-REQ-CPUFEAT-0002
+  tests:
+  - NEG-MFOS-CPUFEAT-0001
+  - TEST-MFOS-CPUFEAT-POS-0001
+- requirement_id: MFOS-REQ-CPUFEAT-0003
+  tests:
+  - TEST-MFOS-CPUFEAT-POS-0001
+- requirement_id: MFOS-REQ-CPUFEAT-0004
+  tests:
+  - NEG-MFOS-CPUFEAT-0001
+  - TEST-MFOS-CPUFEAT-POS-0001
+- requirement_id: MFOS-REQ-CPUFEAT-0005
+  tests:
+  - NEG-MFOS-CPUFEAT-0001
+  - TEST-MFOS-CPUFEAT-POS-0001
 - requirement_id: MFOS-REQ-CVM-0101
   tests:
   - NEG-MFOS-CVM-0101
@@ -408,6 +440,10 @@ entries:
   tests:
   - NEG-MFOS-GUARD-SPEC-GAP-0008
   - TEST-MFOS-GUARD-RESERVED-0008
+- requirement_id: MFOS-REQ-HARDENING-0001
+  tests:
+  - NEG-MFOS-HARDENING-0001
+  - TEST-MFOS-HARDENING-POS-0001
 - requirement_id: MFOS-REQ-JOB-0001
   tests:
   - NEG-MFOS-JOB-SPEC-GAP-0001
@@ -707,6 +743,46 @@ entries:
   tests:
   - NEG-MFOS-QUALITY-SPEC-GAP-0010
   - TEST-MFOS-QUALITY-RESERVED-0010
+- requirement_id: MFOS-REQ-SEMSPEC-0001
+  tests:
+  - NEG-MFOS-DAFNY-0001
+  - TEST-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-SEMSPEC-0002
+  tests:
+  - NEG-MFOS-DAFNY-0001
+  - TEST-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-SEMSPEC-0003
+  tests:
+  - NEG-MFOS-DAFNY-0001
+  - TEST-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-SEMSPEC-0004
+  tests:
+  - NEG-MFOS-DAFNY-0001
+  - TEST-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-SEMSPEC-0005
+  tests:
+  - NEG-MFOS-DAFNY-0001
+  - TEST-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-SEMSPEC-0006
+  tests:
+  - NEG-MFOS-DAFNY-0001
+  - TEST-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-SEMSPEC-0007
+  tests:
+  - NEG-MFOS-DAFNY-0001
+  - TEST-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-SEMSPEC-0008
+  tests:
+  - NEG-MFOS-DAFNY-0001
+  - TEST-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-SEMSPEC-0009
+  tests:
+  - NEG-MFOS-DAFNY-0001
+  - TEST-MFOS-DAFNY-0001
+- requirement_id: MFOS-REQ-SEMSPEC-0010
+  tests:
+  - NEG-MFOS-DAFNY-0001
+  - TEST-MFOS-DAFNY-0001
 - requirement_id: MFOS-REQ-SOURCE-0001
   tests:
   - NEG-MFOS-SOURCE-SPEC-GAP-0001
@@ -941,3 +1017,69 @@ entries:
   tests:
   - NEG-MFOS-WPOL-SPEC-GAP-0010
   - TEST-MFOS-WPOL-RESERVED-0010
+- requirement_id: MFOS-REQ-X64-0001
+  tests:
+  - NEG-MFOS-X64-0001
+  - TEST-MFOS-X64-POS-0001
+- requirement_id: MFOS-REQ-X64-0002
+  tests:
+  - TEST-MFOS-X64-POS-0001
+- requirement_id: MFOS-REQ-X64-0003
+  tests:
+  - TEST-MFOS-X64-POS-0001
+- requirement_id: MFOS-REQ-X64-0004
+  tests:
+  - NEG-MFOS-X64-0001
+  - TEST-MFOS-X64-POS-0001
+- requirement_id: MFOS-REQ-X64-0005
+  tests:
+  - NEG-MFOS-X64-0001
+  - TEST-MFOS-X64-POS-0001
+- requirement_id: MFOS-REQ-X64-CVM-0001
+  tests:
+  - NEG-MFOS-X64-CVM-0001
+  - TEST-MFOS-X64-CVM-POS-0001
+- requirement_id: MFOS-REQ-X64-CVM-0002
+  tests:
+  - NEG-MFOS-X64-CVM-0001
+  - TEST-MFOS-X64-CVM-POS-0001
+- requirement_id: MFOS-REQ-X64-TEE-0001
+  tests:
+  - NEG-MFOS-X64-TEE-0001
+  - TEST-MFOS-X64-TEE-POS-0001
+- requirement_id: MFOS-REQ-X64-TEE-0002
+  tests:
+  - NEG-MFOS-X64-TEE-0001
+  - TEST-MFOS-X64-TEE-POS-0001
+- requirement_id: MFOS-REQ-X64-TEE-0003
+  tests:
+  - TEST-MFOS-X64-TEE-POS-0001
+- requirement_id: MFOS-REQ-X64-TEE-0004
+  tests:
+  - TEST-MFOS-X64-TEE-POS-0001
+- requirement_id: MFOS-REQ-X64-TEE-0005
+  tests:
+  - NEG-MFOS-X64-TEE-0001
+  - TEST-MFOS-X64-TEE-POS-0001
+- requirement_id: MFOS-REQ-X64-V4-0001
+  tests:
+  - NEG-MFOS-X64-V4-0001
+  - TEST-MFOS-X64-V4-POS-0001
+- requirement_id: MFOS-REQ-X64-V4-0002
+  tests:
+  - TEST-MFOS-X64-V4-POS-0001
+- requirement_id: MFOS-REQ-X64-V4-0003
+  tests:
+  - NEG-MFOS-X64-V4-0001
+  - TEST-MFOS-X64-V4-POS-0001
+- requirement_id: MFOS-REQ-X64-V4-0004
+  tests:
+  - NEG-MFOS-X64-V4-0001
+  - TEST-MFOS-X64-V4-POS-0001
+- requirement_id: MFOS-REQ-X64-V4-0005
+  tests:
+  - NEG-MFOS-X64-V4-0001
+  - TEST-MFOS-X64-V4-POS-0001
+- requirement_id: MFOS-REQ-X64-V4-0006
+  tests:
+  - TEST-MFOS-X64-V4-POS-0001

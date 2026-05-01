@@ -20,7 +20,7 @@ module Audit {
   )
 
   function ConstructAuditRecord(decision: SecurityDecision, record_id: MfosId, sequence: SequenceNumber, before_return: bool): AuditRecord {
-    AuditRecord(record_id, 1, 1, decision.context.correlation_id, sequence, 1,
+    AuditRecord(record_id, 1, 1, decision.context.correlation_id, sequence, 1, 1,
       decision.subject, decision.object_ref, decision.operation, decision.policy_version,
       decision.result, decision.error_code, decision.reason_code, before_return, true, sequence, sequence + 1)
   }
@@ -31,6 +31,7 @@ module Audit {
     ValidId(record.component_id) &&
     ValidCorrelationId(record.correlation_id) &&
     record.record_type > 0 &&
+    record.timestamp > 0 &&
     ValidId(record.subject.principal.principal_id) &&
     ValidId(record.object_ref.object_id) &&
     ValidPolicyVersion(record.policy_version) &&
@@ -64,6 +65,10 @@ module Audit {
 
   predicate DenyBeforeReturn(decision: SecurityDecision, record: AuditRecord) {
     decision.result == DENY &&
+    BeforeReturnAuditForDecision(decision, record)
+  }
+
+  predicate BeforeReturnAuditForDecision(decision: SecurityDecision, record: AuditRecord) {
     Authorization.RequiresAudit(decision) &&
     AuditEvidence(record) &&
     AuditRecordBindsDecision(record, decision) &&
@@ -72,6 +77,10 @@ module Audit {
 
   predicate ExistsBeforeReturnAudit(decision: SecurityDecision, records: seq<AuditRecord>) {
     exists i :: 0 <= i < |records| && DenyBeforeReturn(decision, records[i])
+  }
+
+  predicate ExistsBeforeReturnAuditForDecision(decision: SecurityDecision, records: seq<AuditRecord>) {
+    exists i :: 0 <= i < |records| && BeforeReturnAuditForDecision(decision, records[i])
   }
 
   predicate DenyWithAuditObligationSatisfiedBeforeReturn(decision: SecurityDecision, records: seq<AuditRecord>) {
@@ -85,7 +94,7 @@ module Audit {
   }
 
   predicate RequiredAuditSatisfiedForFinalResult(decision: SecurityDecision, records: seq<AuditRecord>) {
-    !Authorization.RequiresAudit(decision) || ExistsBeforeReturnAudit(decision, records)
+    !Authorization.RequiresAudit(decision) || ExistsBeforeReturnAuditForDecision(decision, records)
   }
 
   predicate HashChainTamperCondition(previous: AuditRecord, next: AuditRecord) {
@@ -115,6 +124,18 @@ module Audit {
     if audit_available then
       var record := ConstructAuditRecord(decision, next_record_id, |prior_records| + 1, true);
       AuditFinalization(DENY, decision.error_code, prior_records + [record], true)
+    else
+      AuditFinalization(DENY, MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE, prior_records, false)
+  }
+
+  function FinalizeRequiredAuditedOperation(decision: SecurityDecision, prior_records: seq<AuditRecord>, next_record_id: MfosId, audit_available: bool): AuditFinalization
+    requires Authorization.RequiresAudit(decision)
+    requires ValidCorrelationId(decision.context.correlation_id)
+    requires ValidId(next_record_id)
+  {
+    if audit_available then
+      var record := ConstructAuditRecord(decision, next_record_id, |prior_records| + 1, true);
+      AuditFinalization(decision.result, decision.error_code, prior_records + [record], true)
     else
       AuditFinalization(DENY, MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE, prior_records, false)
   }
@@ -174,7 +195,57 @@ module Audit {
     ensures !DecisionIsSuccess(FinalizeDeniedOperation(decision, prior_records, next_record_id, false).final_result)
     ensures !IsSuccessError(FinalizeDeniedOperation(decision, prior_records, next_record_id, false).final_error)
     ensures !FinalizeDeniedOperation(decision, prior_records, next_record_id, false).result_released
+    ensures FinalizeDeniedOperation(decision, prior_records, next_record_id, false).records_after == prior_records
   {
+  }
+
+  lemma INV_AUDIT_REQUIRED_TRANSITION_FAILS_CLOSED_WHEN_UNAVAILABLE(decision: SecurityDecision, prior_records: seq<AuditRecord>, next_record_id: MfosId)
+    requires Authorization.RequiresAudit(decision)
+    requires ValidCorrelationId(decision.context.correlation_id)
+    requires ValidId(next_record_id)
+    ensures FinalizeRequiredAuditedOperation(decision, prior_records, next_record_id, false).final_result == DENY
+    ensures FinalizeRequiredAuditedOperation(decision, prior_records, next_record_id, false).final_error == MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+    ensures !DecisionIsSuccess(FinalizeRequiredAuditedOperation(decision, prior_records, next_record_id, false).final_result)
+    ensures !IsSuccessError(FinalizeRequiredAuditedOperation(decision, prior_records, next_record_id, false).final_error)
+    ensures !FinalizeRequiredAuditedOperation(decision, prior_records, next_record_id, false).result_released
+    ensures FinalizeRequiredAuditedOperation(decision, prior_records, next_record_id, false).records_after == prior_records
+  {
+  }
+
+  lemma INV_AUDIT_ALLOW_WITH_AUDIT_FAILS_CLOSED_WHEN_UNAVAILABLE(decision: SecurityDecision, prior_records: seq<AuditRecord>, next_record_id: MfosId)
+    requires decision.result == ALLOW_WITH_AUDIT
+    requires Authorization.DecisionAllowsProtectedEffect(decision)
+    requires Authorization.RequiresAudit(decision)
+    requires ValidCorrelationId(decision.context.correlation_id)
+    requires ValidId(next_record_id)
+    ensures FinalizeRequiredAuditedOperation(decision, prior_records, next_record_id, false).final_result == DENY
+    ensures FinalizeRequiredAuditedOperation(decision, prior_records, next_record_id, false).final_error == MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+    ensures !DecisionIsSuccess(FinalizeRequiredAuditedOperation(decision, prior_records, next_record_id, false).final_result)
+    ensures !IsSuccessError(FinalizeRequiredAuditedOperation(decision, prior_records, next_record_id, false).final_error)
+    ensures !FinalizeRequiredAuditedOperation(decision, prior_records, next_record_id, false).result_released
+    ensures FinalizeRequiredAuditedOperation(decision, prior_records, next_record_id, false).records_after == prior_records
+  {
+  }
+
+  lemma INV_AUDIT_REQUIRED_TRANSITION_WRITES_BEFORE_RETURN_WHEN_AVAILABLE(decision: SecurityDecision, prior_records: seq<AuditRecord>, next_record_id: MfosId)
+    requires Authorization.RequiresAudit(decision)
+    requires ValidCorrelationId(decision.context.correlation_id)
+    requires ValidId(decision.subject.principal.principal_id)
+    requires ValidId(decision.object_ref.object_id)
+    requires ValidPolicyVersion(decision.policy_version)
+    requires ValidId(next_record_id)
+    ensures FinalizeRequiredAuditedOperation(decision, prior_records, next_record_id, true).final_result == decision.result
+    ensures FinalizeRequiredAuditedOperation(decision, prior_records, next_record_id, true).final_error == decision.error_code
+    ensures FinalizeRequiredAuditedOperation(decision, prior_records, next_record_id, true).result_released
+    ensures ExistsBeforeReturnAuditForDecision(decision, FinalizeRequiredAuditedOperation(decision, prior_records, next_record_id, true).records_after)
+    ensures RequiredAuditSatisfiedForFinalResult(decision, FinalizeRequiredAuditedOperation(decision, prior_records, next_record_id, true).records_after)
+  {
+    var record := ConstructAuditRecord(decision, next_record_id, |prior_records| + 1, true);
+    assert FinalizeRequiredAuditedOperation(decision, prior_records, next_record_id, true).records_after == prior_records + [record];
+    assert 0 <= |prior_records| < |prior_records + [record]|;
+    assert (prior_records + [record])[|prior_records|] == record;
+    assert BeforeReturnAuditForDecision(decision, record);
+    assert ExistsBeforeReturnAuditForDecision(decision, prior_records + [record]);
   }
 
   lemma INV_AUDIT_RECORD_HAS_REQUIRED_BINDINGS(decision: SecurityDecision, record_id: MfosId, sequence: SequenceNumber, before_return: bool)
@@ -274,7 +345,7 @@ module Audit {
   lemma INV_AUTH_FAIL_CLOSED_RESULTS_CANNOT_BYPASS_AUDIT(decision: SecurityDecision, records: seq<AuditRecord>)
     requires DecisionIsFailClosed(decision.result)
     requires Authorization.RequiresAudit(decision)
-    requires !ExistsBeforeReturnAudit(decision, records)
+    requires !ExistsBeforeReturnAuditForDecision(decision, records)
     ensures !RequiredAuditSatisfiedForFinalResult(decision, records)
   {
   }

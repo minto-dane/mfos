@@ -6,7 +6,7 @@ entry_blockers_remaining: false
 exit_blockers_remaining: false
 current_pr_merge_blockers_remaining: false
 accepted_deferred_count: 3
-closed_count: 25
+closed_count: 26
 entries:
 - gap_id: GAP-TEST-TEST-MFOS-AUTH-ALLOW-0901
   artifact_kind: test
@@ -124,7 +124,7 @@ entries:
   current_pr_merge_blocker: false
   accepted_deferred: false
   false_positive: false
-  coverage_level: C5_CONFORMANCE_LINKED
+  coverage_level: C4_VERIFIED_PROPERTY
   dafny_symbol: INV_AUTH_STALE_POLICY_VERSION_DENIED
   reason: Phase 1.2 adds or maps an explicit verified Dafny property.
   required_action: none
@@ -386,6 +386,22 @@ entries:
   false_positive: false
   coverage_level: C4_VERIFIED_PROPERTY
   dafny_symbol: INV_AUDIT_RECORD_HAS_REQUIRED_BINDINGS
+  reason: Requirement aggregate now points to verified Dafny properties for the Phase
+    1.2 auth/audit scope.
+  required_action: none
+- gap_id: GAP-REQ-MFOS-REQ-AUDIT-0005
+  artifact_kind: requirement
+  artifact_id: MFOS-REQ-AUDIT-0005
+  owner_domain: auth_audit_integration
+  previous_classification: fix_before_next_merge
+  normalized_disposition: closed_by_linked_verified_test_properties
+  phase_1_2_entry_blocker: false
+  phase_1_2_exit_blocker: false
+  current_pr_merge_blocker: false
+  accepted_deferred: false
+  false_positive: false
+  coverage_level: C4_VERIFIED_PROPERTY
+  dafny_symbol: INV_AUDIT_ALLOW_WITH_AUDIT_FAILS_CLOSED_WHEN_UNAVAILABLE
   reason: Requirement aggregate now points to verified Dafny properties for the Phase
     1.2 auth/audit scope.
   required_action: none

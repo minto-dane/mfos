@@ -61,6 +61,17 @@ requirements:
     verification_status: verified
     evidence_ref: EV-MFOS-REQ-AUDIT-0002
     coverage_level: C4_VERIFIED_PROPERTY
+- requirement_id: MFOS-REQ-AUDIT-0005
+  domain: auth_audit_integration
+  coverage_level: C4_VERIFIED_PROPERTY
+  phase_1_2_exit_blocker: false
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/audit.dfy
+    dafny_symbol: INV_AUDIT_ALLOW_WITH_AUDIT_FAILS_CLOSED_WHEN_UNAVAILABLE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-REQ-AUDIT-0005
+    coverage_level: C4_VERIFIED_PROPERTY
 - requirement_id: MFOS-REQ-AUDIT-0101
   domain: audit
   coverage_level: C4_VERIFIED_PROPERTY

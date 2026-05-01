@@ -18,6 +18,7 @@ expected_audit_sequence: &id003
 - record_type: SECURITY_DECISION
   decision: ALLOW
   reason_code: OK
+  timestamp_present: true
   before_return: false
 expected_state_transitions: &id002
 - object: PHASE09_OBJECT

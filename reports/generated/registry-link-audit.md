@@ -4,9 +4,9 @@ This report is generated from the current registry contents. It does not claim t
 
 ## Summary
 
-- Requirements: `210`
-- Tests: `451`
-- Evidence records: `265`
+- Requirements: `248`
+- Tests: `465`
+- Evidence records: `309`
 - Claims: `9`
 - Missing cross-registry links: `0`
 
