@@ -111,6 +111,11 @@ Minor advisory comments were also handled where safe:
 - Dataset/Catalog coverage generator no longer labels the cumulative
   `184 verified, 0 errors` result as Phase 1.3-only.
 
+The follow-up CodeRabbit review on commit `d341251` raised two validator-quality
+Majors. Both are addressed locally: the Phase 1.4.1 coverage checker now reports
+missing regenerated files as validation errors before `filecmp.cmp()`, and it
+rejects unknown row, mapping, and aggregate coverage levels explicitly.
+
 CodeRabbit re-review must be requested after this remediation is pushed.
 
 ## Scope Review

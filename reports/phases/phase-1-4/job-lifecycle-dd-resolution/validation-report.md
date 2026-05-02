@@ -37,6 +37,8 @@ dafny_verification_passed: true
 phase_1_4_1_coverage_validator_added: true
 bound_dd_decision_structural_gate_added: true
 broad_parent_requirement_overclaim_gate_added: true
+missing_generated_traceability_error_gate_added: true
+unknown_coverage_level_error_gate_added: true
 python_loader_contains_job_dd_semantics: false
 ```
 

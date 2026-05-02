@@ -95,6 +95,8 @@ def compare_generated() -> list[str]:
             expected = tmp_trace / name
             if not actual.exists():
                 errors.append(f"missing generated traceability file: {actual}")
+            elif not expected.exists():
+                errors.append(f"coverage generator did not produce expected traceability file: {expected}")
             elif not filecmp.cmp(actual, expected, shallow=False):
                 errors.append(f"stale generated traceability file: {actual}")
     return errors
@@ -165,6 +167,9 @@ def validate_rows(source_name: str, rows: list[dict[str, Any]], errors: list[str
         row_id = row_name(row)
         row_level = str(row.get("coverage_level"))
         mappings = row.get("coverage_mappings") or []
+        if row_level not in LEVEL_RANK:
+            errors.append(f"{source_name}:{row_id}: unknown coverage level {row_level}")
+            continue
         if source_name == "requirement-to-dafny.yml":
             req_id = str(row.get("requirement_id"))
             is_phase_subclaim = bool(row.get("subclaim_id"))
@@ -189,6 +194,8 @@ def validate_rows(source_name: str, rows: list[dict[str, Any]], errors: list[str
                 errors.append(f"{source_name}:{row_id}: C4/C5 mapping not verified")
             if not mapping.get("evidence_ref"):
                 errors.append(f"{source_name}:{row_id}: semantic mapping lacks evidence_ref")
+            if str(mapping.get("coverage_level")) not in LEVEL_RANK:
+                errors.append(f"{source_name}:{row_id}: mapping has unknown coverage level {mapping.get('coverage_level')}")
             if level_rank(mapping.get("coverage_level")) < level_rank(row_level):
                 errors.append(f"{source_name}:{row_id}: mapping coverage level below row coverage level")
             module_path = ROOT / str(mapping.get("dafny_module", ""))
@@ -215,6 +222,10 @@ def validate_aggregate(source_name: str, data: dict[str, Any], errors: list[str]
     if not isinstance(rows, list):
         errors.append(f"{source_name}: rows must be a list")
         return
+    if rows and "coverage_level" not in data:
+        errors.append(f"{source_name}: aggregate coverage_level is required when rows are present")
+    elif "coverage_level" in data and str(data.get("coverage_level")) not in LEVEL_RANK:
+        errors.append(f"{source_name}: unknown aggregate coverage level {data.get('coverage_level')}")
     worst = min((str(row.get("coverage_level")) for row in rows), key=lambda level: LEVEL_RANK.get(level, -1)) if rows else "C0_NONE"
     if level_rank(data.get("coverage_level")) > level_rank(worst):
         errors.append(f"{source_name}: aggregate {data.get('coverage_level')} exceeds child aggregate {worst}")
