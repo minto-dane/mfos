@@ -102,6 +102,12 @@ broad_artifact_hygiene_allowlist_removed: true
 repository_information_architecture_refactor_in_progress: true
 reports_current_domain_sharded: true
 reports_current_top_level_domain_reports_allowed: false
+coderabbit_advisory_configured: true
+coderabbit_required_now: false
+phase_1_coderabbit_mode: advisory
+phase_1_4_1_later_coderabbit_expected: request_or_record_or_skip_with_reason
+phase_2_coderabbit_hard_gate_earliest: implementation_affecting_prs_after_advisory_runs
+phase_3_coderabbit_all_nontrivial_prs_possible: true
 phase_1_semantic_evaluator_status: non_production_dafny_only
 phase_1_portable_semantic_core_allowed: false
 phase_1_rust_semantic_core_allowed: false
@@ -134,6 +140,24 @@ next_phase: review Phase 1.4 Job/Spool/Operator planning package; implementation
 No production nucleus, service, PXM, Guard, or other OS-body implementation was
 started in Phase 0.6, Phase 0.7, naming-safety refactor, Phase 0.8, or Phase
 0.9.
+
+## CodeRabbit Advisory Review Policy
+
+CodeRabbit is configured for advisory automatic review on PRs targeting `dev`
+and release branches. Draft PRs are skipped by default; authors may request a
+manual review when early feedback is useful.
+
+During Phase 1, CodeRabbit is not a required branch-protection gate and must not
+be the sole quality gate. Phase 1.4.1 and later Phase 1 PRs should request or
+record CodeRabbit review, or explicitly record why it was skipped, but merge is
+not blocked solely by CodeRabbit absence or findings.
+
+Phase 2 is the earliest recommended point to hard-require CodeRabbit for
+implementation-affecting PRs, after several successful advisory runs show
+stable, low-noise behavior and after the repository owner explicitly updates
+branch protection. Phase 3 and later may require CodeRabbit for all nontrivial
+PRs if the advisory and Phase 2 periods remain stable. CodeRabbit must never
+become the sole quality gate.
 
 ## Architecture Portability And x86-64 Target Profiles
 

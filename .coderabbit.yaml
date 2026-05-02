@@ -1,0 +1,63 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: "en-US"
+
+reviews:
+  profile: "chill"
+  request_changes_workflow: false
+  review_status: true
+  review_details: true
+  commit_status: true
+  fail_commit_status: false
+  high_level_summary: true
+  in_progress_fortune: false
+  poem: false
+
+  auto_review:
+    enabled: true
+    drafts: false
+    auto_incremental_review: true
+    auto_pause_after_reviewed_commits: 5
+    base_branches:
+      - "dev"
+      - "release"
+      - "release/.*"
+      - "release-.*"
+    ignore_title_keywords:
+      - "[skip coderabbit]"
+      - "[skip review]"
+
+  path_filters:
+    - "!tools/**"
+    - "!target/**"
+    - "!dist/**"
+    - "!tmp/**"
+    - "!reference-cache/**"
+    - "!sources/_cache/**"
+    - "!**/__pycache__/**"
+    - "!**/*.pyc"
+
+  path_instructions:
+    - path: "**"
+      instructions: >
+        MFOS is in Phase 1. CodeRabbit review is advisory only and must not be
+        treated as the sole merge gate. Prioritize correctness, source-grounding,
+        artifact lifecycle, validator coverage, and boundary preservation.
+    - path: "formal/executable-semantics/**"
+      instructions: >
+        Do not suggest Rust semantic-core work, generated production code,
+        hosted daemon behavior, or production implementation. Dafny artifacts
+        remain non-production executable-semantics evidence.
+    - path: "reports/phases/phase-1-4/**"
+      instructions: >
+        Phase 1.4 is planning-only unless a later reviewed implementation gate
+        explicitly changes scope. Flag accidental implementation, generated
+        Phase 1.4 traceability, hosted daemons, semantic-runner commands, and
+        service behavior.
+    - path: "implementation/**"
+      instructions: >
+        Implementation roots are gated. Flag production code, service code,
+        hosted daemons, Rust semantic-core work, semantic-runner commands, and
+        Phase 1.4 implementation artifacts.
+
+chat:
+  auto_reply: true
