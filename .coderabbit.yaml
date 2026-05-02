@@ -27,7 +27,7 @@ reviews:
       - "[skip review]"
 
   path_filters:
-    - "!.tools/**"
+    - "!tools/**"
     - "!target/**"
     - "!dist/**"
     - "!tmp/**"
