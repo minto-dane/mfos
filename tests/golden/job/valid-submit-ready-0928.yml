@@ -1,0 +1,45 @@
+golden_id: GOLDEN-MFOS-JOB-VALID-SUBMIT-READY-0928
+golden_version: 1
+fixture_ref: tests/fixtures/job/valid-submit-ready-0928.yml
+normalized_input:
+  fixture_id: FIXTURE-MFOS-JOB-VALID-SUBMIT-READY-0928
+  operation: VALID-SUBMIT-READY
+  deterministic_seed: SEED-MFOS-PHASE14-0928
+expected_normalized_output:
+  outcome: EXPECTED_SUCCESS
+  final_state: READY
+expected_decisions: &decisions
+- decision_id: DECISION-MFOS-JOB-SUBMIT-0928
+  result: ALLOW
+  policy_version: 1
+  obligations:
+  - AUDIT_SECURITY_DECISION
+expected_audit_sequence: &audit
+- record_type: SECURITY_DECISION
+  decision: ALLOW
+  reason_code: OK
+  before_return: false
+expected_state_transitions: &transitions
+- object: JOB-LIFECYCLE
+  from: SUBMITTED
+  action: VALIDATE_AND_READY
+  to: READY
+  reason: EXPECTED
+expected_final_state: READY
+expected_failure_mode: null
+deterministic: true
+oracle:
+  oracle_id: ORACLE-MFOS-JOB-VALID-SUBMIT-READY-0928
+  oracle_version: 1
+  fixture_ref: tests/fixtures/job/valid-submit-ready-0928.yml
+  expected_decisions: *decisions
+  expected_state_transitions: *transitions
+  expected_audit_records: *audit
+  expected_failure:
+    error_code: null
+    fail_closed: false
+  expected_final_state: READY
+  evidence_required:
+  - EV-MFOS-JOB-VALID-SUBMIT-READY-0928
+  status: draft
+status: draft

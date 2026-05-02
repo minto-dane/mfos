@@ -1,0 +1,19 @@
+schema_version: 1
+phase: phase-1.4.1
+formal_claims:
+- claim_id: MFOS-FC-AUTHORIZATION-NO-HANDLE-WITHOUT-ALLOW
+  domain: dd_resolution
+  coverage_level: C3_FULL_SEMANTIC
+  proof_claimed: false
+  proof_artifact_refs: []
+  accepted_deferred: true
+  reason: Phase 1.4.1 links Job/DD semantics to verified Dafny lemmas, but does not
+    add formal proof artifacts for this claim.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_DD_DENY_PRODUCES_NO_HANDLE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/phases/phase-1-4/job-lifecycle-dd-resolution/coverage-report.md
+    coverage_level: C3_FULL_SEMANTIC
+coverage_level: C3_FULL_SEMANTIC

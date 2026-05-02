@@ -1,0 +1,58 @@
+fixture_id: FIXTURE-MFOS-JOB-DD-MALFORMED-DSN-0920
+fixture_version: 1
+description: DD malformed symbolic DSN fails closed
+target_specs:
+- docs/design/specs/09-job-spool.md
+target_requirements:
+- MFOS-REQ-JOB-0102
+preconditions:
+- Symbolic DD target carries a malformed non-canonical dataset name.
+semantic_facts:
+  dafny_property: INV_JOB_DD_MALFORMED_DSN_FAILS
+  job_state: READY
+  effective_principal: PRIN-MFOS-JOB-ALICE
+  dd_operation: OP_READ
+  dd_object_ref: OBJ-MFOS-JOB-DD-MALFORMED-0920
+  catalog_state: COMMITTED
+  authorization_result: ALLOW
+  dataset_name_shape: malformed_symbolic_dsn
+  handle_expected: false
+initial_state:
+  clock: T0
+  security_epoch: 1
+  policy_version: 1
+  job_context:
+    job_id: JOB-MFOS-PHASE14-0920
+    state: READY
+    effective_principal: PRIN-MFOS-JOB-ALICE
+  dd:
+    dd_name: INPUT
+    target_dsn: INVALID..MFOS..DSN
+    object_ref: OBJ-MFOS-JOB-DD-MALFORMED-0920
+    operation: OP_READ
+  catalog_resolution:
+    status: COMMITTED
+    symbolic_dsn_valid: false
+    object_ref: OBJ-MFOS-JOB-DD-MALFORMED-0920
+  authorization_decision:
+    subject_principal: PRIN-MFOS-JOB-ALICE
+    object_ref: OBJ-MFOS-JOB-DD-MALFORMED-0920
+    operation: OP_READ
+    result: ALLOW
+    policy_version: 1
+  objects:
+  - object_ref: OBJ-MFOS-JOB-DD-MALFORMED-0920
+    generation: 1
+inputs:
+- input_id: INPUT-MFOS-JOB-DD-MALFORMED-0920
+  operation: DD-MALFORMED-DSN
+  deterministic_seed: SEED-MFOS-PHASE14-0920
+expected_oracle: tests/golden/job/dd-malformed-dsn-0920.yml
+expected_evidence:
+- EV-MFOS-JOB-DD-MALFORMED-DSN-0920
+not_allowed:
+- production_claim
+- external_compatibility_claim
+- posix_file_model
+- host_os_semantics_dependency
+status: draft

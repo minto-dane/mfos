@@ -1,0 +1,45 @@
+golden_id: GOLDEN-MFOS-JOB-DATASET-OPEN-BEFORE-PRINCIPAL-0927
+golden_version: 1
+fixture_ref: tests/fixtures/job/dataset-open-before-principal-0927.yml
+normalized_input:
+  fixture_id: FIXTURE-MFOS-JOB-DATASET-OPEN-BEFORE-PRINCIPAL-0927
+  operation: DATASET-OPEN-BEFORE-PRINCIPAL
+  deterministic_seed: SEED-MFOS-PHASE14-0927
+expected_normalized_output:
+  outcome: EXPECTED_FAIL_CLOSED
+  final_state: FAILED
+expected_decisions: &decisions
+- decision_id: DECISION-MFOS-JOB-NO-PRINCIPAL-0927
+  result: DENY
+  policy_version: 1
+  obligations:
+  - AUDIT_SECURITY_DECISION
+expected_audit_sequence: &audit
+- record_type: SECURITY_DECISION
+  decision: DENY
+  reason_code: MFOS_ERR_UNAUTHENTICATED
+  before_return: true
+expected_state_transitions: &transitions
+- object: JOB-DD-RESOLUTION
+  from: READY
+  action: OPEN_DATASET
+  to: FAILED
+  reason: MFOS_ERR_UNAUTHENTICATED
+expected_final_state: FAILED
+expected_failure_mode: MFOS_ERR_UNAUTHENTICATED
+deterministic: true
+oracle:
+  oracle_id: ORACLE-MFOS-JOB-DATASET-OPEN-BEFORE-PRINCIPAL-0927
+  oracle_version: 1
+  fixture_ref: tests/fixtures/job/dataset-open-before-principal-0927.yml
+  expected_decisions: *decisions
+  expected_state_transitions: *transitions
+  expected_audit_records: *audit
+  expected_failure:
+    error_code: MFOS_ERR_UNAUTHENTICATED
+    fail_closed: true
+  expected_final_state: FAILED
+  evidence_required:
+  - EV-MFOS-JOB-DATASET-OPEN-BEFORE-PRINCIPAL-0927
+  status: draft
+status: draft

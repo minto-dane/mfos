@@ -1,0 +1,45 @@
+golden_id: GOLDEN-MFOS-JOB-STALE-HANDLE-POLICY-0925
+golden_version: 1
+fixture_ref: tests/fixtures/job/stale-handle-policy-0925.yml
+normalized_input:
+  fixture_id: FIXTURE-MFOS-JOB-STALE-HANDLE-POLICY-0925
+  operation: STALE-HANDLE-POLICY
+  deterministic_seed: SEED-MFOS-PHASE14-0925
+expected_normalized_output:
+  outcome: EXPECTED_FAIL_CLOSED
+  final_state: FAILED
+expected_decisions: &decisions
+- decision_id: DECISION-MFOS-JOB-STALE-HANDLE-0925
+  result: DENY
+  policy_version: 2
+  obligations:
+  - AUDIT_SECURITY_DECISION
+expected_audit_sequence: &audit
+- record_type: SECURITY_DECISION
+  decision: DENY
+  reason_code: MFOS_ERR_POLICY_VERSION_MISMATCH
+  before_return: true
+expected_state_transitions: &transitions
+- object: JOB-DD-RESOLUTION
+  from: STEP_RUNNING
+  action: VALIDATE_HANDLE
+  to: FAILED
+  reason: MFOS_ERR_POLICY_VERSION_MISMATCH
+expected_final_state: FAILED
+expected_failure_mode: MFOS_ERR_POLICY_VERSION_MISMATCH
+deterministic: true
+oracle:
+  oracle_id: ORACLE-MFOS-JOB-STALE-HANDLE-POLICY-0925
+  oracle_version: 1
+  fixture_ref: tests/fixtures/job/stale-handle-policy-0925.yml
+  expected_decisions: *decisions
+  expected_state_transitions: *transitions
+  expected_audit_records: *audit
+  expected_failure:
+    error_code: MFOS_ERR_POLICY_VERSION_MISMATCH
+    fail_closed: true
+  expected_final_state: FAILED
+  evidence_required:
+  - EV-MFOS-JOB-STALE-HANDLE-POLICY-0925
+  status: draft
+status: draft

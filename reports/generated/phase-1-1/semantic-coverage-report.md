@@ -10,7 +10,7 @@ Coverage levels are now derived from explicit per-test mappings; domain-wide sym
 - `phase_1_1_formal_claim_coverage_complete`: `false`
 - `negative_semantics_complete`: `false`
 - `audit_deny_before_return_transition_backed`: `true`
-- `dafny_verification_result`: `136 verified, 0 errors`
+- `dafny_verification_result`: `184 verified, 0 errors`
 
 ## Coverage Distribution
 

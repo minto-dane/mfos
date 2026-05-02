@@ -10,6 +10,11 @@ target_requirements:
 preconditions:
 - All subjects, policy versions, object generations, and dependency states are symbolic
   and deterministic.
+semantic_facts:
+  dafny_property: INV_JOB_SUBMIT_NO_PRINCIPAL_FAILS_CLOSED
+  submit_decision: DENY
+  effective_principal: null
+  handle_expected: false
 initial_state:
   clock: T0
   security_epoch: 1

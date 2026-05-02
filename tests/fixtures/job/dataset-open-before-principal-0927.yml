@@ -1,0 +1,57 @@
+fixture_id: FIXTURE-MFOS-JOB-DATASET-OPEN-BEFORE-PRINCIPAL-0927
+fixture_version: 1
+description: dataset open before effective principal is denied
+target_specs:
+- docs/design/specs/09-job-spool.md
+target_requirements:
+- MFOS-REQ-JOB-0101
+- MFOS-REQ-JOB-0102
+preconditions:
+- Symbolic job context has no established effective principal before DD open.
+semantic_facts:
+  dafny_property: INV_JOB_CONTEXT_EFFECTIVE_PRINCIPAL_BEFORE_OPEN
+  job_state: READY
+  effective_principal: null
+  dd_operation: OP_READ
+  dd_object_ref: OBJ-MFOS-JOB-NO-PRINCIPAL-0927
+  catalog_state: COMMITTED
+  authorization_result: ALLOW
+  handle_expected: false
+initial_state:
+  clock: T0
+  security_epoch: 1
+  policy_version: 1
+  job_context:
+    job_id: JOB-MFOS-PHASE14-0927
+    state: READY
+    effective_principal: null
+  dd:
+    dd_name: INPUT
+    object_ref: OBJ-MFOS-JOB-NO-PRINCIPAL-0927
+    operation: OP_READ
+  catalog_resolution:
+    status: COMMITTED
+    object_ref: OBJ-MFOS-JOB-NO-PRINCIPAL-0927
+    catalog_generation: 1
+  authorization_decision:
+    subject_principal: null
+    object_ref: OBJ-MFOS-JOB-NO-PRINCIPAL-0927
+    operation: OP_READ
+    result: ALLOW
+    policy_version: 1
+  objects:
+  - object_ref: OBJ-MFOS-JOB-NO-PRINCIPAL-0927
+    generation: 1
+inputs:
+- input_id: INPUT-MFOS-JOB-NO-PRINCIPAL-0927
+  operation: DATASET-OPEN-BEFORE-PRINCIPAL
+  deterministic_seed: SEED-MFOS-PHASE14-0927
+expected_oracle: tests/golden/job/dataset-open-before-principal-0927.yml
+expected_evidence:
+- EV-MFOS-JOB-DATASET-OPEN-BEFORE-PRINCIPAL-0927
+not_allowed:
+- production_claim
+- external_compatibility_claim
+- host_os_semantics_dependency
+- dataset_open_without_effective_principal
+status: draft

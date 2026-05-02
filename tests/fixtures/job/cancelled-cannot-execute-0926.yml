@@ -1,0 +1,46 @@
+fixture_id: FIXTURE-MFOS-JOB-CANCELLED-CANNOT-EXECUTE-0926
+fixture_version: 1
+description: cancelled job cannot execute further steps
+target_specs:
+- docs/design/specs/09-job-spool.md
+target_requirements:
+- MFOS-REQ-JOB-0101
+preconditions:
+- Symbolic job state is CANCELLED before a step execution request.
+semantic_facts:
+  dafny_property: INV_JOB_CANCELLED_CANNOT_EXECUTE_FURTHER
+  job_state: CANCELLED
+  effective_principal: PRIN-MFOS-JOB-ALICE
+  attempted_transition: EXECUTE_STEP
+  next_state_allowed: false
+initial_state:
+  clock: T0
+  security_epoch: 1
+  policy_version: 1
+  job_context:
+    job_id: JOB-MFOS-PHASE14-0926
+    state: CANCELLED
+    effective_principal: PRIN-MFOS-JOB-ALICE
+  step:
+    step_id: STEP-MFOS-PHASE14-0926
+    state: STEP_READY
+  attempted_transition:
+    from: CANCELLED
+    action: EXECUTE_STEP
+    to: STEP_RUNNING
+  objects:
+  - object_ref: OBJ-MFOS-JOB-CANCELLED-0926
+    generation: 1
+inputs:
+- input_id: INPUT-MFOS-JOB-CANCELLED-0926
+  operation: CANCELLED-CANNOT-EXECUTE
+  deterministic_seed: SEED-MFOS-PHASE14-0926
+expected_oracle: tests/golden/job/cancelled-cannot-execute-0926.yml
+expected_evidence:
+- EV-MFOS-JOB-CANCELLED-CANNOT-EXECUTE-0926
+not_allowed:
+- production_claim
+- external_compatibility_claim
+- host_os_semantics_dependency
+- hosted_daemon_behavior
+status: draft

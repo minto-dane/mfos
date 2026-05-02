@@ -4,11 +4,14 @@ The structural freeze remains valid. The semantic freeze is conditional.
 
 Immediate downgrade:
 
-- Phase 1 may load and validate artifacts only.
+- Phase 1 may load and validate artifacts and may run reviewed non-production
+  Dafny executable semantics that are explicitly kept out of production
+  binaries and semantic-runner command paths.
 - Phase 1 may not implement Portable Semantic Core behavior, semantic
   evaluator logic, semantic runner commands, hosted daemons, or production
   services.
-- `09-job-spool` is blocked for semantic evaluator work until the
+- `09-job-spool` remains blocked for semantic evaluator, semantic runner, and
+  production implementation work until the
   external-looking control-stream grammar and MFOS-owned JCL/DD-style
   identifiers are refactored or explicitly re-bounded.
 

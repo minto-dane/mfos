@@ -1,0 +1,12 @@
+schema_version: 1
+phase: phase-1.4.1
+coverage_levels:
+  job_lifecycle: C4_VERIFIED_PROPERTY
+  effective_principal: C4_VERIFIED_PROPERTY
+  dd_resolution: C4_VERIFIED_PROPERTY
+  required_tests: C5_CONFORMANCE_LINKED
+  fixtures: C5_CONFORMANCE_LINKED
+  requirements: C4_VERIFIED_PROPERTY
+  formal_claims: C3_FULL_SEMANTIC
+c5_scope: required scenario and fixture rows only
+aggregate_c5_overclaim_remaining: false

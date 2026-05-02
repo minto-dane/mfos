@@ -1,0 +1,47 @@
+fixture_id: FIXTURE-MFOS-JOB-STALE-HANDLE-POLICY-0925
+fixture_version: 1
+description: stale dataset handle after policy change fails in job context
+target_specs:
+- docs/design/specs/08-dataset-catalog.md
+- docs/design/specs/09-job-spool.md
+target_requirements:
+- MFOS-REQ-JOB-0102
+preconditions:
+- Symbolic dataset handle policy version differs from the active job policy version.
+semantic_facts:
+  dafny_property: INV_JOB_DD_STALE_HANDLE_AFTER_POLICY_CHANGE_FAILS
+  job_state: STEP_RUNNING
+  effective_principal: PRIN-MFOS-JOB-ALICE
+  handle_policy_version: 1
+  active_policy_version: 2
+  handle_expected: false
+initial_state:
+  clock: T0
+  security_epoch: 2
+  policy_version: 2
+  job_context:
+    job_id: JOB-MFOS-PHASE14-0925
+    state: STEP_RUNNING
+    effective_principal: PRIN-MFOS-JOB-ALICE
+  dataset_handle:
+    handle_id: HANDLE-MFOS-JOB-STALE-0925
+    object_ref: OBJ-MFOS-JOB-STALE-HANDLE-0925
+    policy_version: 1
+    dataset_generation: 1
+  active_policy_version: 2
+  objects:
+  - object_ref: OBJ-MFOS-JOB-STALE-HANDLE-0925
+    generation: 1
+inputs:
+- input_id: INPUT-MFOS-JOB-STALE-HANDLE-0925
+  operation: STALE-HANDLE-POLICY
+  deterministic_seed: SEED-MFOS-PHASE14-0925
+expected_oracle: tests/golden/job/stale-handle-policy-0925.yml
+expected_evidence:
+- EV-MFOS-JOB-STALE-HANDLE-POLICY-0925
+not_allowed:
+- production_claim
+- external_compatibility_claim
+- host_os_semantics_dependency
+- stale_handle_as_success
+status: draft
