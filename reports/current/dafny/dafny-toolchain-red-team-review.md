@@ -21,7 +21,7 @@ Minor:
 - `scripts/validate-dafny-semantics.sh --require-dafny` fails when Dafny is
   unavailable and succeeds only after the verifier runs.
 - The verification command covers `formal/executable-semantics/dafny/modules/*.dfy`.
-- The current module set verifies with `136 verified, 0 errors`.
+- The current module set verifies with `184 verified, 0 errors`.
 - No case-only duplicate Dafny files remain in the canonical module path.
 - Python loader/harness tooling remains nonsemantic.
 - No Rust semantic-core, production code, hosted daemon, semantic-runner

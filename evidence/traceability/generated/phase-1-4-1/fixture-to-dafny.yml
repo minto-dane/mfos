@@ -1,0 +1,225 @@
+schema_version: 1
+phase: phase-1.4.1
+fixtures:
+- fixture_ref: tests/fixtures/job/valid-submit-ready-0928.yml
+  oracle_ref: tests/golden/job/valid-submit-ready-0928.yml
+  golden_ref: tests/golden/job/valid-submit-ready-0928.yml
+  test_id: TEST-MFOS-JOB-VALID-SUBMIT-READY-0928
+  domain: job_lifecycle
+  coverage_level: C5_CONFORMANCE_LINKED
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_VALID_SUBMIT_REACHES_READY
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-VALID-SUBMIT-READY-0928
+    coverage_level: C5_CONFORMANCE_LINKED
+- fixture_ref: tests/fixtures/job/invalid-lifecycle-0910.yml
+  oracle_ref: tests/golden/job/invalid-lifecycle-0910.yml
+  golden_ref: tests/golden/job/invalid-lifecycle-0910.yml
+  test_id: NEG-MFOS-JOB-INVALID-LIFECYCLE-0910
+  domain: job_lifecycle
+  coverage_level: C5_CONFORMANCE_LINKED
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_INVALID_LIFECYCLE_REJECTED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-INVALID-LIFECYCLE-0910
+    coverage_level: C5_CONFORMANCE_LINKED
+- fixture_ref: tests/fixtures/job/cancelled-cannot-execute-0926.yml
+  oracle_ref: tests/golden/job/cancelled-cannot-execute-0926.yml
+  golden_ref: tests/golden/job/cancelled-cannot-execute-0926.yml
+  test_id: NEG-MFOS-JOB-CANCELLED-CANNOT-EXECUTE-0926
+  domain: job_lifecycle
+  coverage_level: C5_CONFORMANCE_LINKED
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_CANCELLED_CANNOT_EXECUTE_FURTHER
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-CANCELLED-CANNOT-EXECUTE-0926
+    coverage_level: C5_CONFORMANCE_LINKED
+- fixture_ref: tests/fixtures/job/principal-before-open-0904.yml
+  oracle_ref: tests/golden/job/principal-before-open-0904.yml
+  golden_ref: tests/golden/job/principal-before-open-0904.yml
+  test_id: TEST-MFOS-JOB-PRINCIPAL-BEFORE-OPEN-0904
+  domain: effective_principal
+  coverage_level: C5_CONFORMANCE_LINKED
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_EFFECTIVE_PRINCIPAL_BEFORE_OPEN
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-PRINCIPAL-BEFORE-OPEN-0904
+    coverage_level: C5_CONFORMANCE_LINKED
+- fixture_ref: tests/fixtures/job/submit-no-principal-0903.yml
+  oracle_ref: tests/golden/job/submit-no-principal-0903.yml
+  golden_ref: tests/golden/job/submit-no-principal-0903.yml
+  test_id: NEG-MFOS-JOB-SUBMIT-NO-PRINCIPAL-0903
+  domain: effective_principal
+  coverage_level: C5_CONFORMANCE_LINKED
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_SUBMIT_NO_PRINCIPAL_FAILS_CLOSED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-SUBMIT-NO-PRINCIPAL-0903
+    coverage_level: C5_CONFORMANCE_LINKED
+- fixture_ref: tests/fixtures/job/dataset-open-before-principal-0927.yml
+  oracle_ref: tests/golden/job/dataset-open-before-principal-0927.yml
+  golden_ref: tests/golden/job/dataset-open-before-principal-0927.yml
+  test_id: NEG-MFOS-JOB-DATASET-OPEN-BEFORE-PRINCIPAL-0927
+  domain: effective_principal
+  coverage_level: C5_CONFORMANCE_LINKED
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_CONTEXT_EFFECTIVE_PRINCIPAL_BEFORE_OPEN
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-DATASET-OPEN-BEFORE-PRINCIPAL-0927
+    coverage_level: C5_CONFORMANCE_LINKED
+- fixture_ref: tests/fixtures/job/dd-catalog-resolution-0905.yml
+  oracle_ref: tests/golden/job/dd-catalog-resolution-0905.yml
+  golden_ref: tests/golden/job/dd-catalog-resolution-0905.yml
+  test_id: TEST-MFOS-JOB-DD-CATALOG-RESOLUTION-0905
+  domain: dd_resolution
+  coverage_level: C5_CONFORMANCE_LINKED
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_DD_SUCCESS_CREATES_BOUND_DATASET_HANDLE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-DD-CATALOG-RESOLUTION-0905
+    coverage_level: C5_CONFORMANCE_LINKED
+- fixture_ref: tests/fixtures/job/dd-authorization-0906.yml
+  oracle_ref: tests/golden/job/dd-authorization-0906.yml
+  golden_ref: tests/golden/job/dd-authorization-0906.yml
+  test_id: TEST-MFOS-JOB-DD-AUTHORIZATION-0906
+  domain: dd_resolution
+  coverage_level: C5_CONFORMANCE_LINKED
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_DD_RESOLUTION_THROUGH_CATALOG_AND_AUTH
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-DD-AUTHORIZATION-0906
+    coverage_level: C5_CONFORMANCE_LINKED
+- fixture_ref: tests/fixtures/job/dd-catalog-bypass-denied-0918.yml
+  oracle_ref: tests/golden/job/dd-catalog-bypass-denied-0918.yml
+  golden_ref: tests/golden/job/dd-catalog-bypass-denied-0918.yml
+  test_id: NEG-MFOS-JOB-DD-CATALOG-BYPASS-DENIED-0918
+  domain: dd_resolution
+  coverage_level: C5_CONFORMANCE_LINKED
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_DD_RESOLUTION_CANNOT_BYPASS_CATALOG
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-DD-CATALOG-BYPASS-DENIED-0918
+    coverage_level: C5_CONFORMANCE_LINKED
+- fixture_ref: tests/fixtures/job/dd-authorization-bypass-denied-0919.yml
+  oracle_ref: tests/golden/job/dd-authorization-bypass-denied-0919.yml
+  golden_ref: tests/golden/job/dd-authorization-bypass-denied-0919.yml
+  test_id: NEG-MFOS-JOB-DD-AUTHORIZATION-BYPASS-DENIED-0919
+  domain: dd_resolution
+  coverage_level: C5_CONFORMANCE_LINKED
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_DD_RESOLUTION_CANNOT_BYPASS_AUTHORIZATION
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-DD-AUTHORIZATION-BYPASS-DENIED-0919
+    coverage_level: C5_CONFORMANCE_LINKED
+- fixture_ref: tests/fixtures/job/dd-malformed-dsn-0920.yml
+  oracle_ref: tests/golden/job/dd-malformed-dsn-0920.yml
+  golden_ref: tests/golden/job/dd-malformed-dsn-0920.yml
+  test_id: NEG-MFOS-JOB-DD-MALFORMED-DSN-0920
+  domain: dd_resolution
+  coverage_level: C5_CONFORMANCE_LINKED
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_DD_MALFORMED_DSN_FAILS
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-DD-MALFORMED-DSN-0920
+    coverage_level: C5_CONFORMANCE_LINKED
+- fixture_ref: tests/fixtures/job/dd-catalog-uncommitted-0921.yml
+  oracle_ref: tests/golden/job/dd-catalog-uncommitted-0921.yml
+  golden_ref: tests/golden/job/dd-catalog-uncommitted-0921.yml
+  test_id: NEG-MFOS-JOB-DD-CATALOG-UNCOMMITTED-0921
+  domain: dd_resolution
+  coverage_level: C5_CONFORMANCE_LINKED
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_DD_UNCOMMITTED_CATALOG_FAILS
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-DD-CATALOG-UNCOMMITTED-0921
+    coverage_level: C5_CONFORMANCE_LINKED
+- fixture_ref: tests/fixtures/job/dd-catalog-rolled-back-0922.yml
+  oracle_ref: tests/golden/job/dd-catalog-rolled-back-0922.yml
+  golden_ref: tests/golden/job/dd-catalog-rolled-back-0922.yml
+  test_id: NEG-MFOS-JOB-DD-CATALOG-ROLLED-BACK-0922
+  domain: dd_resolution
+  coverage_level: C5_CONFORMANCE_LINKED
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_DD_ROLLED_BACK_CATALOG_FAILS
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-DD-CATALOG-ROLLED-BACK-0922
+    coverage_level: C5_CONFORMANCE_LINKED
+- fixture_ref: tests/fixtures/job/dd-catalog-partial-journal-0923.yml
+  oracle_ref: tests/golden/job/dd-catalog-partial-journal-0923.yml
+  golden_ref: tests/golden/job/dd-catalog-partial-journal-0923.yml
+  test_id: NEG-MFOS-JOB-DD-CATALOG-PARTIAL-JOURNAL-0923
+  domain: dd_resolution
+  coverage_level: C5_CONFORMANCE_LINKED
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_DD_PARTIAL_JOURNAL_CATALOG_FAILS
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-DD-CATALOG-PARTIAL-JOURNAL-0923
+    coverage_level: C5_CONFORMANCE_LINKED
+- fixture_ref: tests/fixtures/job/dd-catalog-integrity-failed-0924.yml
+  oracle_ref: tests/golden/job/dd-catalog-integrity-failed-0924.yml
+  golden_ref: tests/golden/job/dd-catalog-integrity-failed-0924.yml
+  test_id: NEG-MFOS-JOB-DD-CATALOG-INTEGRITY-FAILED-0924
+  domain: dd_resolution
+  coverage_level: C5_CONFORMANCE_LINKED
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_DD_INTEGRITY_FAILED_CATALOG_FAILS
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-DD-CATALOG-INTEGRITY-FAILED-0924
+    coverage_level: C5_CONFORMANCE_LINKED
+- fixture_ref: tests/fixtures/job/stale-handle-policy-0925.yml
+  oracle_ref: tests/golden/job/stale-handle-policy-0925.yml
+  golden_ref: tests/golden/job/stale-handle-policy-0925.yml
+  test_id: NEG-MFOS-JOB-STALE-HANDLE-POLICY-0925
+  domain: dd_resolution
+  coverage_level: C5_CONFORMANCE_LINKED
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_DD_STALE_HANDLE_AFTER_POLICY_CHANGE_FAILS
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-STALE-HANDLE-POLICY-0925
+    coverage_level: C5_CONFORMANCE_LINKED
+- fixture_ref: tests/fixtures/job/unauthorized-dataset-0908.yml
+  oracle_ref: tests/golden/job/unauthorized-dataset-0908.yml
+  golden_ref: tests/golden/job/unauthorized-dataset-0908.yml
+  test_id: NEG-MFOS-JOB-UNAUTHORIZED-DATASET-0908
+  domain: dd_resolution
+  coverage_level: C5_CONFORMANCE_LINKED
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_UNAUTHORIZED_DATASET_STEP_FAILS_CLOSED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-UNAUTHORIZED-DATASET-0908
+    coverage_level: C5_CONFORMANCE_LINKED
+coverage_level: C5_CONFORMANCE_LINKED

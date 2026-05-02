@@ -4,7 +4,7 @@ role: validation
 maturity: M4_POPULATED
 status: current
 canonical: false
-description: Phase 1.4 Job/Spool/Operator planning-only report package and future gate definitions.
+description: Phase 1.4 Job/Spool/Operator planning reports, future gate definitions, and scoped non-production Phase 1.4.1 Dafny semantics report subpackages.
 implementation_allowed:
   production: false
   hosted_daemon: false
@@ -25,11 +25,12 @@ allowed_contents:
   - exit gates
   - red-team plans
   - open issue ledgers
+  - scoped non-production Dafny executable semantics reports
 forbidden_contents:
   - production code
   - hosted daemon code
   - semantic runner implementation
-  - Dafny semantic implementation
+  - Dafny semantic implementation files
   - generated binaries
 required_before_agent_assignment:
   - Phase 1.4 entry gate
@@ -37,4 +38,4 @@ required_before_agent_assignment:
   - Phase 1.3 dependency status
   - required property list
   - required fixture/oracle/golden list
-review_status: draft
+review_status: pre_pr_review_passed

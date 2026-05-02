@@ -179,12 +179,109 @@ module Types {
     active: bool
   )
 
-  datatype JobState = JOB_DEFINED | JOB_SUBMITTED | JOB_RUNNING | JOB_COMPLETE | JOB_FAILED | JOB_CANCELLED
-  datatype StepState = STEP_PENDING | STEP_RUNNING | STEP_COMPLETE | STEP_FAILED
+  datatype JobState =
+    JOB_DEFINED
+  | JOB_SUBMITTED
+  | JOB_VALIDATED
+  | JOB_READY
+  | JOB_EXECUTING
+  | JOB_RUNNING
+  | JOB_COMPLETE
+  | JOB_FAILED
+  | JOB_CANCELLED
+  | JOB_HELD
+
+  datatype StepState = STEP_PENDING | STEP_READY | STEP_RUNNING | STEP_COMPLETE | STEP_FAILED
+
+  datatype JobFailureReason =
+    JOB_FAILURE_NONE
+  | JOB_FAILURE_INVALID_TRANSITION
+  | JOB_FAILURE_MISSING_EFFECTIVE_PRINCIPAL
+  | JOB_FAILURE_DD_RESOLUTION_DENIED
+  | JOB_FAILURE_DD_RESOLUTION_INVALID
+  | JOB_FAILURE_AUDIT_UNAVAILABLE
+  | JOB_FAILURE_SPEC_GAP
+  | JOB_FAILURE_UNSUPPORTED
+
+  datatype EffectivePrincipal = EffectivePrincipal(
+    principal: Principal,
+    job_id: MfosId,
+    policy_version: PolicyVersion,
+    correlation_id: CorrelationId
+  )
+
+  datatype JobSubmitContext = JobSubmitContext(
+    job_id: MfosId,
+    submitter: Subject,
+    requested_principal: Option<Principal>,
+    submit_decision: SecurityDecision,
+    submit_as_decision: Option<SecurityDecision>,
+    policy_version: PolicyVersion,
+    correlation_id: CorrelationId
+  )
+
+  datatype JobValidationResult = JobValidationResult(
+    accepted: bool,
+    next_state: JobState,
+    error_code: ErrorCode,
+    reason_code: ReasonCode
+  )
+
+  datatype JobExecutionPlaceholder = JobExecutionPlaceholder(
+    final_state: JobState,
+    return_code: nat,
+    failure_reason: JobFailureReason,
+    error_code: ErrorCode
+  )
 
   datatype DD = DD(dd_id: MfosId, object_ref: ObjectRef, operation: Operation)
+  datatype DDName = DDName(name_id: MfosId)
+  datatype DDTarget =
+    DDTargetDataset(dataset_name: DatasetName)
+  | DDTargetUnsupported(reason_code: ReasonCode)
+
+  datatype DDResolutionFailure =
+    DD_FAILURE_NONE
+  | DD_FAILURE_MISSING_EFFECTIVE_PRINCIPAL
+  | DD_FAILURE_INVALID_DSN
+  | DD_FAILURE_CATALOG_UNRESOLVED
+  | DD_FAILURE_AUTHORIZATION_DENIED
+  | DD_FAILURE_AUDIT_UNAVAILABLE
+
+  datatype DDResolution = DDResolution(
+    dd: DD,
+    handle: Option<DatasetHandle>,
+    error_code: ErrorCode,
+    reason_code: ReasonCode,
+    failure: DDResolutionFailure
+  )
+
+  datatype DDResolutionResult = DDResolutionResult(
+    resolution: DDResolution,
+    audit_records: seq<AuditRecord>,
+    result_released: bool
+  )
+
   datatype JobStep = JobStep(step_id: MfosId, state: StepState, rc: nat, dd_refs: seq<DD>)
   datatype Job = Job(job_id: MfosId, owner: Subject, effective_principal: Principal, state: JobState, steps: seq<JobStep>)
+
+  datatype JobContext = JobContext(
+    job: Job,
+    effective: Option<EffectivePrincipal>,
+    policy_version: PolicyVersion,
+    correlation_id: CorrelationId
+  )
+
+  datatype EffectiveJobContext = EffectiveJobContext(
+    context: JobContext,
+    effective: EffectivePrincipal
+  )
+
+  datatype BoundDDDecision = BoundDDDecision(
+    context: EffectiveJobContext,
+    dd: DD,
+    decision: SecurityDecision
+  )
 
   datatype SpoolEntry = SpoolEntry(spool_id: MfosId, owner: Subject, job_id: MfosId, protected: bool, retained: bool)
 

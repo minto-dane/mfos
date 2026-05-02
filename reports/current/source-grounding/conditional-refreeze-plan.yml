@@ -8,6 +8,7 @@ overall_decision:
   semantic_freeze_conditional: true
   production_allowed: false
   phase_1_loader_allowed: true
+  phase_1_reviewed_non_production_dafny_allowed: true
   phase_1_semantic_evaluator_allowed_domains: []
   phase_1_pxm_mfvm_cvm_cluster_semantic_evaluator_allowed: false
 status_changes_recommended:
@@ -47,8 +48,8 @@ critical_items:
 - id: SG-CRIT-0001
   finding: Phase 1 readiness report over-authorized Portable Semantic Core and semantic
     runner work.
-  action_taken: Downgrade readiness report and STATUS to loader-only pending source-grounding
-    closure.
+  action_taken: Downgrade readiness report and STATUS to reviewed non-production
+    Dafny semantics plus loader/conformance validation pending source-grounding closure.
 - id: SG-CRIT-0002
   finding: Job/spool control stream grammar creates external command-syntax impression.
   action_required: Refactor or re-bound the grammar before semantic evaluator work.
@@ -67,5 +68,4 @@ major_items:
   finding: MFOS-owned job/spool identifiers still include external-looking JCL/DD
     terms.
   action_required: Naming-safety follow-up before evaluator work.
-next_action: keep Phase 1 loader-only; close source-grounding and semantic gates before
-  evaluator work.
+next_action: keep Phase 1 limited to reviewed non-production Dafny semantics and loader/conformance validation; close source-grounding and semantic gates before evaluator work.

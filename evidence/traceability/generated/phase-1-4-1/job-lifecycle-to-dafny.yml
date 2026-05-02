@@ -1,0 +1,109 @@
+schema_version: 1
+phase: phase-1.4.1
+domain: job_lifecycle
+coverage_level: C4_VERIFIED_PROPERTY
+entries:
+- test_id: TEST-MFOS-JOB-VALID-SUBMIT-READY-0928
+  domain: job_lifecycle
+  test_type: conformance
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_4_1_exit_blocker: false
+  required_for_phase_1_4_1_job_dd: true
+  fixture_ref: tests/fixtures/job/valid-submit-ready-0928.yml
+  oracle_ref: tests/golden/job/valid-submit-ready-0928.yml
+  golden_ref: tests/golden/job/valid-submit-ready-0928.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_VALID_SUBMIT_REACHES_READY
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-VALID-SUBMIT-READY-0928
+    coverage_level: C5_CONFORMANCE_LINKED
+  expected_dafny_symbols:
+  - INV_JOB_VALID_SUBMIT_REACHES_READY
+  required_fixture_fact_keys:
+  - dafny_property
+  - submit_decision
+  - effective_principal
+  - lifecycle_path
+  negative_failure_conditions: []
+  notes: Valid submit establishes the lifecycle path through VALIDATED to READY.
+- test_id: NEG-MFOS-JOB-INVALID-LIFECYCLE-0910
+  domain: job_lifecycle
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_4_1_exit_blocker: false
+  required_for_phase_1_4_1_job_dd: true
+  fixture_ref: tests/fixtures/job/invalid-lifecycle-0910.yml
+  oracle_ref: tests/golden/job/invalid-lifecycle-0910.yml
+  golden_ref: tests/golden/job/invalid-lifecycle-0910.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_INVALID_LIFECYCLE_REJECTED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-INVALID-LIFECYCLE-0910
+    coverage_level: C5_CONFORMANCE_LINKED
+  expected_dafny_symbols:
+  - INV_JOB_INVALID_LIFECYCLE_REJECTED
+  required_fixture_fact_keys:
+  - dafny_property
+  - job_state
+  - attempted_transition
+  negative_failure_conditions:
+  - INV_JOB_INVALID_LIFECYCLE_REJECTED
+  notes: Invalid lifecycle transition returns a fail-closed transition result.
+- test_id: NEG-MFOS-JOB-CANCELLED-CANNOT-EXECUTE-0926
+  domain: job_lifecycle
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_4_1_exit_blocker: false
+  required_for_phase_1_4_1_job_dd: true
+  fixture_ref: tests/fixtures/job/cancelled-cannot-execute-0926.yml
+  oracle_ref: tests/golden/job/cancelled-cannot-execute-0926.yml
+  golden_ref: tests/golden/job/cancelled-cannot-execute-0926.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_CANCELLED_CANNOT_EXECUTE_FURTHER
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-CANCELLED-CANNOT-EXECUTE-0926
+    coverage_level: C5_CONFORMANCE_LINKED
+  expected_dafny_symbols:
+  - INV_JOB_CANCELLED_CANNOT_EXECUTE_FURTHER
+  required_fixture_fact_keys:
+  - dafny_property
+  - job_state
+  - attempted_transition
+  negative_failure_conditions:
+  - INV_JOB_CANCELLED_CANNOT_EXECUTE_FURTHER
+  notes: Cancelled jobs cannot transition back to execution or running state.
+- property_id: JOB-LIFECYCLE-CANNOT-EXECUTE-BEFORE-VALIDATION
+  domain: job_lifecycle
+  coverage_level: C4_VERIFIED_PROPERTY
+  fixture_ref: null
+  oracle_ref: null
+  golden_ref: null
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_CANNOT_EXECUTE_BEFORE_VALIDATION
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/phases/phase-1-4/job-lifecycle-dd-resolution/validation-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: Verified Dafny property; no separate fixture vector is needed for this non-C5
+    property row.
+- property_id: JOB-FAILURE-RC-DETERMINISTIC
+  domain: job_lifecycle
+  coverage_level: C4_VERIFIED_PROPERTY
+  fixture_ref: null
+  oracle_ref: null
+  golden_ref: null
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_RETURN_CODE_DETERMINISTIC
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/phases/phase-1-4/job-lifecycle-dd-resolution/validation-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: Return code placeholder is deterministic but remains symbolic and non-execution.

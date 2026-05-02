@@ -14,7 +14,7 @@ Status: current
 - SG6_REVIEWED: `0`
 - SG7_FROZEN: `0`
 
-All Source Cards remain public-safe metadata records and no card is promoted to SG6/SG7 by this audit. Phase 1 loader-only validation remains allowed; semantic evaluator and production claims remain blocked by source-review maturity.
+All Source Cards remain public-safe metadata records and no card is promoted to SG6/SG7 by this audit. Phase 1 loader/conformance validation and reviewed non-production Dafny executable semantics remain allowed; semantic evaluator, semantic runner, Portable Semantic Core, and production claims remain blocked by source-review maturity.
 
 ## Cards
 

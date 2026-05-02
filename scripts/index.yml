@@ -114,6 +114,14 @@ current:
       role: root_wrapper
       namespace: phase_1
       root_allowed: true
+    check_phase1_4_1_job_dd_coverage:
+      path: scripts/phases/phase-1/check-phase1-4-1-job-dd-coverage.py
+      wrapper: scripts/check-phase1-4-1-job-dd-coverage.py
+      status: current
+      wrapper_target: scripts/phases/phase-1/check-phase1-4-1-job-dd-coverage.py
+      role: root_wrapper
+      namespace: phase_1
+      root_allowed: true
     check_dafny_verification_counts:
       path: scripts/checks/check-dafny-verification-counts.py
       status: current
@@ -252,6 +260,9 @@ sections:
     dataset_catalog_coverage:
       path: scripts/generators/generate-dataset-catalog-coverage.py
       status: current
+    job_dd_coverage:
+      path: scripts/generators/generate-job-dd-coverage.py
+      status: current
     traceability:
       path: scripts/generators/generate-traceability.py
       status: current
@@ -277,6 +288,9 @@ sections:
         status: current
       phase_1_3_dataset_catalog_coverage:
         path: scripts/phases/phase-1/check-phase1-3-dataset-catalog-coverage.py
+        status: current
+      phase_1_4_1_job_dd_coverage:
+        path: scripts/phases/phase-1/check-phase1-4-1-job-dd-coverage.py
         status: current
     phase_0_9:
       path: scripts/phases/phase-0-9/
@@ -342,6 +356,14 @@ sections:
       path: scripts/check-phase1-3-dataset-catalog-coverage.py
       target: scripts/phases/phase-1/check-phase1-3-dataset-catalog-coverage.py
       wrapper_target: scripts/phases/phase-1/check-phase1-3-dataset-catalog-coverage.py
+      role: root_wrapper
+      namespace: phase_1
+      root_allowed: true
+      status: current
+    phase1_4_1_job_dd_coverage:
+      path: scripts/check-phase1-4-1-job-dd-coverage.py
+      target: scripts/phases/phase-1/check-phase1-4-1-job-dd-coverage.py
+      wrapper_target: scripts/phases/phase-1/check-phase1-4-1-job-dd-coverage.py
       role: root_wrapper
       namespace: phase_1
       root_allowed: true

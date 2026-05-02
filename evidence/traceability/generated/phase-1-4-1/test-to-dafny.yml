@@ -1,0 +1,462 @@
+schema_version: 1
+phase: phase-1.4.1
+tests:
+- test_id: TEST-MFOS-JOB-VALID-SUBMIT-READY-0928
+  domain: job_lifecycle
+  test_type: conformance
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_4_1_exit_blocker: false
+  required_for_phase_1_4_1_job_dd: true
+  fixture_ref: tests/fixtures/job/valid-submit-ready-0928.yml
+  oracle_ref: tests/golden/job/valid-submit-ready-0928.yml
+  golden_ref: tests/golden/job/valid-submit-ready-0928.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_VALID_SUBMIT_REACHES_READY
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-VALID-SUBMIT-READY-0928
+    coverage_level: C5_CONFORMANCE_LINKED
+  expected_dafny_symbols:
+  - INV_JOB_VALID_SUBMIT_REACHES_READY
+  required_fixture_fact_keys:
+  - dafny_property
+  - submit_decision
+  - effective_principal
+  - lifecycle_path
+  negative_failure_conditions: []
+  notes: Valid submit establishes the lifecycle path through VALIDATED to READY.
+- test_id: NEG-MFOS-JOB-INVALID-LIFECYCLE-0910
+  domain: job_lifecycle
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_4_1_exit_blocker: false
+  required_for_phase_1_4_1_job_dd: true
+  fixture_ref: tests/fixtures/job/invalid-lifecycle-0910.yml
+  oracle_ref: tests/golden/job/invalid-lifecycle-0910.yml
+  golden_ref: tests/golden/job/invalid-lifecycle-0910.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_INVALID_LIFECYCLE_REJECTED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-INVALID-LIFECYCLE-0910
+    coverage_level: C5_CONFORMANCE_LINKED
+  expected_dafny_symbols:
+  - INV_JOB_INVALID_LIFECYCLE_REJECTED
+  required_fixture_fact_keys:
+  - dafny_property
+  - job_state
+  - attempted_transition
+  negative_failure_conditions:
+  - INV_JOB_INVALID_LIFECYCLE_REJECTED
+  notes: Invalid lifecycle transition returns a fail-closed transition result.
+- test_id: NEG-MFOS-JOB-CANCELLED-CANNOT-EXECUTE-0926
+  domain: job_lifecycle
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_4_1_exit_blocker: false
+  required_for_phase_1_4_1_job_dd: true
+  fixture_ref: tests/fixtures/job/cancelled-cannot-execute-0926.yml
+  oracle_ref: tests/golden/job/cancelled-cannot-execute-0926.yml
+  golden_ref: tests/golden/job/cancelled-cannot-execute-0926.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_CANCELLED_CANNOT_EXECUTE_FURTHER
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-CANCELLED-CANNOT-EXECUTE-0926
+    coverage_level: C5_CONFORMANCE_LINKED
+  expected_dafny_symbols:
+  - INV_JOB_CANCELLED_CANNOT_EXECUTE_FURTHER
+  required_fixture_fact_keys:
+  - dafny_property
+  - job_state
+  - attempted_transition
+  negative_failure_conditions:
+  - INV_JOB_CANCELLED_CANNOT_EXECUTE_FURTHER
+  notes: Cancelled jobs cannot transition back to execution or running state.
+- test_id: TEST-MFOS-JOB-PRINCIPAL-BEFORE-OPEN-0904
+  domain: effective_principal
+  test_type: conformance
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_4_1_exit_blocker: false
+  required_for_phase_1_4_1_job_dd: true
+  fixture_ref: tests/fixtures/job/principal-before-open-0904.yml
+  oracle_ref: tests/golden/job/principal-before-open-0904.yml
+  golden_ref: tests/golden/job/principal-before-open-0904.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_EFFECTIVE_PRINCIPAL_BEFORE_OPEN
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-PRINCIPAL-BEFORE-OPEN-0904
+    coverage_level: C5_CONFORMANCE_LINKED
+  expected_dafny_symbols:
+  - INV_JOB_EFFECTIVE_PRINCIPAL_BEFORE_OPEN
+  required_fixture_fact_keys:
+  - dafny_property
+  - job_state
+  - effective_principal
+  - dd_operation
+  negative_failure_conditions: []
+  notes: Dataset open requires an established effective principal before a DD decision
+    can be bound.
+- test_id: NEG-MFOS-JOB-SUBMIT-NO-PRINCIPAL-0903
+  domain: effective_principal
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_4_1_exit_blocker: false
+  required_for_phase_1_4_1_job_dd: true
+  fixture_ref: tests/fixtures/job/submit-no-principal-0903.yml
+  oracle_ref: tests/golden/job/submit-no-principal-0903.yml
+  golden_ref: tests/golden/job/submit-no-principal-0903.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_SUBMIT_NO_PRINCIPAL_FAILS_CLOSED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-SUBMIT-NO-PRINCIPAL-0903
+    coverage_level: C5_CONFORMANCE_LINKED
+  expected_dafny_symbols:
+  - INV_JOB_SUBMIT_NO_PRINCIPAL_FAILS_CLOSED
+  required_fixture_fact_keys:
+  - dafny_property
+  - submit_decision
+  - effective_principal
+  negative_failure_conditions:
+  - INV_JOB_SUBMIT_NO_PRINCIPAL_FAILS_CLOSED
+  notes: Principal establishment failure returns no EffectivePrincipal.
+- test_id: NEG-MFOS-JOB-DATASET-OPEN-BEFORE-PRINCIPAL-0927
+  domain: effective_principal
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_4_1_exit_blocker: false
+  required_for_phase_1_4_1_job_dd: true
+  fixture_ref: tests/fixtures/job/dataset-open-before-principal-0927.yml
+  oracle_ref: tests/golden/job/dataset-open-before-principal-0927.yml
+  golden_ref: tests/golden/job/dataset-open-before-principal-0927.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_CONTEXT_EFFECTIVE_PRINCIPAL_BEFORE_OPEN
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-DATASET-OPEN-BEFORE-PRINCIPAL-0927
+    coverage_level: C5_CONFORMANCE_LINKED
+  expected_dafny_symbols:
+  - INV_JOB_CONTEXT_EFFECTIVE_PRINCIPAL_BEFORE_OPEN
+  required_fixture_fact_keys:
+  - dafny_property
+  - job_state
+  - effective_principal
+  - dd_operation
+  negative_failure_conditions:
+  - INV_JOB_CONTEXT_EFFECTIVE_PRINCIPAL_BEFORE_OPEN
+  notes: JobContext DD resolution fails before effective principal establishment.
+- test_id: TEST-MFOS-JOB-DD-CATALOG-RESOLUTION-0905
+  domain: dd_resolution
+  test_type: conformance
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_4_1_exit_blocker: false
+  required_for_phase_1_4_1_job_dd: true
+  fixture_ref: tests/fixtures/job/dd-catalog-resolution-0905.yml
+  oracle_ref: tests/golden/job/dd-catalog-resolution-0905.yml
+  golden_ref: tests/golden/job/dd-catalog-resolution-0905.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_DD_SUCCESS_CREATES_BOUND_DATASET_HANDLE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-DD-CATALOG-RESOLUTION-0905
+    coverage_level: C5_CONFORMANCE_LINKED
+  expected_dafny_symbols:
+  - INV_JOB_DD_SUCCESS_CREATES_BOUND_DATASET_HANDLE
+  required_fixture_fact_keys:
+  - dafny_property
+  - job_state
+  - effective_principal
+  - catalog_state
+  - authorization_result
+  - dd_operation
+  negative_failure_conditions: []
+  notes: DD resolution succeeds only through DatasetCatalog handle creation.
+- test_id: TEST-MFOS-JOB-DD-AUTHORIZATION-0906
+  domain: dd_resolution
+  test_type: conformance
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_4_1_exit_blocker: false
+  required_for_phase_1_4_1_job_dd: true
+  fixture_ref: tests/fixtures/job/dd-authorization-0906.yml
+  oracle_ref: tests/golden/job/dd-authorization-0906.yml
+  golden_ref: tests/golden/job/dd-authorization-0906.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_DD_RESOLUTION_THROUGH_CATALOG_AND_AUTH
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-DD-AUTHORIZATION-0906
+    coverage_level: C5_CONFORMANCE_LINKED
+  expected_dafny_symbols:
+  - INV_JOB_DD_RESOLUTION_THROUGH_CATALOG_AND_AUTH
+  required_fixture_fact_keys:
+  - dafny_property
+  - job_state
+  - effective_principal
+  - catalog_state
+  - authorization_result
+  - dd_operation
+  negative_failure_conditions: []
+  notes: DD resolution requires DatasetCatalog and Authorization predicates.
+- test_id: NEG-MFOS-JOB-DD-CATALOG-BYPASS-DENIED-0918
+  domain: dd_resolution
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_4_1_exit_blocker: false
+  required_for_phase_1_4_1_job_dd: true
+  fixture_ref: tests/fixtures/job/dd-catalog-bypass-denied-0918.yml
+  oracle_ref: tests/golden/job/dd-catalog-bypass-denied-0918.yml
+  golden_ref: tests/golden/job/dd-catalog-bypass-denied-0918.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_DD_RESOLUTION_CANNOT_BYPASS_CATALOG
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-DD-CATALOG-BYPASS-DENIED-0918
+    coverage_level: C5_CONFORMANCE_LINKED
+  expected_dafny_symbols:
+  - INV_JOB_DD_RESOLUTION_CANNOT_BYPASS_CATALOG
+  required_fixture_fact_keys:
+  - dafny_property
+  - job_state
+  - effective_principal
+  - catalog_state
+  - authorization_result
+  - dd_operation
+  negative_failure_conditions:
+  - INV_JOB_DD_RESOLUTION_CANNOT_BYPASS_CATALOG
+  notes: DD resolution cannot bypass catalog resolution.
+- test_id: NEG-MFOS-JOB-DD-AUTHORIZATION-BYPASS-DENIED-0919
+  domain: dd_resolution
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_4_1_exit_blocker: false
+  required_for_phase_1_4_1_job_dd: true
+  fixture_ref: tests/fixtures/job/dd-authorization-bypass-denied-0919.yml
+  oracle_ref: tests/golden/job/dd-authorization-bypass-denied-0919.yml
+  golden_ref: tests/golden/job/dd-authorization-bypass-denied-0919.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_DD_RESOLUTION_CANNOT_BYPASS_AUTHORIZATION
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-DD-AUTHORIZATION-BYPASS-DENIED-0919
+    coverage_level: C5_CONFORMANCE_LINKED
+  expected_dafny_symbols:
+  - INV_JOB_DD_RESOLUTION_CANNOT_BYPASS_AUTHORIZATION
+  required_fixture_fact_keys:
+  - dafny_property
+  - job_state
+  - effective_principal
+  - catalog_state
+  - authorization_result
+  - dd_operation
+  negative_failure_conditions:
+  - INV_JOB_DD_RESOLUTION_CANNOT_BYPASS_AUTHORIZATION
+  notes: DD resolution cannot bypass authorization.
+- test_id: NEG-MFOS-JOB-DD-MALFORMED-DSN-0920
+  domain: dd_resolution
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_4_1_exit_blocker: false
+  required_for_phase_1_4_1_job_dd: true
+  fixture_ref: tests/fixtures/job/dd-malformed-dsn-0920.yml
+  oracle_ref: tests/golden/job/dd-malformed-dsn-0920.yml
+  golden_ref: tests/golden/job/dd-malformed-dsn-0920.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_DD_MALFORMED_DSN_FAILS
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-DD-MALFORMED-DSN-0920
+    coverage_level: C5_CONFORMANCE_LINKED
+  expected_dafny_symbols:
+  - INV_JOB_DD_MALFORMED_DSN_FAILS
+  required_fixture_fact_keys:
+  - dafny_property
+  - job_state
+  - effective_principal
+  - catalog_state
+  - authorization_result
+  - dd_operation
+  - dataset_name_shape
+  negative_failure_conditions:
+  - INV_JOB_DD_MALFORMED_DSN_FAILS
+  notes: Malformed symbolic DSN in DD resolution fails closed.
+- test_id: NEG-MFOS-JOB-DD-CATALOG-UNCOMMITTED-0921
+  domain: dd_resolution
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_4_1_exit_blocker: false
+  required_for_phase_1_4_1_job_dd: true
+  fixture_ref: tests/fixtures/job/dd-catalog-uncommitted-0921.yml
+  oracle_ref: tests/golden/job/dd-catalog-uncommitted-0921.yml
+  golden_ref: tests/golden/job/dd-catalog-uncommitted-0921.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_DD_UNCOMMITTED_CATALOG_FAILS
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-DD-CATALOG-UNCOMMITTED-0921
+    coverage_level: C5_CONFORMANCE_LINKED
+  expected_dafny_symbols:
+  - INV_JOB_DD_UNCOMMITTED_CATALOG_FAILS
+  required_fixture_fact_keys:
+  - dafny_property
+  - job_state
+  - effective_principal
+  - catalog_state
+  - authorization_result
+  - dd_operation
+  negative_failure_conditions:
+  - INV_JOB_DD_UNCOMMITTED_CATALOG_FAILS
+  notes: Uncommitted catalog entry cannot resolve through a job DD.
+- test_id: NEG-MFOS-JOB-DD-CATALOG-ROLLED-BACK-0922
+  domain: dd_resolution
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_4_1_exit_blocker: false
+  required_for_phase_1_4_1_job_dd: true
+  fixture_ref: tests/fixtures/job/dd-catalog-rolled-back-0922.yml
+  oracle_ref: tests/golden/job/dd-catalog-rolled-back-0922.yml
+  golden_ref: tests/golden/job/dd-catalog-rolled-back-0922.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_DD_ROLLED_BACK_CATALOG_FAILS
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-DD-CATALOG-ROLLED-BACK-0922
+    coverage_level: C5_CONFORMANCE_LINKED
+  expected_dafny_symbols:
+  - INV_JOB_DD_ROLLED_BACK_CATALOG_FAILS
+  required_fixture_fact_keys:
+  - dafny_property
+  - job_state
+  - effective_principal
+  - catalog_state
+  - authorization_result
+  - dd_operation
+  negative_failure_conditions:
+  - INV_JOB_DD_ROLLED_BACK_CATALOG_FAILS
+  notes: Rolled-back catalog entry cannot resolve through a job DD.
+- test_id: NEG-MFOS-JOB-DD-CATALOG-PARTIAL-JOURNAL-0923
+  domain: dd_resolution
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_4_1_exit_blocker: false
+  required_for_phase_1_4_1_job_dd: true
+  fixture_ref: tests/fixtures/job/dd-catalog-partial-journal-0923.yml
+  oracle_ref: tests/golden/job/dd-catalog-partial-journal-0923.yml
+  golden_ref: tests/golden/job/dd-catalog-partial-journal-0923.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_DD_PARTIAL_JOURNAL_CATALOG_FAILS
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-DD-CATALOG-PARTIAL-JOURNAL-0923
+    coverage_level: C5_CONFORMANCE_LINKED
+  expected_dafny_symbols:
+  - INV_JOB_DD_PARTIAL_JOURNAL_CATALOG_FAILS
+  required_fixture_fact_keys:
+  - dafny_property
+  - job_state
+  - effective_principal
+  - catalog_state
+  - authorization_result
+  - dd_operation
+  negative_failure_conditions:
+  - INV_JOB_DD_PARTIAL_JOURNAL_CATALOG_FAILS
+  notes: Partial-journal catalog entry cannot resolve through a job DD.
+- test_id: NEG-MFOS-JOB-DD-CATALOG-INTEGRITY-FAILED-0924
+  domain: dd_resolution
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_4_1_exit_blocker: false
+  required_for_phase_1_4_1_job_dd: true
+  fixture_ref: tests/fixtures/job/dd-catalog-integrity-failed-0924.yml
+  oracle_ref: tests/golden/job/dd-catalog-integrity-failed-0924.yml
+  golden_ref: tests/golden/job/dd-catalog-integrity-failed-0924.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_DD_INTEGRITY_FAILED_CATALOG_FAILS
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-DD-CATALOG-INTEGRITY-FAILED-0924
+    coverage_level: C5_CONFORMANCE_LINKED
+  expected_dafny_symbols:
+  - INV_JOB_DD_INTEGRITY_FAILED_CATALOG_FAILS
+  required_fixture_fact_keys:
+  - dafny_property
+  - job_state
+  - effective_principal
+  - catalog_state
+  - authorization_result
+  - dd_operation
+  negative_failure_conditions:
+  - INV_JOB_DD_INTEGRITY_FAILED_CATALOG_FAILS
+  notes: Integrity-failed catalog entry cannot resolve through a job DD.
+- test_id: NEG-MFOS-JOB-STALE-HANDLE-POLICY-0925
+  domain: dd_resolution
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_4_1_exit_blocker: false
+  required_for_phase_1_4_1_job_dd: true
+  fixture_ref: tests/fixtures/job/stale-handle-policy-0925.yml
+  oracle_ref: tests/golden/job/stale-handle-policy-0925.yml
+  golden_ref: tests/golden/job/stale-handle-policy-0925.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_DD_STALE_HANDLE_AFTER_POLICY_CHANGE_FAILS
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-STALE-HANDLE-POLICY-0925
+    coverage_level: C5_CONFORMANCE_LINKED
+  expected_dafny_symbols:
+  - INV_JOB_DD_STALE_HANDLE_AFTER_POLICY_CHANGE_FAILS
+  required_fixture_fact_keys:
+  - dafny_property
+  - job_state
+  - effective_principal
+  - handle_policy_version
+  - active_policy_version
+  negative_failure_conditions:
+  - INV_JOB_DD_STALE_HANDLE_AFTER_POLICY_CHANGE_FAILS
+  notes: Stale handle after a policy version change fails in job context.
+- test_id: NEG-MFOS-JOB-UNAUTHORIZED-DATASET-0908
+  domain: dd_resolution
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_4_1_exit_blocker: false
+  required_for_phase_1_4_1_job_dd: true
+  fixture_ref: tests/fixtures/job/unauthorized-dataset-0908.yml
+  oracle_ref: tests/golden/job/unauthorized-dataset-0908.yml
+  golden_ref: tests/golden/job/unauthorized-dataset-0908.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_UNAUTHORIZED_DATASET_STEP_FAILS_CLOSED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-UNAUTHORIZED-DATASET-0908
+    coverage_level: C5_CONFORMANCE_LINKED
+  expected_dafny_symbols:
+  - INV_JOB_UNAUTHORIZED_DATASET_STEP_FAILS_CLOSED
+  required_fixture_fact_keys:
+  - dafny_property
+  - job_state
+  - effective_principal
+  - catalog_state
+  - authorization_result
+  - dd_operation
+  negative_failure_conditions:
+  - INV_JOB_UNAUTHORIZED_DATASET_STEP_FAILS_CLOSED
+  notes: Unauthorized dataset in a job step creates no DatasetHandle.
+coverage_level: C5_CONFORMANCE_LINKED

@@ -92,9 +92,17 @@ phase_1_4_job_spool_operator_exit_gate_defined: true
 phase_1_4_job_spool_operator_required_properties_listed: true
 phase_1_4_job_spool_operator_required_conformance_artifacts_listed: true
 phase_1_4_job_spool_operator_validator_planned: true
-phase_1_4_job_spool_operator_validator_scaffolded: false
-phase_1_4_job_spool_operator_coverage_claimed: false
+phase_1_4_job_spool_operator_validator_scaffolded: true
+phase_1_4_job_spool_operator_coverage_claimed: partial_phase_1_4_1_only
 phase_1_4_job_spool_operator_semantics_complete: false
+phase_1_4_1_job_dd_complete: true
+phase_1_4_1_scope: job_lifecycle_effective_principal_dd_resolution_only
+phase_1_4_1_job_lifecycle_coverage_level: C4_VERIFIED_PROPERTY
+phase_1_4_1_effective_principal_coverage_level: C4_VERIFIED_PROPERTY
+phase_1_4_1_dd_resolution_coverage_level: C4_VERIFIED_PROPERTY
+phase_1_4_1_required_test_coverage_level: C5_CONFORMANCE_LINKED
+phase_1_4_1_spool_operator_scope_started: false
+phase_1_4_1_production_implementation_started: false
 artifact_lifecycle_remediation_complete: true
 reports_current_phase_files_remaining: false
 duplicate_directory_ownership_classified: true
@@ -134,7 +142,7 @@ hosted_semantic_prototype_allowed: false
 public_release_allowed: false
 private_internal_use_allowed: true
 requires_ip_attorney_review_before_public_release: true
-next_phase: review Phase 1.4 Job/Spool/Operator planning package; implementation remains gated
+next_phase: review Phase 1.4.1 Job/DD Dafny semantics PR; later Phase 1.4 slices remain gated
 ```
 
 No production nucleus, service, PXM, Guard, or other OS-body implementation was
@@ -193,7 +201,7 @@ become the sole quality gate.
 - Pinned Dafny 4.11.0 is installed by `scripts/install-dafny.sh`; Z3 4.14.1 is
   bundled in the pinned release.
 - `scripts/validate-dafny-semantics.sh --require-dafny` verifies the current
-  module set with `136 verified, 0 errors`.
+  module set with `184 verified, 0 errors`.
 - Phase 1.1 semantic coverage traceability now maps Phase 0.9 core catalogs to
   explicit Dafny targets per test. The first vertical slice remains
   `C5_CONFORMANCE_LINKED`; the core five domains remain mixed because several
@@ -216,14 +224,14 @@ become the sole quality gate.
   `C2_PARTIAL_SEMANTIC`. Generated Phase 1.3 traceability lives under
   `evidence/traceability/generated/phase-1-3/`; Python remains a non-semantic
   artifact generator and structural checker.
-- Phase 1.4 Job/Spool/Operator work is currently planning-only. The planning
-  package defines scope, entry gate, exit gate, required Dafny property rows,
-  required fixture/oracle/golden vectors, C4/C5 coverage rules, planned
-  structural validators, red-team checks, and deferred gaps. It does not
-  implement or claim Phase 1.4 semantics, does not create generated Phase 1.4
-  traceability, and does not introduce production code, Rust semantic-core,
-  hosted daemons, semantic-runner commands, or `jobd`/`spoold`/`operatord`
-  behavior.
+- Phase 1.4 Job/Spool/Operator full scope remains incomplete. Phase 1.4.1 adds
+  the first scoped Dafny executable-semantics slice for Job lifecycle, effective
+  principal establishment, and DD resolution only. It does not implement full
+  spool semantics, full operator console semantics, real execution, JCL parsing,
+  production code, Rust semantic-core, hosted daemons, semantic-runner commands,
+  or `jobd`/`spoold`/`operatord` behavior. Generated Phase 1.4.1 traceability
+  lives under `evidence/traceability/generated/phase-1-4-1/`; Python remains a
+  structural generator/checker and does not implement Job/DD business semantics.
 
 ## Artifact Lifecycle Boundaries
 

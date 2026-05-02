@@ -745,5 +745,354 @@ entries:
   evidence_required:
   - EV-MFOS-JOB-STEP-NO-AUDIT-CORRELATION-0917
   status: draft
+- test_id: NEG-MFOS-JOB-DD-CATALOG-BYPASS-DENIED-0918
+  test_name: DD catalog bypass denied
+  test_type: negative
+  phase_to_implement: Phase 1.4.1
+  target_pack: PACK-08
+  target_specs:
+  - docs/design/specs/09-job-spool.md
+  target_requirements:
+  - MFOS-REQ-JOB-0102
+  source_refs:
+  - EXTREF-IBM-ZOS-JES-JOB-FLOW-0001
+  - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  preconditions:
+  - Phase 1.4.1 Dafny executable semantics and deterministic fixture/oracle/golden evidence.
+  inputs:
+  - input_id: INPUT-MFOS-JOB-DD-CATALOG-BYPASS-0918
+    operation: DD-CATALOG-BYPASS-DENIED
+    deterministic_seed: SEED-MFOS-PHASE14-0918
+  expected:
+    decisions: [{decision_id: DECISION-MFOS-JOB-DD-CATALOG-BYPASS-0918, result: DENY, policy_version: 1, obligations: [AUDIT_SECURITY_DECISION]}]
+    state_transitions: [{object: JOB-DD-RESOLUTION, from: READY, action: RESOLVE_DD, to: FAILED, reason: MFOS_ERR_CATALOG_NOT_FOUND}]
+    audit_records: [{record_type: SECURITY_DECISION, decision: DENY, reason_code: MFOS_ERR_CATALOG_NOT_FOUND, before_return: true}]
+    failure_mode: MFOS_ERR_CATALOG_NOT_FOUND
+    final_state: FAILED
+  oracle_ref: tests/golden/job/dd-catalog-bypass-denied-0918.yml
+  fixture_ref: tests/fixtures/job/dd-catalog-bypass-denied-0918.yml
+  golden_ref: tests/golden/job/dd-catalog-bypass-denied-0918.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required: [EV-MFOS-JOB-DD-CATALOG-BYPASS-DENIED-0918]
+  status: draft
+- test_id: NEG-MFOS-JOB-DD-AUTHORIZATION-BYPASS-DENIED-0919
+  test_name: DD authorization bypass denied
+  test_type: negative
+  phase_to_implement: Phase 1.4.1
+  target_pack: PACK-08
+  target_specs:
+  - docs/design/specs/09-job-spool.md
+  target_requirements:
+  - MFOS-REQ-JOB-0102
+  - MFOS-REQ-JOB-0103
+  source_refs:
+  - EXTREF-IBM-ZOS-JES-JOB-FLOW-0001
+  - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  preconditions:
+  - Phase 1.4.1 Dafny executable semantics and deterministic fixture/oracle/golden evidence.
+  inputs:
+  - input_id: INPUT-MFOS-JOB-DD-AUTH-BYPASS-0919
+    operation: DD-AUTHORIZATION-BYPASS-DENIED
+    deterministic_seed: SEED-MFOS-PHASE14-0919
+  expected:
+    decisions: [{decision_id: DECISION-MFOS-JOB-DD-AUTH-BYPASS-0919, result: DENY, policy_version: 1, obligations: [AUDIT_SECURITY_DECISION]}]
+    state_transitions: [{object: JOB-DD-RESOLUTION, from: READY, action: RESOLVE_DD, to: FAILED, reason: MFOS_ERR_POLICY_DENIED}]
+    audit_records: [{record_type: SECURITY_DECISION, decision: DENY, reason_code: MFOS_ERR_POLICY_DENIED, before_return: true}]
+    failure_mode: MFOS_ERR_POLICY_DENIED
+    final_state: FAILED
+  oracle_ref: tests/golden/job/dd-authorization-bypass-denied-0919.yml
+  fixture_ref: tests/fixtures/job/dd-authorization-bypass-denied-0919.yml
+  golden_ref: tests/golden/job/dd-authorization-bypass-denied-0919.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required: [EV-MFOS-JOB-DD-AUTHORIZATION-BYPASS-DENIED-0919]
+  status: draft
+- test_id: NEG-MFOS-JOB-DD-MALFORMED-DSN-0920
+  test_name: DD malformed symbolic DSN denied
+  test_type: negative
+  phase_to_implement: Phase 1.4.1
+  target_pack: PACK-08
+  target_specs:
+  - docs/design/specs/09-job-spool.md
+  target_requirements:
+  - MFOS-REQ-JOB-0102
+  source_refs:
+  - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  preconditions:
+  - Phase 1.4.1 Dafny executable semantics and deterministic fixture/oracle/golden evidence.
+  inputs:
+  - input_id: INPUT-MFOS-JOB-DD-MALFORMED-0920
+    operation: DD-MALFORMED-DSN
+    deterministic_seed: SEED-MFOS-PHASE14-0920
+  expected:
+    decisions: [{decision_id: DECISION-MFOS-JOB-DD-MALFORMED-0920, result: DENY, policy_version: 1, obligations: [AUDIT_SECURITY_DECISION]}]
+    state_transitions: [{object: JOB-DD-RESOLUTION, from: READY, action: RESOLVE_DD, to: FAILED, reason: MFOS_ERR_INVALID_DSN}]
+    audit_records: [{record_type: SECURITY_DECISION, decision: DENY, reason_code: MFOS_ERR_INVALID_DSN, before_return: true}]
+    failure_mode: MFOS_ERR_INVALID_DSN
+    final_state: FAILED
+  oracle_ref: tests/golden/job/dd-malformed-dsn-0920.yml
+  fixture_ref: tests/fixtures/job/dd-malformed-dsn-0920.yml
+  golden_ref: tests/golden/job/dd-malformed-dsn-0920.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required: [EV-MFOS-JOB-DD-MALFORMED-DSN-0920]
+  status: draft
+- test_id: NEG-MFOS-JOB-DD-CATALOG-UNCOMMITTED-0921
+  test_name: DD uncommitted catalog entry denied
+  test_type: negative
+  phase_to_implement: Phase 1.4.1
+  target_pack: PACK-08
+  target_specs:
+  - docs/design/specs/09-job-spool.md
+  target_requirements:
+  - MFOS-REQ-JOB-0102
+  source_refs:
+  - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  preconditions:
+  - Phase 1.4.1 Dafny executable semantics and deterministic fixture/oracle/golden evidence.
+  inputs:
+  - input_id: INPUT-MFOS-JOB-DD-UNCOMMITTED-0921
+    operation: DD-CATALOG-UNCOMMITTED
+    deterministic_seed: SEED-MFOS-PHASE14-0921
+  expected:
+    decisions: [{decision_id: DECISION-MFOS-JOB-DD-UNCOMMITTED-0921, result: DENY, policy_version: 1, obligations: [AUDIT_SECURITY_DECISION]}]
+    state_transitions: [{object: JOB-DD-RESOLUTION, from: READY, action: RESOLVE_DD, to: FAILED, reason: MFOS_ERR_CATALOG_NOT_FOUND}]
+    audit_records: [{record_type: SECURITY_DECISION, decision: DENY, reason_code: MFOS_ERR_CATALOG_NOT_FOUND, before_return: true}]
+    failure_mode: MFOS_ERR_CATALOG_NOT_FOUND
+    final_state: FAILED
+  oracle_ref: tests/golden/job/dd-catalog-uncommitted-0921.yml
+  fixture_ref: tests/fixtures/job/dd-catalog-uncommitted-0921.yml
+  golden_ref: tests/golden/job/dd-catalog-uncommitted-0921.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required: [EV-MFOS-JOB-DD-CATALOG-UNCOMMITTED-0921]
+  status: draft
+- test_id: NEG-MFOS-JOB-DD-CATALOG-ROLLED-BACK-0922
+  test_name: DD rolled-back catalog entry denied
+  test_type: negative
+  phase_to_implement: Phase 1.4.1
+  target_pack: PACK-08
+  target_specs:
+  - docs/design/specs/09-job-spool.md
+  target_requirements:
+  - MFOS-REQ-JOB-0102
+  source_refs:
+  - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  preconditions:
+  - Phase 1.4.1 Dafny executable semantics and deterministic fixture/oracle/golden evidence.
+  inputs:
+  - input_id: INPUT-MFOS-JOB-DD-ROLLED-BACK-0922
+    operation: DD-CATALOG-ROLLED-BACK
+    deterministic_seed: SEED-MFOS-PHASE14-0922
+  expected:
+    decisions: [{decision_id: DECISION-MFOS-JOB-DD-ROLLED-BACK-0922, result: DENY, policy_version: 1, obligations: [AUDIT_SECURITY_DECISION]}]
+    state_transitions: [{object: JOB-DD-RESOLUTION, from: READY, action: RESOLVE_DD, to: FAILED, reason: MFOS_ERR_CATALOG_NOT_FOUND}]
+    audit_records: [{record_type: SECURITY_DECISION, decision: DENY, reason_code: MFOS_ERR_CATALOG_NOT_FOUND, before_return: true}]
+    failure_mode: MFOS_ERR_CATALOG_NOT_FOUND
+    final_state: FAILED
+  oracle_ref: tests/golden/job/dd-catalog-rolled-back-0922.yml
+  fixture_ref: tests/fixtures/job/dd-catalog-rolled-back-0922.yml
+  golden_ref: tests/golden/job/dd-catalog-rolled-back-0922.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required: [EV-MFOS-JOB-DD-CATALOG-ROLLED-BACK-0922]
+  status: draft
+- test_id: NEG-MFOS-JOB-DD-CATALOG-PARTIAL-JOURNAL-0923
+  test_name: DD partial-journal catalog entry denied
+  test_type: negative
+  phase_to_implement: Phase 1.4.1
+  target_pack: PACK-08
+  target_specs:
+  - docs/design/specs/09-job-spool.md
+  target_requirements:
+  - MFOS-REQ-JOB-0102
+  source_refs:
+  - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  preconditions:
+  - Phase 1.4.1 Dafny executable semantics and deterministic fixture/oracle/golden evidence.
+  inputs:
+  - input_id: INPUT-MFOS-JOB-DD-PARTIAL-JOURNAL-0923
+    operation: DD-CATALOG-PARTIAL-JOURNAL
+    deterministic_seed: SEED-MFOS-PHASE14-0923
+  expected:
+    decisions: [{decision_id: DECISION-MFOS-JOB-DD-PARTIAL-JOURNAL-0923, result: DENY, policy_version: 1, obligations: [AUDIT_SECURITY_DECISION]}]
+    state_transitions: [{object: JOB-DD-RESOLUTION, from: READY, action: RESOLVE_DD, to: FAILED, reason: MFOS_ERR_INTERNAL_CORRUPTION}]
+    audit_records: [{record_type: SECURITY_DECISION, decision: DENY, reason_code: MFOS_ERR_INTERNAL_CORRUPTION, before_return: true}]
+    failure_mode: MFOS_ERR_INTERNAL_CORRUPTION
+    final_state: FAILED
+  oracle_ref: tests/golden/job/dd-catalog-partial-journal-0923.yml
+  fixture_ref: tests/fixtures/job/dd-catalog-partial-journal-0923.yml
+  golden_ref: tests/golden/job/dd-catalog-partial-journal-0923.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required: [EV-MFOS-JOB-DD-CATALOG-PARTIAL-JOURNAL-0923]
+  status: draft
+- test_id: NEG-MFOS-JOB-DD-CATALOG-INTEGRITY-FAILED-0924
+  test_name: DD integrity-failed catalog entry denied
+  test_type: negative
+  phase_to_implement: Phase 1.4.1
+  target_pack: PACK-08
+  target_specs:
+  - docs/design/specs/09-job-spool.md
+  target_requirements:
+  - MFOS-REQ-JOB-0102
+  source_refs:
+  - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  preconditions:
+  - Phase 1.4.1 Dafny executable semantics and deterministic fixture/oracle/golden evidence.
+  inputs:
+  - input_id: INPUT-MFOS-JOB-DD-INTEGRITY-FAILED-0924
+    operation: DD-CATALOG-INTEGRITY-FAILED
+    deterministic_seed: SEED-MFOS-PHASE14-0924
+  expected:
+    decisions: [{decision_id: DECISION-MFOS-JOB-DD-INTEGRITY-FAILED-0924, result: DENY, policy_version: 1, obligations: [AUDIT_SECURITY_DECISION]}]
+    state_transitions: [{object: JOB-DD-RESOLUTION, from: READY, action: RESOLVE_DD, to: FAILED, reason: MFOS_ERR_INTERNAL_CORRUPTION}]
+    audit_records: [{record_type: SECURITY_DECISION, decision: DENY, reason_code: MFOS_ERR_INTERNAL_CORRUPTION, before_return: true}]
+    failure_mode: MFOS_ERR_INTERNAL_CORRUPTION
+    final_state: FAILED
+  oracle_ref: tests/golden/job/dd-catalog-integrity-failed-0924.yml
+  fixture_ref: tests/fixtures/job/dd-catalog-integrity-failed-0924.yml
+  golden_ref: tests/golden/job/dd-catalog-integrity-failed-0924.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required: [EV-MFOS-JOB-DD-CATALOG-INTEGRITY-FAILED-0924]
+  status: draft
+- test_id: NEG-MFOS-JOB-STALE-HANDLE-POLICY-0925
+  test_name: stale handle after policy change fails in job context
+  test_type: negative
+  phase_to_implement: Phase 1.4.1
+  target_pack: PACK-08
+  target_specs:
+  - docs/design/specs/08-dataset-catalog.md
+  - docs/design/specs/09-job-spool.md
+  target_requirements:
+  - MFOS-REQ-JOB-0102
+  source_refs:
+  - EXTREF-IBM-ZOS-DFSMS-CATALOGS-0001
+  - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  preconditions:
+  - Phase 1.4.1 Dafny executable semantics and deterministic fixture/oracle/golden evidence.
+  inputs:
+  - input_id: INPUT-MFOS-JOB-STALE-HANDLE-0925
+    operation: STALE-HANDLE-POLICY
+    deterministic_seed: SEED-MFOS-PHASE14-0925
+  expected:
+    decisions: [{decision_id: DECISION-MFOS-JOB-STALE-HANDLE-0925, result: DENY, policy_version: 2, obligations: [AUDIT_SECURITY_DECISION]}]
+    state_transitions: [{object: JOB-DD-RESOLUTION, from: STEP_RUNNING, action: VALIDATE_HANDLE, to: FAILED, reason: MFOS_ERR_POLICY_VERSION_MISMATCH}]
+    audit_records: [{record_type: SECURITY_DECISION, decision: DENY, reason_code: MFOS_ERR_POLICY_VERSION_MISMATCH, before_return: true}]
+    failure_mode: MFOS_ERR_POLICY_VERSION_MISMATCH
+    final_state: FAILED
+  oracle_ref: tests/golden/job/stale-handle-policy-0925.yml
+  fixture_ref: tests/fixtures/job/stale-handle-policy-0925.yml
+  golden_ref: tests/golden/job/stale-handle-policy-0925.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required: [EV-MFOS-JOB-STALE-HANDLE-POLICY-0925]
+  status: draft
+- test_id: NEG-MFOS-JOB-CANCELLED-CANNOT-EXECUTE-0926
+  test_name: cancelled job cannot execute further step
+  test_type: invalid_transition
+  phase_to_implement: Phase 1.4.1
+  target_pack: PACK-08
+  target_specs:
+  - docs/design/specs/09-job-spool.md
+  target_requirements:
+  - MFOS-REQ-JOB-0101
+  source_refs:
+  - EXTREF-IBM-ZOS-JES-JOB-FLOW-0001
+  preconditions:
+  - Phase 1.4.1 Dafny executable semantics and deterministic fixture/oracle/golden evidence.
+  inputs:
+  - input_id: INPUT-MFOS-JOB-CANCELLED-0926
+    operation: CANCELLED-CANNOT-EXECUTE
+    deterministic_seed: SEED-MFOS-PHASE14-0926
+  expected:
+    decisions: [{decision_id: DECISION-MFOS-JOB-CANCELLED-CANNOT-EXECUTE-0926, result: DENY, policy_version: 1, obligations: [AUDIT_SECURITY_DECISION]}]
+    state_transitions: [{object: JOB-LIFECYCLE, from: JOB_CANCELLED, action: EXECUTE_STEP, to: JOB_CANCELLED, reason: MFOS_ERR_INVALID_STATE}]
+    audit_records: [{record_type: SECURITY_DECISION, decision: DENY, reason_code: MFOS_ERR_INVALID_STATE, before_return: true}]
+    failure_mode: MFOS_ERR_INVALID_STATE
+    final_state: JOB_CANCELLED
+  oracle_ref: tests/golden/job/cancelled-cannot-execute-0926.yml
+  fixture_ref: tests/fixtures/job/cancelled-cannot-execute-0926.yml
+  golden_ref: tests/golden/job/cancelled-cannot-execute-0926.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required: [EV-MFOS-JOB-CANCELLED-CANNOT-EXECUTE-0926]
+  status: draft
+- test_id: NEG-MFOS-JOB-DATASET-OPEN-BEFORE-PRINCIPAL-0927
+  test_name: dataset open before effective principal denied
+  test_type: negative
+  phase_to_implement: Phase 1.4.1
+  target_pack: PACK-08
+  target_specs:
+  - docs/design/specs/09-job-spool.md
+  target_requirements:
+  - MFOS-REQ-JOB-0101
+  - MFOS-REQ-JOB-0102
+  source_refs:
+  - EXTREF-IBM-ZOS-JES-JOB-FLOW-0001
+  - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  preconditions:
+  - Phase 1.4.1 Dafny executable semantics and deterministic fixture/oracle/golden evidence.
+  inputs:
+  - input_id: INPUT-MFOS-JOB-NO-PRINCIPAL-0927
+    operation: DATASET-OPEN-BEFORE-PRINCIPAL
+    deterministic_seed: SEED-MFOS-PHASE14-0927
+  expected:
+    decisions: [{decision_id: DECISION-MFOS-JOB-NO-PRINCIPAL-0927, result: DENY, policy_version: 1, obligations: [AUDIT_SECURITY_DECISION]}]
+    state_transitions: [{object: JOB-DD-RESOLUTION, from: READY, action: OPEN_DATASET, to: FAILED, reason: MFOS_ERR_UNAUTHENTICATED}]
+    audit_records: [{record_type: SECURITY_DECISION, decision: DENY, reason_code: MFOS_ERR_UNAUTHENTICATED, before_return: true}]
+    failure_mode: MFOS_ERR_UNAUTHENTICATED
+    final_state: FAILED
+  oracle_ref: tests/golden/job/dataset-open-before-principal-0927.yml
+  fixture_ref: tests/fixtures/job/dataset-open-before-principal-0927.yml
+  golden_ref: tests/golden/job/dataset-open-before-principal-0927.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required: [EV-MFOS-JOB-DATASET-OPEN-BEFORE-PRINCIPAL-0927]
+  status: draft
+- test_id: TEST-MFOS-JOB-VALID-SUBMIT-READY-0928
+  test_name: valid job submit reaches ready state
+  test_type: conformance
+  phase_to_implement: Phase 1.4.1
+  target_pack: PACK-08
+  target_specs:
+  - docs/design/specs/09-job-spool.md
+  target_requirements:
+  - MFOS-REQ-JOB-0101
+  source_refs:
+  - EXTREF-IBM-ZOS-JES-JOB-FLOW-0001
+  - EXTREF-IBM-ZOS-RACF-RESOURCE-AUTHORIZATION-0001
+  preconditions:
+  - Phase 1.4.1 Dafny executable semantics and deterministic fixture/oracle/golden evidence.
+  inputs:
+  - input_id: INPUT-MFOS-JOB-SUBMIT-0928
+    operation: VALID-SUBMIT-READY
+    deterministic_seed: SEED-MFOS-PHASE14-0928
+  expected:
+    decisions: [{decision_id: DECISION-MFOS-JOB-SUBMIT-0928, result: ALLOW, policy_version: 1, obligations: [AUDIT_SECURITY_DECISION]}]
+    state_transitions: [{object: JOB-LIFECYCLE, from: JOB_SUBMITTED, action: VALIDATE, to: JOB_VALIDATED, reason: EXPECTED}, {object: JOB-LIFECYCLE, from: JOB_VALIDATED, action: MARK_READY, to: JOB_READY, reason: EXPECTED}]
+    audit_records: [{record_type: SECURITY_DECISION, decision: ALLOW, reason_code: OK, before_return: false}]
+    failure_mode: null
+    final_state: JOB_READY
+  oracle_ref: tests/golden/job/valid-submit-ready-0928.yml
+  fixture_ref: tests/fixtures/job/valid-submit-ready-0928.yml
+  golden_ref: tests/golden/job/valid-submit-ready-0928.yml
+  negative: false
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required: [EV-MFOS-JOB-VALID-SUBMIT-READY-0928]
+  status: draft
 origin_phase: phase-0-9
 current_since: phase-0-9

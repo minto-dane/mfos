@@ -10,6 +10,14 @@ target_requirements:
 preconditions:
 - All subjects, policy versions, object generations, and dependency states are symbolic
   and deterministic.
+semantic_facts:
+  dafny_property: INV_JOB_UNAUTHORIZED_DATASET_STEP_FAILS_CLOSED
+  job_state: READY
+  effective_principal: PRIN-MFOS-PHASE09-0001
+  dd_operation: OP_READ
+  catalog_state: COMMITTED
+  authorization_result: DENY
+  handle_expected: false
 initial_state:
   clock: T0
   security_epoch: 1

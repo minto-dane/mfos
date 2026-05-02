@@ -227,6 +227,9 @@ sections:
   purpose: Phase 1 readiness and nonblocking follow-up reports.
 - path: reports/phases/phase-1-4/
   purpose: Phase 1.4 Job/Spool/Operator planning-only reports and future gate definitions.
+- path: reports/phases/phase-1-4/job-lifecycle-dd-resolution/
+  purpose: Phase 1.4.1 Job lifecycle, effective principal, and DD resolution Dafny
+    semantics reports.
 - path: reports/audits/
   purpose: Cross-phase audits grouped by audit subject.
 - path: reports/naming-safety/
@@ -370,6 +373,20 @@ phase_reports:
   purpose: Phase 1.4 Job/Spool/Operator red-team plan for future implementation.
 - path: reports/phases/phase-1-4/open-issues.md
   purpose: Phase 1.4 Job/Spool/Operator planning-only deferred issue ledger.
+- path: reports/phases/phase-1-4/job-lifecycle-dd-resolution/report.md
+  purpose: Phase 1.4.1 Job lifecycle, effective principal, and DD resolution summary.
+- path: reports/phases/phase-1-4/job-lifecycle-dd-resolution/coverage-report.md
+  purpose: Phase 1.4.1 Job/DD coverage and traceability summary.
+- path: reports/phases/phase-1-4/job-lifecycle-dd-resolution/validation-report.md
+  purpose: Phase 1.4.1 validation command and Dafny verification summary.
+- path: reports/phases/phase-1-4/job-lifecycle-dd-resolution/red-team-review.md
+  purpose: Phase 1.4.1 red-team review.
+- path: reports/phases/phase-1-4/job-lifecycle-dd-resolution/open-issues.md
+  purpose: Phase 1.4.1 open issues and deferred scope ledger.
+- path: reports/phases/phase-1-4/job-lifecycle-dd-resolution/pre-pr-review.md
+  purpose: Phase 1.4.1 pre-PR review and commit-readiness decision.
+- path: reports/phases/phase-1-4/job-lifecycle-dd-resolution/pr-29-review.md
+  purpose: PR 29 Phase 1.4.1 Job/DD Dafny semantics review and merge decision.
 archive:
 - path: reports/archive/superseded/phase-0-9-readiness.md
   purpose: Superseded Phase 0.9 readiness report retained after Phase 0.9 freeze and

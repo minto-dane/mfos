@@ -1,0 +1,55 @@
+fixture_id: FIXTURE-MFOS-JOB-DD-CATALOG-BYPASS-DENIED-0918
+fixture_version: 1
+description: DD catalog bypass denied
+target_specs:
+- docs/design/specs/09-job-spool.md
+target_requirements:
+- MFOS-REQ-JOB-0102
+preconditions:
+- Symbolic DD resolution attempts to present an authorization decision without a resolvable catalog entry.
+semantic_facts:
+  dafny_property: INV_JOB_DD_RESOLUTION_CANNOT_BYPASS_CATALOG
+  job_state: READY
+  effective_principal: PRIN-MFOS-JOB-ALICE
+  dd_operation: OP_READ
+  dd_object_ref: OBJ-MFOS-JOB-DD-CATALOG-BYPASS-0918
+  catalog_state: missing
+  authorization_result: ALLOW
+  handle_expected: false
+initial_state:
+  clock: T0
+  security_epoch: 1
+  policy_version: 1
+  job_context:
+    job_id: JOB-MFOS-PHASE14-0918
+    state: READY
+    effective_principal: PRIN-MFOS-JOB-ALICE
+  dd:
+    dd_name: INPUT
+    object_ref: OBJ-MFOS-JOB-DD-CATALOG-BYPASS-0918
+    operation: OP_READ
+  catalog_resolution:
+    status: NOT_FOUND
+    entry: null
+  authorization_decision:
+    subject_principal: PRIN-MFOS-JOB-ALICE
+    object_ref: OBJ-MFOS-JOB-DD-CATALOG-BYPASS-0918
+    operation: OP_READ
+    result: ALLOW
+    policy_version: 1
+  objects:
+  - object_ref: OBJ-MFOS-JOB-DD-CATALOG-BYPASS-0918
+    generation: 1
+inputs:
+- input_id: INPUT-MFOS-JOB-DD-CATALOG-BYPASS-0918
+  operation: DD-CATALOG-BYPASS-DENIED
+  deterministic_seed: SEED-MFOS-PHASE14-0918
+expected_oracle: tests/golden/job/dd-catalog-bypass-denied-0918.yml
+expected_evidence:
+- EV-MFOS-JOB-DD-CATALOG-BYPASS-DENIED-0918
+not_allowed:
+- production_claim
+- external_compatibility_claim
+- host_os_semantics_dependency
+- catalog_resolution_bypass
+status: draft

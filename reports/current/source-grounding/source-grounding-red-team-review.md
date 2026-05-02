@@ -5,8 +5,9 @@
 1. `reports/phases/phase-1/readiness-report.md` over-authorized Phase 1
    Portable Semantic Core and semantic runner work while PACK-05 through
    PACK-09 still block `portable_semantic_core` and `executable_spec`.
-   This is corrected in Phase 0.9.7 status/reporting by downgrading Phase 1 to
-   loader-only until source-grounding gaps close.
+   This is corrected in Phase 0.9.7 status/reporting by limiting Phase 1 to
+   reviewed non-production Dafny executable semantics and conformance-harness
+   validation until source-grounding gaps close.
 
 2. `docs/design/specs/09-job-spool.md` freezes an external-looking
    job-control stream grammar. This creates compatibility and copied-command
@@ -36,6 +37,7 @@
 
 ## Result
 
-No production implementation or semantic runner implementation was found.
-Semantic freeze must be conditional, and Phase 1 semantic evaluator work must
-remain blocked.
+No production implementation, semantic runner implementation, or Portable
+Semantic Core behavior was found. Semantic freeze must be conditional, reviewed
+non-production Dafny executable semantics remain allowed, and Phase 1 semantic
+evaluator/runner work must remain blocked.

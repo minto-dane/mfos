@@ -1,0 +1,45 @@
+golden_id: GOLDEN-MFOS-JOB-DD-CATALOG-UNCOMMITTED-0921
+golden_version: 1
+fixture_ref: tests/fixtures/job/dd-catalog-uncommitted-0921.yml
+normalized_input:
+  fixture_id: FIXTURE-MFOS-JOB-DD-CATALOG-UNCOMMITTED-0921
+  operation: DD-CATALOG-UNCOMMITTED
+  deterministic_seed: SEED-MFOS-PHASE14-0921
+expected_normalized_output:
+  outcome: EXPECTED_FAIL_CLOSED
+  final_state: FAILED
+expected_decisions: &decisions
+- decision_id: DECISION-MFOS-JOB-DD-UNCOMMITTED-0921
+  result: DENY
+  policy_version: 1
+  obligations:
+  - AUDIT_SECURITY_DECISION
+expected_audit_sequence: &audit
+- record_type: SECURITY_DECISION
+  decision: DENY
+  reason_code: MFOS_ERR_CATALOG_NOT_FOUND
+  before_return: true
+expected_state_transitions: &transitions
+- object: JOB-DD-RESOLUTION
+  from: READY
+  action: RESOLVE_DD
+  to: FAILED
+  reason: MFOS_ERR_CATALOG_NOT_FOUND
+expected_final_state: FAILED
+expected_failure_mode: MFOS_ERR_CATALOG_NOT_FOUND
+deterministic: true
+oracle:
+  oracle_id: ORACLE-MFOS-JOB-DD-CATALOG-UNCOMMITTED-0921
+  oracle_version: 1
+  fixture_ref: tests/fixtures/job/dd-catalog-uncommitted-0921.yml
+  expected_decisions: *decisions
+  expected_state_transitions: *transitions
+  expected_audit_records: *audit
+  expected_failure:
+    error_code: MFOS_ERR_CATALOG_NOT_FOUND
+    fail_closed: true
+  expected_final_state: FAILED
+  evidence_required:
+  - EV-MFOS-JOB-DD-CATALOG-UNCOMMITTED-0921
+  status: draft
+status: draft
