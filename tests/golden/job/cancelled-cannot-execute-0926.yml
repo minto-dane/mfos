@@ -7,9 +7,9 @@ normalized_input:
   deterministic_seed: SEED-MFOS-PHASE14-0926
 expected_normalized_output:
   outcome: EXPECTED_FAIL_CLOSED
-  final_state: CANCELLED
+  final_state: JOB_CANCELLED
 expected_decisions: &decisions
-- decision_id: DECISION-MFOS-JOB-CANCELLED-0926
+- decision_id: DECISION-MFOS-JOB-CANCELLED-CANNOT-EXECUTE-0926
   result: DENY
   policy_version: 1
   obligations:
@@ -17,16 +17,16 @@ expected_decisions: &decisions
 expected_audit_sequence: &audit
 - record_type: SECURITY_DECISION
   decision: DENY
-  reason_code: MFOS_ERR_INVALID_STATE_TRANSITION
+  reason_code: MFOS_ERR_INVALID_STATE
   before_return: true
 expected_state_transitions: &transitions
 - object: JOB-LIFECYCLE
-  from: CANCELLED
+  from: JOB_CANCELLED
   action: EXECUTE_STEP
-  to: CANCELLED
-  reason: MFOS_ERR_INVALID_STATE_TRANSITION
-expected_final_state: CANCELLED
-expected_failure_mode: MFOS_ERR_INVALID_STATE_TRANSITION
+  to: JOB_CANCELLED
+  reason: MFOS_ERR_INVALID_STATE
+expected_final_state: JOB_CANCELLED
+expected_failure_mode: MFOS_ERR_INVALID_STATE
 deterministic: true
 oracle:
   oracle_id: ORACLE-MFOS-JOB-CANCELLED-CANNOT-EXECUTE-0926
@@ -36,9 +36,9 @@ oracle:
   expected_state_transitions: *transitions
   expected_audit_records: *audit
   expected_failure:
-    error_code: MFOS_ERR_INVALID_STATE_TRANSITION
+    error_code: MFOS_ERR_INVALID_STATE
     fail_closed: true
-  expected_final_state: CANCELLED
+  expected_final_state: JOB_CANCELLED
   evidence_required:
   - EV-MFOS-JOB-CANCELLED-CANNOT-EXECUTE-0926
   status: draft

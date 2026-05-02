@@ -7,7 +7,7 @@ normalized_input:
   deterministic_seed: SEED-MFOS-PHASE14-0928
 expected_normalized_output:
   outcome: EXPECTED_SUCCESS
-  final_state: READY
+  final_state: JOB_READY
 expected_decisions: &decisions
 - decision_id: DECISION-MFOS-JOB-SUBMIT-0928
   result: ALLOW
@@ -21,11 +21,16 @@ expected_audit_sequence: &audit
   before_return: false
 expected_state_transitions: &transitions
 - object: JOB-LIFECYCLE
-  from: SUBMITTED
-  action: VALIDATE_AND_READY
-  to: READY
+  from: JOB_SUBMITTED
+  action: VALIDATE
+  to: JOB_VALIDATED
   reason: EXPECTED
-expected_final_state: READY
+- object: JOB-LIFECYCLE
+  from: JOB_VALIDATED
+  action: MARK_READY
+  to: JOB_READY
+  reason: EXPECTED
+expected_final_state: JOB_READY
 expected_failure_mode: null
 deterministic: true
 oracle:
@@ -38,7 +43,7 @@ oracle:
   expected_failure:
     error_code: null
     fail_closed: false
-  expected_final_state: READY
+  expected_final_state: JOB_READY
   evidence_required:
   - EV-MFOS-JOB-VALID-SUBMIT-READY-0928
   status: draft

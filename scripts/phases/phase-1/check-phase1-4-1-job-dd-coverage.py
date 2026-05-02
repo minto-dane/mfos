@@ -48,6 +48,11 @@ REQUIRED_BOUND_DD_SYMBOLS = {
     "INV_JOB_DD_UNRESOLVED_CATALOG_FAILS",
     "INV_JOB_DD_DENY_AUDIT_UNAVAILABLE_FAILS_CLOSED",
 }
+BROAD_PARENT_REQUIREMENTS_REQUIRING_SUBCLAIMS = {
+    "MFOS-REQ-JOB-0101",
+    "MFOS-REQ-JOB-0102",
+    "MFOS-REQ-JOB-0103",
+}
 
 
 def load_yaml(path: Path) -> dict[str, Any]:
@@ -58,7 +63,7 @@ def load_yaml(path: Path) -> dict[str, Any]:
 
 
 def row_name(row: dict[str, Any]) -> str:
-    return str(row.get("test_id") or row.get("property_id") or row.get("requirement_id") or row.get("claim_id") or "<unknown>")
+    return str(row.get("test_id") or row.get("property_id") or row.get("subclaim_id") or row.get("requirement_id") or row.get("claim_id") or "<unknown>")
 
 
 def level_rank(level: Any) -> int:
@@ -160,6 +165,22 @@ def validate_rows(source_name: str, rows: list[dict[str, Any]], errors: list[str
         row_id = row_name(row)
         row_level = str(row.get("coverage_level"))
         mappings = row.get("coverage_mappings") or []
+        if source_name == "requirement-to-dafny.yml":
+            req_id = str(row.get("requirement_id"))
+            is_phase_subclaim = bool(row.get("subclaim_id"))
+            if row.get("phase_scope") != "phase-1-4-1":
+                errors.append(f"{source_name}:{row_id}: Phase 1.4.1 requirement row must declare phase_scope")
+            if row.get("partial_coverage") is True and level_rank(row_level) >= level_rank("C4_VERIFIED_PROPERTY"):
+                errors.append(f"{source_name}:{row_id}: partial parent requirement must not claim C4/C5/C6")
+            if (
+                req_id in BROAD_PARENT_REQUIREMENTS_REQUIRING_SUBCLAIMS
+                and not is_phase_subclaim
+                and level_rank(row_level) >= level_rank("C4_VERIFIED_PROPERTY")
+                and row.get("full_requirement_modeled") is not True
+            ):
+                errors.append(f"{source_name}:{row_id}: broad parent requirement must not claim C4/C5/C6 without full_requirement_modeled")
+            if is_phase_subclaim and not row.get("covered_subclaim"):
+                errors.append(f"{source_name}:{row_id}: phase-scoped requirement subclaim must describe covered_subclaim")
         if row_level in SEMANTIC_LEVELS and not mappings:
             errors.append(f"{source_name}:{row_id}: semantic row lacks coverage_mappings")
             continue

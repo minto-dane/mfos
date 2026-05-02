@@ -385,6 +385,8 @@ phase_reports:
   purpose: Phase 1.4.1 open issues and deferred scope ledger.
 - path: reports/phases/phase-1-4/job-lifecycle-dd-resolution/pre-pr-review.md
   purpose: Phase 1.4.1 pre-PR review and commit-readiness decision.
+- path: reports/phases/phase-1-4/job-lifecycle-dd-resolution/pr-29-review.md
+  purpose: PR 29 Phase 1.4.1 Job/DD Dafny semantics review and merge decision.
 archive:
 - path: reports/archive/superseded/phase-0-9-readiness.md
   purpose: Superseded Phase 0.9 readiness report retained after Phase 0.9 freeze and

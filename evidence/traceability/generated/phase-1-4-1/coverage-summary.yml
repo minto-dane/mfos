@@ -6,7 +6,7 @@ coverage_levels:
   dd_resolution: C4_VERIFIED_PROPERTY
   required_tests: C5_CONFORMANCE_LINKED
   fixtures: C5_CONFORMANCE_LINKED
-  requirements: C4_VERIFIED_PROPERTY
+  requirements: C2_PARTIAL_SEMANTIC
   formal_claims: C3_FULL_SEMANTIC
 c5_scope: required scenario and fixture rows only
 aggregate_c5_overclaim_remaining: false

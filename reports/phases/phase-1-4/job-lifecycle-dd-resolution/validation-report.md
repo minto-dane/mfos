@@ -19,7 +19,7 @@ Required validation commands:
 - `python3 scripts/phases/phase-1/check-phase1-4-1-job-dd-coverage.py`
 - `python3 -m py_compile $(find scripts tools -name '*.py' -type f | sort)`
 - `find scripts tools -type d -name __pycache__ -prune -exec rm -rf {} +`
-- `./scripts/validate-artifact-hygiene.sh`
+- `./scripts/validate-artifact-hygiene.sh` after pycache cleanup
 - `git diff --check`
 
 Current Dafny verification result:
@@ -36,8 +36,10 @@ local_validation_passed: true
 dafny_verification_passed: true
 phase_1_4_1_coverage_validator_added: true
 bound_dd_decision_structural_gate_added: true
+broad_parent_requirement_overclaim_gate_added: true
 python_loader_contains_job_dd_semantics: false
 ```
 
 Last local validation result: the full command set listed above passed with
-Dafny at `184 verified, 0 errors`.
+Dafny at `184 verified, 0 errors` after the PR #29 evidence-package
+remediation.

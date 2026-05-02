@@ -5,6 +5,11 @@ Status: current.
 Generated traceability lives under
 `evidence/traceability/generated/phase-1-4-1/`.
 
+`Status: current` applies to this review report package. Linked fixtures,
+goldens, and embedded oracles remain `status: draft` conformance evidence until
+a later promotion gate. The generated traceability path is intentionally in the
+Phase 1.4.1 package and remains non-production Dafny semantics evidence only.
+
 Coverage summary:
 
 ```yaml
@@ -13,7 +18,8 @@ effective_principal_coverage_level: C4_VERIFIED_PROPERTY
 dd_resolution_coverage_level: C4_VERIFIED_PROPERTY
 phase_1_4_1_required_test_coverage_level: C5_CONFORMANCE_LINKED
 phase_1_4_1_fixture_coverage_level: C5_CONFORMANCE_LINKED
-phase_1_4_1_requirement_coverage_level: C4_VERIFIED_PROPERTY
+phase_1_4_1_parent_requirement_coverage_level: C2_PARTIAL_SEMANTIC
+phase_1_4_1_requirement_subclaim_coverage_level: C4_VERIFIED_PROPERTY
 formal_claim_coverage_level: C3_FULL_SEMANTIC
 aggregate_c5_overclaim_remaining: false
 c5_scope: required scenario and fixture rows only
@@ -27,10 +33,20 @@ C5 is claimed only where the row has:
 - golden vector reference;
 - embedded oracle linkage.
 
-Requirement-level rows remain `C4_VERIFIED_PROPERTY`. They link verified Dafny
-properties, but they do not claim C5 unless every child scenario is represented
-as a complete fixture/oracle/golden set at that row. The complete child scenario
-links are recorded in `test-to-dafny.yml` and `fixture-to-dafny.yml`.
+Broad parent requirement rows remain `C2_PARTIAL_SEMANTIC` when the requirement
+includes service provenance, program opens, spool opens, other protected
+resources, or production `jobd` behavior outside Phase 1.4.1. Phase-scoped
+subclaim rows are `C4_VERIFIED_PROPERTY` only where an explicit verified Dafny
+property exists. The complete child scenario links are recorded in
+`test-to-dafny.yml` and `fixture-to-dafny.yml`.
+
+Requirement rows now distinguish:
+
+- parent requirements: partial coverage only, with `not_claimed` listing the
+  broad behavior outside Phase 1.4.1;
+- Phase 1.4.1 subclaims: verified Dafny properties for dataset/DD effective
+  principal, DD catalog/authorization binding, and authorization-bypass denial;
+- C5 scenario rows: fixture/oracle/golden linked conformance rows only.
 
 C4 rows remain C4 when they have verified Dafny properties but no dedicated
 fixture/oracle/golden vector. Formal claims remain below C4/C5 because this PR
@@ -61,3 +77,13 @@ Required C5-linked scenario families:
 - stale handle after policy change fails;
 - invalid lifecycle transition fails;
 - cancelled job cannot execute further.
+
+Remediated PR #29 evidence blockers:
+
+- `cancelled-cannot-execute-0926` now uses modeled `MFOS_ERR_INVALID_STATE`
+  instead of undefined `MFOS_ERR_INVALID_STATE_TRANSITION`.
+- `cancelled-cannot-execute-0926` keeps attempted transitions in JobState
+  space: `JOB_CANCELLED` to `JOB_EXECUTING`, with final state
+  `JOB_CANCELLED`.
+- `valid-submit-ready-0928` records the atomic Dafny lifecycle sequence:
+  `JOB_SUBMITTED -> JOB_VALIDATED -> JOB_READY`.

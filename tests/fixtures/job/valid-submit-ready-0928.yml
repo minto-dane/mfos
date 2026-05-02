@@ -12,9 +12,9 @@ semantic_facts:
   submit_decision: ALLOW
   effective_principal: PRIN-MFOS-JOB-ALICE
   lifecycle_path:
-  - SUBMITTED
-  - VALIDATED
-  - READY
+  - JOB_SUBMITTED
+  - JOB_VALIDATED
+  - JOB_READY
   handle_expected: false
 initial_state:
   clock: T0
@@ -28,12 +28,12 @@ initial_state:
     submit_decision: ALLOW
   job_context:
     job_id: JOB-MFOS-PHASE14-0928
-    state: SUBMITTED
+    state: JOB_SUBMITTED
     effective_principal: null
   expected_lifecycle_path:
-  - SUBMITTED
-  - VALIDATED
-  - READY
+  - JOB_SUBMITTED
+  - JOB_VALIDATED
+  - JOB_READY
   objects:
   - object_ref: OBJ-MFOS-JOB-SUBMIT-0928
     generation: 1

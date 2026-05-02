@@ -1,15 +1,15 @@
 fixture_id: FIXTURE-MFOS-JOB-CANCELLED-CANNOT-EXECUTE-0926
 fixture_version: 1
-description: cancelled job cannot execute further steps
+description: cancelled job cannot transition back to execution
 target_specs:
 - docs/design/specs/09-job-spool.md
 target_requirements:
 - MFOS-REQ-JOB-0101
 preconditions:
-- Symbolic job state is CANCELLED before a step execution request.
+- Symbolic job state is JOB_CANCELLED before an execution request.
 semantic_facts:
   dafny_property: INV_JOB_CANCELLED_CANNOT_EXECUTE_FURTHER
-  job_state: CANCELLED
+  job_state: JOB_CANCELLED
   effective_principal: PRIN-MFOS-JOB-ALICE
   attempted_transition: EXECUTE_STEP
   next_state_allowed: false
@@ -19,15 +19,15 @@ initial_state:
   policy_version: 1
   job_context:
     job_id: JOB-MFOS-PHASE14-0926
-    state: CANCELLED
+    state: JOB_CANCELLED
     effective_principal: PRIN-MFOS-JOB-ALICE
   step:
     step_id: STEP-MFOS-PHASE14-0926
     state: STEP_READY
   attempted_transition:
-    from: CANCELLED
+    from: JOB_CANCELLED
     action: EXECUTE_STEP
-    to: STEP_RUNNING
+    to: JOB_EXECUTING
   objects:
   - object_ref: OBJ-MFOS-JOB-CANCELLED-0926
     generation: 1

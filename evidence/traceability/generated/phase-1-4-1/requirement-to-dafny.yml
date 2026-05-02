@@ -3,6 +3,35 @@ phase: phase-1.4.1
 requirements:
 - requirement_id: MFOS-REQ-JOB-0101
   domain: job_lifecycle_dd_resolution
+  phase_scope: phase-1-4-1
+  partial_coverage: true
+  covered_subclaim: Phase 1.4.1 verifies the dataset/DD-open effective-principal precondition.
+  not_claimed:
+  - program open authorization lifecycle
+  - spool open authorization lifecycle
+  - other protected resource open authorization lifecycle
+  - production jobd behavior
+  coverage_level: C2_PARTIAL_SEMANTIC
+  fixture_ref: null
+  oracle_ref: null
+  golden_ref: null
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_CONTEXT_EFFECTIVE_PRINCIPAL_BEFORE_OPEN
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/phases/phase-1-4/job-lifecycle-dd-resolution/coverage-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: Parent requirement remains partial because program, spool, other protected
+    resources, and production jobd behavior are outside Phase 1.4.1.
+- requirement_id: MFOS-REQ-JOB-0101
+  subclaim_id: MFOS-REQ-JOB-0101-PHASE-1-4-1-DATASET-DD-OPEN
+  domain: job_lifecycle_dd_resolution
+  phase_scope: phase-1-4-1
+  partial_coverage: false
+  covered_subclaim: Dataset/DD open from a JobContext cannot satisfy DD resolution
+    before an effective principal exists.
+  not_claimed: []
   coverage_level: C4_VERIFIED_PROPERTY
   fixture_ref: null
   oracle_ref: null
@@ -14,10 +43,39 @@ requirements:
     verification_status: verified
     evidence_ref: reports/phases/phase-1-4/job-lifecycle-dd-resolution/coverage-report.md
     coverage_level: C4_VERIFIED_PROPERTY
-  notes: Effective principal before protected opens has verified Dafny coverage; C5
-    is claimed only on linked scenario rows.
+  notes: Phase-scoped subclaim only; this does not promote the broad parent requirement
+    to C4.
 - requirement_id: MFOS-REQ-JOB-0102
   domain: job_lifecycle_dd_resolution
+  phase_scope: phase-1-4-1
+  partial_coverage: true
+  covered_subclaim: Phase 1.4.1 verifies DD handle creation through DatasetCatalog
+    and Authorization semantics.
+  not_claimed:
+  - catalogd service provenance
+  - securityd service provenance
+  - production jobd handle receipt
+  coverage_level: C2_PARTIAL_SEMANTIC
+  fixture_ref: null
+  oracle_ref: null
+  golden_ref: null
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_DD_BOUND_DECISION_BINDS_REQUEST
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/phases/phase-1-4/job-lifecycle-dd-resolution/coverage-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: Parent requirement remains partial because service provenance is not modeled
+    in this non-production Dafny semantics PR.
+- requirement_id: MFOS-REQ-JOB-0102
+  subclaim_id: MFOS-REQ-JOB-0102-PHASE-1-4-1-DD-CATALOG-AUTH
+  domain: job_lifecycle_dd_resolution
+  phase_scope: phase-1-4-1
+  partial_coverage: false
+  covered_subclaim: DD resolution requires a bound authorization decision and catalog
+    generation before a DatasetHandle can be created.
+  not_claimed: []
   coverage_level: C4_VERIFIED_PROPERTY
   fixture_ref: null
   oracle_ref: null
@@ -29,10 +87,39 @@ requirements:
     verification_status: verified
     evidence_ref: reports/phases/phase-1-4/job-lifecycle-dd-resolution/coverage-report.md
     coverage_level: C4_VERIFIED_PROPERTY
-  notes: DD authorization decisions are bound to the current JobContext/DD request;
-    child scenario rows carry C5 fixture/oracle/golden links.
+  notes: Phase-scoped subclaim only; this does not model catalogd/securityd service
+    provenance.
 - requirement_id: MFOS-REQ-JOB-0103
   domain: job_lifecycle_dd_resolution
+  phase_scope: phase-1-4-1
+  partial_coverage: true
+  covered_subclaim: Phase 1.4.1 verifies DD resolution cannot bypass Authorization
+    semantics.
+  not_claimed:
+  - securityd decision provenance
+  - jobd service-origin constraints
+  - production service interaction
+  coverage_level: C2_PARTIAL_SEMANTIC
+  fixture_ref: null
+  oracle_ref: null
+  golden_ref: null
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_JOB_DD_RESOLUTION_CANNOT_BYPASS_AUTHORIZATION
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/phases/phase-1-4/job-lifecycle-dd-resolution/coverage-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: Parent requirement remains partial because Phase 1.4.1 does not model service
+    provenance from securityd/jobd.
+- requirement_id: MFOS-REQ-JOB-0103
+  subclaim_id: MFOS-REQ-JOB-0103-PHASE-1-4-1-DD-AUTHORIZATION-BYPASS
+  domain: job_lifecycle_dd_resolution
+  phase_scope: phase-1-4-1
+  partial_coverage: false
+  covered_subclaim: DD resolution cannot create a DatasetHandle by bypassing Authorization
+    semantics.
+  not_claimed: []
   coverage_level: C4_VERIFIED_PROPERTY
   fixture_ref: null
   oracle_ref: null
@@ -44,6 +131,6 @@ requirements:
     verification_status: verified
     evidence_ref: reports/phases/phase-1-4/job-lifecycle-dd-resolution/coverage-report.md
     coverage_level: C4_VERIFIED_PROPERTY
-  notes: jobd does not issue final authorization decisions; bypass rejection is verified
-    and C5-linked at the scenario row.
-coverage_level: C4_VERIFIED_PROPERTY
+  notes: Phase-scoped subclaim only; this does not claim production securityd/jobd
+    provenance.
+coverage_level: C2_PARTIAL_SEMANTIC

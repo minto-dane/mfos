@@ -1016,11 +1016,11 @@ entries:
     operation: CANCELLED-CANNOT-EXECUTE
     deterministic_seed: SEED-MFOS-PHASE14-0926
   expected:
-    decisions: [{decision_id: DECISION-MFOS-JOB-CANCELLED-0926, result: DENY, policy_version: 1, obligations: [AUDIT_SECURITY_DECISION]}]
-    state_transitions: [{object: JOB-LIFECYCLE, from: CANCELLED, action: EXECUTE_STEP, to: CANCELLED, reason: MFOS_ERR_INVALID_STATE_TRANSITION}]
-    audit_records: [{record_type: SECURITY_DECISION, decision: DENY, reason_code: MFOS_ERR_INVALID_STATE_TRANSITION, before_return: true}]
-    failure_mode: MFOS_ERR_INVALID_STATE_TRANSITION
-    final_state: CANCELLED
+    decisions: [{decision_id: DECISION-MFOS-JOB-CANCELLED-CANNOT-EXECUTE-0926, result: DENY, policy_version: 1, obligations: [AUDIT_SECURITY_DECISION]}]
+    state_transitions: [{object: JOB-LIFECYCLE, from: JOB_CANCELLED, action: EXECUTE_STEP, to: JOB_CANCELLED, reason: MFOS_ERR_INVALID_STATE}]
+    audit_records: [{record_type: SECURITY_DECISION, decision: DENY, reason_code: MFOS_ERR_INVALID_STATE, before_return: true}]
+    failure_mode: MFOS_ERR_INVALID_STATE
+    final_state: JOB_CANCELLED
   oracle_ref: tests/golden/job/cancelled-cannot-execute-0926.yml
   fixture_ref: tests/fixtures/job/cancelled-cannot-execute-0926.yml
   golden_ref: tests/golden/job/cancelled-cannot-execute-0926.yml
@@ -1082,10 +1082,10 @@ entries:
     deterministic_seed: SEED-MFOS-PHASE14-0928
   expected:
     decisions: [{decision_id: DECISION-MFOS-JOB-SUBMIT-0928, result: ALLOW, policy_version: 1, obligations: [AUDIT_SECURITY_DECISION]}]
-    state_transitions: [{object: JOB-LIFECYCLE, from: SUBMITTED, action: VALIDATE_AND_READY, to: READY, reason: EXPECTED}]
+    state_transitions: [{object: JOB-LIFECYCLE, from: JOB_SUBMITTED, action: VALIDATE, to: JOB_VALIDATED, reason: EXPECTED}, {object: JOB-LIFECYCLE, from: JOB_VALIDATED, action: MARK_READY, to: JOB_READY, reason: EXPECTED}]
     audit_records: [{record_type: SECURITY_DECISION, decision: ALLOW, reason_code: OK, before_return: false}]
     failure_mode: null
-    final_state: READY
+    final_state: JOB_READY
   oracle_ref: tests/golden/job/valid-submit-ready-0928.yml
   fixture_ref: tests/fixtures/job/valid-submit-ready-0928.yml
   golden_ref: tests/golden/job/valid-submit-ready-0928.yml

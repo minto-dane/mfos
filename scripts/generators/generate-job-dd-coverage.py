@@ -426,9 +426,82 @@ PROPERTY_ROWS = [
 ]
 
 REQUIREMENT_ROWS = [
-    ("MFOS-REQ-JOB-0101", "INV_JOB_CONTEXT_EFFECTIVE_PRINCIPAL_BEFORE_OPEN", "C4_VERIFIED_PROPERTY", "Effective principal before protected opens has verified Dafny coverage; C5 is claimed only on linked scenario rows."),
-    ("MFOS-REQ-JOB-0102", "INV_JOB_DD_BOUND_DECISION_BINDS_REQUEST", "C4_VERIFIED_PROPERTY", "DD authorization decisions are bound to the current JobContext/DD request; child scenario rows carry C5 fixture/oracle/golden links."),
-    ("MFOS-REQ-JOB-0103", "INV_JOB_DD_RESOLUTION_CANNOT_BYPASS_AUTHORIZATION", "C4_VERIFIED_PROPERTY", "jobd does not issue final authorization decisions; bypass rejection is verified and C5-linked at the scenario row."),
+    {
+        "requirement_id": "MFOS-REQ-JOB-0101",
+        "coverage_level": "C2_PARTIAL_SEMANTIC",
+        "symbol": "INV_JOB_CONTEXT_EFFECTIVE_PRINCIPAL_BEFORE_OPEN",
+        "mapping_level": "C4_VERIFIED_PROPERTY",
+        "partial_coverage": True,
+        "covered_subclaim": "Phase 1.4.1 verifies the dataset/DD-open effective-principal precondition.",
+        "not_claimed": [
+            "program open authorization lifecycle",
+            "spool open authorization lifecycle",
+            "other protected resource open authorization lifecycle",
+            "production jobd behavior",
+        ],
+        "notes": "Parent requirement remains partial because program, spool, other protected resources, and production jobd behavior are outside Phase 1.4.1.",
+    },
+    {
+        "requirement_id": "MFOS-REQ-JOB-0101",
+        "subclaim_id": "MFOS-REQ-JOB-0101-PHASE-1-4-1-DATASET-DD-OPEN",
+        "coverage_level": "C4_VERIFIED_PROPERTY",
+        "symbol": "INV_JOB_CONTEXT_EFFECTIVE_PRINCIPAL_BEFORE_OPEN",
+        "mapping_level": "C4_VERIFIED_PROPERTY",
+        "partial_coverage": False,
+        "covered_subclaim": "Dataset/DD open from a JobContext cannot satisfy DD resolution before an effective principal exists.",
+        "not_claimed": [],
+        "notes": "Phase-scoped subclaim only; this does not promote the broad parent requirement to C4.",
+    },
+    {
+        "requirement_id": "MFOS-REQ-JOB-0102",
+        "coverage_level": "C2_PARTIAL_SEMANTIC",
+        "symbol": "INV_JOB_DD_BOUND_DECISION_BINDS_REQUEST",
+        "mapping_level": "C4_VERIFIED_PROPERTY",
+        "partial_coverage": True,
+        "covered_subclaim": "Phase 1.4.1 verifies DD handle creation through DatasetCatalog and Authorization semantics.",
+        "not_claimed": [
+            "catalogd service provenance",
+            "securityd service provenance",
+            "production jobd handle receipt",
+        ],
+        "notes": "Parent requirement remains partial because service provenance is not modeled in this non-production Dafny semantics PR.",
+    },
+    {
+        "requirement_id": "MFOS-REQ-JOB-0102",
+        "subclaim_id": "MFOS-REQ-JOB-0102-PHASE-1-4-1-DD-CATALOG-AUTH",
+        "coverage_level": "C4_VERIFIED_PROPERTY",
+        "symbol": "INV_JOB_DD_BOUND_DECISION_BINDS_REQUEST",
+        "mapping_level": "C4_VERIFIED_PROPERTY",
+        "partial_coverage": False,
+        "covered_subclaim": "DD resolution requires a bound authorization decision and catalog generation before a DatasetHandle can be created.",
+        "not_claimed": [],
+        "notes": "Phase-scoped subclaim only; this does not model catalogd/securityd service provenance.",
+    },
+    {
+        "requirement_id": "MFOS-REQ-JOB-0103",
+        "coverage_level": "C2_PARTIAL_SEMANTIC",
+        "symbol": "INV_JOB_DD_RESOLUTION_CANNOT_BYPASS_AUTHORIZATION",
+        "mapping_level": "C4_VERIFIED_PROPERTY",
+        "partial_coverage": True,
+        "covered_subclaim": "Phase 1.4.1 verifies DD resolution cannot bypass Authorization semantics.",
+        "not_claimed": [
+            "securityd decision provenance",
+            "jobd service-origin constraints",
+            "production service interaction",
+        ],
+        "notes": "Parent requirement remains partial because Phase 1.4.1 does not model service provenance from securityd/jobd.",
+    },
+    {
+        "requirement_id": "MFOS-REQ-JOB-0103",
+        "subclaim_id": "MFOS-REQ-JOB-0103-PHASE-1-4-1-DD-AUTHORIZATION-BYPASS",
+        "coverage_level": "C4_VERIFIED_PROPERTY",
+        "symbol": "INV_JOB_DD_RESOLUTION_CANNOT_BYPASS_AUTHORIZATION",
+        "mapping_level": "C4_VERIFIED_PROPERTY",
+        "partial_coverage": False,
+        "covered_subclaim": "DD resolution cannot create a DatasetHandle by bypassing Authorization semantics.",
+        "not_claimed": [],
+        "notes": "Phase-scoped subclaim only; this does not claim production securityd/jobd provenance.",
+    },
 ]
 
 FORMAL_CLAIMS = [
@@ -455,17 +528,25 @@ def aggregate_level(rows: list[dict[str, Any]]) -> str:
     return min((row["coverage_level"] for row in rows), key=lambda level: COVERAGE_RANK[level]) if rows else "C0_NONE"
 
 
-def requirement_entry(item: tuple[str, str, str, str]) -> dict[str, Any]:
-    req_id, symbol, level, note = item
+def requirement_entry(item: dict[str, Any]) -> dict[str, Any]:
+    req_id = item["requirement_id"]
+    symbol = item["symbol"]
+    level = item["coverage_level"]
+    mapping_level = item.get("mapping_level", level)
     return {
         "requirement_id": req_id,
+        **({"subclaim_id": item["subclaim_id"]} if item.get("subclaim_id") else {}),
         "domain": "job_lifecycle_dd_resolution",
+        "phase_scope": "phase-1-4-1",
+        "partial_coverage": item.get("partial_coverage", False),
+        "covered_subclaim": item.get("covered_subclaim"),
+        "not_claimed": item.get("not_claimed", []),
         "coverage_level": level,
         "fixture_ref": None,
         "oracle_ref": None,
         "golden_ref": None,
-        "coverage_mappings": [mapping(symbol, level, "reports/phases/phase-1-4/job-lifecycle-dd-resolution/coverage-report.md")],
-        "notes": note,
+        "coverage_mappings": [mapping(symbol, mapping_level, "reports/phases/phase-1-4/job-lifecycle-dd-resolution/coverage-report.md")],
+        "notes": item["notes"],
     }
 
 
