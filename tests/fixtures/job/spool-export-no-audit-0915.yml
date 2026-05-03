@@ -14,9 +14,23 @@ initial_state:
   clock: T0
   security_epoch: 1
   policy_version: 1
+  spool_entry:
+    spool_id: SPOOL-MFOS-PHASE142-0915
+    owner: PRIN-MFOS-SPOOL-OWNER
+    job_id: JOB-MFOS-PHASE142-0915
+    protected: true
+    retained: false
+  audit_available: false
   objects:
-  - object_ref: OBJ-MFOS-PHASE09-0001
+  - object_ref: SPOOL-MFOS-PHASE142-0915
     generation: 1
+semantic_facts:
+  dafny_property: INV_SPOOL_EXPORT_AUDIT_UNAVAILABLE_FAILS_CLOSED
+  spool_operation: OP_EXPORT
+  authorization_result: ALLOW_WITH_AUDIT
+  audit_required: true
+  audit_available: false
+  export_completed: false
 inputs:
 - input_id: INPUT-MFOS-PHASE09-0001
   operation: SPOOL-EXPORT-NO-AUDIT

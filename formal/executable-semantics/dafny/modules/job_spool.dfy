@@ -260,18 +260,107 @@ module JobSpool {
     spool.protected && ValidId(spool.spool_id) && ValidSubject(spool.owner)
   }
 
+  predicate ValidSpoolOperation(operation: Operation) {
+    operation == OP_QUERY || operation == OP_PURGE || operation == OP_EXPORT
+  }
+
+  predicate ValidSpoolAllowDecision(decision: SecurityDecision) {
+    Authorization.DecisionAllowsProtectedEffect(decision)
+  }
+
+  predicate ValidSpoolDenyDecision(decision: SecurityDecision) {
+    Authorization.DecisionWellFormed(decision) &&
+    decision.result == DENY &&
+    !IsSuccessError(decision.error_code)
+  }
+
+  predicate IsBoundSpoolDecision(ctx: SpoolAccessContext, spool: SpoolEntry, operation: Operation, decision: SecurityDecision) {
+    SpoolEntryProtected(spool) &&
+    ValidSpoolOperation(operation) &&
+    ValidSubject(ctx.subject) &&
+    ValidPolicyVersion(ctx.policy_version) &&
+    ValidCorrelationId(ctx.correlation_id) &&
+    Authorization.DecisionWellFormed(decision) &&
+    decision.subject == ctx.subject &&
+    decision.object_ref.object_id == spool.spool_id &&
+    decision.operation == operation &&
+    decision.resource_class == RESOURCE_SPOOL &&
+    decision.policy_version == ctx.policy_version &&
+    decision.context.policy_version == ctx.policy_version &&
+    decision.context.correlation_id == ctx.correlation_id
+  }
+
+  predicate BoundSpoolDecisionValid(bound: BoundSpoolDecision) {
+    IsBoundSpoolDecision(bound.context, bound.spool, bound.operation, bound.decision)
+  }
+
+  predicate BoundSpoolDecisionDeniesWithAudit(bound: BoundSpoolDecision) {
+    BoundSpoolDecisionValid(bound) &&
+    ValidSpoolDenyDecision(bound.decision) &&
+    Authorization.RequiresAudit(bound.decision)
+  }
+
   predicate SpoolBrowseAllowed(spool: SpoolEntry, decision: SecurityDecision) {
     SpoolEntryProtected(spool) &&
     decision.subject == spool.owner &&
+    decision.object_ref.object_id == spool.spool_id &&
     decision.resource_class == RESOURCE_SPOOL &&
     decision.operation == OP_QUERY &&
     Authorization.DecisionAllowsProtectedEffect(decision)
+  }
+
+  predicate SpoolBrowseCanReturnContent(bound: BoundSpoolDecision, records: seq<AuditRecord>) {
+    BoundSpoolDecisionValid(bound) &&
+    bound.operation == OP_QUERY &&
+    ValidSpoolAllowDecision(bound.decision) &&
+    Audit.RequiredAuditSatisfiedForFinalResult(bound.decision, records)
   }
 
   predicate SpoolPurgeDeniedWithoutAuthority(decision: SecurityDecision) {
     decision.resource_class == RESOURCE_SPOOL &&
     decision.operation == OP_PURGE &&
     !Authorization.DecisionAllowsProtectedEffect(decision)
+  }
+
+  predicate SpoolPurgeCanRemoveContent(bound: BoundSpoolDecision, records: seq<AuditRecord>) {
+    BoundSpoolDecisionValid(bound) &&
+    bound.operation == OP_PURGE &&
+    !bound.spool.retained &&
+    ValidSpoolAllowDecision(bound.decision) &&
+    Audit.RequiredAuditSatisfiedForFinalResult(bound.decision, records)
+  }
+
+  predicate SpoolExportCanComplete(bound: BoundSpoolDecision, records: seq<AuditRecord>) {
+    BoundSpoolDecisionValid(bound) &&
+    bound.operation == OP_EXPORT &&
+    ValidSpoolAllowDecision(bound.decision) &&
+    Authorization.RequiresAudit(bound.decision) &&
+    Audit.RequiredAuditSatisfiedForFinalResult(bound.decision, records)
+  }
+
+  predicate SpoolEvidenceIsAuditEvidence(evidence: SpoolEvidence, record: AuditRecord) {
+    false
+  }
+
+  function DeniedSpoolAccessWithAudit(bound: BoundSpoolDecision, prior_records: seq<AuditRecord>, next_record_id: MfosId, audit_available: bool): SpoolAccessResult
+    requires BoundSpoolDecisionDeniesWithAudit(bound)
+    requires ValidId(next_record_id)
+  {
+    var outcome := Audit.FinalizeDeniedOperation(bound.decision, prior_records, next_record_id, audit_available);
+    SpoolAccessResult(outcome.final_error, bound.decision.reason_code, outcome.records_after,
+      outcome.result_released, false, false, false)
+  }
+
+  function ExportSpoolAccess(bound: BoundSpoolDecision, prior_records: seq<AuditRecord>, next_record_id: MfosId, audit_available: bool): SpoolAccessResult
+    requires BoundSpoolDecisionValid(bound)
+    requires bound.operation == OP_EXPORT
+    requires ValidSpoolAllowDecision(bound.decision)
+    requires Authorization.RequiresAudit(bound.decision)
+    requires ValidId(next_record_id)
+  {
+    var outcome := Audit.FinalizeRequiredAuditedOperation(bound.decision, prior_records, next_record_id, audit_available);
+    SpoolAccessResult(outcome.final_error, bound.decision.reason_code, outcome.records_after,
+      outcome.result_released, false, false, outcome.result_released && outcome.final_error == MFOS_OK)
   }
 
   lemma INV_JOB_EFFECTIVE_PRINCIPAL_BEFORE_OPEN(ctx: JobContext, dd: DD, decision: SecurityDecision)
@@ -507,6 +596,38 @@ module JobSpool {
   lemma INV_SPOOL_PROTECTED_RESOURCE(spool: SpoolEntry)
     requires SpoolEntryProtected(spool)
     ensures spool.protected
+    ensures ValidId(spool.spool_id)
+    ensures ValidSubject(spool.owner)
+  {
+  }
+
+  lemma INV_SPOOL_DECISION_BINDS_ENTRY(bound: BoundSpoolDecision)
+    requires BoundSpoolDecisionValid(bound)
+    ensures bound.decision.subject == bound.context.subject
+    ensures bound.decision.object_ref.object_id == bound.spool.spool_id
+    ensures bound.decision.operation == bound.operation
+    ensures bound.decision.resource_class == RESOURCE_SPOOL
+    ensures bound.decision.policy_version == bound.context.policy_version
+    ensures bound.decision.context.policy_version == bound.context.policy_version
+    ensures bound.decision.context.correlation_id == bound.context.correlation_id
+    ensures Authorization.DecisionWellFormed(bound.decision)
+  {
+  }
+
+  lemma INV_SPOOL_CROSS_REQUEST_AUTHORIZATION_REPLAY_BLOCKED(ctx: SpoolAccessContext, spool: SpoolEntry, operation: Operation, decision: SecurityDecision)
+    requires decision.context.correlation_id != ctx.correlation_id
+    ensures !IsBoundSpoolDecision(ctx, spool, operation, decision)
+  {
+  }
+
+  lemma INV_SPOOL_OWNER_BROWSE_ALLOWED(bound: BoundSpoolDecision, records: seq<AuditRecord>)
+    requires BoundSpoolDecisionValid(bound)
+    requires bound.operation == OP_QUERY
+    requires bound.context.subject == bound.spool.owner
+    requires ValidSpoolAllowDecision(bound.decision)
+    requires Audit.RequiredAuditSatisfiedForFinalResult(bound.decision, records)
+    ensures SpoolBrowseAllowed(bound.spool, bound.decision)
+    ensures SpoolBrowseCanReturnContent(bound, records)
   {
   }
 
@@ -516,9 +637,22 @@ module JobSpool {
   {
   }
 
+  lemma INV_SPOOL_BROWSE_BY_NON_OWNER_RETURNS_NO_CONTENT(bound: BoundSpoolDecision, records: seq<AuditRecord>)
+    requires bound.context.subject != bound.spool.owner
+    requires !ValidSpoolAllowDecision(bound.decision)
+    ensures !SpoolBrowseCanReturnContent(bound, records)
+  {
+  }
+
   lemma INV_SPOOL_BROWSE_WITHOUT_AUTHORITY_DENIED(spool: SpoolEntry, decision: SecurityDecision)
     requires !Authorization.DecisionAllowsProtectedEffect(decision)
     ensures !SpoolBrowseAllowed(spool, decision)
+  {
+  }
+
+  lemma INV_SPOOL_BROWSE_CANNOT_BYPASS_AUTHORIZATION(bound: BoundSpoolDecision, records: seq<AuditRecord>)
+    requires !Authorization.DecisionAllowsProtectedEffect(bound.decision)
+    ensures !SpoolBrowseCanReturnContent(bound, records)
   {
   }
 
@@ -527,6 +661,104 @@ module JobSpool {
     requires decision.operation == OP_PURGE
     requires !Authorization.DecisionAllowsProtectedEffect(decision)
     ensures SpoolPurgeDeniedWithoutAuthority(decision)
+  {
+  }
+
+  lemma INV_SPOOL_PURGE_REQUIRES_AUTHORITY_AND_RETENTION(bound: BoundSpoolDecision, records: seq<AuditRecord>)
+    requires bound.operation == OP_PURGE
+    requires !ValidSpoolAllowDecision(bound.decision) || bound.spool.retained
+    ensures !SpoolPurgeCanRemoveContent(bound, records)
+  {
+  }
+
+  lemma INV_SPOOL_EXPORT_REQUIRES_AUTHORITY_AND_AUDIT(bound: BoundSpoolDecision, records: seq<AuditRecord>)
+    requires bound.operation == OP_EXPORT
+    requires !ValidSpoolAllowDecision(bound.decision) || !Authorization.RequiresAudit(bound.decision) || !Audit.RequiredAuditSatisfiedForFinalResult(bound.decision, records)
+    ensures !SpoolExportCanComplete(bound, records)
+  {
+  }
+
+  lemma INV_SPOOL_EXPORT_WITHOUT_AUDIT_DENIED(bound: BoundSpoolDecision, records: seq<AuditRecord>)
+    requires bound.operation == OP_EXPORT
+    requires !Authorization.RequiresAudit(bound.decision) || !Audit.RequiredAuditSatisfiedForFinalResult(bound.decision, records)
+    ensures !SpoolExportCanComplete(bound, records)
+  {
+  }
+
+  lemma INV_SPOOL_EXPORT_AUDIT_UNAVAILABLE_FAILS_CLOSED(bound: BoundSpoolDecision, prior_records: seq<AuditRecord>, next_record_id: MfosId)
+    requires BoundSpoolDecisionValid(bound)
+    requires bound.operation == OP_EXPORT
+    requires ValidSpoolAllowDecision(bound.decision)
+    requires Authorization.RequiresAudit(bound.decision)
+    requires ValidId(next_record_id)
+    ensures ExportSpoolAccess(bound, prior_records, next_record_id, false).error_code == MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+    ensures !ExportSpoolAccess(bound, prior_records, next_record_id, false).result_released
+    ensures !ExportSpoolAccess(bound, prior_records, next_record_id, false).export_completed
+    ensures !IsSuccessError(ExportSpoolAccess(bound, prior_records, next_record_id, false).error_code)
+  {
+    Audit.INV_AUDIT_REQUIRED_TRANSITION_FAILS_CLOSED_WHEN_UNAVAILABLE(bound.decision, prior_records, next_record_id);
+  }
+
+  lemma INV_SPOOL_DENY_PRODUCES_NO_SUCCESSFUL_ACCESS(bound: BoundSpoolDecision, records: seq<AuditRecord>)
+    requires bound.decision.result == DENY
+    ensures !SpoolBrowseCanReturnContent(bound, records)
+    ensures !SpoolPurgeCanRemoveContent(bound, records)
+    ensures !SpoolExportCanComplete(bound, records)
+  {
+  }
+
+  lemma INV_SPOOL_DENY_WITH_AUDIT_LINKS_BEFORE_RETURN(bound: BoundSpoolDecision, prior_records: seq<AuditRecord>, next_record_id: MfosId)
+    requires BoundSpoolDecisionDeniesWithAudit(bound)
+    requires ValidId(next_record_id)
+    ensures DeniedSpoolAccessWithAudit(bound, prior_records, next_record_id, true).error_code == bound.decision.error_code
+    ensures DeniedSpoolAccessWithAudit(bound, prior_records, next_record_id, true).result_released
+    ensures Audit.RequiredAuditSatisfiedForFinalResult(bound.decision, DeniedSpoolAccessWithAudit(bound, prior_records, next_record_id, true).audit_records)
+    ensures !DeniedSpoolAccessWithAudit(bound, prior_records, next_record_id, true).content_released
+    ensures !DeniedSpoolAccessWithAudit(bound, prior_records, next_record_id, true).purge_completed
+    ensures !DeniedSpoolAccessWithAudit(bound, prior_records, next_record_id, true).export_completed
+  {
+    Audit.INV_AUDIT_DENY_TRANSITION_WRITES_BEFORE_RETURN(bound.decision, prior_records, next_record_id);
+  }
+
+  lemma INV_SPOOL_DENY_AUDIT_UNAVAILABLE_FAILS_CLOSED(bound: BoundSpoolDecision, prior_records: seq<AuditRecord>, next_record_id: MfosId)
+    requires BoundSpoolDecisionDeniesWithAudit(bound)
+    requires ValidId(next_record_id)
+    ensures DeniedSpoolAccessWithAudit(bound, prior_records, next_record_id, false).error_code == MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+    ensures !DeniedSpoolAccessWithAudit(bound, prior_records, next_record_id, false).result_released
+    ensures !DeniedSpoolAccessWithAudit(bound, prior_records, next_record_id, false).content_released
+    ensures !DeniedSpoolAccessWithAudit(bound, prior_records, next_record_id, false).purge_completed
+    ensures !DeniedSpoolAccessWithAudit(bound, prior_records, next_record_id, false).export_completed
+    ensures !IsSuccessError(DeniedSpoolAccessWithAudit(bound, prior_records, next_record_id, false).error_code)
+  {
+    Audit.INV_AUDIT_DENY_TRANSITION_FAILS_CLOSED_WHEN_UNAVAILABLE(bound.decision, prior_records, next_record_id);
+  }
+
+  lemma INV_SPOOL_EVIDENCE_NOT_AUDIT_EVIDENCE(evidence: SpoolEvidence, record: AuditRecord)
+    ensures !SpoolEvidenceIsAuditEvidence(evidence, record)
+  {
+  }
+
+  lemma INV_SPOOL_ENTRY_NOT_AUDIT_EVIDENCE(spool: SpoolEntry, record: AuditRecord)
+    ensures !Audit.SpoolEntryIsAuditEvidence(spool, record)
+  {
+    Audit.INV_AUDIT_SPOOL_NOT_EVIDENCE(spool, record);
+  }
+
+  lemma INV_SPOOL_DIAGNOSTIC_LOG_LINE_NOT_AUDIT_EVIDENCE(record: AuditRecord)
+    ensures !Audit.DiagnosticLogLineIsAuditRecord(true, record)
+  {
+    Audit.INV_AUDIT_LOG_LINE_NOT_RECORD(record);
+  }
+
+  lemma INV_SPOOL_SPEC_GAP_NOT_SUCCESS(decision: SecurityDecision)
+    requires decision.result == SPEC_GAP
+    ensures !ValidSpoolAllowDecision(decision)
+  {
+  }
+
+  lemma INV_SPOOL_UNSUPPORTED_NOT_SUCCESS(decision: SecurityDecision)
+    requires decision.result == UNSUPPORTED
+    ensures !ValidSpoolAllowDecision(decision)
   {
   }
 

@@ -285,6 +285,35 @@ module Types {
 
   datatype SpoolEntry = SpoolEntry(spool_id: MfosId, owner: Subject, job_id: MfosId, protected: bool, retained: bool)
 
+  datatype SpoolAccessContext = SpoolAccessContext(
+    subject: Subject,
+    policy_version: PolicyVersion,
+    correlation_id: CorrelationId
+  )
+
+  datatype BoundSpoolDecision = BoundSpoolDecision(
+    context: SpoolAccessContext,
+    spool: SpoolEntry,
+    operation: Operation,
+    decision: SecurityDecision
+  )
+
+  datatype SpoolAccessResult = SpoolAccessResult(
+    error_code: ErrorCode,
+    reason_code: ReasonCode,
+    audit_records: seq<AuditRecord>,
+    result_released: bool,
+    content_released: bool,
+    purge_completed: bool,
+    export_completed: bool
+  )
+
+  datatype SpoolEvidence = SpoolEvidence(
+    evidence: Evidence,
+    spool_id: MfosId,
+    operation: Operation
+  )
+
   datatype OperatorAuthority = AUTH_DISPLAY | AUTH_DEFINE | AUTH_SUBMIT | AUTH_CANCEL | AUTH_DESTRUCTIVE
   datatype OperatorCommand = OperatorCommand(command_id: MfosId, authority: OperatorAuthority, audited: bool, confirmed: bool)
 

@@ -1,0 +1,41 @@
+golden_id: GOLDEN-MFOS-JOB-SPOOL-EVIDENCE-NOT-AUDIT-0916
+golden_version: 1
+fixture_ref: tests/fixtures/job/spool-evidence-not-audit-0916.yml
+normalized_input:
+  fixture_id: FIXTURE-MFOS-JOB-SPOOL-EVIDENCE-NOT-AUDIT-0916
+  operation: SPOOL-EVIDENCE-NOT-AUDIT
+  deterministic_seed: SEED-MFOS-PHASE142-0916
+expected_normalized_output:
+  outcome: EXPECTED_FAIL_CLOSED
+  final_state: FAILED
+expected_decisions: &id001
+- decision_id: DECISION-MFOS-SPOOL-EVIDENCE-NOT-AUDIT-0916
+  result: ALLOW_WITH_AUDIT
+  policy_version: 1
+  obligations:
+  - AUDIT_SECURITY_DECISION
+expected_audit_sequence: &id003 []
+expected_state_transitions: &id002
+- object: SPOOL-MFOS-PHASE142-0916
+  from: SPOOL_AUDIT_EVIDENCE_CHECK
+  action: OP_EXPORT
+  to: FAILED
+  reason: MFOS_ERR_INVALID_AUDIT_RECORD
+expected_final_state: FAILED
+expected_failure_mode: MFOS_ERR_INVALID_AUDIT_RECORD
+deterministic: true
+oracle:
+  oracle_id: ORACLE-MFOS-JOB-SPOOL-EVIDENCE-NOT-AUDIT-0916
+  oracle_version: 1
+  fixture_ref: tests/fixtures/job/spool-evidence-not-audit-0916.yml
+  expected_decisions: *id001
+  expected_state_transitions: *id002
+  expected_audit_records: *id003
+  expected_failure:
+    error_code: MFOS_ERR_INVALID_AUDIT_RECORD
+    fail_closed: true
+  expected_final_state: FAILED
+  evidence_required:
+  - EV-MFOS-JOB-SPOOL-EVIDENCE-NOT-AUDIT-0916
+  status: draft
+status: draft

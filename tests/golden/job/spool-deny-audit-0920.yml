@@ -1,15 +1,15 @@
-golden_id: GOLDEN-MFOS-JOB-SPOOL-PURGE-DENIED-0914
+golden_id: GOLDEN-MFOS-JOB-SPOOL-DENY-AUDIT-0920
 golden_version: 1
-fixture_ref: tests/fixtures/job/spool-purge-denied-0914.yml
+fixture_ref: tests/fixtures/job/spool-deny-audit-0920.yml
 normalized_input:
-  fixture_id: FIXTURE-MFOS-JOB-SPOOL-PURGE-DENIED-0914
-  operation: SPOOL-PURGE-DENIED
-  deterministic_seed: SEED-MFOS-PHASE09-0001
+  fixture_id: FIXTURE-MFOS-JOB-SPOOL-DENY-AUDIT-0920
+  operation: SPOOL-DENY-AUDIT
+  deterministic_seed: SEED-MFOS-PHASE142-0920
 expected_normalized_output:
   outcome: EXPECTED_FAIL_CLOSED
   final_state: FAILED
 expected_decisions: &id001
-- decision_id: DECISION-MFOS-SPOOL-PURGE-DENIED-0914
+- decision_id: DECISION-MFOS-SPOOL-DENY-AUDIT-0920
   result: DENY
   policy_version: 1
   obligations:
@@ -20,7 +20,7 @@ expected_audit_sequence: &id003
   reason_code: MFOS_ERR_POLICY_DENIED
   before_return: true
 expected_state_transitions: &id002
-- object: SPOOL-MFOS-PHASE142-0914
+- object: SPOOL-MFOS-PHASE142-0920
   from: SPOOL_ACCESS_REQUESTED
   action: OP_PURGE
   to: FAILED
@@ -29,9 +29,9 @@ expected_final_state: FAILED
 expected_failure_mode: MFOS_ERR_POLICY_DENIED
 deterministic: true
 oracle:
-  oracle_id: ORACLE-MFOS-JOB-SPOOL-PURGE-DENIED-0914
+  oracle_id: ORACLE-MFOS-JOB-SPOOL-DENY-AUDIT-0920
   oracle_version: 1
-  fixture_ref: tests/fixtures/job/spool-purge-denied-0914.yml
+  fixture_ref: tests/fixtures/job/spool-deny-audit-0920.yml
   expected_decisions: *id001
   expected_state_transitions: *id002
   expected_audit_records: *id003
@@ -40,6 +40,6 @@ oracle:
     fail_closed: true
   expected_final_state: FAILED
   evidence_required:
-  - EV-MFOS-JOB-SPOOL-PURGE-DENIED-0914
+  - EV-MFOS-JOB-SPOOL-DENY-AUDIT-0920
   status: draft
 status: draft
