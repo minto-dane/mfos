@@ -490,37 +490,37 @@ entries:
 - test_id: TEST-MFOS-JOB-SPOOL-BROWSE-OWNER-0912
   test_name: spool browse by owner
   test_type: conformance
-  phase_to_implement: Phase 1
+  phase_to_implement: Phase 1.4.2
   target_pack: PACK-08
   target_specs: *id001
   target_requirements: *id002
   source_refs: *id003
   preconditions:
-  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  - Phase 1.4.2 Dafny evidence only; semantic execution is deferred to Dafny predicates.
   inputs:
-  - input_id: INPUT-MFOS-PHASE09-0001
+  - input_id: INPUT-MFOS-SPOOL-BROWSE-OWNER-0912
     operation: SPOOL-BROWSE-OWNER
-    deterministic_seed: SEED-MFOS-PHASE09-0001
+    deterministic_seed: SEED-MFOS-PHASE142-0912
   expected:
     decisions:
-    - decision_id: DECISION-MFOS-PHASE09-0001
+    - decision_id: DECISION-MFOS-SPOOL-BROWSE-OWNER-0912
       result: ALLOW
       policy_version: 1
       obligations:
       - AUDIT_SECURITY_DECISION
     state_transitions:
-    - object: PHASE09_OBJECT
-      from: INITIAL
-      action: EVALUATE
-      to: COMPLETE
+    - object: SPOOL-MFOS-PHASE142-0912
+      from: SPOOL_ACCESS_REQUESTED
+      action: OP_QUERY
+      to: SPOOL_CONTENT_RELEASED
       reason: EXPECTED
     audit_records:
     - record_type: SECURITY_DECISION
       decision: ALLOW
       reason_code: OK
-      before_return: false
+      before_return: true
     failure_mode: null
-    final_state: COMPLETE
+    final_state: SPOOL_CONTENT_RELEASED
   oracle_ref: tests/golden/job/spool-browse-owner-0912.yml
   fixture_ref: tests/fixtures/job/spool-browse-owner-0912.yml
   golden_ref: tests/golden/job/spool-browse-owner-0912.yml
@@ -533,28 +533,28 @@ entries:
 - test_id: NEG-MFOS-JOB-SPOOL-BROWSE-NONOWNER-0913
   test_name: spool browse by non-owner denied
   test_type: negative
-  phase_to_implement: Phase 1
+  phase_to_implement: Phase 1.4.2
   target_pack: PACK-08
   target_specs: *id001
   target_requirements: *id002
   source_refs: *id003
   preconditions:
-  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  - Phase 1.4.2 Dafny evidence only; semantic execution is deferred to Dafny predicates.
   inputs:
-  - input_id: INPUT-MFOS-PHASE09-0001
+  - input_id: INPUT-MFOS-SPOOL-BROWSE-NONOWNER-0913
     operation: SPOOL-BROWSE-NONOWNER
-    deterministic_seed: SEED-MFOS-PHASE09-0001
+    deterministic_seed: SEED-MFOS-PHASE142-0913
   expected:
     decisions:
-    - decision_id: DECISION-MFOS-PHASE09-0001
+    - decision_id: DECISION-MFOS-SPOOL-BROWSE-NONOWNER-0913
       result: DENY
       policy_version: 1
       obligations:
       - AUDIT_SECURITY_DECISION
     state_transitions:
-    - object: PHASE09_OBJECT
-      from: INITIAL
-      action: EVALUATE
+    - object: SPOOL-MFOS-PHASE142-0913
+      from: SPOOL_ACCESS_REQUESTED
+      action: OP_QUERY
       to: FAILED
       reason: MFOS_ERR_POLICY_DENIED
     audit_records:
@@ -576,28 +576,28 @@ entries:
 - test_id: NEG-MFOS-JOB-SPOOL-PURGE-DENIED-0914
   test_name: spool purge without authority denied
   test_type: negative
-  phase_to_implement: Phase 1
+  phase_to_implement: Phase 1.4.2
   target_pack: PACK-08
   target_specs: *id001
   target_requirements: *id002
   source_refs: *id003
   preconditions:
-  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  - Phase 1.4.2 Dafny evidence only; semantic execution is deferred to Dafny predicates.
   inputs:
-  - input_id: INPUT-MFOS-PHASE09-0001
+  - input_id: INPUT-MFOS-SPOOL-PURGE-DENIED-0914
     operation: SPOOL-PURGE-DENIED
-    deterministic_seed: SEED-MFOS-PHASE09-0001
+    deterministic_seed: SEED-MFOS-PHASE142-0914
   expected:
     decisions:
-    - decision_id: DECISION-MFOS-PHASE09-0001
+    - decision_id: DECISION-MFOS-SPOOL-PURGE-DENIED-0914
       result: DENY
       policy_version: 1
       obligations:
       - AUDIT_SECURITY_DECISION
     state_transitions:
-    - object: PHASE09_OBJECT
-      from: INITIAL
-      action: EVALUATE
+    - object: SPOOL-MFOS-PHASE142-0914
+      from: SPOOL_ACCESS_REQUESTED
+      action: OP_PURGE
       to: FAILED
       reason: MFOS_ERR_POLICY_DENIED
     audit_records:
@@ -619,35 +619,41 @@ entries:
 - test_id: NEG-MFOS-JOB-SPOOL-EXPORT-NO-AUDIT-0915
   test_name: spool export without audit denied
   test_type: negative
-  phase_to_implement: Phase 1
+  phase_to_implement: Phase 1.4.2
   target_pack: PACK-08
   target_specs: *id001
   target_requirements: *id002
   source_refs: *id003
   preconditions:
-  - Phase 0.9 artifact validation only; semantic execution is deferred.
+  - Phase 1.4.2 Dafny evidence only; semantic execution is deferred to Dafny predicates.
   inputs:
-  - input_id: INPUT-MFOS-PHASE09-0001
+  - input_id: INPUT-MFOS-SPOOL-EXPORT-NO-AUDIT-0915
     operation: SPOOL-EXPORT-NO-AUDIT
-    deterministic_seed: SEED-MFOS-PHASE09-0001
+    deterministic_seed: SEED-MFOS-PHASE142-0915
   expected:
     decisions:
-    - decision_id: DECISION-MFOS-PHASE09-0001
-      result: DENY
+    - decision_id: DECISION-MFOS-SPOOL-EXPORT-NO-AUDIT-0915
+      result: ALLOW_WITH_AUDIT
       policy_version: 1
       obligations:
       - AUDIT_SECURITY_DECISION
     state_transitions:
-    - object: PHASE09_OBJECT
-      from: INITIAL
-      action: EVALUATE
+    - object: SPOOL-MFOS-PHASE142-0915
+      from: SPOOL_ACCESS_REQUESTED
+      action: OP_EXPORT
       to: FAILED
       reason: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
-    audit_records:
-    - record_type: SECURITY_DECISION
-      decision: DENY
-      reason_code: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
-      before_return: true
+    audit_records: []
+    audit_unavailable: true
+    result_released: false
+    protected_resource_released: false
+    audit_evidence_fabricated: false
+    finalization:
+      audit_available: false
+      final_result: DENY
+      final_error: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
+      result_released: false
+      records_appended: 0
     failure_mode: MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE
     final_state: FAILED
   oracle_ref: tests/golden/job/spool-export-no-audit-0915.yml
@@ -658,6 +664,171 @@ entries:
   audit_obligation_required: true
   evidence_required:
   - EV-MFOS-JOB-SPOOL-EXPORT-NO-AUDIT-0915
+  status: draft
+- test_id: NEG-MFOS-JOB-SPOOL-EVIDENCE-NOT-AUDIT-0916
+  test_name: spool evidence cannot satisfy audit evidence
+  test_type: negative
+  phase_to_implement: Phase 1.4.2
+  target_pack: PACK-08
+  target_specs: *id001
+  target_requirements:
+  - MFOS-REQ-SPOOL-0101
+  source_refs: *id003
+  preconditions:
+  - Phase 1.4.2 Dafny evidence only; semantic execution is deferred to Dafny predicates.
+  inputs:
+  - input_id: INPUT-MFOS-SPOOL-EVIDENCE-NOT-AUDIT-0916
+    operation: SPOOL-EVIDENCE-NOT-AUDIT
+    deterministic_seed: SEED-MFOS-PHASE142-0916
+  expected:
+    decisions:
+    - decision_id: DECISION-MFOS-SPOOL-EVIDENCE-NOT-AUDIT-0916
+      result: ALLOW_WITH_AUDIT
+      policy_version: 1
+      obligations:
+      - AUDIT_SECURITY_DECISION
+    state_transitions:
+    - object: SPOOL-MFOS-PHASE142-0916
+      from: SPOOL_AUDIT_EVIDENCE_CHECK
+      action: OP_EXPORT
+      to: FAILED
+      reason: MFOS_ERR_INVALID_AUDIT_RECORD
+    audit_records: []
+    invalid_audit_record: true
+    result_released: false
+    protected_resource_released: false
+    audit_evidence_fabricated: false
+    finalization:
+      audit_available: true
+      final_result: DENY
+      final_error: MFOS_ERR_INVALID_AUDIT_RECORD
+      result_released: false
+      records_appended: 0
+    failure_mode: MFOS_ERR_INVALID_AUDIT_RECORD
+    final_state: FAILED
+  oracle_ref: tests/golden/job/spool-evidence-not-audit-0916.yml
+  fixture_ref: tests/fixtures/job/spool-evidence-not-audit-0916.yml
+  golden_ref: tests/golden/job/spool-evidence-not-audit-0916.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required: [EV-MFOS-JOB-SPOOL-EVIDENCE-NOT-AUDIT-0916]
+  status: draft
+- test_id: NEG-MFOS-JOB-SPOOL-CROSS-REQUEST-REPLAY-0917
+  test_name: spool authorization cross-request replay denied
+  test_type: negative
+  phase_to_implement: Phase 1.4.2
+  target_pack: PACK-08
+  target_specs: *id001
+  target_requirements:
+  - MFOS-REQ-SPOOL-0101
+  source_refs: *id003
+  preconditions:
+  - Phase 1.4.2 Dafny evidence only; semantic execution is deferred to Dafny predicates.
+  inputs:
+  - input_id: INPUT-MFOS-SPOOL-CROSS-REQUEST-REPLAY-0917
+    operation: SPOOL-CROSS-REQUEST-REPLAY
+    deterministic_seed: SEED-MFOS-PHASE142-0917
+  expected:
+    decisions: [{decision_id: DECISION-MFOS-SPOOL-CROSS-REQUEST-REPLAY-0917, result: ALLOW, policy_version: 1, obligations: [AUDIT_SECURITY_DECISION]}]
+    state_transitions: [{object: SPOOL-MFOS-PHASE142-0917, from: SPOOL_ACCESS_REQUESTED, action: OP_QUERY, to: FAILED, reason: MFOS_ERR_INVALID_INPUT}]
+    audit_records: [{record_type: SECURITY_DECISION, decision: DENY, reason_code: MFOS_ERR_INVALID_INPUT, before_return: true}]
+    failure_mode: MFOS_ERR_INVALID_INPUT
+    final_state: FAILED
+  oracle_ref: tests/golden/job/spool-cross-request-replay-0917.yml
+  fixture_ref: tests/fixtures/job/spool-cross-request-replay-0917.yml
+  golden_ref: tests/golden/job/spool-cross-request-replay-0917.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required: [EV-MFOS-JOB-SPOOL-CROSS-REQUEST-REPLAY-0917]
+  status: draft
+- test_id: NEG-MFOS-JOB-SPOOL-SPEC-GAP-NOT-SUCCESS-0918
+  test_name: spool SPEC_GAP is not success
+  test_type: negative
+  phase_to_implement: Phase 1.4.2
+  target_pack: PACK-08
+  target_specs: *id001
+  target_requirements:
+  - MFOS-REQ-SPOOL-0101
+  source_refs: *id003
+  preconditions:
+  - Phase 1.4.2 Dafny evidence only; semantic execution is deferred to Dafny predicates.
+  inputs:
+  - input_id: INPUT-MFOS-SPOOL-SPEC-GAP-NOT-SUCCESS-0918
+    operation: SPOOL-SPEC-GAP-NOT-SUCCESS
+    deterministic_seed: SEED-MFOS-PHASE142-0918
+  expected:
+    decisions: [{decision_id: DECISION-MFOS-SPOOL-SPEC-GAP-NOT-SUCCESS-0918, result: SPEC_GAP, policy_version: 1, obligations: [AUDIT_SECURITY_DECISION]}]
+    state_transitions: [{object: SPOOL-MFOS-PHASE142-0918, from: SPOOL_ACCESS_REQUESTED, action: OP_QUERY, to: FAILED, reason: MFOS_ERR_SPEC_GAP}]
+    audit_records: [{record_type: SECURITY_DECISION, decision: SPEC_GAP, reason_code: MFOS_ERR_SPEC_GAP, before_return: true}]
+    failure_mode: MFOS_ERR_SPEC_GAP
+    final_state: FAILED
+  oracle_ref: tests/golden/job/spool-spec-gap-not-success-0918.yml
+  fixture_ref: tests/fixtures/job/spool-spec-gap-not-success-0918.yml
+  golden_ref: tests/golden/job/spool-spec-gap-not-success-0918.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required: [EV-MFOS-JOB-SPOOL-SPEC-GAP-NOT-SUCCESS-0918]
+  status: draft
+- test_id: NEG-MFOS-JOB-SPOOL-UNSUPPORTED-FAILS-0919
+  test_name: spool UNSUPPORTED fails closed
+  test_type: negative
+  phase_to_implement: Phase 1.4.2
+  target_pack: PACK-08
+  target_specs: *id001
+  target_requirements:
+  - MFOS-REQ-SPOOL-0101
+  source_refs: *id003
+  preconditions:
+  - Phase 1.4.2 Dafny evidence only; semantic execution is deferred to Dafny predicates.
+  inputs:
+  - input_id: INPUT-MFOS-SPOOL-UNSUPPORTED-FAILS-0919
+    operation: SPOOL-UNSUPPORTED-FAILS
+    deterministic_seed: SEED-MFOS-PHASE142-0919
+  expected:
+    decisions: [{decision_id: DECISION-MFOS-SPOOL-UNSUPPORTED-FAILS-0919, result: UNSUPPORTED, policy_version: 1, obligations: [AUDIT_SECURITY_DECISION]}]
+    state_transitions: [{object: SPOOL-MFOS-PHASE142-0919, from: SPOOL_ACCESS_REQUESTED, action: OP_EXPORT, to: FAILED, reason: MFOS_ERR_UNSUPPORTED}]
+    audit_records: [{record_type: SECURITY_DECISION, decision: UNSUPPORTED, reason_code: MFOS_ERR_UNSUPPORTED, before_return: true}]
+    failure_mode: MFOS_ERR_UNSUPPORTED
+    final_state: FAILED
+  oracle_ref: tests/golden/job/spool-unsupported-fails-0919.yml
+  fixture_ref: tests/fixtures/job/spool-unsupported-fails-0919.yml
+  golden_ref: tests/golden/job/spool-unsupported-fails-0919.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required: [EV-MFOS-JOB-SPOOL-UNSUPPORTED-FAILS-0919]
+  status: draft
+- test_id: NEG-MFOS-JOB-SPOOL-DENY-AUDIT-0920
+  test_name: spool DENY with audit obligation writes before return
+  test_type: negative
+  phase_to_implement: Phase 1.4.2
+  target_pack: PACK-08
+  target_specs: *id001
+  target_requirements:
+  - MFOS-REQ-SPOOL-0101
+  source_refs: *id003
+  preconditions:
+  - Phase 1.4.2 Dafny evidence only; semantic execution is deferred to Dafny predicates.
+  inputs:
+  - input_id: INPUT-MFOS-SPOOL-DENY-AUDIT-0920
+    operation: SPOOL-DENY-AUDIT
+    deterministic_seed: SEED-MFOS-PHASE142-0920
+  expected:
+    decisions: [{decision_id: DECISION-MFOS-SPOOL-DENY-AUDIT-0920, result: DENY, policy_version: 1, obligations: [AUDIT_SECURITY_DECISION]}]
+    state_transitions: [{object: SPOOL-MFOS-PHASE142-0920, from: SPOOL_ACCESS_REQUESTED, action: OP_PURGE, to: FAILED, reason: MFOS_ERR_POLICY_DENIED}]
+    audit_records: [{record_type: SECURITY_DECISION, decision: DENY, reason_code: MFOS_ERR_POLICY_DENIED, before_return: true}]
+    failure_mode: MFOS_ERR_POLICY_DENIED
+    final_state: FAILED
+  oracle_ref: tests/golden/job/spool-deny-audit-0920.yml
+  fixture_ref: tests/fixtures/job/spool-deny-audit-0920.yml
+  golden_ref: tests/golden/job/spool-deny-audit-0920.yml
+  negative: true
+  security_sensitive: true
+  audit_obligation_required: true
+  evidence_required: [EV-MFOS-JOB-SPOOL-DENY-AUDIT-0920]
   status: draft
 - test_id: NEG-MFOS-JOB-CANCEL-NO-AUTHORITY-0916
   test_name: job cancellation without operator authority denied

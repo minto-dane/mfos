@@ -1,0 +1,45 @@
+golden_id: GOLDEN-MFOS-JOB-SPOOL-UNSUPPORTED-FAILS-0919
+golden_version: 1
+fixture_ref: tests/fixtures/job/spool-unsupported-fails-0919.yml
+normalized_input:
+  fixture_id: FIXTURE-MFOS-JOB-SPOOL-UNSUPPORTED-FAILS-0919
+  operation: SPOOL-UNSUPPORTED-FAILS
+  deterministic_seed: SEED-MFOS-PHASE142-0919
+expected_normalized_output:
+  outcome: EXPECTED_FAIL_CLOSED
+  final_state: FAILED
+expected_decisions: &id001
+- decision_id: DECISION-MFOS-SPOOL-UNSUPPORTED-FAILS-0919
+  result: UNSUPPORTED
+  policy_version: 1
+  obligations:
+  - AUDIT_SECURITY_DECISION
+expected_audit_sequence: &id003
+- record_type: SECURITY_DECISION
+  decision: UNSUPPORTED
+  reason_code: MFOS_ERR_UNSUPPORTED
+  before_return: true
+expected_state_transitions: &id002
+- object: SPOOL-MFOS-PHASE142-0919
+  from: SPOOL_ACCESS_REQUESTED
+  action: OP_EXPORT
+  to: FAILED
+  reason: MFOS_ERR_UNSUPPORTED
+expected_final_state: FAILED
+expected_failure_mode: MFOS_ERR_UNSUPPORTED
+deterministic: true
+oracle:
+  oracle_id: ORACLE-MFOS-JOB-SPOOL-UNSUPPORTED-FAILS-0919
+  oracle_version: 1
+  fixture_ref: tests/fixtures/job/spool-unsupported-fails-0919.yml
+  expected_decisions: *id001
+  expected_state_transitions: *id002
+  expected_audit_records: *id003
+  expected_failure:
+    error_code: MFOS_ERR_UNSUPPORTED
+    fail_closed: true
+  expected_final_state: FAILED
+  evidence_required:
+  - EV-MFOS-JOB-SPOOL-UNSUPPORTED-FAILS-0919
+  status: draft
+status: draft

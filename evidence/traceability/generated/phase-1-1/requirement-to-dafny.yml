@@ -558,10 +558,6 @@ requirements:
   - TEST-MFOS-JOB-STEP-FAILURE-RC-0909
   - NEG-MFOS-JOB-INVALID-LIFECYCLE-0910
   - TEST-MFOS-JOB-SPOOL-CREATE-0911
-  - TEST-MFOS-JOB-SPOOL-BROWSE-OWNER-0912
-  - NEG-MFOS-JOB-SPOOL-BROWSE-NONOWNER-0913
-  - NEG-MFOS-JOB-SPOOL-PURGE-DENIED-0914
-  - NEG-MFOS-JOB-SPOOL-EXPORT-NO-AUDIT-0915
   - NEG-MFOS-JOB-CANCEL-NO-AUTHORITY-0916
   - NEG-MFOS-JOB-STEP-NO-AUDIT-CORRELATION-0917
   coverage_level: C0_NONE
@@ -640,30 +636,6 @@ requirements:
     evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C3_FULL_SEMANTIC
     note: Protected spool-entry predicate exists without a create-transition lemma.
-  - &id038
-    dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
-    dafny_symbol: SpoolBrowseAllowed
-    symbol_kind: predicate
-    verification_status: unverified
-    evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
-    coverage_level: C3_FULL_SEMANTIC
-    note: Owner browse predicate exists without a dedicated positive lemma.
-  - &id039
-    dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
-    dafny_symbol: INV_SPOOL_BROWSE_BY_NON_OWNER_DENIED
-    symbol_kind: lemma
-    verification_status: verified
-    evidence_ref: reports/current/dafny/dafny-verification-report.md
-    coverage_level: C4_VERIFIED_PROPERTY
-    note: Non-owner spool browse is denied.
-  - &id040
-    dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
-    dafny_symbol: INV_SPOOL_PURGE_WITHOUT_AUTHORITY_DENIED
-    symbol_kind: lemma
-    verification_status: verified
-    evidence_ref: reports/current/dafny/dafny-verification-report.md
-    coverage_level: C4_VERIFIED_PROPERTY
-    note: Spool purge without authority is denied.
   coverage_basis: Worst linked-test level; C4/C5 require explicit verified symbols
     and evidence references.
 - requirement_id: MFOS-REQ-JOB-0102
@@ -679,10 +651,6 @@ requirements:
   - TEST-MFOS-JOB-STEP-FAILURE-RC-0909
   - NEG-MFOS-JOB-INVALID-LIFECYCLE-0910
   - TEST-MFOS-JOB-SPOOL-CREATE-0911
-  - TEST-MFOS-JOB-SPOOL-BROWSE-OWNER-0912
-  - NEG-MFOS-JOB-SPOOL-BROWSE-NONOWNER-0913
-  - NEG-MFOS-JOB-SPOOL-PURGE-DENIED-0914
-  - NEG-MFOS-JOB-SPOOL-EXPORT-NO-AUDIT-0915
   - NEG-MFOS-JOB-CANCEL-NO-AUTHORITY-0916
   - NEG-MFOS-JOB-STEP-NO-AUDIT-CORRELATION-0917
   - TEST-MFOS-FVS-HELLO-JOB-9001
@@ -698,9 +666,6 @@ requirements:
   - *id035
   - *id036
   - *id037
-  - *id038
-  - *id039
-  - *id040
   - *id015
   - *id016
   coverage_basis: Worst linked-test level; C4/C5 require explicit verified symbols
@@ -724,7 +689,7 @@ requirements:
   - NEG-MFOS-FVS-BOB-DENIED-9002
   coverage_level: C0_NONE
   coverage_mappings:
-  - &id041
+  - &id038
     dafny_module: formal/executable-semantics/dafny/modules/operator_console.dfy
     dafny_symbol: OperatorCommandAuthorized
     symbol_kind: predicate
@@ -732,7 +697,7 @@ requirements:
     evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C3_FULL_SEMANTIC
     note: Operator authorization predicate exists without a dedicated positive lemma.
-  - &id042
+  - &id039
     dafny_module: formal/executable-semantics/dafny/modules/operator_console.dfy
     dafny_symbol: INV_OPERATOR_NO_COMMAND_WITHOUT_AUTH
     symbol_kind: lemma
@@ -740,7 +705,7 @@ requirements:
     evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Operator command cannot execute without authorization.
-  - &id043
+  - &id040
     dafny_module: formal/executable-semantics/dafny/modules/operator_console.dfy
     dafny_symbol: INV_OPERATOR_DESTRUCTIVE_WITHOUT_CONFIRMATION_DENIED
     symbol_kind: lemma
@@ -748,7 +713,7 @@ requirements:
     evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Destructive command without confirmation is denied.
-  - &id044
+  - &id041
     dafny_module: formal/executable-semantics/dafny/modules/operator_console.dfy
     dafny_symbol: INV_OPERATOR_DUAL_CONTROL_SINGLE_APPROVAL_DENIED
     symbol_kind: lemma
@@ -756,7 +721,7 @@ requirements:
     evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Dual-control command with one approval is denied.
-  - &id045
+  - &id042
     dafny_module: formal/executable-semantics/dafny/modules/operator_console.dfy
     dafny_symbol: INV_OPERATOR_EMERGENCY_WITHOUT_REASON_OR_EXPIRY_DENIED
     symbol_kind: lemma
@@ -764,7 +729,7 @@ requirements:
     evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Emergency mode without expiry is denied.
-  - &id046
+  - &id043
     dafny_module: null
     dafny_symbol: null
     symbol_kind: null
@@ -772,7 +737,7 @@ requirements:
     evidence_ref: reports/generated/phase-1-1/semantic-coverage-open-issues.md
     coverage_level: C0_NONE
     note: Operator command parser semantics are not modeled in Phase 1.1 Dafny.
-  - &id047
+  - &id044
     dafny_module: formal/executable-semantics/dafny/modules/operator_console.dfy
     dafny_symbol: INV_OPERATOR_NO_COMMAND_WITHOUT_AUDIT
     symbol_kind: lemma
@@ -780,7 +745,7 @@ requirements:
     evidence_ref: reports/current/dafny/dafny-verification-report.md
     coverage_level: C4_VERIFIED_PROPERTY
     note: Audited operator commands require audit evidence.
-  - &id048
+  - &id045
     dafny_module: formal/executable-semantics/dafny/modules/operator_console.dfy
     dafny_symbol: INV_OPERATOR_ROOT_SHELL_NOT_FIRST_UI
     symbol_kind: lemma
@@ -809,14 +774,14 @@ requirements:
   - NEG-MFOS-OPER-ROOT-SHELL-FIRST-UI-0913
   coverage_level: C0_NONE
   coverage_mappings:
+  - *id038
+  - *id039
+  - *id040
   - *id041
   - *id042
   - *id043
   - *id044
   - *id045
-  - *id046
-  - *id047
-  - *id048
   coverage_basis: Worst linked-test level; C4/C5 require explicit verified symbols
     and evidence references.
 - requirement_id: MFOS-REQ-OPER-0103
@@ -836,14 +801,14 @@ requirements:
   - NEG-MFOS-OPER-ROOT-SHELL-FIRST-UI-0913
   coverage_level: C0_NONE
   coverage_mappings:
+  - *id038
+  - *id039
+  - *id040
   - *id041
   - *id042
   - *id043
   - *id044
   - *id045
-  - *id046
-  - *id047
-  - *id048
   coverage_basis: Worst linked-test level; C4/C5 require explicit verified symbols
     and evidence references.
 - requirement_id: MFOS-REQ-SPOOL-0101
@@ -859,10 +824,6 @@ requirements:
   - TEST-MFOS-JOB-STEP-FAILURE-RC-0909
   - NEG-MFOS-JOB-INVALID-LIFECYCLE-0910
   - TEST-MFOS-JOB-SPOOL-CREATE-0911
-  - TEST-MFOS-JOB-SPOOL-BROWSE-OWNER-0912
-  - NEG-MFOS-JOB-SPOOL-BROWSE-NONOWNER-0913
-  - NEG-MFOS-JOB-SPOOL-PURGE-DENIED-0914
-  - NEG-MFOS-JOB-SPOOL-EXPORT-NO-AUDIT-0915
   - NEG-MFOS-JOB-CANCEL-NO-AUTHORITY-0916
   - NEG-MFOS-JOB-STEP-NO-AUDIT-CORRELATION-0917
   - TEST-MFOS-FVS-HELLO-JOB-9001
@@ -878,9 +839,6 @@ requirements:
   - *id035
   - *id036
   - *id037
-  - *id038
-  - *id039
-  - *id040
   - *id015
   - *id016
   coverage_basis: Worst linked-test level; C4/C5 require explicit verified symbols

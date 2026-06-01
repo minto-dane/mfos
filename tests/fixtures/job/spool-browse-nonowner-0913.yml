@@ -14,13 +14,28 @@ initial_state:
   clock: T0
   security_epoch: 1
   policy_version: 1
+  spool_entry:
+    spool_id: SPOOL-MFOS-PHASE142-0913
+    owner: PRIN-MFOS-SPOOL-OWNER
+    job_id: JOB-MFOS-PHASE142-0913
+    protected: true
+    retained: false
   objects:
-  - object_ref: OBJ-MFOS-PHASE09-0001
+  - object_ref: SPOOL-MFOS-PHASE142-0913
     generation: 1
+semantic_facts:
+  dafny_property: INV_SPOOL_BROWSE_BY_NON_OWNER_RETURNS_NO_CONTENT
+  spool_operation: OP_QUERY
+  owner_principal: PRIN-MFOS-SPOOL-OWNER
+  subject_principal: PRIN-MFOS-SPOOL-NONOWNER
+  authorization_result: DENY
+  content_released: false
+  audit_required: true
+  audit_before_return: true
 inputs:
-- input_id: INPUT-MFOS-PHASE09-0001
+- input_id: INPUT-MFOS-SPOOL-BROWSE-NONOWNER-0913
   operation: SPOOL-BROWSE-NONOWNER
-  deterministic_seed: SEED-MFOS-PHASE09-0001
+  deterministic_seed: SEED-MFOS-PHASE142-0913
 expected_oracle: tests/golden/job/spool-browse-nonowner-0913.yml
 expected_evidence:
 - EV-MFOS-JOB-SPOOL-BROWSE-NONOWNER-0913

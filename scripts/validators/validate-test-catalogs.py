@@ -61,6 +61,7 @@ TEST_TYPES = {
     "red_team",
 }
 AUDIT_UNAVAILABLE_ERROR = "MFOS_ERR_AUDIT_REQUIRED_BUT_UNAVAILABLE"
+INVALID_AUDIT_RECORD_ERROR = "MFOS_ERR_INVALID_AUDIT_RECORD"
 
 
 def is_audit_unavailable_case(entry: dict, expected: dict) -> bool:
@@ -72,6 +73,19 @@ def is_audit_unavailable_case(entry: dict, expected: dict) -> bool:
     return (
         expected.get("audit_unavailable") is True
         or "AUDIT-UNAVAILABLE" in operations
+    )
+
+
+def is_invalid_audit_record_case(entry: dict, expected: dict) -> bool:
+    operations = {
+        str(item.get("operation", "")).upper()
+        for item in as_list(entry.get("inputs"))
+        if isinstance(item, dict)
+    }
+    return (
+        expected.get("invalid_audit_record") is True
+        or "INVALID-AUDIT" in operations
+        or "EVIDENCE-NOT-AUDIT" in operations
     )
 
 
@@ -129,6 +143,7 @@ def main() -> int:
             if entry.get("audit_obligation_required") is True:
                 records = expected.get("audit_records")
                 audit_unavailable = is_audit_unavailable_case(entry, expected)
+                invalid_audit_record = is_invalid_audit_record_case(entry, expected)
                 if audit_unavailable:
                     if as_list(records):
                         errors.append(f"{rel(path)}:{test_id}: audit unavailable must not fabricate expected.audit_records")
@@ -158,11 +173,41 @@ def main() -> int:
                             errors.append(f"{rel(path)}:{test_id}: audit unavailable requires finalization.result_released: false")
                         if finalization.get("records_appended") != 0:
                             errors.append(f"{rel(path)}:{test_id}: audit unavailable requires finalization.records_appended: 0")
+                elif invalid_audit_record:
+                    if as_list(records):
+                        errors.append(f"{rel(path)}:{test_id}: invalid audit record must not fabricate expected.audit_records")
+                    if expected.get("invalid_audit_record") is not True:
+                        errors.append(f"{rel(path)}:{test_id}: invalid audit record requires expected.invalid_audit_record true")
+                    if expected.get("failure_mode") != INVALID_AUDIT_RECORD_ERROR:
+                        errors.append(f"{rel(path)}:{test_id}: invalid audit record requires {INVALID_AUDIT_RECORD_ERROR}")
+                    if expected.get("final_state") in {"COMPLETE", "SUCCESS"}:
+                        errors.append(f"{rel(path)}:{test_id}: invalid audit record must not produce success final_state")
+                    if expected.get("result_released") is not False:
+                        errors.append(f"{rel(path)}:{test_id}: invalid audit record requires result_released: false")
+                    if expected.get("protected_resource_released") is not False:
+                        errors.append(f"{rel(path)}:{test_id}: invalid audit record requires protected_resource_released: false")
+                    if expected.get("audit_evidence_fabricated") is not False:
+                        errors.append(f"{rel(path)}:{test_id}: invalid audit record requires audit_evidence_fabricated: false")
+                    finalization = expected.get("finalization")
+                    if not isinstance(finalization, dict):
+                        errors.append(f"{rel(path)}:{test_id}: invalid audit record requires expected.finalization")
+                    else:
+                        if finalization.get("audit_available") is not True:
+                            errors.append(f"{rel(path)}:{test_id}: invalid audit record requires finalization.audit_available: true")
+                        if finalization.get("final_result") != "DENY":
+                            errors.append(f"{rel(path)}:{test_id}: invalid audit record requires finalization.final_result DENY")
+                        if finalization.get("final_error") != INVALID_AUDIT_RECORD_ERROR:
+                            errors.append(f"{rel(path)}:{test_id}: invalid audit record finalization must use {INVALID_AUDIT_RECORD_ERROR}")
+                        if finalization.get("result_released") is not False:
+                            errors.append(f"{rel(path)}:{test_id}: invalid audit record requires finalization.result_released: false")
+                        if finalization.get("records_appended") != 0:
+                            errors.append(f"{rel(path)}:{test_id}: invalid audit record requires finalization.records_appended: 0")
                 elif not as_list(records):
                     errors.append(f"{rel(path)}:{test_id}: audit obligation requires expected.audit_records")
                 joined = f"{test_id} {entry.get('test_name', '')}".upper()
                 if (
                     not audit_unavailable
+                    and not invalid_audit_record
                     and ("DENY" in joined or "BEFORE-RETURN" in joined or "DENIED" in joined)
                     and not has_before_return(records)
                 ):

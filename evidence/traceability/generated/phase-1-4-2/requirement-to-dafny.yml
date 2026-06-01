@@ -1,0 +1,87 @@
+schema_version: 1
+phase: phase-1.4.2
+requirements:
+- requirement_id: MFOS-REQ-SPOOL-0101
+  domain: spool_protected_resource
+  phase_scope: phase-1-4-2
+  partial_coverage: true
+  covered_subclaim: Phase 1.4.2 verifies symbolic SpoolEntry protected-resource access
+    semantics.
+  not_claimed:
+  - production spoold behavior
+  - real spool storage
+  - operator command integration
+  - SYSOUT device semantics
+  coverage_level: C2_PARTIAL_SEMANTIC
+  fixture_ref: null
+  oracle_ref: null
+  golden_ref: null
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_PROTECTED_RESOURCE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/phases/phase-1-4/spool-protected-resource/coverage-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: Parent requirement remains partial because production spool service behavior
+    is outside Phase 1.4.2.
+- requirement_id: MFOS-REQ-SPOOL-0101
+  subclaim_id: MFOS-REQ-SPOOL-0101-PHASE-1-4-2-PROTECTED-RESOURCE
+  domain: spool_protected_resource
+  phase_scope: phase-1-4-2
+  partial_coverage: false
+  covered_subclaim: SpoolEntry is a protected resource with valid symbolic id and
+    owner.
+  not_claimed: []
+  coverage_level: C4_VERIFIED_PROPERTY
+  fixture_ref: null
+  oracle_ref: null
+  golden_ref: null
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_PROTECTED_RESOURCE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/phases/phase-1-4/spool-protected-resource/coverage-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: Phase-scoped subclaim only; this does not promote production spoold behavior.
+- requirement_id: MFOS-REQ-SPOOL-0101
+  subclaim_id: MFOS-REQ-SPOOL-0101-PHASE-1-4-2-BOUND-DECISION
+  domain: spool_protected_resource
+  phase_scope: phase-1-4-2
+  partial_coverage: false
+  covered_subclaim: Spool access decisions bind subject, object id, object generation,
+    operation, policy version, and correlation id.
+  not_claimed: []
+  coverage_level: C4_VERIFIED_PROPERTY
+  fixture_ref: null
+  oracle_ref: null
+  golden_ref: null
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_DECISION_BINDS_ENTRY
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/phases/phase-1-4/spool-protected-resource/coverage-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: Phase-scoped subclaim only.
+- requirement_id: MFOS-REQ-SPOOL-0101
+  subclaim_id: MFOS-REQ-SPOOL-0101-PHASE-1-4-2-AUDITED-EXPORT
+  domain: spool_protected_resource
+  phase_scope: phase-1-4-2
+  partial_coverage: false
+  covered_subclaim: Spool export requires authorization and satisfied audit obligation.
+  not_claimed: []
+  coverage_level: C4_VERIFIED_PROPERTY
+  fixture_ref: null
+  oracle_ref: null
+  golden_ref: null
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_EXPORT_REQUIRES_AUTHORITY_AND_AUDIT
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/phases/phase-1-4/spool-protected-resource/coverage-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: Phase-scoped subclaim only.
+coverage_level: C2_PARTIAL_SEMANTIC

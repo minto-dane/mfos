@@ -276,7 +276,7 @@ def build_artifacts() -> dict[str, Any]:
     for domain, catalog in CATALOGS.items():
         data = load_yaml(catalog)
         for catalog_entry in data["entries"]:
-            if str(catalog_entry.get("phase_to_implement")) == "Phase 1.4.1":
+            if str(catalog_entry.get("phase_to_implement")) in {"Phase 1.4.1", "Phase 1.4.2"}:
                 continue
             test_id = catalog_entry["test_id"]
             coverage = TEST_COVERAGE.get(test_id, entry("C0_NONE", [none("No explicit Phase 1.1 coverage mapping exists for this test.")], "No explicit mapping."))
@@ -429,7 +429,7 @@ def build_artifacts() -> dict[str, Any]:
         "phase_1_1_formal_claim_coverage_complete": formal_complete,
         "negative_semantics_complete": negative_complete,
         "audit_deny_before_return_transition_backed": True,
-        "dafny_verification_result": "184 verified, 0 errors",
+        "dafny_verification_result": "209 verified, 0 errors",
         "production_implementation_allowed": False,
         "rust_phase_1_canonical_semantics_allowed": False,
         "hosted_daemon_implementation_allowed": False,

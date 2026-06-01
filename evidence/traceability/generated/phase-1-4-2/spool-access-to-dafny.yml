@@ -1,0 +1,398 @@
+schema_version: 1
+phase: phase-1.4.2
+domain: spool_protected_resource
+coverage_level: C4_VERIFIED_PROPERTY
+entries:
+- test_id: TEST-MFOS-JOB-SPOOL-BROWSE-OWNER-0912
+  domain: spool_protected_resource
+  test_type: conformance
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_4_2_exit_blocker: false
+  required_for_phase_1_4_2_spool: true
+  fixture_ref: tests/fixtures/job/spool-browse-owner-0912.yml
+  oracle_ref: tests/golden/job/spool-browse-owner-0912.yml
+  golden_ref: tests/golden/job/spool-browse-owner-0912.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_OWNER_BROWSE_ALLOWED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-SPOOL-BROWSE-OWNER-0912
+    coverage_level: C5_CONFORMANCE_LINKED
+  expected_dafny_symbols:
+  - INV_SPOOL_OWNER_BROWSE_ALLOWED
+  required_fixture_fact_keys:
+  - dafny_property
+  - spool_operation
+  - owner_principal
+  - subject_principal
+  - authorization_result
+  - audit_required
+  - audit_before_return
+  - content_released
+  negative_failure_conditions: []
+  notes: Spool owner browse can release content only through a bound allowing Spool
+    decision.
+- test_id: NEG-MFOS-JOB-SPOOL-BROWSE-NONOWNER-0913
+  domain: spool_protected_resource
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_4_2_exit_blocker: false
+  required_for_phase_1_4_2_spool: true
+  fixture_ref: tests/fixtures/job/spool-browse-nonowner-0913.yml
+  oracle_ref: tests/golden/job/spool-browse-nonowner-0913.yml
+  golden_ref: tests/golden/job/spool-browse-nonowner-0913.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_BROWSE_BY_NON_OWNER_RETURNS_NO_CONTENT
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-SPOOL-BROWSE-NONOWNER-0913
+    coverage_level: C5_CONFORMANCE_LINKED
+  expected_dafny_symbols: &id001
+  - INV_SPOOL_BROWSE_BY_NON_OWNER_RETURNS_NO_CONTENT
+  required_fixture_fact_keys:
+  - dafny_property
+  - spool_operation
+  - owner_principal
+  - subject_principal
+  - authorization_result
+  - content_released
+  - audit_before_return
+  negative_failure_conditions: *id001
+  notes: Non-owner browse without an allowing authorization releases no spool content.
+- test_id: NEG-MFOS-JOB-SPOOL-PURGE-DENIED-0914
+  domain: spool_protected_resource
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_4_2_exit_blocker: false
+  required_for_phase_1_4_2_spool: true
+  fixture_ref: tests/fixtures/job/spool-purge-denied-0914.yml
+  oracle_ref: tests/golden/job/spool-purge-denied-0914.yml
+  golden_ref: tests/golden/job/spool-purge-denied-0914.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_PURGE_WITHOUT_AUTHORITY_DENIED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-SPOOL-PURGE-DENIED-0914
+    coverage_level: C5_CONFORMANCE_LINKED
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_PURGE_REQUIRES_AUTHORITY_AND_RETENTION
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-SPOOL-PURGE-DENIED-0914
+    coverage_level: C5_CONFORMANCE_LINKED
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_DENY_WITH_AUDIT_LINKS_BEFORE_RETURN
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-SPOOL-PURGE-DENIED-0914
+    coverage_level: C5_CONFORMANCE_LINKED
+  expected_dafny_symbols: &id002
+  - INV_SPOOL_PURGE_WITHOUT_AUTHORITY_DENIED
+  - INV_SPOOL_PURGE_REQUIRES_AUTHORITY_AND_RETENTION
+  - INV_SPOOL_DENY_WITH_AUDIT_LINKS_BEFORE_RETURN
+  required_fixture_fact_keys:
+  - dafny_property
+  - spool_operation
+  - authorization_result
+  - audit_required
+  - audit_before_return
+  - purge_completed
+  negative_failure_conditions: *id002
+  notes: Spool purge without an allowing authorization is fail-closed.
+- test_id: NEG-MFOS-JOB-SPOOL-EXPORT-NO-AUDIT-0915
+  domain: spool_protected_resource
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_4_2_exit_blocker: false
+  required_for_phase_1_4_2_spool: true
+  fixture_ref: tests/fixtures/job/spool-export-no-audit-0915.yml
+  oracle_ref: tests/golden/job/spool-export-no-audit-0915.yml
+  golden_ref: tests/golden/job/spool-export-no-audit-0915.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_EXPORT_AUDIT_UNAVAILABLE_FAILS_CLOSED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-SPOOL-EXPORT-NO-AUDIT-0915
+    coverage_level: C5_CONFORMANCE_LINKED
+  expected_dafny_symbols: &id003
+  - INV_SPOOL_EXPORT_AUDIT_UNAVAILABLE_FAILS_CLOSED
+  required_fixture_fact_keys:
+  - dafny_property
+  - spool_operation
+  - authorization_result
+  - audit_required
+  - audit_available
+  - export_completed
+  negative_failure_conditions: *id003
+  notes: Spool export with required audit unavailable fails closed and releases no
+    export.
+- test_id: NEG-MFOS-JOB-SPOOL-DENY-AUDIT-0920
+  domain: spool_protected_resource
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_4_2_exit_blocker: false
+  required_for_phase_1_4_2_spool: true
+  fixture_ref: tests/fixtures/job/spool-deny-audit-0920.yml
+  oracle_ref: tests/golden/job/spool-deny-audit-0920.yml
+  golden_ref: tests/golden/job/spool-deny-audit-0920.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_DENY_WITH_AUDIT_LINKS_BEFORE_RETURN
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-SPOOL-DENY-AUDIT-0920
+    coverage_level: C5_CONFORMANCE_LINKED
+  expected_dafny_symbols: &id004
+  - INV_SPOOL_DENY_WITH_AUDIT_LINKS_BEFORE_RETURN
+  required_fixture_fact_keys:
+  - dafny_property
+  - spool_operation
+  - authorization_result
+  - audit_required
+  - audit_before_return
+  - content_released
+  negative_failure_conditions: *id004
+  notes: Spool DENY with an audit obligation links to before-return audit evidence.
+- test_id: NEG-MFOS-JOB-SPOOL-EVIDENCE-NOT-AUDIT-0916
+  domain: spool_protected_resource
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_4_2_exit_blocker: false
+  required_for_phase_1_4_2_spool: true
+  fixture_ref: tests/fixtures/job/spool-evidence-not-audit-0916.yml
+  oracle_ref: tests/golden/job/spool-evidence-not-audit-0916.yml
+  golden_ref: tests/golden/job/spool-evidence-not-audit-0916.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_EVIDENCE_NOT_AUDIT_EVIDENCE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-SPOOL-EVIDENCE-NOT-AUDIT-0916
+    coverage_level: C5_CONFORMANCE_LINKED
+  expected_dafny_symbols: &id005
+  - INV_SPOOL_EVIDENCE_NOT_AUDIT_EVIDENCE
+  required_fixture_fact_keys:
+  - dafny_property
+  - spool_operation
+  - authorization_result
+  - audit_required
+  - spool_evidence_present
+  - audit_evidence_present
+  - audit_satisfied_by_spool_evidence
+  - failure_mode
+  negative_failure_conditions: *id005
+  notes: Spool evidence is distinct from AuditEvidence and cannot satisfy audit evidence.
+- test_id: NEG-MFOS-JOB-SPOOL-CROSS-REQUEST-REPLAY-0917
+  domain: spool_protected_resource
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_4_2_exit_blocker: false
+  required_for_phase_1_4_2_spool: true
+  fixture_ref: tests/fixtures/job/spool-cross-request-replay-0917.yml
+  oracle_ref: tests/golden/job/spool-cross-request-replay-0917.yml
+  golden_ref: tests/golden/job/spool-cross-request-replay-0917.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_CROSS_REQUEST_AUTHORIZATION_REPLAY_BLOCKED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-SPOOL-CROSS-REQUEST-REPLAY-0917
+    coverage_level: C5_CONFORMANCE_LINKED
+  expected_dafny_symbols: &id006
+  - INV_SPOOL_CROSS_REQUEST_AUTHORIZATION_REPLAY_BLOCKED
+  required_fixture_fact_keys:
+  - dafny_property
+  - spool_operation
+  - context_correlation_id
+  - decision_correlation_id
+  - authorization_result
+  negative_failure_conditions: *id006
+  notes: A Spool authorization decision from another correlation id cannot satisfy
+    the bound witness.
+- test_id: NEG-MFOS-JOB-SPOOL-SPEC-GAP-NOT-SUCCESS-0918
+  domain: spool_protected_resource
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_4_2_exit_blocker: false
+  required_for_phase_1_4_2_spool: true
+  fixture_ref: tests/fixtures/job/spool-spec-gap-not-success-0918.yml
+  oracle_ref: tests/golden/job/spool-spec-gap-not-success-0918.yml
+  golden_ref: tests/golden/job/spool-spec-gap-not-success-0918.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_SPEC_GAP_NOT_SUCCESS
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-SPOOL-SPEC-GAP-NOT-SUCCESS-0918
+    coverage_level: C5_CONFORMANCE_LINKED
+  expected_dafny_symbols: &id007
+  - INV_SPOOL_SPEC_GAP_NOT_SUCCESS
+  required_fixture_fact_keys:
+  - dafny_property
+  - spool_operation
+  - authorization_result
+  - access_success
+  - audit_required
+  - audit_before_return
+  - failure_mode
+  negative_failure_conditions: *id007
+  notes: SPEC_GAP is not a successful Spool access decision.
+- test_id: NEG-MFOS-JOB-SPOOL-UNSUPPORTED-FAILS-0919
+  domain: spool_protected_resource
+  test_type: negative
+  coverage_level: C5_CONFORMANCE_LINKED
+  phase_1_4_2_exit_blocker: false
+  required_for_phase_1_4_2_spool: true
+  fixture_ref: tests/fixtures/job/spool-unsupported-fails-0919.yml
+  oracle_ref: tests/golden/job/spool-unsupported-fails-0919.yml
+  golden_ref: tests/golden/job/spool-unsupported-fails-0919.yml
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_UNSUPPORTED_NOT_SUCCESS
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-SPOOL-UNSUPPORTED-FAILS-0919
+    coverage_level: C5_CONFORMANCE_LINKED
+  expected_dafny_symbols: &id008
+  - INV_SPOOL_UNSUPPORTED_NOT_SUCCESS
+  required_fixture_fact_keys:
+  - dafny_property
+  - spool_operation
+  - authorization_result
+  - access_success
+  - audit_required
+  - audit_before_return
+  - failure_mode
+  negative_failure_conditions: *id008
+  notes: UNSUPPORTED is not a successful Spool access decision.
+- property_id: SPOOL-ENTRY-PROTECTED-RESOURCE
+  domain: spool_protected_resource
+  coverage_level: C4_VERIFIED_PROPERTY
+  fixture_ref: null
+  oracle_ref: null
+  golden_ref: null
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_PROTECTED_RESOURCE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/phases/phase-1-4/spool-protected-resource/validation-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: Verified Dafny property for protected SpoolEntry identity and ownership.
+- property_id: SPOOL-DECISION-BINDS-REQUEST
+  domain: spool_protected_resource
+  coverage_level: C4_VERIFIED_PROPERTY
+  fixture_ref: null
+  oracle_ref: null
+  golden_ref: null
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_DECISION_BINDS_ENTRY
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/phases/phase-1-4/spool-protected-resource/validation-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: BoundSpoolDecision binds subject, object id, object generation, operation,
+    policy version, and correlation id.
+- property_id: SPOOL-DECISION-BLOCKS-STALE-GENERATION
+  domain: spool_protected_resource
+  coverage_level: C4_VERIFIED_PROPERTY
+  fixture_ref: null
+  oracle_ref: null
+  golden_ref: null
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_STALE_GENERATION_REPLAY_BLOCKED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/phases/phase-1-4/spool-protected-resource/validation-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: A decision for a stale object generation cannot satisfy BoundSpoolDecision.
+- property_id: SPOOL-BROWSE-CANNOT-BYPASS-AUTHORIZATION
+  domain: spool_protected_resource
+  coverage_level: C4_VERIFIED_PROPERTY
+  fixture_ref: null
+  oracle_ref: null
+  golden_ref: null
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_BROWSE_CANNOT_BYPASS_AUTHORIZATION
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/phases/phase-1-4/spool-protected-resource/validation-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: Browse content release depends on Authorization.DecisionAllowsProtectedEffect.
+- property_id: SPOOL-PURGE-REQUIRES-AUTHORITY
+  domain: spool_protected_resource
+  coverage_level: C4_VERIFIED_PROPERTY
+  fixture_ref: null
+  oracle_ref: null
+  golden_ref: null
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_PURGE_REQUIRES_AUTHORITY_AND_RETENTION
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/phases/phase-1-4/spool-protected-resource/validation-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: Purge cannot complete without authority and non-retained entry state.
+- property_id: SPOOL-EXPORT-REQUIRES-AUDIT
+  domain: spool_protected_resource
+  coverage_level: C4_VERIFIED_PROPERTY
+  fixture_ref: null
+  oracle_ref: null
+  golden_ref: null
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_EXPORT_REQUIRES_AUTHORITY_AND_AUDIT
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/phases/phase-1-4/spool-protected-resource/validation-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: Export success requires authority and satisfied audit obligation.
+- property_id: SPOOL-DENY-PRODUCES-NO-SUCCESS
+  domain: spool_protected_resource
+  coverage_level: C4_VERIFIED_PROPERTY
+  fixture_ref: null
+  oracle_ref: null
+  golden_ref: null
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_DENY_PRODUCES_NO_SUCCESSFUL_ACCESS
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/phases/phase-1-4/spool-protected-resource/validation-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: A DENY decision cannot release browse, purge, or export success.
+- property_id: SPOOL-DENY-AUDIT-UNAVAILABLE-FAILS-CLOSED
+  domain: spool_protected_resource
+  coverage_level: C4_VERIFIED_PROPERTY
+  fixture_ref: null
+  oracle_ref: null
+  golden_ref: null
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_DENY_AUDIT_UNAVAILABLE_FAILS_CLOSED
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/phases/phase-1-4/spool-protected-resource/validation-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: DENY with required audit fails closed when audit is unavailable.
+- property_id: SPOOL-DIAGNOSTIC-LOG-NOT-AUDIT
+  domain: spool_protected_resource
+  coverage_level: C4_VERIFIED_PROPERTY
+  fixture_ref: null
+  oracle_ref: null
+  golden_ref: null
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_DIAGNOSTIC_LOG_LINE_NOT_AUDIT_EVIDENCE
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/phases/phase-1-4/spool-protected-resource/validation-report.md
+    coverage_level: C4_VERIFIED_PROPERTY
+  notes: Diagnostic log lines remain distinct from AuditEvidence.

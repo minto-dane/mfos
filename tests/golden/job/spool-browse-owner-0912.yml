@@ -4,12 +4,12 @@ fixture_ref: tests/fixtures/job/spool-browse-owner-0912.yml
 normalized_input:
   fixture_id: FIXTURE-MFOS-JOB-SPOOL-BROWSE-OWNER-0912
   operation: SPOOL-BROWSE-OWNER
-  deterministic_seed: SEED-MFOS-PHASE09-0001
+  deterministic_seed: SEED-MFOS-PHASE142-0912
 expected_normalized_output:
   outcome: EXPECTED_ALLOW
-  final_state: COMPLETE
+  final_state: SPOOL_CONTENT_RELEASED
 expected_decisions: &id001
-- decision_id: DECISION-MFOS-PHASE09-0001
+- decision_id: DECISION-MFOS-SPOOL-BROWSE-OWNER-0912
   result: ALLOW
   policy_version: 1
   obligations:
@@ -18,14 +18,14 @@ expected_audit_sequence: &id003
 - record_type: SECURITY_DECISION
   decision: ALLOW
   reason_code: OK
-  before_return: false
+  before_return: true
 expected_state_transitions: &id002
-- object: PHASE09_OBJECT
-  from: INITIAL
-  action: EVALUATE
-  to: COMPLETE
+- object: SPOOL-MFOS-PHASE142-0912
+  from: SPOOL_ACCESS_REQUESTED
+  action: OP_QUERY
+  to: SPOOL_CONTENT_RELEASED
   reason: EXPECTED
-expected_final_state: COMPLETE
+expected_final_state: SPOOL_CONTENT_RELEASED
 expected_failure_mode: null
 deterministic: true
 oracle:
@@ -38,7 +38,7 @@ oracle:
   expected_failure:
     error_code: null
     fail_closed: false
-  expected_final_state: COMPLETE
+  expected_final_state: SPOOL_CONTENT_RELEASED
   evidence_required:
   - EV-MFOS-JOB-SPOOL-BROWSE-OWNER-0912
   status: draft

@@ -230,6 +230,8 @@ sections:
 - path: reports/phases/phase-1-4/job-lifecycle-dd-resolution/
   purpose: Phase 1.4.1 Job lifecycle, effective principal, and DD resolution Dafny
     semantics reports.
+- path: reports/phases/phase-1-4/spool-protected-resource/
+  purpose: Phase 1.4.2 Spool protected-resource Dafny semantics reports.
 - path: reports/audits/
   purpose: Cross-phase audits grouped by audit subject.
 - path: reports/naming-safety/
@@ -387,6 +389,16 @@ phase_reports:
   purpose: Phase 1.4.1 pre-PR review and commit-readiness decision.
 - path: reports/phases/phase-1-4/job-lifecycle-dd-resolution/pr-29-review.md
   purpose: PR 29 Phase 1.4.1 Job/DD Dafny semantics review and merge decision.
+- path: reports/phases/phase-1-4/spool-protected-resource/report.md
+  purpose: Phase 1.4.2 Spool protected-resource semantics summary.
+- path: reports/phases/phase-1-4/spool-protected-resource/coverage-report.md
+  purpose: Phase 1.4.2 Spool coverage and traceability summary.
+- path: reports/phases/phase-1-4/spool-protected-resource/validation-report.md
+  purpose: Phase 1.4.2 validation command and Dafny verification summary.
+- path: reports/phases/phase-1-4/spool-protected-resource/red-team-review.md
+  purpose: Phase 1.4.2 red-team review.
+- path: reports/phases/phase-1-4/spool-protected-resource/open-issues.md
+  purpose: Phase 1.4.2 open issues and deferred scope ledger.
 archive:
 - path: reports/archive/superseded/phase-0-9-readiness.md
   purpose: Superseded Phase 0.9 readiness report retained after Phase 0.9 freeze and

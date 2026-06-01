@@ -4,12 +4,12 @@ fixture_ref: tests/fixtures/job/spool-browse-nonowner-0913.yml
 normalized_input:
   fixture_id: FIXTURE-MFOS-JOB-SPOOL-BROWSE-NONOWNER-0913
   operation: SPOOL-BROWSE-NONOWNER
-  deterministic_seed: SEED-MFOS-PHASE09-0001
+  deterministic_seed: SEED-MFOS-PHASE142-0913
 expected_normalized_output:
   outcome: EXPECTED_FAIL_CLOSED
   final_state: FAILED
 expected_decisions: &id001
-- decision_id: DECISION-MFOS-PHASE09-0001
+- decision_id: DECISION-MFOS-SPOOL-BROWSE-NONOWNER-0913
   result: DENY
   policy_version: 1
   obligations:
@@ -20,9 +20,9 @@ expected_audit_sequence: &id003
   reason_code: MFOS_ERR_POLICY_DENIED
   before_return: true
 expected_state_transitions: &id002
-- object: PHASE09_OBJECT
-  from: INITIAL
-  action: EVALUATE
+- object: SPOOL-MFOS-PHASE142-0913
+  from: SPOOL_ACCESS_REQUESTED
+  action: OP_QUERY
   to: FAILED
   reason: MFOS_ERR_POLICY_DENIED
 expected_final_state: FAILED

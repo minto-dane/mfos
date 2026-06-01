@@ -1,0 +1,19 @@
+schema_version: 1
+phase: phase-1.4.2
+formal_claims:
+- claim_id: MFOS-FC-SPOOL-PROTECTED-RESOURCE
+  domain: spool_protected_resource
+  coverage_level: C3_FULL_SEMANTIC
+  proof_claimed: false
+  proof_artifact_refs: []
+  accepted_deferred: true
+  reason: Phase 1.4.2 adds verified Dafny properties and conformance links, but does
+    not add separate formal proof artifacts.
+  coverage_mappings:
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_DECISION_BINDS_ENTRY
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: reports/phases/phase-1-4/spool-protected-resource/coverage-report.md
+    coverage_level: C3_FULL_SEMANTIC
+coverage_level: C3_FULL_SEMANTIC

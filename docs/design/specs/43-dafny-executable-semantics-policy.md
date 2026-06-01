@@ -280,7 +280,7 @@ release_ready_model_claimed: false
 
 The Phase 1.3 Dataset/Catalog Dafny closure was verified before Phase 1.4.1.
 The current cumulative Phase 1 Dafny module set verifies with
-`184 verified, 0 errors`.
+`209 verified, 0 errors`.
 
 Phase 1.3 Dataset/Catalog C5 scenario coverage is limited to the modeled
 conformance rows, including fail-closed non-resolution of crash-mid-commit

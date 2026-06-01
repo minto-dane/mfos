@@ -201,7 +201,7 @@ become the sole quality gate.
 - Pinned Dafny 4.11.0 is installed by `scripts/install-dafny.sh`; Z3 4.14.1 is
   bundled in the pinned release.
 - `scripts/validate-dafny-semantics.sh --require-dafny` verifies the current
-  module set with `184 verified, 0 errors`.
+  module set with `209 verified, 0 errors`.
 - Phase 1.1 semantic coverage traceability now maps Phase 0.9 core catalogs to
   explicit Dafny targets per test. The first vertical slice remains
   `C5_CONFORMANCE_LINKED`; the core five domains remain mixed because several
@@ -232,6 +232,15 @@ become the sole quality gate.
   or `jobd`/`spoold`/`operatord` behavior. Generated Phase 1.4.1 traceability
   lives under `evidence/traceability/generated/phase-1-4-1/`; Python remains a
   structural generator/checker and does not implement Job/DD business semantics.
+- Phase 1.4.2 adds the scoped Dafny executable-semantics slice for SpoolEntry as
+  a protected resource, owner/non-owner browse behavior, purge denial, export
+  audit fail-closed behavior, SpoolEvidence-vs-AuditEvidence separation, and
+  bound Spool authorization/audit linkage. It remains non-production Dafny
+  semantics only and does not implement real spool storage, SYSOUT handling,
+  operator commands, production code, Rust semantic-core, hosted daemons, or
+  `jobd`/`spoold`/`operatord` behavior. Generated Phase 1.4.2 traceability lives
+  under `evidence/traceability/generated/phase-1-4-2/`; Python remains a
+  structural generator/checker and does not implement Spool business semantics.
 
 ## Artifact Lifecycle Boundaries
 

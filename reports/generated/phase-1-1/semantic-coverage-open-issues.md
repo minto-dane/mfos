@@ -34,8 +34,6 @@ These are truthful gaps left after remediation. They are not treated as successf
 - `NEG-MFOS-JOB-SUBMIT-NO-PRINCIPAL-0903`: `C2_PARTIAL_SEMANTIC` - Partial semantic coverage only.
 - `TEST-MFOS-JOB-STEP-FAILURE-RC-0909`: `C2_PARTIAL_SEMANTIC` - Type-level/partial representation only.
 - `TEST-MFOS-JOB-SPOOL-CREATE-0911`: `C3_FULL_SEMANTIC` - Executable predicate exists; no C4 claim.
-- `TEST-MFOS-JOB-SPOOL-BROWSE-OWNER-0912`: `C3_FULL_SEMANTIC` - Executable predicate exists; no C4 claim.
-- `NEG-MFOS-JOB-SPOOL-EXPORT-NO-AUDIT-0915`: `C0_NONE` - No Dafny mapping.
 - `NEG-MFOS-JOB-CANCEL-NO-AUTHORITY-0916`: `C0_NONE` - No Dafny mapping.
 - `NEG-MFOS-JOB-STEP-NO-AUDIT-CORRELATION-0917`: `C0_NONE` - No Dafny mapping.
 - `TEST-MFOS-OPER-DISPLAY-SYSTEM-0901`: `C3_FULL_SEMANTIC` - Executable predicate exists; no C4 claim.

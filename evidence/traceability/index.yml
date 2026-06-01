@@ -120,6 +120,19 @@ generated:
       - evidence/traceability/generated/phase-1-4-1/job-lifecycle-to-dafny.yml
       - evidence/traceability/generated/phase-1-4-1/requirement-to-dafny.yml
       - evidence/traceability/generated/phase-1-4-1/test-to-dafny.yml
+  phase_1_4_2:
+    path: evidence/traceability/generated/phase-1-4-2/
+    status: generated
+    origin_phase: phase-1.4.2
+    generated_by: scripts/generators/generate-spool-coverage.py
+    coverage_summary: evidence/traceability/generated/phase-1-4-2/coverage-summary.yml
+    contains:
+      - evidence/traceability/generated/phase-1-4-2/coverage-summary.yml
+      - evidence/traceability/generated/phase-1-4-2/fixture-to-dafny.yml
+      - evidence/traceability/generated/phase-1-4-2/formal-claim-to-dafny.yml
+      - evidence/traceability/generated/phase-1-4-2/requirement-to-dafny.yml
+      - evidence/traceability/generated/phase-1-4-2/spool-access-to-dafny.yml
+      - evidence/traceability/generated/phase-1-4-2/test-to-dafny.yml
 
 archive:
   phase_0_8:

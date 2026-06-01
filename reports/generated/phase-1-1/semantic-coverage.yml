@@ -23,22 +23,22 @@ coverage_distribution:
     C0_NONE: 16
     C5_CONFORMANCE_LINKED: 2
   tests:
-    C0_NONE: 12
+    C0_NONE: 11
     C2_PARTIAL_SEMANTIC: 14
-    C3_FULL_SEMANTIC: 16
-    C4_VERIFIED_PROPERTY: 30
+    C3_FULL_SEMANTIC: 15
+    C4_VERIFIED_PROPERTY: 28
     C5_CONFORMANCE_LINKED: 2
   fixtures:
-    C0_NONE: 12
+    C0_NONE: 11
     C2_PARTIAL_SEMANTIC: 14
-    C3_FULL_SEMANTIC: 16
-    C4_VERIFIED_PROPERTY: 30
+    C3_FULL_SEMANTIC: 15
+    C4_VERIFIED_PROPERTY: 28
     C5_CONFORMANCE_LINKED: 2
   oracles:
-    C0_NONE: 12
+    C0_NONE: 11
     C2_PARTIAL_SEMANTIC: 14
-    C3_FULL_SEMANTIC: 16
-    C4_VERIFIED_PROPERTY: 30
+    C3_FULL_SEMANTIC: 15
+    C4_VERIFIED_PROPERTY: 28
     C5_CONFORMANCE_LINKED: 2
   formal_claims:
     C0_NONE: 9
@@ -55,7 +55,7 @@ phase_1_1_core_domain_coverage_status: mixed_verified_and_partial
 phase_1_1_formal_claim_coverage_complete: false
 negative_semantics_complete: false
 audit_deny_before_return_transition_backed: true
-dafny_verification_result: 184 verified, 0 errors
+dafny_verification_result: 209 verified, 0 errors
 production_implementation_allowed: false
 rust_phase_1_canonical_semantics_allowed: false
 hosted_daemon_implementation_allowed: false

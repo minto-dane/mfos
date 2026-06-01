@@ -1,0 +1,45 @@
+golden_id: GOLDEN-MFOS-JOB-SPOOL-SPEC-GAP-NOT-SUCCESS-0918
+golden_version: 1
+fixture_ref: tests/fixtures/job/spool-spec-gap-not-success-0918.yml
+normalized_input:
+  fixture_id: FIXTURE-MFOS-JOB-SPOOL-SPEC-GAP-NOT-SUCCESS-0918
+  operation: SPOOL-SPEC-GAP-NOT-SUCCESS
+  deterministic_seed: SEED-MFOS-PHASE142-0918
+expected_normalized_output:
+  outcome: EXPECTED_FAIL_CLOSED
+  final_state: FAILED
+expected_decisions: &id001
+- decision_id: DECISION-MFOS-SPOOL-SPEC-GAP-NOT-SUCCESS-0918
+  result: SPEC_GAP
+  policy_version: 1
+  obligations:
+  - AUDIT_SECURITY_DECISION
+expected_audit_sequence: &id003
+- record_type: SECURITY_DECISION
+  decision: SPEC_GAP
+  reason_code: MFOS_ERR_SPEC_GAP
+  before_return: true
+expected_state_transitions: &id002
+- object: SPOOL-MFOS-PHASE142-0918
+  from: SPOOL_ACCESS_REQUESTED
+  action: OP_QUERY
+  to: FAILED
+  reason: MFOS_ERR_SPEC_GAP
+expected_final_state: FAILED
+expected_failure_mode: MFOS_ERR_SPEC_GAP
+deterministic: true
+oracle:
+  oracle_id: ORACLE-MFOS-JOB-SPOOL-SPEC-GAP-NOT-SUCCESS-0918
+  oracle_version: 1
+  fixture_ref: tests/fixtures/job/spool-spec-gap-not-success-0918.yml
+  expected_decisions: *id001
+  expected_state_transitions: *id002
+  expected_audit_records: *id003
+  expected_failure:
+    error_code: MFOS_ERR_SPEC_GAP
+    fail_closed: true
+  expected_final_state: FAILED
+  evidence_required:
+  - EV-MFOS-JOB-SPOOL-SPEC-GAP-NOT-SUCCESS-0918
+  status: draft
+status: draft
