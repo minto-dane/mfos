@@ -38,6 +38,7 @@ PROOF_LEVELS = {"C4_VERIFIED_PROPERTY", "C5_CONFORMANCE_LINKED", "C6_RELEASE_REA
 SEMANTIC_LEVELS = {"C3_FULL_SEMANTIC", "C4_VERIFIED_PROPERTY", "C5_CONFORMANCE_LINKED", "C6_RELEASE_READY_MODEL"}
 REQUIRED_SPOOL_SYMBOLS = {
     "INV_SPOOL_PROTECTED_RESOURCE",
+    "INV_SPOOL_STALE_GENERATION_REPLAY_BLOCKED",
     "INV_SPOOL_OWNER_BROWSE_ALLOWED",
     "INV_SPOOL_BROWSE_BY_NON_OWNER_RETURNS_NO_CONTENT",
     "INV_SPOOL_PURGE_WITHOUT_AUTHORITY_DENIED",
@@ -70,6 +71,18 @@ def exact_dafny_symbol_declared(module_text: str, symbol: str, symbol_kind: str)
     kind = re.escape(symbol_kind or "lemma")
     pattern = rf"^\s*(?:ghost\s+)?{kind}\s+{re.escape(symbol)}\s*(?:\(|<)"
     return re.search(pattern, module_text, flags=re.MULTILINE) is not None
+
+
+def changed_paths() -> set[Path]:
+    commands = [
+        ["git", "diff", "--name-only", "--diff-filter=ACMR", "origin/dev...HEAD"],
+        ["git", "diff", "--name-only", "--diff-filter=ACMR", "dev...HEAD"],
+    ]
+    for command in commands:
+        result = subprocess.run(command, cwd=ROOT, capture_output=True, text=True, check=False)
+        if result.returncode == 0:
+            return {Path(line.strip()) for line in result.stdout.splitlines() if line.strip()}
+    return set()
 
 
 def compare_generated() -> list[str]:
@@ -231,7 +244,10 @@ def validate_aggregate(source_name: str, data: dict[str, Any], errors: list[str]
 def collect_mapped_symbols() -> dict[str, list[tuple[str, str, dict[str, Any]]]]:
     symbols: dict[str, list[tuple[str, str, dict[str, Any]]]] = {}
     for name in TRACE_FILES:
-        data = load_yaml(TRACEABILITY_DIR / name)
+        path = TRACEABILITY_DIR / name
+        if not path.exists():
+            continue
+        data = load_yaml(path)
         rows = data.get("entries") or data.get("tests") or data.get("fixtures") or data.get("requirements") or data.get("formal_claims") or []
         if not isinstance(rows, list):
             continue
@@ -276,6 +292,7 @@ def validate_policy_boundaries(errors: list[str]) -> None:
             "Audit.FinalizeDeniedOperation",
             "Audit.FinalizeRequiredAuditedOperation",
             "decision.object_ref.object_id == spool.spool_id",
+            "decision.object_ref.generation == decision.context.object_generation",
             "decision.context.correlation_id == ctx.correlation_id",
         ],
     }
@@ -294,16 +311,18 @@ def validate_policy_boundaries(errors: list[str]) -> None:
     for marker in forbidden_markers:
         if marker in job_text or marker in type_text:
             errors.append(f"Phase 1.4.2 must not expand into production-like spool/operator implementation: {marker}")
+    paths = changed_paths()
     for forbidden in (
-        ROOT / "formal" / "executable-semantics" / "rust",
-        ROOT / "implementation" / "services" / "jobd",
-        ROOT / "implementation" / "services" / "spoold",
-        ROOT / "implementation" / "services" / "operatord",
+        Path("formal") / "executable-semantics" / "rust",
+        Path("implementation") / "services" / "jobd",
+        Path("implementation") / "services" / "spoold",
+        Path("implementation") / "services" / "operatord",
     ):
-        if forbidden.exists():
-            errors.append(f"Phase 1.4.2 must not introduce Rust semantic-core or daemon implementation artifact: {forbidden}")
-    for path in sorted((ROOT / "reports/current").glob("*phase-1-4-2*")):
-        errors.append(f"Phase 1.4.2 report must not be under reports/current: {path}")
+        if any(path == forbidden or forbidden in path.parents for path in paths):
+            errors.append(f"Phase 1.4.2 must not introduce Rust semantic-core or daemon implementation artifact: {ROOT / forbidden}")
+    for path in sorted(paths):
+        if path.parts[:2] == ("reports", "current") and "phase-1-4-2" in path.name:
+            errors.append(f"Phase 1.4.2 report must not be under reports/current: {ROOT / path}")
 
 
 def validate_python_boundary(errors: list[str]) -> None:

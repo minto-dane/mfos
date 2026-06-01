@@ -26,9 +26,9 @@ COVERAGE_LEVELS = [
 COVERAGE_RANK = {level: rank for rank, level in enumerate(COVERAGE_LEVELS)}
 
 
-def mapping(symbol: str, level: str, evidence_ref: str) -> dict[str, Any]:
+def mapping(symbol: str, level: str, evidence_ref: str, module: str = JOB_MODULE) -> dict[str, Any]:
     return {
-        "dafny_module": JOB_MODULE,
+        "dafny_module": module,
         "dafny_symbol": symbol,
         "symbol_kind": "lemma",
         "verification_status": "verified",
@@ -40,12 +40,13 @@ def mapping(symbol: str, level: str, evidence_ref: str) -> dict[str, Any]:
 def c5_test(
     test_id: str,
     slug: str,
-    symbol: str,
+    symbol: str | list[str],
     note: str,
     negative: bool = True,
     required_fixture_fact_keys: list[str] | None = None,
 ) -> dict[str, Any]:
     evidence_ref = "EV-" + test_id.removeprefix("TEST-").removeprefix("NEG-")
+    symbols = [symbol] if isinstance(symbol, str) else list(symbol)
     return {
         "test_id": test_id,
         "domain": "spool_protected_resource",
@@ -56,14 +57,14 @@ def c5_test(
         "fixture_ref": f"tests/fixtures/job/{slug}.yml",
         "oracle_ref": f"tests/golden/job/{slug}.yml",
         "golden_ref": f"tests/golden/job/{slug}.yml",
-        "coverage_mappings": [mapping(symbol, "C5_CONFORMANCE_LINKED", evidence_ref)],
-        "expected_dafny_symbols": [symbol],
+        "coverage_mappings": [mapping(mapped_symbol, "C5_CONFORMANCE_LINKED", evidence_ref) for mapped_symbol in symbols],
+        "expected_dafny_symbols": symbols,
         "required_fixture_fact_keys": required_fixture_fact_keys or [
             "dafny_property",
             "spool_operation",
             "authorization_result",
         ],
-        "negative_failure_conditions": [symbol] if negative else [],
+        "negative_failure_conditions": symbols if negative else [],
         "notes": note,
     }
 
@@ -81,6 +82,8 @@ SPOOL_TESTS = [
             "owner_principal",
             "subject_principal",
             "authorization_result",
+            "audit_required",
+            "audit_before_return",
             "content_released",
         ],
     ),
@@ -102,12 +105,18 @@ SPOOL_TESTS = [
     c5_test(
         "NEG-MFOS-JOB-SPOOL-PURGE-DENIED-0914",
         "spool-purge-denied-0914",
-        "INV_SPOOL_PURGE_WITHOUT_AUTHORITY_DENIED",
+        [
+            "INV_SPOOL_PURGE_WITHOUT_AUTHORITY_DENIED",
+            "INV_SPOOL_PURGE_REQUIRES_AUTHORITY_AND_RETENTION",
+            "INV_SPOOL_DENY_WITH_AUDIT_LINKS_BEFORE_RETURN",
+        ],
         "Spool purge without an allowing authorization is fail-closed.",
         required_fixture_fact_keys=[
             "dafny_property",
             "spool_operation",
             "authorization_result",
+            "audit_required",
+            "audit_before_return",
             "purge_completed",
         ],
     ),
@@ -147,9 +156,12 @@ SPOOL_TESTS = [
         required_fixture_fact_keys=[
             "dafny_property",
             "spool_operation",
+            "authorization_result",
+            "audit_required",
             "spool_evidence_present",
             "audit_evidence_present",
             "audit_satisfied_by_spool_evidence",
+            "failure_mode",
         ],
     ),
     c5_test(
@@ -175,6 +187,9 @@ SPOOL_TESTS = [
             "spool_operation",
             "authorization_result",
             "access_success",
+            "audit_required",
+            "audit_before_return",
+            "failure_mode",
         ],
     ),
     c5_test(
@@ -187,6 +202,9 @@ SPOOL_TESTS = [
             "spool_operation",
             "authorization_result",
             "access_success",
+            "audit_required",
+            "audit_before_return",
+            "failure_mode",
         ],
     ),
 ]
@@ -222,7 +240,23 @@ PROPERTY_ROWS = [
                 "reports/phases/phase-1-4/spool-protected-resource/validation-report.md",
             )
         ],
-        "notes": "BoundSpoolDecision binds subject, object, operation, policy version, and correlation id.",
+        "notes": "BoundSpoolDecision binds subject, object id, object generation, operation, policy version, and correlation id.",
+    },
+    {
+        "property_id": "SPOOL-DECISION-BLOCKS-STALE-GENERATION",
+        "domain": "spool_protected_resource",
+        "coverage_level": "C4_VERIFIED_PROPERTY",
+        "fixture_ref": None,
+        "oracle_ref": None,
+        "golden_ref": None,
+        "coverage_mappings": [
+            mapping(
+                "INV_SPOOL_STALE_GENERATION_REPLAY_BLOCKED",
+                "C4_VERIFIED_PROPERTY",
+                "reports/phases/phase-1-4/spool-protected-resource/validation-report.md",
+            )
+        ],
+        "notes": "A decision for a stale object generation cannot satisfy BoundSpoolDecision.",
     },
     {
         "property_id": "SPOOL-BROWSE-CANNOT-BYPASS-AUTHORIZATION",
@@ -356,7 +390,7 @@ REQUIREMENT_ROWS = [
         "symbol": "INV_SPOOL_DECISION_BINDS_ENTRY",
         "mapping_level": "C4_VERIFIED_PROPERTY",
         "partial_coverage": False,
-        "covered_subclaim": "Spool access decisions bind subject, object, operation, policy version, and correlation id.",
+        "covered_subclaim": "Spool access decisions bind subject, object id, object generation, operation, policy version, and correlation id.",
         "not_claimed": [],
         "notes": "Phase-scoped subclaim only.",
     },

@@ -1,30 +1,31 @@
-# Phase 1.4.2 Spool Coverage Report
+# Phase 1.4.2 Spool Coverage Planning Report
 
-Status: current.
+Status: planning-only / draft.
 
-Generated traceability lives under
-`evidence/traceability/generated/phase-1-4-2/`.
+Draft generated traceability for the executable-semantics slice is staged under
+`evidence/traceability/generated/phase-1-4-2/`; it is not production
+implementation evidence.
 
 ## Coverage Summary
 
-- Spool protected-resource aggregate: `C4_VERIFIED_PROPERTY`
-- Required scenario rows: `C5_CONFORMANCE_LINKED`
-- Fixture/golden rows: `C5_CONFORMANCE_LINKED`
-- Requirement aggregate: `C2_PARTIAL_SEMANTIC`
-- Formal claim aggregate: `C3_FULL_SEMANTIC`
+- Planned Spool protected-resource aggregate: `C4_VERIFIED_PROPERTY`
+- Planned required scenario rows: `C5_CONFORMANCE_LINKED`
+- Planned fixture/golden rows: `C5_CONFORMANCE_LINKED`
+- Planned requirement aggregate: `C2_PARTIAL_SEMANTIC`
+- Planned formal claim aggregate: `C3_FULL_SEMANTIC`
 - C5 overclaim remaining: false
 
 ## C5 Scenario Rows
 
-- `spool-browse-owner-0912`: owner browse allowed.
-- `spool-browse-nonowner-0913`: non-owner browse denied with no content.
-- `spool-purge-denied-0914`: purge without authority denied.
-- `spool-export-no-audit-0915`: export with required audit unavailable fails closed.
-- `spool-evidence-not-audit-0916`: SpoolEvidence is not AuditEvidence.
-- `spool-cross-request-replay-0917`: cross-request authorization replay blocked.
-- `spool-spec-gap-not-success-0918`: SPEC_GAP is not success.
-- `spool-unsupported-fails-0919`: UNSUPPORTED fails closed.
-- `spool-deny-audit-0920`: DENY with audit obligation links to before-return audit.
+- `spool-browse-owner-0912`: planned owner browse conformance row.
+- `spool-browse-nonowner-0913`: planned non-owner browse denial row.
+- `spool-purge-denied-0914`: planned purge-without-authority denial row.
+- `spool-export-no-audit-0915`: planned export audit-unavailable fail-closed row.
+- `spool-evidence-not-audit-0916`: planned SpoolEvidence/AuditEvidence separation row.
+- `spool-cross-request-replay-0917`: planned cross-request replay denial row.
+- `spool-spec-gap-not-success-0918`: planned SPEC_GAP-not-success row.
+- `spool-unsupported-fails-0919`: planned UNSUPPORTED fail-closed row.
+- `spool-deny-audit-0920`: planned DENY-before-return audit row.
 
 ## Coverage Boundaries
 

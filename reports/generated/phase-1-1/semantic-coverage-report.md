@@ -10,7 +10,7 @@ Coverage levels are now derived from explicit per-test mappings; domain-wide sym
 - `phase_1_1_formal_claim_coverage_complete`: `false`
 - `negative_semantics_complete`: `false`
 - `audit_deny_before_return_transition_backed`: `true`
-- `dafny_verification_result`: `206 verified, 0 errors`
+- `dafny_verification_result`: `209 verified, 0 errors`
 
 ## Coverage Distribution
 
@@ -19,22 +19,22 @@ requirements:
   C0_NONE: 16
   C5_CONFORMANCE_LINKED: 2
 tests:
-  C0_NONE: 12
+  C0_NONE: 11
   C2_PARTIAL_SEMANTIC: 14
-  C3_FULL_SEMANTIC: 16
-  C4_VERIFIED_PROPERTY: 30
+  C3_FULL_SEMANTIC: 15
+  C4_VERIFIED_PROPERTY: 28
   C5_CONFORMANCE_LINKED: 2
 fixtures:
-  C0_NONE: 12
+  C0_NONE: 11
   C2_PARTIAL_SEMANTIC: 14
-  C3_FULL_SEMANTIC: 16
-  C4_VERIFIED_PROPERTY: 30
+  C3_FULL_SEMANTIC: 15
+  C4_VERIFIED_PROPERTY: 28
   C5_CONFORMANCE_LINKED: 2
 oracles:
-  C0_NONE: 12
+  C0_NONE: 11
   C2_PARTIAL_SEMANTIC: 14
-  C3_FULL_SEMANTIC: 16
-  C4_VERIFIED_PROPERTY: 30
+  C3_FULL_SEMANTIC: 15
+  C4_VERIFIED_PROPERTY: 28
   C5_CONFORMANCE_LINKED: 2
 formal_claims:
   C0_NONE: 9

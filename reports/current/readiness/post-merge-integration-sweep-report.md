@@ -84,7 +84,7 @@ The required post-merge validation set passed locally on the integrated state.
 - `python3 -m py_compile $(find scripts tools -name '*.py' -type f | sort)`: PASS
 - `git diff --check`: PASS
 
-Dafny verification result: `206 verified, 0 errors`.
+Dafny verification result: `209 verified, 0 errors`.
 
 ## GitHub Checks
 

@@ -283,6 +283,8 @@ module JobSpool {
     Authorization.DecisionWellFormed(decision) &&
     decision.subject == ctx.subject &&
     decision.object_ref.object_id == spool.spool_id &&
+    ValidGeneration(decision.object_ref.generation) &&
+    decision.object_ref.generation == decision.context.object_generation &&
     decision.operation == operation &&
     decision.resource_class == RESOURCE_SPOOL &&
     decision.policy_version == ctx.policy_version &&
@@ -304,6 +306,7 @@ module JobSpool {
     SpoolEntryProtected(spool) &&
     decision.subject == spool.owner &&
     decision.object_ref.object_id == spool.spool_id &&
+    decision.object_ref.generation == decision.context.object_generation &&
     decision.resource_class == RESOURCE_SPOOL &&
     decision.operation == OP_QUERY &&
     Authorization.DecisionAllowsProtectedEffect(decision)
@@ -361,6 +364,10 @@ module JobSpool {
     var outcome := Audit.FinalizeRequiredAuditedOperation(bound.decision, prior_records, next_record_id, audit_available);
     SpoolAccessResult(outcome.final_error, bound.decision.reason_code, outcome.records_after,
       outcome.result_released, false, false, outcome.result_released && outcome.final_error == MFOS_OK)
+  }
+
+  function RejectInvalidSpoolAuditEvidence(bound: BoundSpoolDecision, prior_records: seq<AuditRecord>): SpoolAccessResult {
+    SpoolAccessResult(MFOS_ERR_INVALID_AUDIT_RECORD, AUDIT_RECORD_INVALID, prior_records, false, false, false, false)
   }
 
   lemma INV_JOB_EFFECTIVE_PRINCIPAL_BEFORE_OPEN(ctx: JobContext, dd: DD, decision: SecurityDecision)
@@ -605,6 +612,8 @@ module JobSpool {
     requires BoundSpoolDecisionValid(bound)
     ensures bound.decision.subject == bound.context.subject
     ensures bound.decision.object_ref.object_id == bound.spool.spool_id
+    ensures ValidGeneration(bound.decision.object_ref.generation)
+    ensures bound.decision.object_ref.generation == bound.decision.context.object_generation
     ensures bound.decision.operation == bound.operation
     ensures bound.decision.resource_class == RESOURCE_SPOOL
     ensures bound.decision.policy_version == bound.context.policy_version
@@ -616,6 +625,13 @@ module JobSpool {
 
   lemma INV_SPOOL_CROSS_REQUEST_AUTHORIZATION_REPLAY_BLOCKED(ctx: SpoolAccessContext, spool: SpoolEntry, operation: Operation, decision: SecurityDecision)
     requires decision.context.correlation_id != ctx.correlation_id
+    ensures !IsBoundSpoolDecision(ctx, spool, operation, decision)
+  {
+  }
+
+  lemma INV_SPOOL_STALE_GENERATION_REPLAY_BLOCKED(ctx: SpoolAccessContext, spool: SpoolEntry, operation: Operation, decision: SecurityDecision)
+    requires decision.object_ref.object_id == spool.spool_id
+    requires decision.object_ref.generation != decision.context.object_generation
     ensures !IsBoundSpoolDecision(ctx, spool, operation, decision)
   {
   }
@@ -733,8 +749,18 @@ module JobSpool {
     Audit.INV_AUDIT_DENY_TRANSITION_FAILS_CLOSED_WHEN_UNAVAILABLE(bound.decision, prior_records, next_record_id);
   }
 
-  lemma INV_SPOOL_EVIDENCE_NOT_AUDIT_EVIDENCE(evidence: SpoolEvidence, record: AuditRecord)
+  lemma INV_SPOOL_EVIDENCE_NOT_AUDIT_EVIDENCE(evidence: SpoolEvidence, record: AuditRecord, bound: BoundSpoolDecision, prior_records: seq<AuditRecord>)
+    requires BoundSpoolDecisionValid(bound)
+    requires bound.operation == OP_EXPORT
+    requires ValidSpoolAllowDecision(bound.decision)
+    requires Authorization.RequiresAudit(bound.decision)
     ensures !SpoolEvidenceIsAuditEvidence(evidence, record)
+    ensures RejectInvalidSpoolAuditEvidence(bound, prior_records).error_code == MFOS_ERR_INVALID_AUDIT_RECORD
+    ensures !RejectInvalidSpoolAuditEvidence(bound, prior_records).result_released
+    ensures !RejectInvalidSpoolAuditEvidence(bound, prior_records).content_released
+    ensures !RejectInvalidSpoolAuditEvidence(bound, prior_records).purge_completed
+    ensures !RejectInvalidSpoolAuditEvidence(bound, prior_records).export_completed
+    ensures !IsSuccessError(RejectInvalidSpoolAuditEvidence(bound, prior_records).error_code)
   {
   }
 
@@ -750,16 +776,40 @@ module JobSpool {
     Audit.INV_AUDIT_LOG_LINE_NOT_RECORD(record);
   }
 
-  lemma INV_SPOOL_SPEC_GAP_NOT_SUCCESS(decision: SecurityDecision)
+  lemma INV_SPOOL_SPEC_GAP_NOT_SUCCESS(decision: SecurityDecision, prior_records: seq<AuditRecord>, next_record_id: MfosId)
     requires decision.result == SPEC_GAP
+    requires decision.error_code == MFOS_ERR_SPEC_GAP
+    requires Authorization.RequiresAudit(decision)
+    requires ValidCorrelationId(decision.context.correlation_id)
+    requires ValidId(decision.subject.principal.principal_id)
+    requires ValidId(decision.object_ref.object_id)
+    requires ValidPolicyVersion(decision.policy_version)
+    requires ValidId(next_record_id)
     ensures !ValidSpoolAllowDecision(decision)
+    ensures !IsSuccessError(decision.error_code)
+    ensures Audit.FinalizeRequiredAuditedOperation(decision, prior_records, next_record_id, true).final_error == MFOS_ERR_SPEC_GAP
+    ensures Audit.FinalizeRequiredAuditedOperation(decision, prior_records, next_record_id, true).result_released
+    ensures Audit.RequiredAuditSatisfiedForFinalResult(decision, Audit.FinalizeRequiredAuditedOperation(decision, prior_records, next_record_id, true).records_after)
   {
+    Audit.INV_AUDIT_REQUIRED_TRANSITION_WRITES_BEFORE_RETURN_WHEN_AVAILABLE(decision, prior_records, next_record_id);
   }
 
-  lemma INV_SPOOL_UNSUPPORTED_NOT_SUCCESS(decision: SecurityDecision)
+  lemma INV_SPOOL_UNSUPPORTED_NOT_SUCCESS(decision: SecurityDecision, prior_records: seq<AuditRecord>, next_record_id: MfosId)
     requires decision.result == UNSUPPORTED
+    requires decision.error_code == MFOS_ERR_UNSUPPORTED
+    requires Authorization.RequiresAudit(decision)
+    requires ValidCorrelationId(decision.context.correlation_id)
+    requires ValidId(decision.subject.principal.principal_id)
+    requires ValidId(decision.object_ref.object_id)
+    requires ValidPolicyVersion(decision.policy_version)
+    requires ValidId(next_record_id)
     ensures !ValidSpoolAllowDecision(decision)
+    ensures !IsSuccessError(decision.error_code)
+    ensures Audit.FinalizeRequiredAuditedOperation(decision, prior_records, next_record_id, true).final_error == MFOS_ERR_UNSUPPORTED
+    ensures Audit.FinalizeRequiredAuditedOperation(decision, prior_records, next_record_id, true).result_released
+    ensures Audit.RequiredAuditSatisfiedForFinalResult(decision, Audit.FinalizeRequiredAuditedOperation(decision, prior_records, next_record_id, true).records_after)
   {
+    Audit.INV_AUDIT_REQUIRED_TRANSITION_WRITES_BEFORE_RETURN_WHEN_AVAILABLE(decision, prior_records, next_record_id);
   }
 
   lemma INV_JOB_INVALID_LIFECYCLE_REJECTED(from_state: JobState, to_state: JobState)

@@ -23,6 +23,9 @@ semantic_facts:
   spool_operation: OP_EXPORT
   authorization_result: UNSUPPORTED
   access_success: false
+  audit_required: true
+  audit_before_return: true
+  failure_mode: MFOS_ERR_UNSUPPORTED
 inputs:
 - input_id: INPUT-MFOS-SPOOL-UNSUPPORTED-FAILS-0919
   operation: SPOOL-UNSUPPORTED-FAILS

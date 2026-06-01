@@ -27,11 +27,13 @@ semantic_facts:
   dafny_property: INV_SPOOL_PURGE_WITHOUT_AUTHORITY_DENIED
   spool_operation: OP_PURGE
   authorization_result: DENY
+  audit_required: true
+  audit_before_return: true
   purge_completed: false
 inputs:
-- input_id: INPUT-MFOS-PHASE09-0001
+- input_id: INPUT-MFOS-SPOOL-PURGE-DENIED-0914
   operation: SPOOL-PURGE-DENIED
-  deterministic_seed: SEED-MFOS-PHASE09-0001
+  deterministic_seed: SEED-MFOS-PHASE142-0914
 expected_oracle: tests/golden/job/spool-purge-denied-0914.yml
 expected_evidence:
 - EV-MFOS-JOB-SPOOL-PURGE-DENIED-0914

@@ -4,7 +4,7 @@ fixture_ref: tests/fixtures/job/spool-browse-nonowner-0913.yml
 normalized_input:
   fixture_id: FIXTURE-MFOS-JOB-SPOOL-BROWSE-NONOWNER-0913
   operation: SPOOL-BROWSE-NONOWNER
-  deterministic_seed: SEED-MFOS-PHASE09-0001
+  deterministic_seed: SEED-MFOS-PHASE142-0913
 expected_normalized_output:
   outcome: EXPECTED_FAIL_CLOSED
   final_state: FAILED

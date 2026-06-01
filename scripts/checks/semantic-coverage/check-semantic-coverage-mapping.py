@@ -109,6 +109,9 @@ def validate_test_mapping() -> list[str]:
                     errors.append(f"{test_id}: C4/C5 entry includes lower-level mapping")
         if test.get("negative"):
             negative_symbols = test.get("negative_failure_conditions", [])
+            if not isinstance(negative_symbols, list):
+                errors.append(f"{test_id}: negative_failure_conditions must be a list")
+                negative_symbols = []
             if LEVEL_RANK.get(level, -1) >= LEVEL_RANK["C4_VERIFIED_PROPERTY"] and not negative_symbols:
                 errors.append(f"{test_id}: verified negative test lacks negative_failure_conditions")
             if LEVEL_RANK.get(level, -1) >= LEVEL_RANK["C4_VERIFIED_PROPERTY"] and "UNSUPPORTED" in test_id and "INV_AUTH_UNSUPPORTED_NOT_SUCCESS" not in negative_symbols:

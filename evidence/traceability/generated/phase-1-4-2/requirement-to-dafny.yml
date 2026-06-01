@@ -50,8 +50,8 @@ requirements:
   domain: spool_protected_resource
   phase_scope: phase-1-4-2
   partial_coverage: false
-  covered_subclaim: Spool access decisions bind subject, object, operation, policy
-    version, and correlation id.
+  covered_subclaim: Spool access decisions bind subject, object id, object generation,
+    operation, policy version, and correlation id.
   not_claimed: []
   coverage_level: C4_VERIFIED_PROPERTY
   fixture_ref: null

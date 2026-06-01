@@ -40,6 +40,18 @@ fixtures:
     verification_status: verified
     evidence_ref: EV-MFOS-JOB-SPOOL-PURGE-DENIED-0914
     coverage_level: C5_CONFORMANCE_LINKED
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_PURGE_REQUIRES_AUTHORITY_AND_RETENTION
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-SPOOL-PURGE-DENIED-0914
+    coverage_level: C5_CONFORMANCE_LINKED
+  - dafny_module: formal/executable-semantics/dafny/modules/job_spool.dfy
+    dafny_symbol: INV_SPOOL_DENY_WITH_AUDIT_LINKS_BEFORE_RETURN
+    symbol_kind: lemma
+    verification_status: verified
+    evidence_ref: EV-MFOS-JOB-SPOOL-PURGE-DENIED-0914
+    coverage_level: C5_CONFORMANCE_LINKED
 - fixture_ref: tests/fixtures/job/spool-export-no-audit-0915.yml
   oracle_ref: tests/golden/job/spool-export-no-audit-0915.yml
   golden_ref: tests/golden/job/spool-export-no-audit-0915.yml

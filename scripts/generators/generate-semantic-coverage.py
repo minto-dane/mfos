@@ -429,7 +429,7 @@ def build_artifacts() -> dict[str, Any]:
         "phase_1_1_formal_claim_coverage_complete": formal_complete,
         "negative_semantics_complete": negative_complete,
         "audit_deny_before_return_transition_backed": True,
-        "dafny_verification_result": "206 verified, 0 errors",
+        "dafny_verification_result": "209 verified, 0 errors",
         "production_implementation_allowed": False,
         "rust_phase_1_canonical_semantics_allowed": False,
         "hosted_daemon_implementation_allowed": False,

@@ -20,13 +20,13 @@ This triage classifies every remaining C0/C2/C3 Phase 1.1 semantic coverage gap 
 ```yaml
 classification_counts:
   fix_before_next_merge: 28
-  accepted_deferred: 41
+  accepted_deferred: 39
 coverage_level_counts:
-  C3_FULL_SEMANTIC: 18
+  C3_FULL_SEMANTIC: 17
   C2_PARTIAL_SEMANTIC: 14
-  C0_NONE: 37
+  C0_NONE: 36
 artifact_kind_counts:
-  test: 42
+  test: 40
   requirement: 16
   formal_claim: 11
 ```
@@ -84,8 +84,6 @@ Non-Authorization/Audit gaps are accepted as truthful deferred work for later do
 | test | NEG-MFOS-JOB-SUBMIT-NO-PRINCIPAL-0903 | job_spool | C2_PARTIAL_SEMANTIC | accepted_deferred | false | false |
 | test | TEST-MFOS-JOB-STEP-FAILURE-RC-0909 | job_spool | C2_PARTIAL_SEMANTIC | accepted_deferred | false | false |
 | test | TEST-MFOS-JOB-SPOOL-CREATE-0911 | job_spool | C3_FULL_SEMANTIC | accepted_deferred | false | false |
-| test | TEST-MFOS-JOB-SPOOL-BROWSE-OWNER-0912 | job_spool | C3_FULL_SEMANTIC | accepted_deferred | false | false |
-| test | NEG-MFOS-JOB-SPOOL-EXPORT-NO-AUDIT-0915 | job_spool | C0_NONE | accepted_deferred | false | false |
 | test | NEG-MFOS-JOB-CANCEL-NO-AUTHORITY-0916 | job_spool | C0_NONE | accepted_deferred | false | false |
 | test | NEG-MFOS-JOB-STEP-NO-AUDIT-CORRELATION-0917 | job_spool | C0_NONE | accepted_deferred | false | false |
 | test | TEST-MFOS-OPER-DISPLAY-SYSTEM-0901 | operator_console | C3_FULL_SEMANTIC | accepted_deferred | false | false |

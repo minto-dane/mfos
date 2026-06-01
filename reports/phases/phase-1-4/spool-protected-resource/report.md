@@ -30,8 +30,8 @@ semantics.
 
 ## Evidence
 
-Generated traceability is under
-`evidence/traceability/generated/phase-1-4-2/`. C5 is claimed only for rows with
-fixture, embedded oracle, and golden-vector links. Broad parent requirement
-coverage remains partial where production spool service behavior is outside
-Phase 1.4.2.
+Traceability and evidence handling for this topic are tracked separately from
+this Phase 1.4 planning report. This document stays limited to planned scope,
+constraints, and executable-semantics verification intent; hosted service
+behavior and implementation traceability remain deferred to a later
+implementation gate.

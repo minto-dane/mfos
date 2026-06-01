@@ -19,7 +19,6 @@ Final local validation result: passed.
 - `python3 scripts/check-phase1-3-dataset-catalog-coverage.py`
 - `python3 scripts/phases/phase-1/check-phase1-4-1-job-dd-coverage.py`
 - `python3 scripts/phases/phase-1/check-phase1-4-2-spool-coverage.py`
-- `python3 scripts/check-phase1-4-2-spool-coverage.py`
 - `python3 -m py_compile $(find scripts tools -name '*.py' -type f | sort)`
 - `find scripts tools -type d -name __pycache__ -prune -exec rm -rf {} +`
 - `./scripts/validate-artifact-hygiene.sh`
@@ -47,7 +46,6 @@ All required local validation commands passed:
 - `python3 scripts/check-phase1-3-dataset-catalog-coverage.py`
 - `python3 scripts/phases/phase-1/check-phase1-4-1-job-dd-coverage.py`
 - `python3 scripts/phases/phase-1/check-phase1-4-2-spool-coverage.py`
-- `python3 scripts/check-phase1-4-2-spool-coverage.py`
 - `python3 -m py_compile $(find scripts tools -name '*.py' -type f | sort)`
 - `find scripts tools -type d -name __pycache__ -prune -exec rm -rf {} +`
 - `./scripts/validate-artifact-hygiene.sh`

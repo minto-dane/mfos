@@ -2,7 +2,7 @@
 
 Status: current.
 
-The current cumulative Phase 1 Dafny module set verifies with `206 verified, 0 errors`; Phase 1.3 Dataset/Catalog coverage remains scoped to the Phase 1.3 rows generated here.
+The current cumulative Phase 1 Dafny module set verifies with `209 verified, 0 errors`; Phase 1.3 Dataset/Catalog coverage remains scoped to the Phase 1.3 rows generated here.
 
 Validated commands passed locally:
 

@@ -4,7 +4,7 @@ fixture_ref: tests/fixtures/job/spool-export-no-audit-0915.yml
 normalized_input:
   fixture_id: FIXTURE-MFOS-JOB-SPOOL-EXPORT-NO-AUDIT-0915
   operation: SPOOL-EXPORT-NO-AUDIT
-  deterministic_seed: SEED-MFOS-PHASE09-0001
+  deterministic_seed: SEED-MFOS-PHASE142-0915
 expected_normalized_output:
   outcome: EXPECTED_FAIL_CLOSED
   final_state: FAILED

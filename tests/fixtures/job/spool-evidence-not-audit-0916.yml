@@ -27,9 +27,12 @@ initial_state:
 semantic_facts:
   dafny_property: INV_SPOOL_EVIDENCE_NOT_AUDIT_EVIDENCE
   spool_operation: OP_EXPORT
+  authorization_result: ALLOW_WITH_AUDIT
+  audit_required: true
   spool_evidence_present: true
   audit_evidence_present: false
   audit_satisfied_by_spool_evidence: false
+  failure_mode: MFOS_ERR_INVALID_AUDIT_RECORD
 inputs:
 - input_id: INPUT-MFOS-SPOOL-EVIDENCE-NOT-AUDIT-0916
   operation: SPOOL-EVIDENCE-NOT-AUDIT

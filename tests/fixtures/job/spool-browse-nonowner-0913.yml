@@ -33,9 +33,9 @@ semantic_facts:
   audit_required: true
   audit_before_return: true
 inputs:
-- input_id: INPUT-MFOS-PHASE09-0001
+- input_id: INPUT-MFOS-SPOOL-BROWSE-NONOWNER-0913
   operation: SPOOL-BROWSE-NONOWNER
-  deterministic_seed: SEED-MFOS-PHASE09-0001
+  deterministic_seed: SEED-MFOS-PHASE142-0913
 expected_oracle: tests/golden/job/spool-browse-nonowner-0913.yml
 expected_evidence:
 - EV-MFOS-JOB-SPOOL-BROWSE-NONOWNER-0913

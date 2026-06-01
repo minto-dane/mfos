@@ -4,7 +4,7 @@ fixture_ref: tests/fixtures/job/spool-browse-owner-0912.yml
 normalized_input:
   fixture_id: FIXTURE-MFOS-JOB-SPOOL-BROWSE-OWNER-0912
   operation: SPOOL-BROWSE-OWNER
-  deterministic_seed: SEED-MFOS-PHASE09-0001
+  deterministic_seed: SEED-MFOS-PHASE142-0912
 expected_normalized_output:
   outcome: EXPECTED_ALLOW
   final_state: SPOOL_CONTENT_RELEASED
@@ -18,7 +18,7 @@ expected_audit_sequence: &id003
 - record_type: SECURITY_DECISION
   decision: ALLOW
   reason_code: OK
-  before_return: false
+  before_return: true
 expected_state_transitions: &id002
 - object: SPOOL-MFOS-PHASE142-0912
   from: SPOOL_ACCESS_REQUESTED
